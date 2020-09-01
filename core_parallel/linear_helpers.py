@@ -57,10 +57,9 @@ class LinearHelpers(Communicators):
         return temp
 
     # ifft
-    def __get_ifft__(self, w_loc, a):
+    def __get_ifft__(self, ww_loc, a):
 
-        #w_loc *= a ** (self.rank_row / self.time_intervals) / self.time_intervals     # scale
-        w_loc /= self.time_intervals
+        w_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * ww_loc    # scale
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
@@ -93,7 +92,7 @@ class LinearHelpers(Communicators):
             if factor == -1 and scalar != 1:
                 w_loc *= scalar
 
-        return w_loc, R
+        return w_loc, [R]
 
     def __get_w__(self, a, v_loc, v1=None):
 
@@ -173,14 +172,6 @@ class LinearHelpers(Communicators):
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
         we = np.exp(-2 * np.pi * 1j / self.time_intervals)
 
-        # # swap USE NONBLOCKING HERE
-        # if int(R, 2) != int(P, 2):
-        #     req = self.comm_row.isend(self.u_loc, int(R, 2), tag=0)
-        #     u_ordered = self.comm_row.recv(source=int(R, 2), tag=0)  # this is the original
-        #     req.Wait()
-        # else:
-        #     u_ordered = self.u_loc.copy()
-
         # stages of butterfly
         for k in range(n):
             p = int(self.time_intervals / 2 ** (k + 1))  # twiddle factor or whatever the name is
@@ -207,14 +198,7 @@ class LinearHelpers(Communicators):
             req.Wait()
             self.u_loc = u_recv + factor * self.u_loc
 
-        # u_all = np.array(self.comm_row.gather(u_ordered, root=0))
-        # U_all = np.array(self.comm_row.gather(self.u_loc, root=0))
-        # if self.rank_row == 0:
-        #     U_seq = np.fft.fft(u_all, axis=0)
-        #     print(U_seq - u_all)
-        #     err = np.linalg.norm(np.array(U_seq - U_all))
-        #     print(err)
-        #self.u_loc *= a**(-self.rank_row / self.time_intervals)
+        self.u_loc *= a**(-self.rank_row / self.time_intervals)
 
     def __get_u_last__(self):
         err_max = 0

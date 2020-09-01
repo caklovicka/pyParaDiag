@@ -155,50 +155,43 @@ class LinearParalpha(LinearHelpers):
                 # fill specific part of local g
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_ifft__(w_loc, self.alphas[i_alpha])
-                self.u_loc = g_loc.copy()
-                self.comm.Barrier()
 
-                # # ------ PROCESSORS HAVE DIFFERENT INDEXES ROM HERE! -------
-                #
-                # # solve local systems in 4 steps with diagonalization of QCinv
-                # system_time = []
-                # for k in range(self.cols_loc):
-                #
-                #     l_new = int(Rev[k], 2)
-                #     Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
-                #     C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
-                #
-                #     Cinv = np.linalg.inv(C)
-                #     R = self.Q @ Cinv
-                #     D, Z = np.linalg.eig(R)
-                #     Zinv = np.linalg.inv(Z)     # Z @ D @ Zinv = R
-                #
-                #     # step 1 ... (Z x I) h = g
-                #     h_loc[:, k] = self.__step1__(Zinv, g_loc[:, k])
-                #
-                #     # step 2 ... solve local systems (I - Di * A) h = h1
-                #     time_solver = MPI.Wtime()
-                #     h1_loc[:, k] = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
-                #     system_time.append(MPI.Wtime() - time_solver)
-                #     h1_loc_old[:, k] = h1_loc[:, k]
-                #
-                #     # step 3 ... (Zinv x I) h = h1
-                #     h_loc[:, k] = self.__step1__(Z, h1_loc[:, k])
-                #
-                #     # step 4 ... (C x I) h1 = h
-                #     self.u_loc[:, k] = self.__step1__(Cinv, h_loc[:, k])
-                #
-                # self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
-                # self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
-                #
-                # self.inner_tols.append(self.stol)
-                # # compute the u in the last interval
-                # # solving (Sinv x I) h1_loc = u
-                # # fft
+                # ------ PROCESSORS HAVE DIFFERENT INDEXES ROM HERE! -------
+
+                # solve local systems in 4 steps with diagonalization of QCinv
+                system_time = []
+                for k in range(self.cols_loc):
+                    l_new = int(Rev[k], 2)
+                    Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
+                    C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
+
+                    Cinv = np.linalg.inv(C)
+                    R = self.Q @ Cinv
+                    D, Z = np.linalg.eig(R)
+                    Zinv = np.linalg.inv(Z)     # Z @ D @ Zinv = R
+
+                    # step 1 ... (Z x I) h = g
+                    h_loc[:, k] = self.__step1__(Zinv, g_loc[:, k])
+
+                    # step 2 ... solve local systems (I - Di * A) h = h1
+                    time_solver = MPI.Wtime()
+                    h1_loc[:, k] = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
+                    system_time.append(MPI.Wtime() - time_solver)
+                    h1_loc_old[:, k] = h1_loc[:, k]
+
+                    # step 3 ... (Zinv x I) h = h1
+                    h_loc[:, k] = self.__step1__(Z, h1_loc[:, k])
+
+                    # step 4 ... (C x I) h1 = h
+                    self.u_loc[:, k] = self.__step1__(Cinv, h_loc[:, k])
+
+                self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
+                self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
+
+                self.inner_tols.append(self.stol)
+
+                # solving (Sinv x I) h1_loc = u with fft
                 self.__get_fft__(self.alphas[i_alpha])
-                self.comm_row.Barrier()
-                print(self.rank, np.linalg.norm(self.u_loc - w_loc))
-                exit(0)
 
                 # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
                 # broadcast the error, a stopping criteria

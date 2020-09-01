@@ -12,13 +12,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 np.set_printoptions(linewidth=np.inf)
-prob = Schrodinger()
+prob = Advection()
 N = 3
 prob.spatial_points = [N, N]
 prob.tol = 1e-11
 prob.proc_col = 1
-prob.proc_row = 16
-prob.time_intervals = 16
+prob.proc_row = 4
+prob.time_intervals = 4
 prob.rolling = 1
 prob.time_points = 1
 prob.optimal_alphas = True
