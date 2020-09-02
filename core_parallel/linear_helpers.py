@@ -57,9 +57,9 @@ class LinearHelpers(Communicators):
         return temp
 
     # ifft
-    def __get_ifft__(self, ww_loc, a):
+    def __get_ifft__(self, w_loc, a):
 
-        w_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * ww_loc    # scale
+        g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc    # scale
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
@@ -83,32 +83,33 @@ class LinearHelpers(Communicators):
             communicate_with = int(communicate_with, 2)
 
             # now communicate
-            req = self.comm_row.isend(w_loc, dest=communicate_with, tag=k + 1)
+            req = self.comm_row.isend(g_loc, dest=communicate_with, tag=k + 1)
             w_loc_recv = self.comm_row.recv(source=communicate_with, tag=k + 1)
             req.Wait()
-            w_loc = w_loc_recv + factor * w_loc
+            g_loc = w_loc_recv + factor * g_loc
 
             scalar = we ** (p * r)
             if factor == -1 and scalar != 1:
-                w_loc *= scalar
+                g_loc *= scalar
 
-        return w_loc, [R]
+        return g_loc, [R]
 
     def __get_w__(self, a, v_loc, v1=None):
 
+        w_loc = v_loc.copy()
         if v1 is not None:
 
             # with spatial parallelization
             if self.frac is not 0:
-                v_loc[:, 0] = v1 + self.u0_loc - a * self.u_last_loc
+                w_loc[:, 0] = v1 + self.u0_loc - a * self.u_last_loc
 
             # without spatial parallelization
             else:
                 for i in range(self.Frac):
-                    v_loc[i * self.global_size_A:(i+1) * self.global_size_A, 0] = self.u0_loc - a * self.u_last_loc
-                v_loc[:, 0] += v1
+                    w_loc[i * self.global_size_A:(i+1) * self.global_size_A, 0] = self.u0_loc - a * self.u_last_loc
+                w_loc[:, 0] += v1
 
-        return v_loc
+        return w_loc
 
     def __step1__(self, Zinv, g_loc):
 
@@ -151,7 +152,6 @@ class LinearHelpers(Communicators):
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
-            shift = self.dt * D[self.rank_subcol_alternating]
             h1_loc = self.linear_solver(sys, h_loc, x0, tol)
 
         # case without spatial parallelization

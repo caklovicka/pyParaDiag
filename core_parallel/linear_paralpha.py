@@ -5,7 +5,7 @@ from core_parallel.linear_helpers import LinearHelpers
 import os
 from scipy import sparse
 
-np.set_printoptions(linewidth=np.inf)
+np.set_printoptions(linewidth=np.inf, precision=2)
 
 
 class LinearParalpha(LinearHelpers):
@@ -152,7 +152,6 @@ class LinearParalpha(LinearHelpers):
                 # assemble the residual vector
                 w_loc = self.__get_w__(self.alphas[i_alpha], v_loc, v1_loc)
 
-                # fill specific part of local g
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_ifft__(w_loc, self.alphas[i_alpha])
 
@@ -173,7 +172,7 @@ class LinearParalpha(LinearHelpers):
                     # step 1 ... (Z x I) h = g
                     h_loc[:, k] = self.__step1__(Zinv, g_loc[:, k])
 
-                    # step 2 ... solve local systems (I - Di * A) h = h1
+                    # step 2 ... solve local systems (I - Di * A) h1 = h
                     time_solver = MPI.Wtime()
                     h1_loc[:, k] = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
@@ -224,6 +223,8 @@ class LinearParalpha(LinearHelpers):
                 # DELETE
 
                 # end of main iterations (while loop)
+
+            #print(self.rank, self.u_loc.flatten())
 
             # document writing
             if self.document is not 'None':
