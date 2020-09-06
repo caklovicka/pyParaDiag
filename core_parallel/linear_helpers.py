@@ -56,41 +56,59 @@ class LinearHelpers(Communicators):
 
         return temp
 
-    # ifft
-    def __get_ifft__(self, w_loc, a):
+    def check_ifft(self, w_loc, a, g_loc):
+        gg_loc = a ** (self.rank_row / self.time_intervals) * w_loc  # scale
+        gg_all = np.array(self.comm_row.gather(gg_loc, root=0))
+        g_all = np.array(self.comm_row.gather(g_loc, root=0))
+        if self.rank_row == 0:
+            gg_seq = np.array(np.fft.ifft(gg_all, axis=0))
+            np.set_printoptions(precision=3, linewidth=np.inf)
+            er = np.array(gg_seq - g_all)
+            e = np.array(gg_seq)
+            # print(np.linalg.norm(gg_seq.flatten(), 2))
+            # print(np.linalg.norm(g_all.flatten(), 2))
+            # print(g_all.flatten())
+            err = np.linalg.norm(er.flatten(), 2) / np.linalg.norm(e.flatten(), 2)
+            for k in range(self.time_intervals):
+                print('seq ifft:', k, np.linalg.norm(gg_seq[k], 2))
+            print(err)
+
+    # fft
+    def __get_fft__(self, w_loc, a):
 
         g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc    # scale
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
-        we = np.exp(2 * np.pi * 1j / self.time_intervals)
+        we = np.exp(-2 * np.pi * 1j / self.time_intervals)
 
         # stages of butterfly
         for k in range(n):
-            p = int(self.time_intervals / 2 ** (n - k))  # twiddle factor or whatever the name is
-            r = int(self.rank_row % 2 ** (n - k) - 2 ** (n - k - 1))  # exponent of we
-            factor = 1  # + or - factor
-            if P[k] == '1':  # values that need multiplying
-                factor = -1
+            p = self.time_intervals // 2 ** (k + 1)
+            r = int(R, 2) % 2 ** (k + 1) - 2 ** k
+            scalar = we ** (r * p)
+            factor = 1
 
-            # figure out with whom to communicate
-            communicate_with = list(P)
-            if communicate_with[k] == '1':
-                communicate_with[k] = '0'
+            if P[k] == '1':
+                factor = -1
+                if scalar != 1:  # multiply if the factor is != 1
+                    g_loc *= scalar
+
+            # make a new string and an int from it, a proc to communicate with
+            comm_with = list(P)
+            if comm_with[k] == '1':
+                comm_with[k] = '0'
             else:
-                communicate_with[k] = '1'
-            communicate_with = ''.join(communicate_with)
-            communicate_with = int(communicate_with, 2)
+                comm_with[k] = '1'
+            comm_with = int(''.join(comm_with), 2)
 
             # now communicate
-            req = self.comm_row.isend(g_loc, dest=communicate_with, tag=k + 1)
-            w_loc_recv = self.comm_row.recv(source=communicate_with, tag=k + 1)
+            req = self.comm_row.isend(g_loc, dest=comm_with, tag=k)
+            gr = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
-            g_loc = w_loc_recv + factor * g_loc
 
-            scalar = we ** (p * r)
-            if factor == -1 and scalar != 1:
-                g_loc *= scalar
+            # glue the info
+            g_loc = gr + factor * g_loc
 
         return g_loc, [R]
 
@@ -113,7 +131,7 @@ class LinearHelpers(Communicators):
 
     def __step1__(self, Zinv, g_loc):
 
-        h_loc = None
+        h_loc = np.empty_like(g_loc, dtype=complex)
 
         # case with spatial parallelization
         if self.frac > 1:
@@ -165,38 +183,42 @@ class LinearHelpers(Communicators):
         self.comm_col.Barrier()
         return h1_loc
 
-    # forward fft
-    def __get_fft__(self, a):
+    # ifft
+    def __get_ifft__(self, a):
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
-        we = np.exp(-2 * np.pi * 1j / self.time_intervals)
+        we = np.exp(2 * np.pi * 1j / self.time_intervals)
 
         # stages of butterfly
         for k in range(n):
-            p = int(self.time_intervals / 2 ** (k + 1))  # twiddle factor or whatever the name is
-            r = int(self.rank_row % 2 ** (k + 1) - 2 ** k)  # exponent of w
-            scalar = we ** (p * r)
-            factor = 1  # + or - factor
-            if R[k] == '1':  # values that need multiplying
-                factor = -1
-                if scalar != 1:
-                    self.u_loc *= scalar
+            p = self.time_intervals // 2 ** (n - k)
+            r = int(R, 2) % 2 ** (n - k) - 2 ** (n - k - 1)
+            scalar = we ** (r * p)
+            factor = 1
 
-            # figure out with whom to communicate
-            communicate_with = list(R)
-            if communicate_with[k] == '1':
-                communicate_with[k] = '0'
+            if R[k] == '1':
+                factor = -1
+
+            # make a new string and an int from it, a proc to communicate with
+            comm_with = list(R)
+            if comm_with[k] == '1':
+                comm_with[k] = '0'
             else:
-                communicate_with[k] = '1'
-            communicate_with = ''.join(communicate_with)
-            communicate_with = int(communicate_with[::-1], 2)
+                comm_with[k] = '1'
+            comm_with = int(''.join(comm_with)[::-1], 2)
 
             # now communicate
-            req = self.comm_row.isend(self.u_loc, dest=communicate_with, tag=k + 1)
-            u_recv = self.comm_row.recv(source=communicate_with, tag=k + 1)
+            req = self.comm_row.isend(self.u_loc, dest=comm_with, tag=k)
+            ur = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
-            self.u_loc = u_recv + factor * self.u_loc
+
+            # glue the info
+            self.u_loc = ur + factor * self.u_loc
+
+            # scale the output
+            if R[k] == '1' and scalar != 1:
+                self.u_loc *= scalar
 
         self.u_loc *= a**(-self.rank_row / self.time_intervals)
 

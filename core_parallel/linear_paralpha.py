@@ -5,7 +5,7 @@ from core_parallel.linear_helpers import LinearHelpers
 import os
 from scipy import sparse
 
-np.set_printoptions(linewidth=np.inf, precision=2)
+np.set_printoptions(precision=5, linewidth=np.inf)
 
 
 class LinearParalpha(LinearHelpers):
@@ -143,7 +143,7 @@ class LinearParalpha(LinearHelpers):
                     self.alphas.append(np.sqrt((gamma * r)/self.m0))
                     self.m0 = 2 * np.sqrt(gamma * self.m0 * r)
                     if self.rank == 0:
-                        print('m = ', self.m0, 'alpha = ', self.alphas[-1], flush=True)
+                        print('m = ', self.m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
                     if self.m0 <= self.tol:
                         self.stop = True
 
@@ -153,7 +153,7 @@ class LinearParalpha(LinearHelpers):
                 w_loc = self.__get_w__(self.alphas[i_alpha], v_loc, v1_loc)
 
                 # solving (S x I) g = w with ifft
-                g_loc, Rev = self.__get_ifft__(w_loc, self.alphas[i_alpha])
+                g_loc, Rev = self.__get_fft__(w_loc, self.alphas[i_alpha])
 
                 # ------ PROCESSORS HAVE DIFFERENT INDEXES ROM HERE! -------
 
@@ -190,7 +190,7 @@ class LinearParalpha(LinearHelpers):
                 self.inner_tols.append(self.stol)
 
                 # solving (Sinv x I) h1_loc = u with fft
-                self.__get_fft__(self.alphas[i_alpha])
+                self.__get_ifft__(self.alphas[i_alpha])
 
                 # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
                 # broadcast the error, a stopping criteria
