@@ -56,23 +56,6 @@ class LinearHelpers(Communicators):
 
         return temp
 
-    def check_ifft(self, w_loc, a, g_loc):
-        gg_loc = a ** (self.rank_row / self.time_intervals) * w_loc  # scale
-        gg_all = np.array(self.comm_row.gather(gg_loc, root=0))
-        g_all = np.array(self.comm_row.gather(g_loc, root=0))
-        if self.rank_row == 0:
-            gg_seq = np.array(np.fft.ifft(gg_all, axis=0))
-            np.set_printoptions(precision=3, linewidth=np.inf)
-            er = np.array(gg_seq - g_all)
-            e = np.array(gg_seq)
-            # print(np.linalg.norm(gg_seq.flatten(), 2))
-            # print(np.linalg.norm(g_all.flatten(), 2))
-            # print(g_all.flatten())
-            err = np.linalg.norm(er.flatten(), 2) / np.linalg.norm(e.flatten(), 2)
-            for k in range(self.time_intervals):
-                print('seq ifft:', k, np.linalg.norm(gg_seq[k], 2))
-            print(err)
-
     # fft
     def __get_fft__(self, w_loc, a):
 
@@ -103,9 +86,11 @@ class LinearHelpers(Communicators):
             comm_with = int(''.join(comm_with), 2)
 
             # now communicate
+            time_beg = MPI.Wtime()
             req = self.comm_row.isend(g_loc, dest=comm_with, tag=k)
             gr = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
+            self.communication_time += MPI.Wtime() - time_beg
 
             # glue the info
             g_loc = gr + factor * g_loc
@@ -209,9 +194,11 @@ class LinearHelpers(Communicators):
             comm_with = int(''.join(comm_with)[::-1], 2)
 
             # now communicate
+            time_beg = MPI.Wtime()
             req = self.comm_row.isend(self.u_loc, dest=comm_with, tag=k)
             ur = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
+            self.communication_time += MPI.Wtime() - time_beg
 
             # glue the info
             self.u_loc = ur + factor * self.u_loc
