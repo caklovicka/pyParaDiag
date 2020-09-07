@@ -126,13 +126,14 @@ class LinearParalpha(LinearHelpers):
                 v1_loc = None
 
             r = None
+            m0 = self.m0
             eps = np.finfo(complex).eps
             gamma = self.time_intervals * (3 * eps + self.stol)
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
                 self.comm.Barrier()
                 if self.rank == 0:
-                    print('m0 = ', self.m0, 'r = ', r, flush=True)
+                    print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
 
             # main iterations
@@ -141,11 +142,11 @@ class LinearParalpha(LinearHelpers):
                 self.iterations[rolling_interval] += 1
 
                 if self.optimal_alphas is True:
-                    self.alphas.append(np.sqrt((gamma * r)/self.m0))
-                    self.m0 = 2 * np.sqrt(gamma * self.m0 * r)
+                    self.alphas.append(np.sqrt((gamma * r)/m0))
+                    m0 = 2 * np.sqrt(gamma * m0 * r)
                     if self.rank == 0:
-                        print('m = ', self.m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
-                    if self.m0 <= self.tol:
+                        print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
+                    if m0 <= self.tol:
                         self.stop = True
 
                 i_alpha = self.__next_alpha__(i_alpha)
