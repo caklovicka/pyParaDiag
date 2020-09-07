@@ -48,7 +48,7 @@ class LinearParalpha(LinearHelpers):
 
         if self.optimal_alphas is True:
             self.alphas = list()
-        elif self.time_intervals == 1:
+        if self.time_intervals == 1:
             self.optimal_alphas = False
             self.alphas = [0]
             self.maxiter = 1
