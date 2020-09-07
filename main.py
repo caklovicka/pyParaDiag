@@ -25,8 +25,8 @@ prob.T_start = 0
 prob.T_end = 1e-4
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 300
-prob.stol = 1e-15
+prob.smaxiter = 50
+prob.stol = 1e-8
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
