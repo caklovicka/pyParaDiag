@@ -11,18 +11,18 @@ from petsc4py import PETSc
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-prob = Schrodinger4()
-N = 640
+prob = Schrodinger()
+N = 50
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
+prob.tol = 1e-6
 prob.proc_col = 1
-#prob.proc_row = 1
-#prob.time_intervals = 1
-#prob.rolling = 64
-prob.time_points = 3
+prob.proc_row = 1
+prob.time_intervals = 1
+prob.rolling = 64
+prob.time_points = 1
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 5e-07
+prob.T_end = 1e-4
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 300
@@ -31,7 +31,7 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-prob.summary(details=True)
+# prob.summary(details=True)
 
 #
 # n = 10
