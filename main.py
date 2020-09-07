@@ -22,12 +22,12 @@ prob.rolling = 64
 prob.time_points = 1
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 1e-4
+prob.T_end = 1e-5
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 50
 prob.stol = 1e-8
-prob.m0 = 10 * (prob.T_end - prob.T_start)
+prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
 
 prob.setup()
 prob.solve()
