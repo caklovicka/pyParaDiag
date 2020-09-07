@@ -31,7 +31,7 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-# prob.summary(details=True)
+prob.summary(details=True)
 
 #
 # n = 10
