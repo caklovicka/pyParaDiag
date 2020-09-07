@@ -51,6 +51,7 @@ class LinearParalpha(LinearHelpers):
         elif self.time_intervals == 1:
             self.optimal_alphas = False
             self.alphas = [0]
+            self.maxiter = 1
 
         # build variables
         self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
@@ -272,8 +273,8 @@ class LinearParalpha(LinearHelpers):
             print('algorithm time = {:.5f} s'.format(self.algorithm_time))
             print('communication time = {:.5f} s'.format(self.communication_time))
             print('inner solver = {}'.format(self.solver))
-            print('system_time_max = {}'.format(self.system_time_max))
-            print('system_time_min = {}'.format(self.system_time_min))
+            #print('system_time_max = {}'.format(self.system_time_max))
+            #print('system_time_min = {}'.format(self.system_time_min))
             print('inner solver tols = {}'.format(self.inner_tols))
             print('inner solver maxiter = {}'.format(self.smaxiter))
             print('-----------------------< end summary >-----------------------')

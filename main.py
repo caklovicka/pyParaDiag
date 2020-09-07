@@ -12,17 +12,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 prob = Schrodinger4()
-N = 634
+N = 640
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
-prob.proc_row = 32
-prob.time_intervals = 32
-prob.rolling = 1
-prob.time_points = 1
-prob.optimal_alphas = True
+prob.proc_row = 1
+prob.time_intervals = 1
+prob.rolling = 64
+prob.time_points = 3
+prob.optimal_alphas = False
 prob.T_start = 0
-prob.T_end = 2.4e-08
+prob.T_end = 5e-07
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 300
