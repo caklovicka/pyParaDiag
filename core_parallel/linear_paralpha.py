@@ -203,6 +203,7 @@ class LinearParalpha(LinearHelpers):
                 # update u_last_loc on processors that need it (first column) if we are moving on
                 if self.err_last[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
+                self.err_last[rolling_interval][-1]
 
                 if (1 < self.rolling != rolling_interval + 1) or not self.stop:
                     self.__bcast_u_last_loc__()
