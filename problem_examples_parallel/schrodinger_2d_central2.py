@@ -16,10 +16,10 @@ class Schrodinger(LinearParalpha):
     c = 1j
     sigma = 1
     p = [1, 1]
-    X_left = -10
-    X_right = 10
-    Y_left = -10
-    Y_right = 10
+    X_left = -50
+    X_right = 50
+    Y_left = -50
+    Y_right = 50
     xx = None
     yy = None
 

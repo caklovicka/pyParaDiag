@@ -12,7 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 prob = Schrodinger()
-N = 50
+N = 130
 prob.spatial_points = [N, N]
 prob.tol = 1e-6
 prob.proc_col = 1
