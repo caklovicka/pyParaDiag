@@ -132,8 +132,8 @@ class LinearParalpha(LinearHelpers):
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
                 self.comm.Barrier()
-                if self.rank == 0:
-                    print('m0 = ', m0, 'r = ', r, flush=True)
+                # if self.rank == 0:
+                #     print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
 
             # main iterations
@@ -144,8 +144,8 @@ class LinearParalpha(LinearHelpers):
                 if self.optimal_alphas is True:
                     self.alphas.append(np.sqrt((gamma * r)/m0))
                     m0 = 2 * np.sqrt(gamma * m0 * r)
-                    if self.rank == 0:
-                        print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
+                    # if self.rank == 0:
+                    #     print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
                     if m0 <= self.tol:
                         self.stop = True
 
@@ -209,25 +209,21 @@ class LinearParalpha(LinearHelpers):
                     self.__bcast_u_last_loc__()
 
                 # DELETE
-                if self.rank_row == self.size_row - 1:
+                if self.rank == self.size - 1:
                     # end = min(self.row_end, self.global_size_A // 2) # uncommet for wave
                     end = self.row_end  # uncommet for not wave
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:end]
-                    approx = self.u_last_loc[:end - self.row_beg]
+                    approx = self.u_last_loc[self.row_beg:end]#[:end - self.row_beg]
+                    print(self.rank, 'h_loc', np.linalg.norm(approx.flatten(), np.inf))
                     # if approx.shape[0] > 0 and prob.rank_row == prob.size_row - 1:
                     d = exact - approx
                     d = d.flatten()
                     err_abs = np.linalg.norm(d, np.inf)
                     err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-                    err_final_abs = self.comm_col.reduce(err_abs, op=MPI.MAX, root=self.size_col - 1)
-                    err_final_rel = self.comm_col.reduce(err_rel, op=MPI.MAX, root=self.size_col - 1)
-                if self.rank == self.size - 1:
-                    print('abs, rel err inf norm [from paralpha] = {}, {}, iter = {}'.format(err_final_abs, err_final_rel, int(self.iterations[rolling_interval])), flush=True)
+                    print('abs, rel err inf norm [from paralpha] = {}, {}, iter = {}'.format(err_abs, err_rel, int(self.iterations[rolling_interval])), flush=True)
                 # DELETE
 
                 # end of main iterations (while loop)
-
-            #print(self.rank, self.u_loc.flatten())
 
             # document writing
             if self.document is not 'None':
@@ -275,8 +271,8 @@ class LinearParalpha(LinearHelpers):
             print('algorithm time = {:.5f} s'.format(self.algorithm_time))
             print('communication time = {:.5f} s'.format(self.communication_time))
             print('inner solver = {}'.format(self.solver))
-            #print('system_time_max = {}'.format(self.system_time_max))
-            #print('system_time_min = {}'.format(self.system_time_min))
+            print('system_time_max = {}'.format(self.system_time_max))
+            print('system_time_min = {}'.format(self.system_time_min))
             print('inner solver tols = {}'.format(self.inner_tols))
             print('inner solver maxiter = {}'.format(self.smaxiter))
             print('-----------------------< end summary >-----------------------')

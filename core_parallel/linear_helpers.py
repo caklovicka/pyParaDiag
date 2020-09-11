@@ -103,7 +103,7 @@ class LinearHelpers(Communicators):
         if v1 is not None:
 
             # with spatial parallelization
-            if self.frac is not 0:
+            if self.frac > 1:
                 w_loc[:, 0] = v1 + self.u0_loc - a * self.u_last_loc
 
             # without spatial parallelization
@@ -111,7 +111,7 @@ class LinearHelpers(Communicators):
                 for i in range(self.Frac):
                     w_loc[i * self.global_size_A:(i+1) * self.global_size_A, 0] = self.u0_loc - a * self.u_last_loc
                 w_loc[:, 0] += v1
-
+        self.comm.Barrier()
         return w_loc
 
     def __step1__(self, Zinv, g_loc):
