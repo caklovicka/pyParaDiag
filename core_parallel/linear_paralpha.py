@@ -132,8 +132,8 @@ class LinearParalpha(LinearHelpers):
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
                 self.comm.Barrier()
-                # if self.rank == 0:
-                #     print('m0 = ', m0, 'r = ', r, flush=True)
+                if self.rank == 0:
+                    print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
 
             # main iterations
@@ -144,8 +144,8 @@ class LinearParalpha(LinearHelpers):
                 if self.optimal_alphas is True:
                     self.alphas.append(np.sqrt((gamma * r)/m0))
                     m0 = 2 * np.sqrt(gamma * m0 * r)
-                    # if self.rank == 0:
-                    #     print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
+                    if self.rank == 0:
+                        print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
                     if m0 <= self.tol:
                         self.stop = True
 
@@ -176,8 +176,10 @@ class LinearParalpha(LinearHelpers):
 
                     # step 2 ... solve local systems (I - Di * A) h1 = h
                     time_solver = MPI.Wtime()
-                    h1_loc[:, k] = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
+                    local_tol = (3 * eps + self.stol) * self.alphas[i_alpha]**((l_new + 1 - self.time_intervals)/self.time_intervals) - 3 * eps
+                    h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
+                    print(l_new, local_tol, self.stol, it)
                     h1_loc_old[:, k] = h1_loc[:, k]
 
                     # step 3 ... (Zinv x I) h = h1
@@ -214,7 +216,6 @@ class LinearParalpha(LinearHelpers):
                     end = self.row_end  # uncommet for not wave
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:end]
                     approx = self.u_last_loc[self.row_beg:end]#[:end - self.row_beg]
-                    print(self.rank, 'h_loc', np.linalg.norm(approx.flatten(), np.inf))
                     # if approx.shape[0] > 0 and prob.rank_row == prob.size_row - 1:
                     d = exact - approx
                     d = d.flatten()

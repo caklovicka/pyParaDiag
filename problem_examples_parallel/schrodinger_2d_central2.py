@@ -164,10 +164,11 @@ class Schrodinger(LinearParalpha):
         ksp.setInitialGuessNonzero(True)
         ksp.solve(m, m0)
         sol = m0.getArray()
+        it = ksp.getIterationNumber()
 
         m.destroy()
         m0.destroy()
         ksp.destroy()
         M.destroy()
 
-        return sol
+        return sol, it
