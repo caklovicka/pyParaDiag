@@ -128,7 +128,7 @@ class LinearParalpha(LinearHelpers):
             r = None
             m0 = self.m0
             eps = np.finfo(complex).eps
-            gamma = self.time_intervals * (3 * eps)# + self.stol)
+            gamma = self.time_intervals * (3 * eps + self.stol)
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
                 self.comm.Barrier()
