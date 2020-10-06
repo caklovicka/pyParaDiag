@@ -1,0 +1,43 @@
+OPTIMAL
+=======
+
+m0 =  0.01 r =  1.0
+m =  6.530928391755831e-08 alpha =  3.2654641958779155e-06 err_max =  inf
+m =  1.6690232361045944e-10 alpha =  0.0012777840576321798 err_max =  0.006283164513624706
+m =  8.437350941721699e-12 alpha =  0.025276313592296047 err_max =  2.0577632042773075e-08
+m =  1.897046510249159e-12 alpha =  0.11241955700031922 err_max =  2.7184587914064196e-11
+abs, rel err inf norm [from paralpha] = 2.0550924680434268e-08, 2.0550924680434268e-08, iter = 1
+abs, rel err inf norm [from paralpha] = 2.6811356485696096e-11, 2.6811356485696096e-11, iter = 2
+abs, rel err inf norm [from paralpha] = 3.84795858282937e-13, 3.84795858282937e-13, iter = 3
+abs, rel err inf norm [from paralpha] = 4.181106536838296e-13, 4.181106536838296e-13, iter = 4
+-----------------------< summary >-----------------------
+solving on [0, 0.001]
+no. of spatial points = [1000, 1000]
+dx = [0.001, 0.001]
+no. of time points on an interval = 3
+    [2.42267e-06 1.00773e-05 1.56250e-05]
+no. of time intervals = 64
+no. of alphas = 4
+    [3.2654641958779155e-06, 0.0012777840576321798, 0.025276313592296047, 0.11241955700031922]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 1.5625e-05
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 64
+maxiter = 5
+output document = None
+tol = 1e-12
+last error = [inf, 0.006283164513624706, 2.0577632042773075e-08, 2.7184587914064196e-11, 7.94031507211912e-13]
+iterations of Paralpha = [4.]
+max iterations of Paralpha = 4.0
+algorithm time = 49.66858 s
+communication time = 5.30385 s
+inner solver = custom
+system_time_max = [15.146013736724854, 6.508256196975708, 7.354155540466309, 10.89792347689209]
+system_time_min = [11.919162511825562, 5.982470750808716, 4.887447834014893, 7.997650623321533]
+inner solver tols = [1e-15, 1e-15, 1e-15, 1e-15]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+
+alpha =  3.2654641958779155e-06
+===============================

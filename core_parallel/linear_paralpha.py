@@ -179,7 +179,7 @@ class LinearParalpha(LinearHelpers):
                     local_tol = (3 * eps + self.stol) * self.alphas[i_alpha]**((l_new + 1 - self.time_intervals)/self.time_intervals) - 3 * eps
                     h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
-                    print(l_new, local_tol, self.stol, it)
+                    #print(l_new, local_tol, self.stol, it)
                     h1_loc_old[:, k] = h1_loc[:, k]
 
                     # step 3 ... (Zinv x I) h = h1
