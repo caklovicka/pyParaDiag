@@ -14,7 +14,7 @@ prob.time_intervals = 64
 prob.rolling = 1
 prob.time_points = 3
 prob.optimal_alphas = False
-prob.alphas = [3.2654641958779155e-06]
+prob.alphas = [0.0012777840576321798]
 prob.T_start = 0
 prob.T_end = 0.001
 prob.solver = 'custom'
@@ -24,7 +24,6 @@ prob.stol = 1e-15
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
-print(prob.dt/prob.dx[0])
 prob.solve()
 prob.summary(details=True)
 
