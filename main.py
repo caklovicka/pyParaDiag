@@ -27,12 +27,12 @@ prob.T_end = np.pi + 1e-3
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 20
-prob.stol = 1e-12
+prob.stol = 1e-10
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-# prob.summary(details=True)
+prob.summary(details=True)
 
 #
 # n = 10
