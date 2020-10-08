@@ -12,27 +12,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-prob = Heat()
-N = 600
+prob = Heat4()
+N = 1000
 prob.spatial_points = [N, N]
-prob.tol = 1e-6
+prob.tol = 1e-12
 prob.proc_col = 1
-prob.proc_row = 16
-prob.time_intervals = 16
-prob.rolling = 1
-prob.time_points = 1
+prob.proc_row = 1
+prob.time_intervals = 1
+prob.rolling = 32
+prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = np.pi
-prob.T_end = np.pi + 1e-3
+prob.T_end = np.pi + 0.1
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 20
-prob.stol = 1e-10
+prob.smaxiter = 30
+prob.stol = 1e-13
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-prob.summary(details=True)
+# prob.summary(details=True)
 
 #
 # n = 10
