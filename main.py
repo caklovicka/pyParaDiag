@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 prob = Heat4()
-N = 1000
+N = 1200
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
@@ -26,8 +26,8 @@ prob.T_start = np.pi
 prob.T_end = np.pi + 0.1
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 30
-prob.stol = 1e-13
+prob.smaxiter = 50
+prob.stol = 1e-14
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
