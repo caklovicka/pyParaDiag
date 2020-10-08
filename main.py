@@ -21,10 +21,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 prob = Heat4()
-N = 110
+N = 1100
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
-prob.proc_col = 1
+prob.proc_col = 3
 prob.proc_row = 1
 prob.time_intervals = 1
 prob.rolling = 32
