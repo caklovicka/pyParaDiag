@@ -7,13 +7,21 @@ from problem_examples_parallel.wave_2d_central2 import Wave
 from problem_examples_parallel.wave_2d_pbc_central4 import Wave as Wave4
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger4
+import os
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+
 from petsc4py import PETSc
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 prob = Heat4()
-N = 1100
+N = 110
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
