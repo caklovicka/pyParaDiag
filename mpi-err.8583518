@@ -1,7 +1,0 @@
-+ [[ hB != hxB ]]
-+ XTRACE_STATE=-x
-+ [[ hxB != hxB ]]
-+ VERBOSE_STATE=+v
-+ set +xv
-+ unset XTRACE_STATE VERBOSE_STATE
-+ srun python -m cProfile -s tottime main.py

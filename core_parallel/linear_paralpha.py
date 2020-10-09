@@ -117,7 +117,6 @@ class LinearParalpha(LinearHelpers):
 
             # build local v
             v_loc = self.__get_v__(t_start)
-            self.comm.Barrier()
 
             # save v1 on the processors that have v1
             if self.rank_row == 0:
@@ -131,7 +130,6 @@ class LinearParalpha(LinearHelpers):
             gamma = self.time_intervals * (3 * eps + self.stol)
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
-                self.comm.Barrier()
                 if self.rank == 0:
                     print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
@@ -234,7 +232,6 @@ class LinearParalpha(LinearHelpers):
             if rolling_interval + 1 < self.rolling:
                 if self.comm_last is not 'None':
                     self.u0_loc = self.u_last_loc.copy()
-            self.comm.Barrier()
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)
