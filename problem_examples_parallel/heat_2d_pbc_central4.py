@@ -40,6 +40,7 @@ class Heat(LinearParalpha):
         # x and size_global_A have to be filled before super().setup()
 
         self.x = np.meshgrid(self.xx, self.yy)
+        del self.xx, self.yy
 
         self.global_size_A = 1
         for n in self.spatial_points:
@@ -105,6 +106,8 @@ class Heat(LinearParalpha):
         row = np.array(row) - self.row_beg
         col = np.array(col)
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
+
+        del data, row, col
 
         # ---- POSTSETUP <end> ----
 
