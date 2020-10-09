@@ -8,4 +8,4 @@
 #SBATCH --time=00:15:00
 #SBATCH --partition=batch
 
-srun python main.py >> results.txt
+srun python main.py -m cProfile -s tottime main.py > results.txt
