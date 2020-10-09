@@ -191,6 +191,7 @@ class LinearParalpha(LinearHelpers):
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
 
                 self.inner_tols.append(self.stol)
+                exit(0)
 
                 # solving (Sinv x I) h1_loc = u with fft
                 self.__get_ifft__(self.alphas[i_alpha])

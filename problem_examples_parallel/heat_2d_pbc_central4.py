@@ -133,6 +133,8 @@ class Heat(LinearParalpha):
 
     # petsc solver on comm_matrix
     def linear_solver(self, M_loc, m_loc, m0_loc, tol):
+        if self.rank == 1:
+            print('SOLVING')
         m = PETSc.Vec()
         m.createWithArray(array=m_loc, comm=self.comm_matrix)
         m0 = PETSc.Vec()
