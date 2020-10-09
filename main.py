@@ -39,7 +39,7 @@ prob.stol = 1e-14
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
-# prob.solve()
+prob.solve()
 # prob.summary(details=True)
 
 #
