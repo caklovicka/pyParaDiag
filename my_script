@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --output=mpi-out.%j
 #SBATCH --error=mpi-err.%j
-#SBATCH --time=00:10:00
+#SBATCH --time=00:20:00
 #SBATCH --partition=batch
 
-srun python -m cProfile -s tottime main.py > results_all.txt
+srun python -m cProfile -s tottime main.py > results1000solve.txt
