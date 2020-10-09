@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 prob = Heat4()
-N = 1100
+N = 1000
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 3
@@ -39,7 +39,7 @@ prob.stol = 1e-14
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
-prob.solve()
+# prob.solve()
 # prob.summary(details=True)
 
 #
