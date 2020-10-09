@@ -24,7 +24,7 @@ prob.tol = 1e-12
 prob.proc_col = 24
 prob.proc_row = 1
 prob.time_intervals = 1
-prob.rolling = 16
+prob.rolling = 3
 prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = np.pi
@@ -37,7 +37,7 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-# prob.summary(details=True)
+prob.summary(details=True)
 gc.collect()
 
 #
