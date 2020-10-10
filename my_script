@@ -8,4 +8,4 @@
 #SBATCH --time=00:20:00
 #SBATCH --partition=batch
 
-srun python main.py > euler.txt
+srun python main.py
