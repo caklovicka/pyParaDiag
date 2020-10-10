@@ -1,3 +1,10 @@
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+import numpy as np
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.advection_2d_central2 import Advection
 from problem_examples_parallel.advection_2d_pbc_central4 import Advection as Advection4
@@ -6,15 +13,7 @@ from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
 from problem_examples_parallel.wave_2d_central2 import Wave
 from problem_examples_parallel.wave_2d_pbc_central4 import Wave as Wave4
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
-from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger4
-
-import os
-os.environ["OMP_NUM_THREADS"] = "1"
-os.environ["OPENBLAS_NUM_THREADS"] = "1"
-os.environ["MKL_NUM_THREADS"] = "1"
-os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
-os.environ["NUMEXPR_NUM_THREADS"] = "1"
-import numpy as np
+from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
 import gc
 
 prob = Heat4()
@@ -24,7 +23,7 @@ prob.tol = 1e-12
 prob.proc_col = 24
 prob.proc_row = 1
 prob.time_intervals = 1
-prob.rolling = 3
+prob.rolling = 1
 prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = np.pi
