@@ -14,9 +14,10 @@ from problem_examples_parallel.wave_2d_central2 import Wave
 from problem_examples_parallel.wave_2d_pbc_central4 import Wave as Wave4
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
-import gc
 
 prob = Heat4()
+if prob.rank == 0:
+    print('krenuo heat')
 N = 1200
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
@@ -33,11 +34,16 @@ prob.maxiter = 1
 prob.smaxiter = 10
 prob.stol = 1e-14
 prob.m0 = 10 * (prob.T_end - prob.T_start)
+if prob.rank == 0:
+    print('varijable namjestene')
 
+if prob.rank == 0:
+    print('setup from main')
 prob.setup()
+if prob.rank == 0:
+    print('solve from main')
 prob.solve()
 prob.summary(details=True)
-gc.collect()
 
 #
 # n = 10
