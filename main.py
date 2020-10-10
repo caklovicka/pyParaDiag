@@ -18,7 +18,7 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 prob = Heat4()
 if prob.rank == 0:
     print('krenuo heat')
-N = 1200
+N = 800
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 24
