@@ -166,11 +166,11 @@ class LinearParalpha(LinearHelpers):
                     print('izgradio w\n')
 
                 if self.rank == 0:
-                    print('IFFT')
+                    print('FFT')
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(w_loc, self.alphas[i_alpha])
                 if self.rank == 0:
-                    print('IFFT gotov\n')
+                    print('FFT gotov\n')
 
                 # ------ PROCESSORS HAVE DIFFERENT INDEXES ROM HERE! -------
 
@@ -246,11 +246,9 @@ class LinearParalpha(LinearHelpers):
 
                 # DELETE
                 if self.rank == self.size - 1:
-                    # end = min(self.row_end, self.global_size_A // 2) # uncommet for wave
-                    end = self.row_end  # uncommet for not wave
-                    exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:end]
-                    approx = self.u_last_loc[self.row_beg:end]#[:end - self.row_beg]
-                    # if approx.shape[0] > 0 and prob.rank_row == prob.size_row - 1:
+                    exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
+                    # approx = self.u_last_loc[self.row_beg:self.row_end]
+                    approx = self.u_last_loc.copy()
                     d = exact - approx
                     d = d.flatten()
                     err_abs = np.linalg.norm(d, np.inf)
