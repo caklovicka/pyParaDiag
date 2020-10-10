@@ -1,9 +1,9 @@
-# import os
-# os.environ["OMP_NUM_THREADS"] = "1"
-# os.environ["OPENBLAS_NUM_THREADS"] = "1"
-# os.environ["MKL_NUM_THREADS"] = "1"
-# os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
-# os.environ["NUMEXPR_NUM_THREADS"] = "1"
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import numpy as np
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.advection_2d_central2 import Advection
@@ -18,7 +18,7 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 prob = Heat4()
 if prob.rank == 0:
     print('krenuo heat')
-N = 800
+N = 80
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 24
