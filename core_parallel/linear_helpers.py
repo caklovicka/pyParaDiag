@@ -149,11 +149,10 @@ class LinearHelpers(Communicators):
     def __step2__(self, h_loc, D, x0, tol):
 
         h1_loc = np.empty_like(h_loc, dtype=complex, order='C')
-
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
-            h1_loc = self.linear_solver(sys, h_loc, x0, tol)
+            h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
 
         # case without spatial parallelization
         else:
