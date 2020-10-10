@@ -115,8 +115,14 @@ class LinearParalpha(LinearHelpers):
             i_alpha = -1
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
 
+            if self.rank == 0:
+                print('gradim v')
+
             # build local v
             v_loc = self.__get_v__(t_start)
+
+            if self.rank == 0:
+                print('izgradio v')
 
             # save v1 on the processors that have v1
             if self.rank_row == 0:
@@ -137,6 +143,9 @@ class LinearParalpha(LinearHelpers):
             # main iterations
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:
 
+                if self.rank == 0:
+                    print('---ITEARACIJA---')
+
                 self.iterations[rolling_interval] += 1
 
                 if self.optimal_alphas is True:
@@ -149,11 +158,19 @@ class LinearParalpha(LinearHelpers):
 
                 i_alpha = self.__next_alpha__(i_alpha)
 
+                if self.rank == 0:
+                    print('gradim w')
                 # assemble the residual vector
                 w_loc = self.__get_w__(self.alphas[i_alpha], v_loc, v1_loc)
+                if self.rank == 0:
+                    print('izgradio w\n')
 
+                if self.rank == 0:
+                    print('IFFT')
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(w_loc, self.alphas[i_alpha])
+                if self.rank == 0:
+                    print('IFFT gotov\n')
 
                 # ------ PROCESSORS HAVE DIFFERENT INDEXES ROM HERE! -------
 
@@ -169,29 +186,49 @@ class LinearParalpha(LinearHelpers):
                     D, Z = np.linalg.eig(R)
                     Zinv = np.linalg.inv(Z)     # Z @ D @ Zinv = R
 
+                    if self.rank == 0:
+                        print('supstitucija')
                     # step 1 ... (Z x I) h = g
                     h_loc[:, k] = self.__step1__(Zinv, g_loc[:, k])
+                    if self.rank == 0:
+                        print('supstitucija gotova\n')
 
+                    if self.rank == 0:
+                        print('lin sustav pocinjem rjesavat')
                     # step 2 ... solve local systems (I - Di * A) h1 = h
                     time_solver = MPI.Wtime()
                     h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
                     #print(l_new, local_tol, self.stol, it)
                     h1_loc_old[:, k] = h1_loc[:, k]
+                    if self.rank == 0:
+                        print('lin sustav gotov\n')
 
+                    if self.rank == 0:
+                        print('vracam nazad supstituciju')
                     # step 3 ... (Zinv x I) h = h1
                     h_loc[:, k] = self.__step1__(Z, h1_loc[:, k])
+                    if self.rank == 0:
+                        print('vratio nazad supstituciju\n')
 
+                    if self.rank == 0:
+                        print('jos jednom')
                     # step 4 ... (C x I) h1 = h
                     self.u_loc[:, k] = self.__step1__(Cinv, h_loc[:, k])
+                    if self.rank == 0:
+                        print('gotovo\n')
 
                 self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
 
                 self.inner_tols.append(self.stol)
 
+                if self.rank == 0:
+                    print('radim IFFT')
                 # solving (Sinv x I) h1_loc = u with fft
                 self.__get_ifft__(self.alphas[i_alpha])
+                if self.rank == 0:
+                    print('IFFT gotov \n')
 
                 # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
                 # broadcast the error, a stopping criteria
