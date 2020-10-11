@@ -50,6 +50,7 @@ class LinearHelpers(Communicators):
             if r < temp:
                 r = temp
 
+        self.comm.Barrier()
         time_beg = MPI.Wtime()
         temp = self.comm.allreduce(r, op=MPI.MAX)
         self.communication_time += MPI.Wtime() - time_beg
@@ -144,6 +145,7 @@ class LinearHelpers(Communicators):
                 if proc == self.rank_col:
                     h_loc = temp.copy(order='C')
 
+        self.comm.Barrier()
         return h_loc
 
     def __step2__(self, h_loc, D, x0, tol):
@@ -153,6 +155,7 @@ class LinearHelpers(Communicators):
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
             h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
+            print(it, 'iterations on proc', self.rank)
 
         # case without spatial parallelization
         else:
@@ -160,10 +163,12 @@ class LinearHelpers(Communicators):
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i+1)*self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    print(it, 'iterations on proc', self.rank)
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
-        return h1_loc, it
+        self.comm_col.Barrier()
+        return h1_loc
 
     # ifft
     def __get_ifft__(self, a):
@@ -241,7 +246,7 @@ class LinearHelpers(Communicators):
 
     def __bcast_u_last_loc__(self):
 
-        if self.comm_last is not None and self.size_col < self.size:
+        if self.comm_last is not None and self.time_intervals > 1:# and self.size_col < self.size:
             time_beg = MPI.Wtime()
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg

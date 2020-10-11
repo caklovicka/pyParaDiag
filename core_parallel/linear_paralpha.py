@@ -103,7 +103,7 @@ class LinearParalpha(LinearHelpers):
         time_beg = MPI.Wtime()
 
         h_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
-        h1_loc_old = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
+        # h1_loc_old = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
         h1_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
 
         for rolling_interval in range(self.rolling):
@@ -115,14 +115,9 @@ class LinearParalpha(LinearHelpers):
             i_alpha = -1
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
 
-            if self.rank == 0:
-                print('gradim v')
-
             # build local v
             v_loc = self.__get_v__(t_start)
-
-            if self.rank == 0:
-                print('izgradio v')
+            self.comm.Barrier()
 
             # save v1 on the processors that have v1
             if self.rank_row == 0:
@@ -136,15 +131,13 @@ class LinearParalpha(LinearHelpers):
             gamma = self.time_intervals * (3 * eps + self.stol)
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
+                self.comm.Barrier()
                 if self.rank == 0:
                     print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
 
             # main iterations
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:
-
-                if self.rank == 0:
-                    print('---ITEARACIJA---')
 
                 self.iterations[rolling_interval] += 1
 
@@ -158,21 +151,13 @@ class LinearParalpha(LinearHelpers):
 
                 i_alpha = self.__next_alpha__(i_alpha)
 
-                if self.rank == 0:
-                    print('gradim w')
                 # assemble the residual vector
                 w_loc = self.__get_w__(self.alphas[i_alpha], v_loc, v1_loc)
-                if self.rank == 0:
-                    print('izgradio w\n')
 
-                if self.rank == 0:
-                    print('FFT')
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(w_loc, self.alphas[i_alpha])
-                if self.rank == 0:
-                    print('FFT gotov\n')
 
-                # ------ PROCESSORS HAVE DIFFERENT INDEXES ROM HERE! -------
+                # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
 
                 # solve local systems in 4 steps with diagonalization of QCinv
                 system_time = []
@@ -186,49 +171,31 @@ class LinearParalpha(LinearHelpers):
                     D, Z = np.linalg.eig(R)
                     Zinv = np.linalg.inv(Z)     # Z @ D @ Zinv = R
 
-                    if self.rank == 0:
-                        print('supstitucija')
                     # step 1 ... (Z x I) h = g
                     h_loc[:, k] = self.__step1__(Zinv, g_loc[:, k])
-                    if self.rank == 0:
-                        print('supstitucija gotova\n')
 
-                    if self.rank == 0:
-                        print('lin sustav pocinjem rjesavat')
                     # step 2 ... solve local systems (I - Di * A) h1 = h
                     time_solver = MPI.Wtime()
-                    h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h1_loc_old[:, k], self.stol)
+                    h0 = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
+                    h1_loc[:, k]= self.__step2__(h_loc[:, k], D, h0, self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
-                    #print(l_new, local_tol, self.stol, it)
-                    h1_loc_old[:, k] = h1_loc[:, k]
-                    if self.rank == 0:
-                        print('lin sustav gotov\n')
+                    #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
 
-                    if self.rank == 0:
-                        print('vracam nazad supstituciju')
                     # step 3 ... (Zinv x I) h = h1
                     h_loc[:, k] = self.__step1__(Z, h1_loc[:, k])
-                    if self.rank == 0:
-                        print('vratio nazad supstituciju\n')
 
-                    if self.rank == 0:
-                        print('jos jednom')
                     # step 4 ... (C x I) h1 = h
                     self.u_loc[:, k] = self.__step1__(Cinv, h_loc[:, k])
-                    if self.rank == 0:
-                        print('gotovo\n')
 
                 self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
 
                 self.inner_tols.append(self.stol)
 
-                if self.rank == 0:
-                    print('radim IFFT')
                 # solving (Sinv x I) h1_loc = u with fft
                 self.__get_ifft__(self.alphas[i_alpha])
-                if self.rank == 0:
-                    print('IFFT gotov \n')
+
+                # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------
 
                 # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
                 # broadcast the error, a stopping criteria
@@ -239,21 +206,19 @@ class LinearParalpha(LinearHelpers):
                 # update u_last_loc on processors that need it (first column) if we are moving on
                 if self.err_last[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
-                self.err_last[rolling_interval][-1]
 
-                if (1 < self.rolling != rolling_interval + 1) or not self.stop:
-                    self.__bcast_u_last_loc__()
+                #if (1 < self.rolling != rolling_interval + 1) or not self.stop:
+                self.__bcast_u_last_loc__()
 
                 # DELETE
                 if self.rank == self.size - 1:
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
-                    # approx = self.u_last_loc[self.row_beg:self.row_end]
-                    approx = self.u_last_loc.copy()
+                    approx = self.u_last_loc.flatten()
                     d = exact - approx
                     d = d.flatten()
                     err_abs = np.linalg.norm(d, np.inf)
                     err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-                    print('abs, rel err inf norm [from paralpha] = {}, {}, iter = {}'.format(err_abs, err_rel, int(self.iterations[rolling_interval])), flush=True)
+                    print('abs, rel err inf norm [from paralpha] = {}, {}, iter = {}'.format(err_abs, err_rel, int(self.iterations[rolling_interval])), self.rank, flush=True)
                 # DELETE
 
                 # end of main iterations (while loop)
@@ -265,8 +230,28 @@ class LinearParalpha(LinearHelpers):
 
             # update u0_loc (new initial condition) on processors that need it (first column) if we are not in the last rolling interval
             if rolling_interval + 1 < self.rolling:
-                if self.comm_last is not 'None':
+
+                if self.comm_last is not 'None' and self.time_intervals > 1:
                     self.u0_loc = self.u_last_loc.copy()
+
+                # sequrntial run
+                elif self.time_intervals == 1:
+
+                    if self.size == 1 or self.time_points == 1:
+                        self.u0_loc = self.u_last_loc.copy()
+
+                    # spatial parallelization
+                    elif self.frac > 1:
+                         self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc, root=self.size_subcol_alternating - 1)
+                         if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
+                             self.u0_loc = self.u_last_loc
+
+                    # without spatial but time_points > size_col
+                    else:
+                        self.u0_loc = self.comm_col.bcast(self.u_last_loc, root=self.size_col - 1)
+                        if self.rank_col == self.size_col - 1:
+                            self.u0_loc = self.u_last_loc
+
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)

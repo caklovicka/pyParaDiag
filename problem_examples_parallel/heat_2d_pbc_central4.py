@@ -48,12 +48,8 @@ class Heat(LinearParalpha):
 
         # ---- PRESETUP <end> ----
 
-        if self.rank == 0:
-            print('setupe linear_paralpha is heat')
         # do not delete this, this builds communicators needed for your matrix Apar
         super().setup()
-        if self.rank == 0:
-            print('setupe linear_paralpha is heat gotov \n')
 
         # ---- POSTSETUP ----
 
@@ -66,8 +62,6 @@ class Heat(LinearParalpha):
         data = list()
         cx = self.c / (12 * self.dx[0]**2)
         cy = self.c / (12 * self.dx[1]**2)
-        if self.rank == 0:
-            print('gradim Apar nizove')
         for i in range(self.row_beg, self.row_end, 1):
 
             # x part
@@ -108,16 +102,10 @@ class Heat(LinearParalpha):
             col.append((i - 2 * self.spatial_points[0]) % self.global_size_A)
             data.append(-cy)
 
-        if self.rank == 0:
-            print('Apar nizovi gotovi \n')
         data = np.array(data)
         row = np.array(row) - self.row_beg
         col = np.array(col)
-        if self.rank == 0:
-            print('gradim mat')
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
-        if self.rank == 0:
-            print('mat gotova')
 
         del data, row, col
 
@@ -145,8 +133,6 @@ class Heat(LinearParalpha):
 
     # petsc solver on comm_matrix
     def linear_solver(self, M_loc, m_loc, m0_loc, tol):
-        if self.rank == 0:
-            print('SOLVING')
         m = PETSc.Vec()
         m.createWithArray(array=m_loc, comm=self.comm_matrix)
         m0 = PETSc.Vec()
@@ -159,7 +145,7 @@ class Heat(LinearParalpha):
         ksp.create()
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, atol=tol, max_it=self.global_size_A)
+        ksp.setTolerances(rtol=tol, atol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)
@@ -172,7 +158,5 @@ class Heat(LinearParalpha):
         m0.destroy()
         ksp.destroy()
         M.destroy()
-        if self.rank == 0:
-            print('SOLVING gotov \n')
 
         return sol, it

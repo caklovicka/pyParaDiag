@@ -16,34 +16,26 @@ from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
 # from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
 
 prob = Heat4()
-if prob.rank == 0:
-    print('krenuo heat')
 N = 400
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
-prob.proc_col = 24
-prob.proc_row = 1
-prob.time_intervals = 1
-prob.rolling = 1
-prob.time_points = 3
+prob.tol = 1e-9
+prob.proc_col = 2
+prob.time_intervals = 2
+prob.rolling = 16
+prob.proc_row = prob.time_intervals
+prob.time_points = 2
 prob.optimal_alphas = True
 prob.T_start = np.pi
 prob.T_end = np.pi + 0.1
 prob.solver = 'custom'
-prob.maxiter = 1
-prob.smaxiter = 10
-prob.stol = 1e-14
-prob.m0 = 10 * (prob.T_end - prob.T_start)
-if prob.rank == 0:
-    print('varijable namjestene')
+prob.maxiter = 5
+prob.smaxiter = 100
+prob.stol = 1e-11
+prob.m0 = 1 * (prob.T_end - prob.T_start)
 
-if prob.rank == 0:
-    print('setup from main')
 prob.setup()
-if prob.rank == 0:
-    print('solve from main')
 prob.solve()
-prob.summary(details=True)
+# prob.summary(details=True)
 
 #
 # n = 10
