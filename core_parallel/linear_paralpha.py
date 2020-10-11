@@ -218,7 +218,7 @@ class LinearParalpha(LinearHelpers):
                     d = d.flatten()
                     err_abs = np.linalg.norm(d, np.inf)
                     err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-                    print('abs, rel err inf norm [from paralpha] = {}, {}, iter = {}'.format(err_abs, err_rel, int(self.iterations[rolling_interval])), self.rank, flush=True)
+                    print('abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
                 # DELETE
 
                 # end of main iterations (while loop)
