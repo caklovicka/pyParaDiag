@@ -177,7 +177,7 @@ class LinearParalpha(LinearHelpers):
                     # step 2 ... solve local systems (I - Di * A) h1 = h
                     time_solver = MPI.Wtime()
                     h0 = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
-                    h1_loc[:, k]= self.__step2__(h_loc[:, k], D, h0, self.stol)
+                    h1_loc[:, k] = self.__step2__(h_loc[:, k], D, h0, self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
                     #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
 
@@ -234,7 +234,7 @@ class LinearParalpha(LinearHelpers):
                 if self.comm_last is not 'None' and self.time_intervals > 1:
                     self.u0_loc = self.u_last_loc.copy()
 
-                # sequrntial run
+                # to support a sequrntial run
                 elif self.time_intervals == 1:
 
                     if self.size == 1 or self.time_points == 1:
