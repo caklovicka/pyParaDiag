@@ -16,10 +16,10 @@ from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
 # from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
 # ovo pokreni na jureci
 prob = Heat4()
-N = 4000
+N = 8000
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
-prob.proc_col = 24
+prob.proc_col = 48
 prob.time_intervals = 1
 prob.rolling = 1024
 prob.proc_row = prob.time_intervals
