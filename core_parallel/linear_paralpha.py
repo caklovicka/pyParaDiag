@@ -24,8 +24,7 @@ class LinearParalpha(LinearHelpers):
         assert self.proc_col > 0, 'proc_col = {} should be > 0'.format(self.proc_col)
         assert self.proc_row > 0, 'proc_row = {} should be > 0'.format(self.proc_row)
         assert np.log2(self.time_intervals) - int(np.log2(self.time_intervals)) < 0.1, 'time_intervals = {} should be power of 2.'.format(self.time_intervals)
-        assert self.proc_col * self.proc_row == MPI.COMM_WORLD.Get_size(), 'Please input a sufficient amount of processors. You need proc_col * proc_row = {}'.format(
-            self.size)
+        assert self.proc_col * self.proc_row == MPI.COMM_WORLD.Get_size(), 'Please input a sufficient amount of processors. You need {} and you have proc_col * proc_row = {}'.format(self.proc_col * self.proc_row, self.size)
 
         assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'.format(
             self.time_intervals, self.proc_row)
