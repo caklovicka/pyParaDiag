@@ -16,7 +16,7 @@ from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 # from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 # from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
 # ovo pokreni na jureci
-prob = Heat()
+prob = Heat4()
 N = 400
 prob.spatial_points = [N, N]
 prob.tol = 1e-9
