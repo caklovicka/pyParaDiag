@@ -122,7 +122,7 @@ class Heat(LinearParalpha):
         ksp.create()
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, atol=tol, max_it=self.global_size_A)
+        ksp.setTolerances(rtol=tol, max_it=self.global_size_A)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)
