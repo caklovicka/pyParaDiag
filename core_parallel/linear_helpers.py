@@ -155,7 +155,7 @@ class LinearHelpers(Communicators):
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
             h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
-            # print(it, 'iterations on proc', self.rank)
+            print(it, 'iterations on proc', self.rank)
 
         # case without spatial parallelization
         else:
@@ -163,7 +163,7 @@ class LinearHelpers(Communicators):
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i+1)*self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-                    # print(it, 'iterations on proc', self.rank)
+                    print(it, 'iterations on proc', self.rank)
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
