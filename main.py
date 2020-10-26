@@ -8,34 +8,35 @@ import numpy as np
 # from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 # from problem_examples_parallel.advection_2d_central2 import Advection
 # from problem_examples_parallel.advection_2d_pbc_central4 import Advection as Advection4
-# from problem_examples_parallel.heat_2d_pbc_central2 import Heat
+from problem_examples_parallel.heat_2d_pbc_central2 import Heat
 from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
+from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 # from problem_examples_parallel.wave_2d_central2 import Wave
 # from problem_examples_parallel.wave_2d_pbc_central4 import Wave as Wave4
 # from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 # from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
 # ovo pokreni na jureci
-prob = Heat4()
-N = 2000
+prob = Heat()
+N = 450
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
-prob.proc_col = 12
+prob.tol = 1e-5
+prob.proc_col = 1
 prob.time_intervals = 1
-prob.rolling = 12
+prob.rolling = 64
 prob.proc_row = prob.time_intervals
-prob.time_points = 3
+prob.time_points = 1
 prob.optimal_alphas = True
 prob.T_start = np.pi
 prob.T_end = np.pi + 0.1
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 10
-prob.stol = 5e-14
+prob.stol = 5e-7
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-# prob.summary(details=True)
+prob.summary(details=True)
 
 #
 # n = 10
