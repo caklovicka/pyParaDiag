@@ -17,12 +17,12 @@ from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 # from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger
 # ovo pokreni na jureci
 prob = Heat6()
-N = 410
-# prob.spatial_points = [N, N]
+N = 300
+prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
-prob.time_intervals = 1
-# prob.rolling = 16
+prob.time_intervals = 16
+prob.rolling = 1
 prob.proc_row = prob.time_intervals
 prob.time_points = 3
 prob.optimal_alphas = True
@@ -30,7 +30,7 @@ prob.T_start = np.pi
 prob.T_end = np.pi + 0.1
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 100
+prob.smaxiter = 10
 prob.stol = 1e-13
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
