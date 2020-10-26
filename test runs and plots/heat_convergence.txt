@@ -83,6 +83,46 @@ inner solver maxiter = 20
 1e-12
 =====
 
+m0 =  0.10000000000000009 r =  1.4934574761124721
+m =  9.809076291256445e-07 alpha =  4.904538145628218e-06 err_max =  inf
+m =  3.072148244679859e-09 alpha =  0.001565972245224707 err_max =  0.004995846875994525
+abs, rel err inf norm [from paralpha] = 1.2591146446553889e-08, 1.2654365565430219e-08, iter = 1, rolling = 0
+m =  1.7192902351257633e-10 alpha =  0.02798188918948028 err_max =  1.2139346416972785e-08
+abs, rel err inf norm [from paralpha] = 2.942106743797108e-11, 2.956878821683143e-11, iter = 2, rolling = 0
+m =  4.067267258024639e-11 alpha =  0.11828332340080804 err_max =  2.8578583943783542e-11
+abs, rel err inf norm [from paralpha] = 1.076358839952137e-12, 1.0817631498571454e-12, iter = 3, rolling = 0
+abs, rel err inf norm [from paralpha] = 5.726081284329853e-13, 5.754831471212847e-13, iter = 4, rolling = 0
+
+-----------------------< summary >-----------------------
+solving on [3.141592653589793, 3.241592653589793]
+no. of spatial points = [300, 300]
+dx = [0.0033333333333333335, 0.0033333333333333335]
+no. of time points on an interval = 3
+    [0.00097 0.00403 0.00625]
+no. of time intervals = 16
+no. of alphas = 4
+    [4.904538145628218e-06, 0.001565972245224707, 0.02798188918948028, 0.11828332340080804]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0062500000000000056
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 16
+maxiter = 5
+output document = None
+tol = 1e-12
+last error = [inf, 0.004995846875994525, 1.2139346416972785e-08, 2.8578583943783542e-11, 2.9898306053155466e-13]
+iterations of Paralpha = [4.]
+max iterations of Paralpha = 4.0
+algorithm time = 1.81573 s
+communication time = 0.28528 s
+inner solver = custom
+system_time_max = [0.2173914909362793, 0.38257336616516113, 0.3488485813140869, 0.28303003311157227]
+system_time_min = [0.20477962493896484, 0.35526061058044434, 0.3251359462738037, 0.26705312728881836]
+inner solver tols = [1e-13, 1e-13, 1e-13, 1e-13]
+inner solver maxiter = 10
+-----------------------< end summary >-----------------------
+
+
 ###################
   SEQUENTIAL RUNS
 ###################
