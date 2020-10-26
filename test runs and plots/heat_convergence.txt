@@ -1,9 +1,184 @@
 on jureca (everything)
+gmres with initial guess as zeros
 
+#################
+  PARALLEL RUNS
+#################
 1e-5
 ====
 
 
+
+1e-9
+====
+
+
+1e-12
+=====
+
+###################
+  SEQUENTIAL RUNS
+###################
+
+1e-5
+====
+
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.974973661977302e-07, 6.975322139576099e-07, iter = 1, rolling = 0
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 1.3183922172865792e-06, 1.3184629140141415e-06, iter = 1, rolling = 1
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 1.8710953665346253e-06, 1.8712071220744876e-06, iter = 1, rolling = 2
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 2.3630939590679745e-06, 2.3632552943236226e-06, iter = 1, rolling = 3
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 2.801052862100306e-06, 2.8012748741455993e-06, iter = 1, rolling = 4
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 3.190904903749292e-06, 3.1912006669210917e-06, iter = 1, rolling = 5
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 3.537931542618722e-06, 3.5383156230182757e-06, iter = 1, rolling = 6
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 3.846834106702168e-06, 3.847322170954078e-06, iter = 1, rolling = 7
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 4.121797763434465e-06, 4.12240626563996e-06, iter = 1, rolling = 8
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 4.366547831202716e-06, 4.36729376443177e-06, iter = 1, rolling = 9
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 4.584400702611902e-06, 4.585301403631754e-06, iter = 1, rolling = 10
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 4.778308580810631e-06, 4.779381578398233e-06, iter = 1, rolling = 11
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 4.950899408884268e-06, 4.952162307712094e-06, iter = 1, rolling = 12
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.104512451281629e-06, 5.105982844683665e-06, iter = 1, rolling = 13
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.241230202845948e-06, 5.242925608959316e-06, iter = 1, rolling = 14
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.362906348560514e-06, 5.364844165089791e-06, iter = 1, rolling = 15
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.471191053429969e-06, 5.473388527317558e-06, iter = 1, rolling = 16
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.5675532826260365e-06, 5.57002749141373e-06, iter = 1, rolling = 17
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.653300643837511e-06, 5.6560684861028545e-06, iter = 1, rolling = 18
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.7295971781501365e-06, 5.732675370948788e-06, iter = 1, rolling = 19
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.797479052271903e-06, 5.800884133787931e-06, iter = 1, rolling = 20
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.85786867324245e-06, 5.861617009322864e-06, iter = 1, rolling = 21
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.91158712925921e-06, 5.915694922639879e-06, iter = 1, rolling = 22
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 5.959365272589778e-06, 5.963848573908814e-06, iter = 1, rolling = 23
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.0018539531636605e-06, 6.0067286733405315e-06, iter = 1, rolling = 24
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.039632132859296e-06, 6.044914055505439e-06, iter = 1, rolling = 25
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.073215593649373e-06, 6.078920388288751e-06, iter = 1, rolling = 26
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.103063150297849e-06, 6.109206384762239e-06, iter = 1, rolling = 27
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.129583452030296e-06, 6.136180604943521e-06, iter = 1, rolling = 28
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.153140288289727e-06, 6.160206760777082e-06, iter = 1, rolling = 29
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.174057241126185e-06, 6.181608367483949e-06, iter = 1, rolling = 30
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.192622590828201e-06, 6.200673648986876e-06, iter = 1, rolling = 31
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.209092906495073e-06, 6.217659127326291e-06, iter = 1, rolling = 32
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.223696564888748e-06, 6.232793140720586e-06, iter = 1, rolling = 33
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.236636805878604e-06, 6.246278898120638e-06, iter = 1, rolling = 34
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.248094704286444e-06, 6.258297450585076e-06, iter = 1, rolling = 35
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.258231255218405e-06, 6.269009775285011e-06, iter = 1, rolling = 36
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.267189973208076e-06, 6.278559374585988e-06, iter = 1, rolling = 37
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.275098444974425e-06, 6.287073827479592e-06, iter = 1, rolling = 38
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.282070210694712e-06, 6.294666670447015e-06, iter = 1, rolling = 39
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.288206589211143e-06, 6.30143922267202e-06, iter = 1, rolling = 40
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.293597576201293e-06, 6.3074814827689676e-06, iter = 1, rolling = 41
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.2983233067859246e-06, 6.3128735913633676e-06, iter = 1, rolling = 42
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.302455161644183e-06, 6.3176869368366565e-06, iter = 1, rolling = 43
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.306056703153651e-06, 6.321985091027044e-06, iter = 1, rolling = 44
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.309184406916302e-06, 6.325824540080401e-06, iter = 1, rolling = 45
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.311888625987194e-06, 6.329255648856311e-06, iter = 1, rolling = 46
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.314214147762343e-06, 6.332323217237515e-06, iter = 1, rolling = 47
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.3162009547035325e-06, 6.3350672410567095e-06, iter = 1, rolling = 48
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.3178844559308445e-06, 6.337523142595101e-06, iter = 1, rolling = 49
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.319296262269347e-06, 6.3397225462864546e-06, iter = 1, rolling = 50
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.3204645669445725e-06, 6.341693659164169e-06, iter = 1, rolling = 51
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.321414433241301e-06, 6.34346155810114e-06, iter = 1, rolling = 52
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.322168044303744e-06, 6.345048439154316e-06, iter = 1, rolling = 53
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.322745298770194e-06, 6.346474214126385e-06, iter = 1, rolling = 54
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.323163986965419e-06, 6.347756686434449e-06, iter = 1, rolling = 55
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.3234396833200535e-06, 6.348911442124782e-06, iter = 1, rolling = 56
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.32358638974484e-06, 6.349952494804121e-06, iter = 1, rolling = 57
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.32361663943648e-06, 6.3508923891481925e-06, iter = 1, rolling = 58
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.323541536401578e-06, 6.351742239874428e-06, iter = 1, rolling = 59
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.323370914884663e-06, 6.3525118911520956e-06, iter = 1, rolling = 60
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.3231136389063636e-06, 6.353210216881085e-06, iter = 1, rolling = 61
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.322777416079006e-06, 6.35384493309068e-06, iter = 1, rolling = 62
+1 iterations on proc 0
+abs, rel err inf norm [from paralpha] = 6.322369304090358e-06, 6.354423106307534e-06, iter = 1, rolling = 63
+-----------------------< summary >-----------------------
+solving on [3.141592653589793, 3.241592653589793]
+no. of spatial points = [450, 450]
+dx = [0.0022222222222222222, 0.0022222222222222222]
+no. of time points on an interval = 1
+    [0.00156]
+no. of time intervals = 1
+no. of alphas = 1
+    [0]
+Viability of the problem is not known.
+rolling intervals = 64
+dt (of one SDC interval) = 0.0015625000000000014
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 1
+maxiter = 1
+output document = None
+tol = 1e-05
+last error = [inf, 0.0]
+iterations of Paralpha = [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+max iterations of Paralpha = 1.0
+algorithm time = 5.88559 s
+communication time = 0.24942 s
+inner solver = custom
+system_time_max = [0.11539721488952637]
+system_time_min = [0.04120230674743652]
+inner solver tols = [5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07, 5e-07]
+inner solver maxiter = 10
+-----------------------< end summary >-----------------------
 
 1e-9
 ====
