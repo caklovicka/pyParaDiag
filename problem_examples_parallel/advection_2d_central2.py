@@ -85,6 +85,8 @@ class Advection(LinearParalpha):
         col = np.array(col)
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
 
+        del data, row, col
+
         # ---- POSTSETUP <end> ----
 
     # user defined
@@ -145,7 +147,7 @@ class Advection(LinearParalpha):
         ksp.create()
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, atol=tol, max_it=self.global_size_A)
+        ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)

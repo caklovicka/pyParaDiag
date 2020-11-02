@@ -57,41 +57,59 @@ class Advection(LinearParalpha):
         row = list()
         col = list()
         data = list()
-        cx = self.c[0] / (12 * self.dx[0])
-        cy = self.c[1] / (12 * self.dx[1])
+        cx = -self.c[0] / self.dx[0]
+        cy = -self.c[1] / self.dx[1]
         for i in range(self.row_beg, self.row_end, 1):
 
+            # for x
             row.append(i)
-            col.append((i + 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(-8 * cx)
-
-            row.append(i)
-            col.append((i + 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(cx)
-
-            row.append(i)
-            col.append((i - 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(8 * cx)
+            col.append((i - 3) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(-cx / 60)
 
             row.append(i)
             col.append((i - 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(-cx)
+            data.append(3 * cx / 20)
 
             row.append(i)
-            col.append((i + self.spatial_points[0]) % self.global_size_A)
-            data.append(-8 * cy)
+            col.append((i - 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(-3 * cx / 4)
 
             row.append(i)
-            col.append((i + 2 * self.spatial_points[0]) % self.global_size_A)
-            data.append(cy)
+            col.append((i + 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(3 * cx / 4)
 
             row.append(i)
-            col.append((i - self.spatial_points[0]) % self.global_size_A)
-            data.append(8 * cy)
+            col.append((i + 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(-3 * cx / 20)
+
+            row.append(i)
+            col.append((i + 3) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(cx / 60)
+
+            # for y
+            row.append(i)
+            col.append((i - 3 * self.spatial_points[0]) % self.global_size_A)
+            data.append(-cy / 60)
 
             row.append(i)
             col.append((i - 2 * self.spatial_points[0]) % self.global_size_A)
-            data.append(-cy)
+            data.append(3 * cy / 20)
+
+            row.append(i)
+            col.append((i - self.spatial_points[0]) % self.global_size_A)
+            data.append(-3 * cy / 4)
+
+            row.append(i)
+            col.append((i + self.spatial_points[0]) % self.global_size_A)
+            data.append(3 * cy / 4)
+
+            row.append(i)
+            col.append((i + 2 * self.spatial_points[0]) % self.global_size_A)
+            data.append(-3 * cy / 20)
+
+            row.append(i)
+            col.append((i + 3 * self.spatial_points[0]) % self.global_size_A)
+            data.append(cy / 60)
 
         data = np.array(data)
         row = np.array(row) - self.row_beg

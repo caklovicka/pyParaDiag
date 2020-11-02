@@ -4,7 +4,7 @@ from petsc4py import PETSc
 from core_parallel.linear_paralpha import LinearParalpha
 
 """
-advection eq. in 2d, pbc
+advection eq. in 2d
 u_t + c_x * u_x + c_y * u_y = f
 """
 
@@ -30,12 +30,12 @@ class Advection(LinearParalpha):
 
         # ---- PRESETUP ----
 
-        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 1)[:-1]
-        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[1] + 1)[:-1]
+        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 2)[1:-1]
+        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[1] + 2)[1:-1]
 
         self.dx = []
-        self.dx.append((self.X_right - self.X_left) / (self.spatial_points[0]))
-        self.dx.append((self.Y_right - self.Y_left) / (self.spatial_points[1]))
+        self.dx.append((self.X_right - self.X_left) / (self.spatial_points[0] + 1))
+        self.dx.append((self.Y_right - self.Y_left) / (self.spatial_points[1] + 1))
 
         # x and size_global_A have to be filled before super().setup()
         self.x = np.meshgrid(self.xx, self.yy)
@@ -57,47 +57,26 @@ class Advection(LinearParalpha):
         row = list()
         col = list()
         data = list()
-        cx = self.c[0] / (12 * self.dx[0])
-        cy = self.c[1] / (12 * self.dx[1])
+        cx = -self.c[0] / self.dx[0]
+        cy = -self.c[1] / self.dx[1]
         for i in range(self.row_beg, self.row_end, 1):
 
             row.append(i)
-            col.append((i + 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(-8 * cx)
-
-            row.append(i)
-            col.append((i + 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(cx)
-
-            row.append(i)
             col.append((i - 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(8 * cx)
-
-            row.append(i)
-            col.append((i - 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
             data.append(-cx)
 
             row.append(i)
-            col.append((i + self.spatial_points[0]) % self.global_size_A)
-            data.append(-8 * cy)
-
-            row.append(i)
-            col.append((i + 2 * self.spatial_points[0]) % self.global_size_A)
-            data.append(cy)
+            col.append(i % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(cx + cy)
 
             row.append(i)
             col.append((i - self.spatial_points[0]) % self.global_size_A)
-            data.append(8 * cy)
-
-            row.append(i)
-            col.append((i - 2 * self.spatial_points[0]) % self.global_size_A)
             data.append(-cy)
 
         data = np.array(data)
         row = np.array(row) - self.row_beg
         col = np.array(col)
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
-
         del data, row, col
 
         # ---- POSTSETUP <end> ----

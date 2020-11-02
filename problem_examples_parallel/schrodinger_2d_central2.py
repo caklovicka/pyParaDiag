@@ -16,10 +16,10 @@ class Schrodinger(LinearParalpha):
     c = 1j
     sigma = 1
     p = [1, 1]
-    X_left = -10
-    X_right = 10
-    Y_left = -10
-    Y_right = 10
+    X_left = -1
+    X_right = 1
+    Y_left = -1
+    Y_right = 1
     xx = None
     yy = None
 
@@ -93,6 +93,8 @@ class Schrodinger(LinearParalpha):
         col = np.array(col)
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
 
+        del data, row, col
+
         # ---- POSTSETUP <end> ----
 
     # user defined
@@ -157,7 +159,7 @@ class Schrodinger(LinearParalpha):
         ksp.create()
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, atol=tol, max_it=self.global_size_A)
+        ksp.setTolerances(rtol=tol, max_it=self.global_size_A)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)
