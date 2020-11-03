@@ -30,12 +30,12 @@ class Advection(LinearParalpha):
 
         # ---- PRESETUP ----
 
-        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 2)[1:-1]
-        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[1] + 2)[1:-1]
+        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 1)[:-1]
+        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[1] + 1)[:-1]
 
         self.dx = []
-        self.dx.append((self.X_right - self.X_left) / (self.spatial_points[0] + 1))
-        self.dx.append((self.Y_right - self.Y_left) / (self.spatial_points[1] + 1))
+        self.dx.append((self.X_right - self.X_left) / self.spatial_points[0])
+        self.dx.append((self.Y_right - self.Y_left) / self.spatial_points[1])
 
         # x and size_global_A have to be filled before super().setup()
         self.x = np.meshgrid(self.xx, self.yy)

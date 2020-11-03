@@ -16,10 +16,10 @@ class Schrodinger(LinearParalpha):
     c = 1j
     sigma = 1
     p = [1, 1]
-    X_left = -1
-    X_right = 1
-    Y_left = -1
-    Y_right = 1
+    X_left = -10
+    X_right = 10
+    Y_left = -10
+    Y_right = 10
     xx = None
     yy = None
 
@@ -159,7 +159,7 @@ class Schrodinger(LinearParalpha):
         ksp.create()
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, max_it=self.global_size_A)
+        ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)

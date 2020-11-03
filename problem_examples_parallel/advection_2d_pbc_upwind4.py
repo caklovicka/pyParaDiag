@@ -1,18 +1,18 @@
 import numpy as np
 from scipy import sparse
-from core_parallel.linear_paralpha import LinearParalpha
 from petsc4py import PETSc
+from core_parallel.linear_paralpha import LinearParalpha
 
 """
-heat eq. in 2d, 4th order central differences
-u_t = c ( u_xx + u_yy ) + f
+advection eq. in 2d
+u_t + c_x * u_x + c_y * u_y = f
 """
 
 
-class Heat(LinearParalpha):
+class Advection(LinearParalpha):
 
     # user defined, just for this class
-    c = 1
+    c = [1, 1]
     X_left = 0
     X_right = 1
     Y_left = 0
@@ -38,10 +38,7 @@ class Heat(LinearParalpha):
         self.dx.append((self.Y_right - self.Y_left) / self.spatial_points[1])
 
         # x and size_global_A have to be filled before super().setup()
-
         self.x = np.meshgrid(self.xx, self.yy)
-        del self.xx, self.yy
-
         self.global_size_A = 1
         for n in self.spatial_points:
             self.global_size_A *= n
@@ -60,53 +57,50 @@ class Heat(LinearParalpha):
         row = list()
         col = list()
         data = list()
-        cx = self.c / (12 * self.dx[0]**2)
-        cy = self.c / (12 * self.dx[1]**2)
+        cx = -self.c[0] / (60 * self.dx[0])
+        cy = -self.c[1] / (60 * self.dx[1])
         for i in range(self.row_beg, self.row_end, 1):
 
-            # x part
             row.append(i)
-            col.append(i)
-            data.append(-30 * cx - 30 * cy)
-
-            row.append(i)
-            col.append((i + 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(16 * cx)
-
-            row.append(i)
-            col.append((i + 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(-cx)
-
-            row.append(i)
-            col.append((i - 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(16 * cx)
+            col.append((i - 3) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(-5 * cx)
 
             row.append(i)
             col.append((i - 2) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
-            data.append(-cx)
-
-            # y part
-            row.append(i)
-            col.append((i + self.spatial_points[0]) % self.global_size_A)
-            data.append(16 * cy)
+            data.append(30 * cx)
 
             row.append(i)
-            col.append((i + 2 * self.spatial_points[0]) % self.global_size_A)
-            data.append(-cy)
+            col.append((i - 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(-90 * cx)
 
             row.append(i)
-            col.append((i - self.spatial_points[0]) % self.global_size_A)
-            data.append(16 * cy)
+            col.append(i % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(50 * cx + 50 * cy)
+
+            row.append(i)
+            col.append((i + 1) % self.spatial_points[0] + (i // self.spatial_points[0]) * self.spatial_points[0])
+            data.append(15 * cx)
+
+            row.append(i)
+            col.append((i - 3 * self.spatial_points[0]) % self.global_size_A)
+            data.append(-5 * cy)
 
             row.append(i)
             col.append((i - 2 * self.spatial_points[0]) % self.global_size_A)
-            data.append(-cy)
+            data.append(30 * cy)
+
+            row.append(i)
+            col.append((i - self.spatial_points[0]) % self.global_size_A)
+            data.append(-90 * cy)
+
+            row.append(i)
+            col.append((i + self.spatial_points[0]) % self.global_size_A)
+            data.append(15 * cy)
 
         data = np.array(data)
         row = np.array(row) - self.row_beg
         col = np.array(col)
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
-
         del data, row, col
 
         # ---- POSTSETUP <end> ----
@@ -117,15 +111,16 @@ class Heat(LinearParalpha):
 
     # user defined
     def u_exact(self, t, z):
-        return np.sin(2 * np.pi * z[0]) * np.sin(2 * np.pi * z[1]) * np.cos(t)
+        return np.sin(2 * np.pi * (z[0] - self.c[0] * t)) * np.sin(2 * np.pi * (z[1] - self.c[1] * t))
 
     # user defined
     def u_initial(self, z):
         return self.u_exact(self.T_start, z)
 
     # user defined
-    def rhs(self, t, z):
-        return np.sin(2 * np.pi * z[0]) * np.sin(2 * np.pi * z[1]) * (8 * np.pi**2 * self.c * np.cos(t) - np.sin(t))
+    @staticmethod
+    def rhs(t, z):
+        return 0 * z[0] * z[1]
 
     @staticmethod
     def norm(x):
@@ -145,7 +140,7 @@ class Heat(LinearParalpha):
         ksp.create()
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, atol=tol, max_it=self.smaxiter)
+        ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)
@@ -160,3 +155,10 @@ class Heat(LinearParalpha):
         M.destroy()
 
         return sol, it
+
+
+
+
+
+
+
