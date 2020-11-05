@@ -20,66 +20,35 @@ from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 from problem_examples_parallel.wave_2d_central2 import Wave
 from problem_examples_parallel.wave_2d_pbc_central4 import Wave as Wave4
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
+from problem_examples_parallel.schrodinger_2d_0_central2 import Schrodinger as Schrodinger0
 from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger4
+from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
+from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-prob = Schrodinger()
-N = 1000
+prob = Schrodinger06()
+N = 2000
 prob.spatial_points = [N, N]
 prob.tol = 1e-5
-prob.proc_col = 1
+prob.proc_col = 24
 prob.time_intervals = 1
-prob.rolling = 16
+prob.rolling = 4
 prob.proc_row = prob.time_intervals
-prob.time_points = 2
+prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 1e-1
+prob.T_end = 5e-3
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 20
-prob.stol = 1e-8
+prob.stol = 1e-13
 prob.m0 = 1 * (prob.T_end - prob.T_start)
-
-# prob.X_left = -1.5
-# prob.X_right = 1.5
-# prob.Y_left = -1.5
-# prob.Y_right = 1.5
 
 prob.setup()
 prob.solve()
 
+#
 # exact = prob.u_exact(prob.T_end, prob.x)
-# approx = prob.u_last_loc.real.reshape(prob.spatial_points)
-# # n = 10
-# # col = sns.color_palette("coolwarm", n+5)
-# plt.subplot(311)
-# # plt.contourf(approx, levels=n, colors=col)
-# # plt.colorbar()
-# plt.plot(prob.x, approx)
-# plt.title('approx')
-#
-# plt.subplot(312)
-# # plt.contourf(exact, levels=n, colors=col)
-# # plt.colorbar()
-# plt.plot(exact)
-# plt.title('exact')
-#
-# plt.subplot(313)
-# # plt.contourf(exact - approx, levels=20)
-# # plt.colorbar()
-# plt.plot(prob.x, approx - exact)
-# plt.title('diff')
-#
-#
-# plt.show()
-
-
-
-
-
-
-
-
+# approx = prob.u_last_loc.reshape(prob.spatial_points)
 # n = 10
 # exact_r = exact.real.reshape(prob.spatial_points)
 # approx_r = approx.real.reshape(prob.spatial_points)
