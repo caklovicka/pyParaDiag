@@ -26,7 +26,7 @@ from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as S
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
 prob = Schrodinger06()
-N = 1800
+N = 1900
 prob.spatial_points = [N, N]
 prob.tol = 1e-5
 prob.proc_col = 3
