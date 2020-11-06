@@ -30,8 +30,8 @@ N = 350
 prob.spatial_points = [N, N]
 prob.tol = 1e-5
 prob.proc_col = 1
-prob.time_intervals = 8
-prob.rolling = 1
+prob.time_intervals = 1
+prob.rolling = 8
 prob.proc_row = prob.time_intervals
 prob.time_points = 2
 prob.optimal_alphas = True
@@ -45,6 +45,7 @@ prob.m0 = 1 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
+prob.summary(details=True)
 
 #
 # exact = prob.u_exact(prob.T_end, prob.x)
