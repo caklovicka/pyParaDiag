@@ -7,14 +7,127 @@ gmres with initial guess as zeros
 1e-5
 ====
 
+m0 =  0.01 r =  0.9999194339645291
+m =  5.656626558145889e-05 alpha =  0.0028283132790729443 err_max =  inf
+m =  4.254379843106302e-06 alpha =  0.037605274092026936 err_max =  0.06297403743748914
+on 7,  abs, rel err inf norm [from paralpha] = 0.0001849426377156238, 0.0001849426377156238, iter = 1, rolling = 0
+on 7,  abs, rel err inf norm [from paralpha] = 1.3387618075669325e-06, 1.3387618075669325e-06, iter = 2, rolling = 0
+-----------------------< summary >-----------------------
+solving on [0, 0.01]
+no. of spatial points = [350, 350]
+dx = [0.002857142857142857, 0.002857142857142857]
+no. of time points on an interval = 2
+    [0.00042 0.00125]
+no. of time intervals = 8
+no. of alphas = 2
+    [0.0028283132790729443, 0.037605274092026936]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.00125
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 8
+maxiter = 5
+output document = None
+tol = 1e-05
+last error = [inf, 0.06297403743748914, 0.00018500808011900904]
+iterations of Paralpha = [2.]
+max iterations of Paralpha = 2.0
+algorithm time = 0.34318 s
+communication time = 0.07812 s
+inner solver = custom
+system_time_max = [0.0998232364654541, 0.08712577819824219]
+system_time_min = [0.0995340347290039, 0.08651471138000488]
+inner solver tols = [1e-08, 1e-08]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
 
 1e-9
 ====
 
+m0 =  0.01 r =  0.9999194339645291
+m =  2.52980447241819e-06 alpha =  0.00012649022362090949 err_max =  inf
+m =  4.023744851835272e-08 alpha =  0.007952679536511876 err_max =  0.06279840056322794
+on 15,  abs, rel err inf norm [from paralpha] = 7.943738135340883e-06, 7.943738135340883e-06, iter = 1, rolling = 0
+m =  5.0746041821264024e-09 alpha =  0.06305822522285208 err_max =  8.00655470667433e-06
+on 15,  abs, rel err inf norm [from paralpha] = 6.327881868495474e-08, 6.327881868495474e-08, iter = 2, rolling = 0
+m =  1.8021379926202465e-09 alpha =  0.17756439004323485 err_max =  6.791945905693098e-08
+on 15,  abs, rel err inf norm [from paralpha] = 4.744755782918161e-09, 4.744755782918161e-09, iter = 3, rolling = 0
+m =  1.0739423711438422e-09 alpha =  0.2979634122197177 err_max =  5.2014553775237005e-09
+on 15,  abs, rel err inf norm [from paralpha] = 5.032868028532889e-10, 5.032868028532889e-10, iter = 4, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 9.279997906344022e-10, 9.279997906344022e-10, iter = 5, rolling = 0
+-----------------------< summary >-----------------------
+solving on [0, 0.01]
+no. of spatial points = [350, 350]
+dx = [0.002857142857142857, 0.002857142857142857]
+no. of time points on an interval = 2
+    [0.00021 0.00063]
+no. of time intervals = 16
+no. of alphas = 5
+    [0.00012649022362090949, 0.007952679536511876, 0.06305822522285208, 0.17756439004323485, 0.2979634122197177]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.000625
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 16
+maxiter = 5
+output document = None
+tol = 1e-09
+last error = [inf, 0.06279840056322794, 8.00655470667433e-06, 6.791945905693098e-08, 5.2014553775237005e-09, 1.3147176680661232e-09]
+iterations of Paralpha = [5.]
+max iterations of Paralpha = 5.0
+algorithm time = 1.55863 s
+communication time = 0.32440 s
+inner solver = custom
+system_time_max = [0.16870856285095215, 0.15584468841552734, 0.15594220161437988, 0.19491267204284668, 0.2670297622680664]
+system_time_min = [0.16700410842895508, 0.15490269660949707, 0.1531515121459961, 0.15292716026306152, 0.15337705612182617]
+inner solver tols = [1e-11, 1e-11, 1e-11, 1e-11, 1e-11]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
 
 
 1e-12
 =====
+
+
+m0 =  0.01 r =  0.9999588943391596
+m =  2.5465660303990525e-07 alpha =  1.2732830151995263e-05 err_max =  inf
+m =  1.2850866510645063e-09 alpha =  0.002523175593572043 err_max =  0.06279048658050806
+on 31,  abs, rel err inf norm [from paralpha] = 7.998605050527087e-07, 7.998815481386724e-07, iter = 1, rolling = 0
+m =  9.128956712109443e-11 alpha =  0.03551883721050031 err_max =  8.018675422549748e-07
+on 31,  abs, rel err inf norm [from paralpha] = 2.025783003687618e-09, 2.025836298887995e-09, iter = 2, rolling = 0
+m =  2.433131131183041e-11 alpha =  0.13326446865256378 err_max =  2.0991778315604392e-09
+on 31,  abs, rel err inf norm [from paralpha] = 7.492301388249647e-11, 7.49249849904732e-11, iter = 3, rolling = 0
+m =  1.2561389991090262e-11 alpha =  0.25813220319495567 err_max =  8.631984016460592e-11
+on 31,  abs, rel err inf norm [from paralpha] = 1.2597704498165273e-11, 1.2598035924178965e-11, iter = 4, rolling = 0
+on 31,  abs, rel err inf norm [from paralpha] = 4.324152344227926e-12, 4.3242661059512825e-12, iter = 5, rolling = 0
+-----------------------< summary >-----------------------
+solving on [0, 0.01]
+no. of spatial points = [490, 490]
+dx = [0.0020408163265306124, 0.0020408163265306124]
+no. of time points on an interval = 3
+    [4.84534e-05 2.01547e-04 3.12500e-04]
+no. of time intervals = 32
+no. of alphas = 5
+    [1.2732830151995263e-05, 0.002523175593572043, 0.03551883721050031, 0.13326446865256378, 0.25813220319495567]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0003125
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 32
+maxiter = 5
+output document = None
+tol = 1e-12
+last error = [inf, 0.06279048658050806, 8.018675422549748e-07, 2.0991778315604392e-09, 8.631984016460592e-11, 1.5509149520198662e-11]
+iterations of Paralpha = [5.]
+max iterations of Paralpha = 5.0
+algorithm time = 7.16232 s
+communication time = 1.30384 s
+inner solver = custom
+system_time_max = [0.6682999134063721, 0.6642978191375732, 0.9755055904388428, 1.1376619338989258, 1.3124709129333496]
+system_time_min = [0.6206483840942383, 0.638479471206665, 0.9497950077056885, 1.134174108505249, 1.2864923477172852]
+inner solver tols = [5e-14, 5e-14, 5e-14, 5e-14, 5e-14]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
 
 
 
