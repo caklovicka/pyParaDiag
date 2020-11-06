@@ -3,8 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --ntasks-per-node=8
-#SBATCH --output=mpi-out
-#SBATCH --error=mpi-err
+#SBATCH --output=out
+#SBATCH --error=er
 #SBATCH --time=00:05:00
 #SBATCH --partition=batch
 
