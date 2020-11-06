@@ -1,8 +1,8 @@
 #!/bin/bash -x
 #SBATCH --account=cstma
 #SBATCH --nodes=1
-#SBATCH --ntasks=3
-#SBATCH --ntasks-per-node=3
+#SBATCH --ntasks=8
+#SBATCH --ntasks-per-node=8
 #SBATCH --output=mpi-out
 #SBATCH --error=mpi-err
 #SBATCH --time=00:05:00
