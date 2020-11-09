@@ -39,7 +39,7 @@ prob.T_start = 0
 prob.T_end = 0.01
 prob.solver = 'custom'
 prob.maxiter = 8
-prob.smaxiter = 50
+prob.smaxiter = 100
 prob.stol = 5e-14
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
