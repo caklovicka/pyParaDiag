@@ -247,6 +247,39 @@ inner solver maxiter = 50
 1e-12
 =====
 
+on 0,  abs, rel err inf norm [from paralpha] = 6.942046221253311e-14, 6.942254649018319e-14, iter = 1, rolling = 0
+on 0,  abs, rel err inf norm [from paralpha] = 2.1552322958105376e-13, 2.1552747896124082e-13, iter = 1, rolling = 1
+on 0,  abs, rel err inf norm [from paralpha] = 2.8069180548308283e-13, 2.8069970958093615e-13, iter = 1, rolling = 2
+on 0,  abs, rel err inf norm [from paralpha] = 3.4726051204548937e-13, 3.472797333539388e-13, iter = 1, rolling = 3
+-----------------------< summary >-----------------------
+solving on [0, 0.005]
+no. of spatial points = [1300, 1300]
+dx = [0.015372790161414296, 0.015372790161414296]
+no. of time points on an interval = 3
+    [0.00019 0.00081 0.00125]
+no. of time intervals = 1
+no. of alphas = 1
+    [0]
+Viability of the problem is not known.
+rolling intervals = 4
+dt (of one SDC interval) = 0.00125
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 1
+maxiter = 1
+output document = None
+tol = 1e-12
+last error = [inf, 0.0]
+iterations of Paralpha = [1. 1. 1. 1.]
+max iterations of Paralpha = 1.0
+algorithm time = 65.68608 s
+communication time = 0.35735 s
+inner solver = custom
+system_time_max = [15.659583568572998]
+system_time_min = [15.32985234260559]
+inner solver tols = [5e-14, 5e-14, 5e-14, 5e-14]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+
 
 
 
