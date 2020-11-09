@@ -26,7 +26,7 @@ from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as S
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
 prob = Advection5()
-N = 490
+N = 600
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
