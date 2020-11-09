@@ -25,18 +25,18 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-prob = Advection5()
-N = 600
+prob = Schrodinger06()
+N = 1300
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
-prob.time_intervals = 1
-prob.rolling = 32
+prob.time_intervals = 4
+prob.rolling = 1
 prob.proc_row = prob.time_intervals
 prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 0.01
+prob.T_end = 0.005
 prob.solver = 'custom'
 prob.maxiter = 15
 prob.smaxiter = 100
