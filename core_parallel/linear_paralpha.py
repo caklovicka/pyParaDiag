@@ -141,7 +141,7 @@ class LinearParalpha(LinearHelpers):
                 self.iterations[rolling_interval] += 1
 
                 if self.optimal_alphas is True:
-                    self.alphas.append(min(np.sqrt((gamma * r)/m0), 0.3))
+                    self.alphas.append(min(np.sqrt((gamma * r)/m0), 0.5))
                     m0 = 2 * np.sqrt(gamma * m0 * r)
                     if self.rank == 0:
                         print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
