@@ -6,17 +6,17 @@ from matplotlib.lines import Line2D
 tol = [1e-5, 1e-9, 1e-12]
 
 # heat
-herr_abs1 = [6.244210700945274e-06, 6.3223745696561195e-06]
+herr_abs1 = [3.6139094348186526e-06, 3.527888329468709e-06]
 herr_abs2 = [3.7758531931812573e-10, 7.274646553940157e-10]
 herr_abs3 = [1.2591146446553889e-08, 2.950075255740583e-11, 1.1020229980500296e-12, 5.830397893467526e-13]
 heat_err_abs = [herr_abs1, herr_abs2, herr_abs3]
 
-hcerr1 = [0.0049893470243037585, 7.816386871084546e-08]
+hcerr1 = [0.0049992051444395225, 8.602110534994267e-08]
 hcerr2 = [0.0049958347258076685, 7.312931371572517e-10]
 hcerr3 = [0.004995846875994525, 1.2139308003256133e-08, 2.8718027955676462e-11, 3.8891112552619234e-13]
 heat_cerr = [hcerr1, hcerr2, hcerr3]
 
-hm1 = [0.005362537221768715, 0.0012418109342038387]
+hm1 = [0.003994665847167466, 0.0007984002877661178]
 hm2 = [3.994785610141585e-05, 7.984361929631986e-07]
 hm3 = [9.809076291256445e-07, 3.072148244679859e-09, 1.7192902351257633e-10, 4.067267258024639e-11]
 m_heat = [hm1, hm2, hm3]
@@ -141,7 +141,7 @@ for i in range(n):
     x = range(0, l+3, 1)
     print(l)
     plt.plot(x, np.ones(l + 3) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-    plt.text(tx, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
+    plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 for i in range(n):
     l = schro_cerr[i].shape
@@ -166,7 +166,7 @@ l = 6
 for i in range(n):
     x = range(0, l + 2, 1)
     plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-    plt.text(tx, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
+    plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 for i in range(n):
     l = schro_err_abs[i].shape
@@ -187,7 +187,7 @@ l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
     plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-    plt.text(tx, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
+    plt.text(tx + 2, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 for i in range(n):
     l = len(m_adv[i])
@@ -213,7 +213,7 @@ l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
     plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-    plt.text(tx, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
+    plt.text(tx + 2, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 for i in range(n):
     l = adv_err_abs[i].shape

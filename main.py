@@ -25,27 +25,27 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-prob = Heat()
-N = 450
+prob = Advection5()
+N = 660
 prob.spatial_points = [N, N]
 prob.tol = 1e-5
 prob.proc_col = 1
-prob.time_intervals = 1
-prob.rolling = 32
+prob.time_intervals = 32
+prob.rolling = 1
 prob.proc_row = prob.time_intervals
-prob.time_points = 1
+prob.time_points = 3
 prob.optimal_alphas = True
-prob.T_start = np.pi
-prob.T_end = prob.T_start + 0.1
+prob.T_start = 0
+prob.T_end = 1e-2
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 100
-prob.stol = 1e-6
+prob.stol = 5e-14
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
-prob.summary(details=True)
+# prob.summary(details=True)
 
 #
 # exact = prob.u_exact(prob.T_end, prob.x)
