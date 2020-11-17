@@ -91,20 +91,15 @@ inner solver maxiter = 50
 
 1e-12
 =====
-
 m0 =  0.005 r =  0.9999409210758916
-m =  6.366357860761558e-08 alpha =  6.366357860761557e-06 err_max =  inf
-m =  2.271703089271348e-10 alpha =  0.0017841465551856378 err_max =  0.019998264486022547
-on 3,  abs, rel err inf norm [from paralpha] = 1.2900475679222303e-07, 1.290118973686368e-07, iter = 1, rolling = 0
-m =  1.3570061919862896e-11 alpha =  0.02986759577858283 err_max =  1.2924251815992158e-07
-on 3,  abs, rel err inf norm [from paralpha] = 2.3891139379956475e-10, 2.389246178473128e-10, iter = 2, rolling = 0
-m =  3.31662950316989e-12 alpha =  0.1 err_max =  2.460959646963547e-10
-on 3,  abs, rel err inf norm [from paralpha] = 7.435508431828706e-12, 7.435919996622538e-12, iter = 3, rolling = 0
-m =  1.639662728989387e-12 alpha =  0.1 err_max =  8.51267887025897e-12
-on 3,  abs, rel err inf norm [from paralpha] = 1.303986622545877e-12, 1.304058799854314e-12, iter = 4, rolling = 0
-m =  1.1528778824109547e-12 alpha =  0.1 err_max =  1.1823641232118227e-12
-on 3,  abs, rel err inf norm [from paralpha] = 3.5214948034722806e-13, 3.5216897226625503e-13, iter = 5, rolling = 0
-on 3,  abs, rel err inf norm [from paralpha] = 4.5174597059667084e-13, 4.517709753073719e-13, iter = 6, rolling = 0
+m =  2.9210277192885274e-08 alpha =  2.9210277192885277e-06 err_max =  inf
+m =  7.060224570179527e-11 alpha =  0.0012085172152866768 err_max =  0.019998194311996474
+on 3,  abs, rel err inf norm [from paralpha] = 5.8463023983884755e-08, 5.8466259986188214e-08, iter = 1, rolling = 0
+m =  3.471042519400591e-12 alpha =  0.02458167218972986 err_max =  5.853211699609929e-08
+on 3,  abs, rel err inf norm [from paralpha] = 7.222474737543333e-11, 7.222874510652809e-11, iter = 2, rolling = 0
+m =  7.696276162725913e-13 alpha =  0.1108640432911633 err_max =  7.387362220476432e-11
+on 3,  abs, rel err inf norm [from paralpha] = 1.7190496599636967e-12, 1.719144811536098e-12, iter = 3, rolling = 0
+on 3,  abs, rel err inf norm [from paralpha] = 4.2035754668695195e-13, 4.2038081400869927e-13, iter = 4, rolling = 0
 -----------------------< summary >-----------------------
 solving on [0, 0.005]
 no. of spatial points = [1300, 1300]
@@ -112,30 +107,28 @@ dx = [0.015372790161414296, 0.015372790161414296]
 no. of time points on an interval = 3
     [0.00019 0.00081 0.00125]
 no. of time intervals = 4
-no. of alphas = 6
-    [6.366357860761557e-06, 0.0017841465551856378, 0.02986759577858283, 0.1, 0.1, 0.1]
+no. of alphas = 4
+    [2.9210277192885277e-06, 0.0012085172152866768, 0.02458167218972986, 0.1108640432911633]
 Viability of the problem is not known.
 rolling intervals = 1
 dt (of one SDC interval) = 0.00125
 processors for spatial parallelization for solving (I - Q x A) are 1
 processors for time interval parallelization are 4
-maxiter = 8
+maxiter = 15
 output document = None
 tol = 1e-12
-last error = [inf, 0.019998264486022547, 1.2924251815992158e-07, 2.460959646963547e-10, 8.51267887025897e-12, 1.1823641232118227e-12, 3.9870466538598083e-13]
-iterations of Paralpha = [6.]
-max iterations of Paralpha = 6.0
-algorithm time = 117.04520 s
-communication time = 4.11005 s
+last error = [inf, 0.019998194311996474, 5.853211699609929e-08, 7.387362220476432e-11, 2.0858215058805846e-12]
+iterations of Paralpha = [4.]
+max iterations of Paralpha = 4.0
+algorithm time = 83.32490 s
+communication time = 2.63743 s
 inner solver = custom
-system_time_max = [16.96362328529358, 17.07767677307129, 18.22793459892273, 19.205897092819214, 19.05771040916443, 18.560546159744263]
-system_time_min = [16.56941270828247, 15.60008955001831, 17.55474328994751, 17.53297448158264, 17.190908432006836, 16.728098154067993]
-inner solver tols = [5e-14, 5e-14, 5e-14, 5e-14, 5e-14, 5e-14]
-inner solver maxiter = 50
+system_time_max = [17.464528799057007, 17.96118664741516, 19.721744060516357, 22.954713344573975]
+system_time_min = [16.899786233901978, 17.23082971572876, 18.11421227455139, 20.81536054611206]
+inner solver tols = [1e-14, 1e-14, 1e-14, 1e-14]
+inner solver maxiter = 100
 -----------------------< end summary >-----------------------
-
-
-
+(IMPORTANT: here if the stol is 5e-14 like in the sequential run, it diverges.)
 
 ###################
   SEQUENTIAL RUNS
