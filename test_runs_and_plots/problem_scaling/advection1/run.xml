@@ -4,7 +4,7 @@
     <comment>Speedup for advection equation.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i">0</parameter>
+      <parameter name="i">0,1,2,3,4,5,6</parameter>
       <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
       <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
       <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 16, 16][$i]</parameter>
@@ -34,7 +34,7 @@
     <patternset name="pattern">
       <pattern name="tot_time" type="float">algorithm time = $jube_pat_fp</pattern>
       <pattern name="comm_time" type="float">communication time = $jube_pat_fp</pattern>
-      <pattern name="iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
+      <pattern name="max_iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
       <pattern name="err" type="float">abs err = $jube_pat_fp</pattern>
       <pattern name="tol" type="float">tol = $jube_pat_fp</pattern>
       <pattern name="T1" type="float">T1 = $jube_pat_fp</pattern>
@@ -66,7 +66,7 @@
         <column>time_intervals</column>
         <column>tot_time</column>
 	    <column>comm_time</column>
-	    <column>iters</column>
+	    <column>max_iters</column>
 	    <column>T1</column>
         <column>T2</column>
 	    <column>Nx</column>
