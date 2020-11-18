@@ -37,8 +37,8 @@
       <pattern name="iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
       <pattern name="err" type="float">abs err = $jube_pat_fp</pattern>
       <pattern name="tol" type="float">tol = $jube_pat_fp</pattern>
-      <pattern name="T1" type="float">solving on \[$jube_pat_fp</pattern>
-      <pattern name="T2" type="float">solving on \[.*, $jube_pat_fp</pattern>
+      <pattern name="T1" type="float">T1 = $jube_pat_fp</pattern>
+      <pattern name="T2" type="float">T2 = $jube_pat_fp</pattern>
       <pattern name="Nx" type="int">no. of spatial points = \[$jube_pat_int</pattern>
     </patternset>
 
@@ -67,11 +67,11 @@
         <column>tot_time</column>
 	    <column>comm_time</column>
 	    <column>iters</column>
-	    <column>err</column>
-	    <column>tol</column>
 	    <column>T1</column>
         <column>T2</column>
 	    <column>Nx</column>
+        <column>tol</column>
+        <column>err</column>
       </table>
     </result>
 

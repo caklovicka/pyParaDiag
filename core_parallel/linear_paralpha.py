@@ -263,7 +263,7 @@ class LinearParalpha(LinearHelpers):
         if self.rank == 0:
             assert self.setup_var is True, 'Please call the setup function before summary.'
             print('-----------------------< summary >-----------------------')
-            print('solving on [{}, {}]'.format(self.T_start, self.T_end))
+            print('solving on T1 = {}, T2 = {}'.format(self.T_start, self.T_end))
             print('no. of spatial points = {}'.format(self.spatial_points))
             print('dx = {}'.format(self.dx))
             print('no. of time points on an interval = {}'.format(self.time_points))
