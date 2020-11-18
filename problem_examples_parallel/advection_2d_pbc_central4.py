@@ -4,7 +4,7 @@ from petsc4py import PETSc
 from core_parallel.linear_paralpha import LinearParalpha
 
 """
-advection eq. in 2d, pbc
+advection1 eq. in 2d, pbc
 u_t + c_x * u_x + c_y * u_y = f
 """
 
