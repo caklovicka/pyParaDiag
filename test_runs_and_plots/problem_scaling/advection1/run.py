@@ -35,6 +35,6 @@ if prob.rank == prob.size - 1:
     d = exact - approx
     d = d.flatten()
     err_abs = np.linalg.norm(d, np.inf)
-    print('abs err  = {}'.format(err_abs))
+    print('abs err = {}'.format(err_abs))
 
 
