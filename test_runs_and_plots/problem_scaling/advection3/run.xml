@@ -4,7 +4,7 @@
     <comment>Speedup for advection equation.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i">0,2,3</parameter>
+      <parameter name="i">0,1,2</parameter>
       <parameter name="rolling" mode="python">[64, 1, 1][$i]</parameter>
       <parameter name="time_intervals" mode="python">[1, 64, 64][$i]</parameter>
       <parameter name="ntasks_per_node" mode="python">[1, 16, 16][$i]</parameter>
