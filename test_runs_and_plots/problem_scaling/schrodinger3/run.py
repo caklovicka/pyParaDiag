@@ -20,9 +20,9 @@ prob.optimal_alphas = True
 prob.T_start = 0
 prob.T_end = 0.02
 prob.solver = 'custom'
-prob.maxiter = 10
+prob.maxiter = 7
 prob.smaxiter = 50
-prob.stol = 1e-14
+prob.stol = 5e-15
 prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 
 prob.setup()
