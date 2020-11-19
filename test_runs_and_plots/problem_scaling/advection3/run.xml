@@ -4,12 +4,12 @@
     <comment>Speedup for advection equation.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i">0,6</parameter>
-      <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
-      <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 16, 16][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4][$i]</parameter>
-      <parameter name="solver_tol" mode="python">[5e-14, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15][$i]</parameter>
+      <parameter name="i">0,2,3</parameter>
+      <parameter name="rolling" mode="python">[64, 1, 1][$i]</parameter>
+      <parameter name="time_intervals" mode="python">[1, 64, 64][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[1, 16, 16][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 4, 4][$i]</parameter>
+      <parameter name="solver_tol" mode="python">[5e-14, 5e-14, 1e-15][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
