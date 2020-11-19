@@ -4,11 +4,12 @@
     <comment>Speedup for advection equation.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i">0,1,2,3,4,5,6</parameter>
+      <parameter name="i">0,6</parameter>
       <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
       <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
       <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 16, 16][$i]</parameter>
       <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4][$i]</parameter>
+      <parameter name="stol" mode="python">[5e-14, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
@@ -28,6 +29,7 @@
       <sub source="#time_intervals#" dest="$time_intervals" />
       <sub source="#nodes#" dest="$nodes" />
       <sub source="#ntasks_per_node#" dest="$ntasks_per_node" />
+      <sub source="#stol#" dest="$stol" />
     </substituteset>
 
     <!-- Regex pattern -->
@@ -37,6 +39,7 @@
       <pattern name="max_iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
       <pattern name="err" type="float">abs err = $jube_pat_fp</pattern>
       <pattern name="tol" type="float">tol = $jube_pat_fp</pattern>
+      <pattern name="stol" type="float">inner solver tols = \[$jube_pat_fp</pattern>
       <pattern name="T1" type="float">T1 = $jube_pat_fp</pattern>
       <pattern name="T2" type="float">T2 = $jube_pat_fp</pattern>
       <pattern name="Nx" type="int">no. of spatial points = \[$jube_pat_int</pattern>
@@ -70,6 +73,7 @@
 	    <column>T1</column>
         <column>T2</column>
 	    <column>Nx</column>
+        <column>stol</column>
         <column>tol</column>
         <column>err</column>
       </table>
