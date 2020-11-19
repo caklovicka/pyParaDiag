@@ -9,7 +9,7 @@
       <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
       <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 16, 16][$i]</parameter>
       <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4][$i]</parameter>
-      <parameter name="stol" mode="python">[5e-14, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15][$i]</parameter>
+      <parameter name="solver_tol" mode="python">[5e-14, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15, 1e-15][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
