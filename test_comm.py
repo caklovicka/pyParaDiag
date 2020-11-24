@@ -15,7 +15,7 @@ size = comm.Get_size()
 time = 0
 k = 50
 
-vec = np.array(400 * 400)
+vec = np.array(400 * 400 * size)
 for i in range(k):
     time_beg = MPI.Wtime()
     out = comm.allreduce(vec, op=MPI.SUM)
