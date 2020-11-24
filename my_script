@@ -1,11 +1,11 @@
 #!/bin/bash -x
 #SBATCH --account=cstma
 #SBATCH --nodes=1
-#SBATCH --ntasks=32
-#SBATCH --ntasks-per-node=32
+#SBATCH --ntasks=1
+#SBATCH --ntasks-per-node=1
 #SBATCH --output=out
 #SBATCH --error=er
 #SBATCH --time=00:05:00
 #SBATCH --partition=batch
 
-srun python main.py
+srun python main.py >> communications.out

@@ -26,12 +26,12 @@ from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as S
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
 prob = Advection5()
-N = 100
+N = 650
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
 prob.time_intervals = 1
-prob.rolling = 1
+prob.rolling = 64
 prob.proc_row = prob.time_intervals
 prob.time_points = 3
 prob.optimal_alphas = True
@@ -39,14 +39,26 @@ prob.T_start = 0
 prob.T_end = 0.02
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 10
-prob.stol = 1e-14
+prob.smaxiter = 50
+prob.stol = 5e-14
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
 prob.setup()
-# prob.solve()
-print(prob.communication_time)
-# prob.summary(details=True)
+prob.solve()
+prob.summary(details=True)
+
+tot_comm = prob.commT1 + prob.commT2 + prob.commT3 + prob.commT4 + prob.commT5 + prob.commT6 + prob.commT7 + prob.commT8 + prob.commT9
+print(prob.communication_time, tot_comm)
+print('commT1 = ', prob.commT1)
+print('commT2 = ', prob.commT2)
+print('commT3 = ', prob.commT3)
+print('commT4 = ', prob.commT4)
+print('commT5 = ', prob.commT5)
+print('commT6 = ', prob.commT6)
+print('commT7 = ', prob.commT7)
+print('commT8 = ', prob.commT8)
+print('commT9 = ', prob.commT9)
+
 # if prob.rank == prob.size - 1:
 #     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
 #     approx = prob.u_last_loc.flatten()

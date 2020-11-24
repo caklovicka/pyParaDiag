@@ -8,6 +8,15 @@ class LinearHelpers(Communicators):
 
     def __init__(self):
         Communicators.__init__(self)
+        self.commT1 = 0
+        self.commT2 = 0
+        self.commT3 = 0
+        self.commT4 = 0
+        self.commT5 = 0
+        self.commT6 = 0
+        self.commT7 = 0
+        self.commT8 = 0
+        self.commT9 = 0
 
     def __next_alpha__(self, idx):
         if idx + 1 < len(self.alphas) and self.time_intervals > 1:
@@ -54,6 +63,7 @@ class LinearHelpers(Communicators):
         time_beg = MPI.Wtime()
         temp = self.comm.allreduce(r, op=MPI.MAX)
         self.communication_time += MPI.Wtime() - time_beg
+        self.commT1 += MPI.Wtime() - time_beg
 
         return temp
 
@@ -92,6 +102,7 @@ class LinearHelpers(Communicators):
             gr = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
             self.communication_time += MPI.Wtime() - time_beg
+            self.commT2 += MPI.Wtime() - time_beg
 
             # glue the info
             g_loc = gr + factor * g_loc
@@ -126,6 +137,7 @@ class LinearHelpers(Communicators):
                 time_beg = MPI.Wtime()
                 temp = self.comm_subcol_alternating.reduce(h_scaled, op=MPI.SUM, root=proc)
                 self.communication_time += MPI.Wtime() - time_beg
+                self.commT3 += MPI.Wtime() - time_beg
 
                 if proc == self.rank_subcol_alternating:
                     h_loc = temp.copy(order='C')
@@ -141,6 +153,7 @@ class LinearHelpers(Communicators):
                 time_beg = MPI.Wtime()
                 temp = self.comm_col.reduce(h_scaled, op=MPI.SUM, root=proc)
                 self.communication_time += MPI.Wtime() - time_beg
+                self.commT4 += MPI.Wtime() - time_beg
 
                 if proc == self.rank_col:
                     h_loc = temp.copy(order='C')
@@ -201,6 +214,7 @@ class LinearHelpers(Communicators):
             ur = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
             self.communication_time += MPI.Wtime() - time_beg
+            self.commT5 += MPI.Wtime() - time_beg
 
             # glue the info
             self.u_loc = ur + factor * self.u_loc
@@ -224,11 +238,13 @@ class LinearHelpers(Communicators):
                 time_beg = MPI.Wtime()
                 err_max = self.comm_subcol_seq.allreduce(err_loc, op=MPI.MAX)
                 self.communication_time += MPI.Wtime() - time_beg
+                self.commT6 += MPI.Wtime() - time_beg
 
             # broadcast the error, a stopping criteria
             time_beg = MPI.Wtime()
             err_max = self.comm.bcast(err_max, root=self.size - 1)
             self.communication_time += MPI.Wtime() - time_beg
+            self.commT7 += MPI.Wtime() - time_beg
 
         # case without spatial parallelization, the whole vector is on the last processor
         else:
@@ -241,6 +257,7 @@ class LinearHelpers(Communicators):
             time_beg = MPI.Wtime()
             err_max = self.comm.bcast(err_max, root=self.size - 1)
             self.communication_time += MPI.Wtime() - time_beg
+            self.commT8 += MPI.Wtime() - time_beg
 
         return err_max
 
@@ -250,6 +267,7 @@ class LinearHelpers(Communicators):
             time_beg = MPI.Wtime()
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg
+            self.commT9 += MPI.Wtime() - time_beg
 
     def __write_time_in_txt__(self):
         if self.rank == 0:
