@@ -56,7 +56,6 @@ class LinearHelpers(Communicators):
                         temp = max(temp, np.linalg.norm(v_loc[i * self.global_size_A:(i+1) * self.global_size_A, j] + self.u0_loc, np.infty))
             else:
                 temp = np.linalg.norm(v_loc[:, j], np.infty)
-
             r = max(r, temp)
 
         if self.size > 1:
@@ -70,6 +69,9 @@ class LinearHelpers(Communicators):
 
     # fft
     def __get_fft__(self, w_loc, a):
+
+        if self.time_intervals == 1:
+            return w_loc, 0
 
         g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc    # scale
         n = int(np.log2(self.time_intervals))
