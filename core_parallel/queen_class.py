@@ -33,6 +33,7 @@ class QueenClass(abc.ABC):
     size = NotImplemented
     comm_row = NotImplemented
     rank_row = NotImplemented
+    rank_row = NotImplemented
     size_row = NotImplemented
     frac = NotImplemented
     Frac = NotImplemented
