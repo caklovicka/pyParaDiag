@@ -56,16 +56,17 @@ class LinearHelpers(Communicators):
                         temp = max(temp, np.linalg.norm(v_loc[i * self.global_size_A:(i+1) * self.global_size_A, j] + self.u0_loc, np.infty))
             else:
                 temp = np.linalg.norm(v_loc[:, j], np.infty)
-            if r < temp:
-                r = temp
 
-        self.comm.Barrier()
-        time_beg = MPI.Wtime()
-        temp = self.comm.allreduce(r, op=MPI.MAX)
-        self.communication_time += MPI.Wtime() - time_beg
-        self.commT1 += MPI.Wtime() - time_beg
+            r = max(r, temp)
 
-        return temp
+        if self.size > 1:
+            time_beg = MPI.Wtime()
+            temp = self.comm.allreduce(r, op=MPI.MAX)
+            self.communication_time += MPI.Wtime() - time_beg
+            return temp
+
+        else:
+            return r
 
     # fft
     def __get_fft__(self, w_loc, a):
