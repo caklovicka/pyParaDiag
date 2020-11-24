@@ -13,9 +13,9 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 time = 0
-k = 50
+k = 50 * (24 - size + 1)
 
-vec = np.array(400 * 400 * size)
+vec = np.array(400 * 400)
 for i in range(k):
     time_beg = MPI.Wtime()
     out = comm.allreduce(vec, op=MPI.SUM)
