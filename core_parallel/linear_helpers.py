@@ -188,6 +188,10 @@ class LinearHelpers(Communicators):
 
     # ifft
     def __get_ifft__(self, a):
+
+        if self.time_intervals == 1:
+            return
+
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
@@ -217,7 +221,6 @@ class LinearHelpers(Communicators):
             ur = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
             self.communication_time += MPI.Wtime() - time_beg
-            self.commT5 += MPI.Wtime() - time_beg
 
             # glue the info
             self.u_loc = ur + factor * self.u_loc

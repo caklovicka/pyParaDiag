@@ -47,17 +47,7 @@ prob.setup()
 prob.solve()
 prob.summary(details=True)
 
-tot_comm = prob.commT1 + prob.commT2 + prob.commT3 + prob.commT4 + prob.commT5 + prob.commT6 + prob.commT7 + prob.commT8 + prob.commT9
 print(prob.communication_time, tot_comm)
-print('commT1 = ', prob.commT1)
-print('commT2 = ', prob.commT2)
-print('commT3 = ', prob.commT3)
-print('commT4 = ', prob.commT4)
-print('commT5 = ', prob.commT5)
-print('commT6 = ', prob.commT6)
-print('commT7 = ', prob.commT7)
-print('commT8 = ', prob.commT8)
-print('commT9 = ', prob.commT9)
 
 # if prob.rank == prob.size - 1:
 #     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
