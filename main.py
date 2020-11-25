@@ -25,37 +25,37 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-prob = Advection5()
-N = 650
+prob = Advection4()
+N = 320
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
+prob.tol = 1e-9
 prob.proc_col = 1
 prob.time_intervals = 1
 prob.rolling = 64
 prob.proc_row = prob.time_intervals
-prob.time_points = 3
+prob.time_points = 2
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 0.02
+prob.T_end = 0.012
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 50
-prob.stol = 5e-14
+prob.stol = 1e-11
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
 prob.summary(details=True)
 
-print(prob.communication_time, tot_comm)
+print(prob.communication_time)
 
-# if prob.rank == prob.size - 1:
-#     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
-#     approx = prob.u_last_loc.flatten()
-#     d = exact - approx
-#     d = d.flatten()
-#     err_abs = np.linalg.norm(d, np.inf)
-#     print('abs err  = {}'.format(err_abs))
+if prob.rank == prob.size - 1:
+    exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
+    approx = prob.u_last_loc.flatten()
+    d = exact - approx
+    d = d.flatten()
+    err_abs = np.linalg.norm(d, np.inf)
+    print('abs err  = {}'.format(err_abs))
 
 #
 # exact = prob.u_exact(prob.T_end, prob.x)
