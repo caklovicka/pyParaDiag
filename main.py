@@ -17,45 +17,42 @@ from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection as Adve
 from problem_examples_parallel.heat_2d_pbc_central2 import Heat
 from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
 from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
-from problem_examples_parallel.wave_2d_central2 import Wave
-from problem_examples_parallel.wave_2d_pbc_central4 import Wave as Wave4
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.schrodinger_2d_0_central2 import Schrodinger as Schrodinger0
 from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger4
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-prob = Advection5()
-N = 650
+prob = Heat()
+N = 450
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
+prob.tol = 1e-5
 prob.proc_col = 1
 prob.time_intervals = 1
-prob.rolling = 64
+prob.rolling = 32
 prob.proc_row = prob.time_intervals
-prob.time_points = 3
+prob.time_points = 1
 prob.optimal_alphas = True
-prob.T_start = 0
-prob.T_end = 0.02
+prob.T_start = np.pi
+prob.T_end = prob.T_start + 0.1
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 5
-prob.stol = 5e-14
+prob.smaxiter = 100
+prob.stol = 1e-6
 prob.m0 = 1 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
 prob.summary(details=True)
 
-print(prob.communication_time)
 
-if prob.rank == prob.size - 1:
-    exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
-    approx = prob.u_last_loc.flatten()
-    d = exact - approx
-    d = d.flatten()
-    err_abs = np.linalg.norm(d, np.inf)
-    print('abs err  = {}'.format(err_abs))
+# if prob.rank == prob.size - 1:
+#     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
+#     approx = prob.u_last_loc.flatten()
+#     d = exact - approx
+#     d = d.flatten()
+#     err_abs = np.linalg.norm(d, np.inf)
+#     print('abs err  = {}'.format(err_abs))
 
 #
 # exact = prob.u_exact(prob.T_end, prob.x)

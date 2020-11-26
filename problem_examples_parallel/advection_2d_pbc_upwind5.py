@@ -108,9 +108,9 @@ class Advection(LinearParalpha):
         row = np.array(row) - self.row_beg
         col = np.array(col)
         self.Apar = sparse.csr_matrix((data, (row, col)), shape=(self.row_end - self.row_beg, self.global_size_A))
-        del data, row, col
 
         # ---- POSTSETUP <end> ----
+        return
 
     # user defined
     def bpar(self, t):
