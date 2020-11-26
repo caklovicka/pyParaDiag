@@ -254,9 +254,10 @@ class LinearHelpers(Communicators):
                 err_max = self.norm(self.u_last_old_loc - self.u_last_loc)
 
             # broadcast the error, a stopping criteria
-            time_beg = MPI.Wtime()
-            err_max = self.comm.bcast(err_max, root=self.size - 1)
-            self.communication_time += MPI.Wtime() - time_beg
+            if self.size > 1:
+                time_beg = MPI.Wtime()
+                err_max = self.comm.bcast(err_max, root=self.size - 1)
+                self.communication_time += MPI.Wtime() - time_beg
 
         return err_max
 
