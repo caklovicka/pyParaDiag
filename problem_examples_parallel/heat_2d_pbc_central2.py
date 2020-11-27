@@ -4,7 +4,7 @@ from core_parallel.linear_paralpha import LinearParalpha
 from petsc4py import PETSc
 
 """
-heat eq. in 2d, 2nd order central differences
+heat1 eq. in 2d, 2nd order central differences
 u_t = c ( u_xx + u_yy ) + f
 """
 
