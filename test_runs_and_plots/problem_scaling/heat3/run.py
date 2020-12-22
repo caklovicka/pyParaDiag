@@ -9,20 +9,20 @@ import sys
 sys.path.append('../../../../../../..')    # for jube
 sys.path.append('../../../../../../../..')    # for pySDC
 import numpy as np
-from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
+from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 
-prob = Heat4()
-N = 400
+prob = Heat6()
+N = 300
 prob.spatial_points = [N, N]
-prob.tol = 1e-9
+prob.tol = 1e-12
 prob.proc_col = 1
-prob.time_points = 2
+prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = np.pi
 prob.solver = 'custom'
 prob.maxiter = 10
 prob.smaxiter = 50
-prob.stol = 1e-10
+prob.stol = 1e-13
 prob.T_end += np.pi
 prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 
