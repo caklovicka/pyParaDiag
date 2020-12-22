@@ -6,7 +6,7 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
-sys.path.append('../../../../../../..')    # for jube
+sys.path.append('../../../../../../..', '../../../../../pySDC')    # for jube
 import numpy as np
 from problem_examples_parallel.heat_2d_pbc_central2 import Heat as Heat2
 
