@@ -23,8 +23,8 @@ prob.solver = 'custom'
 prob.maxiter = 10
 prob.smaxiter = 50
 prob.stol = 1e-6
-prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 prob.T_end += np.pi
+prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 
 prob.setup()
 prob.solve()
