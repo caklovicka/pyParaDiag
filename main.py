@@ -5,6 +5,7 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import numpy as np
+import sys
 import scipy.sparse as sp
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -22,6 +23,8 @@ from problem_examples_parallel.schrodinger_2d_0_central2 import Schrodinger as S
 from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger4
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
+
+sys.path.append('../')    # for pySDC
 
 prob = Heat6()
 N = 300
