@@ -8,5 +8,5 @@
 #SBATCH --time=00:10:00
 #SBATCH --partition=batch
 
-srun python run.py --time_intervals=#time_intervals# --rolling=#rolling# --proc_row=#time_intervals# --T_end=3.14159265359 + #T# > results.out
+srun python run.py --time_intervals=#time_intervals# --rolling=#rolling# --proc_row=#time_intervals# --T_end=#T# > results.out
 touch ready
