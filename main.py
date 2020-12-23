@@ -9,6 +9,8 @@ import sys
 import scipy.sparse as sp
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+
 from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.advection_2d_pbc_upwind1 import Advection as Advection1
 from problem_examples_parallel.advection_2d_pbc_upwind2 import Advection as Advection2
@@ -24,21 +26,22 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-sys.path.append('../')    # for pySDC
+sys.path.append('../')    # for pySDC on Juwels
+sys.path.append('/etc/alternatives/petsc4py')
 
-prob = Heat6()
-N = 300
+prob = Advection3()
+N = 700
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
+prob.tol = 1e-9
 prob.proc_col = 1
 prob.time_intervals = 1
-prob.rolling = 4
+prob.rolling = 32
 prob.proc_row = prob.time_intervals
-prob.time_points = 3
+prob.time_points = 2
 prob.optimal_alphas = True
-prob.T_start = np.pi
-prob.T_end = prob.T_start + 0.02
-prob.solver = 'custom'
+prob.T_start = 0
+prob.T_end = 0.64e-2
+prob.solver = 'gmres'
 prob.maxiter = 5
 prob.smaxiter = 100
 prob.stol = 1e-13
