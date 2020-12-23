@@ -22,7 +22,11 @@ prob.T_start = 0
 prob.solver = 'custom'
 prob.maxiter = 10
 prob.smaxiter = 50
-prob.stol = 1e-11
+
+prob.stol = 1e-10
+if prob.rolling == 1:
+    prob.stol /= 100
+
 prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 
 prob.setup()
