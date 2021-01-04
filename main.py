@@ -29,23 +29,23 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 sys.path.append('../')    # for pySDC on Juwels
 sys.path.append('/etc/alternatives/petsc4py')
 
-prob = Advection3()
-N = 700
+prob = Schrodinger06()
+N = 1200
 prob.spatial_points = [N, N]
-prob.tol = 1e-9
+prob.tol = 1e-12
 prob.proc_col = 1
 prob.time_intervals = 1
-prob.rolling = 32
+prob.rolling = 64
 prob.proc_row = prob.time_intervals
-prob.time_points = 2
+prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 0.64e-2
+prob.T_end = 6.4e-3
 prob.solver = 'gmres'
 prob.maxiter = 5
-prob.smaxiter = 100
-prob.stol = 1e-13
-prob.m0 = 1 * (prob.T_end - prob.T_start)
+prob.smaxiter = 50
+prob.stol = 1e-14
+prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 prob.solve()
