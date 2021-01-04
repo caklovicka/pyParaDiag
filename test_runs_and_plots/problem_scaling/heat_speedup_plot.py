@@ -49,6 +49,7 @@ for run in range(len(heat)):
 for run in range(len(heat)):
     for subrun in range(no_runs):
         plt.plot(subrun, speedup[subrun, run], marker=mark_list[int(heat[run][subrun, 3])], markersize=marks, color=col[run])
+        print(int(heat[run][subrun, 3]))
         custom_lines.append(Line2D([0], [0], marker=mark_list[int(heat[run][subrun, 3])], markersize=marks, color='gray'))
 plt.legend(custom_lines, names)
 plt.xticks(proc, labels)
