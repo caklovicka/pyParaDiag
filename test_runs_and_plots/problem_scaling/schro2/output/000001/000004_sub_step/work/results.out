@@ -1,0 +1,38 @@
+m0 =  0.032 r =  0.9999175088327885
+m =  2.86300205211543e-06 alpha =  4.473440706430359e-05 err_max =  inf
+m =  2.7080551202145397e-08 alpha =  0.004729397798044884 err_max =  0.012799764240366154
+on 63,  abs, rel err inf norm [from paralpha] = 5.728567590431037e-07, 5.72872613593626e-07, iter = 1, rolling = 0
+m =  2.6337552847860586e-09 alpha =  0.04862816980950899 err_max =  5.761612703501285e-07
+on 63,  abs, rel err inf norm [from paralpha] = 3.331277298370497e-09, 3.331369495771325e-09, iter = 2, rolling = 0
+m =  8.213615719425094e-10 alpha =  0.15592974348967067 err_max =  2.876072212720806e-09
+on 63,  abs, rel err inf norm [from paralpha] = 4.593786670645649e-10, 4.593913809623602e-10, iter = 3, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 6.165699756335022e-10, 6.165870400037395e-10, iter = 4, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 0.0032
+no. of spatial points = [1100, 1100]
+dx = [0.018165304268846504, 0.018165304268846504]
+no. of time points on an interval = 2
+    [1.66667e-05 5.00000e-05]
+no. of time intervals = 64
+no. of alphas = 4
+    [4.473440706430359e-05, 0.004729397798044884, 0.04862816980950899, 0.15592974348967067]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 5e-05
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 64
+maxiter = 10
+output document = None
+tol = 1e-09
+last error = [inf, 0.012799764240366154, 5.761612703501285e-07, 2.876072212720806e-09, 1.7198639077648094e-10]
+iterations of Paralpha = [4.]
+max iterations of Paralpha = 4.0
+algorithm time = 16.44252 s
+communication time = 3.79700 s
+inner solver = custom
+system_time_max = [1.5384910106658936, 2.1270408630371094, 3.1886579990386963, 3.9173948764801025]
+system_time_min = [1.308595895767212, 1.308967113494873, 1.3210020065307617, 1.314743995666504]
+inner solver tols = [1e-12, 1e-12, 1e-12, 1e-12]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+abs err = 6.165699756335022e-10

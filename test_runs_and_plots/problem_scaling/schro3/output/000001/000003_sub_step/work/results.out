@@ -1,0 +1,38 @@
+m0 =  0.032 r =  0.9999306735549701
+m =  8.260757222008525e-08 alpha =  1.290743315938832e-06 err_max =  inf
+m =  1.3272563106483112e-10 alpha =  0.0008033502710333868 err_max =  0.01279929918450118
+on 31,  abs, rel err inf norm [from paralpha] = 1.6679201998484865e-08, 1.6679605480350278e-08, iter = 1, rolling = 0
+m =  5.320130299122331e-12 alpha =  0.020041834634501238 err_max =  1.6692277392829367e-08
+on 31,  abs, rel err inf norm [from paralpha] = 1.4464373439763789e-11, 1.4464723343336994e-11, iter = 2, rolling = 0
+m =  1.0651383070304244e-12 alpha =  0.10010453195160857 err_max =  1.453134379246641e-11
+on 31,  abs, rel err inf norm [from paralpha] = 2.961266803574647e-13, 2.961338438743644e-13, iter = 3, rolling = 0
+on 31,  abs, rel err inf norm [from paralpha] = 2.1861446910943612e-13, 2.186197575503226e-13, iter = 4, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 0.0032
+no. of spatial points = [1200, 1200]
+dx = [0.01665278934221482, 0.01665278934221482]
+no. of time points on an interval = 3
+    [1.55051e-05 6.44949e-05 1.00000e-04]
+no. of time intervals = 32
+no. of alphas = 4
+    [1.290743315938832e-06, 0.0008033502710333868, 0.020041834634501238, 0.10010453195160857]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0001
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 32
+maxiter = 10
+output document = None
+tol = 1e-12
+last error = [inf, 0.01279929918450118, 1.6692277392829367e-08, 1.453134379246641e-11, 3.8811504577416163e-13]
+iterations of Paralpha = [4.]
+max iterations of Paralpha = 4.0
+algorithm time = 84.81467 s
+communication time = 5.61605 s
+inner solver = custom
+system_time_max = [16.92757296562195, 20.55051302909851, 19.442950010299683, 18.783035039901733]
+system_time_min = [16.63388419151306, 18.556326866149902, 18.49788784980774, 18.347837924957275]
+inner solver tols = [1e-15, 1e-15, 1e-15, 1e-15]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+abs err = 2.1861446910943612e-13
