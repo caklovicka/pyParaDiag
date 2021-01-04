@@ -2,292 +2,43 @@
 <analyse>
   <analyser name="analyse">
     <step name="sub_step">
-      <workpackage id="0">
-        <pattern name="tot_time" type="float">1.03836</pattern>
-        <pattern name="tot_time_min" type="float">1.03836</pattern>
-        <pattern name="tot_time_max" type="float">1.03836</pattern>
-        <pattern name="tot_time_sum" type="float">1.03836</pattern>
-        <pattern name="tot_time_sum2" type="float">1.0781914896</pattern>
+      <workpackage id="1">
+        <pattern name="tot_time" type="float">1.469</pattern>
+        <pattern name="tot_time_min" type="float">1.469</pattern>
+        <pattern name="tot_time_max" type="float">1.469</pattern>
+        <pattern name="tot_time_sum" type="float">1.469</pattern>
+        <pattern name="tot_time_sum2" type="float">2.1579610000000002</pattern>
         <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">1.03836</pattern>
+        <pattern name="tot_time_avg" type="float">1.469</pattern>
         <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">1.03836</pattern>
-        <pattern name="comm_time" type="float">0.11832</pattern>
-        <pattern name="comm_time_min" type="float">0.11832</pattern>
-        <pattern name="comm_time_max" type="float">0.11832</pattern>
-        <pattern name="comm_time_sum" type="float">0.11832</pattern>
-        <pattern name="comm_time_sum2" type="float">0.013999622399999998</pattern>
+        <pattern name="tot_time_last" type="float">1.469</pattern>
+        <pattern name="comm_time" type="float">0.16173</pattern>
+        <pattern name="comm_time_min" type="float">0.16173</pattern>
+        <pattern name="comm_time_max" type="float">0.16173</pattern>
+        <pattern name="comm_time_sum" type="float">0.16173</pattern>
+        <pattern name="comm_time_sum2" type="float">0.026156592900000004</pattern>
         <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.11832</pattern>
+        <pattern name="comm_time_avg" type="float">0.16173</pattern>
         <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.11832</pattern>
-        <pattern name="max_iters" type="float">6.0</pattern>
-        <pattern name="max_iters_min" type="float">6.0</pattern>
-        <pattern name="max_iters_max" type="float">6.0</pattern>
-        <pattern name="max_iters_sum" type="float">6.0</pattern>
-        <pattern name="max_iters_sum2" type="float">36.0</pattern>
+        <pattern name="comm_time_last" type="float">0.16173</pattern>
+        <pattern name="max_iters" type="float">4.0</pattern>
+        <pattern name="max_iters_min" type="float">4.0</pattern>
+        <pattern name="max_iters_max" type="float">4.0</pattern>
+        <pattern name="max_iters_sum" type="float">4.0</pattern>
+        <pattern name="max_iters_sum2" type="float">16.0</pattern>
         <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">6.0</pattern>
+        <pattern name="max_iters_avg" type="float">4.0</pattern>
         <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">6.0</pattern>
-        <pattern name="err" type="float">4.350986431759342e-13</pattern>
-        <pattern name="err_min" type="float">4.350986431759342e-13</pattern>
-        <pattern name="err_max" type="float">4.350986431759342e-13</pattern>
-        <pattern name="err_sum" type="float">4.350986431759342e-13</pattern>
-        <pattern name="err_sum2" type="float">1.893108292935389e-25</pattern>
+        <pattern name="max_iters_last" type="float">4.0</pattern>
+        <pattern name="err" type="float">4.2792758821680647e-13</pattern>
+        <pattern name="err_min" type="float">4.2792758821680647e-13</pattern>
+        <pattern name="err_max" type="float">4.2792758821680647e-13</pattern>
+        <pattern name="err_sum" type="float">4.2792758821680647e-13</pattern>
+        <pattern name="err_sum2" type="float">1.8312202075705268e-25</pattern>
         <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">4.350986431759342e-13</pattern>
+        <pattern name="err_avg" type="float">4.2792758821680647e-13</pattern>
         <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">4.350986431759342e-13</pattern>
-        <pattern name="tol" type="float">1e-12</pattern>
-        <pattern name="tol_min" type="float">1e-12</pattern>
-        <pattern name="tol_max" type="float">1e-12</pattern>
-        <pattern name="tol_sum" type="float">1e-12</pattern>
-        <pattern name="tol_sum2" type="float">1e-24</pattern>
-        <pattern name="tol_cnt" type="int">1</pattern>
-        <pattern name="tol_avg" type="float">1e-12</pattern>
-        <pattern name="tol_std" type="int">0</pattern>
-        <pattern name="tol_last" type="float">1e-12</pattern>
-        <pattern name="stol" type="float">1e-13</pattern>
-        <pattern name="stol_min" type="float">1e-13</pattern>
-        <pattern name="stol_max" type="float">1e-13</pattern>
-        <pattern name="stol_sum" type="float">1e-13</pattern>
-        <pattern name="stol_sum2" type="float">1e-26</pattern>
-        <pattern name="stol_cnt" type="int">1</pattern>
-        <pattern name="stol_avg" type="float">1e-13</pattern>
-        <pattern name="stol_std" type="int">0</pattern>
-        <pattern name="stol_last" type="float">1e-13</pattern>
-        <pattern name="T1" type="float">3.141592653589793</pattern>
-        <pattern name="T1_min" type="float">3.141592653589793</pattern>
-        <pattern name="T1_max" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
-        <pattern name="T1_cnt" type="int">1</pattern>
-        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
-        <pattern name="T1_std" type="int">0</pattern>
-        <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.151592653589793</pattern>
-        <pattern name="T2_min" type="float">3.151592653589793</pattern>
-        <pattern name="T2_max" type="float">3.151592653589793</pattern>
-        <pattern name="T2_sum" type="float">3.151592653589793</pattern>
-        <pattern name="T2_sum2" type="float">9.932536254161151</pattern>
-        <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.151592653589793</pattern>
-        <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.151592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
-        <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
-        <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
-      </workpackage>
-      <workpackage id="8">
-        <pattern name="tot_time" type="float">4.27734</pattern>
-        <pattern name="tot_time_min" type="float">4.27734</pattern>
-        <pattern name="tot_time_max" type="float">4.27734</pattern>
-        <pattern name="tot_time_sum" type="float">4.27734</pattern>
-        <pattern name="tot_time_sum2" type="float">18.295637475599996</pattern>
-        <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">4.27734</pattern>
-        <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">4.27734</pattern>
-        <pattern name="comm_time" type="float">0.0</pattern>
-        <pattern name="comm_time_min" type="float">0.0</pattern>
-        <pattern name="comm_time_max" type="float">0.0</pattern>
-        <pattern name="comm_time_sum" type="float">0.0</pattern>
-        <pattern name="comm_time_sum2" type="float">0.0</pattern>
-        <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.0</pattern>
-        <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.0</pattern>
-        <pattern name="max_iters" type="float">1.0</pattern>
-        <pattern name="max_iters_min" type="float">1.0</pattern>
-        <pattern name="max_iters_max" type="float">1.0</pattern>
-        <pattern name="max_iters_sum" type="float">1.0</pattern>
-        <pattern name="max_iters_sum2" type="float">1.0</pattern>
-        <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">1.0</pattern>
-        <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">1.0</pattern>
-        <pattern name="err" type="float">1.4231313888159282e-12</pattern>
-        <pattern name="err_min" type="float">1.4231313888159282e-12</pattern>
-        <pattern name="err_max" type="float">1.4231313888159282e-12</pattern>
-        <pattern name="err_sum" type="float">1.4231313888159282e-12</pattern>
-        <pattern name="err_sum2" type="float">2.0253029498331526e-24</pattern>
-        <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">1.4231313888159282e-12</pattern>
-        <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">1.4231313888159282e-12</pattern>
-        <pattern name="tol" type="float">1e-12</pattern>
-        <pattern name="tol_min" type="float">1e-12</pattern>
-        <pattern name="tol_max" type="float">1e-12</pattern>
-        <pattern name="tol_sum" type="float">1e-12</pattern>
-        <pattern name="tol_sum2" type="float">1e-24</pattern>
-        <pattern name="tol_cnt" type="int">1</pattern>
-        <pattern name="tol_avg" type="float">1e-12</pattern>
-        <pattern name="tol_std" type="int">0</pattern>
-        <pattern name="tol_last" type="float">1e-12</pattern>
-        <pattern name="stol" type="float">1e-13</pattern>
-        <pattern name="stol_min" type="float">1e-13</pattern>
-        <pattern name="stol_max" type="float">1e-13</pattern>
-        <pattern name="stol_sum" type="float">1e-13</pattern>
-        <pattern name="stol_sum2" type="float">1e-26</pattern>
-        <pattern name="stol_cnt" type="int">1</pattern>
-        <pattern name="stol_avg" type="float">1e-13</pattern>
-        <pattern name="stol_std" type="int">0</pattern>
-        <pattern name="stol_last" type="float">1e-13</pattern>
-        <pattern name="T1" type="float">3.141592653589793</pattern>
-        <pattern name="T1_min" type="float">3.141592653589793</pattern>
-        <pattern name="T1_max" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
-        <pattern name="T1_cnt" type="int">1</pattern>
-        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
-        <pattern name="T1_std" type="int">0</pattern>
-        <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.221592653589793</pattern>
-        <pattern name="T2_min" type="float">3.221592653589793</pattern>
-        <pattern name="T2_max" type="float">3.221592653589793</pattern>
-        <pattern name="T2_sum" type="float">3.221592653589793</pattern>
-        <pattern name="T2_sum2" type="float">10.378659225663725</pattern>
-        <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.221592653589793</pattern>
-        <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.221592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
-        <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
-        <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
-      </workpackage>
-      <workpackage id="7">
-        <pattern name="tot_time" type="float">2.13363</pattern>
-        <pattern name="tot_time_min" type="float">2.13363</pattern>
-        <pattern name="tot_time_max" type="float">2.13363</pattern>
-        <pattern name="tot_time_sum" type="float">2.13363</pattern>
-        <pattern name="tot_time_sum2" type="float">4.552376976900001</pattern>
-        <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">2.13363</pattern>
-        <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">2.13363</pattern>
-        <pattern name="comm_time" type="float">0.0</pattern>
-        <pattern name="comm_time_min" type="float">0.0</pattern>
-        <pattern name="comm_time_max" type="float">0.0</pattern>
-        <pattern name="comm_time_sum" type="float">0.0</pattern>
-        <pattern name="comm_time_sum2" type="float">0.0</pattern>
-        <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.0</pattern>
-        <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.0</pattern>
-        <pattern name="max_iters" type="float">1.0</pattern>
-        <pattern name="max_iters_min" type="float">1.0</pattern>
-        <pattern name="max_iters_max" type="float">1.0</pattern>
-        <pattern name="max_iters_sum" type="float">1.0</pattern>
-        <pattern name="max_iters_sum2" type="float">1.0</pattern>
-        <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">1.0</pattern>
-        <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">1.0</pattern>
-        <pattern name="err" type="float">1.4323582055215687e-12</pattern>
-        <pattern name="err_min" type="float">1.4323582055215687e-12</pattern>
-        <pattern name="err_max" type="float">1.4323582055215687e-12</pattern>
-        <pattern name="err_sum" type="float">1.4323582055215687e-12</pattern>
-        <pattern name="err_sum2" type="float">2.0516500289249684e-24</pattern>
-        <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">1.4323582055215687e-12</pattern>
-        <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">1.4323582055215687e-12</pattern>
-        <pattern name="tol" type="float">1e-12</pattern>
-        <pattern name="tol_min" type="float">1e-12</pattern>
-        <pattern name="tol_max" type="float">1e-12</pattern>
-        <pattern name="tol_sum" type="float">1e-12</pattern>
-        <pattern name="tol_sum2" type="float">1e-24</pattern>
-        <pattern name="tol_cnt" type="int">1</pattern>
-        <pattern name="tol_avg" type="float">1e-12</pattern>
-        <pattern name="tol_std" type="int">0</pattern>
-        <pattern name="tol_last" type="float">1e-12</pattern>
-        <pattern name="stol" type="float">1e-13</pattern>
-        <pattern name="stol_min" type="float">1e-13</pattern>
-        <pattern name="stol_max" type="float">1e-13</pattern>
-        <pattern name="stol_sum" type="float">1e-13</pattern>
-        <pattern name="stol_sum2" type="float">1e-26</pattern>
-        <pattern name="stol_cnt" type="int">1</pattern>
-        <pattern name="stol_avg" type="float">1e-13</pattern>
-        <pattern name="stol_std" type="int">0</pattern>
-        <pattern name="stol_last" type="float">1e-13</pattern>
-        <pattern name="T1" type="float">3.141592653589793</pattern>
-        <pattern name="T1_min" type="float">3.141592653589793</pattern>
-        <pattern name="T1_max" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
-        <pattern name="T1_cnt" type="int">1</pattern>
-        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
-        <pattern name="T1_std" type="int">0</pattern>
-        <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.181592653589793</pattern>
-        <pattern name="T2_min" type="float">3.181592653589793</pattern>
-        <pattern name="T2_max" type="float">3.181592653589793</pattern>
-        <pattern name="T2_sum" type="float">3.181592653589793</pattern>
-        <pattern name="T2_sum2" type="float">10.122531813376542</pattern>
-        <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.181592653589793</pattern>
-        <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.181592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
-        <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
-        <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
-      </workpackage>
-      <workpackage id="6">
-        <pattern name="tot_time" type="float">1.09941</pattern>
-        <pattern name="tot_time_min" type="float">1.09941</pattern>
-        <pattern name="tot_time_max" type="float">1.09941</pattern>
-        <pattern name="tot_time_sum" type="float">1.09941</pattern>
-        <pattern name="tot_time_sum2" type="float">1.2087023481</pattern>
-        <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">1.09941</pattern>
-        <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">1.09941</pattern>
-        <pattern name="comm_time" type="float">0.0</pattern>
-        <pattern name="comm_time_min" type="float">0.0</pattern>
-        <pattern name="comm_time_max" type="float">0.0</pattern>
-        <pattern name="comm_time_sum" type="float">0.0</pattern>
-        <pattern name="comm_time_sum2" type="float">0.0</pattern>
-        <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.0</pattern>
-        <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.0</pattern>
-        <pattern name="max_iters" type="float">1.0</pattern>
-        <pattern name="max_iters_min" type="float">1.0</pattern>
-        <pattern name="max_iters_max" type="float">1.0</pattern>
-        <pattern name="max_iters_sum" type="float">1.0</pattern>
-        <pattern name="max_iters_sum2" type="float">1.0</pattern>
-        <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">1.0</pattern>
-        <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">1.0</pattern>
-        <pattern name="err" type="float">8.295753818695653e-13</pattern>
-        <pattern name="err_min" type="float">8.295753818695653e-13</pattern>
-        <pattern name="err_max" type="float">8.295753818695653e-13</pattern>
-        <pattern name="err_sum" type="float">8.295753818695653e-13</pattern>
-        <pattern name="err_sum2" type="float">6.881953142040351e-25</pattern>
-        <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">8.295753818695653e-13</pattern>
-        <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">8.295753818695653e-13</pattern>
+        <pattern name="err_last" type="float">4.2792758821680647e-13</pattern>
         <pattern name="tol" type="float">1e-12</pattern>
         <pattern name="tol_min" type="float">1e-12</pattern>
         <pattern name="tol_max" type="float">1e-12</pattern>
@@ -324,26 +75,26 @@
         <pattern name="T2_avg" type="float">3.161592653589793</pattern>
         <pattern name="T2_std" type="int">0</pattern>
         <pattern name="T2_last" type="float">3.161592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
         <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
         <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
       </workpackage>
-      <workpackage id="5">
-        <pattern name="tot_time" type="float">0.56505</pattern>
-        <pattern name="tot_time_min" type="float">0.56505</pattern>
-        <pattern name="tot_time_max" type="float">0.56505</pattern>
-        <pattern name="tot_time_sum" type="float">0.56505</pattern>
-        <pattern name="tot_time_sum2" type="float">0.31928150250000004</pattern>
+      <workpackage id="8">
+        <pattern name="tot_time" type="float">6.24155</pattern>
+        <pattern name="tot_time_min" type="float">6.24155</pattern>
+        <pattern name="tot_time_max" type="float">6.24155</pattern>
+        <pattern name="tot_time_sum" type="float">6.24155</pattern>
+        <pattern name="tot_time_sum2" type="float">38.9569464025</pattern>
         <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">0.56505</pattern>
+        <pattern name="tot_time_avg" type="float">6.24155</pattern>
         <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">0.56505</pattern>
+        <pattern name="tot_time_last" type="float">6.24155</pattern>
         <pattern name="comm_time" type="float">0.0</pattern>
         <pattern name="comm_time_min" type="float">0.0</pattern>
         <pattern name="comm_time_max" type="float">0.0</pattern>
@@ -362,181 +113,15 @@
         <pattern name="max_iters_avg" type="float">1.0</pattern>
         <pattern name="max_iters_std" type="int">0</pattern>
         <pattern name="max_iters_last" type="float">1.0</pattern>
-        <pattern name="err" type="float">4.788719323573123e-13</pattern>
-        <pattern name="err_min" type="float">4.788719323573123e-13</pattern>
-        <pattern name="err_max" type="float">4.788719323573123e-13</pattern>
-        <pattern name="err_sum" type="float">4.788719323573123e-13</pattern>
-        <pattern name="err_sum2" type="float">2.293183275996263e-25</pattern>
+        <pattern name="err" type="float">3.3579520833033127e-13</pattern>
+        <pattern name="err_min" type="float">3.3579520833033127e-13</pattern>
+        <pattern name="err_max" type="float">3.3579520833033127e-13</pattern>
+        <pattern name="err_sum" type="float">3.3579520833033127e-13</pattern>
+        <pattern name="err_sum2" type="float">1.1275842193761058e-25</pattern>
         <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">4.788719323573123e-13</pattern>
+        <pattern name="err_avg" type="float">3.3579520833033127e-13</pattern>
         <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">4.788719323573123e-13</pattern>
-        <pattern name="tol" type="float">1e-12</pattern>
-        <pattern name="tol_min" type="float">1e-12</pattern>
-        <pattern name="tol_max" type="float">1e-12</pattern>
-        <pattern name="tol_sum" type="float">1e-12</pattern>
-        <pattern name="tol_sum2" type="float">1e-24</pattern>
-        <pattern name="tol_cnt" type="int">1</pattern>
-        <pattern name="tol_avg" type="float">1e-12</pattern>
-        <pattern name="tol_std" type="int">0</pattern>
-        <pattern name="tol_last" type="float">1e-12</pattern>
-        <pattern name="stol" type="float">1e-13</pattern>
-        <pattern name="stol_min" type="float">1e-13</pattern>
-        <pattern name="stol_max" type="float">1e-13</pattern>
-        <pattern name="stol_sum" type="float">1e-13</pattern>
-        <pattern name="stol_sum2" type="float">1e-26</pattern>
-        <pattern name="stol_cnt" type="int">1</pattern>
-        <pattern name="stol_avg" type="float">1e-13</pattern>
-        <pattern name="stol_std" type="int">0</pattern>
-        <pattern name="stol_last" type="float">1e-13</pattern>
-        <pattern name="T1" type="float">3.141592653589793</pattern>
-        <pattern name="T1_min" type="float">3.141592653589793</pattern>
-        <pattern name="T1_max" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
-        <pattern name="T1_cnt" type="int">1</pattern>
-        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
-        <pattern name="T1_std" type="int">0</pattern>
-        <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.151592653589793</pattern>
-        <pattern name="T2_min" type="float">3.151592653589793</pattern>
-        <pattern name="T2_max" type="float">3.151592653589793</pattern>
-        <pattern name="T2_sum" type="float">3.151592653589793</pattern>
-        <pattern name="T2_sum2" type="float">9.932536254161151</pattern>
-        <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.151592653589793</pattern>
-        <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.151592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
-        <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
-        <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
-      </workpackage>
-      <workpackage id="4">
-        <pattern name="tot_time" type="float">2.7794</pattern>
-        <pattern name="tot_time_min" type="float">2.7794</pattern>
-        <pattern name="tot_time_max" type="float">2.7794</pattern>
-        <pattern name="tot_time_sum" type="float">2.7794</pattern>
-        <pattern name="tot_time_sum2" type="float">7.725064359999999</pattern>
-        <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">2.7794</pattern>
-        <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">2.7794</pattern>
-        <pattern name="comm_time" type="float">0.66648</pattern>
-        <pattern name="comm_time_min" type="float">0.66648</pattern>
-        <pattern name="comm_time_max" type="float">0.66648</pattern>
-        <pattern name="comm_time_sum" type="float">0.66648</pattern>
-        <pattern name="comm_time_sum2" type="float">0.44419559039999995</pattern>
-        <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.66648</pattern>
-        <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.66648</pattern>
-        <pattern name="max_iters" type="float">8.0</pattern>
-        <pattern name="max_iters_min" type="float">8.0</pattern>
-        <pattern name="max_iters_max" type="float">8.0</pattern>
-        <pattern name="max_iters_sum" type="float">8.0</pattern>
-        <pattern name="max_iters_sum2" type="float">64.0</pattern>
-        <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">8.0</pattern>
-        <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">8.0</pattern>
-        <pattern name="err" type="float">1.4663751704735206e-13</pattern>
-        <pattern name="err_min" type="float">1.4663751704735206e-13</pattern>
-        <pattern name="err_max" type="float">1.4663751704735206e-13</pattern>
-        <pattern name="err_sum" type="float">1.4663751704735206e-13</pattern>
-        <pattern name="err_sum2" type="float">2.1502561405812465e-26</pattern>
-        <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">1.4663751704735206e-13</pattern>
-        <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">1.4663751704735206e-13</pattern>
-        <pattern name="tol" type="float">1e-12</pattern>
-        <pattern name="tol_min" type="float">1e-12</pattern>
-        <pattern name="tol_max" type="float">1e-12</pattern>
-        <pattern name="tol_sum" type="float">1e-12</pattern>
-        <pattern name="tol_sum2" type="float">1e-24</pattern>
-        <pattern name="tol_cnt" type="int">1</pattern>
-        <pattern name="tol_avg" type="float">1e-12</pattern>
-        <pattern name="tol_std" type="int">0</pattern>
-        <pattern name="tol_last" type="float">1e-12</pattern>
-        <pattern name="stol" type="float">1e-13</pattern>
-        <pattern name="stol_min" type="float">1e-13</pattern>
-        <pattern name="stol_max" type="float">1e-13</pattern>
-        <pattern name="stol_sum" type="float">1e-13</pattern>
-        <pattern name="stol_sum2" type="float">1e-26</pattern>
-        <pattern name="stol_cnt" type="int">1</pattern>
-        <pattern name="stol_avg" type="float">1e-13</pattern>
-        <pattern name="stol_std" type="int">0</pattern>
-        <pattern name="stol_last" type="float">1e-13</pattern>
-        <pattern name="T1" type="float">3.141592653589793</pattern>
-        <pattern name="T1_min" type="float">3.141592653589793</pattern>
-        <pattern name="T1_max" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
-        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
-        <pattern name="T1_cnt" type="int">1</pattern>
-        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
-        <pattern name="T1_std" type="int">0</pattern>
-        <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.3015926535897933</pattern>
-        <pattern name="T2_min" type="float">3.3015926535897933</pattern>
-        <pattern name="T2_max" type="float">3.3015926535897933</pattern>
-        <pattern name="T2_sum" type="float">3.3015926535897933</pattern>
-        <pattern name="T2_sum2" type="float">10.900514050238092</pattern>
-        <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.3015926535897933</pattern>
-        <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.3015926535897933</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
-        <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
-        <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
-      </workpackage>
-      <workpackage id="3">
-        <pattern name="tot_time" type="float">1.33518</pattern>
-        <pattern name="tot_time_min" type="float">1.33518</pattern>
-        <pattern name="tot_time_max" type="float">1.33518</pattern>
-        <pattern name="tot_time_sum" type="float">1.33518</pattern>
-        <pattern name="tot_time_sum2" type="float">1.7827056324000001</pattern>
-        <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">1.33518</pattern>
-        <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">1.33518</pattern>
-        <pattern name="comm_time" type="float">0.25622</pattern>
-        <pattern name="comm_time_min" type="float">0.25622</pattern>
-        <pattern name="comm_time_max" type="float">0.25622</pattern>
-        <pattern name="comm_time_sum" type="float">0.25622</pattern>
-        <pattern name="comm_time_sum2" type="float">0.0656486884</pattern>
-        <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.25622</pattern>
-        <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.25622</pattern>
-        <pattern name="max_iters" type="float">4.0</pattern>
-        <pattern name="max_iters_min" type="float">4.0</pattern>
-        <pattern name="max_iters_max" type="float">4.0</pattern>
-        <pattern name="max_iters_sum" type="float">4.0</pattern>
-        <pattern name="max_iters_sum2" type="float">16.0</pattern>
-        <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">4.0</pattern>
-        <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">4.0</pattern>
-        <pattern name="err" type="float">4.635053797848721e-13</pattern>
-        <pattern name="err_min" type="float">4.635053797848721e-13</pattern>
-        <pattern name="err_max" type="float">4.635053797848721e-13</pattern>
-        <pattern name="err_sum" type="float">4.635053797848721e-13</pattern>
-        <pattern name="err_sum2" type="float">2.1483723708951846e-25</pattern>
-        <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">4.635053797848721e-13</pattern>
-        <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">4.635053797848721e-13</pattern>
+        <pattern name="err_last" type="float">3.3579520833033127e-13</pattern>
         <pattern name="tol" type="float">1e-12</pattern>
         <pattern name="tol_min" type="float">1e-12</pattern>
         <pattern name="tol_max" type="float">1e-12</pattern>
@@ -573,53 +158,53 @@
         <pattern name="T2_avg" type="float">3.221592653589793</pattern>
         <pattern name="T2_std" type="int">0</pattern>
         <pattern name="T2_last" type="float">3.221592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
         <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
         <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
       </workpackage>
-      <workpackage id="2">
-        <pattern name="tot_time" type="float">1.16484</pattern>
-        <pattern name="tot_time_min" type="float">1.16484</pattern>
-        <pattern name="tot_time_max" type="float">1.16484</pattern>
-        <pattern name="tot_time_sum" type="float">1.16484</pattern>
-        <pattern name="tot_time_sum2" type="float">1.3568522256000002</pattern>
+      <workpackage id="6">
+        <pattern name="tot_time" type="float">1.54604</pattern>
+        <pattern name="tot_time_min" type="float">1.54604</pattern>
+        <pattern name="tot_time_max" type="float">1.54604</pattern>
+        <pattern name="tot_time_sum" type="float">1.54604</pattern>
+        <pattern name="tot_time_sum2" type="float">2.3902396816</pattern>
         <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">1.16484</pattern>
+        <pattern name="tot_time_avg" type="float">1.54604</pattern>
         <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">1.16484</pattern>
-        <pattern name="comm_time" type="float">0.16942</pattern>
-        <pattern name="comm_time_min" type="float">0.16942</pattern>
-        <pattern name="comm_time_max" type="float">0.16942</pattern>
-        <pattern name="comm_time_sum" type="float">0.16942</pattern>
-        <pattern name="comm_time_sum2" type="float">0.028703136399999996</pattern>
+        <pattern name="tot_time_last" type="float">1.54604</pattern>
+        <pattern name="comm_time" type="float">0.0</pattern>
+        <pattern name="comm_time_min" type="float">0.0</pattern>
+        <pattern name="comm_time_max" type="float">0.0</pattern>
+        <pattern name="comm_time_sum" type="float">0.0</pattern>
+        <pattern name="comm_time_sum2" type="float">0.0</pattern>
         <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.16942</pattern>
+        <pattern name="comm_time_avg" type="float">0.0</pattern>
         <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.16942</pattern>
-        <pattern name="max_iters" type="float">4.0</pattern>
-        <pattern name="max_iters_min" type="float">4.0</pattern>
-        <pattern name="max_iters_max" type="float">4.0</pattern>
-        <pattern name="max_iters_sum" type="float">4.0</pattern>
-        <pattern name="max_iters_sum2" type="float">16.0</pattern>
+        <pattern name="comm_time_last" type="float">0.0</pattern>
+        <pattern name="max_iters" type="float">1.0</pattern>
+        <pattern name="max_iters_min" type="float">1.0</pattern>
+        <pattern name="max_iters_max" type="float">1.0</pattern>
+        <pattern name="max_iters_sum" type="float">1.0</pattern>
+        <pattern name="max_iters_sum2" type="float">1.0</pattern>
         <pattern name="max_iters_cnt" type="int">1</pattern>
-        <pattern name="max_iters_avg" type="float">4.0</pattern>
+        <pattern name="max_iters_avg" type="float">1.0</pattern>
         <pattern name="max_iters_std" type="int">0</pattern>
-        <pattern name="max_iters_last" type="float">4.0</pattern>
-        <pattern name="err" type="float">5.195139370433923e-13</pattern>
-        <pattern name="err_min" type="float">5.195139370433923e-13</pattern>
-        <pattern name="err_max" type="float">5.195139370433923e-13</pattern>
-        <pattern name="err_sum" type="float">5.195139370433923e-13</pattern>
-        <pattern name="err_sum2" type="float">2.6989473078232577e-25</pattern>
+        <pattern name="max_iters_last" type="float">1.0</pattern>
+        <pattern name="err" type="float">1.9667791244549186e-13</pattern>
+        <pattern name="err_min" type="float">1.9667791244549186e-13</pattern>
+        <pattern name="err_max" type="float">1.9667791244549186e-13</pattern>
+        <pattern name="err_sum" type="float">1.9667791244549186e-13</pattern>
+        <pattern name="err_sum2" type="float">3.868220124391656e-26</pattern>
         <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">5.195139370433923e-13</pattern>
+        <pattern name="err_avg" type="float">1.9667791244549186e-13</pattern>
         <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">5.195139370433923e-13</pattern>
+        <pattern name="err_last" type="float">1.9667791244549186e-13</pattern>
         <pattern name="tol" type="float">1e-12</pattern>
         <pattern name="tol_min" type="float">1e-12</pattern>
         <pattern name="tol_max" type="float">1e-12</pattern>
@@ -647,44 +232,127 @@
         <pattern name="T1_avg" type="float">3.141592653589793</pattern>
         <pattern name="T1_std" type="int">0</pattern>
         <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.181592653589793</pattern>
-        <pattern name="T2_min" type="float">3.181592653589793</pattern>
-        <pattern name="T2_max" type="float">3.181592653589793</pattern>
-        <pattern name="T2_sum" type="float">3.181592653589793</pattern>
-        <pattern name="T2_sum2" type="float">10.122531813376542</pattern>
+        <pattern name="T2" type="float">3.161592653589793</pattern>
+        <pattern name="T2_min" type="float">3.161592653589793</pattern>
+        <pattern name="T2_max" type="float">3.161592653589793</pattern>
+        <pattern name="T2_sum" type="float">3.161592653589793</pattern>
+        <pattern name="T2_sum2" type="float">9.99566810723295</pattern>
         <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.181592653589793</pattern>
+        <pattern name="T2_avg" type="float">3.161592653589793</pattern>
         <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.181592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
+        <pattern name="T2_last" type="float">3.161592653589793</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
         <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
         <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
       </workpackage>
-      <workpackage id="1">
-        <pattern name="tot_time" type="float">1.11132</pattern>
-        <pattern name="tot_time_min" type="float">1.11132</pattern>
-        <pattern name="tot_time_max" type="float">1.11132</pattern>
-        <pattern name="tot_time_sum" type="float">1.11132</pattern>
-        <pattern name="tot_time_sum2" type="float">1.2350321424000001</pattern>
+      <workpackage id="4">
+        <pattern name="tot_time" type="float">2.22191</pattern>
+        <pattern name="tot_time_min" type="float">2.22191</pattern>
+        <pattern name="tot_time_max" type="float">2.22191</pattern>
+        <pattern name="tot_time_sum" type="float">2.22191</pattern>
+        <pattern name="tot_time_sum2" type="float">4.9368840481</pattern>
         <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">1.11132</pattern>
+        <pattern name="tot_time_avg" type="float">2.22191</pattern>
         <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">1.11132</pattern>
-        <pattern name="comm_time" type="float">0.14805</pattern>
-        <pattern name="comm_time_min" type="float">0.14805</pattern>
-        <pattern name="comm_time_max" type="float">0.14805</pattern>
-        <pattern name="comm_time_sum" type="float">0.14805</pattern>
-        <pattern name="comm_time_sum2" type="float">0.021918802499999997</pattern>
+        <pattern name="tot_time_last" type="float">2.22191</pattern>
+        <pattern name="comm_time" type="float">0.42691</pattern>
+        <pattern name="comm_time_min" type="float">0.42691</pattern>
+        <pattern name="comm_time_max" type="float">0.42691</pattern>
+        <pattern name="comm_time_sum" type="float">0.42691</pattern>
+        <pattern name="comm_time_sum2" type="float">0.1822521481</pattern>
         <pattern name="comm_time_cnt" type="int">1</pattern>
-        <pattern name="comm_time_avg" type="float">0.14805</pattern>
+        <pattern name="comm_time_avg" type="float">0.42691</pattern>
         <pattern name="comm_time_std" type="int">0</pattern>
-        <pattern name="comm_time_last" type="float">0.14805</pattern>
+        <pattern name="comm_time_last" type="float">0.42691</pattern>
+        <pattern name="max_iters" type="float">4.0</pattern>
+        <pattern name="max_iters_min" type="float">4.0</pattern>
+        <pattern name="max_iters_max" type="float">4.0</pattern>
+        <pattern name="max_iters_sum" type="float">4.0</pattern>
+        <pattern name="max_iters_sum2" type="float">16.0</pattern>
+        <pattern name="max_iters_cnt" type="int">1</pattern>
+        <pattern name="max_iters_avg" type="float">4.0</pattern>
+        <pattern name="max_iters_std" type="int">0</pattern>
+        <pattern name="max_iters_last" type="float">4.0</pattern>
+        <pattern name="err" type="float">8.382029277914243e-13</pattern>
+        <pattern name="err_min" type="float">8.382029277914243e-13</pattern>
+        <pattern name="err_max" type="float">8.382029277914243e-13</pattern>
+        <pattern name="err_sum" type="float">8.382029277914243e-13</pattern>
+        <pattern name="err_sum2" type="float">7.025841481581158e-25</pattern>
+        <pattern name="err_cnt" type="int">1</pattern>
+        <pattern name="err_avg" type="float">8.382029277914243e-13</pattern>
+        <pattern name="err_std" type="int">0</pattern>
+        <pattern name="err_last" type="float">8.382029277914243e-13</pattern>
+        <pattern name="tol" type="float">1e-12</pattern>
+        <pattern name="tol_min" type="float">1e-12</pattern>
+        <pattern name="tol_max" type="float">1e-12</pattern>
+        <pattern name="tol_sum" type="float">1e-12</pattern>
+        <pattern name="tol_sum2" type="float">1e-24</pattern>
+        <pattern name="tol_cnt" type="int">1</pattern>
+        <pattern name="tol_avg" type="float">1e-12</pattern>
+        <pattern name="tol_std" type="int">0</pattern>
+        <pattern name="tol_last" type="float">1e-12</pattern>
+        <pattern name="stol" type="float">1e-13</pattern>
+        <pattern name="stol_min" type="float">1e-13</pattern>
+        <pattern name="stol_max" type="float">1e-13</pattern>
+        <pattern name="stol_sum" type="float">1e-13</pattern>
+        <pattern name="stol_sum2" type="float">1e-26</pattern>
+        <pattern name="stol_cnt" type="int">1</pattern>
+        <pattern name="stol_avg" type="float">1e-13</pattern>
+        <pattern name="stol_std" type="int">0</pattern>
+        <pattern name="stol_last" type="float">1e-13</pattern>
+        <pattern name="T1" type="float">3.141592653589793</pattern>
+        <pattern name="T1_min" type="float">3.141592653589793</pattern>
+        <pattern name="T1_max" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
+        <pattern name="T1_cnt" type="int">1</pattern>
+        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
+        <pattern name="T1_std" type="int">0</pattern>
+        <pattern name="T1_last" type="float">3.141592653589793</pattern>
+        <pattern name="T2" type="float">3.3015926535897933</pattern>
+        <pattern name="T2_min" type="float">3.3015926535897933</pattern>
+        <pattern name="T2_max" type="float">3.3015926535897933</pattern>
+        <pattern name="T2_sum" type="float">3.3015926535897933</pattern>
+        <pattern name="T2_sum2" type="float">10.900514050238092</pattern>
+        <pattern name="T2_cnt" type="int">1</pattern>
+        <pattern name="T2_avg" type="float">3.3015926535897933</pattern>
+        <pattern name="T2_std" type="int">0</pattern>
+        <pattern name="T2_last" type="float">3.3015926535897933</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
+        <pattern name="Nx_cnt" type="int">1</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
+        <pattern name="Nx_std" type="int">0</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
+      </workpackage>
+      <workpackage id="2">
+        <pattern name="tot_time" type="float">2.16309</pattern>
+        <pattern name="tot_time_min" type="float">2.16309</pattern>
+        <pattern name="tot_time_max" type="float">2.16309</pattern>
+        <pattern name="tot_time_sum" type="float">2.16309</pattern>
+        <pattern name="tot_time_sum2" type="float">4.6789583481</pattern>
+        <pattern name="tot_time_cnt" type="int">1</pattern>
+        <pattern name="tot_time_avg" type="float">2.16309</pattern>
+        <pattern name="tot_time_std" type="int">0</pattern>
+        <pattern name="tot_time_last" type="float">2.16309</pattern>
+        <pattern name="comm_time" type="float">0.2913</pattern>
+        <pattern name="comm_time_min" type="float">0.2913</pattern>
+        <pattern name="comm_time_max" type="float">0.2913</pattern>
+        <pattern name="comm_time_sum" type="float">0.2913</pattern>
+        <pattern name="comm_time_sum2" type="float">0.08485569</pattern>
+        <pattern name="comm_time_cnt" type="int">1</pattern>
+        <pattern name="comm_time_avg" type="float">0.2913</pattern>
+        <pattern name="comm_time_std" type="int">0</pattern>
+        <pattern name="comm_time_last" type="float">0.2913</pattern>
         <pattern name="max_iters" type="float">5.0</pattern>
         <pattern name="max_iters_min" type="float">5.0</pattern>
         <pattern name="max_iters_max" type="float">5.0</pattern>
@@ -694,15 +362,15 @@
         <pattern name="max_iters_avg" type="float">5.0</pattern>
         <pattern name="max_iters_std" type="int">0</pattern>
         <pattern name="max_iters_last" type="float">5.0</pattern>
-        <pattern name="err" type="float">5.984235647790902e-13</pattern>
-        <pattern name="err_min" type="float">5.984235647790902e-13</pattern>
-        <pattern name="err_max" type="float">5.984235647790902e-13</pattern>
-        <pattern name="err_sum" type="float">5.984235647790902e-13</pattern>
-        <pattern name="err_sum2" type="float">3.5811076288291397e-25</pattern>
+        <pattern name="err" type="float">7.437949550213845e-13</pattern>
+        <pattern name="err_min" type="float">7.437949550213845e-13</pattern>
+        <pattern name="err_max" type="float">7.437949550213845e-13</pattern>
+        <pattern name="err_sum" type="float">7.437949550213845e-13</pattern>
+        <pattern name="err_sum2" type="float">5.532309351152634e-25</pattern>
         <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">5.984235647790902e-13</pattern>
+        <pattern name="err_avg" type="float">7.437949550213845e-13</pattern>
         <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">5.984235647790902e-13</pattern>
+        <pattern name="err_last" type="float">7.437949550213845e-13</pattern>
         <pattern name="tol" type="float">1e-12</pattern>
         <pattern name="tol_min" type="float">1e-12</pattern>
         <pattern name="tol_max" type="float">1e-12</pattern>
@@ -730,35 +398,35 @@
         <pattern name="T1_avg" type="float">3.141592653589793</pattern>
         <pattern name="T1_std" type="int">0</pattern>
         <pattern name="T1_last" type="float">3.141592653589793</pattern>
-        <pattern name="T2" type="float">3.161592653589793</pattern>
-        <pattern name="T2_min" type="float">3.161592653589793</pattern>
-        <pattern name="T2_max" type="float">3.161592653589793</pattern>
-        <pattern name="T2_sum" type="float">3.161592653589793</pattern>
-        <pattern name="T2_sum2" type="float">9.99566810723295</pattern>
+        <pattern name="T2" type="float">3.181592653589793</pattern>
+        <pattern name="T2_min" type="float">3.181592653589793</pattern>
+        <pattern name="T2_max" type="float">3.181592653589793</pattern>
+        <pattern name="T2_sum" type="float">3.181592653589793</pattern>
+        <pattern name="T2_sum2" type="float">10.122531813376542</pattern>
         <pattern name="T2_cnt" type="int">1</pattern>
-        <pattern name="T2_avg" type="float">3.161592653589793</pattern>
+        <pattern name="T2_avg" type="float">3.181592653589793</pattern>
         <pattern name="T2_std" type="int">0</pattern>
-        <pattern name="T2_last" type="float">3.161592653589793</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
+        <pattern name="T2_last" type="float">3.181592653589793</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
         <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
         <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
       </workpackage>
       <workpackage id="9">
-        <pattern name="tot_time" type="float">8.44161</pattern>
-        <pattern name="tot_time_min" type="float">8.44161</pattern>
-        <pattern name="tot_time_max" type="float">8.44161</pattern>
-        <pattern name="tot_time_sum" type="float">8.44161</pattern>
-        <pattern name="tot_time_sum2" type="float">71.2607793921</pattern>
+        <pattern name="tot_time" type="float">12.61721</pattern>
+        <pattern name="tot_time_min" type="float">12.61721</pattern>
+        <pattern name="tot_time_max" type="float">12.61721</pattern>
+        <pattern name="tot_time_sum" type="float">12.61721</pattern>
+        <pattern name="tot_time_sum2" type="float">159.1939881841</pattern>
         <pattern name="tot_time_cnt" type="int">1</pattern>
-        <pattern name="tot_time_avg" type="float">8.44161</pattern>
+        <pattern name="tot_time_avg" type="float">12.61721</pattern>
         <pattern name="tot_time_std" type="int">0</pattern>
-        <pattern name="tot_time_last" type="float">8.44161</pattern>
+        <pattern name="tot_time_last" type="float">12.61721</pattern>
         <pattern name="comm_time" type="float">0.0</pattern>
         <pattern name="comm_time_min" type="float">0.0</pattern>
         <pattern name="comm_time_max" type="float">0.0</pattern>
@@ -777,15 +445,15 @@
         <pattern name="max_iters_avg" type="float">1.0</pattern>
         <pattern name="max_iters_std" type="int">0</pattern>
         <pattern name="max_iters_last" type="float">1.0</pattern>
-        <pattern name="err" type="float">1.4561829851072345e-12</pattern>
-        <pattern name="err_min" type="float">1.4561829851072345e-12</pattern>
-        <pattern name="err_max" type="float">1.4561829851072345e-12</pattern>
-        <pattern name="err_sum" type="float">1.4561829851072345e-12</pattern>
-        <pattern name="err_sum2" type="float">2.1204688861158163e-24</pattern>
+        <pattern name="err" type="float">2.5622679856343116e-13</pattern>
+        <pattern name="err_min" type="float">2.5622679856343116e-13</pattern>
+        <pattern name="err_max" type="float">2.5622679856343116e-13</pattern>
+        <pattern name="err_sum" type="float">2.5622679856343116e-13</pattern>
+        <pattern name="err_sum2" type="float">6.565217230206513e-26</pattern>
         <pattern name="err_cnt" type="int">1</pattern>
-        <pattern name="err_avg" type="float">1.4561829851072345e-12</pattern>
+        <pattern name="err_avg" type="float">2.5622679856343116e-13</pattern>
         <pattern name="err_std" type="int">0</pattern>
-        <pattern name="err_last" type="float">1.4561829851072345e-12</pattern>
+        <pattern name="err_last" type="float">2.5622679856343116e-13</pattern>
         <pattern name="tol" type="float">1e-12</pattern>
         <pattern name="tol_min" type="float">1e-12</pattern>
         <pattern name="tol_max" type="float">1e-12</pattern>
@@ -822,15 +490,347 @@
         <pattern name="T2_avg" type="float">3.3015926535897933</pattern>
         <pattern name="T2_std" type="int">0</pattern>
         <pattern name="T2_last" type="float">3.3015926535897933</pattern>
-        <pattern name="Nx" type="int">300</pattern>
-        <pattern name="Nx_min" type="int">300</pattern>
-        <pattern name="Nx_max" type="int">300</pattern>
-        <pattern name="Nx_sum" type="int">300</pattern>
-        <pattern name="Nx_sum2" type="int">90000</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
         <pattern name="Nx_cnt" type="int">1</pattern>
-        <pattern name="Nx_avg" type="float">300.0</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
         <pattern name="Nx_std" type="int">0</pattern>
-        <pattern name="Nx_last" type="int">300</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
+      </workpackage>
+      <workpackage id="0">
+        <pattern name="tot_time" type="float">1.07071</pattern>
+        <pattern name="tot_time_min" type="float">1.07071</pattern>
+        <pattern name="tot_time_max" type="float">1.07071</pattern>
+        <pattern name="tot_time_sum" type="float">1.07071</pattern>
+        <pattern name="tot_time_sum2" type="float">1.1464199041</pattern>
+        <pattern name="tot_time_cnt" type="int">1</pattern>
+        <pattern name="tot_time_avg" type="float">1.07071</pattern>
+        <pattern name="tot_time_std" type="int">0</pattern>
+        <pattern name="tot_time_last" type="float">1.07071</pattern>
+        <pattern name="comm_time" type="float">0.10484</pattern>
+        <pattern name="comm_time_min" type="float">0.10484</pattern>
+        <pattern name="comm_time_max" type="float">0.10484</pattern>
+        <pattern name="comm_time_sum" type="float">0.10484</pattern>
+        <pattern name="comm_time_sum2" type="float">0.0109914256</pattern>
+        <pattern name="comm_time_cnt" type="int">1</pattern>
+        <pattern name="comm_time_avg" type="float">0.10484</pattern>
+        <pattern name="comm_time_std" type="int">0</pattern>
+        <pattern name="comm_time_last" type="float">0.10484</pattern>
+        <pattern name="max_iters" type="float">4.0</pattern>
+        <pattern name="max_iters_min" type="float">4.0</pattern>
+        <pattern name="max_iters_max" type="float">4.0</pattern>
+        <pattern name="max_iters_sum" type="float">4.0</pattern>
+        <pattern name="max_iters_sum2" type="float">16.0</pattern>
+        <pattern name="max_iters_cnt" type="int">1</pattern>
+        <pattern name="max_iters_avg" type="float">4.0</pattern>
+        <pattern name="max_iters_std" type="int">0</pattern>
+        <pattern name="max_iters_last" type="float">4.0</pattern>
+        <pattern name="err" type="float">6.041333261884337e-13</pattern>
+        <pattern name="err_min" type="float">6.041333261884337e-13</pattern>
+        <pattern name="err_max" type="float">6.041333261884337e-13</pattern>
+        <pattern name="err_sum" type="float">6.041333261884337e-13</pattern>
+        <pattern name="err_sum2" type="float">3.649770758115005e-25</pattern>
+        <pattern name="err_cnt" type="int">1</pattern>
+        <pattern name="err_avg" type="float">6.041333261884337e-13</pattern>
+        <pattern name="err_std" type="int">0</pattern>
+        <pattern name="err_last" type="float">6.041333261884337e-13</pattern>
+        <pattern name="tol" type="float">1e-12</pattern>
+        <pattern name="tol_min" type="float">1e-12</pattern>
+        <pattern name="tol_max" type="float">1e-12</pattern>
+        <pattern name="tol_sum" type="float">1e-12</pattern>
+        <pattern name="tol_sum2" type="float">1e-24</pattern>
+        <pattern name="tol_cnt" type="int">1</pattern>
+        <pattern name="tol_avg" type="float">1e-12</pattern>
+        <pattern name="tol_std" type="int">0</pattern>
+        <pattern name="tol_last" type="float">1e-12</pattern>
+        <pattern name="stol" type="float">1e-13</pattern>
+        <pattern name="stol_min" type="float">1e-13</pattern>
+        <pattern name="stol_max" type="float">1e-13</pattern>
+        <pattern name="stol_sum" type="float">1e-13</pattern>
+        <pattern name="stol_sum2" type="float">1e-26</pattern>
+        <pattern name="stol_cnt" type="int">1</pattern>
+        <pattern name="stol_avg" type="float">1e-13</pattern>
+        <pattern name="stol_std" type="int">0</pattern>
+        <pattern name="stol_last" type="float">1e-13</pattern>
+        <pattern name="T1" type="float">3.141592653589793</pattern>
+        <pattern name="T1_min" type="float">3.141592653589793</pattern>
+        <pattern name="T1_max" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
+        <pattern name="T1_cnt" type="int">1</pattern>
+        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
+        <pattern name="T1_std" type="int">0</pattern>
+        <pattern name="T1_last" type="float">3.141592653589793</pattern>
+        <pattern name="T2" type="float">3.151592653589793</pattern>
+        <pattern name="T2_min" type="float">3.151592653589793</pattern>
+        <pattern name="T2_max" type="float">3.151592653589793</pattern>
+        <pattern name="T2_sum" type="float">3.151592653589793</pattern>
+        <pattern name="T2_sum2" type="float">9.932536254161151</pattern>
+        <pattern name="T2_cnt" type="int">1</pattern>
+        <pattern name="T2_avg" type="float">3.151592653589793</pattern>
+        <pattern name="T2_std" type="int">0</pattern>
+        <pattern name="T2_last" type="float">3.151592653589793</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
+        <pattern name="Nx_cnt" type="int">1</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
+        <pattern name="Nx_std" type="int">0</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
+      </workpackage>
+      <workpackage id="7">
+        <pattern name="tot_time" type="float">3.09488</pattern>
+        <pattern name="tot_time_min" type="float">3.09488</pattern>
+        <pattern name="tot_time_max" type="float">3.09488</pattern>
+        <pattern name="tot_time_sum" type="float">3.09488</pattern>
+        <pattern name="tot_time_sum2" type="float">9.5782822144</pattern>
+        <pattern name="tot_time_cnt" type="int">1</pattern>
+        <pattern name="tot_time_avg" type="float">3.09488</pattern>
+        <pattern name="tot_time_std" type="int">0</pattern>
+        <pattern name="tot_time_last" type="float">3.09488</pattern>
+        <pattern name="comm_time" type="float">0.0</pattern>
+        <pattern name="comm_time_min" type="float">0.0</pattern>
+        <pattern name="comm_time_max" type="float">0.0</pattern>
+        <pattern name="comm_time_sum" type="float">0.0</pattern>
+        <pattern name="comm_time_sum2" type="float">0.0</pattern>
+        <pattern name="comm_time_cnt" type="int">1</pattern>
+        <pattern name="comm_time_avg" type="float">0.0</pattern>
+        <pattern name="comm_time_std" type="int">0</pattern>
+        <pattern name="comm_time_last" type="float">0.0</pattern>
+        <pattern name="max_iters" type="float">1.0</pattern>
+        <pattern name="max_iters_min" type="float">1.0</pattern>
+        <pattern name="max_iters_max" type="float">1.0</pattern>
+        <pattern name="max_iters_sum" type="float">1.0</pattern>
+        <pattern name="max_iters_sum2" type="float">1.0</pattern>
+        <pattern name="max_iters_cnt" type="int">1</pattern>
+        <pattern name="max_iters_avg" type="float">1.0</pattern>
+        <pattern name="max_iters_std" type="int">0</pattern>
+        <pattern name="max_iters_last" type="float">1.0</pattern>
+        <pattern name="err" type="float">2.219277787294663e-13</pattern>
+        <pattern name="err_min" type="float">2.219277787294663e-13</pattern>
+        <pattern name="err_max" type="float">2.219277787294663e-13</pattern>
+        <pattern name="err_sum" type="float">2.219277787294663e-13</pattern>
+        <pattern name="err_sum2" type="float">4.925193897179495e-26</pattern>
+        <pattern name="err_cnt" type="int">1</pattern>
+        <pattern name="err_avg" type="float">2.219277787294663e-13</pattern>
+        <pattern name="err_std" type="int">0</pattern>
+        <pattern name="err_last" type="float">2.219277787294663e-13</pattern>
+        <pattern name="tol" type="float">1e-12</pattern>
+        <pattern name="tol_min" type="float">1e-12</pattern>
+        <pattern name="tol_max" type="float">1e-12</pattern>
+        <pattern name="tol_sum" type="float">1e-12</pattern>
+        <pattern name="tol_sum2" type="float">1e-24</pattern>
+        <pattern name="tol_cnt" type="int">1</pattern>
+        <pattern name="tol_avg" type="float">1e-12</pattern>
+        <pattern name="tol_std" type="int">0</pattern>
+        <pattern name="tol_last" type="float">1e-12</pattern>
+        <pattern name="stol" type="float">1e-13</pattern>
+        <pattern name="stol_min" type="float">1e-13</pattern>
+        <pattern name="stol_max" type="float">1e-13</pattern>
+        <pattern name="stol_sum" type="float">1e-13</pattern>
+        <pattern name="stol_sum2" type="float">1e-26</pattern>
+        <pattern name="stol_cnt" type="int">1</pattern>
+        <pattern name="stol_avg" type="float">1e-13</pattern>
+        <pattern name="stol_std" type="int">0</pattern>
+        <pattern name="stol_last" type="float">1e-13</pattern>
+        <pattern name="T1" type="float">3.141592653589793</pattern>
+        <pattern name="T1_min" type="float">3.141592653589793</pattern>
+        <pattern name="T1_max" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
+        <pattern name="T1_cnt" type="int">1</pattern>
+        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
+        <pattern name="T1_std" type="int">0</pattern>
+        <pattern name="T1_last" type="float">3.141592653589793</pattern>
+        <pattern name="T2" type="float">3.181592653589793</pattern>
+        <pattern name="T2_min" type="float">3.181592653589793</pattern>
+        <pattern name="T2_max" type="float">3.181592653589793</pattern>
+        <pattern name="T2_sum" type="float">3.181592653589793</pattern>
+        <pattern name="T2_sum2" type="float">10.122531813376542</pattern>
+        <pattern name="T2_cnt" type="int">1</pattern>
+        <pattern name="T2_avg" type="float">3.181592653589793</pattern>
+        <pattern name="T2_std" type="int">0</pattern>
+        <pattern name="T2_last" type="float">3.181592653589793</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
+        <pattern name="Nx_cnt" type="int">1</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
+        <pattern name="Nx_std" type="int">0</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
+      </workpackage>
+      <workpackage id="5">
+        <pattern name="tot_time" type="float">0.80162</pattern>
+        <pattern name="tot_time_min" type="float">0.80162</pattern>
+        <pattern name="tot_time_max" type="float">0.80162</pattern>
+        <pattern name="tot_time_sum" type="float">0.80162</pattern>
+        <pattern name="tot_time_sum2" type="float">0.6425946244</pattern>
+        <pattern name="tot_time_cnt" type="int">1</pattern>
+        <pattern name="tot_time_avg" type="float">0.80162</pattern>
+        <pattern name="tot_time_std" type="int">0</pattern>
+        <pattern name="tot_time_last" type="float">0.80162</pattern>
+        <pattern name="comm_time" type="float">0.0</pattern>
+        <pattern name="comm_time_min" type="float">0.0</pattern>
+        <pattern name="comm_time_max" type="float">0.0</pattern>
+        <pattern name="comm_time_sum" type="float">0.0</pattern>
+        <pattern name="comm_time_sum2" type="float">0.0</pattern>
+        <pattern name="comm_time_cnt" type="int">1</pattern>
+        <pattern name="comm_time_avg" type="float">0.0</pattern>
+        <pattern name="comm_time_std" type="int">0</pattern>
+        <pattern name="comm_time_last" type="float">0.0</pattern>
+        <pattern name="max_iters" type="float">1.0</pattern>
+        <pattern name="max_iters_min" type="float">1.0</pattern>
+        <pattern name="max_iters_max" type="float">1.0</pattern>
+        <pattern name="max_iters_sum" type="float">1.0</pattern>
+        <pattern name="max_iters_sum2" type="float">1.0</pattern>
+        <pattern name="max_iters_cnt" type="int">1</pattern>
+        <pattern name="max_iters_avg" type="float">1.0</pattern>
+        <pattern name="max_iters_std" type="int">0</pattern>
+        <pattern name="max_iters_last" type="float">1.0</pattern>
+        <pattern name="err" type="float">6.079306457915837e-13</pattern>
+        <pattern name="err_min" type="float">6.079306457915837e-13</pattern>
+        <pattern name="err_max" type="float">6.079306457915837e-13</pattern>
+        <pattern name="err_sum" type="float">6.079306457915837e-13</pattern>
+        <pattern name="err_sum2" type="float">3.6957967009257203e-25</pattern>
+        <pattern name="err_cnt" type="int">1</pattern>
+        <pattern name="err_avg" type="float">6.079306457915837e-13</pattern>
+        <pattern name="err_std" type="int">0</pattern>
+        <pattern name="err_last" type="float">6.079306457915837e-13</pattern>
+        <pattern name="tol" type="float">1e-12</pattern>
+        <pattern name="tol_min" type="float">1e-12</pattern>
+        <pattern name="tol_max" type="float">1e-12</pattern>
+        <pattern name="tol_sum" type="float">1e-12</pattern>
+        <pattern name="tol_sum2" type="float">1e-24</pattern>
+        <pattern name="tol_cnt" type="int">1</pattern>
+        <pattern name="tol_avg" type="float">1e-12</pattern>
+        <pattern name="tol_std" type="int">0</pattern>
+        <pattern name="tol_last" type="float">1e-12</pattern>
+        <pattern name="stol" type="float">1e-13</pattern>
+        <pattern name="stol_min" type="float">1e-13</pattern>
+        <pattern name="stol_max" type="float">1e-13</pattern>
+        <pattern name="stol_sum" type="float">1e-13</pattern>
+        <pattern name="stol_sum2" type="float">1e-26</pattern>
+        <pattern name="stol_cnt" type="int">1</pattern>
+        <pattern name="stol_avg" type="float">1e-13</pattern>
+        <pattern name="stol_std" type="int">0</pattern>
+        <pattern name="stol_last" type="float">1e-13</pattern>
+        <pattern name="T1" type="float">3.141592653589793</pattern>
+        <pattern name="T1_min" type="float">3.141592653589793</pattern>
+        <pattern name="T1_max" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
+        <pattern name="T1_cnt" type="int">1</pattern>
+        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
+        <pattern name="T1_std" type="int">0</pattern>
+        <pattern name="T1_last" type="float">3.141592653589793</pattern>
+        <pattern name="T2" type="float">3.151592653589793</pattern>
+        <pattern name="T2_min" type="float">3.151592653589793</pattern>
+        <pattern name="T2_max" type="float">3.151592653589793</pattern>
+        <pattern name="T2_sum" type="float">3.151592653589793</pattern>
+        <pattern name="T2_sum2" type="float">9.932536254161151</pattern>
+        <pattern name="T2_cnt" type="int">1</pattern>
+        <pattern name="T2_avg" type="float">3.151592653589793</pattern>
+        <pattern name="T2_std" type="int">0</pattern>
+        <pattern name="T2_last" type="float">3.151592653589793</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
+        <pattern name="Nx_cnt" type="int">1</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
+        <pattern name="Nx_std" type="int">0</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
+      </workpackage>
+      <workpackage id="3">
+        <pattern name="tot_time" type="float">4.90138</pattern>
+        <pattern name="tot_time_min" type="float">4.90138</pattern>
+        <pattern name="tot_time_max" type="float">4.90138</pattern>
+        <pattern name="tot_time_sum" type="float">4.90138</pattern>
+        <pattern name="tot_time_sum2" type="float">24.023525904399996</pattern>
+        <pattern name="tot_time_cnt" type="int">1</pattern>
+        <pattern name="tot_time_avg" type="float">4.90138</pattern>
+        <pattern name="tot_time_std" type="int">0</pattern>
+        <pattern name="tot_time_last" type="float">4.90138</pattern>
+        <pattern name="comm_time" type="float">0.48822</pattern>
+        <pattern name="comm_time_min" type="float">0.48822</pattern>
+        <pattern name="comm_time_max" type="float">0.48822</pattern>
+        <pattern name="comm_time_sum" type="float">0.48822</pattern>
+        <pattern name="comm_time_sum2" type="float">0.23835876839999998</pattern>
+        <pattern name="comm_time_cnt" type="int">1</pattern>
+        <pattern name="comm_time_avg" type="float">0.48822</pattern>
+        <pattern name="comm_time_std" type="int">0</pattern>
+        <pattern name="comm_time_last" type="float">0.48822</pattern>
+        <pattern name="max_iters" type="float">6.0</pattern>
+        <pattern name="max_iters_min" type="float">6.0</pattern>
+        <pattern name="max_iters_max" type="float">6.0</pattern>
+        <pattern name="max_iters_sum" type="float">6.0</pattern>
+        <pattern name="max_iters_sum2" type="float">36.0</pattern>
+        <pattern name="max_iters_cnt" type="int">1</pattern>
+        <pattern name="max_iters_avg" type="float">6.0</pattern>
+        <pattern name="max_iters_std" type="int">0</pattern>
+        <pattern name="max_iters_last" type="float">6.0</pattern>
+        <pattern name="err" type="float">3.6163190190924633e-13</pattern>
+        <pattern name="err_min" type="float">3.6163190190924633e-13</pattern>
+        <pattern name="err_max" type="float">3.6163190190924633e-13</pattern>
+        <pattern name="err_sum" type="float">3.6163190190924633e-13</pattern>
+        <pattern name="err_sum2" type="float">1.3077763247849877e-25</pattern>
+        <pattern name="err_cnt" type="int">1</pattern>
+        <pattern name="err_avg" type="float">3.6163190190924633e-13</pattern>
+        <pattern name="err_std" type="int">0</pattern>
+        <pattern name="err_last" type="float">3.6163190190924633e-13</pattern>
+        <pattern name="tol" type="float">1e-12</pattern>
+        <pattern name="tol_min" type="float">1e-12</pattern>
+        <pattern name="tol_max" type="float">1e-12</pattern>
+        <pattern name="tol_sum" type="float">1e-12</pattern>
+        <pattern name="tol_sum2" type="float">1e-24</pattern>
+        <pattern name="tol_cnt" type="int">1</pattern>
+        <pattern name="tol_avg" type="float">1e-12</pattern>
+        <pattern name="tol_std" type="int">0</pattern>
+        <pattern name="tol_last" type="float">1e-12</pattern>
+        <pattern name="stol" type="float">1e-13</pattern>
+        <pattern name="stol_min" type="float">1e-13</pattern>
+        <pattern name="stol_max" type="float">1e-13</pattern>
+        <pattern name="stol_sum" type="float">1e-13</pattern>
+        <pattern name="stol_sum2" type="float">1e-26</pattern>
+        <pattern name="stol_cnt" type="int">1</pattern>
+        <pattern name="stol_avg" type="float">1e-13</pattern>
+        <pattern name="stol_std" type="int">0</pattern>
+        <pattern name="stol_last" type="float">1e-13</pattern>
+        <pattern name="T1" type="float">3.141592653589793</pattern>
+        <pattern name="T1_min" type="float">3.141592653589793</pattern>
+        <pattern name="T1_max" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum" type="float">3.141592653589793</pattern>
+        <pattern name="T1_sum2" type="float">9.869604401089358</pattern>
+        <pattern name="T1_cnt" type="int">1</pattern>
+        <pattern name="T1_avg" type="float">3.141592653589793</pattern>
+        <pattern name="T1_std" type="int">0</pattern>
+        <pattern name="T1_last" type="float">3.141592653589793</pattern>
+        <pattern name="T2" type="float">3.221592653589793</pattern>
+        <pattern name="T2_min" type="float">3.221592653589793</pattern>
+        <pattern name="T2_max" type="float">3.221592653589793</pattern>
+        <pattern name="T2_sum" type="float">3.221592653589793</pattern>
+        <pattern name="T2_sum2" type="float">10.378659225663725</pattern>
+        <pattern name="T2_cnt" type="int">1</pattern>
+        <pattern name="T2_avg" type="float">3.221592653589793</pattern>
+        <pattern name="T2_std" type="int">0</pattern>
+        <pattern name="T2_last" type="float">3.221592653589793</pattern>
+        <pattern name="Nx" type="int">350</pattern>
+        <pattern name="Nx_min" type="int">350</pattern>
+        <pattern name="Nx_max" type="int">350</pattern>
+        <pattern name="Nx_sum" type="int">350</pattern>
+        <pattern name="Nx_sum2" type="int">122500</pattern>
+        <pattern name="Nx_cnt" type="int">1</pattern>
+        <pattern name="Nx_avg" type="float">350.0</pattern>
+        <pattern name="Nx_std" type="int">0</pattern>
+        <pattern name="Nx_last" type="int">350</pattern>
       </workpackage>
     </step>
   </analyser>

@@ -12,7 +12,7 @@ import numpy as np
 from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 
 prob = Heat6()
-N = 300
+N = 350
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
