@@ -1,0 +1,36 @@
+m0 =  0.0032 r =  1.0
+m =  4.673782413919094e-08 alpha =  7.3027850217485835e-06 err_max =  inf
+m =  1.7861903799629622e-10 alpha =  0.001910861719453894 err_max =  0.020104938548654527
+m =  1.104224487650193e-11 alpha =  0.030910044641296573 err_max =  1.4729419761660978e-07
+m =  2.745504677462814e-12 alpha =  0.12431823004148783 err_max =  2.9085556185748374e-10
+m =  1.369003614987994e-12 alpha =  0.24931729787711066 err_max =  1.0259570970561072e-11
+m =  9.667090813806698e-13 alpha =  0.3530703172720065 err_max =  1.7312817846004691e-12
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 0.0032
+no. of spatial points = [700, 700]
+dx = [0.0014285714285714286, 0.0014285714285714286]
+no. of time points on an interval = 3
+    [3.10102e-05 1.28990e-04 2.00000e-04]
+no. of time intervals = 16
+no. of alphas = 6
+    [7.3027850217485835e-06, 0.001910861719453894, 0.030910044641296573, 0.12431823004148783, 0.24931729787711066, 0.3530703172720065]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0002
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 16
+maxiter = 10
+output document = None
+tol = 1e-12
+last error = [inf, 0.020104938548654527, 1.4729419761660978e-07, 2.9085556185748374e-10, 1.0259570970561072e-11, 1.7312817846004691e-12, 6.806777363976835e-13]
+iterations of Paralpha = [6.]
+max iterations of Paralpha = 6.0
+algorithm time = 26.85936 s
+communication time = 1.51769 s
+inner solver = custom
+system_time_max = [4.590759038925171, 3.58937406539917, 4.255620002746582, 4.262951850891113, 3.399873971939087, 3.9579250812530518]
+system_time_min = [3.3136818408966064, 2.479001998901367, 3.141040086746216, 3.1176629066467285, 3.0493249893188477, 3.3651859760284424]
+inner solver tols = [1e-14, 1e-14, 1e-14, 1e-14, 1e-14, 1e-14]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+abs err = 3.0542592384229117e-13

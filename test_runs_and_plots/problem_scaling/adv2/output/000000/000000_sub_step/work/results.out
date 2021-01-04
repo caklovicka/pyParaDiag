@@ -1,0 +1,33 @@
+m0 =  8e-05 r =  1.0
+m =  1.1314085314899704e-07 alpha =  0.0007071303321812315 err_max =  inf
+m =  4.2548492775901434e-09 alpha =  0.01880332859072073 err_max =  0.000503010449977026
+m =  8.25118920639996e-10 alpha =  0.09696217971642533 err_max =  3.625144444630024e-07
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 8e-05
+no. of spatial points = [800, 800]
+dx = [0.00125, 0.00125]
+no. of time points on an interval = 2
+    [6.66667e-06 2.00000e-05]
+no. of time intervals = 4
+no. of alphas = 3
+    [0.0007071303321812315, 0.01880332859072073, 0.09696217971642533]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 2e-05
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 4
+maxiter = 10
+output document = None
+tol = 1e-09
+last error = [inf, 0.000503010449977026, 3.625144444630024e-07, 7.549066927126091e-09]
+iterations of Paralpha = [3.]
+max iterations of Paralpha = 3.0
+algorithm time = 2.28582 s
+communication time = 0.35390 s
+inner solver = custom
+system_time_max = [0.5171940326690674, 0.5075819492340088, 0.5185718536376953]
+system_time_min = [0.5156431198120117, 0.5045938491821289, 0.5107228755950928]
+inner solver tols = [1e-11, 1e-11, 1e-11]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+abs err = 7.524051381936415e-10
