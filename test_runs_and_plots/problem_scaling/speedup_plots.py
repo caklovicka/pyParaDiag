@@ -3,7 +3,9 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-path = ['adv1/output/000002/result/result.dat', 'adv2/output/000002/result/result.dat', 'adv3/output/000002/result/result.dat']
+# path = ['heat1/output/000000/result/result.dat', 'heat2/output/000000/result/result.dat', 'heat3/output/000000/result/result.dat']
+# path = ['adv1/output/000002/result/result.dat', 'adv2/output/000002/result/result.dat', 'adv3/output/000002/result/result.dat']
+path = ['schro1/output/000002/result/result.dat', 'schro2/output/000002/result/result.dat', 'schro3/output/000002/result/result.dat']
 
 # rolling | time_intervals | tot_time | paralpha_iters | tol
 heat = [np.loadtxt(path[0], delimiter='|', usecols=[0, 1, 2, 4, 9], skiprows=3),

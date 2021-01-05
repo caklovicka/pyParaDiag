@@ -1,7 +1,7 @@
 #!/bin/bash -x
 #SBATCH --account=cstma
 #SBATCH --nodes=#nodes#
-#SBATCH --ntasks=#time_intervals#
+#SBATCH --ntasks=#nproc#
 #SBATCH --ntasks-per-node=#ntasks_per_node#
 #SBATCH --output=mpi-out.%j
 #SBATCH --error=mpi-err.%j

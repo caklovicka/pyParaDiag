@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
   <benchmark name="scaling test" outpath="output">
-    <comment>Speedup for heat1.</comment>
+    <comment>Speedup for heat3.</comment>
 
     <parameterset name="param_set">
       <parameter name="i">0,1,2,3,4,5,6,7,8,9</parameter>
@@ -9,8 +9,9 @@
       <parameter name="rolling" mode="python">[1, 1, 1, 1, 1, 4, 8, 16, 32, 64][$i]</parameter>
       <parameter name="T" mode="python">[0.01, 0.02, 0.04, 0.08, 0.16, 0.01, 0.02, 0.04, 0.08, 0.16][$i]</parameter>
 
-      <parameter name="ntasks_per_node" mode="python">[4, 8, 16, 16, 16, 1, 1, 1, 1, 1][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 2, 4, 1, 1, 1, 1, 1][$i]</parameter>
+      <parameter name="nproc" mode="python">[12, 24, 48, 96, 192, 3, 3, 3, 3, 3][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[12, 24, 24, 24, 24, 3, 3, 3, 3, 3][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 2, 4, 8, 1, 1, 1, 1, 1][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
@@ -31,6 +32,7 @@
       <sub source="#nodes#" dest="$nodes" />
       <sub source="#ntasks_per_node#" dest="$ntasks_per_node" />
       <sub source="#T#" dest="$T" />
+      <sub source="#nproc#" dest="$nproc" />
     </substituteset>
 
     <!-- Regex pattern -->
@@ -65,7 +67,8 @@
     <!-- Create result table -->
     <result>
       <use>analyse</use> <!-- use existing analyser -->
-      <table name="result" style="pretty" sort="rolling">
+      <table name="result" style="pretty" sort="nproc">
+        <column>nproc</column>
         <column>rolling</column>
         <column>time_intervals</column>
         <column>tot_time</column>
