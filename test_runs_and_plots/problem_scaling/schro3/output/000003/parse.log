@@ -1,0 +1,94 @@
+[2021-01-05 17:35:00,822]:DEBUG: Command: jube run run.xml
+[2021-01-05 17:35:00,823]:DEBUG: Version: 2.4.0
+[2021-01-05 17:35:00,823]:DEBUG: Parsing run.xml
+[2021-01-05 17:35:00,824]:DEBUG:   --> Preprocess run 1 <--
+[2021-01-05 17:35:00,824]:DEBUG:   Remove invalid tags
+[2021-01-05 17:35:00,825]:DEBUG:     Available tags: 
+[2021-01-05 17:35:00,825]:DEBUG:   Remove invalid tags
+[2021-01-05 17:35:00,825]:DEBUG:     Available tags: 
+[2021-01-05 17:35:00,825]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2021-01-05 17:35:00,825]:DEBUG:   Preprocess xml tree
+[2021-01-05 17:35:00,825]:DEBUG:     path: /p/software/juwels/stages/2019a/software/JUBE/2.4.0/platform/slurm
+[2021-01-05 17:35:00,825]:DEBUG:     path: .
+[2021-01-05 17:35:00,825]:DEBUG:   Remove invalid tags
+[2021-01-05 17:35:00,825]:DEBUG:     Available tags: 
+[2021-01-05 17:35:00,825]:DEBUG:   Preprocess done
+[2021-01-05 17:35:00,825]:DEBUG:   Preprocess benchmark xml tree
+[2021-01-05 17:35:00,826]:DEBUG:   Parsing <parameterset name="param_set">
+[2021-01-05 17:35:00,826]:DEBUG:   Parsing <substituteset name="substitute">
+[2021-01-05 17:35:00,826]:DEBUG:   Parsing <fileset name="files">
+[2021-01-05 17:35:00,826]:DEBUG:   Parsing <patternset name="pattern">
+[2021-01-05 17:35:00,826]:DEBUG:   Parsing <step name="sub_step">
+[2021-01-05 17:35:00,826]:DEBUG:   Parsing <analyser name="analyse">
+[2021-01-05 17:35:00,827]:DEBUG: Start consistency check
+[2021-01-05 17:35:00,827]:DEBUG: Create benchmark directory
+[2021-01-05 17:49:42,570]:DEBUG: Command: jube continue output --id 3
+[2021-01-05 17:49:42,570]:DEBUG: Version: 2.4.0
+[2021-01-05 17:49:42,570]:DEBUG: Parsing output/000003/configuration.xml
+[2021-01-05 17:49:42,572]:DEBUG:   --> Preprocess run 1 <--
+[2021-01-05 17:49:42,572]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:42,572]:DEBUG:     Available tags: 
+[2021-01-05 17:49:42,572]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:42,572]:DEBUG:     Available tags: 
+[2021-01-05 17:49:42,572]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2021-01-05 17:49:42,573]:DEBUG:   Preprocess xml tree
+[2021-01-05 17:49:42,573]:DEBUG:     path: /p/software/juwels/stages/2019a/software/JUBE/2.4.0/platform/slurm
+[2021-01-05 17:49:42,573]:DEBUG:     path: output/000003
+[2021-01-05 17:49:42,573]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:42,573]:DEBUG:     Available tags: 
+[2021-01-05 17:49:42,573]:DEBUG:   Preprocess done
+[2021-01-05 17:49:42,573]:DEBUG:   Preprocess benchmark xml tree
+[2021-01-05 17:49:42,574]:DEBUG:   Parsing <parameterset name="param_set">
+[2021-01-05 17:49:42,574]:DEBUG:   Parsing <substituteset name="substitute">
+[2021-01-05 17:49:42,574]:DEBUG:   Parsing <fileset name="files">
+[2021-01-05 17:49:42,574]:DEBUG:   Parsing <patternset name="pattern">
+[2021-01-05 17:49:42,575]:DEBUG:   Parsing <step name="sub_step">
+[2021-01-05 17:49:42,575]:DEBUG:   Parsing <analyser name="analyse">
+[2021-01-05 17:49:42,575]:DEBUG: Parsing output/000003/workpackages.xml
+[2021-01-05 17:49:47,810]:DEBUG: Command: jube analyse output --id 3
+[2021-01-05 17:49:47,811]:DEBUG: Version: 2.4.0
+[2021-01-05 17:49:47,811]:DEBUG: Parsing output/000003/configuration.xml
+[2021-01-05 17:49:47,812]:DEBUG:   --> Preprocess run 1 <--
+[2021-01-05 17:49:47,812]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:47,812]:DEBUG:     Available tags: 
+[2021-01-05 17:49:47,812]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:47,812]:DEBUG:     Available tags: 
+[2021-01-05 17:49:47,812]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2021-01-05 17:49:47,812]:DEBUG:   Preprocess xml tree
+[2021-01-05 17:49:47,812]:DEBUG:     path: /p/software/juwels/stages/2019a/software/JUBE/2.4.0/platform/slurm
+[2021-01-05 17:49:47,812]:DEBUG:     path: output/000003
+[2021-01-05 17:49:47,812]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:47,812]:DEBUG:     Available tags: 
+[2021-01-05 17:49:47,813]:DEBUG:   Preprocess done
+[2021-01-05 17:49:47,813]:DEBUG:   Preprocess benchmark xml tree
+[2021-01-05 17:49:47,813]:DEBUG:   Parsing <parameterset name="param_set">
+[2021-01-05 17:49:47,817]:DEBUG:   Parsing <substituteset name="substitute">
+[2021-01-05 17:49:47,817]:DEBUG:   Parsing <fileset name="files">
+[2021-01-05 17:49:47,817]:DEBUG:   Parsing <patternset name="pattern">
+[2021-01-05 17:49:47,817]:DEBUG:   Parsing <step name="sub_step">
+[2021-01-05 17:49:47,817]:DEBUG:   Parsing <analyser name="analyse">
+[2021-01-05 17:49:47,817]:DEBUG: Parsing output/000003/workpackages.xml
+[2021-01-05 17:49:51,642]:DEBUG: Command: jube result output --id 3
+[2021-01-05 17:49:51,642]:DEBUG: Version: 2.4.0
+[2021-01-05 17:49:51,642]:DEBUG: Parsing output/000003/configuration.xml
+[2021-01-05 17:49:51,644]:DEBUG:   --> Preprocess run 1 <--
+[2021-01-05 17:49:51,644]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:51,644]:DEBUG:     Available tags: 
+[2021-01-05 17:49:51,644]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:51,644]:DEBUG:     Available tags: 
+[2021-01-05 17:49:51,644]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2021-01-05 17:49:51,644]:DEBUG:   Preprocess xml tree
+[2021-01-05 17:49:51,644]:DEBUG:     path: /p/software/juwels/stages/2019a/software/JUBE/2.4.0/platform/slurm
+[2021-01-05 17:49:51,644]:DEBUG:     path: output/000003
+[2021-01-05 17:49:51,644]:DEBUG:   Remove invalid tags
+[2021-01-05 17:49:51,645]:DEBUG:     Available tags: 
+[2021-01-05 17:49:51,645]:DEBUG:   Preprocess done
+[2021-01-05 17:49:51,645]:DEBUG:   Preprocess benchmark xml tree
+[2021-01-05 17:49:51,645]:DEBUG:   Parsing <parameterset name="param_set">
+[2021-01-05 17:49:51,645]:DEBUG:   Parsing <substituteset name="substitute">
+[2021-01-05 17:49:51,645]:DEBUG:   Parsing <fileset name="files">
+[2021-01-05 17:49:51,645]:DEBUG:   Parsing <patternset name="pattern">
+[2021-01-05 17:49:51,646]:DEBUG:   Parsing <step name="sub_step">
+[2021-01-05 17:49:51,646]:DEBUG:   Parsing <analyser name="analyse">
+[2021-01-05 17:49:51,646]:DEBUG: Parsing output/000003/workpackages.xml
+[2021-01-05 17:49:51,718]:DEBUG: Parsing output/000003/analyse.xml
