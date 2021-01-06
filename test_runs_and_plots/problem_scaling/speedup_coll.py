@@ -121,5 +121,6 @@ plt.xticks(np.log2(nnproc), nnproc)
 plt.ylabel('speedup')
 plt.xlabel('number of cores')
 plt.title(NAME + ' equation')
-plt.show()
+# plt.show()
+plt.savefig('AAplots/speedup_' + NAME + '_coll', dpi=300)
 

@@ -5,7 +5,7 @@ from matplotlib.lines import Line2D
 
 'plotting the a fully serial and interval-parallel efficiency'
 
-NAME = 'Heat'
+NAME = 'Schrodinger'
 
 if NAME == 'Heat':
     path3 = ['heat1/output/000000/result/result.dat', 'heat2/output/000000/result/result.dat',
@@ -70,5 +70,6 @@ plt.xticks(np.log2(nproc), nproc)
 plt.ylabel('efficiency')
 plt.xlabel('number of cores')
 plt.title(NAME + ' equation')
-plt.show()
+# plt.show()
+plt.savefig('AAplots/efficiency_' + NAME + '_interval', dpi=300)
 

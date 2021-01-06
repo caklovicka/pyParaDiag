@@ -6,7 +6,7 @@ from matplotlib.lines import Line2D
 'plotting the a coll-parallel and interval-coll-parallel speedup' \
 'the gray plots are the fully serial and interval-parallel speedup'
 
-NAME = 'Heat'
+NAME = 'Schrodinger'
 
 if NAME == 'Heat':
     path2 = ['heat2/output/000001/result/result.dat', 'heat3/output/000001/result/result.dat']
@@ -123,5 +123,5 @@ plt.xticks(np.log2(nnproc), nnproc)
 plt.ylabel('efficiency')
 plt.xlabel('number of cores')
 plt.title(NAME + ' equation')
-plt.show()
-
+# plt.show()
+plt.savefig('AAplots/efficiency_' + NAME + '_coll', dpi=300)
