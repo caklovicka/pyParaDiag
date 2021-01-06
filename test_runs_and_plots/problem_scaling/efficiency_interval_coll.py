@@ -6,7 +6,7 @@ from matplotlib.lines import Line2D
 'plotting the a fully serial and interval-coll-parallel efficiency' \
 'the gray plots are the fully serial and interval-parallel efficiency'
 
-NAME = 'Schrodinger'
+NAME = 'Heat'
 
 if NAME == 'Heat':
     path2 = ['heat2/output/000001/result/result.dat', 'heat3/output/000001/result/result.dat']
