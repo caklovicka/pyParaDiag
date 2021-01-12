@@ -6,7 +6,7 @@ from matplotlib.lines import Line2D
 'plotting the a fully serial and interval-coll-parallel speedup' \
 'the gray plots are the fully serial and interval-parallel speedup'
 
-NAME = 'Schrodinger'
+NAME = 'Advection'
 
 if NAME == 'Heat':
     path2 = ['heat2/output/000001/result/result.dat', 'heat3/output/000001/result/result.dat']
@@ -128,10 +128,13 @@ for run in range(len(eq3)):
 custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
 names.append('k iterations')
 
-plt.legend(custom_lines, names)
+plt.legend(custom_lines, names, loc='upper left')
 plt.xticks(np.log2(nnproc), nnproc)
 plt.ylabel('speedup')
 plt.xlabel('number of cores')
-plt.title(NAME + ' equation')
+plt.ylim([0, 20])
+# plt.title(NAME + ' equation')
 # plt.show()
-plt.savefig('AAplots/speedup_' + NAME + '_interval_coll', dpi=300)
+fig = plt.gcf()
+fig.set_size_inches(4, 4)
+plt.savefig('AAplots/speedup_' + NAME + '_interval_coll', dpi=300, bbox_inches='tight')
