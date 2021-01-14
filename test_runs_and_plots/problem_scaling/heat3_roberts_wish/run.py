@@ -26,6 +26,10 @@ prob.stol = 1e-13
 prob.T_end += np.pi
 prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 
+if prob.rolling < 64:
+    prob.tol = 1e-13
+    prob.stol = 1e-14
+
 prob.setup()
 prob.solve()
 prob.summary(details=True)
