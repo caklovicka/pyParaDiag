@@ -281,7 +281,7 @@ class LinearParalpha(LinearHelpers):
             print('maxiter = {}'.format(self.maxiter))
             print('output document = {}'.format(self.document))
             print('tol = {}'.format(self.tol))
-            print('last error = {}'.format(self.err_last[-1]))
+            print('last error = {}'.format(self.err_last))
             print('iterations of Paralpha = {}'.format(self.iterations))
             print('max iterations of Paralpha = {}'.format(max(self.iterations)))
             print('algorithm time = {:.5f} s'.format(self.algorithm_time))
