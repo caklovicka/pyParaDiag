@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
   <benchmark name="scaling test" outpath="output">
-    <comment>Speedup for heat3 on 64 intervals with rolling paralpha.</comment>
+    <comment>Speedup for heat2 on 64 intervals with rolling paralpha.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i">0,1,2,3,4,5</parameter>
+      <parameter name="i" type="int">0,1,2,3,4,5</parameter>
       <parameter name="time_intervals" mode="python">[4, 8, 16, 32, 64, 1][$i]</parameter>
       <parameter name="rolling" mode="python">[16, 8, 4, 2, 1, 64][$i]</parameter>
 
       <parameter name="nproc" mode="python">[4, 8, 16, 32, 64, 1][$i]</parameter>
       <parameter name="ntasks_per_node" mode="python">[4, 8, 16, 16, 16, 1][$i]</parameter>
       <parameter name="nodes" mode="python">[1, 1, 1, 2, 4, 1][$i]</parameter>
+
     </parameterset>
 
     <!-- Files -->
@@ -47,7 +48,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step">
+    <step name="sub_step" iterations="10">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->
@@ -55,7 +56,7 @@
     </step>
 
     <!-- Analyse -->
-    <analyser name="analyse">
+    <analyser name="analyse" reduce="true">
       <use>pattern</use> <!-- use existing patternset -->
       <analyse step="sub_step">
         <file>results.out</file> <!-- file which should be scanned -->
@@ -65,19 +66,21 @@
     <!-- Create result table -->
     <result>
       <use>analyse</use> <!-- use existing analyser -->
-      <table name="result" style="pretty" sort="nproc">
+      <table name="result" style="pretty">
         <column>nproc</column>
         <column>rolling</column>
         <column>time_intervals</column>
-        <column>tot_time</column>
-	    <column>comm_time</column>
+        <column>tot_time_avg</column>
+        <column>tot_time_min</column>
+        <column>tot_time_max</column>
+	    <column>comm_time_avg</column>
 	    <column>max_iters</column>
 	    <column>T1</column>
         <column>T2</column>
 	    <column>Nx</column>
         <column>stol</column>
         <column>tol</column>
-        <column>err</column>
+        <column>err_max</column>
       </table>
     </result>
 
