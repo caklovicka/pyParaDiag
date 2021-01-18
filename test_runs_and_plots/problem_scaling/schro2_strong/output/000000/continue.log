@@ -1,0 +1,1705 @@
+[2021-01-18 17:31:52,616]:INFO: ######################################################################
+[2021-01-18 17:31:52,616]:INFO: # benchmark: scaling test
+[2021-01-18 17:31:52,616]:INFO: # id: 0
+[2021-01-18 17:31:52,616]:INFO: #
+[2021-01-18 17:31:52,616]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:31:52,616]:INFO: ######################################################################
+[2021-01-18 17:31:52,617]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 17:31:52,617]:DEBUG:   available parameter:
+[2021-01-18 17:31:52,617]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:31:52,617]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:31:52,618]:DEBUG:          i                     | 0                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,618]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,618]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:31:52,618]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:31:52,618]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:31:52,618]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,618]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,618]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,618]:DEBUG:                                | 00                                      
+[2021-01-18 17:31:52,618]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:31:52,618]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,618]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,618]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,618]:DEBUG:                                | 00/000000_sub_step/work                 
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 17:31:52,618]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 17:31:52,618]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:31:52,618]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 17:31:52,618]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 17:31:52,618]:DEBUG:          rolling               | 16                                      
+[2021-01-18 17:31:52,622]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 17:31:52,624]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:31:52,624]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:31:52,625]:DEBUG:   available parameter:
+[2021-01-18 17:31:52,625]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:31:52,625]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:31:52,625]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:31:52,625]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,625]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,625]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:31:52,625]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:31:52,625]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:31:52,625]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:31:52,625]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,625]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,626]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,626]:DEBUG:                                | 00                                      
+[2021-01-18 17:31:52,626]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:31:52,626]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:31:52,626]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:31:52,626]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,626]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,626]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,626]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:31:52,626]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:31:52,626]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:31:52,626]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:31:52,626]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:31:52,626]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:31:52,626]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:31:52,626]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:31:52,627]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:31:52,627]:DEBUG:   available parameter:
+[2021-01-18 17:31:52,628]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:31:52,628]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:31:52,628]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,628]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,628]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:31:52,628]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:31:52,628]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:31:52,628]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,628]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,628]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,628]:DEBUG:                                | 00                                      
+[2021-01-18 17:31:52,628]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:31:52,628]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,628]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,628]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,628]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:31:52,628]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:31:52,628]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:31:52,628]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:31:52,628]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:31:52,628]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:31:52,628]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:31:52,629]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:31:52,629]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 17:31:52,630]:DEBUG:   available parameter:
+[2021-01-18 17:31:52,630]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:31:52,630]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:31:52,630]:DEBUG:          i                     | 3                                       
+[2021-01-18 17:31:52,630]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,630]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,630]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:31:52,630]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:31:52,630]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:31:52,630]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:31:52,630]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,630]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,630]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,630]:DEBUG:                                | 00                                      
+[2021-01-18 17:31:52,630]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:31:52,630]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:31:52,630]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:31:52,630]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:31:52,630]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,630]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,630]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,630]:DEBUG:                                | 00/000003_sub_step/work                 
+[2021-01-18 17:31:52,630]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:31:52,630]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:31:52,630]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:31:52,631]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 17:31:52,631]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:31:52,631]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 17:31:52,631]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 17:31:52,631]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 17:31:52,631]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 17:31:52,631]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:31:52,631]:DEBUG:          rolling               | 2                                       
+[2021-01-18 17:31:52,631]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 17:31:52,631]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:31:52,631]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 ) -----
+[2021-01-18 17:31:52,632]:DEBUG:   available parameter:
+[2021-01-18 17:31:52,632]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:31:52,632]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:31:52,632]:DEBUG:          i                     | 4                                       
+[2021-01-18 17:31:52,632]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,632]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,632]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:31:52,632]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:31:52,632]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:31:52,632]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:31:52,632]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,632]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,632]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,632]:DEBUG:                                | 00                                      
+[2021-01-18 17:31:52,632]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:31:52,633]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:31:52,633]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:31:52,633]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,633]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,633]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,633]:DEBUG:                                | 00/000004_sub_step/work                 
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_id            | 4                                       
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_padid         | 000004                                  
+[2021-01-18 17:31:52,633]:DEBUG:          jube_wp_relpath       | output/000000/000004_sub_step/work      
+[2021-01-18 17:31:52,633]:DEBUG:          nodes                 | 4                                       
+[2021-01-18 17:31:52,633]:DEBUG:          nproc                 | 64                                      
+[2021-01-18 17:31:52,633]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:31:52,633]:DEBUG:          rolling               | 1                                       
+[2021-01-18 17:31:52,633]:DEBUG:          time_intervals        | 64                                      
+[2021-01-18 17:31:52,633]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:31:52,634]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:31:52,634]:DEBUG:   available parameter:
+[2021-01-18 17:31:52,634]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:31:52,634]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:31:52,634]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:31:52,634]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,635]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,635]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:31:52,635]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:31:52,635]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:31:52,635]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:31:52,635]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,635]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,635]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,635]:DEBUG:                                | 00                                      
+[2021-01-18 17:31:52,635]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:31:52,635]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:31:52,635]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:31:52,635]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:31:52,635]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:31:52,635]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:31:52,635]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:31:52,635]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:31:52,635]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:31:52,635]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:31:52,635]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:31:52,635]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:31:52,635]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:31:52,635]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:31:52,650]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:31:52,650]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:31:52,650]:INFO:   sub_step |   6 |    0 |    6 |     0 |    0
+[2021-01-18 17:31:52,650]:INFO: 
+[2021-01-18 17:31:52,650]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:31:52,650]:INFO: >>>>       id: 0
+[2021-01-18 17:31:52,650]:INFO: >>>>   handle: output
+[2021-01-18 17:31:52,650]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:31:52,651]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:31:52,651]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:31:52,651]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:31:52,651]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:31:52,651]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:31:52,651]:INFO: ######################################################################
+[2021-01-18 17:32:23,057]:INFO: ######################################################################
+[2021-01-18 17:32:23,057]:INFO: # benchmark: scaling test
+[2021-01-18 17:32:23,057]:INFO: # id: 0
+[2021-01-18 17:32:23,057]:INFO: #
+[2021-01-18 17:32:23,057]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:32:23,057]:INFO: ######################################################################
+[2021-01-18 17:32:23,058]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:23,058]:DEBUG:   available parameter:
+[2021-01-18 17:32:23,058]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:23,059]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:23,059]:DEBUG:          i                     | 0                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,059]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,059]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:23,059]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:23,059]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:23,059]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,059]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,059]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,059]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:23,059]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:23,059]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,059]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,059]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,059]:DEBUG:                                | 00/000000_sub_step/work                 
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 17:32:23,059]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 17:32:23,059]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:23,059]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 17:32:23,059]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 17:32:23,059]:DEBUG:          rolling               | 16                                      
+[2021-01-18 17:32:23,059]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 17:32:23,060]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:23,060]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:23,061]:DEBUG:   available parameter:
+[2021-01-18 17:32:23,061]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:23,061]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:23,061]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:32:23,061]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,061]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,061]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:23,061]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:23,061]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:23,061]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:23,061]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,061]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,061]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,061]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:23,061]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:23,061]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:23,061]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:23,061]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:23,061]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,061]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,061]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,061]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:32:23,062]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:32:23,062]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:23,062]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:32:23,062]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:32:23,062]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:32:23,062]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:32:23,062]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:23,062]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:23,063]:DEBUG:   available parameter:
+[2021-01-18 17:32:23,063]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:23,063]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:23,063]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:32:23,063]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,063]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,063]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:23,063]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:23,064]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:23,067]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:23,067]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,067]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,067]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,067]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:23,067]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:23,067]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:23,067]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:23,067]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:23,067]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,067]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,067]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,067]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:32:23,067]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:23,067]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:23,067]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:23,068]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:32:23,068]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:23,068]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:32:23,068]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:32:23,068]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:23,068]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:32:23,068]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:32:23,068]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:32:23,068]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:32:23,068]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:23,068]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:23,069]:DEBUG:   available parameter:
+[2021-01-18 17:32:23,069]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:23,069]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:23,069]:DEBUG:          i                     | 3                                       
+[2021-01-18 17:32:23,069]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,069]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,069]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:23,069]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:23,069]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:23,069]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:23,069]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,069]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,069]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,069]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:23,069]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:23,069]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:23,069]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:23,070]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,070]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,070]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,070]:DEBUG:                                | 00/000003_sub_step/work                 
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 17:32:23,070]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 17:32:23,070]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 17:32:23,070]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 17:32:23,070]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:32:23,070]:DEBUG:          rolling               | 2                                       
+[2021-01-18 17:32:23,070]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 17:32:23,070]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:23,070]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:23,071]:DEBUG:   available parameter:
+[2021-01-18 17:32:23,071]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:23,071]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:23,071]:DEBUG:          i                     | 4                                       
+[2021-01-18 17:32:23,071]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,071]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,072]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:23,072]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:23,072]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:23,072]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:23,072]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,072]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,072]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,072]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:23,072]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:23,072]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:23,072]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:23,072]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,072]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,072]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,072]:DEBUG:                                | 00/000004_sub_step/work                 
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_id            | 4                                       
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_padid         | 000004                                  
+[2021-01-18 17:32:23,072]:DEBUG:          jube_wp_relpath       | output/000000/000004_sub_step/work      
+[2021-01-18 17:32:23,072]:DEBUG:          nodes                 | 4                                       
+[2021-01-18 17:32:23,072]:DEBUG:          nproc                 | 64                                      
+[2021-01-18 17:32:23,072]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:32:23,072]:DEBUG:          rolling               | 1                                       
+[2021-01-18 17:32:23,072]:DEBUG:          time_intervals        | 64                                      
+[2021-01-18 17:32:23,073]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:23,073]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:23,074]:DEBUG:   available parameter:
+[2021-01-18 17:32:23,074]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:23,074]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:23,074]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:32:23,074]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,074]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,074]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:23,074]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:23,074]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:23,074]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:23,074]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,074]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,074]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,074]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:23,074]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:23,074]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:23,074]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:23,074]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:23,074]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:23,074]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:23,074]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:23,074]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:32:23,074]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:23,074]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:23,074]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:23,074]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:32:23,074]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:23,075]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:32:23,075]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:32:23,075]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:23,075]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:32:23,075]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:32:23,075]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:32:23,075]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:32:23,075]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:23,090]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:32:23,090]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:32:23,090]:INFO:   sub_step |   6 |    0 |    6 |     0 |    0
+[2021-01-18 17:32:23,090]:INFO: 
+[2021-01-18 17:32:23,090]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:32:23,090]:INFO: >>>>       id: 0
+[2021-01-18 17:32:23,090]:INFO: >>>>   handle: output
+[2021-01-18 17:32:23,090]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:32:23,091]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:32:23,091]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:32:23,091]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:32:23,091]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:32:23,091]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:32:23,091]:INFO: ######################################################################
+[2021-01-18 17:32:53,476]:INFO: ######################################################################
+[2021-01-18 17:32:53,476]:INFO: # benchmark: scaling test
+[2021-01-18 17:32:53,477]:INFO: # id: 0
+[2021-01-18 17:32:53,477]:INFO: #
+[2021-01-18 17:32:53,477]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:32:53,477]:INFO: ######################################################################
+[2021-01-18 17:32:53,477]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:53,478]:DEBUG:   available parameter:
+[2021-01-18 17:32:53,478]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:53,478]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:53,478]:DEBUG:          i                     | 0                                       
+[2021-01-18 17:32:53,478]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,478]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,478]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:53,478]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:53,478]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:53,481]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:53,481]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,481]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,481]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,481]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:53,481]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:53,481]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:53,481]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:53,481]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:53,481]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,481]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,481]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,482]:DEBUG:                                | 00/000000_sub_step/work                 
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 17:32:53,482]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 17:32:53,482]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:53,482]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 17:32:53,482]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 17:32:53,482]:DEBUG:          rolling               | 16                                      
+[2021-01-18 17:32:53,482]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 17:32:53,482]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:53,482]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:53,483]:DEBUG:   available parameter:
+[2021-01-18 17:32:53,483]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:53,483]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:53,483]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:32:53,483]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,483]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,483]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:53,483]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:53,483]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:53,483]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:53,483]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,484]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,484]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,484]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:53,484]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:53,484]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:53,484]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:53,484]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,484]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,484]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,484]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:32:53,484]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:32:53,484]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:53,484]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:32:53,484]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:32:53,484]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:32:53,484]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:32:53,484]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:53,485]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:53,485]:DEBUG:   available parameter:
+[2021-01-18 17:32:53,486]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:53,486]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:53,486]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,486]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,486]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:53,486]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:53,486]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:53,486]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,486]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,486]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,486]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:53,486]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:53,486]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,486]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,486]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,486]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:32:53,486]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:32:53,486]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:53,486]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:32:53,486]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:32:53,486]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:32:53,486]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:32:53,487]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:53,487]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:53,488]:DEBUG:   available parameter:
+[2021-01-18 17:32:53,488]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:53,488]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:53,488]:DEBUG:          i                     | 3                                       
+[2021-01-18 17:32:53,488]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,488]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,488]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:53,488]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:53,488]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:53,488]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:53,488]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,488]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,488]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,488]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:53,488]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:53,488]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:53,488]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:53,488]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:53,488]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,488]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,488]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,488]:DEBUG:                                | 00/000003_sub_step/work                 
+[2021-01-18 17:32:53,488]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:53,488]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:53,489]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:53,489]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 17:32:53,489]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:53,489]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 17:32:53,489]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 17:32:53,489]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 17:32:53,489]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 17:32:53,489]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:32:53,489]:DEBUG:          rolling               | 2                                       
+[2021-01-18 17:32:53,489]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 17:32:53,489]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:53,489]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:53,490]:DEBUG:   available parameter:
+[2021-01-18 17:32:53,490]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:53,490]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:53,490]:DEBUG:          i                     | 4                                       
+[2021-01-18 17:32:53,490]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,490]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,490]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:53,490]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:53,490]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:53,490]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:53,490]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,490]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,490]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,490]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:53,491]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:53,491]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:53,491]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:53,491]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,491]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,491]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,491]:DEBUG:                                | 00/000004_sub_step/work                 
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_id            | 4                                       
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_padid         | 000004                                  
+[2021-01-18 17:32:53,491]:DEBUG:          jube_wp_relpath       | output/000000/000004_sub_step/work      
+[2021-01-18 17:32:53,491]:DEBUG:          nodes                 | 4                                       
+[2021-01-18 17:32:53,491]:DEBUG:          nproc                 | 64                                      
+[2021-01-18 17:32:53,491]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:32:53,491]:DEBUG:          rolling               | 1                                       
+[2021-01-18 17:32:53,491]:DEBUG:          time_intervals        | 64                                      
+[2021-01-18 17:32:53,496]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:53,496]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:32:53,497]:DEBUG:   available parameter:
+[2021-01-18 17:32:53,497]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:32:53,497]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:32:53,497]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:32:53,497]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,497]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,497]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:32:53,497]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:32:53,497]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:32:53,497]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:32:53,497]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,497]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,497]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,497]:DEBUG:                                | 00                                      
+[2021-01-18 17:32:53,498]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:32:53,498]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:32:53,498]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:32:53,498]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:32:53,498]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:32:53,498]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:32:53,498]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:32:53,498]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:32:53,498]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:32:53,498]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:32:53,498]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:32:53,498]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:32:53,498]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:32:53,498]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:32:53,512]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:32:53,512]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:32:53,512]:INFO:   sub_step |   6 |    0 |    6 |     0 |    0
+[2021-01-18 17:32:53,512]:INFO: 
+[2021-01-18 17:32:53,512]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:32:53,512]:INFO: >>>>       id: 0
+[2021-01-18 17:32:53,512]:INFO: >>>>   handle: output
+[2021-01-18 17:32:53,512]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:32:53,512]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:32:53,512]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:32:53,513]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:32:53,513]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:32:53,513]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:32:53,513]:INFO: ######################################################################
+[2021-01-18 17:33:23,862]:INFO: ######################################################################
+[2021-01-18 17:33:23,862]:INFO: # benchmark: scaling test
+[2021-01-18 17:33:23,863]:INFO: # id: 0
+[2021-01-18 17:33:23,863]:INFO: #
+[2021-01-18 17:33:23,863]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:33:23,863]:INFO: ######################################################################
+[2021-01-18 17:33:23,863]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:23,864]:DEBUG:   available parameter:
+[2021-01-18 17:33:23,864]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:23,864]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:23,864]:DEBUG:          i                     | 0                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,864]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,864]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:23,864]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:23,864]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:23,864]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,864]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,864]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,864]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:23,864]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:23,864]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,864]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,864]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,864]:DEBUG:                                | 00/000000_sub_step/work                 
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 17:33:23,864]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 17:33:23,864]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:23,865]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 17:33:23,865]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 17:33:23,865]:DEBUG:          rolling               | 16                                      
+[2021-01-18 17:33:23,865]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 17:33:23,865]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:23,865]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:23,866]:DEBUG:   available parameter:
+[2021-01-18 17:33:23,866]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:23,866]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:23,866]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:33:23,866]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,866]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,866]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:23,866]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:23,866]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:23,866]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:23,866]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,866]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,866]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,866]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:23,866]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:23,866]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:23,866]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:23,866]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:23,866]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,866]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,867]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,867]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:33:23,867]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:33:23,867]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:23,867]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:33:23,867]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:33:23,867]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:33:23,867]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:33:23,867]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:23,867]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:23,868]:DEBUG:   available parameter:
+[2021-01-18 17:33:23,868]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:23,868]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:23,868]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:33:23,868]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,868]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,868]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:23,868]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:23,868]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:23,868]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:23,869]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,869]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,869]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,869]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:23,869]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:23,869]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:23,869]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:23,869]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:23,869]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,869]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,869]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,869]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:33:23,869]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:23,872]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:23,872]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:23,872]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:33:23,872]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:23,872]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:33:23,872]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:33:23,872]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:23,872]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:33:23,872]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:33:23,872]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:33:23,872]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:33:23,873]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:23,873]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:23,874]:DEBUG:   available parameter:
+[2021-01-18 17:33:23,874]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:23,874]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:23,874]:DEBUG:          i                     | 3                                       
+[2021-01-18 17:33:23,874]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,874]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,874]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:23,874]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:23,874]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:23,874]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:23,874]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,874]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,874]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,874]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:23,874]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:23,874]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:23,874]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:23,874]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:23,874]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,874]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,874]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,874]:DEBUG:                                | 00/000003_sub_step/work                 
+[2021-01-18 17:33:23,874]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:23,874]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:23,874]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:23,874]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 17:33:23,874]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:23,875]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 17:33:23,875]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 17:33:23,875]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 17:33:23,875]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 17:33:23,875]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:33:23,875]:DEBUG:          rolling               | 2                                       
+[2021-01-18 17:33:23,875]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 17:33:23,875]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:23,875]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:23,876]:DEBUG:   available parameter:
+[2021-01-18 17:33:23,876]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:23,876]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:23,876]:DEBUG:          i                     | 4                                       
+[2021-01-18 17:33:23,876]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,876]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,876]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:23,876]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:23,876]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:23,876]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:23,876]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,876]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,876]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,876]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:23,876]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:23,876]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:23,876]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:23,876]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:23,876]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,877]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,877]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,877]:DEBUG:                                | 00/000004_sub_step/work                 
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_id            | 4                                       
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_padid         | 000004                                  
+[2021-01-18 17:33:23,877]:DEBUG:          jube_wp_relpath       | output/000000/000004_sub_step/work      
+[2021-01-18 17:33:23,877]:DEBUG:          nodes                 | 4                                       
+[2021-01-18 17:33:23,877]:DEBUG:          nproc                 | 64                                      
+[2021-01-18 17:33:23,877]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:33:23,877]:DEBUG:          rolling               | 1                                       
+[2021-01-18 17:33:23,877]:DEBUG:          time_intervals        | 64                                      
+[2021-01-18 17:33:23,965]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:33:23,965]:DEBUG:   0 new workpackages created
+[2021-01-18 17:33:23,965]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:23,966]:DEBUG:   available parameter:
+[2021-01-18 17:33:23,966]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:23,966]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:23,966]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:33:23,966]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,966]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,966]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:23,966]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:23,966]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:23,966]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:23,966]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,966]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,966]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,966]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:23,966]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:23,966]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:23,966]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:23,966]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:23,966]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:23,966]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:23,967]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:23,967]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:33:23,967]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:33:23,967]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:23,967]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:33:23,967]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:33:23,967]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:33:23,967]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:33:23,967]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:23,980]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:33:23,980]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:33:23,981]:INFO:   sub_step |   6 |    0 |    5 |     0 |    1
+[2021-01-18 17:33:23,981]:INFO: 
+[2021-01-18 17:33:23,981]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:33:23,981]:INFO: >>>>       id: 0
+[2021-01-18 17:33:23,981]:INFO: >>>>   handle: output
+[2021-01-18 17:33:23,981]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:33:23,981]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:33:23,981]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:33:23,981]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:33:23,981]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:33:23,981]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:33:23,981]:INFO: ######################################################################
+[2021-01-18 17:33:54,396]:INFO: ######################################################################
+[2021-01-18 17:33:54,396]:INFO: # benchmark: scaling test
+[2021-01-18 17:33:54,396]:INFO: # id: 0
+[2021-01-18 17:33:54,396]:INFO: #
+[2021-01-18 17:33:54,396]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:33:54,396]:INFO: ######################################################################
+[2021-01-18 17:33:54,396]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:54,397]:DEBUG:   available parameter:
+[2021-01-18 17:33:54,397]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:54,397]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:54,397]:DEBUG:          i                     | 0                                       
+[2021-01-18 17:33:54,397]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,397]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,398]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:54,398]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:54,398]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:54,398]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:54,398]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,398]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,398]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,398]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:54,398]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:54,398]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:54,398]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:54,398]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:54,398]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,398]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,398]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,398]:DEBUG:                                | 00/000000_sub_step/work                 
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 17:33:54,402]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 17:33:54,402]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:54,402]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 17:33:54,402]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 17:33:54,402]:DEBUG:          rolling               | 16                                      
+[2021-01-18 17:33:54,402]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 17:33:54,409]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:33:54,409]:DEBUG:   0 new workpackages created
+[2021-01-18 17:33:54,409]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:54,410]:DEBUG:   available parameter:
+[2021-01-18 17:33:54,410]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:54,410]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:54,410]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:33:54,410]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,410]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,410]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:54,410]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:54,410]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:54,410]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:54,410]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,410]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,410]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,411]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:54,411]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:54,411]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:54,411]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:54,411]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,411]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,411]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,411]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:33:54,411]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:33:54,411]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:54,411]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:33:54,411]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:33:54,411]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:33:54,411]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:33:54,413]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:54,413]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:54,414]:DEBUG:   available parameter:
+[2021-01-18 17:33:54,414]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:54,414]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:54,414]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:33:54,414]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,414]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,414]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:54,414]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:54,414]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:54,414]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:54,414]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,414]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,414]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,414]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:54,414]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:54,414]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:54,414]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:54,414]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:54,414]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,414]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,415]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,415]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:33:54,415]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:33:54,415]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:54,415]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:33:54,415]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:33:54,415]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:33:54,415]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:33:54,417]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:54,418]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:54,418]:DEBUG:   available parameter:
+[2021-01-18 17:33:54,418]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:54,418]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:54,418]:DEBUG:          i                     | 3                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,419]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,419]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:54,419]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:54,419]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:54,419]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,419]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,419]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,419]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:54,419]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:54,419]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,419]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,419]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,419]:DEBUG:                                | 00/000003_sub_step/work                 
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 17:33:54,419]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 17:33:54,419]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 17:33:54,419]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 17:33:54,419]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:33:54,419]:DEBUG:          rolling               | 2                                       
+[2021-01-18 17:33:54,419]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 17:33:54,421]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:54,421]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:33:54,421]:DEBUG:   0 new workpackages created
+[2021-01-18 17:33:54,421]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:33:54,422]:DEBUG:   available parameter:
+[2021-01-18 17:33:54,422]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:33:54,422]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:33:54,422]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:33:54,422]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,422]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,423]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:33:54,423]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:33:54,423]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:33:54,423]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:33:54,423]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,423]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,423]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,423]:DEBUG:                                | 00                                      
+[2021-01-18 17:33:54,423]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:33:54,423]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:33:54,423]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:33:54,423]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:33:54,423]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:33:54,423]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:33:54,423]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:33:54,423]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:33:54,423]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:33:54,423]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:33:54,423]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:33:54,423]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:33:54,423]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:33:54,425]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:33:54,439]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:33:54,439]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:33:54,439]:INFO:   sub_step |   6 |    0 |    4 |     0 |    2
+[2021-01-18 17:33:54,439]:INFO: 
+[2021-01-18 17:33:54,439]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:33:54,439]:INFO: >>>>       id: 0
+[2021-01-18 17:33:54,439]:INFO: >>>>   handle: output
+[2021-01-18 17:33:54,439]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:33:54,439]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:33:54,439]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:33:54,439]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:33:54,439]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:33:54,439]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:33:54,440]:INFO: ######################################################################
+[2021-01-18 17:34:24,867]:INFO: ######################################################################
+[2021-01-18 17:34:24,867]:INFO: # benchmark: scaling test
+[2021-01-18 17:34:24,867]:INFO: # id: 0
+[2021-01-18 17:34:24,867]:INFO: #
+[2021-01-18 17:34:24,867]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:34:24,867]:INFO: ######################################################################
+[2021-01-18 17:34:24,867]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:34:24,867]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:24,867]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:24,868]:DEBUG:   available parameter:
+[2021-01-18 17:34:24,868]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:24,868]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:24,868]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:34:24,868]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,868]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,868]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:24,868]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:24,868]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:24,868]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:24,868]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,868]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,868]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,868]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:24,868]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:24,868]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:24,868]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:24,868]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:24,868]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,868]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,868]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,868]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:34:24,869]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:34:24,869]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:34:24,869]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:34:24,869]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:34:24,869]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:34:24,869]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:34:24,869]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:34:24,870]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:24,870]:DEBUG:   available parameter:
+[2021-01-18 17:34:24,871]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:24,871]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:24,871]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,871]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,871]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:24,871]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:24,871]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:24,871]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,871]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,871]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,871]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:24,871]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:24,871]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,871]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,871]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,871]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:34:24,871]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:34:24,871]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:34:24,871]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:34:24,871]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:34:24,871]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:34:24,871]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:34:24,872]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:34:24,872]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:24,873]:DEBUG:   available parameter:
+[2021-01-18 17:34:24,873]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:24,873]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:24,873]:DEBUG:          i                     | 3                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,873]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,873]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:24,873]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:24,873]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:24,873]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,873]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,873]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,873]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:24,873]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:24,873]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,873]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,873]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,873]:DEBUG:                                | 00/000003_sub_step/work                 
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 17:34:24,873]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 17:34:24,874]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 17:34:24,874]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 17:34:24,874]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:34:24,874]:DEBUG:          rolling               | 2                                       
+[2021-01-18 17:34:24,874]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 17:34:24,882]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:34:24,882]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:24,882]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:34:24,883]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:24,883]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:24,883]:DEBUG:   available parameter:
+[2021-01-18 17:34:24,884]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:24,884]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:24,884]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,884]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,884]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:24,884]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:24,884]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:24,884]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,884]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,884]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,884]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:24,884]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:24,884]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:24,884]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:24,884]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:24,884]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:34:24,884]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:34:24,888]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:34:24,888]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:34:24,888]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:34:24,888]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:34:24,888]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:34:24,888]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:34:24,912]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:34:24,912]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:34:24,912]:INFO:   sub_step |   6 |    0 |    3 |     0 |    3
+[2021-01-18 17:34:24,912]:INFO: 
+[2021-01-18 17:34:24,913]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:34:24,913]:INFO: >>>>       id: 0
+[2021-01-18 17:34:24,913]:INFO: >>>>   handle: output
+[2021-01-18 17:34:24,913]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:34:24,913]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:34:24,913]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:34:24,913]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:34:24,913]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:34:24,913]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:34:24,913]:INFO: ######################################################################
+[2021-01-18 17:34:55,353]:INFO: ######################################################################
+[2021-01-18 17:34:55,353]:INFO: # benchmark: scaling test
+[2021-01-18 17:34:55,353]:INFO: # id: 0
+[2021-01-18 17:34:55,353]:INFO: #
+[2021-01-18 17:34:55,353]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:34:55,353]:INFO: ######################################################################
+[2021-01-18 17:34:55,354]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:34:55,354]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:55,354]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:55,355]:DEBUG:   available parameter:
+[2021-01-18 17:34:55,355]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:55,355]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:55,355]:DEBUG:          i                     | 1                                       
+[2021-01-18 17:34:55,355]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,355]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,355]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:55,355]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:55,355]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:55,355]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:55,355]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,355]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,355]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:55,355]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:55,355]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:55,355]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:55,355]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:55,355]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,356]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,356]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:55,356]:DEBUG:                                | 00/000001_sub_step/work                 
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 17:34:55,356]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 17:34:55,356]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:34:55,356]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 17:34:55,356]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 17:34:55,356]:DEBUG:          rolling               | 8                                       
+[2021-01-18 17:34:55,356]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 17:34:55,373]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:34:55,373]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:55,373]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:55,374]:DEBUG:   available parameter:
+[2021-01-18 17:34:55,374]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:55,374]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:55,374]:DEBUG:          i                     | 2                                       
+[2021-01-18 17:34:55,374]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,374]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,374]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:55,374]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:55,374]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:55,374]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:55,374]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,374]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,374]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:55,374]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:55,374]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:55,374]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:55,374]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:55,375]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,375]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,375]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:55,375]:DEBUG:                                | 00/000002_sub_step/work                 
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 17:34:55,375]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 17:34:55,375]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:34:55,375]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 17:34:55,375]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 17:34:55,375]:DEBUG:          rolling               | 4                                       
+[2021-01-18 17:34:55,375]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 17:34:55,409]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:34:55,409]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:55,409]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:34:55,409]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:55,409]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:34:55,409]:DEBUG:   0 new workpackages created
+[2021-01-18 17:34:55,410]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:34:55,410]:DEBUG:   available parameter:
+[2021-01-18 17:34:55,410]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:34:55,411]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:34:55,411]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:34:55,411]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,411]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,411]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:34:55,411]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:34:55,411]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:34:55,411]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:34:55,411]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,411]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,411]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:55,411]:DEBUG:                                | 00                                      
+[2021-01-18 17:34:55,411]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:34:55,411]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:34:55,411]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:34:55,411]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:34:55,411]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:34:55,411]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:34:55,417]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:34:55,417]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:34:55,417]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:34:55,417]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:34:55,417]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:34:55,417]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:34:55,417]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:34:55,417]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:34:55,417]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 17:34:55,436]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:34:55,436]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:34:55,436]:INFO:   sub_step |   6 |    0 |    1 |     0 |    5
+[2021-01-18 17:34:55,436]:INFO: 
+[2021-01-18 17:34:55,436]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:34:55,436]:INFO: >>>>       id: 0
+[2021-01-18 17:34:55,436]:INFO: >>>>   handle: output
+[2021-01-18 17:34:55,436]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:34:55,436]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 17:34:55,436]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:34:55,436]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:34:55,436]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:34:55,436]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:34:55,436]:INFO: ######################################################################
+[2021-01-18 17:35:25,856]:INFO: ######################################################################
+[2021-01-18 17:35:25,856]:INFO: # benchmark: scaling test
+[2021-01-18 17:35:25,857]:INFO: # id: 0
+[2021-01-18 17:35:25,857]:INFO: #
+[2021-01-18 17:35:25,857]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:35:25,857]:INFO: ######################################################################
+[2021-01-18 17:35:25,857]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:35:25,857]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:25,857]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:35:25,857]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:25,857]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:35:25,857]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:25,857]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:35:25,857]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:25,857]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:35:25,857]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:25,857]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 17:35:25,858]:DEBUG:   available parameter:
+[2021-01-18 17:35:25,858]:DEBUG:          parameter             | value                                   
+[2021-01-18 17:35:25,858]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 17:35:25,858]:DEBUG:          i                     | 5                                       
+[2021-01-18 17:35:25,862]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:35:25,862]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:35:25,862]:DEBUG:                                | roblem_scaling/schro2_strong            
+[2021-01-18 17:35:25,862]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 17:35:25,862]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 17:35:25,862]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 17:35:25,863]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:35:25,863]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:35:25,863]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:35:25,863]:DEBUG:                                | 00                                      
+[2021-01-18 17:35:25,863]:DEBUG:          jube_benchmark_start  | 2021-01-18T17:31:12                     
+[2021-01-18 17:35:25,863]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 17:35:25,863]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 17:35:25,863]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 17:35:25,863]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 17:35:25,863]:DEBUG:                                | roblem_scaling/schro2_strong/output/0000
+[2021-01-18 17:35:25,863]:DEBUG:                                | 00/000005_sub_step/work                 
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 17:35:25,863]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 17:35:25,863]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 17:35:25,863]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 17:35:25,863]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 17:35:25,863]:DEBUG:          rolling               | 64                                      
+[2021-01-18 17:35:25,863]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 17:35:25,983]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:35:25,983]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:25,997]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:35:25,997]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:35:25,997]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:35:25,997]:INFO: 
+[2021-01-18 17:35:25,997]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:35:25,997]:INFO: >>>>       id: 0
+[2021-01-18 17:35:25,997]:INFO: >>>>   handle: output
+[2021-01-18 17:35:25,997]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:35:25,997]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:35:25,997]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:35:25,997]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:35:25,997]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:35:25,997]:INFO: ######################################################################
+[2021-01-18 17:35:56,430]:INFO: ######################################################################
+[2021-01-18 17:35:56,430]:INFO: # benchmark: scaling test
+[2021-01-18 17:35:56,430]:INFO: # id: 0
+[2021-01-18 17:35:56,430]:INFO: #
+[2021-01-18 17:35:56,430]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:35:56,430]:INFO: ######################################################################
+[2021-01-18 17:35:56,431]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:35:56,431]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:56,431]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:35:56,431]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:56,431]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:35:56,431]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:56,431]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:35:56,431]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:56,431]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:35:56,431]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:56,431]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:35:56,431]:DEBUG:   0 new workpackages created
+[2021-01-18 17:35:56,445]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:35:56,445]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:35:56,445]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:35:56,445]:INFO: 
+[2021-01-18 17:35:56,445]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:35:56,445]:INFO: >>>>       id: 0
+[2021-01-18 17:35:56,445]:INFO: >>>>   handle: output
+[2021-01-18 17:35:56,445]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:35:56,445]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:35:56,445]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:35:56,445]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:35:56,446]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:35:56,446]:INFO: ######################################################################
+[2021-01-18 17:36:26,828]:INFO: ######################################################################
+[2021-01-18 17:36:26,828]:INFO: # benchmark: scaling test
+[2021-01-18 17:36:26,828]:INFO: # id: 0
+[2021-01-18 17:36:26,828]:INFO: #
+[2021-01-18 17:36:26,828]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:36:26,828]:INFO: ######################################################################
+[2021-01-18 17:36:26,828]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:36:26,828]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:26,828]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:36:26,828]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:26,828]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:36:26,828]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:26,828]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:36:26,828]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:26,828]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:36:26,828]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:26,828]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:36:26,828]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:26,841]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:36:26,842]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:36:26,842]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:36:26,842]:INFO: 
+[2021-01-18 17:36:26,842]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:36:26,846]:INFO: >>>>       id: 0
+[2021-01-18 17:36:26,846]:INFO: >>>>   handle: output
+[2021-01-18 17:36:26,846]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:36:26,846]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:36:26,846]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:36:26,846]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:36:26,846]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:36:26,846]:INFO: ######################################################################
+[2021-01-18 17:36:57,181]:INFO: ######################################################################
+[2021-01-18 17:36:57,181]:INFO: # benchmark: scaling test
+[2021-01-18 17:36:57,181]:INFO: # id: 0
+[2021-01-18 17:36:57,181]:INFO: #
+[2021-01-18 17:36:57,181]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:36:57,181]:INFO: ######################################################################
+[2021-01-18 17:36:57,181]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:36:57,181]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:57,181]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:36:57,182]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:57,182]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:36:57,182]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:57,182]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:36:57,182]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:57,182]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:36:57,182]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:57,182]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:36:57,182]:DEBUG:   0 new workpackages created
+[2021-01-18 17:36:57,195]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:36:57,195]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:36:57,195]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:36:57,195]:INFO: 
+[2021-01-18 17:36:57,195]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:36:57,195]:INFO: >>>>       id: 0
+[2021-01-18 17:36:57,195]:INFO: >>>>   handle: output
+[2021-01-18 17:36:57,195]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:36:57,195]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:36:57,195]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:36:57,195]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:36:57,195]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:36:57,195]:INFO: ######################################################################
+[2021-01-18 17:37:27,574]:INFO: ######################################################################
+[2021-01-18 17:37:27,574]:INFO: # benchmark: scaling test
+[2021-01-18 17:37:27,574]:INFO: # id: 0
+[2021-01-18 17:37:27,574]:INFO: #
+[2021-01-18 17:37:27,574]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:37:27,574]:INFO: ######################################################################
+[2021-01-18 17:37:27,574]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:37:27,574]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:27,574]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:37:27,574]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:27,574]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:37:27,574]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:27,574]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:37:27,574]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:27,574]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:37:27,574]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:27,575]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:37:27,575]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:27,587]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:37:27,588]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:37:27,588]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:37:27,588]:INFO: 
+[2021-01-18 17:37:27,588]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:37:27,588]:INFO: >>>>       id: 0
+[2021-01-18 17:37:27,588]:INFO: >>>>   handle: output
+[2021-01-18 17:37:27,588]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:37:27,588]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:37:27,588]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:37:27,588]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:37:27,588]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:37:27,588]:INFO: ######################################################################
+[2021-01-18 17:37:58,013]:INFO: ######################################################################
+[2021-01-18 17:37:58,014]:INFO: # benchmark: scaling test
+[2021-01-18 17:37:58,014]:INFO: # id: 0
+[2021-01-18 17:37:58,014]:INFO: #
+[2021-01-18 17:37:58,014]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:37:58,014]:INFO: ######################################################################
+[2021-01-18 17:37:58,014]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:37:58,014]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:58,014]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:37:58,014]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:58,014]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:37:58,014]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:58,014]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:37:58,014]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:58,014]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:37:58,014]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:58,014]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:37:58,014]:DEBUG:   0 new workpackages created
+[2021-01-18 17:37:58,028]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:37:58,028]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:37:58,028]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:37:58,028]:INFO: 
+[2021-01-18 17:37:58,028]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:37:58,028]:INFO: >>>>       id: 0
+[2021-01-18 17:37:58,028]:INFO: >>>>   handle: output
+[2021-01-18 17:37:58,028]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:37:58,028]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:37:58,028]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:37:58,028]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:37:58,028]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:37:58,028]:INFO: ######################################################################
+[2021-01-18 17:38:28,469]:INFO: ######################################################################
+[2021-01-18 17:38:28,469]:INFO: # benchmark: scaling test
+[2021-01-18 17:38:28,469]:INFO: # id: 0
+[2021-01-18 17:38:28,469]:INFO: #
+[2021-01-18 17:38:28,469]:INFO: # Speedup for schro2 on 64 intervals with rolling paralpha.
+[2021-01-18 17:38:28,469]:INFO: ######################################################################
+[2021-01-18 17:38:28,469]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 17:38:28,469]:DEBUG:   0 new workpackages created
+[2021-01-18 17:38:28,469]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 17:38:28,469]:DEBUG:   0 new workpackages created
+[2021-01-18 17:38:28,469]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 17:38:28,469]:DEBUG:   0 new workpackages created
+[2021-01-18 17:38:28,469]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 17:38:28,485]:DEBUG:   0 new workpackages created
+[2021-01-18 17:38:28,485]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 17:38:28,485]:DEBUG:   0 new workpackages created
+[2021-01-18 17:38:28,486]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 17:38:28,486]:DEBUG:   0 new workpackages created
+[2021-01-18 17:38:28,510]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 17:38:28,510]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 17:38:28,510]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 17:38:28,510]:INFO: 
+[2021-01-18 17:38:28,510]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 17:38:28,510]:INFO: >>>>       id: 0
+[2021-01-18 17:38:28,510]:INFO: >>>>   handle: output
+[2021-01-18 17:38:28,510]:INFO: >>>>      dir: output/000000
+[2021-01-18 17:38:28,510]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 17:38:28,510]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 17:38:28,510]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 17:38:28,510]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 17:38:28,510]:INFO: ######################################################################
