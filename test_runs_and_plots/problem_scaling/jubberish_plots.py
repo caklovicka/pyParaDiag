@@ -3,7 +3,7 @@ import numpy as np
 
 'plotting the a fully serial and interval-parallel speedup'
 
-path = 'heat3_roberts_wish/output/000000/result/result.dat'
+path = 'heat3_strong/output/000000/result/result.dat'
 
 # nproc | tot_time
 eq3 = np.loadtxt(path, delimiter='|', usecols=[0, 3], skiprows=3)
