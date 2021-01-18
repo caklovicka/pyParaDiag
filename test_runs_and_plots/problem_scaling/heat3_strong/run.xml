@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
   <benchmark name="scaling test" outpath="output">
-    <comment>Speedup for schro3 on 64 intervals with rolling paralpha.</comment>
+    <comment>Speedup for heat3 on 64 intervals with rolling paralpha.</comment>
 
     <parameterset name="param_set">
       <parameter name="i" type="int">0,1,2,3,4,5</parameter>
@@ -48,7 +48,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="1">
+    <step name="sub_step" iterations="10">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->
