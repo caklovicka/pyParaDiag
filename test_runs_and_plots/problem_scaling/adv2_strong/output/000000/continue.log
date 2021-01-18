@@ -1,0 +1,1967 @@
+[2021-01-18 15:50:00,246]:INFO: ######################################################################
+[2021-01-18 15:50:00,246]:INFO: # benchmark: scaling test
+[2021-01-18 15:50:00,246]:INFO: # id: 0
+[2021-01-18 15:50:00,246]:INFO: #
+[2021-01-18 15:50:00,246]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:50:00,246]:INFO: ######################################################################
+[2021-01-18 15:50:00,246]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:00,247]:DEBUG:   available parameter:
+[2021-01-18 15:50:00,247]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:00,247]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:00,247]:DEBUG:          i                     | 0                                       
+[2021-01-18 15:50:00,247]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,247]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,248]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:00,248]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:00,248]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:00,248]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:00,248]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,248]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,248]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,248]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:00,248]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:00,248]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:00,248]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,248]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,248]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,248]:DEBUG:                                | /000000_sub_step/work                   
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 15:50:00,248]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 15:50:00,248]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:00,248]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 15:50:00,248]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 15:50:00,248]:DEBUG:          rolling               | 16                                      
+[2021-01-18 15:50:00,248]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 15:50:00,252]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:00,252]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:00,253]:DEBUG:   available parameter:
+[2021-01-18 15:50:00,253]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:00,253]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:00,253]:DEBUG:          i                     | 1                                       
+[2021-01-18 15:50:00,253]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,253]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,253]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:00,253]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:00,253]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:00,254]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:00,254]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,254]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,254]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,254]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:00,254]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:00,254]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:00,254]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,254]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,254]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,254]:DEBUG:                                | /000001_sub_step/work                   
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 15:50:00,254]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 15:50:00,254]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:00,254]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 15:50:00,254]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 15:50:00,254]:DEBUG:          rolling               | 8                                       
+[2021-01-18 15:50:00,254]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 15:50:00,254]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:00,255]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:00,256]:DEBUG:   available parameter:
+[2021-01-18 15:50:00,256]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:00,256]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:00,256]:DEBUG:          i                     | 2                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,256]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,256]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:00,256]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:00,256]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:00,256]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,256]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,256]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,256]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:00,256]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,256]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,256]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,256]:DEBUG:                                | /000002_sub_step/work                   
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 15:50:00,256]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 15:50:00,256]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:00,256]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 15:50:00,257]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:00,257]:DEBUG:          rolling               | 4                                       
+[2021-01-18 15:50:00,257]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 15:50:00,257]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:00,257]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:00,258]:DEBUG:   available parameter:
+[2021-01-18 15:50:00,258]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:00,258]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:00,258]:DEBUG:          i                     | 3                                       
+[2021-01-18 15:50:00,258]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,258]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,258]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:00,258]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:00,258]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:00,258]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:00,258]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,258]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,258]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,258]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:00,258]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:00,258]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:00,258]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:00,258]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,259]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,259]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,259]:DEBUG:                                | /000003_sub_step/work                   
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 15:50:00,259]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 15:50:00,259]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 15:50:00,259]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 15:50:00,259]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:00,259]:DEBUG:          rolling               | 2                                       
+[2021-01-18 15:50:00,259]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 15:50:00,259]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:00,259]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:00,260]:DEBUG:   available parameter:
+[2021-01-18 15:50:00,260]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:00,260]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:00,260]:DEBUG:          i                     | 4                                       
+[2021-01-18 15:50:00,260]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,260]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,260]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:00,261]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:00,261]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:00,261]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:00,261]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,261]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,261]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,261]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:00,261]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:00,261]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:00,261]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,261]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,261]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,261]:DEBUG:                                | /000004_sub_step/work                   
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_id            | 4                                       
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_padid         | 000004                                  
+[2021-01-18 15:50:00,261]:DEBUG:          jube_wp_relpath       | output/000000/000004_sub_step/work      
+[2021-01-18 15:50:00,261]:DEBUG:          nodes                 | 4                                       
+[2021-01-18 15:50:00,261]:DEBUG:          nproc                 | 64                                      
+[2021-01-18 15:50:00,261]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:00,261]:DEBUG:          rolling               | 1                                       
+[2021-01-18 15:50:00,261]:DEBUG:          time_intervals        | 64                                      
+[2021-01-18 15:50:00,261]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:00,262]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:00,263]:DEBUG:   available parameter:
+[2021-01-18 15:50:00,263]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:00,263]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:00,263]:DEBUG:          i                     | 5                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,263]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,263]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:00,263]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:00,263]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:00,263]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,263]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,263]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,263]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:00,263]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:00,263]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:00,263]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:00,263]:DEBUG:                                | /000005_sub_step/work                   
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 15:50:00,263]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 15:50:00,263]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:00,264]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 15:50:00,264]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 15:50:00,264]:DEBUG:          rolling               | 64                                      
+[2021-01-18 15:50:00,264]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 15:50:00,264]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:00,280]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:50:00,280]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:50:00,280]:INFO:   sub_step |   6 |    0 |    6 |     0 |    0
+[2021-01-18 15:50:00,280]:INFO: 
+[2021-01-18 15:50:00,280]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:50:00,280]:INFO: >>>>       id: 0
+[2021-01-18 15:50:00,280]:INFO: >>>>   handle: output
+[2021-01-18 15:50:00,280]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:50:00,281]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 15:50:00,281]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:50:00,281]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:50:00,281]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:50:00,281]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:50:00,281]:INFO: ######################################################################
+[2021-01-18 15:50:20,759]:INFO: ######################################################################
+[2021-01-18 15:50:20,759]:INFO: # benchmark: scaling test
+[2021-01-18 15:50:20,759]:INFO: # id: 0
+[2021-01-18 15:50:20,759]:INFO: #
+[2021-01-18 15:50:20,759]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:50:20,759]:INFO: ######################################################################
+[2021-01-18 15:50:20,760]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:20,760]:DEBUG:   available parameter:
+[2021-01-18 15:50:20,761]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:20,761]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:20,761]:DEBUG:          i                     | 0                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,761]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,761]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:20,761]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:20,761]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:20,761]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,761]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,761]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,761]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:20,761]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,761]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,761]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,761]:DEBUG:                                | /000000_sub_step/work                   
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 15:50:20,761]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 15:50:20,761]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:20,761]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 15:50:20,761]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 15:50:20,761]:DEBUG:          rolling               | 16                                      
+[2021-01-18 15:50:20,761]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 15:50:20,765]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:20,765]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:20,766]:DEBUG:   available parameter:
+[2021-01-18 15:50:20,766]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:20,766]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:20,766]:DEBUG:          i                     | 1                                       
+[2021-01-18 15:50:20,766]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,766]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,766]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:20,766]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:20,766]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:20,766]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:20,766]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,766]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,766]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,767]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:20,767]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:20,767]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:20,767]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,767]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,767]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,767]:DEBUG:                                | /000001_sub_step/work                   
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 15:50:20,767]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 15:50:20,767]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:20,767]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 15:50:20,767]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 15:50:20,767]:DEBUG:          rolling               | 8                                       
+[2021-01-18 15:50:20,767]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 15:50:20,770]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:20,771]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:20,771]:DEBUG:   available parameter:
+[2021-01-18 15:50:20,772]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:20,772]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:20,772]:DEBUG:          i                     | 2                                       
+[2021-01-18 15:50:20,772]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,772]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,772]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:20,772]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:20,772]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:20,772]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:20,772]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,772]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,772]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,772]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:20,772]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:20,772]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:20,772]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,776]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,776]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,776]:DEBUG:                                | /000002_sub_step/work                   
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 15:50:20,776]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 15:50:20,776]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:20,776]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 15:50:20,776]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:20,776]:DEBUG:          rolling               | 4                                       
+[2021-01-18 15:50:20,776]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 15:50:20,780]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:20,781]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:20,781]:DEBUG:   available parameter:
+[2021-01-18 15:50:20,782]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:20,782]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:20,782]:DEBUG:          i                     | 3                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,782]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,782]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:20,782]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:20,782]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:20,782]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,782]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,782]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,782]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:20,782]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,782]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,782]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,782]:DEBUG:                                | /000003_sub_step/work                   
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_id            | 3                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_padid         | 000003                                  
+[2021-01-18 15:50:20,782]:DEBUG:          jube_wp_relpath       | output/000000/000003_sub_step/work      
+[2021-01-18 15:50:20,782]:DEBUG:          nodes                 | 2                                       
+[2021-01-18 15:50:20,782]:DEBUG:          nproc                 | 32                                      
+[2021-01-18 15:50:20,782]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:20,782]:DEBUG:          rolling               | 2                                       
+[2021-01-18 15:50:20,782]:DEBUG:          time_intervals        | 32                                      
+[2021-01-18 15:50:20,808]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:50:20,808]:DEBUG:   0 new workpackages created
+[2021-01-18 15:50:20,809]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:20,809]:DEBUG:   available parameter:
+[2021-01-18 15:50:20,809]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:20,810]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:20,810]:DEBUG:          i                     | 4                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,810]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,810]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:20,810]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:20,810]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:20,810]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,810]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,810]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,810]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:20,810]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,810]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,810]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,810]:DEBUG:                                | /000004_sub_step/work                   
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_id            | 4                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_padid         | 000004                                  
+[2021-01-18 15:50:20,810]:DEBUG:          jube_wp_relpath       | output/000000/000004_sub_step/work      
+[2021-01-18 15:50:20,810]:DEBUG:          nodes                 | 4                                       
+[2021-01-18 15:50:20,810]:DEBUG:          nproc                 | 64                                      
+[2021-01-18 15:50:20,810]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:20,810]:DEBUG:          rolling               | 1                                       
+[2021-01-18 15:50:20,810]:DEBUG:          time_intervals        | 64                                      
+[2021-01-18 15:50:20,818]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:50:20,818]:DEBUG:   0 new workpackages created
+[2021-01-18 15:50:20,819]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:20,820]:DEBUG:   available parameter:
+[2021-01-18 15:50:20,820]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:20,820]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:20,820]:DEBUG:          i                     | 5                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,820]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,820]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:20,820]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:20,820]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:20,820]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,820]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,820]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,820]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:20,820]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:20,820]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:20,820]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:20,820]:DEBUG:                                | /000005_sub_step/work                   
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 15:50:20,820]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 15:50:20,820]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:20,820]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 15:50:20,820]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 15:50:20,820]:DEBUG:          rolling               | 64                                      
+[2021-01-18 15:50:20,821]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 15:50:20,824]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:20,839]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:50:20,839]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:50:20,839]:INFO:   sub_step |   6 |    0 |    4 |     0 |    2
+[2021-01-18 15:50:20,839]:INFO: 
+[2021-01-18 15:50:20,839]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:50:20,839]:INFO: >>>>       id: 0
+[2021-01-18 15:50:20,839]:INFO: >>>>   handle: output
+[2021-01-18 15:50:20,840]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:50:20,840]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 15:50:20,840]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:50:20,840]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:50:20,840]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:50:20,840]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:50:20,840]:INFO: ######################################################################
+[2021-01-18 15:50:41,253]:INFO: ######################################################################
+[2021-01-18 15:50:41,253]:INFO: # benchmark: scaling test
+[2021-01-18 15:50:41,253]:INFO: # id: 0
+[2021-01-18 15:50:41,253]:INFO: #
+[2021-01-18 15:50:41,254]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:50:41,254]:INFO: ######################################################################
+[2021-01-18 15:50:41,254]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:41,255]:DEBUG:   available parameter:
+[2021-01-18 15:50:41,255]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:41,255]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:41,255]:DEBUG:          i                     | 0                                       
+[2021-01-18 15:50:41,255]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,255]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,255]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:41,255]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:41,255]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:41,255]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:41,255]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,255]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,255]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,255]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:41,255]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:41,255]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:41,255]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:41,255]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,255]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,255]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,259]:DEBUG:                                | /000000_sub_step/work                   
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 15:50:41,259]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 15:50:41,259]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:41,259]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 15:50:41,259]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 15:50:41,259]:DEBUG:          rolling               | 16                                      
+[2021-01-18 15:50:41,259]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 15:50:41,259]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:41,260]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:41,261]:DEBUG:   available parameter:
+[2021-01-18 15:50:41,261]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:41,261]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:41,261]:DEBUG:          i                     | 1                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,261]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,261]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:41,261]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:41,261]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:41,261]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,261]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,261]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,261]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:41,261]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,261]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,261]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,261]:DEBUG:                                | /000001_sub_step/work                   
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_id            | 1                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_padid         | 000001                                  
+[2021-01-18 15:50:41,261]:DEBUG:          jube_wp_relpath       | output/000000/000001_sub_step/work      
+[2021-01-18 15:50:41,261]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:41,261]:DEBUG:          nproc                 | 8                                       
+[2021-01-18 15:50:41,261]:DEBUG:          ntasks_per_node       | 8                                       
+[2021-01-18 15:50:41,261]:DEBUG:          rolling               | 8                                       
+[2021-01-18 15:50:41,262]:DEBUG:          time_intervals        | 8                                       
+[2021-01-18 15:50:41,272]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:50:41,272]:DEBUG:   0 new workpackages created
+[2021-01-18 15:50:41,273]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:41,274]:DEBUG:   available parameter:
+[2021-01-18 15:50:41,274]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:41,274]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:41,274]:DEBUG:          i                     | 2                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,274]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,274]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:41,274]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:41,274]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:41,274]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,274]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,274]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,274]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:41,274]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,274]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,274]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,274]:DEBUG:                                | /000002_sub_step/work                   
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_id            | 2                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_padid         | 000002                                  
+[2021-01-18 15:50:41,274]:DEBUG:          jube_wp_relpath       | output/000000/000002_sub_step/work      
+[2021-01-18 15:50:41,274]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:41,274]:DEBUG:          nproc                 | 16                                      
+[2021-01-18 15:50:41,274]:DEBUG:          ntasks_per_node       | 16                                      
+[2021-01-18 15:50:41,274]:DEBUG:          rolling               | 4                                       
+[2021-01-18 15:50:41,274]:DEBUG:          time_intervals        | 16                                      
+[2021-01-18 15:50:41,281]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:50:41,281]:DEBUG:   0 new workpackages created
+[2021-01-18 15:50:41,281]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:50:41,282]:DEBUG:   0 new workpackages created
+[2021-01-18 15:50:41,282]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:50:41,282]:DEBUG:   0 new workpackages created
+[2021-01-18 15:50:41,282]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 15:50:41,283]:DEBUG:   available parameter:
+[2021-01-18 15:50:41,283]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:50:41,283]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:50:41,283]:DEBUG:          i                     | 5                                       
+[2021-01-18 15:50:41,283]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,283]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,283]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:50:41,283]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:50:41,283]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:50:41,283]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:50:41,283]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,283]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,283]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,283]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:50:41,283]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:50:41,283]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:50:41,283]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:50:41,283]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:50:41,283]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:50:41,283]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:50:41,283]:DEBUG:                                | /000005_sub_step/work                   
+[2021-01-18 15:50:41,283]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:50:41,283]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:50:41,284]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:50:41,284]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 15:50:41,284]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:50:41,284]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 15:50:41,284]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 15:50:41,284]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:50:41,284]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 15:50:41,284]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 15:50:41,284]:DEBUG:          rolling               | 64                                      
+[2021-01-18 15:50:41,284]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 15:50:41,284]:DEBUG: Waiting for file "ready" ...
+[2021-01-18 15:50:41,309]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:50:41,309]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:50:41,309]:INFO:   sub_step |   6 |    0 |    2 |     0 |    4
+[2021-01-18 15:50:41,309]:INFO: 
+[2021-01-18 15:50:41,309]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:50:41,310]:INFO: >>>>       id: 0
+[2021-01-18 15:50:41,310]:INFO: >>>>   handle: output
+[2021-01-18 15:50:41,310]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:50:41,310]:INFO: >>>> continue: jube continue output --id 0
+[2021-01-18 15:50:41,310]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:50:41,310]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:50:41,310]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:50:41,310]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:50:41,310]:INFO: ######################################################################
+[2021-01-18 15:51:01,785]:INFO: ######################################################################
+[2021-01-18 15:51:01,785]:INFO: # benchmark: scaling test
+[2021-01-18 15:51:01,785]:INFO: # id: 0
+[2021-01-18 15:51:01,785]:INFO: #
+[2021-01-18 15:51:01,785]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:51:01,785]:INFO: ######################################################################
+[2021-01-18 15:51:01,785]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 ) -----
+[2021-01-18 15:51:01,786]:DEBUG:   available parameter:
+[2021-01-18 15:51:01,786]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:51:01,786]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:51:01,786]:DEBUG:          i                     | 0                                       
+[2021-01-18 15:51:01,786]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:51:01,786]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:51:01,786]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:51:01,786]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:51:01,786]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:51:01,786]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:51:01,786]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:51:01,786]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:51:01,786]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:51:01,786]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:51:01,787]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:51:01,787]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:51:01,787]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:51:01,787]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:51:01,787]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:51:01,787]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:51:01,790]:DEBUG:                                | /000000_sub_step/work                   
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_id            | 0                                       
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_padid         | 000000                                  
+[2021-01-18 15:51:01,791]:DEBUG:          jube_wp_relpath       | output/000000/000000_sub_step/work      
+[2021-01-18 15:51:01,791]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:51:01,791]:DEBUG:          nproc                 | 4                                       
+[2021-01-18 15:51:01,791]:DEBUG:          ntasks_per_node       | 4                                       
+[2021-01-18 15:51:01,791]:DEBUG:          rolling               | 16                                      
+[2021-01-18 15:51:01,791]:DEBUG:          time_intervals        | 4                                       
+[2021-01-18 15:51:01,797]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:51:01,797]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:01,797]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:51:01,797]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:01,797]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:51:01,797]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:01,798]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:51:01,798]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:01,798]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:51:01,798]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:01,798]:DEBUG: ----- sub_step ( iter:0 | id:5 | parents: | cycle:0 ) -----
+[2021-01-18 15:51:01,799]:DEBUG:   available parameter:
+[2021-01-18 15:51:01,799]:DEBUG:          parameter             | value                                   
+[2021-01-18 15:51:01,799]:DEBUG:          ----------------------+-----------------------------------------
+[2021-01-18 15:51:01,799]:DEBUG:          i                     | 5                                       
+[2021-01-18 15:51:01,799]:DEBUG:          jube_benchmark_home   | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:51:01,799]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:51:01,799]:DEBUG:                                | roblem_scaling/adv2_strong              
+[2021-01-18 15:51:01,799]:DEBUG:          jube_benchmark_id     | 0                                       
+[2021-01-18 15:51:01,799]:DEBUG:          jube_benchmark_name   | scaling test                            
+[2021-01-18 15:51:01,799]:DEBUG:          jube_benchmark_padid  | 000000                                  
+[2021-01-18 15:51:01,799]:DEBUG:          jube_benchmark_rundir | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:51:01,799]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:51:01,799]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:51:01,799]:DEBUG:          jube_benchmark_start  | 2021-01-18T15:49:53                     
+[2021-01-18 15:51:01,799]:DEBUG:          jube_step_cycles      | 1                                       
+[2021-01-18 15:51:01,799]:DEBUG:          jube_step_iterations  | 1                                       
+[2021-01-18 15:51:01,799]:DEBUG:          jube_step_name        | sub_step                                
+[2021-01-18 15:51:01,799]:DEBUG:          jube_wp_abspath       | /p/home/jusers/aklovi1/juwels/linear-   
+[2021-01-18 15:51:01,799]:DEBUG:                                | petsc-fft-Paralpha/test_runs_and_plots/p
+[2021-01-18 15:51:01,799]:DEBUG:                                | roblem_scaling/adv2_strong/output/000000
+[2021-01-18 15:51:01,800]:DEBUG:                                | /000005_sub_step/work                   
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_cycle         | 0                                       
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_envlist       |                                         
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_envstr        |                                         
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_id            | 5                                       
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_iteration     | 0                                       
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_padid         | 000005                                  
+[2021-01-18 15:51:01,800]:DEBUG:          jube_wp_relpath       | output/000000/000005_sub_step/work      
+[2021-01-18 15:51:01,800]:DEBUG:          nodes                 | 1                                       
+[2021-01-18 15:51:01,800]:DEBUG:          nproc                 | 1                                       
+[2021-01-18 15:51:01,800]:DEBUG:          ntasks_per_node       | 1                                       
+[2021-01-18 15:51:01,800]:DEBUG:          rolling               | 64                                      
+[2021-01-18 15:51:01,800]:DEBUG:          time_intervals        | 1                                       
+[2021-01-18 15:51:01,810]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:51:01,811]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:01,826]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:51:01,827]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:51:01,827]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:51:01,827]:INFO: 
+[2021-01-18 15:51:01,827]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:51:01,827]:INFO: >>>>       id: 0
+[2021-01-18 15:51:01,827]:INFO: >>>>   handle: output
+[2021-01-18 15:51:01,827]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:51:01,827]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:51:01,827]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:51:01,827]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:51:01,827]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:51:01,827]:INFO: ######################################################################
+[2021-01-18 15:51:22,308]:INFO: ######################################################################
+[2021-01-18 15:51:22,308]:INFO: # benchmark: scaling test
+[2021-01-18 15:51:22,308]:INFO: # id: 0
+[2021-01-18 15:51:22,308]:INFO: #
+[2021-01-18 15:51:22,308]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:51:22,308]:INFO: ######################################################################
+[2021-01-18 15:51:22,310]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:51:22,310]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:22,310]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:51:22,310]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:22,310]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:51:22,310]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:22,310]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:51:22,310]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:22,310]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:51:22,310]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:22,311]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:51:22,311]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:22,327]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:51:22,327]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:51:22,327]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:51:22,327]:INFO: 
+[2021-01-18 15:51:22,328]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:51:22,328]:INFO: >>>>       id: 0
+[2021-01-18 15:51:22,328]:INFO: >>>>   handle: output
+[2021-01-18 15:51:22,328]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:51:22,328]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:51:22,328]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:51:22,328]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:51:22,328]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:51:22,328]:INFO: ######################################################################
+[2021-01-18 15:51:42,737]:INFO: ######################################################################
+[2021-01-18 15:51:42,737]:INFO: # benchmark: scaling test
+[2021-01-18 15:51:42,738]:INFO: # id: 0
+[2021-01-18 15:51:42,738]:INFO: #
+[2021-01-18 15:51:42,738]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:51:42,738]:INFO: ######################################################################
+[2021-01-18 15:51:42,739]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:51:42,739]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:42,739]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:51:42,739]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:42,739]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:51:42,740]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:42,740]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:51:42,740]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:42,740]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:51:42,740]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:42,740]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:51:42,740]:DEBUG:   0 new workpackages created
+[2021-01-18 15:51:42,754]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:51:42,755]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:51:42,755]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:51:42,755]:INFO: 
+[2021-01-18 15:51:42,755]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:51:42,755]:INFO: >>>>       id: 0
+[2021-01-18 15:51:42,755]:INFO: >>>>   handle: output
+[2021-01-18 15:51:42,755]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:51:42,755]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:51:42,755]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:51:42,755]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:51:42,755]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:51:42,755]:INFO: ######################################################################
+[2021-01-18 15:52:03,237]:INFO: ######################################################################
+[2021-01-18 15:52:03,237]:INFO: # benchmark: scaling test
+[2021-01-18 15:52:03,237]:INFO: # id: 0
+[2021-01-18 15:52:03,237]:INFO: #
+[2021-01-18 15:52:03,237]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:52:03,237]:INFO: ######################################################################
+[2021-01-18 15:52:03,265]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:52:03,265]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:03,265]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:52:03,265]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:03,266]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:52:03,266]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:03,266]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:52:03,266]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:03,266]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:52:03,266]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:03,266]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:52:03,266]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:03,281]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:52:03,282]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:52:03,282]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:52:03,282]:INFO: 
+[2021-01-18 15:52:03,282]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:52:03,282]:INFO: >>>>       id: 0
+[2021-01-18 15:52:03,282]:INFO: >>>>   handle: output
+[2021-01-18 15:52:03,282]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:52:03,282]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:52:03,282]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:52:03,282]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:52:03,282]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:52:03,282]:INFO: ######################################################################
+[2021-01-18 15:52:23,713]:INFO: ######################################################################
+[2021-01-18 15:52:23,713]:INFO: # benchmark: scaling test
+[2021-01-18 15:52:23,713]:INFO: # id: 0
+[2021-01-18 15:52:23,713]:INFO: #
+[2021-01-18 15:52:23,713]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:52:23,713]:INFO: ######################################################################
+[2021-01-18 15:52:23,714]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:52:23,715]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:23,715]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:52:23,715]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:23,715]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:52:23,715]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:23,715]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:52:23,715]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:23,715]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:52:23,716]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:23,716]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:52:23,716]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:23,732]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:52:23,732]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:52:23,732]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:52:23,732]:INFO: 
+[2021-01-18 15:52:23,732]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:52:23,732]:INFO: >>>>       id: 0
+[2021-01-18 15:52:23,732]:INFO: >>>>   handle: output
+[2021-01-18 15:52:23,732]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:52:23,733]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:52:23,733]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:52:23,733]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:52:23,733]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:52:23,733]:INFO: ######################################################################
+[2021-01-18 15:52:44,112]:INFO: ######################################################################
+[2021-01-18 15:52:44,112]:INFO: # benchmark: scaling test
+[2021-01-18 15:52:44,112]:INFO: # id: 0
+[2021-01-18 15:52:44,112]:INFO: #
+[2021-01-18 15:52:44,112]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:52:44,112]:INFO: ######################################################################
+[2021-01-18 15:52:44,113]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:52:44,113]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:44,113]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:52:44,116]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:44,116]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:52:44,116]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:44,117]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:52:44,117]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:44,117]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:52:44,117]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:44,117]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:52:44,117]:DEBUG:   0 new workpackages created
+[2021-01-18 15:52:44,131]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:52:44,132]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:52:44,132]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:52:44,132]:INFO: 
+[2021-01-18 15:52:44,132]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:52:44,132]:INFO: >>>>       id: 0
+[2021-01-18 15:52:44,132]:INFO: >>>>   handle: output
+[2021-01-18 15:52:44,133]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:52:44,133]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:52:44,133]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:52:44,133]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:52:44,133]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:52:44,133]:INFO: ######################################################################
+[2021-01-18 15:53:04,615]:INFO: ######################################################################
+[2021-01-18 15:53:04,616]:INFO: # benchmark: scaling test
+[2021-01-18 15:53:04,616]:INFO: # id: 0
+[2021-01-18 15:53:04,616]:INFO: #
+[2021-01-18 15:53:04,616]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:53:04,616]:INFO: ######################################################################
+[2021-01-18 15:53:04,616]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:53:04,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:04,616]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:53:04,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:04,616]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:53:04,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:04,616]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:53:04,617]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:04,617]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:53:04,617]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:04,617]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:53:04,617]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:04,632]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:53:04,632]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:53:04,633]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:53:04,633]:INFO: 
+[2021-01-18 15:53:04,633]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:53:04,633]:INFO: >>>>       id: 0
+[2021-01-18 15:53:04,633]:INFO: >>>>   handle: output
+[2021-01-18 15:53:04,633]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:53:04,633]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:53:04,633]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:53:04,633]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:53:04,633]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:53:04,633]:INFO: ######################################################################
+[2021-01-18 15:53:25,134]:INFO: ######################################################################
+[2021-01-18 15:53:25,134]:INFO: # benchmark: scaling test
+[2021-01-18 15:53:25,134]:INFO: # id: 0
+[2021-01-18 15:53:25,134]:INFO: #
+[2021-01-18 15:53:25,134]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:53:25,134]:INFO: ######################################################################
+[2021-01-18 15:53:25,138]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:53:25,138]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:25,138]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:53:25,138]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:25,138]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:53:25,138]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:25,138]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:53:25,138]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:25,138]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:53:25,139]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:25,139]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:53:25,139]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:25,159]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:53:25,160]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:53:25,160]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:53:25,160]:INFO: 
+[2021-01-18 15:53:25,160]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:53:25,160]:INFO: >>>>       id: 0
+[2021-01-18 15:53:25,160]:INFO: >>>>   handle: output
+[2021-01-18 15:53:25,160]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:53:25,160]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:53:25,160]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:53:25,160]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:53:25,160]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:53:25,160]:INFO: ######################################################################
+[2021-01-18 15:53:45,596]:INFO: ######################################################################
+[2021-01-18 15:53:45,596]:INFO: # benchmark: scaling test
+[2021-01-18 15:53:45,596]:INFO: # id: 0
+[2021-01-18 15:53:45,596]:INFO: #
+[2021-01-18 15:53:45,596]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:53:45,596]:INFO: ######################################################################
+[2021-01-18 15:53:45,597]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:53:45,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:45,597]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:53:45,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:45,597]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:53:45,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:45,597]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:53:45,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:45,597]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:53:45,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:45,598]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:53:45,598]:DEBUG:   0 new workpackages created
+[2021-01-18 15:53:45,611]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:53:45,612]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:53:45,612]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:53:45,612]:INFO: 
+[2021-01-18 15:53:45,612]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:53:45,612]:INFO: >>>>       id: 0
+[2021-01-18 15:53:45,612]:INFO: >>>>   handle: output
+[2021-01-18 15:53:45,612]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:53:45,612]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:53:45,612]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:53:45,612]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:53:45,612]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:53:45,612]:INFO: ######################################################################
+[2021-01-18 15:54:06,043]:INFO: ######################################################################
+[2021-01-18 15:54:06,043]:INFO: # benchmark: scaling test
+[2021-01-18 15:54:06,043]:INFO: # id: 0
+[2021-01-18 15:54:06,043]:INFO: #
+[2021-01-18 15:54:06,043]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:54:06,043]:INFO: ######################################################################
+[2021-01-18 15:54:06,043]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:54:06,043]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:06,043]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:54:06,044]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:06,044]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:54:06,044]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:06,044]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:54:06,044]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:06,044]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:54:06,044]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:06,044]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:54:06,044]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:06,059]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:54:06,059]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:54:06,059]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:54:06,059]:INFO: 
+[2021-01-18 15:54:06,059]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:54:06,059]:INFO: >>>>       id: 0
+[2021-01-18 15:54:06,059]:INFO: >>>>   handle: output
+[2021-01-18 15:54:06,059]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:54:06,060]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:54:06,060]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:54:06,060]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:54:06,060]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:54:06,060]:INFO: ######################################################################
+[2021-01-18 15:54:26,925]:INFO: ######################################################################
+[2021-01-18 15:54:26,926]:INFO: # benchmark: scaling test
+[2021-01-18 15:54:26,926]:INFO: # id: 0
+[2021-01-18 15:54:26,926]:INFO: #
+[2021-01-18 15:54:26,927]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:54:26,927]:INFO: ######################################################################
+[2021-01-18 15:54:26,930]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:54:26,931]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:26,931]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:54:26,931]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:26,931]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:54:26,931]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:26,932]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:54:26,932]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:26,932]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:54:26,932]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:26,932]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:54:26,933]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:26,959]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:54:26,959]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:54:26,959]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:54:26,959]:INFO: 
+[2021-01-18 15:54:26,959]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:54:26,959]:INFO: >>>>       id: 0
+[2021-01-18 15:54:26,959]:INFO: >>>>   handle: output
+[2021-01-18 15:54:26,959]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:54:26,960]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:54:26,960]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:54:26,960]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:54:26,960]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:54:26,960]:INFO: ######################################################################
+[2021-01-18 15:54:47,582]:INFO: ######################################################################
+[2021-01-18 15:54:47,583]:INFO: # benchmark: scaling test
+[2021-01-18 15:54:47,583]:INFO: # id: 0
+[2021-01-18 15:54:47,583]:INFO: #
+[2021-01-18 15:54:47,583]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:54:47,583]:INFO: ######################################################################
+[2021-01-18 15:54:47,589]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:54:47,590]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:47,590]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:54:47,590]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:47,590]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:54:47,590]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:47,590]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:54:47,590]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:47,590]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:54:47,590]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:47,590]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:54:47,591]:DEBUG:   0 new workpackages created
+[2021-01-18 15:54:47,630]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:54:47,630]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:54:47,630]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:54:47,630]:INFO: 
+[2021-01-18 15:54:47,630]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:54:47,630]:INFO: >>>>       id: 0
+[2021-01-18 15:54:47,630]:INFO: >>>>   handle: output
+[2021-01-18 15:54:47,630]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:54:47,630]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:54:47,630]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:54:47,630]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:54:47,630]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:54:47,631]:INFO: ######################################################################
+[2021-01-18 15:55:08,035]:INFO: ######################################################################
+[2021-01-18 15:55:08,035]:INFO: # benchmark: scaling test
+[2021-01-18 15:55:08,035]:INFO: # id: 0
+[2021-01-18 15:55:08,035]:INFO: #
+[2021-01-18 15:55:08,035]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:55:08,035]:INFO: ######################################################################
+[2021-01-18 15:55:08,038]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:55:08,038]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:08,039]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:55:08,039]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:08,039]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:55:08,039]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:08,039]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:55:08,039]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:08,039]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:55:08,039]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:08,039]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:55:08,039]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:08,053]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:55:08,053]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:55:08,053]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:55:08,057]:INFO: 
+[2021-01-18 15:55:08,057]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:55:08,057]:INFO: >>>>       id: 0
+[2021-01-18 15:55:08,058]:INFO: >>>>   handle: output
+[2021-01-18 15:55:08,058]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:55:08,058]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:55:08,058]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:55:08,058]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:55:08,058]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:55:08,058]:INFO: ######################################################################
+[2021-01-18 15:55:28,596]:INFO: ######################################################################
+[2021-01-18 15:55:28,596]:INFO: # benchmark: scaling test
+[2021-01-18 15:55:28,596]:INFO: # id: 0
+[2021-01-18 15:55:28,596]:INFO: #
+[2021-01-18 15:55:28,596]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:55:28,596]:INFO: ######################################################################
+[2021-01-18 15:55:28,596]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:55:28,596]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:28,596]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:55:28,596]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:28,597]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:55:28,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:28,597]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:55:28,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:28,597]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:55:28,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:28,597]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:55:28,597]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:28,612]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:55:28,612]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:55:28,612]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:55:28,612]:INFO: 
+[2021-01-18 15:55:28,612]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:55:28,612]:INFO: >>>>       id: 0
+[2021-01-18 15:55:28,612]:INFO: >>>>   handle: output
+[2021-01-18 15:55:28,612]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:55:28,612]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:55:28,612]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:55:28,612]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:55:28,612]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:55:28,612]:INFO: ######################################################################
+[2021-01-18 15:55:49,031]:INFO: ######################################################################
+[2021-01-18 15:55:49,031]:INFO: # benchmark: scaling test
+[2021-01-18 15:55:49,032]:INFO: # id: 0
+[2021-01-18 15:55:49,032]:INFO: #
+[2021-01-18 15:55:49,032]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:55:49,032]:INFO: ######################################################################
+[2021-01-18 15:55:49,032]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:55:49,032]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:49,032]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:55:49,032]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:49,032]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:55:49,032]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:49,033]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:55:49,033]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:49,033]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:55:49,033]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:49,033]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:55:49,033]:DEBUG:   0 new workpackages created
+[2021-01-18 15:55:49,048]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:55:49,048]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:55:49,048]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:55:49,048]:INFO: 
+[2021-01-18 15:55:49,048]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:55:49,048]:INFO: >>>>       id: 0
+[2021-01-18 15:55:49,048]:INFO: >>>>   handle: output
+[2021-01-18 15:55:49,048]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:55:49,048]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:55:49,048]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:55:49,049]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:55:49,049]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:55:49,049]:INFO: ######################################################################
+[2021-01-18 15:56:09,403]:INFO: ######################################################################
+[2021-01-18 15:56:09,403]:INFO: # benchmark: scaling test
+[2021-01-18 15:56:09,403]:INFO: # id: 0
+[2021-01-18 15:56:09,403]:INFO: #
+[2021-01-18 15:56:09,404]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:56:09,404]:INFO: ######################################################################
+[2021-01-18 15:56:09,404]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:56:09,404]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:09,404]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:56:09,404]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:09,404]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:56:09,404]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:09,404]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:56:09,404]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:09,405]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:56:09,405]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:09,405]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:56:09,405]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:09,417]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:56:09,417]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:56:09,417]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:56:09,417]:INFO: 
+[2021-01-18 15:56:09,417]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:56:09,417]:INFO: >>>>       id: 0
+[2021-01-18 15:56:09,417]:INFO: >>>>   handle: output
+[2021-01-18 15:56:09,417]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:56:09,417]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:56:09,417]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:56:09,418]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:56:09,418]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:56:09,418]:INFO: ######################################################################
+[2021-01-18 15:56:29,766]:INFO: ######################################################################
+[2021-01-18 15:56:29,766]:INFO: # benchmark: scaling test
+[2021-01-18 15:56:29,766]:INFO: # id: 0
+[2021-01-18 15:56:29,766]:INFO: #
+[2021-01-18 15:56:29,766]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:56:29,766]:INFO: ######################################################################
+[2021-01-18 15:56:29,766]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:56:29,767]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:29,767]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:56:29,767]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:29,767]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:56:29,767]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:29,767]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:56:29,767]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:29,767]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:56:29,767]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:29,768]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:56:29,768]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:29,781]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:56:29,781]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:56:29,781]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:56:29,781]:INFO: 
+[2021-01-18 15:56:29,781]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:56:29,781]:INFO: >>>>       id: 0
+[2021-01-18 15:56:29,781]:INFO: >>>>   handle: output
+[2021-01-18 15:56:29,781]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:56:29,781]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:56:29,781]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:56:29,782]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:56:29,782]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:56:29,782]:INFO: ######################################################################
+[2021-01-18 15:56:50,172]:INFO: ######################################################################
+[2021-01-18 15:56:50,172]:INFO: # benchmark: scaling test
+[2021-01-18 15:56:50,172]:INFO: # id: 0
+[2021-01-18 15:56:50,172]:INFO: #
+[2021-01-18 15:56:50,172]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:56:50,172]:INFO: ######################################################################
+[2021-01-18 15:56:50,172]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:56:50,172]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:50,173]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:56:50,173]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:50,173]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:56:50,173]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:50,173]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:56:50,173]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:50,174]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:56:50,174]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:50,174]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:56:50,174]:DEBUG:   0 new workpackages created
+[2021-01-18 15:56:50,188]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:56:50,188]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:56:50,188]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:56:50,188]:INFO: 
+[2021-01-18 15:56:50,189]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:56:50,189]:INFO: >>>>       id: 0
+[2021-01-18 15:56:50,189]:INFO: >>>>   handle: output
+[2021-01-18 15:56:50,189]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:56:50,189]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:56:50,189]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:56:50,189]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:56:50,189]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:56:50,189]:INFO: ######################################################################
+[2021-01-18 15:57:10,672]:INFO: ######################################################################
+[2021-01-18 15:57:10,672]:INFO: # benchmark: scaling test
+[2021-01-18 15:57:10,672]:INFO: # id: 0
+[2021-01-18 15:57:10,672]:INFO: #
+[2021-01-18 15:57:10,672]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:57:10,672]:INFO: ######################################################################
+[2021-01-18 15:57:10,673]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:57:10,673]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:10,673]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:57:10,673]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:10,673]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:57:10,673]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:10,673]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:57:10,673]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:10,673]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:57:10,673]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:10,674]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:57:10,674]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:10,692]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:57:10,692]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:57:10,693]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:57:10,693]:INFO: 
+[2021-01-18 15:57:10,693]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:57:10,693]:INFO: >>>>       id: 0
+[2021-01-18 15:57:10,693]:INFO: >>>>   handle: output
+[2021-01-18 15:57:10,693]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:57:10,693]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:57:10,693]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:57:10,693]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:57:10,693]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:57:10,693]:INFO: ######################################################################
+[2021-01-18 15:57:31,148]:INFO: ######################################################################
+[2021-01-18 15:57:31,148]:INFO: # benchmark: scaling test
+[2021-01-18 15:57:31,148]:INFO: # id: 0
+[2021-01-18 15:57:31,148]:INFO: #
+[2021-01-18 15:57:31,148]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:57:31,148]:INFO: ######################################################################
+[2021-01-18 15:57:31,149]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:57:31,149]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:31,149]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:57:31,149]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:31,149]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:57:31,149]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:31,149]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:57:31,149]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:31,149]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:57:31,149]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:31,149]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:57:31,150]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:31,163]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:57:31,163]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:57:31,163]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:57:31,163]:INFO: 
+[2021-01-18 15:57:31,163]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:57:31,164]:INFO: >>>>       id: 0
+[2021-01-18 15:57:31,164]:INFO: >>>>   handle: output
+[2021-01-18 15:57:31,164]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:57:31,164]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:57:31,164]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:57:31,164]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:57:31,164]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:57:31,164]:INFO: ######################################################################
+[2021-01-18 15:57:51,612]:INFO: ######################################################################
+[2021-01-18 15:57:51,612]:INFO: # benchmark: scaling test
+[2021-01-18 15:57:51,615]:INFO: # id: 0
+[2021-01-18 15:57:51,615]:INFO: #
+[2021-01-18 15:57:51,616]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:57:51,616]:INFO: ######################################################################
+[2021-01-18 15:57:51,616]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:57:51,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:51,616]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:57:51,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:51,616]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:57:51,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:51,616]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:57:51,616]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:51,617]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:57:51,617]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:51,617]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:57:51,617]:DEBUG:   0 new workpackages created
+[2021-01-18 15:57:51,632]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:57:51,632]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:57:51,632]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:57:51,632]:INFO: 
+[2021-01-18 15:57:51,632]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:57:51,633]:INFO: >>>>       id: 0
+[2021-01-18 15:57:51,633]:INFO: >>>>   handle: output
+[2021-01-18 15:57:51,633]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:57:51,633]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:57:51,633]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:57:51,633]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:57:51,633]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:57:51,633]:INFO: ######################################################################
+[2021-01-18 15:58:12,107]:INFO: ######################################################################
+[2021-01-18 15:58:12,107]:INFO: # benchmark: scaling test
+[2021-01-18 15:58:12,107]:INFO: # id: 0
+[2021-01-18 15:58:12,107]:INFO: #
+[2021-01-18 15:58:12,107]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:58:12,107]:INFO: ######################################################################
+[2021-01-18 15:58:12,107]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:58:12,107]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:12,108]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:58:12,108]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:12,108]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:58:12,108]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:12,108]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:58:12,108]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:12,108]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:58:12,108]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:12,108]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:58:12,108]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:12,123]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:58:12,123]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:58:12,123]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:58:12,123]:INFO: 
+[2021-01-18 15:58:12,123]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:58:12,123]:INFO: >>>>       id: 0
+[2021-01-18 15:58:12,123]:INFO: >>>>   handle: output
+[2021-01-18 15:58:12,124]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:58:12,124]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:58:12,124]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:58:12,124]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:58:12,124]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:58:12,124]:INFO: ######################################################################
+[2021-01-18 15:58:32,643]:INFO: ######################################################################
+[2021-01-18 15:58:32,643]:INFO: # benchmark: scaling test
+[2021-01-18 15:58:32,643]:INFO: # id: 0
+[2021-01-18 15:58:32,643]:INFO: #
+[2021-01-18 15:58:32,643]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:58:32,643]:INFO: ######################################################################
+[2021-01-18 15:58:32,643]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:58:32,644]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:32,644]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:58:32,644]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:32,644]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:58:32,644]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:32,644]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:58:32,644]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:32,644]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:58:32,644]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:32,644]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:58:32,644]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:32,659]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:58:32,659]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:58:32,659]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:58:32,659]:INFO: 
+[2021-01-18 15:58:32,659]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:58:32,659]:INFO: >>>>       id: 0
+[2021-01-18 15:58:32,659]:INFO: >>>>   handle: output
+[2021-01-18 15:58:32,659]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:58:32,659]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:58:32,659]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:58:32,659]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:58:32,659]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:58:32,659]:INFO: ######################################################################
+[2021-01-18 15:58:53,141]:INFO: ######################################################################
+[2021-01-18 15:58:53,142]:INFO: # benchmark: scaling test
+[2021-01-18 15:58:53,142]:INFO: # id: 0
+[2021-01-18 15:58:53,142]:INFO: #
+[2021-01-18 15:58:53,142]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:58:53,142]:INFO: ######################################################################
+[2021-01-18 15:58:53,149]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:58:53,149]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:53,150]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:58:53,150]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:53,150]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:58:53,150]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:53,150]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:58:53,150]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:53,150]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:58:53,150]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:53,150]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:58:53,150]:DEBUG:   0 new workpackages created
+[2021-01-18 15:58:53,170]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:58:53,171]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:58:53,171]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:58:53,171]:INFO: 
+[2021-01-18 15:58:53,171]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:58:53,171]:INFO: >>>>       id: 0
+[2021-01-18 15:58:53,171]:INFO: >>>>   handle: output
+[2021-01-18 15:58:53,171]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:58:53,171]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:58:53,171]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:58:53,171]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:58:53,171]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:58:53,171]:INFO: ######################################################################
+[2021-01-18 15:59:13,591]:INFO: ######################################################################
+[2021-01-18 15:59:13,591]:INFO: # benchmark: scaling test
+[2021-01-18 15:59:13,591]:INFO: # id: 0
+[2021-01-18 15:59:13,591]:INFO: #
+[2021-01-18 15:59:13,591]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:59:13,591]:INFO: ######################################################################
+[2021-01-18 15:59:13,591]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:59:13,591]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:13,592]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:59:13,592]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:13,592]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:59:13,592]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:13,592]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:59:13,592]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:13,592]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:59:13,592]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:13,592]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:59:13,592]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:13,608]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:59:13,608]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:59:13,608]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:59:13,608]:INFO: 
+[2021-01-18 15:59:13,608]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:59:13,608]:INFO: >>>>       id: 0
+[2021-01-18 15:59:13,608]:INFO: >>>>   handle: output
+[2021-01-18 15:59:13,608]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:59:13,608]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:59:13,608]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:59:13,608]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:59:13,609]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:59:13,609]:INFO: ######################################################################
+[2021-01-18 15:59:34,023]:INFO: ######################################################################
+[2021-01-18 15:59:34,023]:INFO: # benchmark: scaling test
+[2021-01-18 15:59:34,023]:INFO: # id: 0
+[2021-01-18 15:59:34,023]:INFO: #
+[2021-01-18 15:59:34,023]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:59:34,023]:INFO: ######################################################################
+[2021-01-18 15:59:34,023]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:59:34,023]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:34,023]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:59:34,023]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:34,024]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:59:34,024]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:34,024]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:59:34,024]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:34,024]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:59:34,024]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:34,024]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:59:34,024]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:34,039]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:59:34,039]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:59:34,039]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:59:34,039]:INFO: 
+[2021-01-18 15:59:34,039]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:59:34,039]:INFO: >>>>       id: 0
+[2021-01-18 15:59:34,039]:INFO: >>>>   handle: output
+[2021-01-18 15:59:34,039]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:59:34,039]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:59:34,039]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:59:34,039]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:59:34,039]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:59:34,039]:INFO: ######################################################################
+[2021-01-18 15:59:54,412]:INFO: ######################################################################
+[2021-01-18 15:59:54,412]:INFO: # benchmark: scaling test
+[2021-01-18 15:59:54,412]:INFO: # id: 0
+[2021-01-18 15:59:54,412]:INFO: #
+[2021-01-18 15:59:54,412]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 15:59:54,412]:INFO: ######################################################################
+[2021-01-18 15:59:54,412]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 15:59:54,412]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:54,412]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 15:59:54,412]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:54,412]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 15:59:54,412]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:54,413]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 15:59:54,413]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:54,413]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 15:59:54,413]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:54,413]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 15:59:54,413]:DEBUG:   0 new workpackages created
+[2021-01-18 15:59:54,427]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 15:59:54,427]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 15:59:54,427]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 15:59:54,427]:INFO: 
+[2021-01-18 15:59:54,428]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 15:59:54,428]:INFO: >>>>       id: 0
+[2021-01-18 15:59:54,428]:INFO: >>>>   handle: output
+[2021-01-18 15:59:54,428]:INFO: >>>>      dir: output/000000
+[2021-01-18 15:59:54,428]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 15:59:54,428]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 15:59:54,428]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 15:59:54,428]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 15:59:54,428]:INFO: ######################################################################
+[2021-01-18 16:00:14,836]:INFO: ######################################################################
+[2021-01-18 16:00:14,836]:INFO: # benchmark: scaling test
+[2021-01-18 16:00:14,836]:INFO: # id: 0
+[2021-01-18 16:00:14,836]:INFO: #
+[2021-01-18 16:00:14,836]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:00:14,836]:INFO: ######################################################################
+[2021-01-18 16:00:14,837]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:00:14,837]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:14,837]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:00:14,837]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:14,837]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:00:14,837]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:14,837]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:00:14,841]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:14,841]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:00:14,841]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:14,841]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:00:14,841]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:14,857]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:00:14,857]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:00:14,857]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:00:14,857]:INFO: 
+[2021-01-18 16:00:14,857]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:00:14,857]:INFO: >>>>       id: 0
+[2021-01-18 16:00:14,857]:INFO: >>>>   handle: output
+[2021-01-18 16:00:14,857]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:00:14,857]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:00:14,857]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:00:14,857]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:00:14,857]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:00:14,857]:INFO: ######################################################################
+[2021-01-18 16:00:35,220]:INFO: ######################################################################
+[2021-01-18 16:00:35,221]:INFO: # benchmark: scaling test
+[2021-01-18 16:00:35,221]:INFO: # id: 0
+[2021-01-18 16:00:35,221]:INFO: #
+[2021-01-18 16:00:35,221]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:00:35,221]:INFO: ######################################################################
+[2021-01-18 16:00:35,221]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:00:35,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:35,221]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:00:35,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:35,221]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:00:35,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:35,222]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:00:35,222]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:35,222]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:00:35,222]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:35,222]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:00:35,222]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:35,236]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:00:35,236]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:00:35,236]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:00:35,236]:INFO: 
+[2021-01-18 16:00:35,236]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:00:35,236]:INFO: >>>>       id: 0
+[2021-01-18 16:00:35,236]:INFO: >>>>   handle: output
+[2021-01-18 16:00:35,236]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:00:35,236]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:00:35,236]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:00:35,236]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:00:35,236]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:00:35,236]:INFO: ######################################################################
+[2021-01-18 16:00:55,643]:INFO: ######################################################################
+[2021-01-18 16:00:55,643]:INFO: # benchmark: scaling test
+[2021-01-18 16:00:55,643]:INFO: # id: 0
+[2021-01-18 16:00:55,643]:INFO: #
+[2021-01-18 16:00:55,643]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:00:55,643]:INFO: ######################################################################
+[2021-01-18 16:00:55,643]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:00:55,643]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:55,643]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:00:55,644]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:55,644]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:00:55,644]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:55,644]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:00:55,644]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:55,644]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:00:55,644]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:55,644]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:00:55,644]:DEBUG:   0 new workpackages created
+[2021-01-18 16:00:55,658]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:00:55,658]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:00:55,658]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:00:55,658]:INFO: 
+[2021-01-18 16:00:55,658]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:00:55,658]:INFO: >>>>       id: 0
+[2021-01-18 16:00:55,658]:INFO: >>>>   handle: output
+[2021-01-18 16:00:55,658]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:00:55,658]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:00:55,658]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:00:55,658]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:00:55,658]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:00:55,658]:INFO: ######################################################################
+[2021-01-18 16:01:15,996]:INFO: ######################################################################
+[2021-01-18 16:01:15,997]:INFO: # benchmark: scaling test
+[2021-01-18 16:01:15,997]:INFO: # id: 0
+[2021-01-18 16:01:15,997]:INFO: #
+[2021-01-18 16:01:15,997]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:01:15,997]:INFO: ######################################################################
+[2021-01-18 16:01:15,997]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:01:15,997]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:15,997]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:01:15,997]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:15,997]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:01:15,997]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:15,998]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:01:15,998]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:15,998]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:01:15,998]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:15,998]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:01:15,998]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:16,012]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:01:16,012]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:01:16,012]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:01:16,012]:INFO: 
+[2021-01-18 16:01:16,012]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:01:16,012]:INFO: >>>>       id: 0
+[2021-01-18 16:01:16,012]:INFO: >>>>   handle: output
+[2021-01-18 16:01:16,012]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:01:16,013]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:01:16,013]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:01:16,013]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:01:16,013]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:01:16,013]:INFO: ######################################################################
+[2021-01-18 16:01:36,631]:INFO: ######################################################################
+[2021-01-18 16:01:36,632]:INFO: # benchmark: scaling test
+[2021-01-18 16:01:36,632]:INFO: # id: 0
+[2021-01-18 16:01:36,632]:INFO: #
+[2021-01-18 16:01:36,632]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:01:36,632]:INFO: ######################################################################
+[2021-01-18 16:01:36,636]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:01:36,636]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:36,636]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:01:36,636]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:36,637]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:01:36,637]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:36,637]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:01:36,637]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:36,637]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:01:36,637]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:36,637]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:01:36,637]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:36,662]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:01:36,662]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:01:36,662]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:01:36,662]:INFO: 
+[2021-01-18 16:01:36,662]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:01:36,662]:INFO: >>>>       id: 0
+[2021-01-18 16:01:36,662]:INFO: >>>>   handle: output
+[2021-01-18 16:01:36,662]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:01:36,662]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:01:36,662]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:01:36,662]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:01:36,662]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:01:36,662]:INFO: ######################################################################
+[2021-01-18 16:01:57,219]:INFO: ######################################################################
+[2021-01-18 16:01:57,220]:INFO: # benchmark: scaling test
+[2021-01-18 16:01:57,220]:INFO: # id: 0
+[2021-01-18 16:01:57,220]:INFO: #
+[2021-01-18 16:01:57,220]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:01:57,220]:INFO: ######################################################################
+[2021-01-18 16:01:57,220]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:01:57,220]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:57,221]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:01:57,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:57,221]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:01:57,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:57,221]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:01:57,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:57,221]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:01:57,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:57,221]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:01:57,221]:DEBUG:   0 new workpackages created
+[2021-01-18 16:01:57,237]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:01:57,238]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:01:57,238]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:01:57,238]:INFO: 
+[2021-01-18 16:01:57,238]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:01:57,238]:INFO: >>>>       id: 0
+[2021-01-18 16:01:57,238]:INFO: >>>>   handle: output
+[2021-01-18 16:01:57,238]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:01:57,238]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:01:57,238]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:01:57,238]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:01:57,238]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:01:57,238]:INFO: ######################################################################
+[2021-01-18 16:02:17,740]:INFO: ######################################################################
+[2021-01-18 16:02:17,741]:INFO: # benchmark: scaling test
+[2021-01-18 16:02:17,741]:INFO: # id: 0
+[2021-01-18 16:02:17,741]:INFO: #
+[2021-01-18 16:02:17,741]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:02:17,741]:INFO: ######################################################################
+[2021-01-18 16:02:17,741]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:02:17,741]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:17,741]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:02:17,741]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:17,741]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:02:17,742]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:17,742]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:02:17,742]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:17,742]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:02:17,742]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:17,742]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:02:17,742]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:17,758]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:02:17,758]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:02:17,758]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:02:17,758]:INFO: 
+[2021-01-18 16:02:17,758]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:02:17,758]:INFO: >>>>       id: 0
+[2021-01-18 16:02:17,758]:INFO: >>>>   handle: output
+[2021-01-18 16:02:17,758]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:02:17,758]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:02:17,758]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:02:17,758]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:02:17,758]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:02:17,758]:INFO: ######################################################################
+[2021-01-18 16:02:38,249]:INFO: ######################################################################
+[2021-01-18 16:02:38,250]:INFO: # benchmark: scaling test
+[2021-01-18 16:02:38,250]:INFO: # id: 0
+[2021-01-18 16:02:38,250]:INFO: #
+[2021-01-18 16:02:38,250]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:02:38,250]:INFO: ######################################################################
+[2021-01-18 16:02:38,251]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:02:38,251]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:38,251]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:02:38,251]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:38,252]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:02:38,252]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:38,252]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:02:38,252]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:38,252]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:02:38,252]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:38,252]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:02:38,252]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:38,269]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:02:38,269]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:02:38,269]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:02:38,269]:INFO: 
+[2021-01-18 16:02:38,269]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:02:38,269]:INFO: >>>>       id: 0
+[2021-01-18 16:02:38,269]:INFO: >>>>   handle: output
+[2021-01-18 16:02:38,269]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:02:38,274]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:02:38,274]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:02:38,274]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:02:38,274]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:02:38,274]:INFO: ######################################################################
+[2021-01-18 16:02:58,786]:INFO: ######################################################################
+[2021-01-18 16:02:58,786]:INFO: # benchmark: scaling test
+[2021-01-18 16:02:58,786]:INFO: # id: 0
+[2021-01-18 16:02:58,786]:INFO: #
+[2021-01-18 16:02:58,786]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:02:58,787]:INFO: ######################################################################
+[2021-01-18 16:02:58,787]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:02:58,787]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:58,787]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:02:58,787]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:58,788]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:02:58,788]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:58,788]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:02:58,788]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:58,788]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:02:58,788]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:58,788]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:02:58,788]:DEBUG:   0 new workpackages created
+[2021-01-18 16:02:58,806]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:02:58,806]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:02:58,806]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:02:58,806]:INFO: 
+[2021-01-18 16:02:58,806]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:02:58,806]:INFO: >>>>       id: 0
+[2021-01-18 16:02:58,807]:INFO: >>>>   handle: output
+[2021-01-18 16:02:58,807]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:02:58,807]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:02:58,807]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:02:58,807]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:02:58,807]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:02:58,807]:INFO: ######################################################################
+[2021-01-18 16:03:19,608]:INFO: ######################################################################
+[2021-01-18 16:03:19,609]:INFO: # benchmark: scaling test
+[2021-01-18 16:03:19,609]:INFO: # id: 0
+[2021-01-18 16:03:19,609]:INFO: #
+[2021-01-18 16:03:19,609]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:03:19,609]:INFO: ######################################################################
+[2021-01-18 16:03:19,615]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:03:19,615]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:19,615]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:03:19,615]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:19,616]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:03:19,616]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:19,616]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:03:19,616]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:19,616]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:03:19,616]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:19,616]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:03:19,616]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:19,635]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:03:19,635]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:03:19,636]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:03:19,636]:INFO: 
+[2021-01-18 16:03:19,636]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:03:19,636]:INFO: >>>>       id: 0
+[2021-01-18 16:03:19,636]:INFO: >>>>   handle: output
+[2021-01-18 16:03:19,636]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:03:19,636]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:03:19,636]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:03:19,636]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:03:19,636]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:03:19,636]:INFO: ######################################################################
+[2021-01-18 16:03:40,136]:INFO: ######################################################################
+[2021-01-18 16:03:40,138]:INFO: # benchmark: scaling test
+[2021-01-18 16:03:40,138]:INFO: # id: 0
+[2021-01-18 16:03:40,138]:INFO: #
+[2021-01-18 16:03:40,138]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:03:40,138]:INFO: ######################################################################
+[2021-01-18 16:03:40,139]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:03:40,139]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:40,139]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:03:40,139]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:40,139]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:03:40,139]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:40,139]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:03:40,140]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:40,140]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:03:40,140]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:40,140]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:03:40,140]:DEBUG:   0 new workpackages created
+[2021-01-18 16:03:40,154]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:03:40,155]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:03:40,155]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:03:40,155]:INFO: 
+[2021-01-18 16:03:40,155]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:03:40,155]:INFO: >>>>       id: 0
+[2021-01-18 16:03:40,155]:INFO: >>>>   handle: output
+[2021-01-18 16:03:40,155]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:03:40,155]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:03:40,155]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:03:40,155]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:03:40,155]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:03:40,155]:INFO: ######################################################################
+[2021-01-18 16:04:00,889]:INFO: ######################################################################
+[2021-01-18 16:04:00,889]:INFO: # benchmark: scaling test
+[2021-01-18 16:04:00,889]:INFO: # id: 0
+[2021-01-18 16:04:00,889]:INFO: #
+[2021-01-18 16:04:00,889]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:04:00,889]:INFO: ######################################################################
+[2021-01-18 16:04:00,900]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:04:00,900]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:00,901]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:04:00,901]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:00,901]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:04:00,901]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:00,901]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:04:00,901]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:00,901]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:04:00,901]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:00,902]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:04:00,902]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:00,922]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:04:00,922]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:04:00,922]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:04:00,922]:INFO: 
+[2021-01-18 16:04:00,922]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:04:00,923]:INFO: >>>>       id: 0
+[2021-01-18 16:04:00,923]:INFO: >>>>   handle: output
+[2021-01-18 16:04:00,923]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:04:00,923]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:04:00,923]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:04:00,923]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:04:00,923]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:04:00,923]:INFO: ######################################################################
+[2021-01-18 16:04:21,657]:INFO: ######################################################################
+[2021-01-18 16:04:21,658]:INFO: # benchmark: scaling test
+[2021-01-18 16:04:21,658]:INFO: # id: 0
+[2021-01-18 16:04:21,658]:INFO: #
+[2021-01-18 16:04:21,658]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:04:21,658]:INFO: ######################################################################
+[2021-01-18 16:04:21,661]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:04:21,661]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:21,662]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:04:21,662]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:21,662]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:04:21,662]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:21,662]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:04:21,662]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:21,662]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:04:21,662]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:21,662]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:04:21,663]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:21,681]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:04:21,681]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:04:21,681]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:04:21,681]:INFO: 
+[2021-01-18 16:04:21,681]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:04:21,681]:INFO: >>>>       id: 0
+[2021-01-18 16:04:21,681]:INFO: >>>>   handle: output
+[2021-01-18 16:04:21,681]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:04:21,682]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:04:21,682]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:04:21,682]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:04:21,682]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:04:21,682]:INFO: ######################################################################
+[2021-01-18 16:04:42,244]:INFO: ######################################################################
+[2021-01-18 16:04:42,244]:INFO: # benchmark: scaling test
+[2021-01-18 16:04:42,244]:INFO: # id: 0
+[2021-01-18 16:04:42,244]:INFO: #
+[2021-01-18 16:04:42,244]:INFO: # Speedup for adv2 on 64 intervals with rolling paralpha.
+[2021-01-18 16:04:42,244]:INFO: ######################################################################
+[2021-01-18 16:04:42,248]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2021-01-18 16:04:42,248]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:42,248]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2021-01-18 16:04:42,248]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:42,248]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2021-01-18 16:04:42,249]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:42,249]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2021-01-18 16:04:42,249]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:42,249]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2021-01-18 16:04:42,249]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:42,249]:DEBUG: Create new workpackages for workpackage sub_step(5)
+[2021-01-18 16:04:42,249]:DEBUG:   0 new workpackages created
+[2021-01-18 16:04:42,266]:INFO:   stepname | all | open | wait | error | done
+[2021-01-18 16:04:42,266]:INFO:   ---------+-----+------+------+-------+-----
+[2021-01-18 16:04:42,266]:INFO:   sub_step |   6 |    0 |    0 |     0 |    6
+[2021-01-18 16:04:42,266]:INFO: 
+[2021-01-18 16:04:42,267]:INFO: >>>> Benchmark information and further useful commands:
+[2021-01-18 16:04:42,267]:INFO: >>>>       id: 0
+[2021-01-18 16:04:42,267]:INFO: >>>>   handle: output
+[2021-01-18 16:04:42,267]:INFO: >>>>      dir: output/000000
+[2021-01-18 16:04:42,267]:INFO: >>>>  analyse: jube analyse output --id 0
+[2021-01-18 16:04:42,267]:INFO: >>>>   result: jube result output --id 0
+[2021-01-18 16:04:42,267]:INFO: >>>>     info: jube info output --id 0
+[2021-01-18 16:04:42,267]:INFO: >>>>      log: jube log output --id 0
+[2021-01-18 16:04:42,267]:INFO: ######################################################################
