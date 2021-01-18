@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube>
+  <benchmark name="scaling test" outpath="output">
+    <comment>Speedup for schro1 on 64 intervals with rolling paralpha.</comment>
+
+    <parameterset name="param_set">
+      <parameter name="i" type="int">0,1,2,3,4,5</parameter>
+      <parameter name="time_intervals" mode="python">[4, 8, 16, 32, 64, 1][$i]</parameter>
+      <parameter name="rolling" mode="python">[16, 8, 4, 2, 1, 64][$i]</parameter>
+
+      <parameter name="nproc" mode="python">[4, 8, 16, 32, 64, 1][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[4, 8, 16, 16, 16, 1][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 1, 2, 4, 1][$i]</parameter>
+
+    </parameterset>
+
+    <!-- Files -->
+    <fileset name="files">
+      <copy>run.py</copy>
+      <copy>run.tmpl</copy>
+    </fileset>
+
+    <!-- Substitute -->
+    <substituteset name="substitute">
+
+      <!-- Substitute files -->
+      <iofile in="run.tmpl" out="run.exe" />
+
+      <!-- Substitute commands -->
+      <sub source="#rolling#" dest="$rolling" />
+      <sub source="#time_intervals#" dest="$time_intervals" />
+      <sub source="#nodes#" dest="$nodes" />
+      <sub source="#ntasks_per_node#" dest="$ntasks_per_node" />
+      <sub source="#nproc#" dest="$nproc" />
+    </substituteset>
+
+    <!-- Regex pattern -->
+    <patternset name="pattern">
+      <pattern name="tot_time" type="float">algorithm time = $jube_pat_fp</pattern>
+      <pattern name="comm_time" type="float">communication time = $jube_pat_fp</pattern>
+      <pattern name="max_iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
+      <pattern name="err" type="float">abs err = $jube_pat_fp</pattern>
+      <pattern name="tol" type="float">tol = $jube_pat_fp</pattern>
+      <pattern name="stol" type="float">inner solver tols = \[$jube_pat_fp</pattern>
+      <pattern name="T1" type="float">T1 = $jube_pat_fp</pattern>
+      <pattern name="T2" type="float">T2 = $jube_pat_fp</pattern>
+      <pattern name="Nx" type="int">no. of spatial points = \[$jube_pat_int</pattern>
+    </patternset>
+
+    <!-- Operation -->
+    <step name="sub_step" iterations="1">
+      <use>param_set</use> <!-- use existing parameterset -->
+      <use>files</use>        <!-- use existing fileset -->
+      <use>substitute</use>   <!-- use existing substituteset -->
+      <do done_file="ready">sbatch -A cstma run.exe</do>   <!-- shell command -->
+    </step>
+
+    <!-- Analyse -->
+    <analyser name="analyse" reduce="true">
+      <use>pattern</use> <!-- use existing patternset -->
+      <analyse step="sub_step">
+        <file>results.out</file> <!-- file which should be scanned -->
+      </analyse>
+    </analyser>
+
+    <!-- Create result table -->
+    <result>
+      <use>analyse</use> <!-- use existing analyser -->
+      <table name="result" style="pretty">
+        <column>nproc</column>
+        <column>rolling</column>
+        <column>time_intervals</column>
+        <column>tot_time_avg</column>
+        <column>tot_time_min</column>
+        <column>tot_time_max</column>
+	    <column>comm_time_avg</column>
+	    <column>max_iters</column>
+	    <column>T1</column>
+        <column>T2</column>
+	    <column>Nx</column>
+        <column>stol</column>
+        <column>tol</column>
+        <column>err_max</column>
+      </table>
+    </result>
+
+  </benchmark>
+</jube>
