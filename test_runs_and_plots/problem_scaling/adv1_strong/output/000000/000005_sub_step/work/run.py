@@ -24,7 +24,7 @@ prob.maxiter = 10
 prob.smaxiter = 50
 
 prob.stol = 1e-6
-if prob.rolling < 64:
+if prob.rolling == 1:
     prob.stol = 1e-9
 
 prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling

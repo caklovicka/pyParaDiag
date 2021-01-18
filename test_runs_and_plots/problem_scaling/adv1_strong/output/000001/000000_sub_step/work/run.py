@@ -14,7 +14,7 @@ from problem_examples_parallel.advection_2d_pbc_upwind1 import Advection as Adv1
 prob = Adv1()
 N = 800
 prob.spatial_points = [N, N]
-prob.tol = 1e-5
+prob.tol = 1e-5 / prob.rolling
 prob.proc_col = 1
 prob.time_points = 1
 prob.optimal_alphas = True
