@@ -143,5 +143,5 @@ plt.ylim([0, 0.62])
 # plt.show()
 # fig = plt.gcf()
 # fig.set_size_inches(4, 4)
-plt.savefig('AAplots/efficiency_' + NAME + '_interval_coll', dpi=300, bbox_inches='tight')
+plt.savefig('weak_plots/efficiency_' + NAME + '_interval_coll', dpi=300, bbox_inches='tight')
 

@@ -125,5 +125,5 @@ plt.ylim([0, 20])
 # plt.show()
 # fig = plt.gcf()
 # fig.set_size_inches(5, 5)
-plt.savefig('AAplots/speedup_' + NAME + '_coll', dpi=300, bbox_inches='tight')
+plt.savefig('weak_plots/speedup_' + NAME + '_coll', dpi=300, bbox_inches='tight')
 

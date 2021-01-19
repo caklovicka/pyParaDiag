@@ -3,10 +3,10 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-'plotting the a fully serial and interval-coll-parallel speedup' \
+'plotting the a coll-parallel and interval-coll-parallel speedup' \
 'the gray plots are the fully serial and interval-parallel speedup'
 
-NAME = 'Advection'
+NAME = 'Schrodinger'
 
 if NAME == 'Heat':
     path2 = ['heat2/output/000001/result/result.dat', 'heat3/output/000001/result/result.dat']
@@ -35,70 +35,58 @@ for i in range(len(path2)):
 ####################
 
 no_runs = len(eq3[0]) // 2
-speedup = np.ones((no_runs, len(eq3)))
+efficiency = np.ones((no_runs, len(eq3)))
+its = np.zeros((no_runs, len(eq3)))
 
 for run in range(len(eq3)):
     for subrun in range(2 * no_runs):
         # if rolling = 1
         if eq3[run][subrun, 0] == 1:
             row = int(np.log2(eq3[run][subrun, 1])) - 2
-            speedup[row, run] /= eq3[run][subrun, 2]
+            efficiency[row, run] /= eq3[run][subrun, 2]
+            efficiency[row, run] /= eq3[run][subrun, 1]
+            its[row, run] = int(eq3[run][subrun, 3])
         else:
             row = int(np.log2(eq3[run][subrun, 0])) - 2
-            speedup[row, run] *= eq3[run][subrun, 2]
+            efficiency[row, run] *= eq3[run][subrun, 2]
 
-legend = []
-proc = range(no_runs)
-labels = [4, 8, 16, 32, 64]
-names = ['1e-5', '1e-9', '1e-12']
-markers_in_use = set()
 marks = 16
 lw = 2
 linst = ['dotted', 'dashed', 'dashdot']
+nproc = [4, 8, 16, 32, 64]
+col = [sns.color_palette("bright", len(eq3))[0], 'silver', 'silver']
 
-# speedup plot
-for run in range(len(eq3)):
-    plt.plot(np.log2(labels), list(speedup[:, run]), linestyle=linst[run], linewidth=lw, color='silver')
+# efficiency plot
+for run in range(len(eq3) - 1, -1, -1):
+    plt.plot(np.log2(nproc), list(efficiency[:, run]), linestyle=linst[run], linewidth=lw, color=col[run])
 
-for run in range(len(eq3)):
+for run in range(len(eq3) - 1, -1, -1):
     for subrun in range(no_runs):
-        m = int(eq3[run][subrun, 3])
-        plt.plot(np.log2(labels[subrun]), speedup[subrun, run], marker="$" + str(m) + "$", markersize=marks, color='silver')
-        markers_in_use.add(int(eq3[run][subrun, 3]))
+        m = int(its[subrun, run])
+        plt.plot(np.log2(nproc[subrun]), efficiency[subrun, run], marker="$" + str(m) + "$", markersize=marks, color=col[run])
 
-plt.xticks(np.log2(labels), labels)
+plt.xticks(np.log2(nproc), nproc)
 
 ####################
-# new plot
+# new data
 ####################
 
-no_runs = len(eq3[0]) // 2
-speedup = np.ones((no_runs, len(path3)))
-its = np.zeros((no_runs, len(eq3)))
+no_runs = len(eq2[0]) // 2
+efficiency = np.ones((no_runs, len(path2)))
+its = np.zeros((no_runs, len(eq2)))
 
-for run in range(len(eq3)):
+for run in range(len(eq2)):
     for subrun in range(2 * no_runs):
         # if we are in seq run
-        if eq3[run][subrun, 0] > 1:
-            row = int(np.log2(eq3[run][subrun, 0])) - 2
-            speedup[row, run] *= eq3[run][subrun, 2]
+        if eq2[run][subrun, 1] > 1:
+            row = int(np.log2(eq2[run][subrun, 1])) - 2
+            efficiency[row, run] *= eq2[run][subrun, 3]
         # if we are in a parallel run
         else:
-            # if its euler
-            if run == 0:
-                row = int(np.log2(eq3[run][subrun, 1])) - 2
-                speedup[row, run] /= eq3[run][subrun, 2]
-                its[row, run] = int(eq3[run][subrun, 3])
-
-# its not euler
-for run in range(len(eq3)):
-    for subrun in range(2 * no_runs):
-        if run == 0 or eq2[run - 1][subrun, 1] > 1:
-            continue
-        row = int(np.log2(eq2[run - 1][subrun, 2])) - 2
-        speedup[row, run] /= eq2[run - 1][subrun, 3]
-        its[row, run] = int(eq2[run - 1][subrun, 4])
-
+            row = int(np.log2(eq2[run][subrun, 2])) - 2
+            efficiency[row, run] /= eq2[run][subrun, 3]
+            efficiency[row, run] /= eq2[run][subrun, 2]
+            its[row, run] = int(eq2[run][subrun, 4])
 
 ##############
 # PLOT
@@ -107,34 +95,36 @@ for run in range(len(eq3)):
 marks = 16
 lw = 2
 col = sns.color_palette("bright", len(eq3))
-linst = ['dotted', 'dashed', 'dashdot']
+linst = ['dashed', 'dashdot']
 custom_lines = []
 legend = []
 proc = range(no_runs)
-nproc = [[4, 8, 16, 32, 64], [8, 16, 32, 64, 128], [12, 24, 16*3, 32*3, 64*3]]
-nnproc = [4, 8, 16, 32, 64, 8, 16, 32, 64, 128, 12, 24, 16*3, 32*3, 64*3]
+nproc = [[8, 16, 32, 64, 128], [12, 24, 16*3, 32*3, 64*3]]
+nnproc = [4, 8, 16, 32, 64, 128, 12, 24, 16*3, 32*3, 64*3]
 names = ['1e-5', '1e-9', '1e-12']
+custom_lines.append(Line2D([0], [0], linestyle='dotted', linewidth=lw, color=col[0]))
+col = col[1:]
 
-# speedup plot
-for run in range(len(eq3)):
-    plt.plot(np.log2(nproc[run]), list(speedup[:, run]), linestyle=linst[run], linewidth=lw, color=col[run])
+# efficiency plot
+for run in range(len(eq2)):
+    plt.plot(np.log2(nproc[run]), list(efficiency[:, run]), linestyle=linst[run], linewidth=lw, color=col[run])
     custom_lines.append(Line2D([0], [0], linestyle=linst[run], linewidth=lw, color=col[run]))
 
-for run in range(len(eq3)):
+for run in range(len(eq2)):
     for subrun in range(no_runs):
         m = int(its[subrun, run])
-        plt.plot(np.log2(nproc[run][subrun]), speedup[subrun, run], marker="$" + str(m) + "$", markersize=marks, color=col[run])
+        plt.plot(np.log2(nproc[run][subrun]), efficiency[subrun, run], marker="$" + str(m) + "$", markersize=marks, color=col[run])
 
 custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
 names.append('k iterations')
 
-plt.legend(custom_lines, names, loc='upper left')
+plt.legend(custom_lines, names, loc='upper right')
 plt.xticks(np.log2(nnproc), nnproc)
-plt.ylabel('speedup')
+plt.ylabel('efficiency')
 plt.xlabel('number of cores')
-plt.ylim([0, 20])
+plt.ylim([0, 0.62])
 # plt.title(NAME + ' equation')
 # plt.show()
-fig = plt.gcf()
-fig.set_size_inches(4, 4)
-plt.savefig('AAplots/speedup_' + NAME + '_interval_coll', dpi=300, bbox_inches='tight')
+# fig = plt.gcf()
+# fig.set_size_inches(5, 4)
+plt.savefig('weak_plots/efficiency_' + NAME + '_coll', dpi=300, bbox_inches='tight')
