@@ -21,14 +21,10 @@ prob.optimal_alphas = True
 prob.T_start = np.pi
 prob.solver = 'custom'
 prob.maxiter = 10
-prob.smaxiter = 100
+prob.smaxiter = 50
 prob.stol = 1e-13
 prob.T_end += np.pi
 prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
-
-if prob.rolling < 64:
-    prob.stol = 1e-15
-
 
 prob.setup()
 prob.solve()
