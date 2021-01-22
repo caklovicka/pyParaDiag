@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workpackages>
+  <workpackage id="0">
+    <step cycle="0" iteration="0">sub_step</step>
+    <parameterset>
+      <parameter mode="text" name="i" separator="," type="int">
+        <value>4,5</value>
+        <selection idx="0">4</selection>
+      </parameter>
+      <parameter mode="python" name="time_intervals" separator="," type="string">
+        <value>[4, 8, 16, 32, 64, 1][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter mode="python" name="rolling" separator="," type="string">
+        <value>[16, 8, 4, 2, 1, 64][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter mode="python" name="nproc" separator="," type="string">
+        <value>[4, 8, 16, 32, 64, 1][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter mode="python" name="ntasks_per_node" separator="," type="string">
+        <value>[4, 8, 16, 16, 16, 1][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter mode="python" name="nodes" separator="," type="string">
+        <value>[1, 1, 1, 2, 4, 1][$i]</value>
+        <selection>4</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>0</iteration_siblings>
+    <environment/>
+  </workpackage>
+  <workpackage id="1">
+    <step cycle="0" iteration="0">sub_step</step>
+    <parameterset>
+      <parameter mode="text" name="i" separator="," type="int">
+        <value>4,5</value>
+        <selection idx="1">5</selection>
+      </parameter>
+      <parameter mode="python" name="time_intervals" separator="," type="string">
+        <value>[4, 8, 16, 32, 64, 1][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter mode="python" name="rolling" separator="," type="string">
+        <value>[16, 8, 4, 2, 1, 64][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter mode="python" name="nproc" separator="," type="string">
+        <value>[4, 8, 16, 32, 64, 1][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter mode="python" name="ntasks_per_node" separator="," type="string">
+        <value>[4, 8, 16, 16, 16, 1][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter mode="python" name="nodes" separator="," type="string">
+        <value>[1, 1, 1, 2, 4, 1][$i]</value>
+        <selection>1</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>1</iteration_siblings>
+    <environment/>
+  </workpackage>
+</workpackages>
