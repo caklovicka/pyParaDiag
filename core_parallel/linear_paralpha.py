@@ -154,6 +154,7 @@ class LinearParalpha(LinearHelpers):
                             if 1.0 / 3 < abs(self.alphas[-1] / ba) < 3:
                                 self.alphas[-1] = min(5 * self.alphas[-1], 0.5)
                                 m0 = self.alphas[-1] * m0 + gamma * r / self.alphas[-1]
+                                print('NEW m0 = ', m0, 'alpha = ', self.alphas[-1])
                                 evasion = True
                                 break
 
