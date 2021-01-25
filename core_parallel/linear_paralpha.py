@@ -151,13 +151,13 @@ class LinearParalpha(LinearHelpers):
                     # in case we have to evade an alpha
                     if self.time_points > 1:
                         for ba in self.bad_alphas:
-                            if 1.0 / 5 < abs(self.alphas[-1] / ba) < 5:
+                            if 1.0 / 2 < abs(self.alphas[-1] / ba) < 2:
                                 self.alphas[-1] = min(5 * self.alphas[-1], 0.5)
                                 m0 = self.alphas[-1] * m0 + gamma * r / self.alphas[-1]
                                 evasion = True
                                 break
 
-                    if evasion is not True and self.time_points == 1:
+                    if evasion is not True or self.time_points == 1:
                         m0 = 2 * np.sqrt(gamma * m0 * r)
 
                     if self.rank == 0:
