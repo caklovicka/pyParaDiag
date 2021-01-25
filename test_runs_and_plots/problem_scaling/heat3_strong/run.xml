@@ -4,7 +4,7 @@
     <comment>Speedup for heat3 on 64 intervals with rolling paralpha.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i" type="int">4, 5</parameter>
+      <parameter name="i" type="int">4</parameter>
       <parameter name="time_intervals" mode="python">[4, 8, 16, 32, 64, 1][$i]</parameter>
       <parameter name="rolling" mode="python">[16, 8, 4, 2, 1, 64][$i]</parameter>
 
