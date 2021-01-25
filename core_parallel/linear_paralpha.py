@@ -158,7 +158,10 @@ class LinearParalpha(LinearHelpers):
                                 evasion = True
                                 break
 
-                    elif evasion is False:
+                        if evasion is False:
+                            m0 = 2 * np.sqrt(gamma * m0 * r)
+
+                    else:
                         m0 = 2 * np.sqrt(gamma * m0 * r)
 
                     if self.rank == 0:
