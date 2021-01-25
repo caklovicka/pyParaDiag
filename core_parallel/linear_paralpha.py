@@ -47,6 +47,10 @@ class LinearParalpha(LinearHelpers):
 
         if self.optimal_alphas is True:
             self.alphas = list()
+            if self.time_points == 2:
+                self.bad_alphas = np.array([0.323, 0.477]) ** self.time_intervals
+            elif self.time_points == 3:
+                self.bad_alphas = np.array([0.516, 0.504, 0.069]) ** self.time_intervals
         if self.time_intervals == 1:
             self.optimal_alphas = False
             self.alphas = [0]
@@ -141,8 +145,21 @@ class LinearParalpha(LinearHelpers):
                 self.iterations[rolling_interval] += 1
 
                 if self.optimal_alphas is True:
-                    self.alphas.append(min(np.sqrt((gamma * r)/m0), 1))
-                    m0 = 2 * np.sqrt(gamma * m0 * r)
+                    self.alphas.append(np.sqrt((gamma * r)/m0))
+                    evasion = False
+
+                    # in case we have to evade an alpha
+                    if self.time_points > 1:
+                        for ba in self.bad_alphas:
+                            if 1.0 / 5 < abs(self.alphas[-1] / ba) < 5:
+                                self.alphas[-1] = min(5 * self.alphas[-1], 0.5)
+                                m0 = self.alphas[-1] * m0 + gamma * r / self.alphas[-1]
+                                evasion = True
+                                break
+
+                    if evasion is not True and self.time_points == 1:
+                        m0 = 2 * np.sqrt(gamma * m0 * r)
+
                     if self.rank == 0:
                         print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
                     if m0 <= self.tol:
