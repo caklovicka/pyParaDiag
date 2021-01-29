@@ -1,0 +1,34 @@
+m0 =  0.16000000000000014 r =  1.197292288541619
+m =  7.23241903635093e-07 alpha =  2.2601309488596637e-06 err_max =  inf
+m =  1.53767792481499e-09 alpha =  0.0010630453774086186 err_max =  0.012771659700719695
+m =  7.090163971955284e-11 alpha =  0.023054775832879168 err_max =  2.8085028858093608e-08
+m =  1.5224804647933127e-11 alpha =  0.10736567382753011 err_max =  9.339562456744943e-11
+-----------------------< summary >-----------------------
+solving on T1 = 3.141592653589793, T2 = 3.3015926535897933
+no. of spatial points = [350, 350]
+dx = [0.002857142857142857, 0.002857142857142857]
+no. of time points on an interval = 3
+    [0.00039 0.00161 0.0025 ]
+no. of time intervals = 64
+no. of alphas = 4
+    [2.2601309488596637e-06, 0.0010630453774086186, 0.023054775832879168, 0.10736567382753011]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0025000000000000022
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 64
+maxiter = 10
+output document = None
+tol = 1e-12
+last error = [[inf, 0.012771659700719695, 2.8085028858093608e-08, 9.339562456744943e-11, 6.182832024137497e-13]]
+iterations of Paralpha = [4.]
+max iterations of Paralpha = 4.0
+algorithm time = 10.43033 s
+communication time = 0.42669 s
+inner solver = custom
+system_time_max = [2.2957780361175537, 2.770524024963379, 2.416691780090332, 2.2440080642700195]
+system_time_min = [1.678455114364624, 2.226499080657959, 1.7925300598144531, 1.6843509674072266]
+inner solver tols = [1e-14, 1e-14, 1e-14, 1e-14]
+inner solver maxiter = 100
+-----------------------< end summary >-----------------------
+abs err = 3.4485918797008882e-12
