@@ -14,8 +14,8 @@ from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection as Adv5
 prob = Adv5()
 N = 700
 prob.spatial_points = [N, N]
-prob.tol = 1e-12 / prob.rolling
-prob.proc_col = 1
+prob.tol = 1e-12
+prob.proc_col = 3
 prob.time_points = 3
 prob.optimal_alphas = True
 prob.T_start = 0
@@ -26,6 +26,7 @@ prob.smaxiter = 50
 prob.stol = 1e-14
 if prob.rolling < 64:
     prob.stol = 1e-15
+    prob.tol = 1e-12 / prob.rolling
 
 prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
 

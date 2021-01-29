@@ -146,24 +146,26 @@ class LinearParalpha(LinearHelpers):
 
                 if self.optimal_alphas is True:
                     self.alphas.append(np.sqrt((gamma * r)/m0))
-                    evasion = False
+                    m0 = 2 * np.sqrt(gamma * m0 * r)
 
-                    # in case we have to evade an alpha
-                    if self.time_points > 1:
-                        for ba in self.bad_alphas:
-                            if 1.0 / 3 < abs(self.alphas[-1] / ba) < 3:
-                                self.alphas[-1] = min(5 * self.alphas[-1], 0.5)
-                                m0 = self.alphas[-1] * m0 + gamma * r / self.alphas[-1]
-                                if self.rank == 0:
-                                    print('NEW m0 = ', m0, 'alpha = ', self.alphas[-1])
-                                evasion = True
-                                break
-
-                        if evasion is False:
-                            m0 = 2 * np.sqrt(gamma * m0 * r)
-
-                    else:
-                        m0 = 2 * np.sqrt(gamma * m0 * r)
+                    # evasion = False
+                    #
+                    # # in case we have to evade an alpha
+                    # if self.time_points > 1:
+                    #     for ba in self.bad_alphas:
+                    #         if 1.0 / 3 < abs(self.alphas[-1] / ba) < 3:
+                    #             self.alphas[-1] = min(5 * self.alphas[-1], 0.1)
+                    #             m0 = self.alphas[-1] * m0 + gamma * r / self.alphas[-1]
+                    #             if self.rank == 0:
+                    #                 print('NEW m0 = ', m0, 'alpha = ', self.alphas[-1])
+                    #             evasion = True
+                    #             break
+                    #
+                    #     if evasion is False:
+                    #         m0 = 2 * np.sqrt(gamma * m0 * r)
+                    #
+                    # else:
+                    #     m0 = 2 * np.sqrt(gamma * m0 * r)
 
                     if self.rank == 0:
                         print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
