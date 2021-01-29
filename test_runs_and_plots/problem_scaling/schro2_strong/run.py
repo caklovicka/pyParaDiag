@@ -14,8 +14,8 @@ from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as S
 prob = Schro4()
 N = 1100
 prob.spatial_points = [N, N]
-prob.tol = 1e-9 / prob.rolling
-prob.proc_col = 1
+prob.tol = 1e-9
+prob.proc_col = 2
 prob.time_points = 2
 prob.optimal_alphas = True
 prob.T_start = 0
@@ -25,6 +25,7 @@ prob.smaxiter = 50
 prob.stol = 1e-11
 if prob.rolling < 64:
     prob.stol = 1e-13
+    prob.tol = 1e-9 / prob.rolling
 
 prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
 

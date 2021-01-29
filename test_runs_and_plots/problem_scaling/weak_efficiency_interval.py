@@ -22,10 +22,6 @@ eq3 = []
 for i in range(len(path3)):
     eq3.append(np.loadtxt(path3[i], delimiter='|', usecols=[0, 1, 2, 4, 9], skiprows=3))
 
-####################
-# OLD PLOTS IN GRAY
-####################
-
 no_runs = len(eq3[0]) // 2
 efficiency = np.ones((no_runs, len(eq3)))
 its = np.zeros((no_runs, len(eq3)))
