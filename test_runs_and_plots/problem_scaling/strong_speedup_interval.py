@@ -3,9 +3,9 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-'plotting the a fully serial and interval-parallel speedup'
+'plotting a fully serial and interval-parallel speedup'
 
-NAME = 'Heat'
+NAME = 'Schrodinger'
 
 if NAME == 'Heat':
     path3 = ['heat1_strong/output/000000/result/result.dat', 'heat2_strong/output/000000/result/result.dat',
@@ -54,12 +54,11 @@ for run in range(len(eq3)):
 # markers
 for run in range(len(eq3)):
     for subrun in range(no_runs):
-        # m = int(its[subrun, run])
-        # plt.plot(np.log2(nproc[subrun]), speedup[subrun, run], marker="$" + str(m) + "$", markersize=marks, color=col[run])
-        plt.plot(np.log2(nproc[subrun]), speedup[subrun, run], marker="X", markersize=marks, color=col[run])
+        m = int(its[subrun, run])
+        plt.plot(np.log2(nproc[subrun]), speedup[subrun, run], marker="$" + str(m) + "$", markersize=marks, color=col[run])
 
-# custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
-# names.append('k iterations')
+custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
+names.append('k iterations')
 
 plt.legend(custom_lines, names, loc='upper left')
 plt.xticks(np.log2(nproc), nproc)
@@ -67,5 +66,5 @@ plt.ylabel('speedup')
 plt.xlabel('number of cores')
 plt.ylim([0, 20])
 # plt.show()
-plt.savefig('strong_plots/speedup_' + NAME + '_interval', dpi=300, bbox_inches='tight')
+plt.savefig('strong_plots/Speedup_' + NAME + '_interval', dpi=300, bbox_inches='tight')
 
