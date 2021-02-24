@@ -87,7 +87,7 @@ names2 = [r'$\|u(T_L) - u^{(k)}_L\|_\infty$']
 
 plt.subplot(231)
 l = 5
-tx = 3.8
+tx = 3.3
 d = 0.05
 ts = 20
 

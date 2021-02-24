@@ -48,7 +48,15 @@ prob.stol = 1e-14
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
-prob.solve()
+# prob.solve()
+
+eq, tmp = sp.linalg.eigs(prob.Q)
+print(eq)
+
+for e in eq:
+    M = sp.eye(prob.global_size_A, dtype=complex) - prob.dt * e * prob.Apar
+    ro, tmp = sp.linalg.eigs(M, k=1, sigma=0, maxiter=10)
+    print(ro, np.abs(ro))
 # prob.summary(details=True)
 
 
