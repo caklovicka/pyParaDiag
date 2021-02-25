@@ -6,7 +6,8 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import numpy as np
 import sys
-import scipy.sparse as sp
+sys.path.append('../')    # for pySDC on Juwels
+import scipy as sp
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -26,11 +27,9 @@ from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Sch
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-sys.path.append('../')    # for pySDC on Juwels
-sys.path.append('/etc/alternatives/petsc4py')
 
 prob = Schrodinger06()
-N = 1200
+N = 300
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.proc_col = 1
@@ -50,13 +49,13 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)
 prob.setup()
 # prob.solve()
 
-eq, tmp = sp.linalg.eigs(prob.Q)
+eq = sp.linalg.eigvals(prob.Q)
 print(eq)
 
 for e in eq:
-    M = sp.eye(prob.global_size_A, dtype=complex) - prob.dt * e * prob.Apar
-    ro, tmp = sp.linalg.eigs(M, k=1, sigma=0, maxiter=10)
-    print(ro, np.abs(ro))
+    M = sp.eye(N**2) - prob.dt * e * prob.Apar
+    ro = min(abs(sp.linalg.eigvals(M)))
+    print(ro)
 # prob.summary(details=True)
 
 
