@@ -6,7 +6,7 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import numpy as np
 import sys
-import scipy.sparse as sp
+import scipy as sp
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -24,39 +24,55 @@ from problem_examples_parallel.schrodinger_2d_central2 import Schrodinger
 from problem_examples_parallel.schrodinger_2d_0_central2 import Schrodinger as Schrodinger0
 from problem_examples_parallel.schrodinger_2d_central4 import Schrodinger as Schrodinger4
 from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as Schrodinger04
+from problem_examples_parallel.schrodinger_2d_0_forward4 import Schrodinger as Schrodinger04_forward
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
 sys.path.append('../')    # for pySDC on Juwels
-sys.path.append('/etc/alternatives/petsc4py')
-
-prob = Schrodinger06()
-N = 1200
+np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
+prob = Schrodinger04_forward()
+N = 2000
 prob.spatial_points = [N, N]
-prob.tol = 1e-12
-prob.proc_col = 1
+prob.tol = 1e-9
+prob.proc_col = 20
 prob.time_intervals = 1
 prob.rolling = 64
-prob.proc_row = prob.time_intervals
-prob.time_points = 3
+prob.proc_row = 1
+prob.time_points = 2
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 6.4e-3
-prob.solver = 'gmres'
+prob.T_end = 0.0032
+prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 50
-prob.stol = 1e-14
+prob.stol = 1e-11
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
-# prob.solve()
 
-eq, tmp = sp.linalg.eigs(prob.Q)
-print(eq)
+# https://math.stackexchange.com/questions/755113/what-are-eigenvalues-of-higher-order-finite-differences-matrices
+e = sp.linalg.eigvals(prob.Q)
+print(e)
+min_eig = np.inf
+#for i in range(N-1):
+    #for j in range(N-1):
+for ee in e:
+    # CENTRAL DIFFERENCES
+    # eig_L = -4/prob.dx[0]**2 * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 - 4/prob.dx[1]**2 * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2
+    # eig_L = 2/(3 * prob.dx[0]**2) * (np.cos(np.pi * (i + 1)/(N + 1)) - 7) * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 + 2/(3 * prob.dx[1]**2) * (np.cos(np.pi * (j + 1)/(N + 1)) - 7) * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2
+    # eig_L = 1/prob.dx[0]**2 * 2/45 * ((23 * np.cos(np.pi * (i + 1)/(N + 1)) - 2 * np.cos(2 * np.pi * (i + 1)/(N + 1)) - 111) * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 + (23 * np.cos(np.pi * (j + 1)/(N + 1)) - 2 * np.cos(2 * np.pi * (j + 1)/(N + 1)) - 111) * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2)
 
-for e in eq:
-    M = sp.eye(prob.global_size_A, dtype=complex) - prob.dt * e * prob.Apar
-    ro, tmp = sp.linalg.eigs(M, k=1, sigma=0, maxiter=10)
-    print(ro, np.abs(ro))
+    # FORWARD DIFFERENCES
+    eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
+    # eig_L = 1/prob.dx[0]** 2 * 469/90
+
+    eig = 1 - prob.c * prob.dt * ee * eig_L
+    if abs(eig) < min_eig:
+        min_eig = abs(eig)
+
+lambd = prob.dt * eig_L * prob.c
+print('ro = ', min_eig, 'lambda = ', lambd)
+
+prob.solve()
 # prob.summary(details=True)
 
 
