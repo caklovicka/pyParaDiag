@@ -30,10 +30,10 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 sys.path.append('../')    # for pySDC on Juwels
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 prob = Schrodinger04_forward()
-N = 2000
+N = 1800
 prob.spatial_points = [N, N]
 prob.tol = 1e-9
-prob.proc_col = 20
+prob.proc_col = 1
 prob.time_intervals = 1
 prob.rolling = 64
 prob.proc_row = 1
@@ -62,7 +62,7 @@ for ee in e:
     # eig_L = 1/prob.dx[0]**2 * 2/45 * ((23 * np.cos(np.pi * (i + 1)/(N + 1)) - 2 * np.cos(2 * np.pi * (i + 1)/(N + 1)) - 111) * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 + (23 * np.cos(np.pi * (j + 1)/(N + 1)) - 2 * np.cos(2 * np.pi * (j + 1)/(N + 1)) - 111) * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2)
 
     # FORWARD DIFFERENCES
-    eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
+    eig_L = 1/prob.dx[0]** 2 * 15/4
     # eig_L = 1/prob.dx[0]** 2 * 469/90
 
     eig = 1 - prob.c * prob.dt * ee * eig_L

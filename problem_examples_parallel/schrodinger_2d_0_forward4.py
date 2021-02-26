@@ -124,7 +124,6 @@ class Schrodinger(LinearParalpha):
                 col.append(i + 5 * self.spatial_points[0])
                 data.append(-5/6 * cy)
 
-
         data = np.array(data)
         row = np.array(row) - self.row_beg
         col = np.array(col)

@@ -12,8 +12,8 @@ t = dt * np.array(coll.nodes)
 Q = coll.Qmat[1:, 1:]
 eigQ = np.array(np.linalg.eigvals(Q))
 
-lambda_real = np.linspace(-5, 5, N)
-lambda_complex = np.linspace(-5, 5, N)
+lambda_real = np.linspace(-1, 1, N)
+lambda_complex = np.linspace(2.3, 3.5, N)
 
 for lr in lambda_real:
     for lc in lambda_complex:
@@ -25,7 +25,7 @@ for lr in lambda_real:
         else:
             plt.plot(lr, lc, 'b.')
 
-plt.plot(lambda_real, 0 * lambda_real, 'k-')
+# plt.plot(lambda_real, 0 * lambda_real, 'k-')
 plt.plot(0 * lambda_complex, lambda_complex, 'k-')
 
 plt.show()
