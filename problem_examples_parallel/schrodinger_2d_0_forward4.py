@@ -33,12 +33,12 @@ class Schrodinger(LinearParalpha):
 
         # ---- PRESETUP ----
 
-        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 2)[1:-1]
-        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[1] + 2)[1:-1]
+        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0])
+        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[1])
 
         self.dx = []
-        self.dx.append((self.X_right - self.X_left) / (self.spatial_points[0] + 1))
-        self.dx.append((self.Y_right - self.Y_left) / (self.spatial_points[1] + 1))
+        self.dx.append((self.X_right - self.X_left) / (self.spatial_points[0] - 1))
+        self.dx.append((self.Y_right - self.Y_left) / (self.spatial_points[1] - 1))
 
         # x and size_global_A have to be filled before super().setup()
 
@@ -144,6 +144,19 @@ class Schrodinger(LinearParalpha):
         exp1 = np.exp(1j * self.sigma / a * (self.p[0] * z[0] + self.p[1] * z[1]))
         exp2 = np.exp(-1/(2 * a) * (z[0]**2 + z[1]**2))
         return const * exp1 * exp2
+
+    # DELETE
+    def u_t(self, t, z):
+        a = self.sigma + 2j * t
+        exp_const1 = self.sigma/2 * (self.p[0]**2 + self.p[1]**2) * (self.sigma/a - 1)
+        exp_const2 = 1j * self.sigma / a * (self.p[0] * z[0] + self.p[1] * z[1])
+        exp_const3 = -1/(2 * a) * (z[0]**2 + z[1]**2)
+        exp = np.exp(exp_const1 + exp_const2 + exp_const3)
+
+        sum1 = -2j * self.sigma / a**2 * exp
+        sum2 = self.sigma/a * exp * (-self.sigma**2 * 2j / a**2 + (z[0]**2 + z[1]**2) * 1j / a**2 - 1j * self.sigma * 2j/a**2)
+
+        return sum1 + sum2
 
     # user defined
     def u_initial(self, z):

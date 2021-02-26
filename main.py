@@ -30,8 +30,8 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 sys.path.append('../')    # for pySDC on Juwels
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 prob = Schrodinger04_forward()
-N = 1800
-prob.spatial_points = [N, N]
+N = 30
+prob.spatial_points = [N, 10]
 prob.tol = 1e-9
 prob.proc_col = 1
 prob.time_intervals = 1
@@ -49,18 +49,11 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 
-# https://math.stackexchange.com/questions/755113/what-are-eigenvalues-of-higher-order-finite-differences-matrices
 e = sp.linalg.eigvals(prob.Q)
 print(e)
 min_eig = np.inf
-#for i in range(N-1):
-    #for j in range(N-1):
-for ee in e:
-    # CENTRAL DIFFERENCES
-    # eig_L = -4/prob.dx[0]**2 * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 - 4/prob.dx[1]**2 * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2
-    # eig_L = 2/(3 * prob.dx[0]**2) * (np.cos(np.pi * (i + 1)/(N + 1)) - 7) * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 + 2/(3 * prob.dx[1]**2) * (np.cos(np.pi * (j + 1)/(N + 1)) - 7) * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2
-    # eig_L = 1/prob.dx[0]**2 * 2/45 * ((23 * np.cos(np.pi * (i + 1)/(N + 1)) - 2 * np.cos(2 * np.pi * (i + 1)/(N + 1)) - 111) * np.sin(np.pi * (i + 1)/(2 * (N + 1)))**2 + (23 * np.cos(np.pi * (j + 1)/(N + 1)) - 2 * np.cos(2 * np.pi * (j + 1)/(N + 1)) - 111) * np.sin(np.pi * (j + 1)/(2 * (N + 1)))**2)
 
+for ee in e:
     # FORWARD DIFFERENCES
     eig_L = 1/prob.dx[0]** 2 * 15/4
     # eig_L = 1/prob.dx[0]** 2 * 469/90
@@ -72,7 +65,14 @@ for ee in e:
 lambd = prob.dt * eig_L * prob.c
 print('ro = ', min_eig, 'lambda = ', lambd)
 
-prob.solve()
+T = 0.1
+res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - prob.u_t(T, prob.x).flatten()
+err = np.linalg.norm(res, 2)
+print(err)
+plt.plot(res)
+plt.show()
+
+# prob.solve()
 # prob.summary(details=True)
 
 
