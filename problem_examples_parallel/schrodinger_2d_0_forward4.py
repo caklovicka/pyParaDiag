@@ -179,7 +179,7 @@ class Schrodinger(LinearParalpha):
         ksp.setFromOptions()
         ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
-        # pc.setType('none')
+        pc.setType('none')
         ksp.setOperators(M)
         ksp.setInitialGuessNonzero(True)
         ksp.solve(m, m0)

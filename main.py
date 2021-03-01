@@ -44,7 +44,7 @@ prob.T_start = 0
 prob.T_end = 0.0032
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 50
+prob.smaxiter = 300
 prob.stol = 1e-11
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
