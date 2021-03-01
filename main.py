@@ -30,7 +30,7 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 
-prob = Schrodinger04()
+prob = Schrodinger04_forward()
 N = 1100
 prob.spatial_points = [N, N]
 prob.tol = 1e-9
