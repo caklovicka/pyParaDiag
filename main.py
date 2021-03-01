@@ -6,6 +6,7 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import numpy as np
 import sys
+sys.path.append('../')    # for pySDC on Juwels
 import scipy as sp
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -27,7 +28,6 @@ from problem_examples_parallel.schrodinger_2d_0_central4 import Schrodinger as S
 from problem_examples_parallel.schrodinger_2d_0_forward4 import Schrodinger as Schrodinger04_forward
 from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as Schrodinger06
 
-sys.path.append('../')    # for pySDC on Juwels
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 
 prob = Schrodinger04_forward()
