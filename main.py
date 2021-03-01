@@ -31,10 +31,10 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 
 prob = Schrodinger04_forward()
-N = 1100
+N = 800
 prob.spatial_points = [N, N]
 prob.tol = 1e-9
-prob.proc_col = 22
+prob.proc_col = 1
 prob.time_intervals = 1
 prob.rolling = 64
 prob.proc_row = 1
@@ -44,8 +44,8 @@ prob.T_start = 0
 prob.T_end = 0.0032
 prob.solver = 'custom'
 prob.maxiter = 5
-prob.smaxiter = 300
-prob.stol = 1e-11
+prob.smaxiter = 100
+prob.stol = 1e-12
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
@@ -60,6 +60,7 @@ for ee in e:
     # eig_L = 1/prob.dx[0]** 2 * 469/90
 
     eig = 1 - prob.c * prob.dt * ee * eig_L
+    print(eig)
     if abs(eig) < min_eig:
         min_eig = abs(eig)
 
@@ -72,8 +73,8 @@ print('ro = ', min_eig, 'lambda = ', lambd)
 # err_r = np.linalg.norm(res.real, np.inf)
 # print(err_r, err_i)
 
-prob.solve()
-prob.summary(details=True)
+# prob.solve()
+# prob.summary(details=True)
 
 #
 # plt.subplot(211)
