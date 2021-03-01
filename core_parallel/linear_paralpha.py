@@ -234,7 +234,7 @@ class LinearParalpha(LinearHelpers):
                 self.__bcast_u_last_loc__()
 
                 # DELETE
-                if self.rank >= self.size - self.size_subcol_seq:
+                if self.rank == self.size - 1:#self.size_subcol_seq:
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
                     approx = self.u_last_loc.flatten()
                     d = exact - approx
