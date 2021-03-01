@@ -146,17 +146,10 @@ class Schrodinger(LinearParalpha):
         return const * exp1 * exp2
 
     # DELETE
-    def u_t(self, t, z):
+    def ddu(self, t, z):
         a = self.sigma + 2j * t
-        exp_const1 = self.sigma/2 * (self.p[0]**2 + self.p[1]**2) * (self.sigma/a - 1)
-        exp_const2 = 1j * self.sigma / a * (self.p[0] * z[0] + self.p[1] * z[1])
-        exp_const3 = -1/(2 * a) * (z[0]**2 + z[1]**2)
-        exp = np.exp(exp_const1 + exp_const2 + exp_const3)
-
-        sum1 = -2j * self.sigma / a**2 * exp
-        sum2 = self.sigma/a * exp * (-self.sigma**2 * 2j / a**2 + (z[0]**2 + z[1]**2) * 1j / a**2 - 1j * self.sigma * 2j/a**2)
-
-        return sum1 + sum2
+        temp = -2 - self.sigma ** 2 / a * (self.p[0] ** 2 + self.p[1] ** 2) - 2j * self.sigma / a * (self.p[0] * z[0] + self.p[1] * z[1]) + 1 / a * (z[0] ** 2 + z[1] ** 2)
+        return 1 / a * self.u_exact(t, z) * temp
 
     # user defined
     def u_initial(self, z):

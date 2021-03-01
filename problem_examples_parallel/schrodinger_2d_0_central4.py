@@ -254,6 +254,11 @@ class Schrodinger(LinearParalpha):
         exp2 = np.exp(-1/(2 * a) * (z[0]**2 + z[1]**2))
         return const * exp1 * exp2
 
+    def ddu(self, t, z):
+        a = self.sigma + 2j * t
+        temp = -2 - self.sigma**2 / a * (self.p[0]**2 + self.p[1]**2) - 2j * self.sigma / a * (self.p[0] * z[0] + self.p[1] * z[1]) + 1 / a * (z[0]**2 + z[1]**2)
+        return 1/a * self.u_exact(t, z) * temp
+
     # user defined
     def u_initial(self, z):
         return self.u_exact(self.T_start, z)

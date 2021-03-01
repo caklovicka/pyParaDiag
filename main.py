@@ -29,11 +29,12 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 
 sys.path.append('../')    # for pySDC on Juwels
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
+
 prob = Schrodinger04_forward()
-N = 30
-prob.spatial_points = [N, 10]
+N = 2400
+prob.spatial_points = [N, N]
 prob.tol = 1e-9
-prob.proc_col = 1
+prob.proc_col = 24
 prob.time_intervals = 1
 prob.rolling = 64
 prob.proc_row = 1
@@ -55,7 +56,7 @@ min_eig = np.inf
 
 for ee in e:
     # FORWARD DIFFERENCES
-    eig_L = 1/prob.dx[0]** 2 * 15/4
+    eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
     # eig_L = 1/prob.dx[0]** 2 * 469/90
 
     eig = 1 - prob.c * prob.dt * ee * eig_L
@@ -65,16 +66,27 @@ for ee in e:
 lambd = prob.dt * eig_L * prob.c
 print('ro = ', min_eig, 'lambda = ', lambd)
 
-T = 0.1
-res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - prob.u_t(T, prob.x).flatten()
-err = np.linalg.norm(res, 2)
-print(err)
-plt.plot(res)
-plt.show()
+T = prob.T_end
+res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - 1j * prob.ddu(T, prob.x).flatten()
+err_i = np.linalg.norm(res.imag, np.inf)
+err_r = np.linalg.norm(res.real, np.inf)
+print(err_r, err_i)
 
-# prob.solve()
-# prob.summary(details=True)
+prob.solve()
+prob.summary(details=True)
 
+#
+# plt.subplot(211)
+# plt.contourf(prob.u_exact(T, prob.x).flatten().real.reshape(prob.spatial_points), levels=10)
+# plt.title('real')
+# plt.colorbar()
+#
+# plt.subplot(212)
+# plt.contourf(prob.u_exact(T, prob.x).flatten().imag.reshape(prob.spatial_points), levels=10)
+# plt.title('imag')
+# plt.colorbar()
+#
+# plt.show()
 
 # if prob.rank == prob.size - 1:
 #     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
