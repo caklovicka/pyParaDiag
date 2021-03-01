@@ -30,22 +30,22 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 
-prob = Schrodinger04_forward()
-N = 2000
+prob = Schrodinger0()
+N = 600
 prob.spatial_points = [N, N]
-prob.tol = 1e-9
-prob.proc_col = 2
+prob.tol = 1e-5
+prob.proc_col = 6
 prob.time_intervals = 1
 prob.rolling = 64
 prob.proc_row = 1
-prob.time_points = 2
+prob.time_points = 1
 prob.optimal_alphas = True
 prob.T_start = 0
 prob.T_end = 0.0032
-prob.solver = 'gmres'
+prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 50
-prob.stol = 1e-11
+prob.stol = 1e-6
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
