@@ -176,7 +176,7 @@ class LinearHelpers(Communicators):
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
         self.comm_col.Barrier()
-        return h1_loc
+        return h1_loc, it
 
     # ifft
     def __get_ifft__(self, a):
