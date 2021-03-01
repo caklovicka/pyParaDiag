@@ -21,7 +21,7 @@ def ddf(z, t):
     # return -1/a**2 * exp
     # return np.exp(-z)
 
-N = 180
+N = 24000
 A = np.zeros((N, N), dtype=complex)
 # forward laplace 4
 A += 15/4 * np.eye(N) - 77/6 * np.eye(N, N, 1) + 107/6 * np.eye(N, N, 2) - 13 * np.eye(N, N, 3) + 61/12 * np.eye(N, N, 4) - 5/6 * np.eye(N, N, 5)

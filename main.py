@@ -66,11 +66,11 @@ for ee in e:
 lambd = prob.dt * eig_L * prob.c
 print('ro = ', min_eig, 'lambda = ', lambd)
 
-T = prob.T_end
-res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - 1j * prob.ddu(T, prob.x).flatten()
-err_i = np.linalg.norm(res.imag, np.inf)
-err_r = np.linalg.norm(res.real, np.inf)
-print(err_r, err_i)
+# T = prob.T_end
+# res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - 1j * prob.ddu(T, prob.x).flatten()
+# err_i = np.linalg.norm(res.imag, np.inf)
+# err_r = np.linalg.norm(res.real, np.inf)
+# print(err_r, err_i)
 
 prob.solve()
 prob.summary(details=True)
