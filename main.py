@@ -50,21 +50,21 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 
-e = sp.linalg.eigvals(prob.Q)
-print(e)
-min_eig = np.inf
-
-for ee in e:
-    # FORWARD DIFFERENCES
-    eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
-    # eig_L = 1/prob.dx[0]** 2 * 469/90
-
-    eig = 1 - prob.c * prob.dt * ee * eig_L
-    if abs(eig) < min_eig:
-        min_eig = abs(eig)
-
-lambd = prob.dt * eig_L * prob.c
-print('ro = ', min_eig, 'lambda = ', lambd)
+# e = sp.linalg.eigvals(prob.Q)
+# print(e)
+# min_eig = np.inf
+#
+# for ee in e:
+#     # FORWARD DIFFERENCES
+#     eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
+#     # eig_L = 1/prob.dx[0]** 2 * 469/90
+#
+#     eig = 1 - prob.c * prob.dt * ee * eig_L
+#     if abs(eig) < min_eig:
+#         min_eig = abs(eig)
+#
+# lambd = prob.dt * eig_L * prob.c
+# print('ro = ', min_eig, 'lambda = ', lambd)
 
 # T = prob.T_end
 # res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - 1j * prob.ddu(T, prob.x).flatten()
