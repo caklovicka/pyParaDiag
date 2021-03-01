@@ -30,41 +30,41 @@ from problem_examples_parallel.schrodinger_2d_0_central6 import Schrodinger as S
 
 np.set_printoptions(linewidth=np.inf, threshold=sys.maxsize)
 
-prob = Advection3()
-N = 800
+prob = Schrodinger04()
+N = 1100
 prob.spatial_points = [N, N]
 prob.tol = 1e-9
-prob.proc_col = 16
+prob.proc_col = 22
 prob.time_intervals = 1
 prob.rolling = 64
 prob.proc_row = 1
 prob.time_points = 2
 prob.optimal_alphas = True
 prob.T_start = 0
-prob.T_end = 0.00064
+prob.T_end = 0.0032
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 50
-prob.stol = 1e-10
+prob.stol = 1e-11
 prob.m0 = 10 * (prob.T_end - prob.T_start)
 
 prob.setup()
 
-# e = sp.linalg.eigvals(prob.Q)
-# print(e)
-# min_eig = np.inf
-#
-# for ee in e:
-#     # FORWARD DIFFERENCES
-#     eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
-#     # eig_L = 1/prob.dx[0]** 2 * 469/90
-#
-#     eig = 1 - prob.c * prob.dt * ee * eig_L
-#     if abs(eig) < min_eig:
-#         min_eig = abs(eig)
-#
-# lambd = prob.dt * eig_L * prob.c
-# print('ro = ', min_eig, 'lambda = ', lambd)
+e = sp.linalg.eigvals(prob.Q)
+print(e)
+min_eig = np.inf
+
+for ee in e:
+    # FORWARD DIFFERENCES
+    eig_L = 1/prob.dx[0]** 2 * 15/4 * 2
+    # eig_L = 1/prob.dx[0]** 2 * 469/90
+
+    eig = 1 - prob.c * prob.dt * ee * eig_L
+    if abs(eig) < min_eig:
+        min_eig = abs(eig)
+
+lambd = prob.dt * eig_L * prob.c
+print('ro = ', min_eig, 'lambda = ', lambd)
 
 # T = prob.T_end
 # res = prob.Apar @ prob.u_exact(T, prob.x).flatten() - 1j * prob.ddu(T, prob.x).flatten()
