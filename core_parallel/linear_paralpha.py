@@ -135,8 +135,8 @@ class LinearParalpha(LinearHelpers):
             if self.optimal_alphas is True:
                 r = self.__get_r__(v_loc)
                 self.comm.Barrier()
-                if self.rank == 0:
-                    print('m0 = ', m0, 'r = ', r, flush=True)
+                # if self.rank == 0:
+                #     print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
 
             # main iterations
@@ -167,8 +167,8 @@ class LinearParalpha(LinearHelpers):
                     # else:
                     #     m0 = 2 * np.sqrt(gamma * m0 * r)
 
-                    if self.rank == 0:
-                        print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
+                    # if self.rank == 0:
+                    #     print('m = ', m0, 'alpha = ', self.alphas[-1], 'err_max = ', self.err_last[rolling_interval][-1], flush=True)
                     if m0 <= self.tol:
                         self.stop = True
 
@@ -234,14 +234,14 @@ class LinearParalpha(LinearHelpers):
                 self.__bcast_u_last_loc__()
 
                 # DELETE
-                if self.rank == self.size - 1:#self.size_subcol_seq:
-                    exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
-                    approx = self.u_last_loc.flatten()
-                    d = exact - approx
-                    d = d.flatten()
-                    err_abs = np.linalg.norm(d, np.inf)
-                    err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-                    print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
+                # if self.rank == self.size - 1:#self.size_subcol_seq:
+                #     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
+                #     approx = self.u_last_loc.flatten()
+                #     d = exact - approx
+                #     d = d.flatten()
+                #     err_abs = np.linalg.norm(d, np.inf)
+                #     err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
+                #     print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
                 # DELETE
 
                 # end of main iterations (while loop)
@@ -297,7 +297,6 @@ class LinearParalpha(LinearHelpers):
             print('no. of alphas = {}'.format(len(self.alphas)), flush=True)
             if details:
                 print('    {}'.format(self.alphas), flush=True)
-            print(self.viable, flush=True)
             print('rolling intervals = {}'.format(self.rolling), flush=True)
             print('dt (of one SDC interval) = {}'.format(self.dt), flush=True)
             print('processors for spatial parallelization for solving (I - Q x A) are {}'.format(self.proc_col), flush=True)

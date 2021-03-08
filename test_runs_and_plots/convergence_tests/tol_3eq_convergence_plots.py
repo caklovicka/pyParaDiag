@@ -85,11 +85,12 @@ names2 = [r'$\|u(T_L) - u^{(k)}_L\|_\infty$']
 
 # HEAT
 
-plt.subplot(221)
+plt.subplot(141)
 l = 5
 tx = 3.3
 d = 0.05
 ts = 20
+tss=15
 
 leg = []
 for i in range(n):
@@ -109,12 +110,12 @@ for i in range(n):
     plt.plot(x, m_heat[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 plt.legend(custom_lines1, names1, prop={'size': marksz})
-plt.xticks([])
 plt.ylim([-14, 0])
 plt.xlim([0, 5])
-plt.title('Heat', fontsize=ts)
+plt.title('Heat (runtime)', fontsize=tss)
+plt.xlabel('iteration')
 
-plt.subplot(223)
+plt.subplot(142)
 
 l = 5
 for i in range(n):
@@ -130,59 +131,14 @@ for i in range(n):
 
 plt.legend(custom_lines2, names2, prop={'size': marksz})
 plt.ylim([-14, 0])
+plt.xlabel('iteration')
+plt.yticks([])
 plt.xlim([0, 5])
-
-
-#SCHRODINGER
-#
-# plt.subplot(232)
-# l = 6
-# for i in range(n):
-#     x = range(0, l+3, 1)
-#     print(l)
-#     plt.plot(x, np.ones(l + 3) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-#     plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
-#
-# for i in range(n):
-#     l = schro_cerr[i].shape
-#     l = l[0]
-#     x = range(1, l + 1, 1)
-#     plt.plot(x, schro_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
-#
-# for i in range(n):
-#     l = len(m_schro[i])
-#     x = range(1, l+1, 1)
-#     plt.plot(x, m_schro[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
-#
-# plt.yticks([])
-# plt.legend(custom_lines1, names1, prop={'size': marksz})
-# plt.ylim([-14, 0])
-# plt.xlim([0, 6])
-# plt.xticks([])
-# plt.title('Schrodinger', fontsize=ts)
-
-# plt.subplot(222)
-# l = 6
-# for i in range(n):
-#     x = range(0, l + 2, 1)
-#     plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-#     plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
-#
-# for i in range(n):
-#     l = schro_err_abs[i].shape
-#     l = l[0]
-#     x = range(1, l+1, 1)
-#     plt.plot(x, schro_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
-#
-# plt.legend(custom_lines2, names2, prop={'size': marksz})
-# plt.yticks([])
-# plt.ylim([-14, 0])
-# plt.xlim([0, 6])
-# plt.xlabel('Iteration', fontsize=ts)
+plt.title('Heat, errors', fontsize=tss)
 
 # ADVECTION
 
-plt.subplot(222)
+plt.subplot(143)
 l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
@@ -201,14 +157,13 @@ for i in range(n):
     plt.plot(x, adv_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 plt.yticks([])
-plt.xticks([])
-
 plt.legend(custom_lines1, names1, prop={'size': marksz})
 plt.ylim([-14, 0])
 plt.xlim([0, 8])
-plt.title('Advection', fontsize=ts)
+plt.title('Advection (runtime)', fontsize=tss)
+plt.xlabel('iteration')
 
-plt.subplot(224)
+plt.subplot(144)
 l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
@@ -225,5 +180,7 @@ plt.legend(custom_lines2, names2, prop={'size': marksz})
 plt.yticks([])
 plt.ylim([-14, 0])
 plt.xlim([0, 8])
+plt.title('Advection, errors', fontsize=tss)
+plt.xlabel('iteration')
 
 plt.show()
