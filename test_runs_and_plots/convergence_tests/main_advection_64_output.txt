@@ -79,3 +79,110 @@ inner solver maxiter = 50
 
 alpha = 0.000556293084447241
 ============================
+on 63,  abs, rel err inf norm [from paralpha] = 4.471606188816146e-05, 4.471606765247009e-05, iter = 1, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 2.4888949018440783e-08, 2.4888952226853545e-08, iter = 2, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 1.4165184976373149e-11, 1.4165186802394819e-11, iter = 3, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 1.1447249940699925e-12, 1.1447251416354955e-12, iter = 4, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 1.126610593685307e-12, 1.1266107389156984e-12, iter = 5, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 0.0128
+no. of spatial points = [700, 700]
+dx = [0.0014285714285714286, 0.0014285714285714286]
+no. of time points on an interval = 3
+    [3.10102e-05 1.28990e-04 2.00000e-04]
+no. of time intervals = 64
+no. of alphas = 1
+    [0.000556293084447241]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0002
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 64
+maxiter = 6
+output document = None
+tol = 1e-12
+last error = [[inf, 0.0803822357561948, 4.474063303488984e-05, 2.490273609545568e-08, 1.4173995310784449e-11, 4.2998937743732313e-13]]
+iterations of Paralpha = [5.]
+max iterations of Paralpha = 5.0
+algorithm time = 31.71563 s
+communication time = 2.27260 s
+inner solver = custom
+system_time_max = [5.643719911575317, 5.615916967391968, 5.609195947647095, 5.534317970275879, 5.614122152328491]
+system_time_min = [4.383043050765991, 4.347246885299683, 5.558550119400024, 4.180660963058472, 5.543912172317505]
+inner solver tols = [1e-16, 1e-16, 1e-16, 1e-16, 1e-16]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+
+alpha = 0.01667772593082224
+===========================
+on 63,  abs, rel err inf norm [from paralpha] = 0.0013622764747797667, 0.0013622766503896416, iter = 1, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 2.3099748669097586e-05, 2.3099751646866087e-05, iter = 2, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 3.916986562879644e-07, 3.916987067814974e-07, iter = 3, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 6.642223660081918e-09, 6.642224516325191e-09, iter = 4, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 1.1268636033442073e-10, 1.1268637486072139e-10, iter = 5, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 2.1811904170870503e-12, 2.181190698262409e-12, iter = 6, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 0.0128
+no. of spatial points = [700, 700]
+dx = [0.0014285714285714286, 0.0014285714285714286]
+no. of time points on an interval = 3
+    [3.10102e-05 1.28990e-04 2.00000e-04]
+no. of time intervals = 64
+no. of alphas = 1
+    [0.01667772593082224]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0002
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 64
+maxiter = 6
+output document = None
+tol = 1e-12
+last error = [[inf, 0.08168227048015236, 0.0013850618669607462, 2.3486379692849724e-05, 3.9825550690597566e-07, 6.7531585878910505e-09, 1.1452638837283757e-10]]
+iterations of Paralpha = [6.]
+max iterations of Paralpha = 6.0
+algorithm time = 38.22166 s
+communication time = 2.72653 s
+inner solver = custom
+system_time_max = [5.647763967514038, 5.638959169387817, 5.653191089630127, 5.632533073425293, 5.656135082244873, 5.625227212905884]
+system_time_min = [5.590517997741699, 4.206752061843872, 5.579241991043091, 4.348196029663086, 5.594943046569824, 5.570751905441284]
+inner solver tols = [1e-16, 1e-16, 1e-16, 1e-16, 1e-16, 1e-16]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
+
+alpha = 0.09131737493714501
+===========================
+on 63,  abs, rel err inf norm [from paralpha] = 0.008061980523784651, 0.008061981563047545, iter = 1, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 0.0008090273159575556, 0.000809027420248563, iter = 2, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 8.118721922573124e-05, 8.118722969150503e-05, iter = 3, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 8.147216030485183e-06, 8.147217080735711e-06, iter = 4, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 8.17575491834921e-07, 8.175755972278663e-07, iter = 5, rolling = 0
+on 63,  abs, rel err inf norm [from paralpha] = 8.204551038559828e-08, 8.204552096201363e-08, iter = 6, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 0, T2 = 0.0128
+no. of spatial points = [700, 700]
+dx = [0.0014285714285714286, 0.0014285714285714286]
+no. of time points on an interval = 3
+    [3.10102e-05 1.28990e-04 2.00000e-04]
+no. of time intervals = 64
+no. of alphas = 1
+    [0.09131737493714501]
+Viability of the problem is not known.
+rolling intervals = 1
+dt (of one SDC interval) = 0.0002
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 64
+maxiter = 6
+output document = None
+tol = 1e-12
+last error = [[inf, 0.08828545023439727, 0.008859487251657638, 0.0008890657467074403, 8.921877162892944e-05, 8.953146141910118e-06, 8.984606519879534e-07]]
+iterations of Paralpha = [6.]
+max iterations of Paralpha = 6.0
+algorithm time = 38.32964 s
+communication time = 2.74595 s
+inner solver = custom
+system_time_max = [5.651592969894409, 5.658340930938721, 5.626063823699951, 5.665571928024292, 5.669567108154297, 5.63913893699646]
+system_time_min = [5.582647800445557, 4.596560001373291, 4.329363107681274, 5.586698055267334, 4.299454927444458, 5.587519884109497]
+inner solver tols = [1e-16, 1e-16, 1e-16, 1e-16, 1e-16, 1e-16]
+inner solver maxiter = 50
+-----------------------< end summary >-----------------------
