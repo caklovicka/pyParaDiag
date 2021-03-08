@@ -202,7 +202,6 @@ class LinearParalpha(LinearHelpers):
                     h0 = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
                     h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h0, self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
-                    print('on proc ', self.rank, ', iterations = ', it)
                     #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
 
                     # step 3 ... (Zinv x I) h = h1
