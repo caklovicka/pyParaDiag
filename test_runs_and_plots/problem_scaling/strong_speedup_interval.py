@@ -5,7 +5,7 @@ from matplotlib.lines import Line2D
 
 'plotting a fully serial and interval-parallel speedup'
 
-NAME = 'Schrodinger'
+NAME = 'Euler'
 
 if NAME == 'Heat':
     path3 = ['heat1_strong/output/000000/result/result.dat', 'heat2_strong/output/000000/result/result.dat',
@@ -16,6 +16,10 @@ if NAME == 'Advection':
 if NAME == 'Schrodinger':
     path3 = ['schro1_strong/output/000000/result/result.dat', 'schro2_strong/output/000000/result/result.dat',
              'schro3_strong/output/000000/result/result.dat']
+
+if NAME == 'Euler':
+    path3 = ['schro1_strong/output/000000/result/result.dat', 'heat1_strong/output/000000/result/result.dat',
+             'adv1_strong/output/000001/result/result.dat']
 
 # nproc | rolling | time_intervals | tot_time | max_paralpha_iters
 eq3 = []
@@ -60,11 +64,17 @@ for run in range(len(eq3)):
 custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
 names.append('k iterations')
 
-plt.legend(custom_lines, names, loc='upper left')
+if NAME != 'Euler':
+    plt.legend(custom_lines, names, loc='upper left')
+else:
+    names[0] = 'Schrodinger'
+    names[1] = 'Heat'
+    names[2] = 'Advection'
+    plt.legend(custom_lines, names, loc='upper left')
 plt.xticks(np.log2(nproc), nproc)
 plt.ylabel('speedup')
 plt.xlabel('number of cores')
 plt.ylim([0, 20])
-# plt.show()
-plt.savefig('strong_plots/Speedup_' + NAME + '_interval', dpi=300, bbox_inches='tight')
+plt.show()
+# plt.savefig('strong_plots/Speedup_' + NAME + '_interval', dpi=300, bbox_inches='tight')
 

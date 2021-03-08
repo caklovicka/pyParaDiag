@@ -85,7 +85,7 @@ names2 = [r'$\|u(T_L) - u^{(k)}_L\|_\infty$']
 
 # HEAT
 
-plt.subplot(231)
+plt.subplot(221)
 l = 5
 tx = 3.3
 d = 0.05
@@ -114,7 +114,7 @@ plt.ylim([-14, 0])
 plt.xlim([0, 5])
 plt.title('Heat', fontsize=ts)
 
-plt.subplot(234)
+plt.subplot(223)
 
 l = 5
 for i in range(n):
@@ -134,55 +134,55 @@ plt.xlim([0, 5])
 
 
 #SCHRODINGER
+#
+# plt.subplot(232)
+# l = 6
+# for i in range(n):
+#     x = range(0, l+3, 1)
+#     print(l)
+#     plt.plot(x, np.ones(l + 3) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
+#     plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
+#
+# for i in range(n):
+#     l = schro_cerr[i].shape
+#     l = l[0]
+#     x = range(1, l + 1, 1)
+#     plt.plot(x, schro_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+#
+# for i in range(n):
+#     l = len(m_schro[i])
+#     x = range(1, l+1, 1)
+#     plt.plot(x, m_schro[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+#
+# plt.yticks([])
+# plt.legend(custom_lines1, names1, prop={'size': marksz})
+# plt.ylim([-14, 0])
+# plt.xlim([0, 6])
+# plt.xticks([])
+# plt.title('Schrodinger', fontsize=ts)
 
-plt.subplot(232)
-l = 6
-for i in range(n):
-    x = range(0, l+3, 1)
-    print(l)
-    plt.plot(x, np.ones(l + 3) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-    plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
-
-for i in range(n):
-    l = schro_cerr[i].shape
-    l = l[0]
-    x = range(1, l + 1, 1)
-    plt.plot(x, schro_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
-
-for i in range(n):
-    l = len(m_schro[i])
-    x = range(1, l+1, 1)
-    plt.plot(x, m_schro[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
-
-plt.yticks([])
-plt.legend(custom_lines1, names1, prop={'size': marksz})
-plt.ylim([-14, 0])
-plt.xlim([0, 6])
-plt.xticks([])
-plt.title('Schrodinger', fontsize=ts)
-
-plt.subplot(235)
-l = 6
-for i in range(n):
-    x = range(0, l + 2, 1)
-    plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
-    plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
-
-for i in range(n):
-    l = schro_err_abs[i].shape
-    l = l[0]
-    x = range(1, l+1, 1)
-    plt.plot(x, schro_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
-
-plt.legend(custom_lines2, names2, prop={'size': marksz})
-plt.yticks([])
-plt.ylim([-14, 0])
-plt.xlim([0, 6])
-plt.xlabel('Iteration', fontsize=ts)
+# plt.subplot(222)
+# l = 6
+# for i in range(n):
+#     x = range(0, l + 2, 1)
+#     plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
+#     plt.text(tx + 1, np.log10(tol[i]) + 0.3, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
+#
+# for i in range(n):
+#     l = schro_err_abs[i].shape
+#     l = l[0]
+#     x = range(1, l+1, 1)
+#     plt.plot(x, schro_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+#
+# plt.legend(custom_lines2, names2, prop={'size': marksz})
+# plt.yticks([])
+# plt.ylim([-14, 0])
+# plt.xlim([0, 6])
+# plt.xlabel('Iteration', fontsize=ts)
 
 # ADVECTION
 
-plt.subplot(233)
+plt.subplot(222)
 l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
@@ -208,7 +208,7 @@ plt.ylim([-14, 0])
 plt.xlim([0, 8])
 plt.title('Advection', fontsize=ts)
 
-plt.subplot(236)
+plt.subplot(224)
 l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
