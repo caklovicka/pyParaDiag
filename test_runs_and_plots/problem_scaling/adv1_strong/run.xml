@@ -9,8 +9,8 @@
       <parameter name="rolling" type="int">64</parameter>
 
       <parameter name="nproc" mode="python">[1, 2, 4, 6, 12, 24, 48, 96][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4, 8][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 6, 12, 12, 12, 12][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 1, 1, 2][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 6, 12, 24, 48, 48][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
@@ -47,7 +47,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="3">
+    <step name="sub_step" iterations="25">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->

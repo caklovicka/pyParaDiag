@@ -4,7 +4,7 @@ import seaborn as sns
 from matplotlib.lines import Line2D
 
 
-path = ['adv1_strong/output/000003/result/result.dat']
+path = ['adv1_strong/output/000004/result/result.dat']
 
 # nproc | tot_time |
 eq = np.loadtxt(path[0], delimiter='|', usecols=[0, 3], skiprows=3)
