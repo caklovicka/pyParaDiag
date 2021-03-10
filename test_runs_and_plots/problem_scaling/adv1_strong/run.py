@@ -13,7 +13,7 @@ from mpi4py import MPI
 from problem_examples_parallel.advection_2d_pbc_upwind1 import Advection as Adv1
 
 prob = Adv1()
-N = 800
+N = 768
 prob.spatial_points = [N, N]
 prob.tol = 1e-5
 prob.time_points = 1
