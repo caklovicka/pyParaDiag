@@ -16,6 +16,7 @@ prob = Adv1()
 N = 768
 prob.spatial_points = [N, N]
 prob.tol = 1e-5
+prob.proc_col = 6 #12
 prob.time_points = 1
 prob.optimal_alphas = True
 prob.T_start = 0
