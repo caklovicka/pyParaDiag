@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
   <benchmark name="scaling test" outpath="output">
-    <comment>PETSC scaling for adv2 on 64 intervals, sequential in time.</comment>
+    <comment>Speedup for adv3 on 64 intervals with rolling paralpha and petsc 12 cores.</comment>
 
     <parameterset name="param_set">
       <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
+      <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
+      <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
 
-      <parameter name="nproc" mode="python">[3, 6, 12, 24, 48, 96, 192][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 1, 2, 4, 8][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[3, 6, 12, 24, 24, 24, 24][$i]</parameter>
+      <parameter name="nproc" mode="python">[36, 72, 144, 288, 576, 1152, 2304][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">36</parameter>
+      <parameter name="nodes" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
 
     </parameterset>
 
@@ -25,6 +27,8 @@
       <iofile in="run.tmpl" out="run.exe" />
 
       <!-- Substitute commands -->
+      <sub source="#rolling#" dest="$rolling" />
+      <sub source="#time_intervals#" dest="$time_intervals" />
       <sub source="#nodes#" dest="$nodes" />
       <sub source="#ntasks_per_node#" dest="$ntasks_per_node" />
       <sub source="#nproc#" dest="$nproc" />
@@ -34,6 +38,7 @@
     <patternset name="pattern">
       <pattern name="tot_time" type="float">algorithm time = $jube_pat_fp</pattern>
       <pattern name="comm_time" type="float">communication time = $jube_pat_fp</pattern>
+      <pattern name="max_iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
       <pattern name="err" type="float">abs err = $jube_pat_fp</pattern>
       <pattern name="tol" type="float">tol = $jube_pat_fp</pattern>
       <pattern name="stol" type="float">inner solver tols = \[$jube_pat_fp</pattern>
@@ -43,7 +48,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="1">
+    <step name="sub_step" iterations="10">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->
@@ -63,6 +68,8 @@
       <use>analyse</use> <!-- use existing analyser -->
       <table name="result" style="pretty">
         <column>nproc</column>
+        <column>rolling</column>
+        <column>time_intervals</column>
         <column>tot_time_avg</column>
         <column>tot_time_min</column>
         <column>tot_time_max</column>
