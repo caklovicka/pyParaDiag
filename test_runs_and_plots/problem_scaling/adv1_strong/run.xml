@@ -9,8 +9,8 @@
       <parameter name="rolling" type="int">64</parameter>
 
       <parameter name="nproc" mode="python">[1, 2, 4, 6, 12, 24, 48, 96][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 1, 2, 4][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 6, 12, 24, 24, 24][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4, 8][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 6, 12, 12, 12, 12][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
