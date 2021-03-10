@@ -1,0 +1,59 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=1 --rolling=64 --proc_row=1 --T_end=0.16e-3 --proc_col=6
+Traceback (most recent call last):
+  File "run.py", line 33, in <module>
+    prob.setup()
+  File "../../../../../../../problem_examples_parallel/advection_2d_pbc_upwind1.py", line 49, in setup
+    super().setup()
+  File "../../../../../../../core_parallel/linear_paralpha.py", line 36, in setup
+    self.global_size_A * self.time_points, self.proc_col)
+AssertionError: dimA * self.time_points = 640000 should be divisible by proc_col = 6
+Traceback (most recent call last):
+  File "run.py", line 33, in <module>
+    prob.setup()
+  File "../../../../../../../problem_examples_parallel/advection_2d_pbc_upwind1.py", line 49, in setup
+    super().setup()
+  File "../../../../../../../core_parallel/linear_paralpha.py", line 36, in setup
+    self.global_size_A * self.time_points, self.proc_col)
+AssertionError: dimA * self.time_points = 640000 should be divisible by proc_col = 6
+Traceback (most recent call last):
+  File "run.py", line 33, in <module>
+    prob.setup()
+  File "../../../../../../../problem_examples_parallel/advection_2d_pbc_upwind1.py", line 49, in setup
+    super().setup()
+  File "../../../../../../../core_parallel/linear_paralpha.py", line 36, in setup
+    self.global_size_A * self.time_points, self.proc_col)
+AssertionError: dimA * self.time_points = 640000 should be divisible by proc_col = 6
+Traceback (most recent call last):
+  File "run.py", line 33, in <module>
+    prob.setup()
+  File "../../../../../../../problem_examples_parallel/advection_2d_pbc_upwind1.py", line 49, in setup
+    super().setup()
+  File "../../../../../../../core_parallel/linear_paralpha.py", line 36, in setup
+    self.global_size_A * self.time_points, self.proc_col)
+AssertionError: dimA * self.time_points = 640000 should be divisible by proc_col = 6
+Traceback (most recent call last):
+  File "run.py", line 33, in <module>
+    prob.setup()
+  File "../../../../../../../problem_examples_parallel/advection_2d_pbc_upwind1.py", line 49, in setup
+    super().setup()
+  File "../../../../../../../core_parallel/linear_paralpha.py", line 36, in setup
+    self.global_size_A * self.time_points, self.proc_col)
+AssertionError: dimA * self.time_points = 640000 should be divisible by proc_col = 6
+Traceback (most recent call last):
+  File "run.py", line 33, in <module>
+    prob.setup()
+  File "../../../../../../../problem_examples_parallel/advection_2d_pbc_upwind1.py", line 49, in setup
+    super().setup()
+  File "../../../../../../../core_parallel/linear_paralpha.py", line 36, in setup
+    self.global_size_A * self.time_points, self.proc_col)
+AssertionError: dimA * self.time_points = 640000 should be divisible by proc_col = 6
+srun: error: jwc06n100: tasks 0-5: Exited with exit code 1
++ touch ready
