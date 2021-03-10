@@ -4,7 +4,7 @@
     <comment>Speedup for adv1 on 64 intervals with rolling paralpha with petsc.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i" type="int">0,1,2,3,4,5</parameter>
+      <parameter name="i" type="int">0,1,2,3,4,5,6,7,8</parameter>
       <parameter name="time_intervals" type="int">1</parameter>
       <parameter name="rolling" type="int">64</parameter>
 
@@ -48,7 +48,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="10">
+    <step name="sub_step" iterations="5">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->
