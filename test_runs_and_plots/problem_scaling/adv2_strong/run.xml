@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
   <benchmark name="scaling test" outpath="output">
-    <comment>Speedup for adv2 on 64 intervals with rolling paralpha.</comment>
+    <comment>Speedup for adv2 on 64 intervals with rolling paralpha and petsc 12 cores.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i" type="int">0,1,2,3,4,5</parameter>
-      <parameter name="time_intervals" mode="python">[4, 8, 16, 32, 64, 1][$i]</parameter>
-      <parameter name="rolling" mode="python">[16, 8, 4, 2, 1, 64][$i]</parameter>
+      <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
+      <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
+      <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
 
-      <parameter name="nproc" mode="python">[8, 16, 32, 64, 128, 2][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[8, 16, 16, 16, 16, 2][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 2, 4, 8, 1][$i]</parameter>
+      <parameter name="nproc" mode="python">[24, 48, 96, 192, 384, 768, 1536][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[24, 48, 48, 48, 48, 48, 48][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 2, 4, 8, 16, 32, 64][$i]</parameter>
 
     </parameterset>
 
@@ -48,7 +48,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="1">
+    <step name="sub_step" iterations="25">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->

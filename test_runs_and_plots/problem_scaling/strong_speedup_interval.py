@@ -5,7 +5,7 @@ from matplotlib.lines import Line2D
 
 'plotting a fully serial and interval-parallel speedup'
 
-NAME = 'Euler'
+NAME = 'Advection'
 
 if NAME == 'Heat':
     path3 = ['heat1_strong/output/000000/result/result.dat', 'heat2_strong/output/000000/result/result.dat',
@@ -13,6 +13,7 @@ if NAME == 'Heat':
 if NAME == 'Advection':
     path3 = ['adv1_strong/output/000001/result/result.dat', 'adv2_strong/output/000000/result/result.dat',
              'adv3_strong/output/000000/result/result.dat']
+
 if NAME == 'Schrodinger':
     path3 = ['schro1_strong/output/000000/result/result.dat', 'schro2_strong/output/000000/result/result.dat',
              'schro3_strong/output/000000/result/result.dat']

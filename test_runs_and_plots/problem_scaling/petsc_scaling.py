@@ -3,8 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-
-path = ['adv1_strong/output/000006/result/result.dat', 'adv1_strong/output/000007/result/result.dat']
+path = ['adv1_strong/output/000007/result/result.dat']
 
 # nproc | tot_time |
 eq = []
@@ -12,7 +11,8 @@ for p in path:
     eq.append(np.loadtxt(p, delimiter='|', usecols=[0, 3], skiprows=3))
 
 n = eq[0].shape[0]
-seqT = 10.3642304
+print(eq)
+seqT = 10.364230400000002   # from --id=5
 for i in range(len(eq)):
     eq[i][:, 1] = seqT / eq[i][:, 1]
 
