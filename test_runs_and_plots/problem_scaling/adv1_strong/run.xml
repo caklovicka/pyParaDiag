@@ -29,7 +29,6 @@
       <sub source="#time_intervals#" dest="$time_intervals" />
       <sub source="#nodes#" dest="$nodes" />
       <sub source="#ntasks_per_node#" dest="$ntasks_per_node" />
-      <sub source="#nproc#" dest="$nproc" />
     </substituteset>
 
     <!-- Regex pattern -->
@@ -65,7 +64,6 @@
     <result>
       <use>analyse</use> <!-- use existing analyser -->
       <table name="result" style="pretty">
-        <column>nproc</column>
         <column>rolling</column>
         <column>time_intervals</column>
         <column>tot_time_avg</column>
