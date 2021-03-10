@@ -1,0 +1,12 @@
+#!/bin/bash -x
+#SBATCH --account=cstma
+#SBATCH --nodes=16
+#SBATCH --ntasks=512
+#SBATCH --ntasks-per-node=32
+#SBATCH --output=mpi-out.%j
+#SBATCH --error=mpi-err.%j
+#SBATCH --time=00:20:00
+#SBATCH --partition=batch
+
+srun python run.py --time_intervals=512 --rolling=1 --proc_row=512 > results.out
+touch ready
