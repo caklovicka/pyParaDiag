@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-path = ['adv1_strong/output/000007/result/result.dat']
+path = ['adv1_strong/output/000007/result/result.dat', 'adv2_strong/output/000002/result/result.dat', 'adv3_strong/output/000003/result/result.dat']
 
 # nproc | tot_time |
 eq = []

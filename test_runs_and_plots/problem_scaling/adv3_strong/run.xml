@@ -4,13 +4,13 @@
     <comment>Speedup for adv3 on 64 intervals with rolling paralpha and petsc 12 cores.</comment>
 
     <parameterset name="param_set">
-      <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
+      <parameter name="i" type="int">0</parameter>
       <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
       <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
 
-      <parameter name="nproc" mode="python">[36, 72, 144, 288, 576, 1152, 2304][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">36</parameter>
-      <parameter name="nodes" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
+      <parameter name="nproc" mode="python">[1][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">1</parameter>
+      <parameter name="nodes" mode="python">[1][$i]</parameter>
 
     </parameterset>
 
