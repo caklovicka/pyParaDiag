@@ -20,13 +20,13 @@ prob.proc_col = 1
 prob.time_points = 1
 prob.optimal_alphas = True
 prob.T_start = 0
+prob.T_end = 0.16e-3
 prob.solver = 'custom'
 prob.maxiter = 10
 prob.smaxiter = 50
-prob.T_end = 8 * 0.16e-3
 
-prob.stol = 1e-5 / prob.rolling
-if prob.rolling < 512:
+prob.stol = 1e-6
+if prob.rolling < 64:
     prob.stol = 1e-9
     prob.tol = 1e-5 / prob.rolling
 
