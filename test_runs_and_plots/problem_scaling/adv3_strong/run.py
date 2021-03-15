@@ -13,10 +13,10 @@ import numpy as np
 from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection as Adv5
 
 prob = Adv5()
-N = 700
+N = 702
 prob.spatial_points = [N, N]
 prob.tol = 1e-12
-prob.time_points = 3
+prob.time_points = 3*12
 prob.proc_col = 3
 prob.optimal_alphas = True
 prob.T_start = 0
@@ -36,13 +36,13 @@ prob.setup()
 prob.solve()
 prob.summary(details=True)
 
-if prob.rank == prob.size - 1:#prob.size_subcol_seq:
+if prob.rank == prob.size - prob.size_subcol_seq:
     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
     approx = prob.u_last_loc.flatten()
     d = exact - approx
     d = d.flatten()
     err_abs = np.linalg.norm(d, np.inf)
-    # err_abs_root = prob.comm_subcol_seq.reduce(err_abs, op=MPI.MAX, root=prob.size_subcol_seq - 1)
-    # if prob.rank == prob.size - 1:
-    print('abs err = {}'.format(err_abs))
+    err_abs_root = prob.comm_subcol_seq.reduce(err_abs, op=MPI.MAX, root=prob.size_subcol_seq - 1)
+    if prob.rank == prob.size - 1:
+        print('abs err = {}'.format(err_abs_root))
 

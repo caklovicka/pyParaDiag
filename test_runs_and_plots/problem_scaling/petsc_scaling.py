@@ -30,7 +30,7 @@ for i in range(len(eq)):
     custom_lines.append(Line2D([0], [0], linestyle=linst[i], linewidth=lw, color=col[i]))
     ticks += list(np.log2(eq[i][:, 0]))
     labels += list(eq[i][:, 0])
-
+print(petsc_run)
 indices = np.argsort(petsc_run[:, 0])
 petsc_run = petsc_run[indices, :]
 petsc_run[:, 1] = petsc_run[0, 1] / petsc_run[:, 1]
