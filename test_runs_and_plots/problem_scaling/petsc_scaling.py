@@ -10,7 +10,7 @@ eq = []
 for p in path:
     eq.append(np.loadtxt(p, delimiter='|', usecols=[0, 3, 7], skiprows=3))
 
-petsc_run = np.loadtxt('adv1_strong/output/000005/result/result.dat', delimiter='|', usecols=[0, 3], skiprows=3)
+petsc_run = np.loadtxt('adv1_strong/output/000011/result/result.dat', delimiter='|', usecols=[0, 3], skiprows=3)
 ticks = []
 labels = []
 n = eq[0].shape[0]

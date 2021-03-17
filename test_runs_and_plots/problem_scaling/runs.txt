@@ -5,6 +5,7 @@ adv1
 --id=7 ... testing paralpha(interval) + petsc on 48/node (10 reps)
 --id=9 ... testing paralpha(interval) on 48/node (25 reps)
 --id=10 ... testing paralpha(interval) + petsc on 24/node (25 reps)
+--id=11 ... testing petsc scaling on 24/node, just rolling (10 reps)
 
 adv2
 ====
@@ -18,12 +19,18 @@ adv3
 --id=3 ... testing paralpha(interval) + petsc on 48/node (10 reps)
 --id=5 ... testing paralpha(interval) on 48/node (10 reps)
 --id=6 ... testing paralpha(interval, collocation) on 48/node (10 reps)
+--id=? ... reps=[3, 3, 3, 5, 10, 10, 10]
 
 heat1
 =====
+--id=1 ... testing paralpha(interval) on 48/node (25 reps)
 
 heat2
 =====
+--id=2 ... testing paralpha(interval) on 48/node (15 reps)
+--id=3 ... testing paralpha(interval, collocation) on 48/node (15 reps)
 
 heat3
 =====
+--id=33 ... testing paralpha(interval) on 48/node (10 reps)
+--id=34 ... testing paralpha(interval, collocation) on 48/node (10 reps)

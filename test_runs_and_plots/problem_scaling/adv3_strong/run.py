@@ -36,7 +36,7 @@ prob.setup()
 prob.solve()
 prob.summary(details=True)
 
-if prob.rank == prob.size - prob.size_subcol_seq:
+if prob.rank <= prob.size - prob.size_subcol_seq:
     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
     approx = prob.u_last_loc.flatten()
     d = exact - approx
@@ -46,3 +46,4 @@ if prob.rank == prob.size - prob.size_subcol_seq:
     if prob.rank == prob.size - 1:
         print('abs err = {}'.format(err_abs_root))
 
+exit(0)
