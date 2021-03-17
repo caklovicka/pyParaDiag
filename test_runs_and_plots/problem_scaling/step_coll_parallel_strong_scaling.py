@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-NAME = 'heat'
+NAME = 'adv'
 path_heat = ['heat1_strong/output/000001/result/result.dat', 'heat2_strong/output/000003/result/result.dat', 'heat3_strong/output/000034/result/result.dat']
 path_adv = ['adv1_strong/output/000009/result/result.dat', 'adv2_strong/output/000005/result/result.dat', 'adv3_strong/output/000006/result/result.dat']
 
