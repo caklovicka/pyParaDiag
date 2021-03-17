@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube version="2.4.0">
+  <benchmark file_path_ref="../.." name="scaling test" outpath="..">
+    <comment>Speedup for adv1 on 64 intervals with rolling paralpha.</comment>
+    <parameterset name="param_set">
+      <parameter mode="text" name="i" separator="," type="int">0,1,2,3,4,5,6,7</parameter>
+      <parameter mode="python" name="time_intervals" separator="," type="string">1</parameter>
+      <parameter mode="python" name="rolling" separator="," type="string">64</parameter>
+      <parameter mode="python" name="nproc" separator="," type="string">[1, 2, 4, 6, 12, 24, 48, 96][$i]</parameter>
+      <parameter mode="python" name="nodes" separator="," type="string">[1, 1, 1, 1, 1, 1, 2, 4][$i]</parameter>
+      <parameter mode="python" name="ntasks_per_node" separator="," type="string">[1, 2, 4, 6, 12, 24, 24, 24][$i]</parameter>
+    </parameterset>
+    <substituteset name="substitute">
+      <iofile in="run.tmpl" out="run.exe" out_mode="w"/>
+      <sub source="#rolling#">$rolling</sub>
+      <sub source="#time_intervals#">$time_intervals</sub>
+      <sub source="#nodes#">$nodes</sub>
+      <sub source="#ntasks_per_node#">$ntasks_per_node</sub>
+      <sub source="#nproc#">$nproc</sub>
+    </substituteset>
+    <fileset name="files">
+      <copy>run.py</copy>
+      <copy>run.tmpl</copy>
+    </fileset>
+    <patternset name="pattern">
+      <pattern dotall="True" mode="pattern" name="tot_time" type="float">algorithm time = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="comm_time" type="float">communication time = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="max_iters" type="float">max iterations of Paralpha = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="err" type="float">abs err = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="tol" type="float">tol = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="stol" type="float">inner solver tols = \[$jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="T1" type="float">T1 = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="T2" type="float">T2 = $jube_pat_fp</pattern>
+      <pattern dotall="True" mode="pattern" name="Nx" type="int">no. of spatial points = \[$jube_pat_int</pattern>
+    </patternset>
+    <step iterations="10" name="sub_step">
+      <use>param_set</use>
+      <use>files</use>
+      <use>substitute</use>
+      <do done_file="ready">sbatch -A cstma run.exe</do>
+    </step>
+    <analyser name="analyse" reduce="True">
+      <use>pattern</use>
+      <analyse step="sub_step">
+        <file>results.out</file>
+      </analyse>
+    </analyser>
+    <result>
+      <use>analyse</use>
+      <table name="result" separator="," style="pretty" transpose="False">
+        <column>nproc</column>
+        <column>rolling</column>
+        <column>time_intervals</column>
+        <column>tot_time_avg</column>
+        <column>tot_time_min</column>
+        <column>tot_time_max</column>
+        <column>comm_time_avg</column>
+        <column>max_iters</column>
+        <column>T1</column>
+        <column>T2</column>
+        <column>Nx</column>
+        <column>stol</column>
+        <column>tol</column>
+        <column>err_max</column>
+      </table>
+    </result>
+  </benchmark>
+</jube>
