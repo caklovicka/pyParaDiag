@@ -1,0 +1,32 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=32 --rolling=2 --proc_row=32
+error: *** step 3486949:0 CANCELLED DUE TO TIME LIMIT ***
+error: *** job 3486949 CANCELLED DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+srun: error: jwc05n053: tasks 48-71: Terminated
+srun: error: jwc05n055: tasks 96-119: Terminated
+srun: error: jwc05n054: tasks 72-95: Terminated
+srun: error: jwc05n052: tasks 24-47: Terminated
+srun: error: jwc05n060: tasks 216-239: Terminated
+srun: error: jwc05n058: tasks 168-191: Terminated
+srun: error: jwc05n063: tasks 288-311: Terminated
+srun: error: jwc07n159: tasks 456-479: Terminated
+srun: error: jwc05n062: tasks 264-287: Terminated
+srun: error: jwc05n056: tasks 120-143: Terminated
+srun: error: jwc05n059: tasks 192-215: Terminated
+srun: error: jwc05n061: tasks 240-263: Terminated
+srun: error: jwc07n134: tasks 384-407: Terminated
+srun: error: jwc07n133: tasks 360-383: Terminated
+srun: error: jwc05n057: tasks 144-167: Terminated
+srun: error: jwc07n135: tasks 408-431: Terminated
+srun: error: jwc07n158: tasks 432-455: Terminated
+srun: error: jwc07n167: tasks 648-671: Terminated
+srun: error: jwc05n051: tasks 0-23: Terminated
++ touch ready

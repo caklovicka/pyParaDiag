@@ -1,0 +1,45 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=64 --rolling=1 --proc_row=64
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+error: *** step 3486840:0 CANCELLED DUE TO TIME LIMIT ***
+error: *** job 3486840 CANCELLED DUE TO TIME LIMIT ***
+srun: error: jwc06n101: tasks 432-455: Terminated
+srun: error: jwc06n102: tasks 456-479: Terminated
+srun: error: jwc06n095: tasks 288-311: Terminated
+srun: error: jwc06n099: tasks 384-407: Terminated
+srun: error: jwc06n107: tasks 576-599: Terminated
+srun: error: jwc01n091: tasks 216-239: Terminated
+srun: error: jwc01n088: tasks 144-167: Terminated
+srun: error: jwc06n097: tasks 336-359: Terminated
+srun: error: jwc06n096: tasks 312-335: Terminated
+srun: error: jwc06n105: tasks 528-551: Terminated
+srun: error: jwc06n100: tasks 408-431: Terminated
+srun: error: jwc06n106: tasks 552-575: Terminated
+srun: error: jwc06n112: tasks 696-719: Terminated
+srun: error: jwc01n085: tasks 72-95: Terminated
+srun: error: jwc01n092: tasks 240-263: Terminated
+srun: error: jwc01n086: tasks 96-119: Terminated
+srun: error: jwc01n089: tasks 168-191: Terminated
+srun: error: jwc06n094: tasks 264-287: Terminated
+srun: error: jwc06n098: tasks 360-383: Terminated
+srun: error: jwc06n104: tasks 504-527: Terminated
+srun: error: jwc06n110: tasks 648-671: Terminated
+srun: error: jwc06n108: tasks 600-623: Terminated
+srun: error: jwc01n084: tasks 48-71: Terminated
+srun: error: jwc01n087: tasks 120-143: Terminated
+srun: error: jwc06n111: tasks 672-695: Terminated
+srun: error: jwc06n114: tasks 744-767: Terminated
+srun: error: jwc06n113: tasks 720-743: Terminated
+srun: error: jwc01n083: tasks 24-47: Terminated
+srun: error: jwc06n109: tasks 624-647: Terminated
+srun: error: jwc01n090: tasks 192-215: Terminated
+srun: error: jwc06n103: tasks 480-503: Terminated
+srun: error: jwc01n082: tasks 0-23: Terminated
++ touch ready

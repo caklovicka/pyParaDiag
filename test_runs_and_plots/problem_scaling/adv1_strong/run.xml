@@ -10,7 +10,7 @@
 
       <parameter name="nproc" mode="python">[12, 24, 48, 96, 192, 384, 768][$i]</parameter>
       <parameter name="nodes" mode="python">[1, 1, 2, 4, 8, 16, 32][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[1, 24, 24, 24, 24, 24, 24][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[12, 24, 24, 24, 24, 24, 24][$i]</parameter>
     </parameterset>
 
     <!-- Files -->

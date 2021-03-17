@@ -1,0 +1,45 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=32 --rolling=2 --proc_row=32
+error: *** step 3486940:0 CANCELLED DUE TO TIME LIMIT ***
+error: *** job 3486940 CANCELLED DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+srun: error: jwc03n036: tasks 480-503: Terminated
+srun: error: jwc07n246: tasks 720-743: Terminated
+srun: error: jwc07n243: tasks 648-671: Terminated
+srun: error: jwc01n036: tasks 312-335: Terminated
+srun: error: jwc07n241: tasks 600-623: Terminated
+srun: error: jwc03n033: tasks 408-431: Terminated
+srun: error: jwc07n242: tasks 624-647: Terminated
+srun: error: jwc07n244: tasks 672-695: Terminated
+srun: error: jwc07n245: tasks 696-719: Terminated
+srun: error: jwc01n039: tasks 384-407: Terminated
+srun: error: jwc01n005: tasks 192-215: Terminated
+srun: error: jwc07n247: tasks 744-767: Terminated
+srun: error: jwc03n035: tasks 456-479: Terminated
+srun: error: jwc01n033: tasks 240-263: Terminated
+srun: error: jwc07n240: tasks 576-599: Terminated
+srun: error: jwc03n034: tasks 432-455: Terminated
+srun: error: jwc03n037: tasks 504-527: Terminated
+srun: error: jwc00n083: tasks 48-71: Terminated
+srun: error: jwc01n034: tasks 264-287: Terminated
+srun: error: jwc00n082: tasks 24-47: Terminated
+srun: error: jwc01n001: tasks 96-119: Terminated
+srun: error: jwc03n039: tasks 552-575: Terminated
+srun: error: jwc01n004: tasks 168-191: Terminated
+srun: error: jwc01n002: tasks 120-143: Terminated
+srun: error: jwc01n035: tasks 288-311: Terminated
+srun: error: jwc01n032: tasks 216-239: Terminated
+srun: error: jwc01n038: tasks 360-383: Terminated
+srun: error: jwc01n003: tasks 144-167: Terminated
+srun: error: jwc03n038: tasks 528-551: Terminated
+srun: error: jwc01n037: tasks 336-359: Terminated
+srun: error: jwc01n000: tasks 72-95: Terminated
+srun: error: jwc00n081: tasks 0-23: Terminated
++ touch ready

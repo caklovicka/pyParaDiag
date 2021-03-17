@@ -1,0 +1,33 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=32 --rolling=2 --proc_row=32
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+error: *** step 3486824:0 CANCELLED DUE TO TIME LIMIT ***
+error: *** job 3486824 CANCELLED DUE TO TIME LIMIT ***
+[372]PETSC ERROR: ------------------------------------------------------------------------
+[372]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[372]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[372]PETSC ERROR: or see http://www.mcs.anl.gov/petsc/documentation/faq.html#valgrind
+srun: error: jwc04n035: tasks 240-263: Terminated
+srun: error: jwc04n037: tasks 288-311: Terminated
+srun: error: jwc04n031: tasks 144-167: Terminated
+srun: error: jwc04n036: tasks 264-287: Terminated
+srun: error: jwc04n026: tasks 24-47: Terminated
+srun: error: jwc04n027: tasks 48-71: Terminated
+srun: error: jwc04n040: tasks 360-383: Terminated
+srun: error: jwc04n038: tasks 312-335: Terminated
+srun: error: jwc04n028: tasks 72-95: Terminated
+srun: error: jwc04n039: tasks 336-359: Terminated
+srun: error: jwc04n033: tasks 192-215: Terminated
+srun: error: jwc04n030: tasks 120-143: Terminated
+srun: error: jwc04n029: tasks 96-119: Terminated
+srun: error: jwc04n032: tasks 168-191: Terminated
+srun: error: jwc04n034: tasks 216-239: Terminated
+srun: error: jwc04n025: tasks 0-23: Terminated
++ touch ready

@@ -1,0 +1,84 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=64 --rolling=1 --proc_row=64
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+error: *** step 3486968:0 CANCELLED DUE TO TIME LIMIT ***
+error: *** job 3486968 CANCELLED DUE TO TIME LIMIT ***
+[1524]PETSC ERROR: ------------------------------------------------------------------------
+[1524]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[1524]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[1524]PETSC ERROR: or see http://www.mcs.anl.gov/petsc/documentation/faq.html#valgrind
+[1524]PETSC ERROR: or try http://valgrind.org on GNU/linux and Apple Mac OS X to find memory corruption errors
+[1524]PETSC ERROR: configure using --with-debugging=yes, recompile, link, and run 
+[1524]PETSC ERROR: to get more information on the crash.
+srun: error: jwc04n070: tasks 384-407: Terminated
+srun: error: jwc04n076: tasks 528-551: Terminated
+srun: error: jwc04n190: tasks 1104-1127: Terminated
+srun: error: jwc04n194: tasks 1200-1223: Terminated
+srun: error: jwc04n087: tasks 792-815: Terminated
+srun: error: jwc04n078: tasks 576-599: Terminated
+srun: error: jwc04n091: tasks 888-911: Terminated
+srun: error: jwc04n074: tasks 480-503: Terminated
+srun: error: jwc03n139: tasks 72-95: Terminated
+srun: error: jwc04n090: tasks 864-887: Terminated
+srun: error: jwc04n195: tasks 1224-1247: Terminated
+srun: error: jwc04n092: tasks 912-935: Terminated
+srun: error: jwc04n207: tasks 1512-1535: Terminated
+srun: error: jwc03n140: tasks 96-119: Terminated
+srun: error: jwc04n071: tasks 408-431: Terminated
+srun: error: jwc04n204: tasks 1440-1463: Terminated
+srun: error: jwc04n079: tasks 600-623: Terminated
+srun: error: jwc04n064: tasks 240-263: Terminated
+srun: error: jwc04n085: tasks 744-767: Terminated
+srun: error: jwc04n192: tasks 1152-1175: Terminated
+srun: error: jwc04n063: tasks 216-239: Terminated
+srun: error: jwc04n196: tasks 1248-1271: Terminated
+srun: error: jwc04n073: tasks 456-479: Terminated
+srun: error: jwc04n068: tasks 336-359: Terminated
+srun: error: jwc04n193: tasks 1176-1199: Terminated
+srun: error: jwc04n186: tasks 1008-1031: Terminated
+srun: error: jwc04n093: tasks 936-959: Terminated
+srun: error: jwc04n062: tasks 192-215: Terminated
+srun: error: jwc04n191: tasks 1128-1151: Terminated
+srun: error: jwc04n200: tasks 1344-1367: Terminated
+srun: error: jwc04n067: tasks 312-335: Terminated
+srun: error: jwc03n142: tasks 144-167: Terminated
+srun: error: jwc04n201: tasks 1368-1391: Terminated
+srun: error: jwc04n066: tasks 288-311: Terminated
+srun: error: jwc03n141: tasks 120-143: Terminated
+srun: error: jwc04n206: tasks 1488-1511: Terminated
+srun: error: jwc04n069: tasks 360-383: Terminated
+srun: error: jwc04n072: tasks 432-455: Terminated
+srun: error: jwc04n205: tasks 1464-1487: Terminated
+srun: error: jwc04n184: tasks 960-983: Terminated
+srun: error: jwc04n189: tasks 1080-1103: Terminated
+srun: error: jwc04n086: tasks 768-791: Terminated
+srun: error: jwc04n199: tasks 1320-1343: Terminated
+srun: error: jwc04n198: tasks 1296-1319: Terminated
+srun: error: jwc04n061: tasks 168-191: Terminated
+srun: error: jwc04n084: tasks 720-743: Terminated
+srun: error: jwc04n065: tasks 264-287: Terminated
+srun: error: jwc04n080: tasks 624-647: Terminated
+srun: error: jwc04n197: tasks 1272-1295: Terminated
+srun: error: jwc04n082: tasks 672-695: Terminated
+srun: error: jwc04n185: tasks 984-1007: Terminated
+srun: error: jwc04n088: tasks 816-839: Terminated
+srun: error: jwc04n089: tasks 840-863: Terminated
+srun: error: jwc03n138: tasks 48-71: Terminated
+srun: error: jwc04n075: tasks 504-527: Terminated
+srun: error: jwc04n202: tasks 1392-1415: Terminated
+srun: error: jwc04n203: tasks 1416-1439: Terminated
+srun: error: jwc04n188: tasks 1056-1079: Terminated
+srun: error: jwc04n083: tasks 696-719: Terminated
+srun: error: jwc03n137: tasks 24-47: Terminated
+srun: error: jwc04n081: tasks 648-671: Terminated
+srun: error: jwc04n187: tasks 1032-1055: Terminated
+srun: error: jwc04n077: tasks 552-575: Terminated
+srun: error: jwc03n136: tasks 0-23: Terminated
++ touch ready
