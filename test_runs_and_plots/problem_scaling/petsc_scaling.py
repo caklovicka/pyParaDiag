@@ -26,7 +26,6 @@ petsc_run = petsc_run[indices, :]
 petsc_run[:, 1] = petsc_run[0, 1] / petsc_run[:, 1]
 
 plt.plot(np.log2(petsc_run[:, 0]), petsc_run[:, 1], linestyle='-', linewidth=lw, color='silver', marker='D', markersize=marks//2)
-custom_lines.append(Line2D([0], [0], linestyle='-', linewidth=lw, color='silver', marker='D', markersize=marks//2))
 ticks += list(np.log2(petsc_run[:, 0]))
 labels += list(petsc_run[:, 0])
 
@@ -50,9 +49,10 @@ for i in range(len(eq)):
         plt.plot(np.log2(eq[i][nn, 0]), eq[i][nn, 1], marker="$" + str(m) + "$", markersize=marks, color=col[i])
 
 labels = [int(l) for l in labels]
-plt.xticks(ticks, labels)
-names = ['1e-5, M=1', '1e-9, M=2', '1e-12, M=3', 'petsc scaling']
-names.append('k iterations')
+plt.xticks(ticks, labels, rotation=70)
+plt.tick_params(labelsize=12)
+names = ['1e-5, M=1', '1e-9, M=2', '1e-12, M=3', 'petsc4py', 'k iterations']
+custom_lines.append(Line2D([0], [0], linestyle='-', linewidth=lw, color='gray', marker='D', markersize=marks//2))
 custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
 plt.legend(custom_lines, names, loc='upper left')
 plt.grid(True)

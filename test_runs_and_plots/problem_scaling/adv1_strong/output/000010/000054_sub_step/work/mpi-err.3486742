@@ -1,0 +1,22 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=4 --rolling=16 --proc_row=4
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+error: *** step 3486742:0 CANCELLED DUE TO TIME LIMIT ***
+[36]PETSC ERROR: ------------------------------------------------------------------------
+[36]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[36]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[36]PETSC ERROR: or see http://www.mcs.anl.gov/petsc/documentation/faq.html#valgrind
+[36]PETSC ERROR: or try http://valgrind.org on GNU/linux and Apple Mac OS X to find memory corruption errors
+[36]PETSC ERROR: configure using --with-debugging=yes, recompile, link, and run 
+[36]PETSC ERROR: to get more information on the crash.
+srun: error: jwc00n194: tasks 24-47: Terminated
+error: *** job 3486742 CANCELLED DUE TO TIME LIMIT ***
+srun: error: jwc00n193: tasks 0-23: Terminated
++ touch ready

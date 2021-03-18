@@ -8,9 +8,9 @@
       <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
       <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
 
-      <parameter name="nproc" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 16, 16][$i]</parameter>
+      <parameter name="nproc" mode="python">[3, 6, 12, 24, 48, 96, 192][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 1, 1, 2, 4, 8][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[3, 6, 12, 24, 24, 24, 24][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
