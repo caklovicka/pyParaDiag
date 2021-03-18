@@ -1,0 +1,19 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/juwels/lmod/8.4.1/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python run.py --time_intervals=1 --rolling=64 --proc_row=1
+Traceback (most recent call last):
+  File "run.py", line 34, in <module>
+    if prob.rank <= prob.size - prob.size_subcol_seq:
+TypeError: unsupported operand type(s) for -: 'int' and 'NotImplementedType'
+Traceback (most recent call last):
+  File "run.py", line 34, in <module>
+    if prob.rank <= prob.size - prob.size_subcol_seq:
+TypeError: unsupported operand type(s) for -: 'int' and 'NotImplementedType'
+srun: error: jwc08n173: tasks 0-1: Exited with exit code 1
++ touch ready
