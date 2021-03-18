@@ -7,7 +7,6 @@
        <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
        <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
        <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
-       <parameter name="reps" mode="python">[3, 3, 3, 5, 10, 10, 10][$i]</parameter>
 
        <parameter name="nproc" mode="python">[36, 72, 144, 288, 576, 1152, 2304][$i]</parameter>
        <parameter name="nodes" mode="python">[2, 4, 8, 16, 32, 64, 128][$i]</parameter>
@@ -28,7 +27,6 @@
 
       <!-- Substitute commands -->
       <sub source="#rolling#" dest="$rolling" />
-      <sub source="#reps#" dest="$reps" />
       <sub source="#time_intervals#" dest="$time_intervals" />
       <sub source="#nodes#" dest="$nodes" />
       <sub source="#ntasks_per_node#" dest="$ntasks_per_node" />
@@ -49,7 +47,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="$reps">
+    <step name="sub_step" iterations="5">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->
