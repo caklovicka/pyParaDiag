@@ -5,12 +5,12 @@
 
     <parameterset name="param_set">
       <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
-      <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
-      <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1][$i]</parameter>
+      <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64]</parameter>
+      <parameter name="rolling" mode="python">[64, 32, 16, 8, 4, 2, 1]</parameter>
 
       <parameter name="nproc" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
-      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 1, 2][$i]</parameter>
-      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 32, 32][$i]</parameter>
+      <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2, 4][$i]</parameter>
+      <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 16, 16][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
@@ -47,7 +47,7 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="25">
+    <step name="sub_step" iterations="10">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->

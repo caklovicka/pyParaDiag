@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-path = ['adv1_strong/output/000010/result/result.dat', 'adv2_strong/output/000006/result/result.dat', 'adv3_strong/output/000003/result/result.dat']
+path = ['adv1_strong/output/000010/result/result.dat', 'adv2_strong/output/000006/result/result.dat', 'adv3_strong/output/000007/result/result.dat']
 
 # nproc | tot_time | iters
 eq = []
@@ -21,16 +21,6 @@ linst = ['dotted', 'dashed', 'dashdot']
 custom_lines = []
 col = sns.color_palette("bright", len(eq))
 
-for i in range(len(eq)):
-    eq[i][:, 1] = seqT[i] / eq[i][:, 1]
-    indices = np.argsort(eq[i][:, 0])
-    eq[i] = eq[i][indices, :]
-
-    plt.plot(np.log2(eq[i][:, 0]), eq[i][:, 1], linestyle=linst[i], linewidth=lw, color=col[i])
-    custom_lines.append(Line2D([0], [0], linestyle=linst[i], linewidth=lw, color=col[i]))
-    ticks += list(np.log2(eq[i][:, 0]))
-    labels += list(eq[i][:, 0])
-print(petsc_run)
 indices = np.argsort(petsc_run[:, 0])
 petsc_run = petsc_run[indices, :]
 petsc_run[:, 1] = petsc_run[0, 1] / petsc_run[:, 1]
@@ -39,6 +29,20 @@ plt.plot(np.log2(petsc_run[:, 0]), petsc_run[:, 1], linestyle='-', linewidth=lw,
 custom_lines.append(Line2D([0], [0], linestyle='-', linewidth=lw, color='silver', marker='D', markersize=marks//2))
 ticks += list(np.log2(petsc_run[:, 0]))
 labels += list(petsc_run[:, 0])
+
+for i in range(len(eq)):
+    eq[i][:, 1] = seqT[i] / eq[i][:, 1]
+    indices = np.argsort(eq[i][:, 0])
+    eq[i] = eq[i][indices, :]
+
+    # connect points with petsc runs
+    if i > 0:
+        plt.plot(np.log2(np.array([12, eq[i][0, 0]])), [petsc_run[4, 1], eq[i][0, 1]], linestyle=linst[i], linewidth=lw, color='silver', markersize=marks // 2)
+
+    plt.plot(np.log2(eq[i][:, 0]), eq[i][:, 1], linestyle=linst[i], linewidth=lw, color=col[i])
+    custom_lines.append(Line2D([0], [0], linestyle=linst[i], linewidth=lw, color=col[i]))
+    ticks += list(np.log2(eq[i][:, 0]))
+    labels += list(eq[i][:, 0])
 
 for i in range(len(eq)):
     for nn in range(n):
