@@ -6,14 +6,14 @@ Problem example classes that are included here, serve also as an example
 on how to implement other discretization methods.
 
 ## Table of contents
-* [Features](## Features)
-* [Getting started](## Getting started)
-* [Minitutorial](## Minitutorial)
-  * [Problem classes](### Problem classes)
-  * [Example of`main.py`](### Example of `main.py`)
-    * [The (&alpha;) sequence](#### The (&alpha;) sequence)
-    * [Parallelization strategy](#### Parallelization strategy)
-  * [Optional runtime arguments](### Optional runtime arguments)
+* [Features](##Features)
+* [Getting started](##Getting started)
+* [Minitutorial](##Minitutorial)
+  * [Problem classes](###Problem classes)
+  * [Example of`main.py`](###Example of `main.py`)
+    * [The (&alpha;) sequence](####The (&alpha;) sequence)
+    * [Parallelization strategy](####Parallelization strategy)
+  * [Optional runtime arguments](###Optional runtime arguments)
 
 ## Features
 - Many different problem examples already implemented
