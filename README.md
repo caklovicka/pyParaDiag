@@ -13,7 +13,10 @@ on how to implement other discretization methods.
   * [Example of`main.py`](#example-of-`main.py`)
     * [The (&alpha;) sequence](#the-(&alpha;)-sequence)
     * [Parallelization strategy](#parallelization-strategy)
+    * [Communicators](#communicators)
+  * [Useful variables](#useful-variables)  
   * [Optional runtime arguments](#optional-runtime-arguments)
+* [How to cite](#how-to-cite)  
 
 ## Features
 - Many different problem examples already implemented
@@ -104,9 +107,16 @@ and `prob.proc_col = 4`.
 Each colored block is a part of the vector locally stored on a processor 
 and the different color groups represents the subcommunicators of the `MPI_COMM_WORLD`. 
 Each column of the table represents the storage for vector `prob.u_loc`.
-![bla bla bla bla bla](https://github.com/caklovicka/linear-petsc-fft-Paralpha/blob/master/procgrid.png)
+![text](https://github.com/caklovicka/linear-petsc-fft-Paralpha/blob/master/procgrid.png)
 In case when `prob.time_points = prob.proc.col`, 
 groups `COMM_SUBCOL_SEQ` and `COMM_SUBCOL_ALT` would be nonexistent.
+These goups can be accessed via names
+- `prob.comm` which is MPI_COMM_WORLD
+- `prob.comm_col`
+- `prob.comm_row`
+- `prob.comm_subcol_seq`
+- `prob.comm_subcol_alt`
+- `prob.comm_last`
 
 ### Useful variables
 After the `prob.setup()` there is a list of useful variables
@@ -119,9 +129,15 @@ After the `prob.setup()` there is a list of useful variables
 - `prob.Q`: the collocation matrix
 
 After `prob.solve()` is complete, the following variables are updated
-- `prob.u_loc`: the solution spread across  
-  
-
+- `prob.u_loc`: the solution spread across cores
+- `prob.u_loc_last`: solution in the last time-step of Paralpha spread across cores
+- `prob.err_last`: list of `norm`-differences between consecutive iterates
+- `prob.iterations`: list of numbers of Paralpha iterations
+- `prob.algorithm_time`: time spent in `prob.solve()`
+- `prob.commnunication_time`: time spent for communication 
+  (without [petsc4py]((https://bitbucket.org/petsc/petsc4py/src/master/) ) communication)
+- `prob.system_time_min`
+- `prob.system_time_max`
 
 ### Optional runtime arguments
 Paralpha also has a set of runtime arguments, listed with `--help`:
