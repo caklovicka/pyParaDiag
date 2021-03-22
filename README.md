@@ -99,7 +99,7 @@ this until we cover a total of `3 * 16` time-steps. For now, the number of
 `prob.time_intervals` needs to be a power of 2 to fit the radix-2 algorithm.
 
 ### Communicators
-![bla bla bla bla bla](http://url/to/img.png)
+![bla bla bla bla bla](https://github.com/caklovicka/linear-petsc-fft-Paralpha/blob/master/procgrid.png)
 
 ### Useful variables
 After the `prob.setup()` there is a list of useful variables
