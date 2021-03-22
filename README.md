@@ -141,6 +141,20 @@ After `prob.solve()` is complete, the following variables are updated
 - `prob.system_time_min`
 - `prob.system_time_max`
 
+For example, if you want to compute the error in the last time-step and
+spatial parallelization is involved, just run the following code
+```
+if prob.rank >= prob.size - prob.size_subcol_seq:
+    exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
+    approx = prob.u_last_loc.flatten()
+    d = exact - approx
+    d = d.flatten()
+    err_abs = prob.norm(d)
+    err_abs_root = prob.comm_subcol_seq.reduce(err_abs, op=MPI.MAX, root=prob.size_subcol_seq - 1)
+    if prob.rank == prob.size - 1:
+        print('abs err = {}'.format(err_abs_root))
+```
+
 ### Optional runtime arguments
 Paralpha also has a set of runtime arguments, listed with `--help`:
 ```
