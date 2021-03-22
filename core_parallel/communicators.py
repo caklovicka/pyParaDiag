@@ -9,11 +9,6 @@ class Communicators(QueenClass):
 
     def setup(self):
 
-        # create groups and their communicators
-        self.comm = MPI.COMM_WORLD
-        self.rank = self.comm.Get_rank()
-        self.size = self.comm.Get_size()
-
         self.comm_row = MPI.Comm.Split(self.comm, self.rank % self.proc_col, self.rank // self.proc_col)
         self.rank_row = self.comm_row.Get_rank()
         self.size_row = self.comm_row.Get_size()
