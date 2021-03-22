@@ -1,8 +1,9 @@
 # Welcome to Paralpha!
-The Paralpha project is a Python based implementation of a diagonalization based 
-parallel-in-time method. It is intended as a prototype and for educational purposes.
-Problem example classes that are included here, serve also as an example on how to
-implement other discretization methods.
+The Paralpha project is a Python based implementation of a diagonalization 
+based parallel-in-time method. It is intended as a prototype and 
+for educational purposes.
+Problem example classes that are included here, serve also as an example 
+on how to implement other discretization methods.
 
 ## Features
 - Many different problem examples already implemented
@@ -36,6 +37,72 @@ via `pip`, keeping in mind that the variables `PETSC_DIR` and `PETSC_ARCH`
 need to be set accordingly.
 
 ## Minitutorial
+### Problem classes
+Example problem classes can be found in the directory 
+`problem_examples_parallel`. The user can use the existing modules or
+follow comments on how to change parts of code inside the file itself. 
+This class contains
+- A definition of the spatial matrix `Apar` assembled in parallel 
+  on the `comm_matrix` communicator
+- A definition of the `bpar` function
+- A definition of the initial condition function `u_initial`
+- A definition of `norm`
+
+and optional function definitions such as 
+- An exact solution of the differential equation `u_exact`
+- The right hand side of an equation `rhs` used for building `bpar`
+- The linear solver `linear_solver`
+
+### Example of a `main.py`
+
+  
+### Optional arguments
+Paralpha also has a set of runtime arguments, listed with `--help`:
+```
+ -h, --help            show this help message and exit
+  --T_start T_START     Default = 0
+  --T_end T_END         Default = 1
+  --rolling ROLLING     Default = 1 ... number of intervals to perform one
+                        paralpha and combine it sequentially for the next one.
+  --time_intervals TIME_INTERVALS
+                        Default = 10 ... size of the B matrix or how many
+                        intervals will be treated in parallel.
+  --time_points TIME_POINTS
+                        Default = 3 ... number of time points for the
+                        collocation problem, the size of Q.
+  --proc_row PROC_ROW   Default = 1 ... number of processors for dealing with
+                        paralellization of time intervals. Choose so that
+                        (proc_row | time_intervals) and (0 < proc_row <=
+                        time_intervals).
+  --proc_col PROC_COL   Default = 1 ... number fo processors dealing with
+                        parallelization of the time-space collocation problem.
+                        If just time parallelization, choose so that (proc_col
+                        | time_points) and (proc_col >= 1). If space-time
+                        parallelization, choose proc_col = k * time_point,
+                        (where 0 < k < spatial_points) and (k | spatial
+                        points).
+  --spatial_points SPATIAL_POINTS [SPATIAL_POINTS ...]
+                        Default = 24 ... number of spatial points with unknown
+                        values (meaning: not including the boundary ones)
+  --solver SOLVER       Default = lu ... specifying the inner linear solver:
+                        lu, gmres, custom.
+  --maxiter MAXITER     Default = 5 ... maximum number of iterations on one
+                        rolling interval.
+  --tol TOL             Default = 1e-6 ... a stopping criteria when two
+                        consecutive solutions in the last time point are lower
+                        than tol (in one rolling interval).
+  --stol STOL           Default = 1e-6 ... an inner solver tolerance.
+  --smaxiter SMAXITER   Default = 100 ... an inner solver maximum iterations.
+  --document DOCUMENT   Default = None ... document to write an output.
+
+```
+These values are rewritten if they are changed in the main file. For example, 
+if running with optional argument `python main.py --solver=gmres` where your
+`main.py` contains a definition `prob.solver=gmres`, Paralpha will use a
+GMRES solver from the `scipy` library and not your custom one. This list is 
+also a summary of a defualt setting where these variables are not defined
+in your `main.py`.
+
 
 
 

@@ -16,11 +16,10 @@ from problem_examples_parallel.heat_2d_pbc_central6 import Heat as Heat6
 from problem_examples_parallel.schrodinger_2d_0_forward4 import Schrodinger as Schrodinger04_forward
 
 prob = Advection5()
-N = 700
-prob.spatial_points = [N, N]
+prob.spatial_points = [700, 700]
 prob.tol = 1e-12
 prob.proc_col = 1
-prob.time_intervals = 64
+prob.time_intervals = 1
 prob.rolling = 1
 prob.proc_row = 64
 prob.time_points = 3
