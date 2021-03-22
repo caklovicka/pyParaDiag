@@ -10,7 +10,7 @@ on how to implement other discretization methods.
 * [Getting started](#getting-started)
 * [Minitutorial](#minitutorial)
   * [Problem classes](#problem-classes)
-  * [Example of 'main.py'](#example-of-main.py)
+  * [Example of `main.py`](#example-of-`main.py`)
     * [The (&alpha;) sequence](#the-(&alpha;)-sequence)
     * [Parallelization strategy](#parallelization-strategy)
     * [Communicators](#communicators)
