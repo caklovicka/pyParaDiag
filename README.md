@@ -6,12 +6,14 @@ Problem example classes that are included here, serve also as an example
 on how to implement other discretization methods.
 
 ## Table of contents
-* [Features](##Features)
-* [Getting started](##Getting started)
-* [Minitutorial](##Minitutorial)
-  * [Problem classes](###Problem classes)
-  * [Example of`main.py`](###Example of `main.py`)
-  * [Optional runtime arguments](###Optional runtime arguments)
+* [Features](## Features)
+* [Getting started](## Getting started)
+* [Minitutorial](## Minitutorial)
+  * [Problem classes](### Problem classes)
+  * [Example of`main.py`](### Example of `main.py`)
+    * [The (&alpha;) sequence](#### The (&alpha;) sequence)
+    * [Parallelization strategy](#### Parallelization strategy)
+  * [Optional runtime arguments](### Optional runtime arguments)
 
 ## Features
 - Many different problem examples already implemented
@@ -44,7 +46,7 @@ installation guides on the webpage. After that, one can install
 via `pip`, keeping in mind that the variables `PETSC_DIR` and `PETSC_ARCH` 
 need to be set accordingly.
 
-##Minitutorial
+## Minitutorial
 ### Problem classes
 Example problem classes can be found in the directory 
 `problem_examples_parallel`. The user can use the existing modules or
@@ -61,11 +63,11 @@ and optional function definitions such as
 - The right hand side of an equation `rhs` used for building `bpar`
 - The linear solver `linear_solver`
 
-###Example of `main.py`
+### Example of `main.py`
 After setting up a problem class, we can import it and choose the wanted setting.
 A detailed explanation of parameter choices can be found in `main.py`.
 
-####The (&alpha;) sequence
+#### The (&alpha;) sequence
 The manual choice of the (&alpha;) sequence 
 ```
 prob.optimal_alphas = False
@@ -78,13 +80,13 @@ replaced with
 ```
 prob.optimal_alphas = True
 ```
-####Parallelization strategy
+#### Parallelization strategy
 
 
 
 
   
-###Optional runtime arguments
+### Optional runtime arguments
 Paralpha also has a set of runtime arguments, listed with `--help`:
 ```
   -h, --help            show this help message and exit
