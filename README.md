@@ -8,12 +8,12 @@ on how to implement other discretization methods.
 ## Table of contents
 * [Features](#features)
 * [Getting started](#getting-started)
-* [Minitutorial](## Minitutorial)
-  * [Problem classes](### Problem classes)
-  * [Example of`main.py`](### Example of `main.py`)
-    * [The (&alpha;) sequence](#### The (&alpha;) sequence)
-    * [Parallelization strategy](#### Parallelization strategy)
-  * [Optional runtime arguments](### Optional runtime arguments)
+* [Minitutorial](#minitutorial)
+  * [Problem classes](#problem-classes)
+  * [Example of`main.py`](#example-of-`main.py`)
+    * [The (&alpha;) sequence](#the-(&alpha;)-sequence)
+    * [Parallelization strategy](#parallelization-strategy)
+  * [Optional runtime arguments](#optional-runtime-arguments)
 
 ## Features
 - Many different problem examples already implemented
