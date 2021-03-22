@@ -74,15 +74,28 @@ prob.optimal_alphas = False
 prob.alphas = [1e-5, 1e-2, 0.1]
 ```
 means that Paralpha will compute the first three iterations using the given sequence
-and after that repeatedly use `prob.alphas[-1]` until it stops. If one wants to switch
-on the automatic choice of the (&alpha;) sequence, the abowe two lines need to be
+and after that repeatedly use `prob.alphas[-1]` until it stops. To switch
+on the automatic choice of the (&alpha;) sequence, the above two lines need to be
 replaced with
 ```
 prob.optimal_alphas = True
 ```
 #### Parallelization strategy
-
-
+The total number of cores needed for Paralpha is `prob.proc_col * prob.proc_row`.
+Lines
+```
+prob.proc_col = 4
+prob.proc_row = 16
+```
+mean that the number of cores for parallelization across time-steps is
+`16` , while `4` cores will handle parallelism across collocation nodes.
+Furthermore, lines 
+```
+prob.time_intervals = 16
+prob.rolling = 3
+```
+mean that we want to handle the first `16` time-steps in parallel with Paralpha and repeat
+this until we cover a total of `3 * 16` time-steps.
 
 
   
