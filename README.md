@@ -121,15 +121,17 @@ These goups can be accessed via names
 ### Useful variables
 After the `prob.setup()` there is a list of useful variables
 - `prob.dx`: spatial step
+- `prob.x`: spatial points  
 - `prob.t`: collocation nodes
 - `prob.comm_matrix`: communicator for assembly of `prob.Apar`  
+- `prob.row_beg` and `prob.row_end`: beginning and end of the chunk of rows locally stored  
 - `prob.Apar`: the spatial matrix stored in parallel  
-- `prob.global_size_A`: size ot the spatial matrix. Equal to a produst of all
+- `prob.global_size_A`: size ot the spatial matrix, equal to a product of all
   the spatial points
 - `prob.Q`: the collocation matrix
 
 After `prob.solve()` is complete, the following variables are updated
-- `prob.u_loc`: the solution spread across cores
+- `prob.u_loc`: the solution spread across cores as a flat `np.array`
 - `prob.u_loc_last`: solution in the last time-step of Paralpha spread across cores
 - `prob.err_last`: list of `norm`-differences between consecutive iterates
 - `prob.iterations`: list of numbers of Paralpha iterations

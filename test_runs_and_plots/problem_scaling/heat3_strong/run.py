@@ -37,7 +37,7 @@ if prob.rank <= prob.size - prob.size_subcol_seq:
     approx = prob.u_last_loc.flatten()
     d = exact - approx
     d = d.flatten()
-    err_abs = np.linalg.norm(d, np.inf)
+    err_abs = prob.norm(d)
     err_abs_root = prob.comm_subcol_seq.reduce(err_abs, op=MPI.MAX, root=prob.size_subcol_seq - 1)
     if prob.rank == prob.size - 1:
         print('abs err = {}'.format(err_abs_root))
