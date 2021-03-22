@@ -23,11 +23,11 @@ on how to implement other discretization methods.
 - Arbitrary choice of order for the Gauss-Radau-Right time-propagator
 - Works with [mpi4py](https://pypi.org/project/mpi4py/) and 
   [petsc4py](https://bitbucket.org/petsc/petsc4py/src/master/)
-- Choosing a parallelization strategy:
+- User choice of a parallelization strategy:
   - across time-steps
   - across collocation-nodes
   - across space-points
-- Preset or a user-choice of a linear solver
+- Preset or a user choice of a linear solver
 - Manual or automatic choice of the (&alpha;) sequence
 
 ## Getting started
@@ -67,7 +67,7 @@ and optional function definitions such as
 - The linear solver `linear_solver`
 
 ### Example of `main.py`
-After setting up a problem class, we can import it and choose the wanted setting.
+After setting up a problem class, we can import it and choose a wanted setting.
 A detailed explanation of parameter choices can be found in `main.py`.
 
 #### The (&alpha;) sequence
