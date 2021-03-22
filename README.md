@@ -98,8 +98,15 @@ mean that we want to handle the first `16` time-steps in parallel with Paralpha 
 this until we cover a total of `3 * 16` time-steps. For now, the number of 
 `prob.time_intervals` needs to be a power of 2 to fit the radix-2 algorithm.
 
-### Communicators
+#### Communicators
+This figure represents the communicating groups for when `prob.time_intervals = 4` 
+and `prob.proc_col = 4`.
+Each colored block is a part of the vector locally stored on a processor 
+and the different color groups represents the subcommunicators of the `MPI_COMM_WORLD`. 
+Each column of the table represents the storage for vector `prob.u_loc`.
 ![bla bla bla bla bla](https://github.com/caklovicka/linear-petsc-fft-Paralpha/blob/master/procgrid.png)
+In case when `prob.time_points = prob.proc.col`, 
+groups `COMM_SUBCOL_SEQ` and `COMM_SUBCOL_ALT` would be nonexistent.
 
 ### Useful variables
 After the `prob.setup()` there is a list of useful variables
