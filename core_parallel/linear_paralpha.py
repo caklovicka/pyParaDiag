@@ -78,7 +78,6 @@ class LinearParalpha(LinearHelpers):
         self.system_time_min = []
         self.inner_tols = []
 
-        self.viable = 'Viability of the problem is not known.'
         self.err_last = list()
         self.iterations = np.zeros(self.rolling)
 

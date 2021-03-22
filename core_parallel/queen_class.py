@@ -14,7 +14,6 @@ class QueenClass(abc.ABC):
     u_last_loc = NotImplemented
     u_loc = NotImplemented
     u_last_old_loc = NotImplemented
-    viable = NotImplemented
     err_last = NotImplemented
     inner_tols = NotImplemented
     iterations = NotImplemented
