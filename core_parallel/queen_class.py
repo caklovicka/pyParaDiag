@@ -66,7 +66,7 @@ class QueenClass(abc.ABC):
         parser.add_argument('--rolling', type=int, default=1, help='Default = 1 ... number of intervals to perform one paralpha and combine it sequentially for the next one.')
         parser.add_argument('--time_intervals', type=int, default=1, help='Default = 10 ... size of the B matrix or how many intervals will be treated in parallel.')
         parser.add_argument('--time_points', type=int, default=3, help='Default = 3 ... number of time points for the collocation problem, the size of Q.')
-        parser.add_argument('--proc_row', type=int, default=1, help='Default = 1 ... number of processors for dealing with paralellization of time intervals. Choose so that (proc_row | time_intervals) and (0 < proc_row <= time_intervals).')
+        parser.add_argument('--proc_row', type=int, default=1, help='Default = 1 ... number of processors for dealing with paralellization of time intervals. Choose so that proc_row = time_intervals or get an error.')
         parser.add_argument('--proc_col', type=int, default=1, help='Default = 1 ... number fo processors dealing with parallelization of the time-space collocation problem. If just time parallelization, choose so that (proc_col | time_points) and (proc_col >= 1). If space-time parallelization, choose proc_col = k * time_point, (where 0 < k < spatial_points) and (k | spatial points).')
         parser.add_argument('--spatial_points', type=int, nargs='+', default=[24], help='Default = 24 ... number of spatial points with unknown values (meaning: not including the boundary ones)')
         parser.add_argument('--solver', type=str, default='lu', help='Default = lu ... specifying the inner linear solver: lu, gmres, custom.')

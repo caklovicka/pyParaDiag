@@ -5,7 +5,16 @@ for educational purposes.
 Problem example classes that are included here, serve also as an example 
 on how to implement other discretization methods.
 
-## Features
+## Table of contents
+* [Features](##Features)
+* [Getting started](##Getting started)
+* [Minitutorial](##Minitutorial)
+  * [Problem classes](###Problem classes)
+  * [Example of`main.py`](###Example of `main.py`)
+    * [The (&alpha;) sequence](####The (&alpha;) sequence)
+  * [Optional runtime arguments](###Optional runtime arguments)
+
+##Features
 - Many different problem examples already implemented
 - Arbitrary choice of order for the Gauss-Radau-Right time-propagator
 - Works with [mpi4py](https://pypi.org/project/mpi4py/) and 
@@ -17,7 +26,7 @@ on how to implement other discretization methods.
 - Preset or a user-choice of a linear solver
 - Manual or automatic choice of the (&alpha;) sequence
 
-## Getting started
+##Getting started
 The implementations is fully compatiple with Python 3.6 or higher.
 The following dependant libraries can be installed via `pip install`:
 - [numpy](https://numpy.org/)
@@ -36,7 +45,7 @@ installation guides on the webpage. After that, one can install
 via `pip`, keeping in mind that the variables `PETSC_DIR` and `PETSC_ARCH` 
 need to be set accordingly.
 
-## Minitutorial
+##Minitutorial
 ### Problem classes
 Example problem classes can be found in the directory 
 `problem_examples_parallel`. The user can use the existing modules or
@@ -53,13 +62,33 @@ and optional function definitions such as
 - The right hand side of an equation `rhs` used for building `bpar`
 - The linear solver `linear_solver`
 
-### Example of a `main.py`
+###Example of `main.py`
+After setting up a problem class, we can import it and choose the wanted setting.
+A detailed explanation of parameter choices can be found in `main.py`.
+
+####The (&alpha;) sequence
+The manual choice of the (&alpha;) sequence 
+```
+prob.optimal_alphas = False
+prob.alphas = [1e-5, 1e-2, 0.1]
+```
+means that Paralpha will compute the first three iterations using the given sequence
+and after that repeatedly use `prob.alphas[-1]` until it stops. If one wants to switch
+on the automatic choice of the (&alpha;) sequence, the abowe two lines need to be
+replaced with
+```
+prob.optimal_alphas = True
+```
+####Parallelization strategy
+
+
+
 
   
-### Optional arguments
+###Optional runtime arguments
 Paralpha also has a set of runtime arguments, listed with `--help`:
 ```
- -h, --help            show this help message and exit
+  -h, --help            show this help message and exit
   --T_start T_START     Default = 0
   --T_end T_END         Default = 1
   --rolling ROLLING     Default = 1 ... number of intervals to perform one
@@ -72,8 +101,7 @@ Paralpha also has a set of runtime arguments, listed with `--help`:
                         collocation problem, the size of Q.
   --proc_row PROC_ROW   Default = 1 ... number of processors for dealing with
                         paralellization of time intervals. Choose so that
-                        (proc_row | time_intervals) and (0 < proc_row <=
-                        time_intervals).
+                        proc_row = time_intervals or get an error.
   --proc_col PROC_COL   Default = 1 ... number fo processors dealing with
                         parallelization of the time-space collocation problem.
                         If just time parallelization, choose so that (proc_col
@@ -94,14 +122,12 @@ Paralpha also has a set of runtime arguments, listed with `--help`:
   --stol STOL           Default = 1e-6 ... an inner solver tolerance.
   --smaxiter SMAXITER   Default = 100 ... an inner solver maximum iterations.
   --document DOCUMENT   Default = None ... document to write an output.
-
 ```
 These values are rewritten if they are changed in the main file. For example, 
 if running with optional argument `python main.py --solver=gmres` where your
-`main.py` contains a definition `prob.solver=gmres`, Paralpha will use a
+`main.py` contains a definition `prob.solver=custom`, Paralpha will use a
 GMRES solver from the `scipy` library and not your custom one. This list is 
-also a summary of a defualt setting where these variables are not defined
-in your `main.py`.
+also a summary of default settings when not defined otherwise.
 
 
 
