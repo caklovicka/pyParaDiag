@@ -39,8 +39,8 @@ prob.alphas = [1e-5, 1e-2, 0.1]
 # setting tolerances
 prob.tol = 1e-12                            # a stopping tolerance for Paralpha
 prob.stol = 1e-16                           # a stopping relative tolerance for the inner solver
-prob.m0 = 10 * (prob.T_end - prob.T_start)  # a startiong choice for the m_k sequence
+prob.m0 = 10 * (prob.T_end - prob.T_start)  # a starting choice for the m_k sequence
 
-prob.setup()
-prob.solve()
+prob.setup()                                # must be before solve()
+prob.solve()                                # this is where magic happens
 prob.summary(details=True)

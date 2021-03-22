@@ -95,10 +95,27 @@ prob.time_intervals = 16
 prob.rolling = 3
 ```
 mean that we want to handle the first `16` time-steps in parallel with Paralpha and repeat
-this until we cover a total of `3 * 16` time-steps.
+this until we cover a total of `3 * 16` time-steps. For now, the number of 
+`prob.time_intervals` needs to be a power of 2 to fit the radix-2 algorithm.
 
+### Communicators
+![bla bla bla bla bla](http://url/to/img.png)
 
+### Useful variables
+After the `prob.setup()` there is a list of useful variables
+- `prob.dx`: spatial step
+- `prob.t`: collocation nodes
+- `prob.comm_matrix`: communicator for assembly of `prob.Apar`  
+- `prob.Apar`: the spatial matrix stored in parallel  
+- `prob.global_size_A`: size ot the spatial matrix. Equal to a produst of all
+  the spatial points
+- `prob.Q`: the collocation matrix
+
+After `prob.solve()` is complete, the following variables are updated
+- `prob.u_loc`: the solution spread across  
   
+
+
 ### Optional runtime arguments
 Paralpha also has a set of runtime arguments, listed with `--help`:
 ```
