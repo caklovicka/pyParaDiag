@@ -4,11 +4,11 @@ import seaborn as sns
 from matplotlib.lines import Line2D
 
 NAME = 'adv'
-path_heat = ['heat1_strong/output/000001/result/result.dat', 'heat2_strong/output/000003/result/result.dat', 'heat3_strong/output/000034/result/result.dat']
-path_adv = ['adv1_strong/output/000009/result/result.dat', 'adv2_strong/output/000005/result/result.dat', 'adv3_strong/output/000006/result/result.dat']
+path_heat_seq = ['heat1_strong/output/000002/result/result.dat', 'heat2_strong/output/000004/result/result.dat', 'heat3_strong/output/000035/result/result.dat']
+path_adv_seq = ['adv1_strong/output/000012/result/result.dat', 'adv2_strong/output/000007/result/result.dat', 'adv3_strong/output/000008/result/result.dat']
 
-path_heat_seq = ['heat1_strong/output/000001/result/result.dat', 'heat2_strong/output/000002/result/result.dat', 'heat3_strong/output/000033/result/result.dat']
-path_adv_seq = ['adv1_strong/output/000009/result/result.dat', 'adv2_strong/output/000004/result/result.dat', 'adv3_strong/output/000005/result/result.dat']
+path_heat = ['heat1_strong/output/000002/result/result.dat', 'heat2_strong/output/000005/result/result.dat', 'heat3_strong/output/000036/result/result.dat']
+path_adv = ['adv1_strong/output/000012/result/result.dat', 'adv2_strong/output/000008/result/result.dat', 'adv3_strong/output/000009/result/result.dat']
 
 
 if NAME == 'adv':
@@ -80,6 +80,6 @@ plt.legend(custom_lines, names, loc='upper left')
 plt.grid(True, color='gainsboro')
 plt.ylabel('speedup')
 plt.xlabel('number of cores')
-plt.ylim([0, 15])
+plt.ylim([0, 22])
 # plt.show()
 plt.savefig('strong_plots/Stepcollparallelstrong' + NAME, dpi=300, bbox_inches='tight')

@@ -112,7 +112,7 @@ for i in range(n):
 plt.legend(custom_lines1, names1, prop={'size': marksz})
 plt.ylim([-14, 0])
 plt.xlim([0, 5])
-plt.title('Heat (runtime)', fontsize=tss)
+plt.title('Heat (approx. errors)', fontsize=tss)
 plt.xlabel('iteration')
 
 plt.subplot(142)
@@ -134,7 +134,7 @@ plt.ylim([-14, 0])
 plt.xlabel('iteration')
 plt.yticks([])
 plt.xlim([0, 5])
-plt.title('Heat, errors', fontsize=tss)
+plt.title('Heat (real errors)', fontsize=tss)
 
 # ADVECTION
 
@@ -160,7 +160,7 @@ plt.yticks([])
 plt.legend(custom_lines1, names1, prop={'size': marksz})
 plt.ylim([-14, 0])
 plt.xlim([0, 8])
-plt.title('Advection (runtime)', fontsize=tss)
+plt.title('Advection (approx. errors)', fontsize=tss)
 plt.xlabel('iteration')
 
 plt.subplot(144)
@@ -180,7 +180,7 @@ plt.legend(custom_lines2, names2, prop={'size': marksz})
 plt.yticks([])
 plt.ylim([-14, 0])
 plt.xlim([0, 8])
-plt.title('Advection, errors', fontsize=tss)
+plt.title('Advection (real errors)', fontsize=tss)
 plt.xlabel('iteration')
 
 plt.show()
