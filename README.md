@@ -13,7 +13,7 @@ on how to implement other discretization methods.
   * [Example of`main.py`](###Example of `main.py`)
   * [Optional runtime arguments](###Optional runtime arguments)
 
-##Features
+## Features
 - Many different problem examples already implemented
 - Arbitrary choice of order for the Gauss-Radau-Right time-propagator
 - Works with [mpi4py](https://pypi.org/project/mpi4py/) and 
@@ -25,7 +25,7 @@ on how to implement other discretization methods.
 - Preset or a user-choice of a linear solver
 - Manual or automatic choice of the (&alpha;) sequence
 
-##Getting started
+## Getting started
 The implementations is fully compatiple with Python 3.6 or higher.
 The following dependant libraries can be installed via `pip install`:
 - [numpy](https://numpy.org/)
