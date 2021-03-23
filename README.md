@@ -194,8 +194,8 @@ Paralpha also has a set of runtime arguments, listed with `--help`:
   --document DOCUMENT   Default = None ... document to write an output.
 ```
 These values are rewritten if they are changed in the main file. For example, 
-if running with optional argument `python main.py --solver=gmres` where your
-`main.py` contains a definition `prob.solver=custom`, Paralpha will use a
+if running with optional argument `python main.py --solver=custom` where your
+`main.py` contains a definition `prob.solver=gmres`, Paralpha will use a
 GMRES solver from the `scipy` library and not your custom one. This list is 
 also a summary of default settings when not defined otherwise.
 
