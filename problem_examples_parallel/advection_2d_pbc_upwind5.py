@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
+from mpi4py import MPI
 from core_parallel.linear_paralpha import LinearParalpha
 
 """
@@ -135,6 +136,7 @@ class Advection(LinearParalpha):
 
     # petsc solver on comm_matrix
     def linear_solver(self, M_loc, m_loc, m0_loc, tol):
+        print('tu sam')
         m = PETSc.Vec()
         m.createWithArray(array=m_loc, comm=self.comm_matrix)
         m0 = PETSc.Vec()

@@ -39,7 +39,7 @@ class LinearHelpers(Communicators):
         for j in range(self.cols_loc):
             if self.rank_row == 0:
                 # with spatial parallelization
-                if self.frac is not 0:
+                if self.frac != 0:
                     temp = np.linalg.norm(v_loc[:, j] + self.u0_loc, np.infty)
                 # without spatial parallelization
                 else:
@@ -158,20 +158,21 @@ class LinearHelpers(Communicators):
 
     def __step2__(self, h_loc, D, x0, tol):
 
+        it = 0
         h1_loc = np.empty_like(h_loc, dtype=complex, order='C')
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
             h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
-            # print(it, 'iterations on proc', self.rank)
+            #print(it, 'iterations on proc', self.rank)
 
         # case without spatial parallelization
         else:
             for i in range(self.Frac):
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
                 if self.solver == 'custom':
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i+1)*self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-                    # print(it, 'iterations on proc', self.rank)
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    #print(it, 'iterations on proc', self.rank)
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
@@ -263,7 +264,7 @@ class LinearHelpers(Communicators):
 
     def __bcast_u_last_loc__(self):
 
-        if self.comm_last is not None and self.time_intervals > 1:# and self.size_col < self.size:
+        if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:# and self.size_col < self.size:
             time_beg = MPI.Wtime()
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg
@@ -282,14 +283,14 @@ class LinearHelpers(Communicators):
     def __write_u_in_txt__(self, rolling_interval):
 
         # with spatial parallelization
-        if self.frac is not 0:
+        if self.frac != 0:
             if rolling_interval == 0:
                 for proc in range(self.size_subcol_seq):
                     if self.rank == proc:
                         file = open(self.document, "a")
                         for element in self.u0_loc:
                             file.write(str(complex(element)) + ' ')
-                        if (proc + 1) % self.frac is 0:
+                        if (proc + 1) % self.frac == 0:
                             file.write('\n')
                         file.close()
                     self.comm.Barrier()
@@ -297,11 +298,11 @@ class LinearHelpers(Communicators):
             for c in range(self.proc_row):
                 for k in range(self.cols_loc):
                     for r in range(self.proc_col):
-                        if self.rank_col is r and self.rank_row is c:
+                        if self.rank_col == r and self.rank_row == c:
                             file = open(self.document, "a")
                             for element in self.u_loc[:, k]:
                                 file.write(str(element) + ' ')
-                            if (self.rank_col+1) % self.frac is 0:
+                            if (self.rank_col+1) % self.frac == 0:
                                 file.write('\n')
                             file.close()
                         self.comm.Barrier()
@@ -319,7 +320,7 @@ class LinearHelpers(Communicators):
             for c in range(self.proc_row):
                 for k in range(self.cols_loc):
                     for r in range(self.proc_col):
-                        if self.rank_col is r and self.rank_row is c:
+                        if self.rank_col == r and self.rank_row == c:
                             file = open(self.document, "a")
                             for i in range(self.Frac):
                                 for element in self.u_loc[i*self.global_size_A:(i+1)*self.global_size_A, k]:
