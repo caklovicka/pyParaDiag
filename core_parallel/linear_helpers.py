@@ -18,7 +18,7 @@ class LinearHelpers(Communicators):
         v = np.zeros((self.rows_loc, self.cols_loc), dtype=complex)
         shift = self.rank_row * self.cols_loc
 
-        # if we have spatial parallelization
+        # case with spatial parallelization
         if self.frac > 1:
             for j in range(self.cols_loc):
                 for k in range(self.time_points):
@@ -59,12 +59,12 @@ class LinearHelpers(Communicators):
             return r
 
     # fft
-    def __get_fft__(self, w_loc, a):
+    def __get_fft__(self, res_loc, a):
 
         if self.time_intervals == 1:
-            return w_loc, ['0']
+            return res_loc, ['0']
 
-        g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc    # scale
+        g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * res_loc    # scale
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
@@ -102,21 +102,77 @@ class LinearHelpers(Communicators):
 
         return g_loc, [R]
 
-    def __get_w__(self, a, v_loc, v1=None):
+    def __get_residual__(self, v_loc,):
 
-        w_loc = v_loc.copy()
-        if v1 is not None:
+        res_loc = v_loc.copy()
+        Hu_loc = None
+
+        # a horizontal send to the right
+        # processors who send
+        if self.rank_row < self.size_row - 1:
+
+            # case with spatial parallelization
+            if self.frac > 1:
+                # just the last level
+                if self.size_col - self.frac <= self.rank_col:
+                    time_beg = MPI.Wtime()
+                    self.comm_row.send(self.u_loc, dest=self.rank_row + 1, tag=0)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+            # case without spatial parallelization, just chunks of last
+            else:
+                # just the last level
+                if self.rank_col == self.size_col - 1:
+                    time_beg = MPI.Wtime()
+                    self.comm_row.send(self.u_loc[-self.global_size_A:, 0], dest=self.rank_row + 1, tag=0)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+        # processors who receive
+        if self.rank_row > 0:
+
+            # case with spatial parallelization
+            if self.frac > 1:
+                # just the last level
+                if self.size_col - self.frac <= self.rank_col:
+                    time_beg = MPI.Wtime()
+                    Hu_loc = self.comm_row.recv(source=self.rank_row - 1, tag=0)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+            # case without spatial parallelization
+            else:
+                # just the last level
+                if self.rank_col == self.size_col - 1:
+                    time_beg = MPI.Wtime()
+                    Hu_loc = self.comm_row.recv(source=self.rank_row - 1, tag=0)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+        # a vertical broadcast
+        # case with spatial parallelization
+        if self.frac > 1:
+            time_beg = MPI.Wtime()
+            Hu_loc = self.comm_subcol_alternating.bcast(Hu_loc, root=self.size_subcol_alternating - 1)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        # case without spatial parallelization
+        else:
+            time_beg = MPI.Wtime()
+            Hu_loc = self.comm_col.bcast(Hu_loc, root=self.size_col - 1)
+            self.communication_time += MPI.Wtime() - time_beg
+
+
+        '''if v1 is not None:
 
             # with spatial parallelization
             if self.frac > 1:
-                w_loc[:, 0] = v1 + self.u0_loc - a * self.u_last_loc
+                res_loc[:, 0] = v1 + self.u0_loc - a * self.u_last_loc
 
             # without spatial parallelization
             else:
                 for i in range(self.Frac):
-                    w_loc[i * self.global_size_A:(i+1) * self.global_size_A, 0] = self.u0_loc - a * self.u_last_loc
-                w_loc[:, 0] += v1
-        return w_loc
+                    res_loc[i * self.global_size_A:(i+1) * self.global_size_A, 0] = self.u0_loc - a * self.u_last_loc
+                res_loc[:, 0] += v1'''
+
+        return res_loc
 
     def __step1__(self, Zinv, g_loc):
 

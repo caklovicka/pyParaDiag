@@ -10,8 +10,8 @@ from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
 
 # choosing a number of points
-prob.spatial_points = [60, 60]
-prob.time_points = 1
+prob.spatial_points = [40, 40]
+prob.time_points = 2
 
 # choosing a time domain
 prob.T_start = 0
@@ -33,8 +33,8 @@ prob.maxiter = 10                           # number of Paralpha maxiters
 prob.smaxiter = 50                          # number of inner solver maxiters
 
 # choosing a setting for the alpha sequence
-prob.optimal_alphas = True
-#prob.alphas = [1e-5, 1e-2, 0.1]
+#prob.optimal_alphas = True
+prob.alphas = [1e-5, 1e-2, 0.1]
 
 # setting tolerances
 prob.tol = 1e-12                            # a stopping tolerance for Paralpha

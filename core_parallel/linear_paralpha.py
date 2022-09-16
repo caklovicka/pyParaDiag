@@ -152,11 +152,12 @@ class LinearParalpha(LinearHelpers):
 
                 i_alpha = self.__next_alpha__(i_alpha)
 
-                # assemble the residual vector
-                w_loc = self.__get_w__(self.alphas[i_alpha], v_loc, v1_loc)
+                # assemble the rhs vector
+                res_loc = self.__get_residual__(v_loc)
+                exit()
 
                 # solving (S x I) g = w with ifft
-                g_loc, Rev = self.__get_fft__(w_loc, self.alphas[i_alpha])
+                g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])
 
                 # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
 
@@ -235,7 +236,7 @@ class LinearParalpha(LinearHelpers):
                 if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:
                     self.u0_loc = self.u_last_loc.copy()
 
-                # to support a sequrntial run
+                # to support a sequential run
                 elif self.time_intervals == 1:
 
                     if self.size == 1 or self.time_points == 1:
@@ -247,12 +248,11 @@ class LinearParalpha(LinearHelpers):
                          if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
                              self.u0_loc = self.u_last_loc
 
-                    # without spatial but time_points > size_col
+                    # without spatial pralleism, but time_points > size_col
                     else:
                         self.u0_loc = self.comm_col.bcast(self.u_last_loc, root=self.size_col - 1)
                         if self.rank_col == self.size_col - 1:
                             self.u0_loc = self.u_last_loc
-
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)
