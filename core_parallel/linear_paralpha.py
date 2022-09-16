@@ -59,6 +59,8 @@ class LinearParalpha(LinearHelpers):
         # build variables
         self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
         coll = CollGaussRadau_Right(num_nodes=self.time_points, tleft=0, tright=1)
+        print(coll.nodes)
+        exit()
         self.t = self.dt * np.array(coll.nodes)
 
         # case with spatial parallelization
