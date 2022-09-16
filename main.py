@@ -18,7 +18,7 @@ prob.T_start = 0
 prob.T_end = 0.0128
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 2
+prob.time_intervals = 4
 prob.rolling = 1
 
 # choosing a parallelization strategy
@@ -33,8 +33,8 @@ prob.maxiter = 10                           # number of Paralpha maxiters
 prob.smaxiter = 50                          # number of inner solver maxiters
 
 # choosing a setting for the alpha sequence
-prob.optimal_alphas = False
-prob.alphas = [1e-5, 1e-2, 0.1]
+prob.optimal_alphas = True
+#prob.alphas = [1e-5, 1e-2, 0.1]
 
 # setting tolerances
 prob.tol = 1e-12                            # a stopping tolerance for Paralpha

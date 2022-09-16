@@ -264,7 +264,7 @@ class LinearHelpers(Communicators):
 
     def __bcast_u_last_loc__(self):
 
-        if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:# and self.size_col < self.size:
+        if self.comm_last != None and self.time_intervals > 1:# and self.size_col < self.size:
             time_beg = MPI.Wtime()
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg
