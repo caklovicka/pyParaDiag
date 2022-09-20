@@ -15,14 +15,14 @@ prob.time_points = 2
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 0.0128
+prob.T_end = 0.0128 / 64 * 4
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 4
 prob.rolling = 1
 
 # choosing a parallelization strategy
-prob.proc_col = 2
+prob.proc_col = 1
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
