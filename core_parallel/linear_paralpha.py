@@ -66,6 +66,15 @@ class LinearParalpha(LinearHelpers):
 
         self.u_last_loc = self.u0_loc.copy(order='C')
         self.u_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
+
+        # case with spatial parallelization
+        if self.frac > 1:
+            for c in range(self.cols_loc):
+                self.u_loc[:, c] = self.u0_loc.copy(order='C')
+        # case without spatial parallelization
+        else:
+            for c in range(self.cols_loc):
+                self.u_loc[:, c] = np.tile(self.u0_loc, self.Frac)
         self.u_last_old_loc = None
 
         self.algorithm_time = 0
@@ -101,7 +110,6 @@ class LinearParalpha(LinearHelpers):
         time_beg = MPI.Wtime()
 
         h_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
-        # h1_loc_old = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
         h1_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
 
         for rolling_interval in range(self.rolling):
@@ -116,12 +124,6 @@ class LinearParalpha(LinearHelpers):
             # build local v
             v_loc = self.__get_v__(t_start)
             self.comm.Barrier()
-
-            # save v1 on the processors that have v1
-            if self.rank_row == 0:
-                v1_loc = v_loc[:, 0].copy()
-            else:
-                v1_loc = None
 
             r = None
             m0 = self.m0
