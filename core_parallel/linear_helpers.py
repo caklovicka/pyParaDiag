@@ -123,7 +123,7 @@ class LinearHelpers(Communicators):
                 # just the last level
                 if self.rank_col == self.size_col - 1:
                     time_beg = MPI.Wtime()
-                    self.comm_row.send(self.u_loc[-self.global_size_A:, 0], dest=self.rank_row + 1, tag=0)
+                    self.comm_row.isend(self.u_loc[-self.global_size_A:, 0], dest=self.rank_row + 1, tag=0)
                     self.communication_time += MPI.Wtime() - time_beg
 
         # processors who receive
@@ -145,6 +145,10 @@ class LinearHelpers(Communicators):
                     Hu_loc = self.comm_row.recv(source=self.rank_row - 1, tag=0)
                     self.communication_time += MPI.Wtime() - time_beg
 
+        if self.rank_row > 0:
+            print(self.rank, '|Hu_loc| = ', np.linalg.norm(Hu_loc, np.inf))
+        exit()
+
         # a vertical broadcast
         # case with spatial parallelization
         if self.frac > 1:
@@ -153,10 +157,14 @@ class LinearHelpers(Communicators):
             self.communication_time += MPI.Wtime() - time_beg
 
         # case without spatial parallelization
-        else:
+        elif self.size_col > 1:
             time_beg = MPI.Wtime()
             Hu_loc = self.comm_col.bcast(Hu_loc, root=self.size_col - 1)
             self.communication_time += MPI.Wtime() - time_beg
+
+        if self.rank_row != 0:
+            print(self.rank, '|Hu_loc| = ', np.linalg.norm(Hu_loc, np.inf))
+        exit()
 
         # computation of Au
         Au_loc = np.empty_like(self.u_loc)
