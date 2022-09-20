@@ -106,6 +106,7 @@ class LinearHelpers(Communicators):
 
         res_loc = v_loc.copy()
         Hu_loc = None
+        Cu_loc = None
 
         # a horizontal send to the right
         # processors who send
@@ -158,6 +159,9 @@ class LinearHelpers(Communicators):
             time_beg = MPI.Wtime()
             Hu_loc = self.comm_col.bcast(Hu_loc, root=self.size_col - 1)
             self.communication_time += MPI.Wtime() - time_beg
+
+        # computation of Cu
+
 
 
         '''if v1 is not None:
