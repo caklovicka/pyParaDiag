@@ -65,16 +65,14 @@ class LinearParalpha(LinearHelpers):
             self.u0_loc = self.u_initial(self.x).flatten()
 
         self.u_last_loc = self.u0_loc.copy(order='C')
-        self.u_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
+        self.u_loc = np.empty(self.rows_loc, dtype=complex, order='C')
 
         # case with spatial parallelization
         if self.frac > 1:
-            for c in range(self.cols_loc):
-                self.u_loc[:, c] = self.u0_loc.copy(order='C')
+            self.u_loc = self.u0_loc.copy(order='C')
         # case without spatial parallelization
         else:
-            for c in range(self.cols_loc):
-                self.u_loc[:, c] = np.tile(self.u0_loc, self.Frac)
+            self.u_loc = np.tile(self.u0_loc, self.Frac)
         self.u_last_old_loc = None
 
         self.algorithm_time = 0

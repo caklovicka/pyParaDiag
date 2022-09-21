@@ -15,21 +15,19 @@ class LinearHelpers(Communicators):
         return idx
 
     def __get_v__(self, t_start):
-        v = np.zeros((self.rows_loc, self.cols_loc), dtype=complex)
+        v = np.zeros(self.rows_loc, dtype=complex)
         shift = self.rank_row * self.cols_loc
 
         # case with spatial parallelization
         if self.frac > 1:
-            for j in range(self.cols_loc):
-                for k in range(self.time_points):
-                    v[:, j] += self.dt * self.Q[self.rank_subcol_alternating, k] * self.bpar(t_start + self.t[k] + (shift + j) * self.dt)
+            for k in range(self.time_points):
+                v += self.dt * self.Q[self.rank_subcol_alternating, k] * self.bpar(t_start + self.t[k] + shift * self.dt)
 
         # case without spatial parallelization
         else:
             for i in range(self.Frac):
-                for j in range(self.cols_loc):
-                    for k in range(self.time_points):
-                        v[i * self.global_size_A:(i+1)*self.global_size_A, j] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.bpar(t_start + self.t[k] + (shift + j) * self.dt)
+                for k in range(self.time_points):
+                    v[i * self.global_size_A:(i+1)*self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.bpar(t_start + self.t[k] + shift * self.dt)
         return v
 
     def __get_r__(self, v_loc):
@@ -105,6 +103,7 @@ class LinearHelpers(Communicators):
     def __get_residual__(self, v_loc):
 
         Hu_loc = None
+        req = None
 
         # a horizontal send to the right
         # processors who send
@@ -115,7 +114,7 @@ class LinearHelpers(Communicators):
                 # just the last level
                 if self.size_col - self.frac <= self.rank_col:
                     time_beg = MPI.Wtime()
-                    self.comm_row.send(self.u_loc, dest=self.rank_row + 1, tag=0)
+                    req = self.comm_row.isend(self.u_loc, dest=self.rank_row + 1, tag=0)
                     self.communication_time += MPI.Wtime() - time_beg
 
             # case without spatial parallelization, just chunks of last
@@ -123,7 +122,7 @@ class LinearHelpers(Communicators):
                 # just the last level
                 if self.rank_col == self.size_col - 1:
                     time_beg = MPI.Wtime()
-                    self.comm_row.isend(self.u_loc[-self.global_size_A:, 0], dest=self.rank_row + 1, tag=0)
+                    req = self.comm_row.isend(self.u_loc[-self.global_size_A:], dest=self.rank_row + 1, tag=0)
                     self.communication_time += MPI.Wtime() - time_beg
 
         # processors who receive
@@ -145,6 +144,12 @@ class LinearHelpers(Communicators):
                     Hu_loc = self.comm_row.recv(source=self.rank_row - 1, tag=0)
                     self.communication_time += MPI.Wtime() - time_beg
 
+        # be sure to s
+        time_beg = MPI.Wtime()
+        if req is not None:
+            req.Wait()
+        self.communication_time += MPI.Wtime() - time_beg
+
         # a vertical broadcast
         # case with spatial parallelization
         if self.frac > 1:
@@ -158,6 +163,17 @@ class LinearHelpers(Communicators):
             Hu_loc = self.comm_col.bcast(Hu_loc, root=self.size_col - 1)
             self.communication_time += MPI.Wtime() - time_beg
 
+        # assemble first part of res_loc
+        if self.rank_row == 0:
+            res_loc = v_loc.copy()
+        else:
+            # case with spatial parallelization
+            if self.frac > 0:
+                res_loc = v_loc + Hu_loc
+            # case without spatial parallelization
+            else:
+                res_loc = v_loc + np.tile(Hu_loc, self.Frac)
+
         # computation of Au
         Au_loc = np.empty_like(self.u_loc)
         # case with spatial parallelization
@@ -165,18 +181,12 @@ class LinearHelpers(Communicators):
             # TODO
             raise RuntimeError('Not implemented')
 
-        # case without spatial paralellization
+        # case without spatial parallelization
         else:
             for i in range(self.Frac):
-                Au_loc[i * self.global_size_A : (i + 1) * self.global_size_A] = self.Apar @ self.u_loc[i * self.global_size_A : (i + 1) * self.global_size_A]
+                Au_loc[i * self.global_size_A: (i + 1) * self.global_size_A] = self.Apar @ self.u_loc[i * self.global_size_A: (i + 1) * self.global_size_A]
 
-        # assemble first part of res_loc
-        if self.rank_row == 0:
-            res_loc = v_loc.copy()
-        else:
-            res_loc = v_loc + Hu_loc
-
-        # computation of Cu
+        # computation of Cu in Hu_loc
         Hu_loc = self.u_loc.copy(order='C')
         # case with spatial parallelization
         if self.frac > 1:
@@ -185,55 +195,38 @@ class LinearHelpers(Communicators):
 
         # case without spatial paralellization
         else:
-            # first compute what we can and have on a processor
-            for i in range(self.Frac):
-                for j in range(self.Frac):
-                    i_global = self.rank_col * self.Frac + i
-                    j_global = self.rank_col * self.Frac + j
-                    Hu_loc[i * self.global_size_A : (i + 1) * self.global_size_A] -= self.dt * self.Q[i_global, j_global] * self.u_loc[j * self.global_size_A : (j + 1) * self.global_size_A]
-
-            # rank --(tmp)--> p
-            tmp = np.empty_like(self.u_loc)
+            # every processor reduces on p
             for p in range(self.size_col):
-                if p == self.rank_col:
-                    continue
+                tmp = np.empty_like(self.u_loc)
 
-                tmp *= 0
+                # compute local sums
                 for i in range(self.Frac):
                     for j in range(self.Frac):
                         i_global = p * self.Frac + i
                         j_global = self.rank_col * self.Frac + j
-                        tmp[i * self.global_size_A: (i + 1) * self.global_size_A] -= self.dt * self.Q[i_global, j_global] * self.u_loc[j * self.global_size_A: (j + 1) * self.global_size_A]
+                        tmp[i * self.global_size_A: (i + 1) * self.global_size_A] -= self.dt * self.Q[i_global, j_global] * Au_loc[j * self.global_size_A: (j + 1) * self.global_size_A]
 
-                        # send
-                        time_beg = MPI.Wtime()
-                        self.comm_col.isend(tmp, dest=p)
-                        self.communication_time += MPI.Wtime() - time_beg
+                # reduce to p
+                tmp2 = None
+                if self.size_col > 1:
+                    time_beg = MPI.Wtime()
+                    tmp2 = self.comm_col.reduce(tmp, op=MPI.SUM, root=p)
+                    self.communication_time += MPI.Wtime() - time_beg
 
-            # p --(tmp)--> rank
-            for p in range(self.size_col):
-                if p == self.rank_col:
-                    continue
-
-                # recieve
-                time_beg = MPI.Wtime()
-                tmp = self.comm_col.recv(source=p)
-                self.communication_time += MPI.Wtime() - time_beg
-
-                Hu_loc += tmp
-
-        res_loc -= Hu_loc
+                if self.rank_col == p:
+                    Hu_loc += tmp
+                elif tmp2 is not None:
+                    Hu_loc += tmp2
 
         # add u0 where needed
         if self.rank_row == 0:
             # with spatial parallelization
             if self.frac > 1:
-                res_loc[:, 0] += self.u0_loc
+                res_loc += self.u0_loc
 
             # without spatial parallelization
             else:
-                for i in range(self.Frac):
-                    res_loc[i * self.global_size_A:(i+1) * self.global_size_A, 0] += self.u0_loc
+                res_loc += np.tile(self.u0_loc, self.Frac)
 
         return res_loc
 

@@ -10,7 +10,7 @@ from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
 
 # choosing a number of points
-prob.spatial_points = [40, 40]
+prob.spatial_points = [4, 4]
 prob.time_points = 2
 
 # choosing a time domain
