@@ -10,31 +10,31 @@ from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
 
 # choosing a number of points
-prob.spatial_points = [40, 40]
-prob.time_points = 2
+prob.spatial_points = [700, 600]            # number of unknowns for the 2D spatial problem
+prob.time_points = 3                        # number of collocation nodes (Gauss-Radau-Right)
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 0.0128 / 64 * 4
+prob.T_end = 0.0128
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 16
-prob.rolling = 1
+prob.time_intervals = 64                    # number of time-steps Paralpha will compute in parallel, for now needs to be a power of 2
+prob.rolling = 1                            # number of Paralpha propagations in a classical/sequential sense
 
 # choosing a parallelization strategy
-prob.proc_col = 1
-prob.proc_row = prob.time_intervals
+prob.proc_col = 1                           # number of cores handling the collocation problem
+prob.proc_row = prob.time_intervals         # number of cores handling time-steps. For now it has to be the same as number of time_intervals
 
 # choosing a solver
 prob.solver = 'custom'                      # custom (defined in the problem class through linear_solver), lu or gmres (from scipy)
 
 # setting maximum number of iterations
-prob.maxiter = 2                           # number of Paralpha maxiters
+prob.maxiter = 10                           # number of Paralpha maxiters
 prob.smaxiter = 50                          # number of inner solver maxiters
 
 # choosing a setting for the alpha sequence
 prob.optimal_alphas = False
-prob.alphas = [1e-3]
+prob.alphas = [1e-8]
 
 # setting tolerances
 prob.tol = 1e-12                            # a stopping tolerance for Paralpha
