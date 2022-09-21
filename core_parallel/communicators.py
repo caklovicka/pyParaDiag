@@ -26,7 +26,6 @@ class Communicators(QueenClass):
         self.frac = self.proc_col // self.time_points
         self.Frac = self.time_points // self.proc_col
 
-        self.cols_loc = self.time_intervals // self.proc_row
         self.rows_loc = (self.time_points * self.global_size_A) // self.proc_col
 
         # with spatial parallelization

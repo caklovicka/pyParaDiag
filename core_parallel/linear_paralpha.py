@@ -65,14 +65,14 @@ class LinearParalpha(LinearHelpers):
             self.u0_loc = self.u_initial(self.x).flatten()
 
         self.u_last_loc = self.u0_loc.copy(order='C')
-        self.u_loc = np.empty(self.rows_loc, dtype=complex, order='C')
+        self.u_loc = np.zeros(self.rows_loc, dtype=complex, order='C')
 
         # case with spatial parallelization
         if self.frac > 1:
-            self.u_loc = self.u0_loc.copy(order='C')
+            self.u_loc += self.u0_loc.copy(order='C')
         # case without spatial parallelization
         else:
-            self.u_loc = np.tile(self.u0_loc, self.Frac)
+            self.u_loc += np.tile(self.u0_loc, self.Frac)
         self.u_last_old_loc = None
 
         self.algorithm_time = 0
@@ -107,8 +107,8 @@ class LinearParalpha(LinearHelpers):
         self.comm.Barrier()
         time_beg = MPI.Wtime()
 
-        h_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
-        h1_loc = np.empty((self.rows_loc, self.cols_loc), dtype=complex, order='C')
+        h_loc = np.empty(self.rows_loc, dtype=complex, order='C')
+        h1_loc = np.empty(self.rows_loc, dtype=complex, order='C')
 
         for rolling_interval in range(self.rolling):
 
@@ -150,8 +150,6 @@ class LinearParalpha(LinearHelpers):
 
                 # assemble the rhs vector
                 res_loc = self.__get_residual__(v_loc)
-                print(self.rank, np.linalg.norm(res_loc, np.inf))
-                exit()
 
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])
@@ -160,31 +158,30 @@ class LinearParalpha(LinearHelpers):
 
                 # solve local systems in 4 steps with diagonalization of QCinv
                 system_time = []
-                for k in range(self.cols_loc):
-                    l_new = int(Rev[k], 2)
-                    Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
-                    C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
+                l_new = int(Rev, 2)
+                Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
+                C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
 
-                    Cinv = np.linalg.inv(C)
-                    R = self.Q @ Cinv
-                    D, Z = np.linalg.eig(R)
-                    Zinv = np.linalg.inv(Z)     # Z @ D @ Zinv = R
+                Cinv = np.linalg.inv(C)
+                R = self.Q @ Cinv
+                D, Z = np.linalg.eig(R)
+                Zinv = np.linalg.inv(Z)     # Z @ D @ Zinv = R
 
-                    # step 1 ... (Z x I) h = g
-                    h_loc[:, k] = self.__step1__(Zinv, g_loc[:, k])
+                # step 1 ... (Z x I) h = g
+                h_loc = self.__step1__(Zinv, g_loc)
 
-                    # step 2 ... solve local systems (I - Di * A) h1 = h
-                    time_solver = MPI.Wtime()
-                    h0 = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
-                    h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h0, self.stol)
-                    system_time.append(MPI.Wtime() - time_solver)
-                    #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
+                # step 2 ... solve local systems (I - Di * A) h1 = h
+                time_solver = MPI.Wtime()
+                h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
+                h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
+                system_time.append(MPI.Wtime() - time_solver)
+                #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
 
-                    # step 3 ... (Zinv x I) h = h1
-                    h_loc[:, k] = self.__step1__(Z, h1_loc[:, k])
+                # step 3 ... (Zinv x I) h = h1
+                h_loc = self.__step1__(Z, h1_loc)
 
-                    # step 4 ... (C x I) h1 = h
-                    self.u_loc[:, k] = self.__step1__(Cinv, h_loc[:, k])
+                # step 4 ... (C x I) h1 = h
+                h1_loc = self.__step1__(Cinv, h_loc)
 
                 self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
@@ -192,9 +189,12 @@ class LinearParalpha(LinearHelpers):
                 self.inner_tols.append(self.stol)
 
                 # solving (Sinv x I) h1_loc = u with fft
-                self.__get_ifft__(self.alphas[i_alpha])
+                h_loc = self.__get_ifft__(h1_loc, self.alphas[i_alpha])
 
                 # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------
+
+                # update the solution
+                self.u_loc += h_loc
 
                 # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
                 # broadcast the error, a stopping criteria

@@ -16,7 +16,7 @@ class LinearHelpers(Communicators):
 
     def __get_v__(self, t_start):
         v = np.zeros(self.rows_loc, dtype=complex)
-        shift = self.rank_row * self.cols_loc
+        shift = self.rank_row
 
         # case with spatial parallelization
         if self.frac > 1:
@@ -34,18 +34,17 @@ class LinearHelpers(Communicators):
 
         r = 0
         temp = 0
-        for j in range(self.cols_loc):
-            if self.rank_row == 0:
-                # with spatial parallelization
-                if self.frac != 0:
-                    temp = np.linalg.norm(v_loc[:, j] + self.u0_loc, np.infty)
-                # without spatial parallelization
-                else:
-                    for i in range(self.Frac):
-                        temp = max(temp, np.linalg.norm(v_loc[i * self.global_size_A:(i+1) * self.global_size_A, j] + self.u0_loc, np.infty))
+        if self.rank_row == 0:
+            # with spatial parallelization
+            if self.frac != 0:
+                temp = np.linalg.norm(v_loc + self.u0_loc, np.infty)
+            # without spatial parallelization
             else:
-                temp = np.linalg.norm(v_loc[:, j], np.infty)
-            r = max(r, temp)
+                for i in range(self.Frac):
+                    temp = max(temp, np.linalg.norm(v_loc[i * self.global_size_A:(i+1) * self.global_size_A] + self.u0_loc, np.infty))
+        else:
+            temp = np.linalg.norm(v_loc, np.infty)
+        r = max(r, temp)
 
         if self.size > 1:
             time_beg = MPI.Wtime()
@@ -60,7 +59,7 @@ class LinearHelpers(Communicators):
     def __get_fft__(self, res_loc, a):
 
         if self.time_intervals == 1:
-            return res_loc, ['0']
+            return res_loc, '0'
 
         g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * res_loc    # scale
         n = int(np.log2(self.time_intervals))
@@ -98,7 +97,7 @@ class LinearHelpers(Communicators):
             # glue the info
             g_loc = gr + factor * g_loc
 
-        return g_loc, [R]
+        return g_loc, R
 
     def __get_residual__(self, v_loc):
 
@@ -292,7 +291,7 @@ class LinearHelpers(Communicators):
         return h1_loc, it
 
     # ifft
-    def __get_ifft__(self, a):
+    def __get_ifft__(self, h1_loc, a):
 
         if self.time_intervals == 1:
             return
@@ -322,19 +321,21 @@ class LinearHelpers(Communicators):
 
             # now communicate
             time_beg = MPI.Wtime()
-            req = self.comm_row.isend(self.u_loc, dest=comm_with, tag=k)
-            ur = self.comm_row.recv(source=comm_with, tag=k)
+            req = self.comm_row.isend(h1_loc, dest=comm_with, tag=k)
+            hr = self.comm_row.recv(source=comm_with, tag=k)
             req.Wait()
             self.communication_time += MPI.Wtime() - time_beg
 
             # glue the info
-            self.u_loc = ur + factor * self.u_loc
+            h1_loc = hr + factor * h1_loc
 
             # scale the output
             if R[k] == '1' and scalar != 1:
-                self.u_loc *= scalar
+                h1_loc *= scalar
 
-        self.u_loc *= a**(-self.rank_row / self.time_intervals)
+        h1_loc *= a**(-self.rank_row / self.time_intervals)
+
+        return h1_loc
 
     def __get_u_last__(self):
 
@@ -347,7 +348,7 @@ class LinearHelpers(Communicators):
         if self.frac > 1:
             if self.size - self.size_subcol_seq <= self.rank:
                 self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc[:, -1]
+                self.u_last_loc = self.u_loc
                 err_loc = self.norm(self.u_last_old_loc - self.u_last_loc)
 
                 time_beg = MPI.Wtime()
@@ -363,7 +364,7 @@ class LinearHelpers(Communicators):
         else:
             if self.rank == self.size - 1:
                 self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc[-self.global_size_A:, -1]
+                self.u_last_loc = self.u_loc[-self.global_size_A:]
                 err_max = self.norm(self.u_last_old_loc - self.u_last_loc)
 
             # broadcast the error, a stopping criteria
@@ -408,16 +409,15 @@ class LinearHelpers(Communicators):
                     self.comm.Barrier()
 
             for c in range(self.proc_row):
-                for k in range(self.cols_loc):
-                    for r in range(self.proc_col):
-                        if self.rank_col == r and self.rank_row == c:
-                            file = open(self.document, "a")
-                            for element in self.u_loc[:, k]:
-                                file.write(str(element) + ' ')
-                            if (self.rank_col+1) % self.frac == 0:
-                                file.write('\n')
-                            file.close()
-                        self.comm.Barrier()
+                for r in range(self.proc_col):
+                    if self.rank_col == r and self.rank_row == c:
+                        file = open(self.document, "a")
+                        for element in self.u_loc:
+                            file.write(str(element) + ' ')
+                        if (self.rank_col+1) % self.frac == 0:
+                            file.write('\n')
+                        file.close()
+                    self.comm.Barrier()
 
         # without spatial parallelization
         else:
@@ -430,16 +430,15 @@ class LinearHelpers(Communicators):
             self.comm.Barrier()
 
             for c in range(self.proc_row):
-                for k in range(self.cols_loc):
-                    for r in range(self.proc_col):
-                        if self.rank_col == r and self.rank_row == c:
-                            file = open(self.document, "a")
-                            for i in range(self.Frac):
-                                for element in self.u_loc[i*self.global_size_A:(i+1)*self.global_size_A, k]:
-                                    file.write(str(element) + ' ')
-                                file.write('\n')
-                            file.close()
-                        self.comm.Barrier()
+                for r in range(self.proc_col):
+                    if self.rank_col == r and self.rank_row == c:
+                        file = open(self.document, "a")
+                        for i in range(self.Frac):
+                            for element in self.u_loc[i*self.global_size_A:(i+1)*self.global_size_A]:
+                                file.write(str(element) + ' ')
+                            file.write('\n')
+                        file.close()
+                    self.comm.Barrier()
 
     # solver (space parallelization not included yet)
     def __linear_solver__(self, M_loc, m_loc, m0, tol):
