@@ -188,7 +188,7 @@ class LinearParalpha(LinearHelpers):
 
                 self.inner_tols.append(self.stol)
 
-                # solving (Sinv x I) h1_loc = u with fft
+                # solving (Sinv x I) h1_loc = h with ifft
                 h_loc = self.__get_ifft__(h1_loc, self.alphas[i_alpha])
 
                 # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------

@@ -194,10 +194,11 @@ class LinearHelpers(Communicators):
 
         # case without spatial paralellization
         else:
+            tmp = np.empty_like(self.u_loc)
+
             # every processor reduces on p
             for p in range(self.size_col):
-                tmp = np.empty_like(self.u_loc)
-
+                tmp *= 0
                 # compute local sums
                 for i in range(self.Frac):
                     for j in range(self.Frac):
@@ -216,6 +217,8 @@ class LinearHelpers(Communicators):
                     Hu_loc += tmp
                 elif tmp2 is not None:
                     Hu_loc += tmp2
+
+        res_loc -= Hu_loc
 
         # add u0 where needed
         if self.rank_row == 0:

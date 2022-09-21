@@ -29,12 +29,12 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'                      # custom (defined in the problem class through linear_solver), lu or gmres (from scipy)
 
 # setting maximum number of iterations
-prob.maxiter = 10                           # number of Paralpha maxiters
+prob.maxiter = 2                           # number of Paralpha maxiters
 prob.smaxiter = 50                          # number of inner solver maxiters
 
 # choosing a setting for the alpha sequence
-#prob.optimal_alphas = True
-prob.alphas = [1e-5]
+prob.optimal_alphas = False
+prob.alphas = [1e-3]
 
 # setting tolerances
 prob.tol = 1e-12                            # a stopping tolerance for Paralpha
