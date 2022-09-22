@@ -18,7 +18,7 @@ prob.T_start = 0
 prob.T_end = 0.0128
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 64
+prob.time_intervals = 4#64
 prob.rolling = 1
 
 # choosing a parallelization strategy
