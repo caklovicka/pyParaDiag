@@ -1,14 +1,12 @@
 import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
-from mpi4py import MPI
 from core_parallel.linear_paralpha import LinearParalpha
 
 """
 advection1 eq. in 2d
 u_t + c_x * u_x + c_y * u_y = f
 """
-
 
 class Advection(LinearParalpha):
 
