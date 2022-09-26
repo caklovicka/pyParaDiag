@@ -6,19 +6,19 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
-from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
+from problem_examples_parallel.advection_2d_pbc_upwind2 import Advection
 prob = Advection()
 
 # choosing a number of points
-prob.spatial_points = [700, 700]
-prob.time_points = 3
+prob.spatial_points = [350, 350]
+prob.time_points = 2
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 0.0128
+prob.T_end = 1e-2
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 4#64
+prob.time_intervals = 8
 prob.rolling = 1
 
 # choosing a parallelization strategy
@@ -37,8 +37,8 @@ prob.optimal_alphas = False
 prob.alphas = [1e-12]
 
 # setting tolerances
-prob.tol = 1e-12                            # a stopping tolerance for Paralpha
-prob.stol = 1e-15                           # a stopping relative tolerance for the inner solver
+prob.tol = 1e-5
+prob.stol = 1e-8
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
