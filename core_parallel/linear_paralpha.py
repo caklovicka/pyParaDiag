@@ -107,8 +107,8 @@ class LinearParalpha(LinearHelpers):
         self.comm.Barrier()
         time_beg = MPI.Wtime()
 
-        h_loc = np.empty(self.rows_loc, dtype=complex, order='C')
-        h1_loc = np.empty(self.rows_loc, dtype=complex, order='C')
+        h_loc = np.zeros(self.rows_loc, dtype=complex, order='C')
+        h1_loc = np.zeros(self.rows_loc, dtype=complex, order='C')
 
         for rolling_interval in range(self.rolling):
 
@@ -196,18 +196,17 @@ class LinearParalpha(LinearHelpers):
                 # update the solution
                 self.u_loc += h_loc
 
-                # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
-                # broadcast the error, a stopping criteria
-                # updates u_last_loc and u_last_loc_old
-                err_max = self.__get_u_last__()
+                # consecutive error, error of the increment
+                err_max = self.__get_c__(h_loc)
+                #print(self.rank, np.linalg.norm(h_loc, np.inf), err_max)
                 self.err_last[rolling_interval].append(err_max)
 
-                # update u_last_loc on processors that need it (first column) if we are moving on
                 if self.err_last[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
 
+                # update u_last_loc on processors that need it (first column) if we are moving on
                 #if (1 < self.rolling != rolling_interval + 1) or not self.stop:
-                self.__bcast_u_last_loc__()
+                #self.__bcast_u_last_loc__()
 
                 # DELETE
                 if self.rank == self.size - 1:#self.size_subcol_seq:

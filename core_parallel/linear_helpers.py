@@ -175,7 +175,7 @@ class LinearHelpers(Communicators):
                 res_loc = v_loc + np.tile(Hu_loc, self.Frac)
 
         # computation of Au
-        Au_loc = np.empty_like(self.u_loc)
+        Au_loc = np.zeros_like(self.u_loc)
         # case with spatial parallelization
         if self.frac > 1:
             # TODO
@@ -195,7 +195,7 @@ class LinearHelpers(Communicators):
 
         # case without spatial paralellization
         else:
-            tmp = np.empty_like(self.u_loc)
+            tmp = np.zeros_like(self.u_loc)
 
             # every processor reduces on p
             for p in range(self.size_col):
@@ -235,7 +235,7 @@ class LinearHelpers(Communicators):
 
     def __step1__(self, Zinv, g_loc):
 
-        h_loc = np.empty_like(g_loc, dtype=complex)
+        h_loc = np.zeros_like(g_loc, dtype=complex)
 
         # case with spatial parallelization
         if self.frac > 1:
@@ -274,7 +274,7 @@ class LinearHelpers(Communicators):
     def __step2__(self, h_loc, D, x0, tol):
 
         it = 0
-        h1_loc = np.empty_like(h_loc, dtype=complex, order='C')
+        h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
@@ -341,19 +341,14 @@ class LinearHelpers(Communicators):
 
         return h1_loc
 
-    def __get_u_last__(self):
-
-        # if self.time_intervals == 1:
-        #     return np.inf
+    def __get_c__(self, c):
 
         err_max = 0
 
         # case with spatial parallelization, need reduction for maximal error
         if self.frac > 1:
             if self.size - self.size_subcol_seq <= self.rank:
-                self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc
-                err_loc = self.norm(self.u_last_old_loc - self.u_last_loc)
+                err_loc = self.norm(c)
 
                 time_beg = MPI.Wtime()
                 err_max = self.comm_subcol_seq.allreduce(err_loc, op=MPI.MAX)
@@ -369,7 +364,7 @@ class LinearHelpers(Communicators):
             if self.rank == self.size - 1:
                 self.u_last_old_loc = self.u_last_loc.copy()
                 self.u_last_loc = self.u_loc[-self.global_size_A:]
-                err_max = self.norm(self.u_last_old_loc - self.u_last_loc)
+                err_max = self.norm(c[-self.global_size_A:])
 
             # broadcast the error, a stopping criteria
             if self.size > 1:
