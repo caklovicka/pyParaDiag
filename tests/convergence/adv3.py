@@ -6,6 +6,9 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
+import sys
+sys.path.append('../..')
+
 from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
 
