@@ -13,7 +13,7 @@ from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
 
 # choosing a number of points
-prob.spatial_points = [490, 490]
+prob.spatial_points = [600, 600]
 prob.time_points = 3
 
 # choosing a time domain
@@ -33,15 +33,15 @@ prob.solver = 'custom'
 
 # setting maximum number of iterations
 prob.maxiter = 10
-prob.smaxiter = 50
+prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence
 prob.optimal_alphas = False
-prob.alphas = [1e-15]
+prob.alphas = [1e-12]
 
 # setting tolerances
 prob.tol = 1e-12
-prob.stol = 5e-14
+prob.stol = 1e-14
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
