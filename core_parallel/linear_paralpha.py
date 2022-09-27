@@ -150,6 +150,7 @@ class LinearParalpha(LinearHelpers):
 
                 # assemble the rhs vector
                 res_loc = self.__get_residual__(v_loc)
+                print(self.rank, 'res = ', self.norm(res_loc))
 
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])
@@ -195,6 +196,7 @@ class LinearParalpha(LinearHelpers):
 
                 # update the solution
                 self.u_loc += h_loc
+                # print(self.rank, 'delta u = ', self.norm(h_loc))
 
                 # consecutive error, error of the increment
                 err_max = self.__get_c__(h_loc)
