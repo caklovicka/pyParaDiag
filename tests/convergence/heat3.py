@@ -29,7 +29,7 @@ prob.proc_col = 1
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
-prob.solver = 'custom'
+prob.solver = 'gmres'
 
 # setting maximum number of iterations
 prob.maxiter = 1
