@@ -150,7 +150,7 @@ class LinearParalpha(LinearHelpers):
 
                 # assemble the rhs vector
                 res_loc = self.__get_residual__(v_loc)
-                print(self.rank, 'res = ', self.norm(res_loc))
+                # print(self.rank, 'res = ', self.norm(res_loc))
 
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])
