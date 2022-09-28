@@ -42,7 +42,7 @@ prob.alphas = [1e-4]
 
 # setting tolerances
 prob.tol = 1e-12
-prob.stol = 1e-14
+prob.stol = 1e-15
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
