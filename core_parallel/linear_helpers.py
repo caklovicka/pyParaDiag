@@ -158,6 +158,7 @@ class LinearHelpers(Communicators):
 
     def __step2__(self, h_loc, D, x0, tol):
 
+        it = 0
         h1_loc = np.empty_like(h_loc, dtype=complex, order='C')
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:

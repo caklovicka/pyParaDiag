@@ -7,7 +7,7 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
-sys.path.append('../..')
+sys.path.append('..')
 
 from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
@@ -22,7 +22,7 @@ prob.T_end = 1e-2
 prob.m0 = 1e-2
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 32
+prob.time_intervals = 4#32
 prob.rolling = 1
 
 # choosing a parallelization strategy
