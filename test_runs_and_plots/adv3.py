@@ -22,7 +22,7 @@ prob.T_end = 1e-2
 prob.m0 = 1e-2
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 4#32
+prob.time_intervals = 32
 prob.rolling = 1
 
 # choosing a parallelization strategy
@@ -33,7 +33,7 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'gmres'
 
 # setting maximum number of iterations
-prob.maxiter = 15
+prob.maxiter = 10
 prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence
