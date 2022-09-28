@@ -2,6 +2,7 @@ import numpy as np
 from core_parallel.communicators import Communicators
 from mpi4py import MPI
 import scipy as sc
+from scipy.sparse import linalg
 
 
 class LinearHelpers(Communicators):
@@ -346,9 +347,9 @@ class LinearHelpers(Communicators):
         M = None
         m = None
 
-        Solver = sc.sparse.linalg.spsolve
+        Solver = linalg.spsolve
         if self.solver == 'gmres':
-            Solver = sc.sparse.linalg.gmres
+            Solver = linalg.gmres
 
         if self.solver == 'gmres':
             x_loc, info = Solver(M_loc, m_loc, tol=tol, maxiter=self.smaxiter, x0=m0)
