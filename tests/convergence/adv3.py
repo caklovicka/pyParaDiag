@@ -32,7 +32,7 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'gmres'
 
 # setting maximum number of iterations
-prob.maxiter = 15
+prob.maxiter = 5
 prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence

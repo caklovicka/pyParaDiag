@@ -14,23 +14,23 @@ rolling intervals = 1
 dt (of one SDC interval) = 0.000625
 processors for spatial parallelization for solving (I - Q x A) are 1
 processors for time interval parallelization are 16
-maxiter = 15
+maxiter = 5
 output document = None
 tol = 1e-09
 last error = [[inf, 0.06279674998023611, 6.280298390973065e-06, 6.282426352861107e-10]]
 iterations of Paralpha = [3.]
 max iterations of Paralpha = 3.0
-algorithm time = 0.61271 s
-communication time = 0.10859 s
+algorithm time = 0.59638 s
+communication time = 0.11398 s
 inner solver = gmres
-system_time_max = [0.08191777499999997, 0.092793758, 0.2099610740000002]
-system_time_min = [0.07702887900000022, 0.07645182900000003, 0.12631360699999994]
+system_time_max = [0.07748044400000009, 0.08771381200000006, 0.20404860299999994]
+system_time_min = [0.06962701999999998, 0.07148359700000007, 0.11999347300000007]
 inner solver tols = [1e-11, 1e-11, 1e-11]
 inner solver maxiter = 50
 -----------------------< end summary >-----------------------
 on 15,  abs, rel err inf norm [from paralpha] = 1.4378137370843578e-08, 1.4378137370843578e-08, iter = 1, rolling = 0
 on 15,  abs, rel err inf norm [from paralpha] = 5.423436144624842e-10, 5.423436144624842e-10, iter = 2, rolling = 0
-on 15,  abs, rel err inf norm [from paralpha] = 5.423436144624842e-10, 5.423436144624842e-10, iter = 3, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 5.422263749110812e-10, 5.422263749110812e-10, iter = 3, rolling = 0
 -----------------------< summary >-----------------------
 solving on T1 = 0, T2 = 0.01
 no. of spatial points = [350, 350]
@@ -44,22 +44,23 @@ rolling intervals = 1
 dt (of one SDC interval) = 0.000625
 processors for spatial parallelization for solving (I - Q x A) are 1
 processors for time interval parallelization are 16
-maxiter = 15
+maxiter = 5
 output document = None
 tol = 1e-09
-last error = [[inf, 0.0627905339027425, 1.4093534788617685e-08, 0.0]]
+last error = [[inf, 0.0627905339027425, 1.4093534788617685e-08, 2.339933307188633e-13]]
 iterations of Paralpha = [3.]
 max iterations of Paralpha = 3.0
-algorithm time = 0.50990 s
-communication time = 0.11437 s
+algorithm time = 0.76508 s
+communication time = 0.11014 s
 inner solver = gmres
-system_time_max = [0.08266373599999999, 0.1552417909999999, 0.03485848100000011]
-system_time_min = [0.07553674799999999, 0.1260763170000001, 0.03295740799999991]
+system_time_max = [0.07537933899999993, 0.14860615100000008, 0.3139779169999999]
+system_time_min = [0.07015715899999986, 0.11898068500000014, 0.2656744409999998]
 inner solver tols = [1e-11, 1e-11, 1e-11]
 inner solver maxiter = 50
 -----------------------< end summary >-----------------------
-on 15,  abs, rel err inf norm [from paralpha] = 1.4001733326099655e-05, 1.4001733326099655e-05, iter = 1, rolling = 0
-on 15,  abs, rel err inf norm [from paralpha] = 1.4001733326099655e-05, 1.4001733326099655e-05, iter = 2, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 0.010519865125722117, 0.010519865125722117, iter = 1, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 5.430784710848402e-10, 5.430784710848402e-10, iter = 2, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 5.42680012038967e-10, 5.42680012038967e-10, iter = 3, rolling = 0
 -----------------------< summary >-----------------------
 solving on T1 = 0, T2 = 0.01
 no. of spatial points = [350, 350]
@@ -68,22 +69,22 @@ no. of time points on an interval = 2
     [0.00021 0.00063]
 no. of time intervals = 16
 no. of alphas = 1
-    [1e-12]
+    [1e-16]
 rolling intervals = 1
 dt (of one SDC interval) = 0.000625
 processors for spatial parallelization for solving (I - Q x A) are 1
 processors for time interval parallelization are 16
-maxiter = 15
+maxiter = 5
 output document = None
 tol = 1e-09
-last error = [[inf, 0.06277674569451737, 0.0]]
-iterations of Paralpha = [2.]
-max iterations of Paralpha = 2.0
-algorithm time = 0.28274 s
-communication time = 0.07393 s
+last error = [[inf, 0.07329673794893919, 0.010518745061461708, 2.2984028099701396e-12]]
+iterations of Paralpha = [3.]
+max iterations of Paralpha = 3.0
+algorithm time = 0.90364 s
+communication time = 0.11074 s
 inner solver = gmres
-system_time_max = [0.0798977030000001, 0.045153241999999816]
-system_time_min = [0.07526707799999999, 0.034188620000000114]
-inner solver tols = [1e-11, 1e-11]
+system_time_max = [0.07414451100000008, 0.30227907, 0.3046032390000002]
+system_time_min = [0.07122352300000001, 0.282384234, 0.280919275]
+inner solver tols = [1e-11, 1e-11, 1e-11]
 inner solver maxiter = 50
 -----------------------< end summary >-----------------------
