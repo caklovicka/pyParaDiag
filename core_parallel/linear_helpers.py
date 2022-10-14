@@ -461,7 +461,7 @@ class LinearHelpers(Communicators):
             Solver = linalg.gmres
 
         if self.solver == 'gmres':
-            x_loc, info = Solver(M_loc, m_loc, tol=tol, maxiter=self.smaxiter, x0=m0)
+            x_loc, info = Solver(M_loc, m_loc, tol=tol, atol=0, maxiter=self.smaxiter, x0=m0)
         else:
             x_loc = Solver(M_loc, m_loc)
 
