@@ -45,8 +45,6 @@ class LinearParalpha(LinearHelpers):
         if self.time_intervals > 1 and self.optimal_alphas is False:
             assert len(self.alphas) >= 1, 'Please define a list of alphas, or put optimal_alphas=True'
 
-        if self.optimal_alphas is True:
-            self.alphas = list()
         if self.time_intervals == 1:
             self.optimal_alphas = False
             self.alphas = [0]
@@ -132,8 +130,9 @@ class LinearParalpha(LinearHelpers):
 
                 if self.optimal_alphas is True and self.iterations[rolling_interval] > 0:
                     res_norm = self.__get_max_norm__(res_loc)
-                    alpha_min = self.time_intervals * (3 * np.finfo(complex).eps + self.stol) * res_norm / err_max
-                    print('k = {}, alpha_min = {}'.format(self.iterations[rolling_interval], alpha_min))
+                    alpha_min = np.sqrt(self.time_intervals * (3 * np.finfo(complex).eps + self.stol) * res_norm / err_max)
+                    print('rank = {}, k = {}, alpha_min = {}'.format(self.rank, self.iterations[rolling_interval], alpha_min))
+                    self.comm.Barrier()
                     self.alphas.append(alpha_min)
                 i_alpha = self.__next_alpha__(i_alpha)
 
@@ -196,7 +195,7 @@ class LinearParalpha(LinearHelpers):
                 # DELETE
                 if self.rank == self.size - 1:#self.size_subcol_seq:
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
-                    approx = self.u_last_loc.flatten()
+                    approx = self.u_loc[-self.global_size_A:]
                     d = exact - approx
                     d = d.flatten()
                     err_abs = np.linalg.norm(d, np.inf)
