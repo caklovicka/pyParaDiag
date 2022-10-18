@@ -285,6 +285,7 @@ class LinearHelpers(Communicators):
         else:
             for i in range(self.Frac):
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
+                print(self.rank, linalg.sparse.expm_cond(sys))
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
                     #print(it, 'iterations on proc', self.rank)
