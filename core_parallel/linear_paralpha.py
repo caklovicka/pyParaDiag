@@ -80,6 +80,7 @@ class LinearParalpha(LinearHelpers):
         self.inner_tols = []
 
         self.consecutive_error = list()
+        self.residual = list()
         self.iterations = np.zeros(self.rolling)
 
         # build matrices and vectors
@@ -111,6 +112,7 @@ class LinearParalpha(LinearHelpers):
         for rolling_interval in range(self.rolling):
 
             self.consecutive_error.append([])
+            self.residual.append([])
             self.consecutive_error[rolling_interval].append(np.inf)
             self.system_time_max.append([])
             self.system_time_min.append([])
@@ -127,9 +129,12 @@ class LinearParalpha(LinearHelpers):
 
                 # assemble the rhs vector
                 res_loc = self.__get_residual__(v_loc)
+                res_norm = self.__get_max_norm__(res_loc)
+                self.residual[rolling_interval].append(res_norm)
+                if self.residual[rolling_interval][-1] <= self.tol:
+                    break
 
                 if self.optimal_alphas is True and self.iterations[rolling_interval] > 0:
-                    res_norm = self.__get_max_norm__(res_loc)
                     alpha_min = np.sqrt(self.time_intervals * (3 * np.finfo(complex).eps + self.stol) * res_norm / err_max)
                     self.alphas.append(alpha_min)
                 i_alpha = self.__next_alpha__(i_alpha)
@@ -183,7 +188,7 @@ class LinearParalpha(LinearHelpers):
                 err_max = self.__get_max_norm__(h_loc)
                 self.consecutive_error[rolling_interval].append(err_max)
 
-                if self.consecutive_error[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
+                if self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
 
                 # DELETE
