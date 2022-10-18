@@ -32,16 +32,16 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'gmres'
 
 # setting maximum number of iterations
-prob.maxiter = 15
+prob.maxiter = 8
 prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
 prob.optimal_alphas = False
-prob.alphas = [1e-12]
+prob.alphas = [1e-15]
 
 # setting tolerances
 prob.tol = 1e-5
-prob.stol = 1e-6
+prob.stol = 1e-15
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
