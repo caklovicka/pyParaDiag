@@ -131,8 +131,6 @@ class LinearParalpha(LinearHelpers):
                 if self.optimal_alphas is True and self.iterations[rolling_interval] > 0:
                     res_norm = self.__get_max_norm__(res_loc)
                     alpha_min = np.sqrt(self.time_intervals * (3 * np.finfo(complex).eps + self.stol) * res_norm / err_max)
-                    print('rank = {}, k = {}, alpha_min = {}'.format(self.rank, self.iterations[rolling_interval], alpha_min))
-                    self.comm.Barrier()
                     self.alphas.append(alpha_min)
                 i_alpha = self.__next_alpha__(i_alpha)
 
@@ -187,10 +185,6 @@ class LinearParalpha(LinearHelpers):
 
                 if self.consecutive_error[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
-
-                # update u_last_loc on processors that need it (first column) if we are moving on
-                #if (1 < self.rolling != rolling_interval + 1) or not self.stop:
-                #self.__bcast_u_last_loc__()
 
                 # DELETE
                 if self.rank == self.size - 1:#self.size_subcol_seq:
