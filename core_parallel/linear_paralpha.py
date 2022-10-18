@@ -135,8 +135,11 @@ class LinearParalpha(LinearHelpers):
                     break
 
                 if self.optimal_alphas is True and self.iterations[rolling_interval] > 0:
-                    alpha_min = np.sqrt(self.time_intervals * (3 * np.finfo(complex).eps + self.stol) * self.residual[rolling_interval][-1] / self.consecutive_error[rolling_interval][-1])
-                    self.alphas.append(alpha_min)
+                    eps = np.finfo(complex).eps
+                    alpha_min = (1000 * self.time_intervals * (3 * eps + self.stol) * self.residual[rolling_interval][-1]) ** (1/3)
+                    if self.rank == self.size - 1:
+                        print(alpha_min)
+                    self.alphas.append(min(alpha_min, 0.3))
                 i_alpha = self.__next_alpha__(i_alpha)
 
                 # solving (S x I) g = w with ifft
