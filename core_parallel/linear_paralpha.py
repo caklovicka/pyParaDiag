@@ -81,7 +81,7 @@ class LinearParalpha(LinearHelpers):
         self.system_time_min = []
         self.inner_tols = []
 
-        self.err_last = list()
+        self.consecutive_error = list()
         self.iterations = np.zeros(self.rolling)
 
         # build matrices and vectors
@@ -112,8 +112,8 @@ class LinearParalpha(LinearHelpers):
 
         for rolling_interval in range(self.rolling):
 
-            self.err_last.append([])
-            self.err_last[rolling_interval].append(np.inf)
+            self.consecutive_error.append([])
+            self.consecutive_error[rolling_interval].append(np.inf)
             self.system_time_max.append([])
             self.system_time_min.append([])
             i_alpha = -1
@@ -122,35 +122,20 @@ class LinearParalpha(LinearHelpers):
             # build local v
             v_loc = self.__get_v__(t_start)
             self.comm.Barrier()
-
-            r = None
-            m0 = self.m0
-            eps = np.finfo(complex).eps
-            gamma = self.time_intervals * (3 * eps + self.stol)
-            if self.optimal_alphas is True:
-                r = self.__get_r__(v_loc)
-                self.comm.Barrier()
-                # if self.rank == 0:
-                #     print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
 
             # main iterations
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:
 
-                self.iterations[rolling_interval] += 1
-
-                if self.optimal_alphas is True:
-                    self.alphas.append(np.sqrt((gamma * r)/m0))
-                    m0 = 2 * np.sqrt(gamma * m0 * r)
-
-                    if m0 <= self.tol:
-                        self.stop = True
-
-                i_alpha = self.__next_alpha__(i_alpha)
-
                 # assemble the rhs vector
                 res_loc = self.__get_residual__(v_loc)
-                # print(self.rank, 'res = ', self.norm(res_loc))
+
+                if self.optimal_alphas is True and self.iterations[rolling_interval] > 0:
+                    res_norm = self.__get_max_norm__(res_loc)
+                    alpha_min = self.time_intervals * (3 * np.finfo(complex).eps + self.stol) * res_norm / err_max
+                    print('k = {}, alpha_min = {}'.format(self.iterations[rolling_interval], alpha_min))
+                    self.alphas.append(alpha_min)
+                i_alpha = self.__next_alpha__(i_alpha)
 
                 # solving (S x I) g = w with ifft
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])
@@ -196,14 +181,12 @@ class LinearParalpha(LinearHelpers):
 
                 # update the solution
                 self.u_loc += h_loc
-                # print(self.rank, 'delta u = ', self.norm(h_loc))
 
                 # consecutive error, error of the increment
-                err_max = self.__get_c__(h_loc)
-                #print(self.rank, np.linalg.norm(h_loc, np.inf), err_max)
-                self.err_last[rolling_interval].append(err_max)
+                err_max = self.__get_max_norm__(h_loc)
+                self.consecutive_error[rolling_interval].append(err_max)
 
-                if self.err_last[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
+                if self.consecutive_error[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
 
                 # update u_last_loc on processors that need it (first column) if we are moving on
@@ -221,6 +204,7 @@ class LinearParalpha(LinearHelpers):
                     print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
                 # DELETE
 
+                self.iterations[rolling_interval] += 1
                 # end of main iterations (while loop)
 
             # document writing

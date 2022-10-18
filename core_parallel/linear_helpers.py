@@ -341,36 +341,12 @@ class LinearHelpers(Communicators):
 
         return h1_loc
 
-    def __get_c__(self, c):
+    def __get_max_norm__(self, c):
 
-        err_max = 0
-
-        # case with spatial parallelization, need reduction for maximal error
-        if self.frac > 1:
-            if self.size - self.size_subcol_seq <= self.rank:
-                err_loc = self.norm(c)
-
-                time_beg = MPI.Wtime()
-                err_max = self.comm_subcol_seq.allreduce(err_loc, op=MPI.MAX)
-                self.communication_time += MPI.Wtime() - time_beg
-
-            # broadcast the error, a stopping criteria
-            time_beg = MPI.Wtime()
-            err_max = self.comm.bcast(err_max, root=self.size - 1)
-            self.communication_time += MPI.Wtime() - time_beg
-
-        # case without spatial parallelization, the whole vector is on the last processor
-        else:
-            if self.rank == self.size - 1:
-                self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc[-self.global_size_A:]
-                err_max = self.norm(c[-self.global_size_A:])
-
-            # broadcast the error, a stopping criteria
-            if self.size > 1:
-                time_beg = MPI.Wtime()
-                err_max = self.comm.bcast(err_max, root=self.size - 1)
-                self.communication_time += MPI.Wtime() - time_beg
+        err_loc = self.norm(c)
+        time_beg = MPI.Wtime()
+        err_max = self.comm.allreduce(err_loc, op=MPI.MAX)
+        self.communication_time += MPI.Wtime() - time_beg
 
         return err_max
 
