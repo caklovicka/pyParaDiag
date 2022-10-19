@@ -169,7 +169,7 @@ class LinearParalpha(LinearHelpers):
                 time_solver = MPI.Wtime()
                 h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
                 system_time.append(MPI.Wtime() - time_solver)
-                h0 = h1_loc.copy()
+                #h0 = h1_loc.copy()
                 its.append(it)
 
                 # step 3 ... (Zinv x I) h = h1
