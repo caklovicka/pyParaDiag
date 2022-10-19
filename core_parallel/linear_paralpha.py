@@ -58,7 +58,7 @@ class LinearParalpha(LinearHelpers):
 
         # build variables
         self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
-        coll = CollBase(coll_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
+        coll = CollBase(self.time_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
         self.t = self.dt * np.array(coll.nodes)
 
         # case with spatial parallelization
