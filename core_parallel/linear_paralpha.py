@@ -7,7 +7,6 @@ from scipy import sparse
 
 np.set_printoptions(precision=5, linewidth=np.inf)
 
-
 class LinearParalpha(LinearHelpers):
 
     def __init__(self):
