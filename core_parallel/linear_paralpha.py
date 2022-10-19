@@ -126,6 +126,7 @@ class LinearParalpha(LinearHelpers):
             self.stop = False
 
             h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
+            h00 = None
 
             # main iterations
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:
@@ -168,9 +169,12 @@ class LinearParalpha(LinearHelpers):
                 # step 2 ... solve local systems (I - Di * A) h1 = h
                 time_solver = MPI.Wtime()
                 h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
-                h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
+                if h00 is not None:
+                    h1_loc, it = self.__step2__(h_loc, D, h00, self.stol)
+                else:
+                    h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
                 system_time.append(MPI.Wtime() - time_solver)
-                #h0 = h1_loc.copy()
+                h00 = h1_loc.copy()
                 its.append(it)
 
                 # step 3 ... (Zinv x I) h = h1
