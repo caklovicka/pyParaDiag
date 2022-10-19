@@ -1,6 +1,6 @@
 import numpy as np
 from mpi4py import MPI
-from pySDC.implementations.collocation_classes.gauss_radau_right import CollGaussRadau_Right
+from pySDC.core.Collocation import CollBase
 from core_parallel.linear_helpers import LinearHelpers
 import os
 from scipy import sparse
@@ -58,7 +58,7 @@ class LinearParalpha(LinearHelpers):
 
         # build variables
         self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
-        coll = CollGaussRadau_Right(num_nodes=self.time_points, tleft=0, tright=1)
+        coll = CollBase(coll_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
         self.t = self.dt * np.array(coll.nodes)
 
         # case with spatial parallelization
