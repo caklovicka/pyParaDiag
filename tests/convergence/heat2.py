@@ -12,13 +12,15 @@ sys.path.append('../..')
 from problem_examples_parallel.heat_2d_pbc_central4 import Heat
 prob = Heat()
 
+import numpy as np
+
 # choosing a number of points
 prob.spatial_points = [400, 400]
 prob.time_points = 2
 
 # choosing a time domain
-prob.T_start = 0
-prob.T_end = 0.1
+prob.T_start = np.pi
+prob.T_end = prob.T_start + 0.1
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 32

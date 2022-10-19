@@ -8,6 +8,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
 sys.path.append('../..')
+import numpy as np
 
 from problem_examples_parallel.heat_2d_pbc_central6 import Heat
 prob = Heat()
@@ -17,8 +18,8 @@ prob.spatial_points = [300, 300]
 prob.time_points = 3
 
 # choosing a time domain
-prob.T_start = 0
-prob.T_end = 0.1
+prob.T_start = np.pi
+prob.T_end = prob.T_start + 0.1
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 16
