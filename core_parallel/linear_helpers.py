@@ -1,4 +1,3 @@
-import numpy as npa
 from core_parallel.communicators import Communicators
 from mpi4py import MPI
 from scipy.sparse import linalg
