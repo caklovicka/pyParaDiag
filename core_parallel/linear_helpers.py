@@ -273,7 +273,6 @@ class LinearHelpers(Communicators):
 
     def __step2__(self, h_loc, D, x0, tol):
 
-        it = 0
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
@@ -287,7 +286,7 @@ class LinearHelpers(Communicators):
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
                 else:
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
         return h1_loc, it
 
@@ -419,19 +418,14 @@ class LinearHelpers(Communicators):
             def __init__(self, disp=True):
                 self._disp = disp
                 self.niter = 0
-            def __call__(self, rk=None):
-                self.niter += 1
-                if self._disp:
-                    print('iter %3i\trk = %s' % (self.niter, str(rk)))
         counter = gmres_counter()
-
-        M = None
-        m = None
+        it = 0
 
         if self.solver == 'gmres':
-            x_loc, info = linalg.gmres(M_loc, m_loc, tol=tol, atol=0, maxiter=self.smaxiter, x0=m0)  # , callback=counter)
+            x_loc, info = linalg.gmres(M_loc, m_loc, tol=tol, atol=0, maxiter=self.smaxiter, x0=m0, callback=counter)
+            it = counter.niter
 
         else:
             x_loc = linalg.spsolve(M_loc, m_loc)
 
-        return x_loc
+        return x_loc, it
