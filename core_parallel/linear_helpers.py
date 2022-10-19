@@ -1,8 +1,9 @@
-import numpy as np
+import numpy as npa
 from core_parallel.communicators import Communicators
 from mpi4py import MPI
 from scipy.sparse import linalg
 import scipy as sc
+import numpy as np
 
 
 class LinearHelpers(Communicators):
@@ -285,12 +286,13 @@ class LinearHelpers(Communicators):
         else:
             for i in range(self.Frac):
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
-                print(self.rank, np.linalg.norm(linalg.inv(sys), np.inf))
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
                     #print(it, 'iterations on proc', self.rank)
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+
+                print(np.linalg.norm(sys @ h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] - h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], np.inf)/np.linalg.norm(h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], np.inf), it)
 
         self.comm_col.Barrier()
         return h1_loc, it

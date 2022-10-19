@@ -163,6 +163,7 @@ class Heat(LinearParalpha):
 
     # petsc solver on comm_matrix
     def linear_solver(self, M_loc, m_loc, m0_loc, tol):
+
         m = PETSc.Vec()
         m.createWithArray(array=m_loc, comm=self.comm_matrix)
         m0 = PETSc.Vec()
@@ -175,6 +176,7 @@ class Heat(LinearParalpha):
         ksp.create(comm=self.comm_matrix)
         ksp.setType('gmres')
         ksp.setFromOptions()
+        print(tol)
         ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
         pc.setType('none')

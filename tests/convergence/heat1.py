@@ -29,7 +29,7 @@ prob.proc_col = 1
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
-prob.solver = 'gmres'
+prob.solver = 'custom'
 
 # setting maximum number of iterations
 prob.maxiter = 8
@@ -37,11 +37,11 @@ prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
 prob.optimal_alphas = False
-prob.alphas = [1e-15]
+prob.alphas = [1e-8]
 
 # setting tolerances
 prob.tol = 1e-5
-prob.stol = 1e-15
+prob.stol = 1e-6
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
