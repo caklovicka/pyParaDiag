@@ -135,5 +135,6 @@ class Heat(LinearParalpha):
         m0.destroy()
         ksp.destroy()
         M.destroy()
+        pc.destroy()
 
         return sol, it

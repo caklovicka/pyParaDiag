@@ -33,7 +33,7 @@ prob.solver = 'custom'
 
 # setting maximum number of iterations
 prob.maxiter = 8
-prob.smaxiter = 100
+prob.smaxiter = 1000
 
 # choosing a setting for the alpha sequence
 prob.optimal_alphas = False

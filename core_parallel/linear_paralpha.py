@@ -166,7 +166,6 @@ class LinearParalpha(LinearHelpers):
                 h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
                 h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
                 system_time.append(MPI.Wtime() - time_solver)
-                #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
 
                 # step 3 ... (Zinv x I) h = h1
                 h_loc = self.__step1__(Z, h1_loc)
@@ -245,19 +244,17 @@ class LinearParalpha(LinearHelpers):
 
     def summary(self, details=False):
 
-        if self.rank == 0:
+        if self.rank == 0 and details:
             assert self.setup_var is True, 'Please call the setup function before summary.'
             print('-----------------------< summary >-----------------------')
             print('solving on T1 = {}, T2 = {}'.format(self.T_start, self.T_end), flush=True)
             print('no. of spatial points = {}'.format(self.spatial_points), flush=True)
             print('dx = {}'.format(self.dx), flush=True)
             print('no. of time points on an interval = {}'.format(self.time_points), flush=True)
-            if details:
-                print('    {}'.format(self.t), flush=True)
+            #print('    {}'.format(self.t), flush=True)
             print('no. of time intervals = {}'.format(self.time_intervals), flush=True)
             print('no. of alphas = {}'.format(len(self.alphas)), flush=True)
-            if details:
-                print('    {}'.format(self.alphas), flush=True)
+            #print('    {}'.format(self.alphas), flush=True)
             print('rolling intervals = {}'.format(self.rolling), flush=True)
             print('dt (of one SDC interval) = {}'.format(self.dt), flush=True)
             print('processors for spatial parallelization for solving (I - Q x A) are {}'.format(self.proc_col), flush=True)
