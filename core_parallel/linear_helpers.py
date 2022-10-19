@@ -418,6 +418,9 @@ class LinearHelpers(Communicators):
             def __init__(self, disp=True):
                 self._disp = disp
                 self.niter = 0
+            def __call__(self, rk=None):
+                self.niter += 1
+
         counter = gmres_counter()
         it = 0
 
