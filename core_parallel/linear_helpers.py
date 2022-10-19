@@ -291,7 +291,7 @@ class LinearHelpers(Communicators):
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
-                print(np.linalg.norm(sys @ h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] - h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], np.inf)/np.linalg.norm(h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], np.inf), it)
+                print(self.rank, np.linalg.norm(sys @ h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A] - h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], np.inf)/np.linalg.norm(h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], np.inf), it)
 
         self.comm_col.Barrier()
         return h1_loc, it
