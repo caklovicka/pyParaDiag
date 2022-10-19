@@ -77,6 +77,8 @@ class LinearParalpha(LinearHelpers):
         self.communication_time = 0
         self.system_time_max = []
         self.system_time_min = []
+        self.solver_its_max = []
+        self.solver_its_min = []
         self.inner_tols = []
 
         self.consecutive_error = list()
@@ -116,6 +118,8 @@ class LinearParalpha(LinearHelpers):
             self.consecutive_error[rolling_interval].append(np.inf)
             self.system_time_max.append([])
             self.system_time_min.append([])
+            self.solver_its_max.append([])
+            self.solver_its_min.append([])
             i_alpha = -1
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
 
@@ -149,6 +153,7 @@ class LinearParalpha(LinearHelpers):
 
                 # solve local systems in 4 steps with diagonalization of QCinv
                 system_time = []
+                its = []
                 l_new = int(Rev, 2)
                 Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
                 C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
@@ -166,6 +171,7 @@ class LinearParalpha(LinearHelpers):
                 h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
                 h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
                 system_time.append(MPI.Wtime() - time_solver)
+                its.append(it)
 
                 # step 3 ... (Zinv x I) h = h1
                 h_loc = self.__step1__(Z, h1_loc)
@@ -175,6 +181,8 @@ class LinearParalpha(LinearHelpers):
 
                 self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
+                self.solver_its_max[rolling_interval].append(self.comm.allreduce(max(its), op=MPI.MAX))
+                self.solver_its_min[rolling_interval].append(self.comm.allreduce(min(its), op=MPI.MIN))
 
                 self.inner_tols.append(self.stol)
 
@@ -253,8 +261,7 @@ class LinearParalpha(LinearHelpers):
             print('no. of time points on an interval = {}'.format(self.time_points), flush=True)
             #print('    {}'.format(self.t), flush=True)
             print('no. of time intervals = {}'.format(self.time_intervals), flush=True)
-            print('no. of alphas = {}'.format(len(self.alphas)), flush=True)
-            #print('    {}'.format(self.alphas), flush=True)
+            print('no. of alphas = {}, {}'.format(len(self.alphas), self.alphas), flush=True)
             print('rolling intervals = {}'.format(self.rolling), flush=True)
             print('dt (of one SDC interval) = {}'.format(self.dt), flush=True)
             print('processors for spatial parallelization for solving (I - Q x A) are {}'.format(self.proc_col), flush=True)
@@ -272,6 +279,8 @@ class LinearParalpha(LinearHelpers):
             print('inner solver = {}'.format(self.solver), flush=True)
             print('system_time_max = {}'.format(max(self.system_time_max)), flush=True)
             print('system_time_min = {}'.format(min(self.system_time_min)), flush=True)
+            print('solver_its_max = {}'.format(self.solver_its_max), flush=True)
+            print('solver_its_min = {}'.format(self.solver_its_min), flush=True)
             print('inner solver tols = {}'.format(self.inner_tols), flush=True)
             print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
             print('-----------------------< end summary >-----------------------')
