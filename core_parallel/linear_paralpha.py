@@ -75,6 +75,8 @@ class LinearParalpha(LinearHelpers):
         self.communication_time = 0
         self.system_time_max = []
         self.system_time_min = []
+        self.solver_its_max = []
+        self.solver_its_min = []
         self.inner_tols = []
 
         self.err_last = list()
@@ -113,6 +115,8 @@ class LinearParalpha(LinearHelpers):
             self.err_last[rolling_interval].append(np.inf)
             self.system_time_max.append([])
             self.system_time_min.append([])
+            self.solver_its_max.append([])
+            self.solver_its_min.append([])
             i_alpha = -1
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
 
@@ -182,6 +186,7 @@ class LinearParalpha(LinearHelpers):
 
                 # solve local systems in 4 steps with diagonalization of QCinv
                 system_time = []
+                its = []
                 for k in range(self.cols_loc):
                     l_new = int(Rev[k], 2)
                     Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
@@ -200,6 +205,7 @@ class LinearParalpha(LinearHelpers):
                     h0 = np.zeros((self.rows_loc, self.cols_loc), dtype=complex, order='C')
                     h1_loc[:, k], it = self.__step2__(h_loc[:, k], D, h0, self.stol)
                     system_time.append(MPI.Wtime() - time_solver)
+                    its.append(it)
                     #h1_loc_old[:, k] = h1_loc[:, k] #if this is uncommented, then the initial guess is not zeros
 
                     # step 3 ... (Zinv x I) h = h1
@@ -210,6 +216,8 @@ class LinearParalpha(LinearHelpers):
 
                 self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
+                self.solver_its_max[rolling_interval].append(self.comm.allreduce(max(its), op=MPI.MAX))
+                self.solver_its_min[rolling_interval].append(self.comm.allreduce(min(its), op=MPI.MIN))
 
                 self.inner_tols.append(self.stol)
 
@@ -310,6 +318,8 @@ class LinearParalpha(LinearHelpers):
             print('inner solver = {}'.format(self.solver), flush=True)
             print('system_time_max = {}'.format(max(self.system_time_max)), flush=True)
             print('system_time_min = {}'.format(min(self.system_time_min)), flush=True)
+            print('solver_its_max = {}'.format(self.solver_its_max), flush=True)
+            print('solver_its_min = {}'.format(self.solver_its_min), flush=True)
             print('inner solver tols = {}'.format(self.inner_tols), flush=True)
             print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
             print('-----------------------< end summary >-----------------------')
