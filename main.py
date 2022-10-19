@@ -1,4 +1,3 @@
-# the following lines disable the numpy multithreading [optional]
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
@@ -6,41 +5,42 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
-from problem_examples_parallel.advection_2d_pbc_upwind5 import Advection
-prob = Advection()
+import sys
+sys.path.append('../../../../../../..')    # for jube
+sys.path.append('../../../../../../../..')    # for pySDC
+import numpy as np
+from mpi4py import MPI
+from problem_examples_parallel.heat_2d_pbc_central4 import Heat as Heat4
 
-# choosing a number of points
-prob.spatial_points = [700, 600]            # number of unknowns for the 2D spatial problem
-prob.time_points = 3                        # number of collocation nodes (Gauss-Radau-Right)
+prob = Heat4()
+N = 400
+prob.spatial_points = [N, N]
+prob.tol = 1e-9
+prob.proc_col = 1
+prob.time_points = 2
+prob.time_intervals = 64
+prob.proc_row = 64
+prob.optimal_alphas = True
+prob.T_start = np.pi
+prob.T_end = prob.T_start + 0.16
+prob.solver = 'custom'
+prob.maxiter = 10
+prob.smaxiter = 50
+prob.stol = 1e-10
+prob.m0 = (prob.T_end - prob.T_start)/prob.rolling
 
-# choosing a time domain
-prob.T_start = 0
-prob.T_end = 0.0128
-
-# choosing the number of intervals handled in parallel
-prob.time_intervals = 64                    # number of time-steps Paralpha will compute in parallel, for now needs to be a power of 2
-prob.rolling = 1                            # number of Paralpha propagations in a classical/sequential sense
-
-# choosing a parallelization strategy
-prob.proc_col = 1                           # number of cores handling the collocation problem
-prob.proc_row = prob.time_intervals         # number of cores handling time-steps. For now it has to be the same as number of time_intervals
-
-# choosing a solver
-prob.solver = 'custom'                      # custom (defined in the problem class through linear_solver), lu or gmres (from scipy)
-
-# setting maximum number of iterations
-prob.maxiter = 10                           # number of Paralpha maxiters
-prob.smaxiter = 50                          # number of inner solver maxiters
-
-# choosing a setting for the alpha sequence
-prob.optimal_alphas = False
-prob.alphas = [1e-5, 1e-2, 0.1]
-
-# setting tolerances
-prob.tol = 1e-12                            # a stopping tolerance for Paralpha
-prob.stol = 1e-16                           # a stopping relative tolerance for the inner solver
-prob.m0 = 10 * (prob.T_end - prob.T_start)  # a starting choice for the m_k sequence
-
-prob.setup()                                # must be before solve()
-prob.solve()                                # this is where magic happens
+prob.setup()
+prob.solve()
 prob.summary(details=True)
+
+# if prob.rank >= prob.size - prob.size_subcol_seq:
+#     exact = prob.u_exact(prob.T_end, prob.x).flatten()[prob.row_beg:prob.row_end]
+#     approx = prob.u_last_loc.flatten()
+#     d = exact - approx
+#     d = d.flatten()
+#     err_abs = np.linalg.norm(d, np.inf)
+#     err_abs_root = prob.comm_subcol_seq.reduce(err_abs, op=MPI.MAX, root=prob.size_subcol_seq - 1)
+#     if prob.rank == prob.size - 1:
+#         print('abs err = {}'.format(err_abs_root))
+
+
