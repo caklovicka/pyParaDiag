@@ -143,7 +143,7 @@ class Advection(LinearParalpha):
         M.createAIJ(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
 
         ksp = PETSc.KSP()
-        ksp.create()#comm=self.comm_matrix)
+        ksp.create(comm=self.comm_matrix)
         ksp.setType('gmres')
         ksp.setFromOptions()
         ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
