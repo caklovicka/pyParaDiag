@@ -59,10 +59,12 @@ solver_its_max = [[330, 990]]
 solver_its_min = [[237, 560]]
 inner solver tols = [1e-13, 1e-13]
 inner solver maxiter = 1000
------------------------< end summary >-----------------------on 15,  abs, rel err inf norm [from paralpha] = 1.2172806246272216e-07, 1.2233924913139302e-07, iter = 0, rolling = 0
+-----------------------< end summary >-----------------------
+on 15,  abs, rel err inf norm [from paralpha] = 1.2172806246272216e-07, 1.2233924913139302e-07, iter = 0, rolling = 0
 on 15,  abs, rel err inf norm [from paralpha] = 3.5129678401591842e-12, 3.5306061650280476e-12, iter = 1, rolling = 0
 on 15,  abs, rel err inf norm [from paralpha] = 3.5380587348760923e-12, 3.5558230390799237e-12, iter = 2, rolling = 0
 on 15,  abs, rel err inf norm [from paralpha] = 1.5093329364116006e-11, 1.516911173924443e-11, iter = 3, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 1.4553802607509377e-11, 1.4626876062818017e-11, iter = 4, rolling = 0
 -----------------------< summary >-----------------------
 solving on T1 = 3.141592653589793, T2 = 3.241592653589793
 no. of spatial points = [300, 300]
@@ -80,7 +82,6 @@ tol = 1e-12
 last error = NotImplemented
 residuals = [[0.0029191083278541363, 7.923060121317604e-07, 2.55253596037619e-11, 2.575273327920513e-11, 6.463846125015493e-11]]
 consecutive errors= [[inf, 0.0049959134218909304, 8.553689399940269e-08, 6.452967568344924e-12, 1.7198474401853797e-11, 2.712659343130643e-11]]
-on 15,  abs, rel err inf norm [from paralpha] = 1.4553802607509377e-11, 1.4626876062818017e-11, iter = 4, rolling = 0
 iterations of Paralpha = [5.]
 max iterations of Paralpha = 5.0
 algorithm time = 127.75437 s
