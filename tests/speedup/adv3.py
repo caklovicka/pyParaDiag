@@ -18,12 +18,12 @@ prob.tol = 1e-12
 prob.time_points = 3
 prob.proc_col = 1
 prob.optimal_alphas = False
-prob.alphas = [1e-4]
+prob.alphas = [1e-8]
 prob.T_start = 0
 prob.T_end = 1.28e-2
 prob.solver = 'custom'
-prob.maxiter = 10
-prob.smaxiter = 500
+prob.maxiter = 5
+prob.smaxiter = 1000
 prob.time_intervals = 64
 prob.proc_row = 64
 
