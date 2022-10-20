@@ -240,6 +240,7 @@ class LinearParalpha(LinearHelpers):
                 self.__bcast_u_last_loc__()
 
                 # DELETE
+                '''
                 if self.rank == self.size - 1:#self.size_subcol_seq:
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
                     approx = self.u_last_loc.flatten()
@@ -249,6 +250,7 @@ class LinearParalpha(LinearHelpers):
                     err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
                     print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
                 # DELETE
+                '''
 
                 # end of main iterations (while loop)
 
