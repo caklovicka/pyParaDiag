@@ -8,18 +8,17 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
 sys.path.append('../..')
-import numpy as np
 
-from problem_examples_parallel.heat_2d_pbc_central4 import Heat
-prob = Heat()
+from problem_examples_parallel.advection_2d_pbc_upwind1 import Advection
+prob = Advection()
 
 # choosing a number of points
-prob.spatial_points = [400, 400]
-prob.time_points = 2
+prob.spatial_points = [800, 800]
+prob.time_points = 1
 
 # choosing a time domain
-prob.T_start = np.pi
-prob.T_end = prob.T_start + 0.16
+prob.T_start = 0
+prob.T_end = 0.00016
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 64
@@ -41,8 +40,8 @@ prob.optimal_alphas = False
 prob.alphas = [1e-4]
 
 # setting tolerances
-prob.tol = 1e-9
-prob.stol = 1e-10
+prob.tol = 1e-5
+prob.stol = 1e-9
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
