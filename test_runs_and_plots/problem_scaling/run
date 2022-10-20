@@ -1,0 +1,11 @@
+#!/bin/bash -x
+#SBATCH --account=cstma
+#SBATCH --nodes=4
+#SBATCH --ntasks=64
+#SBATCH --ntasks-per-node=16
+#SBATCH --output=mpi-out.%j
+#SBATCH --error=mpi-err.%j
+#SBATCH --time=00:07:00
+#SBATCH --partition=batch
+
+srun python run.py adv3.py > adv3_batch.out
