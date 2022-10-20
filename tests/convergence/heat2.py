@@ -39,7 +39,7 @@ prob.smaxiter = 1000
 
 # choosing a setting for the alpha sequence
 prob.optimal_alphas = False
-prob.alphas = [1e-8]
+prob.alphas = [1e-4]
 
 # setting tolerances
 prob.tol = 1e-9
