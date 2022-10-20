@@ -36,7 +36,7 @@ prob.maxiter = 5
 prob.smaxiter = 1000
 
 # choosing a setting for the alpha sequence
-prob.optimal_alphas = Ture
+prob.optimal_alphas = True
 prob.m0 = prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
 
 # setting tolerances
