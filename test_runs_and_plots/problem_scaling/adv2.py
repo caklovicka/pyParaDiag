@@ -23,6 +23,8 @@ prob.T_end = 0.00064
 prob.solver = 'custom'
 prob.maxiter = 10
 prob.smaxiter = 50
+prob.time_intervals = 64
+prob.proc_row = 64
 
 prob.stol = 1e-11
 if prob.rolling < 64:
