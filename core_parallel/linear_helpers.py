@@ -40,7 +40,7 @@ class LinearHelpers(Communicators):
         for j in range(self.cols_loc):
             if self.rank_row == 0:
                 # with spatial parallelization
-                if self.frac is not 0:
+                if self.frac != 0:
                     temp = np.linalg.norm(v_loc[:, j] + self.u0_loc, np.infty)
                 # without spatial parallelization
                 else:
@@ -284,14 +284,14 @@ class LinearHelpers(Communicators):
     def __write_u_in_txt__(self, rolling_interval):
 
         # with spatial parallelization
-        if self.frac is not 0:
+        if self.frac != 0:
             if rolling_interval == 0:
                 for proc in range(self.size_subcol_seq):
                     if self.rank == proc:
                         file = open(self.document, "a")
                         for element in self.u0_loc:
                             file.write(str(complex(element)) + ' ')
-                        if (proc + 1) % self.frac is 0:
+                        if (proc + 1) % self.frac == 0:
                             file.write('\n')
                         file.close()
                     self.comm.Barrier()
@@ -303,7 +303,7 @@ class LinearHelpers(Communicators):
                             file = open(self.document, "a")
                             for element in self.u_loc[:, k]:
                                 file.write(str(element) + ' ')
-                            if (self.rank_col+1) % self.frac is 0:
+                            if (self.rank_col+1) % self.frac == 0:
                                 file.write('\n')
                             file.close()
                         self.comm.Barrier()

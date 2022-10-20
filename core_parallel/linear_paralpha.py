@@ -91,7 +91,7 @@ class LinearParalpha(LinearHelpers):
         self.P = sparse.csr_matrix(self.P)
 
         # documents
-        if self.rank == 0 and self.document is not 'None':
+        if self.rank == 0 and self.document != 'None':
             self.time_document = self.document + '_times'
             if os.path.exists(self.document):
                 os.remove(self.document)
@@ -253,14 +253,14 @@ class LinearParalpha(LinearHelpers):
                 # end of main iterations (while loop)
 
             # document writing
-            if self.document is not 'None':
+            if self.document != 'None':
                 self.__write_u_in_txt__(rolling_interval)
                 self.comm.Barrier()
 
             # update u0_loc (new initial condition) on processors that need it (first column) if we are not in the last rolling interval
             if rolling_interval + 1 < self.rolling:
 
-                if self.comm_last is not 'None' and self.time_intervals > 1:
+                if self.comm_last != 'None' and self.time_intervals > 1:
                     self.u0_loc = self.u_last_loc.copy()
 
                 # to support a sequrntial run
