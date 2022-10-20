@@ -1,0 +1,94 @@
+on 15,  abs, rel err inf norm [from paralpha] = 1.8553292250129867e-10, 1.864644681657757e-10, iter = 0, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 4.802824944587035e-13, 4.826939536725478e-13, iter = 1, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 3.141592653589793, T2 = 3.241592653589793
+no. of spatial points = [300, 300]
+dx = [0.0033333333333333335, 0.0033333333333333335]
+no. of time points on an interval = 3
+no. of time intervals = 16
+no. of alphas = 1, [0.0001]
+rolling intervals = 1
+dt (of one SDC interval) = 0.0062500000000000056
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 16
+maxiter = 3
+output document = None
+tol = 1e-12
+last error = NotImplemented
+residuals = [[0.0029191083278541363, 4.99583758362121e-07, 7.083222897108499e-13]]
+consecutive errors= [[inf, 0.0049958349075071105, 4.6280767471892105e-07]]
+iterations of Paralpha = [2.]
+max iterations of Paralpha = 2.0
+algorithm time = 27.49495 s
+communication time = 0.07267 s
+inner solver = custom
+system_time_max = [10.131696551999994, 17.16376938899998]
+system_time_min = [8.839058987000044, 14.157360427000185]
+solver_its_max = [[360, 540]]
+solver_its_min = [[232, 280]]
+inner solver tols = [1e-13, 1e-13]
+inner solver maxiter = 1000
+-----------------------< end summary >-----------------------
+on 15,  abs, rel err inf norm [from paralpha] = 7.39653967066683e-11, 7.43367709279898e-11, iter = 0, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 4.760636401300593e-13, 4.784539168205761e-13, iter = 1, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 3.141592653589793, T2 = 3.241592653589793
+no. of spatial points = [300, 300]
+dx = [0.0033333333333333335, 0.0033333333333333335]
+no. of time points on an interval = 3
+no. of time intervals = 16
+no. of alphas = 1, [1e-08]
+rolling intervals = 1
+dt (of one SDC interval) = 0.0062500000000000056
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 16
+maxiter = 3
+output document = None
+tol = 1e-12
+last error = NotImplemented
+residuals = [[0.0029191083278541363, 3.0608049428337836e-10, 7.462919171530302e-13]]
+consecutive errors= [[inf, 0.004995834664143552, 7.072216117391003e-11]]
+iterations of Paralpha = [2.]
+max iterations of Paralpha = 2.0
+algorithm time = 35.88793 s
+communication time = 0.07325 s
+inner solver = custom
+system_time_max = [9.810102080999968, 25.876640467000016]
+system_time_min = [8.953460698999834, 22.906883917000187]
+solver_its_max = [[330, 990]]
+solver_its_min = [[237, 560]]
+inner solver tols = [1e-13, 1e-13]
+inner solver maxiter = 1000
+-----------------------< end summary >-----------------------
+on 15,  abs, rel err inf norm [from paralpha] = 1.2172806246272216e-07, 1.2233924913139302e-07, iter = 0, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 3.5129678401591842e-12, 3.5306061650280476e-12, iter = 1, rolling = 0
+on 15,  abs, rel err inf norm [from paralpha] = 3.5380587348760923e-12, 3.5558230390799237e-12, iter = 2, rolling = 0
+-----------------------< summary >-----------------------
+solving on T1 = 3.141592653589793, T2 = 3.241592653589793
+no. of spatial points = [300, 300]
+dx = [0.0033333333333333335, 0.0033333333333333335]
+no. of time points on an interval = 3
+no. of time intervals = 16
+no. of alphas = 1, [1e-12]
+rolling intervals = 1
+dt (of one SDC interval) = 0.0062500000000000056
+processors for spatial parallelization for solving (I - Q x A) are 1
+processors for time interval parallelization are 16
+maxiter = 3
+output document = None
+tol = 1e-12
+last error = NotImplemented
+residuals = [[0.0029191083278541363, 7.923060121317604e-07, 2.55253596037619e-11]]
+consecutive errors= [[inf, 0.0049959134218909304, 8.553689399940269e-08, 6.452967568344924e-12]]
+iterations of Paralpha = [3.]
+max iterations of Paralpha = 3.0
+algorithm time = 67.47630 s
+communication time = 0.10106 s
+inner solver = custom
+system_time_max = [9.342440421999981, 28.734131985999966, 29.144131378999873]
+system_time_min = [8.80663671100001, 27.954408150000063, 28.536642347999987]
+solver_its_max = [[300, 1000, 1000]]
+solver_its_min = [[245, 795, 826]]
+inner solver tols = [1e-13, 1e-13, 1e-13]
+inner solver maxiter = 1000
+-----------------------< end summary >-----------------------
