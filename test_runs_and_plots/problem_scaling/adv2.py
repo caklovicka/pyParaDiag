@@ -8,8 +8,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import sys
 sys.path.append('../..')
 import numpy as np
-from mpi4py import MPI
-from problem_examples_parallel.advection_2d_pbc_upwind3 import Advection as Adv3
+from problem_examples.linear.advection_2d_pbc_upwind3 import Advection as Adv3
 
 prob = Adv3()
 N = 800

@@ -1,7 +1,8 @@
 import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
-from core_parallel.linear_paralpha import LinearParalpha
+from core_parallel.linear_paralpha import LinearParalpha as BaseMethod
+#from core_parallel.linear_increment_paralpha import LinearIncrementParalpha as BaseMethod
 
 """
 advection1 eq. in 2d
@@ -9,7 +10,7 @@ u_t + c_x * u_x + c_y * u_y = f
 """
 
 
-class Advection(LinearParalpha):
+class Advection(BaseMethod):
 
     # user defined, just for this class
     c = [1, 1]
@@ -24,7 +25,7 @@ class Advection(LinearParalpha):
 
     def __init__(self):
 
-        LinearParalpha.__init__(self)
+        BaseMethod.__init__(self)
 
     def setup(self):
 

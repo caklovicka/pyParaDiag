@@ -8,7 +8,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import sys
 sys.path.append('../..')
 import numpy as np
-from problem_examples_parallel.heat_2d_pbc_central2 import Heat as Heat2
+from problem_examples.linear.heat_2d_pbc_central2 import Heat as Heat2
 
 prob = Heat2()
 N = 350

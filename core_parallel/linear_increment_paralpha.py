@@ -7,7 +7,8 @@ from scipy import sparse
 
 np.set_printoptions(precision=5, linewidth=np.inf)
 
-class LinearParalpha(Helpers):
+
+class LinearIncrementParalpha(Helpers):
 
     def __init__(self):
 
@@ -41,20 +42,6 @@ class LinearParalpha(Helpers):
             assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'.format(
                 self.time_points, self.proc_col)
 
-        if self.time_intervals > 1 and self.optimal_alphas is False:
-            assert len(self.alphas) >= 1, 'Please define a list of alphas, or put optimal_alphas=True'
-
-        if self.optimal_alphas is True:
-            self.alphas = list()
-            if self.time_points == 2:
-                self.bad_alphas = np.array([0.323, 0.477]) ** self.time_intervals
-            elif self.time_points == 3:
-                self.bad_alphas = np.array([0.516, 0.504, 0.069]) ** self.time_intervals
-        if self.time_intervals == 1:
-            self.optimal_alphas = False
-            self.alphas = [0]
-            self.maxiter = 1
-
         # build variables
         self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
         coll = CollBase(self.time_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
@@ -68,7 +55,14 @@ class LinearParalpha(Helpers):
             self.u0_loc = self.u_initial(self.x).flatten()
 
         self.u_last_loc = self.u0_loc.copy(order='C')
-        self.u_loc = np.empty(self.rows_loc, dtype=complex, order='C')
+        self.u_loc = np.zeros(self.rows_loc, dtype=complex, order='C')
+
+        # case with spatial parallelization
+        if self.frac > 1:
+            self.u_loc += self.u0_loc.copy(order='C')
+        # case without spatial parallelization
+        else:
+            self.u_loc += np.tile(self.u0_loc, self.Frac)
         self.u_last_old_loc = None
 
         self.algorithm_time = 0
@@ -79,7 +73,8 @@ class LinearParalpha(Helpers):
         self.solver_its_min = []
         self.inner_tols = []
 
-        self.err_last = list()
+        self.consecutive_error = list()
+        self.residual = list()
         self.iterations = np.zeros(self.rolling)
 
         # build matrices and vectors
@@ -107,8 +102,9 @@ class LinearParalpha(Helpers):
 
         for rolling_interval in range(self.rolling):
 
-            self.err_last.append([])
-            self.err_last[rolling_interval].append(np.inf)
+            self.consecutive_error.append([])
+            self.residual.append([])
+            self.consecutive_error[rolling_interval].append(np.inf)
             self.system_time_max.append([])
             self.system_time_min.append([])
             self.solver_its_max.append([])
@@ -119,49 +115,30 @@ class LinearParalpha(Helpers):
             # build local v
             v_loc = self.__get_v__(t_start)
             self.comm.Barrier()
-
-            # save v1 on the processors that have v1
-            if self.rank_row == 0:
-                v1_loc = v_loc.copy()
-            else:
-                v1_loc = None
-
-            r = None
-            m0 = self.m0
-            eps = np.finfo(complex).eps
-            gamma = self.time_intervals * (3 * eps + self.stol)
-            if self.optimal_alphas is True:
-                r = self.__get_r__(v_loc)
-                self.comm.Barrier()
-                # if self.rank == 0:
-                #     print('m0 = ', m0, 'r = ', r, flush=True)
             self.stop = False
+
+            h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
 
             # main iterations
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:
 
-                self.iterations[rolling_interval] += 1
-
-                if self.optimal_alphas is True:
-                    self.alphas.append(np.sqrt((gamma * r)/m0))
-                    m0 = 2 * np.sqrt(gamma * m0 * r)
-                    if m0 <= self.tol:
-                        self.stop = True
+                # assemble the rhs vector
+                res_loc = self.__get_residual__(v_loc)
+                res_norm = self.__get_max_norm__(res_loc)
+                self.residual[rolling_interval].append(res_norm)
+                if self.residual[rolling_interval][-1] <= self.tol:
+                    break
 
                 i_alpha = self.__next_alpha__(i_alpha)
 
-                # assemble the residual vector
-                w_loc = self.__get_w__(self.alphas[i_alpha], v_loc, v1_loc)
-
                 # solving (S x I) g = w with ifft
-                g_loc, Rev = self.__get_fft__(w_loc, self.alphas[i_alpha])
+                g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])
 
                 # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
 
                 # solve local systems in 4 steps with diagonalization of QCinv
                 system_time = []
                 its = []
-
                 l_new = int(Rev, 2)
                 Dl_new = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
                 C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
@@ -176,8 +153,7 @@ class LinearParalpha(Helpers):
 
                 # step 2 ... solve local systems (I - Di * A) h1 = h
                 time_solver = MPI.Wtime()
-                h0 = np.zeros(self.rows_loc, dtype=complex, order='C')
-                h1_loc, it = self.__step2__(h_loc, D, h0, self.stol)
+                h1_loc, it = self.__step2__(h_loc, D, h0.copy(), self.stol)
                 system_time.append(MPI.Wtime() - time_solver)
                 its.append(it)
 
@@ -185,7 +161,7 @@ class LinearParalpha(Helpers):
                 h_loc = self.__step1__(Z, h1_loc)
 
                 # step 4 ... (C x I) h1 = h
-                self.u_loc = self.__step1__(Cinv, h_loc)
+                h1_loc = self.__step1__(Cinv, h_loc)
 
                 self.system_time_max[rolling_interval].append(self.comm.allreduce(max(system_time), op=MPI.MAX))
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
@@ -194,29 +170,25 @@ class LinearParalpha(Helpers):
 
                 self.inner_tols.append(self.stol)
 
-                # solving (Sinv x I) h1_loc = u with fft
-                self.__get_ifft__(self.alphas[i_alpha])
+                # solving (Sinv x I) h1_loc = h with ifft
+                h_loc = self.__get_ifft_h__(h1_loc, self.alphas[i_alpha])
 
                 # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------
 
-                # the processors that contain u_last have to decide whether to finish and compute the whole u or move on
-                # broadcast the error, a stopping criteria
-                # updates u_last_loc and u_last_loc_old
-                err_max = self.__get_u_last__()
-                self.err_last[rolling_interval].append(err_max)
+                # update the solution
+                self.u_loc += h_loc
 
-                # update u_last_loc on processors that need it (first column) if we are moving on
-                if self.err_last[rolling_interval][-1] < self.tol or self.iterations[rolling_interval] == self.maxiter:
+                # consecutive error, error of the increment
+                err_max = self.__get_max_norm__(h_loc)
+                self.consecutive_error[rolling_interval].append(err_max)
+
+                if self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
 
-                #if (1 < self.rolling != rolling_interval + 1) or not self.stop:
-                self.__bcast_u_last_loc__()
-
                 # DELETE
-
                 if self.rank == self.size - 1:#self.size_subcol_seq:
                     exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
-                    approx = self.u_last_loc.flatten()
+                    approx = self.u_loc[-self.global_size_A:]
                     d = exact - approx
                     d = d.flatten()
                     err_abs = np.linalg.norm(d, np.inf)
@@ -224,6 +196,7 @@ class LinearParalpha(Helpers):
                     print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
                 # DELETE
 
+                self.iterations[rolling_interval] += 1
                 # end of main iterations (while loop)
 
             # document writing
@@ -234,10 +207,10 @@ class LinearParalpha(Helpers):
             # update u0_loc (new initial condition) on processors that need it (first column) if we are not in the last rolling interval
             if rolling_interval + 1 < self.rolling:
 
-                if self.comm_last != 'None' and self.time_intervals > 1:
+                if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:
                     self.u0_loc = self.u_last_loc.copy()
 
-                # to support a sequrntial run
+                # to support a sequential run
                 elif self.time_intervals == 1:
 
                     if self.size == 1 or self.time_points == 1:
@@ -249,12 +222,11 @@ class LinearParalpha(Helpers):
                          if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
                              self.u0_loc = self.u_last_loc
 
-                    # without spatial but time_points > size_col
+                    # without spatial pralleism, but time_points > size_col
                     else:
                         self.u0_loc = self.comm_col.bcast(self.u_last_loc, root=self.size_col - 1)
                         if self.rank_col == self.size_col - 1:
                             self.u0_loc = self.u_last_loc
-
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)
@@ -264,19 +236,15 @@ class LinearParalpha(Helpers):
 
     def summary(self, details=False):
 
-        if self.rank == 0:
+        if self.rank == 0 and details:
             assert self.setup_var is True, 'Please call the setup function before summary.'
             print('-----------------------< summary >-----------------------')
             print('solving on T1 = {}, T2 = {}'.format(self.T_start, self.T_end), flush=True)
             print('no. of spatial points = {}'.format(self.spatial_points), flush=True)
             print('dx = {}'.format(self.dx), flush=True)
             print('no. of time points on an interval = {}'.format(self.time_points), flush=True)
-            if details:
-                print('    {}'.format(self.t), flush=True)
             print('no. of time intervals = {}'.format(self.time_intervals), flush=True)
-            print('no. of alphas = {}'.format(len(self.alphas)), flush=True)
-            if details:
-                print('    {}'.format(self.alphas), flush=True)
+            print('no. of alphas = {}, {}'.format(len(self.alphas), self.alphas), flush=True)
             print('rolling intervals = {}'.format(self.rolling), flush=True)
             print('dt (of one SDC interval) = {}'.format(self.dt), flush=True)
             print('processors for spatial parallelization for solving (I - Q x A) are {}'.format(self.proc_col), flush=True)
@@ -285,6 +253,8 @@ class LinearParalpha(Helpers):
             print('output document = {}'.format(self.document), flush=True)
             print('tol = {}'.format(self.tol), flush=True)
             print('last error = {}'.format(self.err_last), flush=True)
+            print('residuals = {}'.format(self.residual), flush=True)
+            print('consecutive errors= {}'.format(self.consecutive_error), flush=True)
             print('iterations of Paralpha = {}'.format(self.iterations), flush=True)
             print('max iterations of Paralpha = {}'.format(max(self.iterations)), flush=True)
             print('algorithm time = {:.5f} s'.format(self.algorithm_time), flush=True)
