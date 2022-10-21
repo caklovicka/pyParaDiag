@@ -12,7 +12,7 @@ class LinearIncrementParalpha(Helpers):
 
     def __init__(self):
 
-        Helpers.__init__(self)
+        super().__init__()
         self.setup_var = False
 
     def setup(self):

@@ -5,7 +5,7 @@ from core_parallel.queen_class import QueenClass
 class Communicators(QueenClass):
 
     def __init__(self):
-        QueenClass.__init__(self)
+        super().__init__()
 
     def setup(self):
 

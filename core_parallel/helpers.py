@@ -8,7 +8,7 @@ from scipy.sparse import linalg
 class Helpers(Communicators):
 
     def __init__(self):
-        Communicators.__init__(self)
+        super().__init__()
 
     def __next_alpha__(self, idx):
         if idx + 1 < len(self.alphas) and self.time_intervals > 1:

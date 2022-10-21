@@ -7,11 +7,12 @@ from scipy import sparse
 
 np.set_printoptions(precision=5, linewidth=np.inf)
 
+
 class LinearParalpha(Helpers):
 
     def __init__(self):
 
-        Helpers.__init__(self)
+        super().__init__()
         self.setup_var = False
 
     def setup(self):
