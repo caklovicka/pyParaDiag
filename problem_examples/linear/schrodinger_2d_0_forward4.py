@@ -27,7 +27,7 @@ class Schrodinger(LinearParalpha):
 
     def __init__(self):
 
-        LinearParalpha.__init__(self)
+        super().__init__()
 
     def setup(self):
 
