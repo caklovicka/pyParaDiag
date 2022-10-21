@@ -18,7 +18,6 @@ class LinearIncrementParalpha(Helpers):
     def setup(self):
 
         self.setup_var = True
-
         super(Helpers, self).setup()
 
         assert self.proc_col > 0, 'proc_col = {} should be > 0'.format(self.proc_col)

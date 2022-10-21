@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import sparse
-from core_parallel.nonlinear_increment_paralpha import NonlinearParalpha
+from core_parallel.nonlinear_increment_paralpha import NonlinearIncrementParalphaParalpha
 from petsc4py import PETSc
 
 """
@@ -9,7 +9,7 @@ u_t = c ( u_xx + u_yy ) + f
 """
 
 
-class AllenCahn(NonlinearParalpha):
+class AllenCahn(NonlinearIncrementParalpha):
 
     # user defined, just for this class
     c = 1
@@ -26,7 +26,7 @@ class AllenCahn(NonlinearParalpha):
 
     def __init__(self):
 
-        NonlinearParalpha.__init__(self)
+        super().__init__()
 
     def setup(self):
 

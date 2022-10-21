@@ -1,25 +1,24 @@
 import numpy as np
 from mpi4py import MPI
 from pySDC.core.Collocation import CollBase
-from core_parallel.helpers import LinearHelpers
+from core_parallel.helpers import Helpers
 import os
 from scipy import sparse
 
 np.set_printoptions(precision=5, linewidth=np.inf)
 
 
-class NonlinearParalpha(LinearHelpers):
+class NonlinearIncrementParalpha(Helpers):
 
     def __init__(self):
 
-        LinearHelpers.__init__(self)
+        super().__init__()
         self.setup_var = False
 
     def setup(self):
 
         self.setup_var = True
-
-        super(LinearHelpers, self).setup()
+        super(Helpers, self).setup()
 
         assert self.proc_col > 0, 'proc_col = {} should be > 0'.format(self.proc_col)
         assert self.proc_row > 0, 'proc_row = {} should be > 0'.format(self.proc_row)
