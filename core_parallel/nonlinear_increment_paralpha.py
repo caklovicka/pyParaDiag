@@ -25,8 +25,7 @@ class NonlinearIncrementParalpha(Helpers):
         assert np.log2(self.time_intervals) - int(np.log2(self.time_intervals)) < 0.1, 'time_intervals = {} should be power of 2.'.format(self.time_intervals)
         assert self.proc_col * self.proc_row == MPI.COMM_WORLD.Get_size(), 'Please input a sufficient amount of processors. You need {} and you have proc_col * proc_row = {}'.format(self.proc_col * self.proc_row, self.size)
 
-        assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'.format(
-            self.time_intervals, self.proc_row)
+        assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'.format(self.time_intervals, self.proc_row)
 
         if self.proc_col >= self.time_points:
             assert self.proc_col % self.time_points == 0, 'proc_col = {} has to be divisible by time_points = {}'.format(
@@ -38,16 +37,7 @@ class NonlinearIncrementParalpha(Helpers):
             assert self.proc_col >= self.time_points, 'proc_col = {} should be at least as time_points = {}'.format(
                 self.proc_col, self.time_points)
         else:
-            assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'.format(
-                self.time_points, self.proc_col)
-
-        if self.time_intervals > 1 and self.optimal_alphas is False:
-            assert len(self.alphas) >= 1, 'Please define a list of alphas, or put optimal_alphas=True'
-
-        if self.time_intervals == 1:
-            self.optimal_alphas = False
-            self.alphas = [0]
-            self.maxiter = 1
+            assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'.format(self.time_points, self.proc_col)
 
         # build variables
         self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
