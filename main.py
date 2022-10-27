@@ -11,7 +11,7 @@ prob = Advection()
 
 # choosing a number of points
 prob.spatial_points = [70, 60]            # number of unknowns for the 2D spatial problem
-prob.time_points = 1                        # number of collocation nodes (Gauss-Radau-Right)
+prob.time_points = 2                        # number of collocation nodes (Gauss-Radau-Right)
 
 # choosing a time domain
 prob.T_start = 0
@@ -19,7 +19,7 @@ prob.T_end = 0.0128
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 4                    # number of time-steps Paralpha will compute in parallel, for now needs to be a power of 2
-prob.rolling = 1                            # number of Paralpha propagations in a classical/sequential sense
+prob.rolling = 2                            # number of Paralpha propagations in a classical/sequential sense
 
 # choosing a parallelization strategy
 prob.proc_col = 1                           # number of cores handling the collocation problem
@@ -29,7 +29,7 @@ prob.proc_row = prob.time_intervals         # number of cores handling time-step
 prob.solver = 'custom'                      # custom (defined in the problem class through linear_solver), lu or gmres (from scipy)
 
 # setting maximum number of iterations
-prob.maxiter = 10                           # number of Paralpha maxiters
+prob.maxiter = 3                           # number of Paralpha maxiters
 prob.smaxiter = 50                          # number of inner solver maxiters
 
 # choosing a setting for the alpha sequence
@@ -37,7 +37,7 @@ prob.optimal_alphas = False
 prob.alphas = [1e-5]
 
 # setting tolerances
-prob.tol = 1e-12                            # a stopping tolerance for Paralpha
+prob.tol = 0#1e-12                            # a stopping tolerance for Paralpha
 prob.stol = 1e-16                           # a stopping relative tolerance for the inner solver
 prob.m0 = 10 * (prob.T_end - prob.T_start)  # a starting choice for the m_k sequence
 

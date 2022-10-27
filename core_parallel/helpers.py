@@ -1,5 +1,7 @@
 import numpy as np
 from core_parallel.communicators import Communicators
+from pySDC.core.Collocation import CollBase
+from scipy import sparse
 from mpi4py import MPI
 import scipy as sc
 from scipy.sparse import linalg
@@ -10,12 +12,85 @@ class Helpers(Communicators):
     def __init__(self):
         super().__init__()
 
+    def setup(self):
+
+        super().setup()
+
+        # assertions
+        assert self.proc_col > 0, 'proc_col = {} should be > 0'.format(self.proc_col)
+        assert self.proc_row > 0, 'proc_row = {} should be > 0'.format(self.proc_row)
+        assert np.log2(self.time_intervals) - int(np.log2(self.time_intervals)) < 0.1, 'time_intervals = {} should be power of 2.'.format(self.time_intervals)
+        assert self.proc_col * self.proc_row == MPI.COMM_WORLD.Get_size(), 'Please input a sufficient amount of processors. You need {} and you have proc_col * proc_row = {}'.format(self.proc_col * self.proc_row, self.size)
+
+        assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'.format(self.time_intervals, self.proc_row)
+
+        if self.proc_col >= self.time_points:
+            assert self.proc_col % self.time_points == 0, 'proc_col = {} has to be divisible by time_points = {}'.format(self.proc_col, self.time_points)
+            assert self.global_size_A * self.time_points % self.proc_col == 0, 'dimA * self.time_points = {} should be divisible by proc_col = {}'.format(self.global_size_A * self.time_points, self.proc_col)
+            assert self.proc_col <= self.global_size_A * self.time_points, 'proc_col = {} has to be less or equal to (dimA * time_points) = {}'.format(self.proc_col, self.global_size_A * self.time_points)
+            assert self.proc_col >= self.time_points, 'proc_col = {} should be at least as time_points = {}'.format(self.proc_col, self.time_points)
+        else:
+            assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'.format(self.time_points, self.proc_col)
+
+        # build variables
+        self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
+        coll = CollBase(self.time_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
+        self.t = self.dt * np.array(coll.nodes)
+
+        # fill u0
+        # case with spatial parallelization
+        if self.frac > 1:
+            self.u0_loc = self.u_initial(self.x).flatten()[self.rank_subcol_seq * self.rows_loc: (self.rank_subcol_seq + 1) * self.rows_loc]
+        # case without spatial parallelization
+        else:
+            self.u0_loc = self.u_initial(self.x).flatten()
+
+        # fill u_loc
+        self.u_loc = np.zeros(self.rows_loc, dtype=complex, order='C')
+        # case with spatial parallelization
+        if self.frac > 1:
+            self.u_loc += self.u0_loc.copy(order='C')
+        # case without spatial parallelization
+        else:
+            self.u_loc += np.tile(self.u0_loc, self.Frac)
+        self.u_last_old_loc = None
+
+        # auxiliaries
+        self.algorithm_time = 0
+        self.communication_time = 0
+        self.system_time_max = []
+        self.system_time_min = []
+        self.solver_its_max = []
+        self.solver_its_min = []
+        self.inner_tols = []
+        self.iterations = np.zeros(self.rolling)
+
+        # build matrices and vectors
+        self.Q = coll.Qmat[1:, 1:]
+        self.P = np.zeros((self.time_points, self.time_points))
+        for i in range(self.time_points):
+            self.P[i, -1] = 1
+        self.P = sparse.csr_matrix(self.P)
+
+        # documents
+        if self.rank == 0 and self.document != 'None':
+            self.time_document = self.document + '_times'
+            if os.path.exists(self.document):
+                os.remove(self.document)
+            if os.path.exists(self.time_document):
+                os.remove(self.time_document)
+            file = open(self.document, "w+")
+            file.close()
+            self.__write_time_in_txt__()
+
     def __next_alpha__(self, idx):
         if idx + 1 < len(self.alphas) and self.time_intervals > 1:
             idx += 1
         return idx
 
     def __get_v__(self, t_start):
+        # the rhs of the all-at-once system
+
         v = np.zeros(self.rows_loc, dtype=complex)
         shift = self.rank_row
 
@@ -250,6 +325,18 @@ class Helpers(Communicators):
 
         return res_loc
 
+    def __get_shifted_matrices__(self, l_new, a):
+
+        Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
+        C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
+
+        Cinv = np.linalg.inv(C)
+        R = self.Q @ Cinv
+        D, Z = np.linalg.eig(R)
+        Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
+
+        return Zinv, D, Z, Cinv
+
     def __get_max_norm__(self, c):
 
         err_loc = self.norm(c)
@@ -259,7 +346,7 @@ class Helpers(Communicators):
 
         return err_max
 
-    def __step1__(self, Zinv, g_loc):
+    def __solve_substitution__(self, Zinv, g_loc):
 
         h_loc = np.empty_like(g_loc, dtype=complex)
 
@@ -297,7 +384,7 @@ class Helpers(Communicators):
         # self.comm.Barrier()
         return h_loc
 
-    def __step2__(self, h_loc, D, x0, tol):
+    def __solve_inner_systems__(self, h_loc, D, x0, tol):
 
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
@@ -425,15 +512,29 @@ class Helpers(Communicators):
 
         self.u_loc *= a**(-self.rank_row / self.time_intervals)
 
-    def __get_u_last__(self):
+    def __fill_u_last__(self, fill_old):
+
+        # case with spatial parallelization, need reduction for maximal error
+        if self.frac > 1:
+            if self.size - self.size_subcol_seq <= self.rank:
+                if fill_old:
+                    self.u_last_old_loc = self.u_last_loc.copy()
+                self.u_last_loc = self.u_loc[:, -1]
+
+        # case without spatial parallelization, the whole vector is on the last processor
+        else:
+            if self.rank == self.size - 1:
+                if fill_old:
+                    self.u_last_old_loc = self.u_last_loc.copy()
+                self.u_last_loc = self.u_loc[-self.global_size_A:]
+
+    def __get_consecutive_error_last__(self):
 
         err_max = 0
 
         # case with spatial parallelization, need reduction for maximal error
         if self.frac > 1:
             if self.size - self.size_subcol_seq <= self.rank:
-                self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc[:, -1]
                 err_loc = self.norm(self.u_last_old_loc - self.u_last_loc)
 
                 time_beg = MPI.Wtime()
@@ -448,8 +549,6 @@ class Helpers(Communicators):
         # case without spatial parallelization, the whole vector is on the last processor
         else:
             if self.rank == self.size - 1:
-                self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc[-self.global_size_A:]
                 err_max = self.norm(self.u_last_old_loc - self.u_last_loc)
 
             # broadcast the error, a stopping criteria
@@ -461,6 +560,9 @@ class Helpers(Communicators):
         return err_max
 
     def __write_u_in_txt__(self, rolling_interval):
+
+        if self.document == 'None':
+            return
 
         # with spatial parallelization
         if self.frac != 0:
@@ -507,6 +609,8 @@ class Helpers(Communicators):
                         file.close()
                     self.comm.Barrier()
 
+        self.comm.Barrier()
+
     # solver (space parallelization not included yet)
     def __linear_solver__(self, M_loc, m_loc, m0, tol):
 
@@ -530,3 +634,70 @@ class Helpers(Communicators):
             x_loc = linalg.spsolve(M_loc, m_loc)
 
         return x_loc, it
+
+    def __print_on_runtime__(self, t_start, rolling_interval):
+
+        if self.rank == self.size - 1:  # self.size_subcol_seq:
+            exact = self.u_exact(t_start + self.dt * self.time_intervals, self.x).flatten()[self.row_beg:self.row_end]
+            approx = self.u_loc[-self.global_size_A:]
+            d = exact - approx
+            d = d.flatten()
+            err_abs = np.linalg.norm(d, np.inf)
+            err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
+            print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
+
+    def summary(self, details=False):
+
+        if self.rank == 0 and details:
+            assert self.setup_var is True, 'Please call the setup function before summary.'
+            print('----------------')
+            print(' discretization ')
+            print('----------------')
+            print('solving on [{}, {}]'.format(self.T_start, self.T_end), flush=True)
+            print('no. of spatial points = {}, dx = {}'.format(self.spatial_points, self.dx), flush=True)
+            print('no. of time intervals = {}, dt = {}'.format(self.time_intervals, self.dt), flush=True)
+            print('no. of collocation points = {}'.format(self.time_points), flush=True)
+            if details:
+                print('    {}'.format(self.t), flush=True)
+            print('no. of alphas = {}'.format(len(self.alphas)), flush=True)
+            if details:
+                print('    {}'.format(self.alphas), flush=True)
+            print('rolling intervals = {}'.format(self.rolling), flush=True)
+
+            print()
+            print('-----------------')
+            print(' parallelization ')
+            print('-----------------')
+            print('processors for spatial parallelization for solving (I - Q x A) are {}'.format(self.proc_col), flush=True)
+            print('processors for time interval parallelization are {}'.format(self.proc_row), flush=True)
+
+            print()
+            print('-------')
+            print(' other ')
+            print('-------')
+            print('maxiter of paradiag = {}'.format(self.maxiter), flush=True)
+            print('output document = {}'.format(self.document), flush=True)
+            print('tol = {}'.format(self.tol), flush=True)
+
+            print()
+            print('--------')
+            print(' output ')
+            print('--------')
+            print('consecutive last error = {}'.format(self.consecutive_err_last), flush=True)
+            print('consecutive error = {}'.format(self.consecutive_error), flush=True)
+            print('residuals = {}'.format(self.residual), flush=True)
+            print()
+            print('iterations of paradiag = {}'.format(self.iterations), flush=True)
+            print('max iterations of paradiag = {}'.format(max(self.iterations)), flush=True)
+            print()
+            print('algorithm time = {:.5f} s'.format(self.algorithm_time), flush=True)
+            print('communication time = {:.5f} s'.format(self.communication_time), flush=True)
+            print()
+            print('inner solver = {}'.format(self.solver), flush=True)
+            print('system_time_max = {}'.format(self.system_time_max), flush=True)
+            print('system_time_min = {}'.format(self.system_time_min), flush=True)
+            print('solver_its_max = {}'.format(self.solver_its_max), flush=True)
+            print('solver_its_min = {}'.format(self.solver_its_min), flush=True)
+            print('inner solver tols = {}'.format(self.inner_tols), flush=True)
+            print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
+            print('-----------------------< end summary >-----------------------')
