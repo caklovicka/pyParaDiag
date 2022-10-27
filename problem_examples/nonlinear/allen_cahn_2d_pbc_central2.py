@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import sparse
-from core_parallel.nonlinear_increment_paralpha import NonlinearIncrementParalphaParalpha
+from core_parallel.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
 from petsc4py import PETSc
 
 """
@@ -9,7 +9,7 @@ u_t = c ( u_xx + u_yy ) + f
 """
 
 
-class AllenCahn(NonlinearIncrementParalpha):
+class AllenCahn(IMEXNewtonIncrementParalpha):
 
     # user defined, just for this class
     c = 1
@@ -92,16 +92,16 @@ class AllenCahn(NonlinearIncrementParalpha):
 
     # user defined - returns local chunk, depends on u
     def F(self, u):
-        return 1 / self.eps ** 2 * u * (1 - u ** 2)
+        return 1 / self.eps ** 2 * u * (1 - u) * (1 - 2 * u)
 
     # user defined - returns local chunk, depends on u
     # for now, depends just on u and assumes the Jacobian is a diagonal matrix
     def dF(self, u):
-        return 1 / self.eps ** 2 * (1 - 3 * u ** 2)
+        return 1 / self.eps ** 2 * (1 - 6 * u - 6 * u ** 2)
 
     # user defined
     def u_initial(self, z):
-        return np.tanh((self.R - np.sqrt(z[0] ** 2 + z[1] ** 2)) / (np.sqrt(2) * self.eps))
+        return 0.5 * (1 + np.sin(2 * np. pi * z[0]) * np.sin(2 * np.pi * z[1]))
 
     # user defined, depends on (t, x)
     @staticmethod
@@ -129,7 +129,7 @@ class AllenCahn(NonlinearIncrementParalpha):
         ksp.create(comm=self.comm_matrix)
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, max_it=self.global_size_A)
+        ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)

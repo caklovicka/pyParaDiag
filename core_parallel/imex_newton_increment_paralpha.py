@@ -3,8 +3,6 @@ from mpi4py import MPI
 from core_parallel.helpers import Helpers
 import os
 
-np.set_printoptions(precision=5, linewidth=np.inf)
-
 
 class IMEXNewtonIncrementParalpha(Helpers):
 
@@ -39,21 +37,31 @@ class IMEXNewtonIncrementParalpha(Helpers):
             self.solver_its_max.append([])
             self.solver_its_min.append([])
             i_alpha = -1
+            i_beta = -1
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
             h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
 
             v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
-            exit()
+
+            if self.betas == NotImplemented:
+                self.betas = [0]
+            J_loc = None
 
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:       # main iterations
 
-                res_loc = self.__get_residual__(v_loc)      # rhs vector of the iteration
+                i_alpha = self.__next_alpha__(i_alpha)
+                i_beta = self.__next_beta__(i_beta)
+
+                res_loc = self.__get_linear_residual__(v_loc)      # rhs vector of the iteration
+
+                if self.betas[i_beta] > 0:
+                    J_loc = self.__get_average_J__()
+
+                res_loc += self.__get_F_residual__(t_start, self.betas[i_beta], J_loc)      # add the explicit part
                 res_norm = self.__get_max_norm__(res_loc)
                 self.residual[rolling_interval].append(res_norm)
                 if self.residual[rolling_interval][-1] <= self.tol:
                     break
-
-                i_alpha = self.__next_alpha__(i_alpha)
 
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])        # solving (S x I) g = w with ifft
 
@@ -67,7 +75,10 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
 
                 time_solver = MPI.Wtime()
-                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0.copy(), self.stol)       # step 2 ... solve local systems (I - Di * A) h1 = h
+                if self.betas[i_beta] > 0:
+                    h1_loc, it = self.__solve_inner_systems_J__(h_loc, D, J_loc, self.betas[i_beta], h0.copy(), self.stol)
+                else:
+                    h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0.copy(), self.stol)
                 system_time.append(MPI.Wtime() - time_solver)
                 its.append(it)
 
@@ -91,7 +102,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 if self.iterations[rolling_interval] == self.maxiter:
                     self.stop = True
 
-                self.__print_on_runtime__(t_start, rolling_interval)
+                #self.__print_on_runtime__(t_start, rolling_interval)
 
                 # end of main iterations (while loop)
 

@@ -5,6 +5,7 @@ import abc
 class QueenClass(abc.ABC):
 
     alphas = []
+    betas = []
     bad_alphas = []
     m0 = 1
     dt = NotImplemented

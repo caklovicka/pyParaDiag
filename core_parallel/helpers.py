@@ -88,6 +88,11 @@ class Helpers(Communicators):
             idx += 1
         return idx
 
+    def __next_beta__(self, idx):
+        if idx + 1 < len(self.betas) and self.time_intervals > 1:
+            idx += 1
+        return idx
+
     def __get_v__(self, t_start):
         # the rhs of the all-at-once system
 
@@ -191,7 +196,22 @@ class Helpers(Communicators):
                 w_loc += v1
         return w_loc
 
-    def __get_linear_residual__(self, v_loc):
+    def __get_Au__(self):
+
+        Au_loc = np.zeros_like(self.u_loc)
+        # case with spatial parallelization
+        if self.frac > 1:
+            # TODO with petsc
+            raise RuntimeError('Not implemented')
+
+        # case without spatial parallelization
+        else:
+            for i in range(self.Frac):
+                Au_loc[i * self.global_size_A: (i + 1) * self.global_size_A] = self.Apar @ self.u_loc[i * self.global_size_A: (i + 1) * self.global_size_A]
+
+        return Au_loc
+
+    def __get_Hu__(self):
 
         Hu_loc = None
         req = None
@@ -254,6 +274,12 @@ class Helpers(Communicators):
             Hu_loc = self.comm_col.bcast(Hu_loc, root=self.size_col - 1)
             self.communication_time += MPI.Wtime() - time_beg
 
+        return Hu_loc
+
+    def __get_linear_residual__(self, v_loc):
+
+        Hu_loc = self.__get_Hu__()
+
         # assemble first part of res_loc
         if self.rank_row == 0:
             res_loc = v_loc.copy()
@@ -265,53 +291,8 @@ class Helpers(Communicators):
             else:
                 res_loc = v_loc + np.tile(Hu_loc, self.Frac)
 
-        # computation of Au
-        Au_loc = np.zeros_like(self.u_loc)
-        # case with spatial parallelization
-        if self.frac > 1:
-            # TODO
-            raise RuntimeError('Not implemented')
-
-        # case without spatial parallelization
-        else:
-            for i in range(self.Frac):
-                Au_loc[i * self.global_size_A: (i + 1) * self.global_size_A] = self.Apar @ self.u_loc[i * self.global_size_A: (i + 1) * self.global_size_A]
-
-        # computation of Cu in Hu_loc
-        Hu_loc = self.u_loc.copy(order='C')
-        # case with spatial parallelization
-        if self.frac > 1:
-            # TODO
-            raise RuntimeError('Not implemented')
-
-        # case without spatial paralellization
-        else:
-            tmp = np.zeros_like(self.u_loc)
-
-            # every processor reduces on p
-            for p in range(self.size_col):
-                tmp *= 0
-                # compute local sums
-                for i in range(self.Frac):
-                    for j in range(self.Frac):
-                        i_global = p * self.Frac + i
-                        j_global = self.rank_col * self.Frac + j
-                        tmp[i * self.global_size_A: (i + 1) * self.global_size_A] -= self.dt * self.Q[
-                            i_global, j_global] * Au_loc[j * self.global_size_A: (j + 1) * self.global_size_A]
-
-                # reduce to p
-                tmp2 = None
-                if self.size_col > 1:
-                    time_beg = MPI.Wtime()
-                    tmp2 = self.comm_col.reduce(tmp, op=MPI.SUM, root=p)
-                    self.communication_time += MPI.Wtime() - time_beg
-
-                if self.rank_col == p:
-                    Hu_loc += tmp
-                elif tmp2 is not None:
-                    Hu_loc += tmp2
-
-        res_loc -= Hu_loc
+        Cu_loc = self.u_loc - self.dt * self.__solve_substitution__(self.Q, self.__get_Au__())
+        res_loc -= Cu_loc
 
         # add u0 where needed
         if self.rank_row == 0:
@@ -325,9 +306,46 @@ class Helpers(Communicators):
 
         return res_loc
 
-    def __get_F_residual__(self, t_start):
+    def __get_average_J__(self):
 
-        # the rhs of the all-at-once system
+        if self.iterations[-1] == 1:
+            J = self.dF(self.u0_loc)
+            return J
+
+        J = None
+
+        # with spatial parallelization
+        if self.row_end - self.row_beg != self.global_size_A:
+            # get just average of the last stages
+            if self.rank_col >= self.size_col - self.size_subcol_seq:
+                time_beg = MPI.Wtime()
+                J = self.comm_row.allreduce(self.dF(self.u_loc) / self.time_intervals, op=MPI.SUM)
+                self.communication_time += MPI.Wtime() - time_beg
+
+            # broadcast it to all other stages
+            if self.size_subcol_alternating > 1:
+                time_beg = MPI.Wtime()
+                J = self.comm_subcol_alternating.bcast(J, root=self.size_subcol_alternating - 1)
+                self.communication_time += MPI.Wtime() - time_beg
+
+        # without spatial parallelization
+        else:
+            if self.rank_col == self.size_col - 1:
+                time_beg = MPI.Wtime()
+                J = self.comm_row.allreduce(self.dF(self.u_loc[-self.global_size_A:]) / self.time_intervals, op=MPI.SUM)
+                self.communication_time += MPI.Wtime() - time_beg
+
+            # broadcast it to all other stages
+            if self.size_col > 1:
+                time_beg = MPI.Wtime()
+                J = self.comm_col.bcast(J, root=self.size_col - 1)
+                self.communication_time += MPI.Wtime() - time_beg
+
+        return J
+
+    def __get_F_residual__(self, t_start, beta, J_loc):
+
+        # return dt * (Q x I)F(u) or dt * (Q x I)(F(u) - beta * (I x J)u)
 
         res = np.zeros(self.rows_loc, dtype=complex)
         shift = self.rank_row
@@ -341,7 +359,20 @@ class Helpers(Communicators):
         else:
             for i in range(self.Frac):
                 for k in range(self.time_points):
-                    res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(t_start + self.t[k] + shift * self.dt, self.x, self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
+                    res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
+
+        if beta > 0:
+
+            # case with spatial parallelization
+            if self.frac > 1:
+                for k in range(self.time_points):
+                    res -= beta * self.dt * self.Q[self.rank_subcol_alternating, k] * np.dot(J_loc, self.u_loc)
+
+            # case without spatial parallelization
+            else:
+                for i in range(self.Frac):
+                    for k in range(self.time_points):
+                        res[i * self.global_size_A:(i + 1) * self.global_size_A] -= beta * self.dt * self.Q[i + self.Frac * self.rank_col, k] * np.dot(J_loc, self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
 
         return res
 
@@ -424,6 +455,29 @@ class Helpers(Communicators):
 
         return h1_loc, it
 
+    def __solve_inner_systems_J__(self, h_loc, D, J, b, x0, tol):
+
+        # case with spatial parallelization
+        if self.row_end - self.row_beg != self.global_size_A:
+            I = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg)
+            d = self.dt * D[self.rank_subcol_alternating]
+            sys = I - d * (self.Apar + b * sc.sparse.spdiags(data=J, diags=self.row_beg, m=self.row_end - self.row_beg, n=self.global_size_A))
+            h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
+
+        # case without spatial parallelization
+        else:
+            h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
+            for i in range(self.Frac):
+                I = sc.sparse.eye(self.global_size_A)
+                d = self.dt * D[i + self.rank_col * self.Frac]
+                sys = I - d * (self.Apar + b * sc.sparse.spdiags(data=J, diags=0, m=self.global_size_A, n=self.global_size_A))
+                if self.solver == 'custom':
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                else:
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+
+        return h1_loc, it
+
     def __get_ifft_h__(self, h1_loc, a):
 
         if self.time_intervals == 1:
@@ -487,6 +541,7 @@ class Helpers(Communicators):
                     for i in range(self.time_points):
                         file.write(str(k * self.dt + self.t[i] + t_start) + '\n')
             file.close()
+
     # ifft
     def __get_ifft__(self, a):
 

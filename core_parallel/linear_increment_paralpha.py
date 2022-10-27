@@ -23,7 +23,6 @@ class LinearIncrementParalpha(Helpers):
         self.consecutive_error = []
         self.residual = []
 
-
     def solve(self):
 
         self.comm.Barrier()
@@ -47,7 +46,7 @@ class LinearIncrementParalpha(Helpers):
 
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:       # main iterations
 
-                res_loc = self.__get_residual__(v_loc)      # rhs vector of the iteration
+                res_loc = self.__get_linear_residual__(v_loc)      # rhs vector of the iteration
                 res_norm = self.__get_max_norm__(res_loc)
                 self.residual[rolling_interval].append(res_norm)
                 if self.residual[rolling_interval][-1] <= self.tol:

@@ -11,7 +11,7 @@ prob = Advection()
 
 # choosing a number of points
 prob.spatial_points = [70, 60]            # number of unknowns for the 2D spatial problem
-prob.time_points = 2                        # number of collocation nodes (Gauss-Radau-Right)
+prob.time_points = 3                        # number of collocation nodes (Gauss-Radau-Right)
 
 # choosing a time domain
 prob.T_start = 0
@@ -29,11 +29,10 @@ prob.proc_row = prob.time_intervals         # number of cores handling time-step
 prob.solver = 'custom'                      # custom (defined in the problem class through linear_solver), lu or gmres (from scipy)
 
 # setting maximum number of iterations
-prob.maxiter = 3                           # number of Paralpha maxiters
+prob.maxiter = 5                           # number of Paralpha maxiters
 prob.smaxiter = 50                          # number of inner solver maxiters
 
 # choosing a setting for the alpha sequence
-prob.optimal_alphas = False
 prob.alphas = [1e-5]
 
 # setting tolerances
