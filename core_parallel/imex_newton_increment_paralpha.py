@@ -6,7 +6,7 @@ import os
 np.set_printoptions(precision=5, linewidth=np.inf)
 
 
-class LinearIncrementParalpha(Helpers):
+class IMEXNewtonIncrementParalpha(Helpers):
 
     def __init__(self):
 
@@ -22,7 +22,6 @@ class LinearIncrementParalpha(Helpers):
             self.u_last_loc = self.u0_loc.copy(order='C')
         self.consecutive_error = []
         self.residual = []
-
 
     def solve(self):
 
@@ -44,6 +43,7 @@ class LinearIncrementParalpha(Helpers):
             h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
 
             v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
+            exit()
 
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:       # main iterations
 

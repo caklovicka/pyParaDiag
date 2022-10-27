@@ -191,7 +191,7 @@ class Helpers(Communicators):
                 w_loc += v1
         return w_loc
 
-    def __get_residual__(self, v_loc):
+    def __get_linear_residual__(self, v_loc):
 
         Hu_loc = None
         req = None
@@ -324,6 +324,26 @@ class Helpers(Communicators):
                 res_loc += np.tile(self.u0_loc, self.Frac)
 
         return res_loc
+
+    def __get_F_residual__(self, t_start):
+
+        # the rhs of the all-at-once system
+
+        res = np.zeros(self.rows_loc, dtype=complex)
+        shift = self.rank_row
+
+        # case with spatial parallelization
+        if self.frac > 1:
+            for k in range(self.time_points):
+                res += self.dt * self.Q[self.rank_subcol_alternating, k] * self.F(t_start + self.t[k] + shift * self.dt, self.x, self.u_loc)
+
+        # case without spatial parallelization
+        else:
+            for i in range(self.Frac):
+                for k in range(self.time_points):
+                    res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(t_start + self.t[k] + shift * self.dt, self.x, self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
+
+        return res
 
     def __get_shifted_matrices__(self, l_new, a):
 
@@ -648,6 +668,7 @@ class Helpers(Communicators):
 
     def summary(self, details=False):
 
+        np.set_printoptions(precision=5, linewidth=np.inf)
         if self.rank == 0 and details:
             assert self.setup_var is True, 'Please call the setup function before summary.'
             print('----------------')
@@ -675,7 +696,7 @@ class Helpers(Communicators):
             print('-------')
             print(' other ')
             print('-------')
-            print('maxiter of paradiag = {}'.format(self.maxiter), flush=True)
+            print('maxiter of paradiag = {}'.format(int(self.maxiter)), flush=True)
             print('output document = {}'.format(self.document), flush=True)
             print('tol = {}'.format(self.tol), flush=True)
 
@@ -683,21 +704,55 @@ class Helpers(Communicators):
             print('--------')
             print(' output ')
             print('--------')
-            print('consecutive last error = {}'.format(self.consecutive_err_last), flush=True)
-            print('consecutive error = {}'.format(self.consecutive_error), flush=True)
-            print('residuals = {}'.format(self.residual), flush=True)
+
+            for i in range(self.rolling):
+                if self.consecutive_err_last != NotImplemented:
+                    self.consecutive_err_last[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_err_last[i]]
+                if self.consecutive_error != NotImplemented:
+                    self.consecutive_error[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_error[i]]
+                if self.residual != NotImplemented:
+                    self.residual[i] = [float("{:.5e}".format(elem)) for elem in self.residual[i]]
+
+            if self.consecutive_err_last != NotImplemented:
+                print('consecutive errors (last) = ', flush=True)
+                for i in self.consecutive_err_last:
+                    print(i, flush=True)
+
+            if self.consecutive_error != NotImplemented:
+                print('consecutive errors = ', flush=True)
+                for i in self.consecutive_error:
+                    print(i, flush=True)
+
+            if self.residual != NotImplemented:
+                print('residuals = ', flush=True)
+                for i in self.residual:
+                    print(i, flush=True)
             print()
+            self.iterations = [int(elem) for elem in self.iterations]
             print('iterations of paradiag = {}'.format(self.iterations), flush=True)
-            print('max iterations of paradiag = {}'.format(max(self.iterations)), flush=True)
+            print('max iterations of paradiag = {}'.format(int(max(self.iterations))), flush=True)
             print()
             print('algorithm time = {:.5f} s'.format(self.algorithm_time), flush=True)
             print('communication time = {:.5f} s'.format(self.communication_time), flush=True)
             print()
             print('inner solver = {}'.format(self.solver), flush=True)
-            print('system_time_max = {}'.format(self.system_time_max), flush=True)
-            print('system_time_min = {}'.format(self.system_time_min), flush=True)
-            print('solver_its_max = {}'.format(self.solver_its_max), flush=True)
-            print('solver_its_min = {}'.format(self.solver_its_min), flush=True)
-            print('inner solver tols = {}'.format(self.inner_tols), flush=True)
+
+            for i in range(self.rolling):
+                self.system_time_max[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_max[i]]
+                self.system_time_min[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_min[i]]
+
+            print('system_time_max =', flush=True)
+            for i in self.system_time_max:
+                print(i, flush=True)
+            print('system_time_min = ', flush=True)
+            for i in self.system_time_min:
+                print(i, flush=True)
+            print('solver_its_max =', flush=True)
+            for i in self.solver_its_max:
+                print(i, flush=True)
+            print('solver_its_min =', flush=True)
+            for i in self.solver_its_min:
+                print(i, flush=True)
+            print('inner solver tol = {}'.format(self.inner_tols[0]), flush=True)
             print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
             print('-----------------------< end summary >-----------------------')
