@@ -156,7 +156,7 @@ class Wave(LinearParalpha):
         m0.createWithArray(array=m0_loc, comm=self.comm_matrix)
         M = PETSc.Mat()
         csr = (M_loc.indptr, M_loc.indices, M_loc.data)
-        M.createAIJ(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
+        M.createAIJWithArrays(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
 
         ksp = PETSc.KSP()
         ksp.create(comm=self.comm_matrix)
@@ -175,5 +175,6 @@ class Wave(LinearParalpha):
         m0.destroy()
         ksp.destroy()
         M.destroy()
+        pc.destroy()
 
-        return sol
+        return sol, it
