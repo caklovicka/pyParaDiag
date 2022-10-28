@@ -6,6 +6,7 @@ from mpi4py import MPI
 from petsc4py import PETSc
 import scipy as sc
 from scipy.sparse import linalg
+import os
 
 
 class Helpers(Communicators):
@@ -228,6 +229,9 @@ class Helpers(Communicators):
 
     def __get_Hu__(self):
 
+        if self.time_intervals == 1:
+            return self.u0_loc
+
         Hu_loc = None
         req = None
 
@@ -358,7 +362,7 @@ class Helpers(Communicators):
 
         return J
 
-    def __get_F_residual__(self):
+    def __get_F__(self):
 
         # return dt * (Q x I)F(u)
 
@@ -410,6 +414,10 @@ class Helpers(Communicators):
     def __get_max_norm__(self, c):
 
         err_loc = self.norm(c)
+
+        if self.size == 1:
+            return err_loc
+
         time_beg = MPI.Wtime()
         err_max = self.comm.allreduce(err_loc, op=MPI.MAX)
         self.communication_time += MPI.Wtime() - time_beg
@@ -547,7 +555,7 @@ class Helpers(Communicators):
 
     def __bcast_u_last_loc__(self):
 
-        if self.comm_last != None and self.time_intervals > 1:  # and self.size_col < self.size:
+        if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:  # and self.size_col < self.size:
             time_beg = MPI.Wtime()
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg
@@ -661,13 +669,13 @@ class Helpers(Communicators):
             return
 
         # with spatial parallelization
-        if self.frac != 0:
+        if self.frac > 1:
             if rolling_interval == 0:
                 for proc in range(self.size_subcol_seq):
                     if self.rank == proc:
                         file = open(self.document, "a")
                         for element in self.u0_loc:
-                            file.write(str(complex(element)) + ' ')
+                            file.write(str(complex(element)) + '\n')
                         if (proc + 1) % self.frac == 0:
                             file.write('\n')
                         file.close()
@@ -678,7 +686,7 @@ class Helpers(Communicators):
                     if self.rank_col is r and self.rank_row is c:
                         file = open(self.document, "a")
                         for element in self.u_loc:
-                            file.write(str(element) + ' ')
+                            file.write(str(element) + '\n')
                         if (self.rank_col+1) % self.frac == 0:
                             file.write('\n')
                         file.close()
@@ -689,7 +697,7 @@ class Helpers(Communicators):
             if self.rank == 0:
                 file = open(self.document, "a")
                 for element in self.u0_loc:
-                    file.write(str(complex(element)) + ' ')
+                    file.write(str(complex(element)) + '\n')
                 file.write('\n')
                 file.close()
             self.comm.Barrier()
@@ -700,11 +708,37 @@ class Helpers(Communicators):
                         file = open(self.document, "a")
                         for i in range(self.Frac):
                             for element in self.u_loc[i*self.global_size_A:(i+1)*self.global_size_A]:
-                                file.write(str(element) + ' ')
+                                file.write(str(element) + '\n')
                             file.write('\n')
                         file.close()
                     self.comm.Barrier()
 
+        self.comm.Barrier()
+
+    def __write_u_last_in_txt__(self):
+
+        self.__fill_u_last__(fill_old=False)
+        if self.document == 'None':
+            return
+
+        # with spatial parallelization
+        if self.frac > 1:
+            for proc in range(prob.size - prob.size_subcol_seq, prob.size, 1):
+                if self.rank == proc:
+                    file = open(self.document, "a")
+                    for element in self.u_last_loc:
+                        file.write(str(complex(element)) + '\n')
+                    file.close()
+                self.comm.Barrier()
+
+        # without spatial parallelization
+        else:
+            if self.rank == self.size - 1:
+                file = open(self.document, "a")
+                for element in self.u_last_loc:
+                    file.write(str(complex(element)) + '\n')
+                file.close()
+            self.comm.Barrier()
         self.comm.Barrier()
 
     # solver (space parallelization not included yet)
@@ -806,7 +840,9 @@ class Helpers(Communicators):
             print()
             self.iterations = [int(elem) for elem in self.iterations]
             print('iterations of paradiag = {}'.format(self.iterations), flush=True)
+            print('total iterations of paradiag = {}'.format(int(sum(self.iterations))), flush=True)
             print('max iterations of paradiag = {}'.format(int(max(self.iterations))), flush=True)
+            print('min iterations of paradiag = {}'.format(int(min(self.iterations))), flush=True)
             print()
             print('algorithm time = {:.5f} s'.format(self.algorithm_time), flush=True)
             print('communication time = {:.5f} s'.format(self.communication_time), flush=True)
