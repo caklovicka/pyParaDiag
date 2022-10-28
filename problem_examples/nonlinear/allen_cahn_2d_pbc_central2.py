@@ -8,7 +8,6 @@ Allen Cahn eq. in 2d, 2nd order central differences and pbc
 u_t = c ( u_xx + u_yy ) + f
 """
 
-
 class AllenCahn(IMEXNewtonIncrementParalpha):
 
     # user defined, just for this class
@@ -123,7 +122,7 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
         m0.createWithArray(array=m0_loc, comm=self.comm_matrix)
         M = PETSc.Mat()
         csr = (M_loc.indptr, M_loc.indices, M_loc.data)
-        M.createAIJ(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
+        M.createAIJWithArrays(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
 
         ksp = PETSc.KSP()
         ksp.create(comm=self.comm_matrix)

@@ -5,6 +5,7 @@ import os
 
 np.set_printoptions(precision=5, linewidth=np.inf)
 
+# todo make sequential sun supported
 
 class LinearIncrementParalpha(Helpers):
 

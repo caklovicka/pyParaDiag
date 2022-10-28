@@ -11,7 +11,7 @@ prob = Advection()
 
 # choosing a number of points
 prob.spatial_points = [70, 60]            # number of unknowns for the 2D spatial problem
-prob.time_points = 3                        # number of collocation nodes (Gauss-Radau-Right)
+prob.time_points = 1                        # number of collocation nodes (Gauss-Radau-Right)
 
 # choosing a time domain
 prob.T_start = 0

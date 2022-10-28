@@ -3,6 +3,7 @@ from core_parallel.communicators import Communicators
 from pySDC.core.Collocation import CollBase
 from scipy import sparse
 from mpi4py import MPI
+from petsc4py import PETSc
 import scipy as sc
 from scipy.sparse import linalg
 
@@ -201,8 +202,22 @@ class Helpers(Communicators):
         Au_loc = np.zeros_like(self.u_loc)
         # case with spatial parallelization
         if self.frac > 1:
-            # TODO with petsc
-            raise RuntimeError('Not implemented')
+            A_petsc = PETSc.Mat()
+            csr = (self.Apar.indptr, self.Apar.indices, self.Apar.data)
+            A_petsc.createAIJWithArrays(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
+
+            u_petsc = PETSc.Vec()
+            u_petsc.createWithArray(array=self.u_loc, comm=self.comm_matrix)
+
+            Au_petsc = PETSc.Vec()
+            Au_petsc.createWithArray(Au_loc, comm=self.comm_matrix)
+
+            A_petsc.mult(u_petsc, Au_petsc)
+            Au_loc = Au_petsc.getArray()
+
+            A_petsc.destroy()
+            u_petsc.destroy()
+            Au_petsc.destroy()
 
         # case without spatial parallelization
         else:
@@ -353,7 +368,7 @@ class Helpers(Communicators):
         # case with spatial parallelization
         if self.frac > 1:
             for k in range(self.time_points):
-                res += self.dt * self.Q[self.rank_subcol_alternating, k] * self.F(t_start + self.t[k] + shift * self.dt, self.x, self.u_loc)
+                res += self.dt * self.Q[self.rank_subcol_alternating, k] * self.F(self.u_loc)
 
         # case without spatial parallelization
         else:
@@ -594,7 +609,7 @@ class Helpers(Communicators):
             if self.size - self.size_subcol_seq <= self.rank:
                 if fill_old:
                     self.u_last_old_loc = self.u_last_loc.copy()
-                self.u_last_loc = self.u_loc[:, -1]
+                self.u_last_loc = self.u_loc.copy()
 
         # case without spatial parallelization, the whole vector is on the last processor
         else:
