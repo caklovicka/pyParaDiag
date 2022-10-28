@@ -52,13 +52,10 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 i_alpha = self.__next_alpha__(i_alpha)
                 i_beta = self.__next_beta__(i_beta)
 
-                res_loc = self.__get_linear_residual__(v_loc)      # rhs vector of the iteration
-
-                if self.betas[i_beta] > 0:
-                    J_loc = self.__get_average_J__()
-
-                res_loc += self.__get_F_residual__(t_start, self.betas[i_beta], J_loc)      # add the explicit part
+                res_loc = self.__get_linear_residual__(v_loc)       # rhs vector of the iteration
+                res_loc += self.__get_F_residual__()                # add the explicit part
                 res_norm = self.__get_max_norm__(res_loc)
+
                 self.residual[rolling_interval].append(res_norm)
                 if self.residual[rolling_interval][-1] <= self.tol:
                     break
@@ -76,7 +73,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                 time_solver = MPI.Wtime()
                 if self.betas[i_beta] > 0:
-                    h1_loc, it = self.__solve_inner_systems_J__(h_loc, D, J_loc, self.betas[i_beta], h0.copy(), self.stol)
+                    h1_loc, it = self.__solve_inner_systems_J__(h_loc, D, self.betas[i_beta], h0.copy(), self.stol)
                 else:
                     h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0.copy(), self.stol)
                 system_time.append(MPI.Wtime() - time_solver)

@@ -8,6 +8,7 @@ Allen Cahn eq. in 2d, 2nd order central differences and pbc
 u_t = c ( u_xx + u_yy ) + f
 """
 
+
 class AllenCahn(IMEXNewtonIncrementParalpha):
 
     # user defined, just for this class

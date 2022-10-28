@@ -358,9 +358,9 @@ class Helpers(Communicators):
 
         return J
 
-    def __get_F_residual__(self, t_start, beta, J_loc):
+    def __get_F_residual__(self):
 
-        # return dt * (Q x I)F(u) or dt * (Q x I)(F(u) - beta * (I x J)u)
+        # return dt * (Q x I)F(u)
 
         res = np.zeros(self.rows_loc, dtype=complex)
         shift = self.rank_row
@@ -376,18 +376,22 @@ class Helpers(Communicators):
                 for k in range(self.time_points):
                     res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
 
-        if beta > 0:
+        return res
 
-            # case with spatial parallelization
-            if self.frac > 1:
+    def __get_J_residual__(self, beta, J_loc):
+
+        # return dt * (Q x I)( - beta * (I x J)u)
+        res = np.zeros(self.rows_loc, dtype=complex)
+        # case with spatial parallelization
+        if self.frac > 1:
+            for k in range(self.time_points):
+                res -= beta * self.dt * self.Q[self.rank_subcol_alternating, k] * np.dot(J_loc, self.u_loc)
+
+        # case without spatial parallelization
+        else:
+            for i in range(self.Frac):
                 for k in range(self.time_points):
-                    res -= beta * self.dt * self.Q[self.rank_subcol_alternating, k] * np.dot(J_loc, self.u_loc)
-
-            # case without spatial parallelization
-            else:
-                for i in range(self.Frac):
-                    for k in range(self.time_points):
-                        res[i * self.global_size_A:(i + 1) * self.global_size_A] -= beta * self.dt * self.Q[i + self.Frac * self.rank_col, k] * np.dot(J_loc, self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
+                    res[i * self.global_size_A:(i + 1) * self.global_size_A] -= beta * self.dt * self.Q[i + self.Frac * self.rank_col, k] * np.dot(J_loc, self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
 
         return res
 
@@ -470,8 +474,11 @@ class Helpers(Communicators):
 
         return h1_loc, it
 
-    def __solve_inner_systems_J__(self, h_loc, D, J, b, x0, tol):
+    def __solve_inner_systems_J__(self, h_loc, D, b, x0, tol):
 
+        J = self.__get_average_J__()
+
+        it = 0
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             I = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg)
