@@ -20,11 +20,11 @@ prob.T_start = 0
 prob.T_end = 0.0128 / 10
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 4                    # number of time-steps Paralpha will compute in parallel, for now needs to be a power of 2
-prob.rolling = 1                            # number of Paralpha propagations in a classical/sequential sense
+prob.time_intervals = 1                    # number of time-steps Paralpha will compute in parallel, for now needs to be a power of 2
+prob.rolling = 4                            # number of Paralpha propagations in a classical/sequential sense
 
 # choosing a parallelization strategy
-prob.proc_col = 1                           # number of cores handling the collocation problem
+prob.proc_col = 2                           # number of cores handling the collocation problem
 prob.proc_row = prob.time_intervals         # number of cores handling time-steps. For now it has to be the same as number of time_intervals
 
 # choosing a solver
@@ -44,4 +44,4 @@ prob.m0 = 10 * (prob.T_end - prob.T_start)  # a starting choice for the m_k sequ
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
-prob.summary(details=True)
+#prob.summary(details=True)

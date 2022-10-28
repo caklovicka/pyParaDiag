@@ -45,7 +45,6 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
             if self.betas == NotImplemented:
                 self.betas = [0]
-            J_loc = None
 
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:       # main iterations
 

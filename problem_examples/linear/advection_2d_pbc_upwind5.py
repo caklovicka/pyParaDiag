@@ -10,7 +10,7 @@ u_t + c_x * u_x + c_y * u_y = f
 """
 
 
-class Advection(LinearIncrementParalpha):
+class Advection(LinearParalpha):
 
     # user defined, just for this class
     c = [1, 1]

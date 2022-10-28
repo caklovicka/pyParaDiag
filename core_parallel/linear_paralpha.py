@@ -127,7 +127,7 @@ class LinearParalpha(Helpers):
 
             if rolling_interval + 1 < self.rolling:     # update u0_loc (new initial condition) on processors that need it (first column) if we are not in the last time step
 
-                if self.comm_last != 'None' and self.time_intervals > 1:
+                if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:
                     self.u0_loc = self.u_last_loc.copy()
 
                 # to support a sequential run

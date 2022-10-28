@@ -141,7 +141,7 @@ class Helpers(Communicators):
     def __get_fft__(self, w_loc, a):
 
         if self.time_intervals == 1:
-            return w_loc, ['0']
+            return w_loc, '0'
 
         g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc    # scale
         n = int(np.log2(self.time_intervals))
@@ -478,7 +478,6 @@ class Helpers(Communicators):
 
         J = self.__get_average_J__()
 
-        it = 0
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             I = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg)
@@ -503,7 +502,7 @@ class Helpers(Communicators):
     def __get_ifft_h__(self, h1_loc, a):
 
         if self.time_intervals == 1:
-            return
+            return '0'
 
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
@@ -741,7 +740,7 @@ class Helpers(Communicators):
             d = d.flatten()
             err_abs = np.linalg.norm(d, np.inf)
             err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-            print('on {},  abs, rel err inf norm [from paralpha] = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
+            print('on {},  abs, rel err inf norm = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
 
     def summary(self, details=False):
 
@@ -830,6 +829,6 @@ class Helpers(Communicators):
             print('solver_its_min =', flush=True)
             for i in self.solver_its_min:
                 print(i, flush=True)
-            print('inner solver tol = {}'.format(self.inner_tols[0]), flush=True)
+            print('inner solver tol = {}'.format(self.stol), flush=True)
             print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
             print('-----------------------< end summary >-----------------------')

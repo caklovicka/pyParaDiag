@@ -52,7 +52,7 @@ class Communicators(QueenClass):
                 self.comm_last = MPI.Comm.Split(self.comm, self.rank_col % self.frac, tag)
             else:
                 self.comm_last = MPI.Comm.Split(self.comm, self.size, self.rank)
-                self.comm_last = None
+                self.comm_last = MPI.COMM_NULL
 
         # without spatial parallelization
         else:
@@ -68,7 +68,7 @@ class Communicators(QueenClass):
                 self.comm_last = MPI.Comm.Split(self.comm, 1, tag)
             else:
                 self.comm_last = MPI.Comm.Split(self.comm, 0, self.rank)
-                self.comm_last = None
+                self.comm_last = MPI.COMM_NULL
 
         """
                                 proc_row = 5
