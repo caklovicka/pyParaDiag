@@ -6,6 +6,8 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
+from time import time
+
 import sys
 sys.path.append('../..')
 
@@ -13,6 +15,7 @@ import numpy as np
 
 from problem_examples.nonlinear.allen_cahn_2d_pbc_central2_tanh import AllenCahn
 prob = AllenCahn()
+t1 = time()
 
 # choosing a number of points
 prob.spatial_points = [130, 130]
@@ -48,10 +51,12 @@ prob.stol = 1e-15
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
-prob.summary(details=True)
+#prob.summary(details=True)
 
 #prob.document = 'exact.txt'
 prob.__write_u_last_in_txt__()
+print(time() - t1)
+print(prob.communication_time, prob.algorithm_time)
 
 '''
 # CHECK OUTPUT

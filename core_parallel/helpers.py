@@ -777,7 +777,7 @@ class Helpers(Communicators):
                 print('    {}'.format(self.alphas), flush=True)
             print('no. of betas = {}'.format(len(self.betas)), flush=True)
             if details:
-                print('    {}'.format(self.alphas), flush=True)
+                print('    {}'.format(self.betas), flush=True)
             print('rolling intervals = {}'.format(self.rolling), flush=True)
 
             print()
