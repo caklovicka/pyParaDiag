@@ -10,10 +10,10 @@ import seaborn as sns
 
 # ALLEN CAHN
 #  GLOBAL VARS
-EPS = 0.04
+EPS = 0.01
 R = 0.25
 T1 = 0
-steps = 16
+steps = 64
 dt = EPS ** 3
 T2 = steps * dt
 X1 = -0.5
@@ -22,9 +22,9 @@ coll_points = 3
 spatial_points = 130#int(1.5 / ( 4/5 * EPS ))
 
 # tolerances
-tol = 1e-12
-stol = 1e-15
-maxiter = 500
+tol = 1e-6
+stol = 1e-8
+maxiter = 50
 
 # grid and matrix
 x1 = np.linspace(X1, X2, spatial_points + 1)[:-1]

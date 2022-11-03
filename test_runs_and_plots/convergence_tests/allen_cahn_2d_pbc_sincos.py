@@ -11,21 +11,21 @@ np.set_printoptions(linewidth=np.inf)
 
 # ALLEN CAHN
 #  GLOBAL VARS
-EPS = 0.04
+EPS = 0.02
 DW = 0
 T1 = 0
-steps = 8
+steps = 64
 dt = EPS ** 2 * 0.5
 T2 = steps * dt
 X1 = 0
 X2 = 1
 coll_points = 1
-spatial_points = 100#int(1.5 / ( 4/5 * EPS ))
+spatial_points = 80#int(1.5 / ( 4/5 * EPS ))
 
 # tolerances
-tol = 1e-9
-stol = 1e-11
-maxiter = 120
+tol = 1e-5
+stol = 1e-6
+maxiter = 300
 
 # grid and matrix
 x1 = np.linspace(X1, X2, spatial_points + 1)[:-1]

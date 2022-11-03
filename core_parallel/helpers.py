@@ -761,7 +761,7 @@ class Helpers(Communicators):
     def summary(self, details=False):
 
         np.set_printoptions(precision=5, linewidth=np.inf)
-        if self.rank == 0 and details:
+        if self.rank == 0:
             assert self.setup_var is True, 'Please call the setup function before summary.'
             print('----------------')
             print(' discretization ')
@@ -834,22 +834,23 @@ class Helpers(Communicators):
             print()
             print('inner solver = {}'.format(self.solver), flush=True)
 
-            for i in range(self.rolling):
-                self.system_time_max[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_max[i]]
-                self.system_time_min[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_min[i]]
+            if details:
+                for i in range(self.rolling):
+                    self.system_time_max[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_max[i]]
+                    self.system_time_min[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_min[i]]
 
-            print('system_time_max =', flush=True)
-            for i in self.system_time_max:
-                print(i, flush=True)
-            print('system_time_min = ', flush=True)
-            for i in self.system_time_min:
-                print(i, flush=True)
-            print('solver_its_max =', flush=True)
-            for i in self.solver_its_max:
-                print(i, flush=True)
-            print('solver_its_min =', flush=True)
-            for i in self.solver_its_min:
-                print(i, flush=True)
+                print('system_time_max =', flush=True)
+                for i in self.system_time_max:
+                    print(i, flush=True)
+                print('system_time_min = ', flush=True)
+                for i in self.system_time_min:
+                    print(i, flush=True)
+                print('solver_its_max =', flush=True)
+                for i in self.solver_its_max:
+                    print(i, flush=True)
+                print('solver_its_min =', flush=True)
+                for i in self.solver_its_min:
+                    print(i, flush=True)
             print('inner solver tol = {}'.format(self.stol), flush=True)
             print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
             print('-----------------------< end summary >-----------------------')
