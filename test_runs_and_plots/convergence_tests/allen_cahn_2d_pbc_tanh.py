@@ -13,7 +13,7 @@ import seaborn as sns
 EPS = 0.04
 R = 0.25
 T1 = 0
-steps = 8
+steps = 16
 dt = EPS ** 3
 T2 = steps * dt
 X1 = -0.5

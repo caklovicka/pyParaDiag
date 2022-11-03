@@ -15,7 +15,6 @@ import numpy as np
 
 from problem_examples.nonlinear.allen_cahn_2d_pbc_central2_tanh import AllenCahn
 prob = AllenCahn()
-t1 = time()
 
 # choosing a number of points
 prob.spatial_points = [130, 130]
@@ -27,7 +26,7 @@ prob.T_start = 0
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 1
-prob.rolling = 8
+prob.rolling = 16
 prob.T_end = prob.eps ** 3 * prob.time_intervals * prob.rolling
 
 # choosing a parallelization strategy
@@ -43,7 +42,7 @@ prob.smaxiter = 500
 
 # choosing a setting for the alpha sequence
 prob.alphas = [1e-8]
-prob.betas = [1]
+prob.betas = [0]
 
 # setting tolerances
 prob.tol = 1e-12
@@ -51,12 +50,10 @@ prob.stol = 1e-15
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
-#prob.summary(details=True)
+prob.summary(details=True)
 
 #prob.document = 'exact.txt'
 prob.__write_u_last_in_txt__()
-print(time() - t1)
-print(prob.communication_time, prob.algorithm_time)
 
 '''
 # CHECK OUTPUT
