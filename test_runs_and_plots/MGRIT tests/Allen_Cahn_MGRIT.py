@@ -30,13 +30,15 @@ def main():
         # Save solution with corresponding time point to file
         np.save(path + '/allen_cahn-rank' + str(self.comm_time_rank), [[[self.t[0][i], self.u[0][i]] for i in self.index_local[0]]])
 
-    problem_level_0 = AllenCahn(t_start=0, t_stop=0.031, nt=32, method='IMEX')
-    problem_level_1 = AllenCahn(t_interval=problem_level_0.t[::2], method='IMEX')
+    #problem_level_0 = AllenCahn(t_start=0, t_stop=0.031, nt=32, method='IMEX')
+    problem_level_0 = AllenCahn(t_start=0, t_stop=0.04**3 * 4, nt=5, method='IMPL')
+    problem_level_1 = AllenCahn(t_interval=problem_level_0.t[::2], method='IMPL')
 
     # Setup two-level MGRIT solver and solve the problem
     mgrit = Mgrit(problem=[problem_level_0, problem_level_1], output_fcn=output_fcn)
     info = mgrit.solve()
 
+'''
     if MPI.COMM_WORLD.Get_rank() == 0:
         time.sleep(2)
         sol = []
@@ -60,7 +62,7 @@ def main():
         ax.grid()
         ax.legend(loc=3)
         plt.show()
-
+'''
 
 if __name__ == '__main__':
     main()

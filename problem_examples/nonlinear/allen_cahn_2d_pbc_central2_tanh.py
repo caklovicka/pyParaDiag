@@ -2,6 +2,7 @@ import numpy as np
 from scipy import sparse
 from core_parallel.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
 from petsc4py import PETSc
+from time import time
 
 """
 Allen Cahn eq. in 2d, 2nd order central differences and pbc
@@ -15,6 +16,7 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
     c = 1
     R = 0.25
     eps = 0.04
+    dw = 0
     X_left = -0.5
     X_right = 0.5
     Y_left = -0.5
@@ -101,8 +103,7 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
 
     # user defined
     def u_initial(self, z):
-        #return 0.5 * (1 + np.sin(2 * np. pi * z[0]) * np.sin(2 * np.pi * z[1]))
-        return np.tanh((self.R - np.sqrt(z[0] ** 2 + z[1] ** 2))/(np.sqrt(2) * self.eps))
+        return np.tanh((self.R - np.sqrt(z[0] ** 2 + z[1] ** 2)) / (np.sqrt(2) * self.eps))
 
     # user defined, depends on (t, x)
     @staticmethod

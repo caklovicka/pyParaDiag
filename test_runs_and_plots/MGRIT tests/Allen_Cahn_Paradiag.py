@@ -11,43 +11,40 @@ sys.path.append('../..')
 
 import numpy as np
 
-from problem_examples.nonlinear.allen_cahn_2d_pbc_central2 import AllenCahn
+from problem_examples.nonlinear.allen_cahn_2d_pbc_central2_tanh import AllenCahn
 prob = AllenCahn()
 
 # choosing a number of points
-prob.spatial_points = [128, 128]
-prob.X_left = -0.5
-prob.X_right = 0.5
-prob.R = 0.25
-prob.time_points = 1
+prob.spatial_points = [130, 130]
 prob.eps = 0.04
+prob.time_points = 3
 
 # choosing a time domain
 prob.T_start = 0
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 32
+prob.time_intervals = 8
 prob.rolling = 1
-prob.T_end = 0.031
+prob.T_end = prob.eps ** 3 * prob.time_intervals * prob.rolling
 
 # choosing a parallelization strategy
 prob.proc_col = 1
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
-prob.solver = 'custom'
+prob.solver = 'gmres'
 
 # setting maximum number of iterations
-prob.maxiter = 20
-prob.smaxiter = 500
+prob.maxiter = 50
+prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence
-prob.alphas = [1e-6]
+prob.alphas = [1e-8]
 prob.betas = [0]
 
 # setting tolerances
 prob.tol = 1e-12
-prob.stol = 1e-12
+prob.stol = 1e-15
 
 prob.setup()                                # must be before solve()
 prob.solve()                                # this is where magic happens
