@@ -7,13 +7,14 @@ import seaborn as sns
 from time import time
 import matplotlib.cm as cm
 import seaborn as sns
+np.set_printoptions(linewidth=np.inf)
 
 # ALLEN CAHN
 #  GLOBAL VARS
 EPS = 0.04
 DW = 0
 T1 = 0
-steps = 3
+steps = 8
 dt = EPS ** 2 * 0.5
 T2 = steps * dt
 X1 = 0
@@ -24,7 +25,7 @@ spatial_points = 100#int(1.5 / ( 4/5 * EPS ))
 # tolerances
 tol = 1e-9
 stol = 1e-11
-maxiter = 500
+maxiter = 120
 
 # grid and matrix
 x1 = np.linspace(X1, X2, spatial_points + 1)[:-1]

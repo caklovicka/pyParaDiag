@@ -2,6 +2,7 @@ import numpy as np
 np.set_printoptions(linewidth=np.inf)
 import scipy as sp
 from pySDC.core.Collocation import CollBase
+import matplotlib.pyplot as plt
 
 def Newton(T0, u0, dt, f, df, b, steps, maxiter=10, coll_points=3, restol=1e-6, stol=1e-7):
 
@@ -12,7 +13,7 @@ def Newton(T0, u0, dt, f, df, b, steps, maxiter=10, coll_points=3, restol=1e-6, 
     D, S = np.linalg.eig(Q)     # S @ D @ Sinv = Q
     Sinv = np.linalg.inv(S)
     spatial_points = u0.shape[0]
-    u = np.tile(u0, coll_points)    # initial guess
+    u = np.tile(u0, coll_points) + 0j   # initial guess
     r = np.empty_like(u)
     fu = np.empty_like(u)
     ncount = np.zeros(steps)
@@ -39,13 +40,11 @@ def Newton(T0, u0, dt, f, df, b, steps, maxiter=10, coll_points=3, restol=1e-6, 
             if res[k] > 1000:
                 return u[-spatial_points:], res, ncount
             ncount[k] += 1
-            u_old = u.copy()
 
             # get the Jacobian approximation
             J = 0 * sp.sparse.eye(spatial_points)
             for i in range(coll_points):
                 J += 1 / coll_points * df(u[i * spatial_points: (i + 1) * spatial_points])
-                fu[i * spatial_points: (i + 1) * spatial_points] = f(u[i * spatial_points: (i + 1) * spatial_points])
 
             z = dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ (fu - sp.sparse.kron(sp.sparse.eye(coll_points), J) @ u) + r
             z = sp.sparse.kron(Sinv, sp.sparse.eye(spatial_points)) @ z
@@ -62,6 +61,8 @@ def Newton(T0, u0, dt, f, df, b, steps, maxiter=10, coll_points=3, restol=1e-6, 
             u = sp.sparse.kron(S, sp.sparse.eye(spatial_points)) @ z
 
             # residual
+            for i in range(coll_points):
+                fu[i * spatial_points: (i + 1) * spatial_points] = f(u[i * spatial_points: (i + 1) * spatial_points])
             tmp = u - dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ fu - r
             res[k] = np.linalg.norm(tmp, np.inf)
 

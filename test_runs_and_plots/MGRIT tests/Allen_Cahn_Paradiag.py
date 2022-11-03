@@ -23,8 +23,8 @@ prob.time_points = 3
 prob.T_start = 0
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 8
-prob.rolling = 1
+prob.time_intervals = 1
+prob.rolling = 8
 prob.T_end = prob.eps ** 3 * prob.time_intervals * prob.rolling
 
 # choosing a parallelization strategy
@@ -35,12 +35,12 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'gmres'
 
 # setting maximum number of iterations
-prob.maxiter = 50
-prob.smaxiter = 100
+prob.maxiter = 120
+prob.smaxiter = 500
 
 # choosing a setting for the alpha sequence
 prob.alphas = [1e-8]
-prob.betas = [0]
+prob.betas = [1]
 
 # setting tolerances
 prob.tol = 1e-12

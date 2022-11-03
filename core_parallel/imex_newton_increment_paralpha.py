@@ -2,6 +2,7 @@ import numpy as np
 from mpi4py import MPI
 from core_parallel.helpers import Helpers
 import os
+import matplotlib.pyplot as plt
 
 
 class IMEXNewtonIncrementParalpha(Helpers):
@@ -16,12 +17,14 @@ class IMEXNewtonIncrementParalpha(Helpers):
         self.setup_var = True
         super().setup()
 
-        if self.rolling > 1:
+        if self.time_intervals == 1:
             self.u_last_loc = self.u0_loc.copy(order='C')
         self.consecutive_error = []
         self.residual = []
         if self.time_intervals == 1:
             self.alphas = [0]
+        if self.betas == NotImplemented:
+            self.betas = [0]
 
     def solve(self):
 
@@ -45,10 +48,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
             v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
 
-            if self.betas == NotImplemented:
-                self.betas = [0]
-
-            while self.iterations[rolling_interval] < self.maxiter and not self.stop:       # main iterations
+            while not self.stop:       # main iterations
 
                 i_alpha = self.__next_alpha__(i_alpha)
                 i_beta = self.__next_beta__(i_beta)
@@ -59,11 +59,12 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 res_norm = self.__get_max_norm__(res_loc)
 
                 self.residual[rolling_interval].append(res_norm)
-                if self.residual[rolling_interval][-1] <= self.tol:
+                if self.residual[rolling_interval][-1] <= self.tol or self.iterations[rolling_interval] == self.maxiter:
                     break
 
-                if self.time_intervals == 1:
+                if self.time_intervals == 1 and self.betas[i_beta] == 0:
                     res_loc = self.__get_w__(self.alphas, v_loc, v_loc) + tmp
+
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])        # solving (S x I) g = w with ifft
 
                 # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
@@ -84,7 +85,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 its.append(it)
 
                 h_loc = self.__solve_substitution__(Z, h1_loc)      # step 3 ... (Zinv x I) h = h1
-                if self.time_intervals > 1:
+                if self.time_intervals > 1 or self.betas[i_beta] > 0:
                     h1_loc = self.__solve_substitution__(Cinv, h_loc)  # step 4 ... (C x I) h1 = h
                 else:
                     self.u_loc = self.__solve_substitution__(Cinv, h_loc)
@@ -95,7 +96,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 self.solver_its_min[rolling_interval].append(self.comm.allreduce(min(its), op=MPI.MIN))
                 self.inner_tols.append(self.stol)
 
-                if self.time_intervals > 1:
+                if self.time_intervals > 1 or self.betas[i_beta] > 0:
                     h_loc = self.__get_ifft_h__(h1_loc, self.alphas[i_alpha])  # solving (Sinv x I) h1_loc = h with ifft
                 else:  # to support the sequential run
                     self.__get_ifft__(self.alphas[i_alpha])
@@ -103,12 +104,9 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------
 
                 self.iterations[rolling_interval] += 1
-                if self.time_intervals > 1:
+                if self.time_intervals > 1 or self.betas[i_beta] > 0:
                     self.u_loc += h_loc     # update the solution
                     self.consecutive_error[rolling_interval].append(self.__get_max_norm__(h_loc))  # consecutive error, error of the increment
-
-                if self.iterations[rolling_interval] == self.maxiter:
-                    self.stop = True
 
                 # end of main iterations (while loop)
 
@@ -127,8 +125,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                     # spatial parallelization
                     elif self.frac > 1:
-                        self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc,
-                                                                         root=self.size_subcol_alternating - 1)
+                        self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc, root=self.size_subcol_alternating - 1)
                         if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
                             self.u0_loc = self.u_last_loc
 

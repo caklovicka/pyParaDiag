@@ -16,7 +16,6 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
     c = 1
     R = 0.25
     eps = 0.04
-    dw = 0
     X_left = -0.5
     X_right = 0.5
     Y_left = -0.5

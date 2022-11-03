@@ -125,8 +125,7 @@ class LinearIncrementParalpha(Helpers):
 
                     # spatial parallelization
                     elif self.frac > 1:
-                        self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc,
-                                                                         root=self.size_subcol_alternating - 1)
+                        self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc, root=self.size_subcol_alternating - 1)
                         if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
                             self.u0_loc = self.u_last_loc
 

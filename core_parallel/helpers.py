@@ -367,7 +367,6 @@ class Helpers(Communicators):
         # return dt * (Q x I)F(u)
 
         res = np.zeros(self.rows_loc, dtype=complex)
-        shift = self.rank_row
 
         # case with spatial parallelization
         if self.frac > 1:
@@ -378,24 +377,7 @@ class Helpers(Communicators):
         else:
             for i in range(self.Frac):
                 for k in range(self.time_points):
-                    res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
-
-        return res
-
-    def __get_J_residual__(self, beta, J_loc):
-
-        # return dt * (Q x I)( - beta * (I x J)u)
-        res = np.zeros(self.rows_loc, dtype=complex)
-        # case with spatial parallelization
-        if self.frac > 1:
-            for k in range(self.time_points):
-                res -= beta * self.dt * self.Q[self.rank_subcol_alternating, k] * np.dot(J_loc, self.u_loc)
-
-        # case without spatial parallelization
-        else:
-            for i in range(self.Frac):
-                for k in range(self.time_points):
-                    res[i * self.global_size_A:(i + 1) * self.global_size_A] -= beta * self.dt * self.Q[i + self.Frac * self.rank_col, k] * np.dot(J_loc, self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A])
+                    res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(self.u_loc[k * self.global_size_A:(k + 1) * self.global_size_A])
 
         return res
 
@@ -482,7 +464,7 @@ class Helpers(Communicators):
 
         return h1_loc, it
 
-    def __solve_inner_systems_J__(self, h_loc, D, b, x0, tol):
+    def __solve_inner_systems_J__(self, h_loc, D, beta, x0, tol):
 
         J = self.__get_average_J__()
 
@@ -490,7 +472,7 @@ class Helpers(Communicators):
         if self.row_end - self.row_beg != self.global_size_A:
             I = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg)
             d = self.dt * D[self.rank_subcol_alternating]
-            sys = I - d * (self.Apar + b * sc.sparse.spdiags(data=J, diags=self.row_beg, m=self.row_end - self.row_beg, n=self.global_size_A))
+            sys = I - d * (self.Apar + beta * sc.sparse.spdiags(data=J, diags=self.row_beg, m=self.row_end - self.row_beg, n=self.global_size_A))
             h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
 
         # case without spatial parallelization
@@ -499,7 +481,7 @@ class Helpers(Communicators):
             for i in range(self.Frac):
                 I = sc.sparse.eye(self.global_size_A)
                 d = self.dt * D[i + self.rank_col * self.Frac]
-                sys = I - d * (self.Apar + b * sc.sparse.spdiags(data=J, diags=0, m=self.global_size_A, n=self.global_size_A))
+                sys = I - d * (self.Apar + beta * sc.sparse.spdiags(data=J, diags=0, m=self.global_size_A, n=self.global_size_A))
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
                 else:
@@ -510,7 +492,7 @@ class Helpers(Communicators):
     def __get_ifft_h__(self, h1_loc, a):
 
         if self.time_intervals == 1:
-            return '0'
+            return h1_loc
 
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
@@ -791,6 +773,9 @@ class Helpers(Communicators):
             if details:
                 print('    {}'.format(self.t), flush=True)
             print('no. of alphas = {}'.format(len(self.alphas)), flush=True)
+            if details:
+                print('    {}'.format(self.alphas), flush=True)
+            print('no. of betas = {}'.format(len(self.betas)), flush=True)
             if details:
                 print('    {}'.format(self.alphas), flush=True)
             print('rolling intervals = {}'.format(self.rolling), flush=True)
