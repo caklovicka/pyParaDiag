@@ -11,7 +11,7 @@ np.set_printoptions(linewidth=np.inf)
 
 # ALLEN CAHN
 #  GLOBAL VARS
-EPS = 0.02
+EPS = 0.5
 DW = 0
 T1 = 0
 steps = 64
@@ -79,7 +79,7 @@ print('iterations = ', its_imex, ', total = ', sum(its_imex))
 print('\nNewton')
 print('========')
 t_strat = time()
-u_newton, res_newton, its_newton = Newton(T1, u0, dt, f, df, b, steps, restol=tol, stol=stol, coll_points=coll_points, maxiter=maxiter)
+u_newton, res_newton, its_newton = Newton(T1, u0, dt/10, f, df, b, 10*steps, restol=tol, stol=stol, coll_points=coll_points, maxiter=maxiter)
 print('time = ', time() - t_start)
 print('maximum residual = ', max(res_newton))
 print('iterations = ', its_newton, ', total = ', sum(its_newton))

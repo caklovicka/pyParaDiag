@@ -53,7 +53,7 @@ def Newton(T0, u0, dt, f, df, b, steps, maxiter=10, coll_points=3, restol=1e-6, 
             for i in range(coll_points):
                 tmp = sp.sparse.eye(spatial_points) - D[i] * dt * J
                 z_old = z[i * spatial_points: (i + 1) * spatial_points].copy()
-                z[i * spatial_points: (i + 1) * spatial_points], info = sp.sparse.linalg.gmres(tmp, z[i * spatial_points: (i + 1) * spatial_points], tol=stol, atol=0, maxiter=100)
+                z[i * spatial_points: (i + 1) * spatial_points], info = sp.sparse.linalg.gmres(tmp, z[i * spatial_points: (i + 1) * spatial_points], tol=stol, atol=0, maxiter=500)
                 if info != 0 and no_warnings:
                     print('Warning! Some systems did not finish.')
                     no_warnings = False
@@ -112,7 +112,7 @@ def IMEX(T0, u0, dt, F, A, b, steps, maxiter=10, coll_points=3, restol=1e-6, sto
             # solve systems
             for i in range(coll_points):
                 tmp = sp.sparse.eye(spatial_points) - D[i] * dt * A
-                z[i * spatial_points: (i + 1) * spatial_points], info = sp.sparse.linalg.gmres(tmp, z[i * spatial_points: (i + 1) * spatial_points], tol=stol, atol=0,  maxiter=50)
+                z[i * spatial_points: (i + 1) * spatial_points], info = sp.sparse.linalg.gmres(tmp, z[i * spatial_points: (i + 1) * spatial_points], tol=stol, atol=0,  maxiter=500)
                 if info != 0 and no_warnings:
                     print('Warning! Some systems did not finish.')
                     no_warnings = False
