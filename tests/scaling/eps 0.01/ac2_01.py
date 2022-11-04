@@ -8,24 +8,25 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
 sys.path.append('../../..')
+sys.path.append('../../../../../../..')    # for jube
 
-# time steps: 512
+# time steps: 128
 # rolling from runtime
 # time_intervals from runtime
 # beta from runtime
 
 from examples.nonlinear.allen_cahn_2d_pbc_central4 import AllenCahn
 prob = AllenCahn()
-prob.spatial_points = [128, 128]
-prob.time_points = 3
+prob.spatial_points = [180, 180]
+prob.time_points = 2
 prob.tol = 1e-9
 prob.stol = 1e-11
 
 prob.eps = 0.01
 prob.T_start = 0
-prob.T_end = 0.03
+prob.T_end = 0.0075
 prob.proc_col = 1
-prob.solver = 'gmres'
+prob.solver = 'custom'
 prob.maxiter = 50
 prob.smaxiter = 500
 prob.alphas = [1e-8]
@@ -33,7 +34,5 @@ prob.alphas = [1e-8]
 prob.proc_row = prob.time_intervals
 
 prob.setup()
-print(prob.dx[0]**4, prob.dt**(2*prob.time_points - 1), prob.dt < prob.eps ** 2)
-print(prob.eps, prob.eps**2, prob.eps**3, prob.eps**4)
 prob.solve()
 prob.summary(details=False)

@@ -365,21 +365,7 @@ class Helpers(Communicators):
     def __get_F__(self):
 
         # return dt * (Q x I)F(u)
-
-        res = np.zeros(self.rows_loc, dtype=complex)
-
-        # case with spatial parallelization
-        if self.frac > 1:
-            for k in range(self.time_points):
-                res += self.dt * self.Q[self.rank_subcol_alternating, k] * self.F(self.u_loc)
-
-        # case without spatial parallelization
-        else:
-            for i in range(self.Frac):
-                for k in range(self.time_points):
-                    res[i * self.global_size_A:(i + 1) * self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.F(self.u_loc[k * self.global_size_A:(k + 1) * self.global_size_A])
-
-        return res
+        return self.dt * self.__solve_substitution__(self.Q, self.F(self.u_loc))
 
     def __get_shifted_matrices__(self, l_new, a):
 
@@ -448,8 +434,7 @@ class Helpers(Communicators):
 
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
-            sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[
-                self.rank_subcol_alternating] * self.Apar
+            sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
             h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
 
         # case without spatial parallelization
