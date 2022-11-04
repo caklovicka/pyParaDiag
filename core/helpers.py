@@ -793,30 +793,29 @@ class Helpers(Communicators):
             print('communication time = {:.5f} s'.format(self.communication_time), flush=True)
             print()
 
-            if details:
-                for i in range(self.rolling):
-                    if self.consecutive_err_last != NotImplemented:
-                        self.consecutive_err_last[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_err_last[i]]
-                    if self.consecutive_error != NotImplemented:
-                        self.consecutive_error[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_error[i]]
-                    if self.residual != NotImplemented:
-                        self.residual[i] = [float("{:.5e}".format(elem)) for elem in self.residual[i]]
-
+            for i in range(self.rolling):
                 if self.consecutive_err_last != NotImplemented:
-                    print('consecutive errors (last) = ', flush=True)
-                    for i in self.consecutive_err_last:
-                        print(i, flush=True)
-
+                    self.consecutive_err_last[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_err_last[i]]
                 if self.consecutive_error != NotImplemented:
-                    print('consecutive errors = ', flush=True)
-                    for i in self.consecutive_error:
-                        print(i, flush=True)
-
+                    self.consecutive_error[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_error[i]]
                 if self.residual != NotImplemented:
-                    print('residuals = ', flush=True)
-                    for i in self.residual:
-                        print(i, flush=True)
-                print()
+                    self.residual[i] = [float("{:.5e}".format(elem)) for elem in self.residual[i]]
+
+            if self.consecutive_err_last != NotImplemented:
+                print('consecutive errors (last) = ', flush=True)
+                for i in self.consecutive_err_last:
+                    print(i, flush=True)
+
+            if self.consecutive_error != NotImplemented:
+                print('consecutive errors = ', flush=True)
+                for i in self.consecutive_error:
+                    print(i, flush=True)
+
+            if self.residual != NotImplemented:
+                print('residuals = ', flush=True)
+                for i in self.residual:
+                    print(i, flush=True)
+            print()
 
             if details:
                 for i in range(self.rolling):
