@@ -6,7 +6,7 @@
 #SBATCH --output=mpi-out.%j
 #SBATCH --error=mpi-err.%j
 #SBATCH --time=00:05:00
-#SBATCH --partition=batch
+#SBATCH --partition=dc-cpu
 
 srun python ac1_01.py --beta=#beta# --time_intervals=#time_intervals# --rolling=#rolling# > results.out
 touch ready

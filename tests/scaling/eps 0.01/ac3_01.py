@@ -23,11 +23,10 @@ prob.tol = 1e-12
 prob.stol = 1e-14
 
 prob.eps = 0.01
-prob.R = 0.25
 prob.T_start = 0
-prob.T_end = 0.0072
+prob.T_end = 0.0075
 prob.proc_col = 1
-prob.solver = 'gmres'
+prob.solver = 'custom'
 prob.maxiter = 50
 prob.smaxiter = 500
 prob.alphas = [1e-8]

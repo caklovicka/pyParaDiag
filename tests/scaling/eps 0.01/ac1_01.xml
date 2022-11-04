@@ -52,7 +52,7 @@
         <use>param_set</use> <!-- use existing parameterset -->
         <use>files</use>        <!-- use existing fileset -->
         <use>substitute</use>   <!-- use existing substituteset -->
-        <do done_file="ready">sbatch -A cstma run.exe</do>   <!-- shell command -->
+        <do done_file="ready">sbatch -A cstma ac1_01.exe</do>   <!-- shell command -->
     </step>
 
     <!-- Analyse -->
