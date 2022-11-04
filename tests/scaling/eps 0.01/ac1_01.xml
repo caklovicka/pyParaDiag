@@ -45,6 +45,7 @@
         <pattern name="tol" type="float">tol = $jube_pat_fp</pattern>
         <pattern name="stol" type="float">inner solver tol = $jube_pat_fp</pattern>
         <pattern name="Nx" type="int">no. of spatial points = \[$jube_pat_int</pattern>
+        <pattern name="convergence" type="int">convergence = $jube_pat_int</pattern>
     </patternset>
 
     <!-- Operation -->
@@ -78,6 +79,7 @@
 	        <column>Nx</column>
             <column>stol</column>
             <column>tol</column>
+            <column>convergence</column>
         </table>
     </result>
 

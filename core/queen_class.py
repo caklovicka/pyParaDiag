@@ -29,6 +29,7 @@ class QueenClass(abc.ABC):
     row_end = NotImplemented
     spatial_points = NotImplemented
     dx = NotImplemented
+    convergence = 1
 
     # passive
     comm = NotImplemented

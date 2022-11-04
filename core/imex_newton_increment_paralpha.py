@@ -63,6 +63,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
                     break
 
                 if self.residual[rolling_interval][-1] > 1000:
+                    self.convergence = 0
                     break
 
                 if self.time_intervals == 1 and self.betas[i_beta] == 0:
@@ -113,30 +114,29 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                 # end of main iterations (while loop)
 
-            if rolling_interval + 1 < self.rolling:  # update u0_loc (new initial condition) on processors that need it (first column) if we are not in the last rolling interval
-                self.__fill_u_last__(fill_old=False)
-                self.__bcast_u_last_loc__()
+            self.__fill_u_last__(fill_old=False)
+            self.__bcast_u_last_loc__()
 
-                if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:
+            if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:
+                self.u0_loc = self.u_last_loc.copy()
+
+            # to support a sequential run
+            elif self.time_intervals == 1:
+
+                if self.size == 1 or self.time_points == 1:
                     self.u0_loc = self.u_last_loc.copy()
 
-                # to support a sequential run
-                elif self.time_intervals == 1:
+                # spatial parallelization
+                elif self.frac > 1:
+                    self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc, root=self.size_subcol_alternating - 1)
+                    if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
+                        self.u0_loc = self.u_last_loc
 
-                    if self.size == 1 or self.time_points == 1:
-                        self.u0_loc = self.u_last_loc.copy()
-
-                    # spatial parallelization
-                    elif self.frac > 1:
-                        self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc, root=self.size_subcol_alternating - 1)
-                        if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
-                            self.u0_loc = self.u_last_loc
-
-                    # without spatial but time_points > size_col
-                    else:
-                        self.u0_loc = self.comm_col.bcast(self.u_last_loc, root=self.size_col - 1)
-                        if self.rank_col == self.size_col - 1:
-                            self.u0_loc = self.u_last_loc
+                # without spatial but time_points > size_col
+                else:
+                    self.u0_loc = self.comm_col.bcast(self.u_last_loc, root=self.size_col - 1)
+                    if self.rank_col == self.size_col - 1:
+                        self.u0_loc = self.u_last_loc
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)
