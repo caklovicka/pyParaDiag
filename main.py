@@ -8,7 +8,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 # todo make sequential sun supported for increment
 
-from problem_examples.linear.advection_2d_pbc_upwind5 import Advection
+from examples.linear.advection_2d_pbc_upwind5 import Advection
 prob = Advection()
 
 # choosing a number of points
