@@ -357,6 +357,7 @@ def Parallel_IMEX_refinement(T0, u0, dt, F, dF, A, b, steps, alpha, beta=[0], ma
         bb[:, k] = dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ bb[:, k]
 
     # compute error
+    err = 0
     if reff_run is not None:
         err = np.linalg.norm(u[-spatial_points:, -1] - reff_run, np.inf)
 
@@ -420,7 +421,7 @@ def Parallel_IMEX_refinement(T0, u0, dt, F, dF, A, b, steps, alpha, beta=[0], ma
             r[:, k] = sp.sparse.kron(Sinv, sp.sparse.eye(spatial_points)) @ z[:, k]
             for i in range(coll_points):
                 tmp = sp.sparse.eye(spatial_points) - D[i] * dt * (A + beta[beta_idx] * J)
-                z[i * spatial_points:(i + 1) * spatial_points, k], info = sp.sparse.linalg.gmres(tmp, r[i * spatial_points:(i + 1) * spatial_points, k], tol=stol, atol=0, maxiter=100, x0=np.zeros(spatial_points))
+                z[i * spatial_points:(i + 1) * spatial_points, k], info = sp.sparse.linalg.gmres(tmp, r[i * spatial_points:(i + 1) * spatial_points, k], tol=stol, atol=0, maxiter=500, x0=np.zeros(spatial_points))
                 if info != 0 and no_warnings:
                     print('Warning! Some systems did not finish.', info)
                     no_warnings = False

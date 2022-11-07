@@ -2,7 +2,7 @@ import numpy as np
 np.set_printoptions(linewidth=np.inf)
 import scipy as sp
 import matplotlib.pyplot as plt
-from seq_time_stepping import Newton, IMEX
+from seq_time_stepping import Newton, IMEX, Parallel_IMEX_refinement
 import seaborn as sns
 from time import time
 import matplotlib.cm as cm
@@ -13,7 +13,7 @@ import seaborn as sns
 EPS = 0.01
 R = 0.25
 T1 = 0
-steps = 16
+steps = 8
 T2 =  0.0075 / 128 * steps
 dt = (T2 - T1) / steps
 X1 = -0.5
@@ -22,9 +22,9 @@ coll_points = 2
 spatial_points = 100
 
 # tolerances
-tol = 1e-6
-stol = 1e-10
-maxiter = 30
+tol = 1e-5
+stol = 1e-7
+maxiter = 10
 
 # grid and matrix
 x1 = np.linspace(X1, X2, spatial_points + 1)[:-1]
@@ -52,11 +52,14 @@ A = sp.sparse.kron(A, sp.sparse.eye(spatial_points)) + sp.sparse.kron(sp.sparse.
 def F(u):
     return 1 / EPS ** 2 * u * (1 - u ** 2)
 
+def dF(u):
+    return 1 / EPS ** 2 * (1 - 3 * u ** 2)
+
 def f(u):
     return A @ u + F(u)
 
 def df(u):
-    data = 1 / EPS ** 2 * (1 - 3 * u ** 2)
+    data = dF(u)
     return A + sp.sparse.spdiags(data, diags=0, m=A.shape[0], n=A.shape[1])
 
 # rhs vector
@@ -84,6 +87,13 @@ print('maximum residual = ', max(res_newton))
 print('iterations = ', its_newton, ', total = ', sum(its_newton))
 
 print('u_n - u_i', np.linalg.norm(u_imex - u_newton, np.inf))
+
+print('\nParallel_IMEX_refinement')
+print('=========')
+t_start = time()
+u_pimex, u_history_pimex, err_history_pimex, res_history_pimex, cerr_pimex = Parallel_IMEX_refinement(T1, u0, dt, F, dF, A, b, steps, alpha=[1e-8], beta=[1], maxiter=maxiter, coll_points=coll_points, restol=tol, stol=stol, reff_run=u_imex)
+print('time = ', time() - t_start)
+print('residual = ', res_history_pimex)
 
 #for i in range(spatial_points ** 2):
 #    print(i, u_newton[i])
