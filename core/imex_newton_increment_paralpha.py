@@ -117,27 +117,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
             if rolling_interval + 1 < self.rolling:
                 self.__fill_u_last__(fill_old=False)
                 self.__bcast_u_last_loc__()
-
-                if self.comm_last != MPI.COMM_NULL and self.time_intervals > 1:
-                    self.u0_loc = self.u_last_loc.copy()
-
-                # to support a sequential run
-                elif self.time_intervals == 1:
-
-                    if self.size == 1 or self.time_points == 1:
-                        self.u0_loc = self.u_last_loc.copy()
-
-                    # spatial parallelization
-                    elif self.frac > 1:
-                        self.u0_loc = self.comm_subcol_alternating.bcast(self.u_last_loc, root=self.size_subcol_alternating - 1)
-                        if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
-                            self.u0_loc = self.u_last_loc
-
-                    # without spatial but time_points > size_col
-                    else:
-                        self.u0_loc = self.comm_col.bcast(self.u_last_loc, root=self.size_col - 1)
-                        if self.rank_col == self.size_col - 1:
-                            self.u0_loc = self.u_last_loc
+                self.u0_loc = self.u_last_loc.copy()
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)
