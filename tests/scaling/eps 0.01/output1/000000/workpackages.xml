@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workpackages>
+  <workpackage id="0">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>1</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>0</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="1">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>1</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>1</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="2">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>2</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>2</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="3">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>2</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>3</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="4">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="2">2</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>4</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>4</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="5">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="2">2</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>4</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>5</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="6">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="3">3</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>8</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>8</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>8</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>8</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>6</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="7">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="3">3</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>8</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>8</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>8</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>8</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>7</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="8">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="4">4</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>16</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>8</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="9">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="4">4</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>16</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>16</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>9</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="10">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="5">5</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>16</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>10</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="11">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="5">5</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>16</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>11</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="12">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="6">6</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>16</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>12</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="13">
+    <step iteration="0" cycle="0">sub_step</step>
+    <parameterset>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2,3,4,5,6</value>
+        <selection idx="6">6</selection>
+      </parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">
+        <value>[64, 32, 16, 8, 4, 2, 1][$i]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 32, 64][$i]</value>
+        <selection>64</selection>
+      </parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 1, 1, 1, 1, 2, 4][$i]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">
+        <value>[1, 2, 4, 8, 16, 16, 16][$i]</value>
+        <selection>16</selection>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>13</iteration_siblings>
+    <environment>
+      <env name="BASH_FUNC_module%%">'() {  if [ -z &quot;${LMOD_SH_DBG_ON+x}&quot; ]; then\n case &quot;$-&quot; in\n *v*x*)\n __lmod_sh_dbg=\'vx\'\n ;;\n *v*)\n __lmod_sh_dbg=\'v\'\n ;;\n *x*)\n __lmod_sh_dbg=\'x\'\n ;;\n esac;\n fi;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n set +$__lmod_sh_dbg;\n echo &quot;Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod\'s output&quot; 1&gt;&amp;2;\n fi;\n eval &quot;$($LMOD_CMD $LMOD_SHELL_PRGM &quot;$@&quot;)&quot; &amp;&amp; eval &quot;$(${LMOD_SETTARG_CMD:-:} -s sh)&quot;;\n __lmod_my_status=$?;\n if [ -n &quot;${__lmod_sh_dbg:-}&quot; ]; then\n echo &quot;Shell debugging restarted&quot; 1&gt;&amp;2;\n set -$__lmod_sh_dbg;\n fi;\n unset __lmod_sh_dbg;\n return $__lmod_my_status\n}'</env>
+    </environment>
+  </workpackage>
+</workpackages>
