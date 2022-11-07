@@ -10,21 +10,21 @@ import seaborn as sns
 
 # ALLEN CAHN
 #  GLOBAL VARS
-EPS = 0.004
+EPS = 0.01
 R = 0.25
 T1 = 0
-steps = 128
-dt = EPS ** 3
-T2 = 8.2e-06
+steps = 16
+T2 =  0.0075 / 128 * steps
+dt = (T2 - T1) / steps
 X1 = -0.5
 X2 = 0.5
-coll_points = 1
-spatial_points = 320
+coll_points = 2
+spatial_points = 100
 
 # tolerances
-tol = 1e-5
-stol = 1e-7
-maxiter = 5
+tol = 1e-6
+stol = 1e-10
+maxiter = 30
 
 # grid and matrix
 x1 = np.linspace(X1, X2, spatial_points + 1)[:-1]
@@ -50,13 +50,13 @@ A = sp.sparse.kron(A, sp.sparse.eye(spatial_points)) + sp.sparse.kron(sp.sparse.
 
 # FUNCTIONS
 def F(u):
-    return 1 / EPS ** 2 * u * (1 - u)
+    return 1 / EPS ** 2 * u * (1 - u ** 2)
 
 def f(u):
     return A @ u + F(u)
 
 def df(u):
-    data = 1 / EPS ** 2 * (1 - 2 * u)
+    data = 1 / EPS ** 2 * (1 - 3 * u ** 2)
     return A + sp.sparse.spdiags(data, diags=0, m=A.shape[0], n=A.shape[1])
 
 # rhs vector
@@ -84,6 +84,9 @@ print('maximum residual = ', max(res_newton))
 print('iterations = ', its_newton, ', total = ', sum(its_newton))
 
 print('u_n - u_i', np.linalg.norm(u_imex - u_newton, np.inf))
+
+#for i in range(spatial_points ** 2):
+#    print(i, u_newton[i])
 
 
 

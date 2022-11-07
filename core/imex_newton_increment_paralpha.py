@@ -30,6 +30,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
         self.comm.Barrier()
         time_beg = MPI.Wtime()
+        h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
 
         for rolling_interval in range(self.rolling):
 
@@ -44,8 +45,8 @@ class IMEXNewtonIncrementParalpha(Helpers):
             i_alpha = -1
             i_beta = -1
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
-            h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
 
+            self.__fill_initial_u_loc__()
             v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
 
             while not self.stop:       # main iterations

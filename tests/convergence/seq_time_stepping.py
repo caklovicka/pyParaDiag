@@ -42,9 +42,10 @@ def Newton(T0, u0, dt, f, df, b, steps, maxiter=10, coll_points=3, restol=1e-6, 
             ncount[k] += 1
 
             # get the Jacobian approximation
-            J = 0 * sp.sparse.eye(spatial_points)
-            for i in range(coll_points):
-                J += 1 / coll_points * df(u[i * spatial_points: (i + 1) * spatial_points])
+            J = df(u[-spatial_points:])
+            #J = 0 * sp.sparse.eye(spatial_points)
+            #for i in range(coll_points):
+            #    J += 1 / coll_points * df(u[i * spatial_points: (i + 1) * spatial_points])
 
             z = dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ (fu - sp.sparse.kron(sp.sparse.eye(coll_points), J) @ u) + r
             z = sp.sparse.kron(Sinv, sp.sparse.eye(spatial_points)) @ z
@@ -90,6 +91,8 @@ def IMEX(T0, u0, dt, F, A, b, steps, maxiter=10, coll_points=3, restol=1e-6, sto
 
     for k in range(steps):
 
+        u = np.tile(u[-spatial_points:], coll_points)
+
         # assemble r
         for i in range(coll_points):
             r[i * spatial_points: (i + 1) * spatial_points] = b(T0 + k * dt + t[i])
@@ -104,7 +107,6 @@ def IMEX(T0, u0, dt, F, A, b, steps, maxiter=10, coll_points=3, restol=1e-6, sto
         # imex iterations
         while res[k] > restol and ncount[k] < maxiter:
             ncount[k] += 1
-            u_old = u.copy()
 
             z = dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ Fu + r
             z = sp.sparse.kron(Sinv, sp.sparse.eye(spatial_points)) @ z

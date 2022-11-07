@@ -98,7 +98,7 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
     # user defined - returns local chunk, depends on u
     # for now, depends just on u and assumes the Jacobian is a diagonal matrix
     def dF(self, u):
-        return 1 / self.eps ** 2 * u * (1 - 3 * u)
+        return 1 / self.eps ** 2 * (1 - 3 * u ** 2)
 
     # user defined
     def u_initial(self, z):

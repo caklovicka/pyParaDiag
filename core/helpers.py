@@ -47,14 +47,6 @@ class Helpers(Communicators):
         else:
             self.u0_loc = self.u_initial(self.x).flatten()
 
-        # fill u_loc
-        self.u_loc = np.zeros(self.rows_loc, dtype=complex, order='C')
-        # case with spatial parallelization
-        if self.frac > 1:
-            self.u_loc += self.u0_loc.copy(order='C')
-        # case without spatial parallelization
-        else:
-            self.u_loc += np.tile(self.u0_loc, self.Frac)
         self.u_last_old_loc = None
 
         # auxiliaries
@@ -84,6 +76,14 @@ class Helpers(Communicators):
             file = open(self.document, "w+")
             file.close()
             self.__write_time_in_txt__()
+
+    def __fill_initial_u_loc__(self):
+
+        if self.frac > 1:
+            self.u_loc = self.u0_loc.copy(order='C')
+        # case without spatial parallelization
+        else:
+            self.u_loc = np.tile(self.u0_loc, self.Frac) + 0j
 
     def __next_alpha__(self, idx):
         if idx + 1 < len(self.alphas) and self.time_intervals > 1:
@@ -325,11 +325,10 @@ class Helpers(Communicators):
 
         return res_loc
 
-    def __get_average_J__(self):
+    def __get_J__(self):
 
         if self.iterations[-1] == 0:
-            J = self.dF(self.u0_loc)
-            return J
+            return self.dF(self.u0_loc)
 
         # to support a sequential run
         if self.size == 1:
@@ -456,7 +455,7 @@ class Helpers(Communicators):
 
     def __solve_inner_systems_J__(self, h_loc, D, beta, x0, tol):
 
-        J = self.__get_average_J__()
+        J = self.__get_J__()
 
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
