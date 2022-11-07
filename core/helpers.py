@@ -615,7 +615,10 @@ class Helpers(Communicators):
         else:
             self.__fill_u_last__(fill_old=False)
             self.__bcast_u_last_loc__()
-            self.u0_loc = self.u_last_loc.copy()
+            if self.rank_row == 0:
+                self.u0_loc = self.u_last_loc.copy()
+            self.comm_row.Barrier()
+
             time_beg = MPI.Wtime()
             self.u0_loc = self.comm_row.bcast(self.u0_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg

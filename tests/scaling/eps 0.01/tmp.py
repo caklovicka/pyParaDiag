@@ -17,14 +17,14 @@ sys.path.append('../../../../../../..')    # for jube
 
 from examples.nonlinear.allen_cahn_2d_pbc_central2 import AllenCahn
 prob = AllenCahn()
-prob.spatial_points = [300, 300]
+prob.spatial_points = [30, 30]
 prob.time_points = 2
 prob.tol = 1e-5
 prob.stol = 1e-7
 
 prob.eps = 0.01
 prob.T_start = 0
-prob.T_end = 0.0075
+prob.T_end = 0.0075 / 128 * 16
 prob.proc_col = 1
 prob.solver = 'custom'
 prob.maxiter = 50
