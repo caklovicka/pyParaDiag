@@ -48,4 +48,4 @@ if prob.rank == prob.size - 1:
         us[i] = complex(lines[i])
     f.close()
     diff = us - up
-    print(np.linalg.norm(diff, np.inf))
+    print('diff =', np.linalg.norm(diff, np.inf), flush=True)
