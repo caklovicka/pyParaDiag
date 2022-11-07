@@ -327,10 +327,18 @@ class Helpers(Communicators):
 
     def __get_average_J__(self):
 
-        if self.iterations[-1] == 1:
+        if self.iterations[-1] == 0:
             J = self.dF(self.u0_loc)
             return J
 
+        # t support a sequential run
+        if self.size == 1:
+            J = np.empty(self.global_size_A, dtype=complex)
+            for i in range(self.time_points):
+                J += self.dF(self.u_loc[i * self.global_size_A:(i + 1) * self.global_size_A]) / self.time_intervals
+            return J
+
+        # else
         J = None
 
         # with spatial parallelization
