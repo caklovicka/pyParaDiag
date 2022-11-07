@@ -1,0 +1,47 @@
+----------------
+ discretization 
+----------------
+solving on [0, 0.003]
+no. of spatial points = [180, 180], dx = [0.005555555555555556, 0.005555555555555556]
+no. of time intervals = 64, dt = 4.6875e-05
+diff = 1.4864128261588775e-09
+collocation points = [1.5625e-05 4.6875e-05]
+alphas = [1e-08]
+betas = [1.0]
+rolling intervals = 1
+
+-----------------
+ parallelization 
+-----------------
+proc. for collocation-space problem: 1
+proc. for time problem: 64
+total: 64
+
+-------
+ other 
+-------
+maxiter of paradiag = 50
+output document = None
+tol = 1e-09
+inner solver = custom
+inner solver tol = 1e-11
+inner solver maxiter = 500
+
+--------
+ output 
+--------
+convergence = 1
+iterations of paradiag = [24]
+total iterations of paradiag = 24
+max iterations of paradiag = 24
+min iterations of paradiag = 24
+
+algorithm time = 9.02146 s
+communication time = 0.37802 s
+
+consecutive errors = 
+[inf, 0.875576, 0.587086, 0.474871, 0.195687, 0.183946, 0.0959214, 0.0671821, 0.0310821, 0.0164705, 0.00661112, 0.00278573, 0.000978865, 0.000336717, 0.000107513, 2.94052e-05, 9.21505e-06, 1.76971e-06, 8.25433e-07, 3.5702e-07, 1.51521e-07, 6.09185e-08, 2.2804e-08, 8.43777e-09, 2.92854e-09]
+residuals = 
+[0.0144623, 0.478238, 0.109384, 0.108792, 0.0659158, 0.0608717, 0.0359338, 0.0230347, 0.0111707, 0.0055562, 0.00222132, 0.000896026, 0.000309295, 0.000102023, 3.20756e-05, 8.23944e-06, 2.59877e-06, 5.78617e-07, 3.02783e-07, 1.32516e-07, 5.45049e-08, 2.15789e-08, 7.95744e-09, 2.89747e-09, 9.94148e-10]
+
+-----------------------< end summary >-----------------------
