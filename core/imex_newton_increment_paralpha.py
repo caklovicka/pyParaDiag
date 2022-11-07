@@ -115,9 +115,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 # end of main iterations (while loop)
 
             if rolling_interval + 1 < self.rolling:
-                self.__fill_u_last__(fill_old=False)
-                self.__bcast_u_last_loc__()
-                self.u0_loc = self.u_last_loc.copy()
+                self.__fill_u0_loc__()
 
         max_time = MPI.Wtime() - time_beg
         self.algorithm_time = self.comm.allreduce(max_time, op=MPI.MAX)

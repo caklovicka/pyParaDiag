@@ -535,11 +535,6 @@ class Helpers(Communicators):
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg
 
-        elif self.betas != NotImplemented:
-            time_beg = MPI.Wtime()
-            self.u_last_loc = self.comm_row.bcast(self.u_last_loc, root=0)
-            self.communication_time += MPI.Wtime() - time_beg
-
     def __write_time_in_txt__(self):
         if self.rank == 0:
             file = open(self.time_document, "w+")
@@ -611,6 +606,19 @@ class Helpers(Communicators):
                 if fill_old:
                     self.u_last_old_loc = self.u_last_loc.copy()
                 self.u_last_loc = self.u_loc[-self.global_size_A:]
+
+    def __fill_u0_loc__(self):
+
+        if self.size == 1:
+            self.u0_loc = self.u_loc[-self.global_size_A:]
+
+        else:
+            self.__fill_u_last__(fill_old=False)
+            self.__bcast_u_last_loc__()
+            self.u0_loc = self.u_last_loc.copy()
+            time_beg = MPI.Wtime()
+            self.u0_loc = self.comm_row.bcast(self.u0_loc, root=0)
+            self.communication_time += MPI.Wtime() - time_beg
 
     def __get_consecutive_error_last__(self):
 
