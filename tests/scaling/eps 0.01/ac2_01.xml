@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
-    <benchmark name="scaling test" outpath="output1">
-    <comment>scaling for ac1_01, rolling * time_intervals = 64</comment>
+    <benchmark name="scaling test" outpath="output2">
+    <comment>scaling for ac2_01, rolling * time_intervals = 64</comment>
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
@@ -17,15 +17,15 @@
 
     <!-- Files -->
     <fileset name="files">
-        <copy>ac1_01.py</copy>
-        <copy>ac1_01.tmpl</copy>
+        <copy>ac2_01.py</copy>
+        <copy>ac2_01.tmpl</copy>
     </fileset>
 
     <!-- Substitute -->
     <substituteset name="substitute">
 
         <!-- Substitute files -->
-        <iofile in="ac1_01.tmpl" out="ac1_01.exe" />
+        <iofile in="ac2_01.tmpl" out="ac2_01.exe" />
 
         <!-- Substitute commands -->
         <sub source="#beta#" dest="$beta" />
@@ -74,10 +74,10 @@
             <column>rolling</column>
             <column>time_intervals</column>
             <column>tot_time_avg</column>
-	    <column>comm_time_avg</column>
-	    <column>max_iters</column>
+	        <column>comm_time_avg</column>
+	        <column>max_iters</column>
             <column>tot_iters</column>
-	    <column>Nx</column>
+	        <column>Nx</column>
             <column>stol</column>
             <column>tol</column>
             <column>convergence</column>

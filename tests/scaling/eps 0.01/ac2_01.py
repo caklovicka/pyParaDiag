@@ -7,8 +7,9 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
 import sys
-sys.path.append('../../..')
-sys.path.append('../../../../../../..')    # for jube
+sys.path.append('../../..')                 # for core
+sys.path.append('../../../../../../..')     # for jube
+import numpy as np
 
 # time steps: 64
 # rolling from runtime
@@ -36,3 +37,15 @@ prob.proc_row = prob.time_intervals
 prob.setup()
 prob.solve()
 prob.summary(details=False)
+
+prob.comm.Barrier()
+if prob.rank == prob.size - 1:
+    up = prob.u_loc[-prob.global_size_A:]
+    us = np.empty_like(up)
+    f = open('../../../../exact2.txt', 'r')
+    lines = f.readlines()
+    for i in range(prob.global_size_A):
+        us[i] = complex(lines[i])
+    f.close()
+    diff = us - up
+    print(np.linalg.norm(diff, np.inf))
