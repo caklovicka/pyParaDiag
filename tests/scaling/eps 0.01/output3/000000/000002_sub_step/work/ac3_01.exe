@@ -1,0 +1,12 @@
+#!/bin/bash -x
+#SBATCH --account=cstma
+#SBATCH --nodes=1
+#SBATCH --ntasks=2
+#SBATCH --ntasks-per-node=2
+#SBATCH --output=mpi-out.%j
+#SBATCH --error=mpi-err.%j
+#SBATCH --time=00:20:00
+#SBATCH --partition=dc-cpu
+
+srun python ac3_01.py --beta=0 --time_intervals=2 --rolling=32 > results.out
+touch ready
