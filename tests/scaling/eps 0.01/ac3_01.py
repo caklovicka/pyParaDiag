@@ -10,7 +10,7 @@ import sys
 sys.path.append('../../..')
 sys.path.append('../../../../../../..')    # for jube
 
-# time steps: 128
+# time steps: 64
 # rolling from runtime
 # time_intervals from runtime
 # beta from runtime
@@ -24,7 +24,7 @@ prob.stol = 1e-14
 
 prob.eps = 0.01
 prob.T_start = 0
-prob.T_end = 0.0075
+prob.T_end = 0.003
 prob.proc_col = 1
 prob.solver = 'custom'
 prob.maxiter = 50
