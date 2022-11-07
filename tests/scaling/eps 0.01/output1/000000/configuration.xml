@@ -3,7 +3,7 @@
   <benchmark name="scaling test" file_path_ref="../.." outpath="..">
     <comment>scaling for ac1_01, rolling * time_intervals = 128</comment>
     <parameterset name="param_set" duplicate="replace">
-      <parameter name="i" type="int" separator="," duplicate="none" mode="text">0,1,2,3</parameter>
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">0,1,2,3,4,5,6,7</parameter>
       <parameter name="beta" type="int" separator="," duplicate="none" mode="text">0,1</parameter>
       <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">[1, 2, 4, 8, 16, 32, 64, 128][$i]</parameter>
       <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">[128, 64, 32, 16, 8, 4, 2, 1][$i]</parameter>
