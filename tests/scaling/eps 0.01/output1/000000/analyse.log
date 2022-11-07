@@ -1,142 +1,254 @@
-[2022-11-04 18:03:33,871]:INFO: ######################################################################
-[2022-11-04 18:03:33,871]:INFO: # Analyse benchmark "scaling test" id: 0
-[2022-11-04 18:03:33,871]:INFO: ######################################################################
-[2022-11-04 18:03:33,871]:INFO: >>> Start analyse
-[2022-11-04 18:03:33,871]:DEBUG: Run analyser "analyse"
-[2022-11-04 18:03:33,871]:DEBUG:   available pattern:
-[2022-11-04 18:03:33,872]:DEBUG:          | pattern     | value                                    |
-[2022-11-04 18:03:33,872]:DEBUG:          |-------------|------------------------------------------|
-[2022-11-04 18:03:33,872]:DEBUG:          | Nx          | no. of spatial points = \[$jube_pat_int  |
-[2022-11-04 18:03:33,872]:DEBUG:          | comm_time   | communication time = $jube_pat_fp        |
-[2022-11-04 18:03:33,872]:DEBUG:          | convergence | convergence = $jube_pat_int              |
-[2022-11-04 18:03:33,872]:DEBUG:          | max_iters   | max iterations of paradiag =             |
-[2022-11-04 18:03:33,872]:DEBUG:          |             | $jube_pat_fp                             |
-[2022-11-04 18:03:33,872]:DEBUG:          | stol        | inner solver tol = $jube_pat_fp          |
-[2022-11-04 18:03:33,872]:DEBUG:          | tol         | tol = $jube_pat_fp                       |
-[2022-11-04 18:03:33,872]:DEBUG:          | tot_iters   | total iterations of paradiag =           |
-[2022-11-04 18:03:33,872]:DEBUG:          |             | $jube_pat_fp                             |
-[2022-11-04 18:03:33,872]:DEBUG:          | tot_time    | algorithm time = $jube_pat_fp            |
-[2022-11-04 18:03:33,872]:DEBUG: 
-[2022-11-04 18:03:33,872]:DEBUG:   available derived pattern:
-[2022-11-04 18:03:33,872]:DEBUG:          | pattern | value |
-[2022-11-04 18:03:33,872]:DEBUG:          |---------|-------|
-[2022-11-04 18:03:33,872]:DEBUG:   analyse step "sub_step"
-[2022-11-04 18:03:33,875]:DEBUG:     scan file output1/000000/000005_sub_step/work/results.out
-[2022-11-04 18:03:33,886]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,886]:DEBUG:          |    tot_time |          first:215.74342, min:215.74342, |
-[2022-11-04 18:03:33,886]:DEBUG:          |             | max:215.74342, sum:215.74342,            |
-[2022-11-04 18:03:33,886]:DEBUG:          |             | sum2:46545.2232732964, cnt:1,            |
-[2022-11-04 18:03:33,886]:DEBUG:          |             | avg:215.74342, std:0, last:215.74342     |
-[2022-11-04 18:03:33,886]:DEBUG:          |   comm_time | first:5.16166, min:5.16166, max:5.16166, |
-[2022-11-04 18:03:33,886]:DEBUG:          |             | sum:5.16166, sum2:26.642733955600004,    |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | cnt:1, avg:5.16166, std:0, last:5.16166  |
-[2022-11-04 18:03:33,887]:DEBUG:          |   max_iters |          first:12.0, min:12.0, max:12.0, |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | sum:12.0, sum2:144.0, cnt:1, avg:12.0,   |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | std:0, last:12.0                         |
-[2022-11-04 18:03:33,887]:DEBUG:          |   tot_iters |       first:372.0, min:372.0, max:372.0, |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | sum:372.0, sum2:138384.0, cnt:1,         |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | avg:372.0, std:0, last:372.0             |
-[2022-11-04 18:03:33,887]:DEBUG:          |         tol |       first:1e-05, min:1e-07, max:1e-05, |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | sum:1.0100000000000002e-05,              |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | sum2:1.0001000000000001e-10, cnt:2,      |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | avg:5.050000000000001e-06,               |
-[2022-11-04 18:03:33,887]:DEBUG:          |             | std:7.000357133746821e-06, last:1e-07    |
-[2022-11-04 18:03:33,887]:DEBUG:          |        stol |       first:1e-07, min:1e-07, max:1e-07, |
-[2022-11-04 18:03:33,889]:DEBUG:          |             | sum:1e-07, sum2:9.999999999999998e-15,   |
-[2022-11-04 18:03:33,889]:DEBUG:          |             | cnt:1, avg:1e-07, std:0, last:1e-07      |
-[2022-11-04 18:03:33,889]:DEBUG:          |          Nx |    first:320, min:320, max:320, sum:320, |
-[2022-11-04 18:03:33,889]:DEBUG:          |             | sum2:102400, cnt:1, avg:320.0, std:0,    |
-[2022-11-04 18:03:33,889]:DEBUG:          |             | last:320                                 |
-[2022-11-04 18:03:33,889]:DEBUG:          | convergence |    first:0, min:0, max:0, sum:0, sum2:0, |
-[2022-11-04 18:03:33,889]:DEBUG:          |             | cnt:1, avg:0.0, std:0, last:0            |
-[2022-11-04 18:03:33,892]:DEBUG:     scan file output1/000000/000000_sub_step/work/results.out
-[2022-11-04 18:03:33,897]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,897]:DEBUG:          |    tot_time |  |
-[2022-11-04 18:03:33,897]:DEBUG:          |   comm_time |  |
-[2022-11-04 18:03:33,897]:DEBUG:          |   max_iters |  |
-[2022-11-04 18:03:33,897]:DEBUG:          |   tot_iters |  |
-[2022-11-04 18:03:33,897]:DEBUG:          |         tol |  |
-[2022-11-04 18:03:33,897]:DEBUG:          |        stol |  |
-[2022-11-04 18:03:33,897]:DEBUG:          |          Nx |  |
-[2022-11-04 18:03:33,897]:DEBUG:          | convergence |  |
-[2022-11-04 18:03:33,904]:DEBUG:     scan file output1/000000/000007_sub_step/work/results.out
-[2022-11-04 18:03:33,911]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,911]:DEBUG:          |    tot_time |          first:159.58007, min:159.58007, |
-[2022-11-04 18:03:33,911]:DEBUG:          |             | max:159.58007, sum:159.58007,            |
-[2022-11-04 18:03:33,911]:DEBUG:          |             | sum2:25465.7987412049, cnt:1,            |
-[2022-11-04 18:03:33,911]:DEBUG:          |             | avg:159.58007, std:0, last:159.58007     |
-[2022-11-04 18:03:33,912]:DEBUG:          |   comm_time | first:4.49809, min:4.49809, max:4.49809, |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum:4.49809, sum2:20.232813648100002,    |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | cnt:1, avg:4.49809, std:0, last:4.49809  |
-[2022-11-04 18:03:33,912]:DEBUG:          |   max_iters |          first:17.0, min:17.0, max:17.0, |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum:17.0, sum2:289.0, cnt:1, avg:17.0,   |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | std:0, last:17.0                         |
-[2022-11-04 18:03:33,912]:DEBUG:          |   tot_iters |       first:255.0, min:255.0, max:255.0, |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum:255.0, sum2:65025.0, cnt:1,          |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | avg:255.0, std:0, last:255.0             |
-[2022-11-04 18:03:33,912]:DEBUG:          |         tol |       first:1e-05, min:1e-07, max:1e-05, |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum:1.0100000000000002e-05,              |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum2:1.0001000000000001e-10, cnt:2,      |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | avg:5.050000000000001e-06,               |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | std:7.000357133746821e-06, last:1e-07    |
-[2022-11-04 18:03:33,912]:DEBUG:          |        stol |       first:1e-07, min:1e-07, max:1e-07, |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum:1e-07, sum2:9.999999999999998e-15,   |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | cnt:1, avg:1e-07, std:0, last:1e-07      |
-[2022-11-04 18:03:33,912]:DEBUG:          |          Nx |    first:320, min:320, max:320, sum:320, |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | sum2:102400, cnt:1, avg:320.0, std:0,    |
-[2022-11-04 18:03:33,912]:DEBUG:          |             | last:320                                 |
-[2022-11-04 18:03:33,913]:DEBUG:          | convergence |    first:0, min:0, max:0, sum:0, sum2:0, |
-[2022-11-04 18:03:33,913]:DEBUG:          |             | cnt:1, avg:0.0, std:0, last:0            |
-[2022-11-04 18:03:33,916]:DEBUG:     scan file output1/000000/000004_sub_step/work/results.out
-[2022-11-04 18:03:33,921]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,921]:DEBUG:          |    tot_time |  |
-[2022-11-04 18:03:33,921]:DEBUG:          |   comm_time |  |
-[2022-11-04 18:03:33,921]:DEBUG:          |   max_iters |  |
-[2022-11-04 18:03:33,921]:DEBUG:          |   tot_iters |  |
-[2022-11-04 18:03:33,921]:DEBUG:          |         tol |  |
-[2022-11-04 18:03:33,921]:DEBUG:          |        stol |  |
-[2022-11-04 18:03:33,922]:DEBUG:          |          Nx |  |
-[2022-11-04 18:03:33,922]:DEBUG:          | convergence |  |
-[2022-11-04 18:03:33,951]:DEBUG:     scan file output1/000000/000001_sub_step/work/results.out
-[2022-11-04 18:03:33,957]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,957]:DEBUG:          |    tot_time |  |
-[2022-11-04 18:03:33,957]:DEBUG:          |   comm_time |  |
-[2022-11-04 18:03:33,957]:DEBUG:          |   max_iters |  |
-[2022-11-04 18:03:33,957]:DEBUG:          |   tot_iters |  |
-[2022-11-04 18:03:33,957]:DEBUG:          |         tol |  |
-[2022-11-04 18:03:33,957]:DEBUG:          |        stol |  |
-[2022-11-04 18:03:33,957]:DEBUG:          |          Nx |  |
-[2022-11-04 18:03:33,957]:DEBUG:          | convergence |  |
-[2022-11-04 18:03:33,960]:DEBUG:     scan file output1/000000/000006_sub_step/work/results.out
-[2022-11-04 18:03:33,965]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,965]:DEBUG:          |    tot_time |  |
-[2022-11-04 18:03:33,965]:DEBUG:          |   comm_time |  |
-[2022-11-04 18:03:33,965]:DEBUG:          |   max_iters |  |
-[2022-11-04 18:03:33,965]:DEBUG:          |   tot_iters |  |
-[2022-11-04 18:03:33,965]:DEBUG:          |         tol |  |
-[2022-11-04 18:03:33,965]:DEBUG:          |        stol |  |
-[2022-11-04 18:03:33,965]:DEBUG:          |          Nx |  |
-[2022-11-04 18:03:33,965]:DEBUG:          | convergence |  |
-[2022-11-04 18:03:33,967]:DEBUG:     scan file output1/000000/000003_sub_step/work/results.out
-[2022-11-04 18:03:33,970]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,970]:DEBUG:          |    tot_time |  |
-[2022-11-04 18:03:33,970]:DEBUG:          |   comm_time |  |
-[2022-11-04 18:03:33,970]:DEBUG:          |   max_iters |  |
-[2022-11-04 18:03:33,970]:DEBUG:          |   tot_iters |  |
-[2022-11-04 18:03:33,970]:DEBUG:          |         tol |  |
-[2022-11-04 18:03:33,970]:DEBUG:          |        stol |  |
-[2022-11-04 18:03:33,970]:DEBUG:          |          Nx |  |
-[2022-11-04 18:03:33,970]:DEBUG:          | convergence |  |
-[2022-11-04 18:03:33,973]:DEBUG:     scan file output1/000000/000002_sub_step/work/results.out
-[2022-11-04 18:03:33,978]:DEBUG:       file "results.out" scanned pattern found:
-[2022-11-04 18:03:33,978]:DEBUG:          |    tot_time |  |
-[2022-11-04 18:03:33,978]:DEBUG:          |   comm_time |  |
-[2022-11-04 18:03:33,978]:DEBUG:          |   max_iters |  |
-[2022-11-04 18:03:33,978]:DEBUG:          |   tot_iters |  |
-[2022-11-04 18:03:33,978]:DEBUG:          |         tol |  |
-[2022-11-04 18:03:33,978]:DEBUG:          |        stol |  |
-[2022-11-04 18:03:33,979]:DEBUG:          |          Nx |  |
-[2022-11-04 18:03:33,979]:DEBUG:          | convergence |  |
-[2022-11-04 18:03:33,987]:INFO: >>> Analyse finished
-[2022-11-04 18:03:33,987]:INFO: >>> Analyse data storage: output1/000000/analyse.xml
-[2022-11-04 18:03:33,987]:INFO: ######################################################################
+[2022-11-07 11:31:38,001]:INFO: ######################################################################
+[2022-11-07 11:31:38,001]:INFO: # Analyse benchmark "scaling test" id: 0
+[2022-11-07 11:31:38,001]:INFO: ######################################################################
+[2022-11-07 11:31:38,001]:INFO: >>> Start analyse
+[2022-11-07 11:31:38,001]:DEBUG: Run analyser "analyse"
+[2022-11-07 11:31:38,002]:DEBUG:   available pattern:
+[2022-11-07 11:31:38,002]:DEBUG:          | pattern     | value                                    |
+[2022-11-07 11:31:38,002]:DEBUG:          |-------------|------------------------------------------|
+[2022-11-07 11:31:38,002]:DEBUG:          | Nx          | no. of spatial points = \[$jube_pat_int  |
+[2022-11-07 11:31:38,002]:DEBUG:          | comm_time   | communication time = $jube_pat_fp        |
+[2022-11-07 11:31:38,002]:DEBUG:          | convergence | convergence = $jube_pat_int              |
+[2022-11-07 11:31:38,002]:DEBUG:          | max_iters   | max iterations of paradiag =             |
+[2022-11-07 11:31:38,002]:DEBUG:          |             | $jube_pat_fp                             |
+[2022-11-07 11:31:38,002]:DEBUG:          | stol        | inner solver tol = $jube_pat_fp          |
+[2022-11-07 11:31:38,002]:DEBUG:          | tol         | tol = $jube_pat_fp                       |
+[2022-11-07 11:31:38,002]:DEBUG:          | tot_iters   | total iterations of paradiag =           |
+[2022-11-07 11:31:38,002]:DEBUG:          |             | $jube_pat_fp                             |
+[2022-11-07 11:31:38,002]:DEBUG:          | tot_time    | algorithm time = $jube_pat_fp            |
+[2022-11-07 11:31:38,002]:DEBUG: 
+[2022-11-07 11:31:38,002]:DEBUG:   available derived pattern:
+[2022-11-07 11:31:38,002]:DEBUG:          | pattern | value |
+[2022-11-07 11:31:38,002]:DEBUG:          |---------|-------|
+[2022-11-07 11:31:38,002]:DEBUG:   analyse step "sub_step"
+[2022-11-07 11:31:38,004]:DEBUG:     scan file output1/000000/000001_sub_step/work/results.out
+[2022-11-07 11:31:38,011]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,011]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,011]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,011]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,011]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,011]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,011]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,011]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,012]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,014]:DEBUG:     scan file output1/000000/000010_sub_step/work/results.out
+[2022-11-07 11:31:38,019]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,019]:DEBUG:          |    tot_time | first:3.95912, min:3.95912, max:3.95912, |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | sum:3.95912, sum2:15.6746311744, cnt:1,  |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | avg:3.95912, std:0, last:3.95912         |
+[2022-11-07 11:31:38,019]:DEBUG:          |   comm_time | first:0.16626, min:0.16626, max:0.16626, |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | sum:0.16626, sum2:0.0276423876, cnt:1,   |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | avg:0.16626, std:0, last:0.16626         |
+[2022-11-07 11:31:38,019]:DEBUG:          |   max_iters |    first:4.0, min:4.0, max:4.0, sum:4.0, |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | sum2:16.0, cnt:1, avg:4.0, std:0,        |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | last:4.0                                 |
+[2022-11-07 11:31:38,019]:DEBUG:          |   tot_iters |    first:4.0, min:4.0, max:4.0, sum:4.0, |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | sum2:16.0, cnt:1, avg:4.0, std:0,        |
+[2022-11-07 11:31:38,019]:DEBUG:          |             | last:4.0                                 |
+[2022-11-07 11:31:38,021]:DEBUG:          |         tol |       first:1e-05, min:1e-07, max:1e-05, |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | sum:1.0100000000000002e-05,              |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | sum2:1.0001000000000001e-10, cnt:2,      |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | avg:5.050000000000001e-06,               |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | std:7.000357133746821e-06, last:1e-07    |
+[2022-11-07 11:31:38,021]:DEBUG:          |        stol |       first:1e-07, min:1e-07, max:1e-07, |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | sum:1e-07, sum2:9.999999999999998e-15,   |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | cnt:1, avg:1e-07, std:0, last:1e-07      |
+[2022-11-07 11:31:38,021]:DEBUG:          |          Nx |    first:320, min:320, max:320, sum:320, |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | sum2:102400, cnt:1, avg:320.0, std:0,    |
+[2022-11-07 11:31:38,021]:DEBUG:          |             | last:320                                 |
+[2022-11-07 11:31:38,021]:DEBUG:          | convergence |    first:0, min:0, max:0, sum:0, sum2:0, |
+[2022-11-07 11:31:38,022]:DEBUG:          |             | cnt:1, avg:0.0, std:0, last:0            |
+[2022-11-07 11:31:38,024]:DEBUG:     scan file output1/000000/000013_sub_step/work/results.out
+[2022-11-07 11:31:38,029]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,029]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,029]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,029]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,029]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,029]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,030]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,030]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,030]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,031]:DEBUG:     scan file output1/000000/000002_sub_step/work/results.out
+[2022-11-07 11:31:38,036]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,036]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,036]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,036]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,036]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,036]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,036]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,036]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,037]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,038]:DEBUG:     scan file output1/000000/000015_sub_step/work/results.out
+[2022-11-07 11:31:38,043]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,043]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,043]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,043]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,043]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,043]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,043]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,043]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,043]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,045]:DEBUG:     scan file output1/000000/000007_sub_step/work/results.out
+[2022-11-07 11:31:38,050]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,050]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,050]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,050]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,050]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,050]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,050]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,050]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,050]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,051]:DEBUG:     scan file output1/000000/000004_sub_step/work/results.out
+[2022-11-07 11:31:38,055]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,055]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,055]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,055]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,055]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,055]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,055]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,055]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,055]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,068]:DEBUG:     scan file output1/000000/000012_sub_step/work/results.out
+[2022-11-07 11:31:38,075]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,075]:DEBUG:          |    tot_time | first:3.94228, min:3.94228, max:3.94228, |
+[2022-11-07 11:31:38,075]:DEBUG:          |             | sum:3.94228, sum2:15.5415715984, cnt:1,  |
+[2022-11-07 11:31:38,075]:DEBUG:          |             | avg:3.94228, std:0, last:3.94228         |
+[2022-11-07 11:31:38,075]:DEBUG:          |   comm_time | first:0.15544, min:0.15544, max:0.15544, |
+[2022-11-07 11:31:38,075]:DEBUG:          |             | sum:0.15544, sum2:0.0241615936, cnt:1,   |
+[2022-11-07 11:31:38,075]:DEBUG:          |             | avg:0.15544, std:0, last:0.15544         |
+[2022-11-07 11:31:38,075]:DEBUG:          |   max_iters |    first:3.0, min:3.0, max:3.0, sum:3.0, |
+[2022-11-07 11:31:38,075]:DEBUG:          |             | sum2:9.0, cnt:1, avg:3.0, std:0,         |
+[2022-11-07 11:31:38,075]:DEBUG:          |             | last:3.0                                 |
+[2022-11-07 11:31:38,076]:DEBUG:          |   tot_iters |    first:3.0, min:3.0, max:3.0, sum:3.0, |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | sum2:9.0, cnt:1, avg:3.0, std:0,         |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | last:3.0                                 |
+[2022-11-07 11:31:38,076]:DEBUG:          |         tol |       first:1e-05, min:1e-07, max:1e-05, |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | sum:1.0100000000000002e-05,              |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | sum2:1.0001000000000001e-10, cnt:2,      |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | avg:5.050000000000001e-06,               |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | std:7.000357133746821e-06, last:1e-07    |
+[2022-11-07 11:31:38,076]:DEBUG:          |        stol |       first:1e-07, min:1e-07, max:1e-07, |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | sum:1e-07, sum2:9.999999999999998e-15,   |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | cnt:1, avg:1e-07, std:0, last:1e-07      |
+[2022-11-07 11:31:38,076]:DEBUG:          |          Nx |    first:320, min:320, max:320, sum:320, |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | sum2:102400, cnt:1, avg:320.0, std:0,    |
+[2022-11-07 11:31:38,076]:DEBUG:          |             | last:320                                 |
+[2022-11-07 11:31:38,077]:DEBUG:          | convergence |    first:0, min:0, max:0, sum:0, sum2:0, |
+[2022-11-07 11:31:38,077]:DEBUG:          |             | cnt:1, avg:0.0, std:0, last:0            |
+[2022-11-07 11:31:38,080]:DEBUG:     scan file output1/000000/000000_sub_step/work/results.out
+[2022-11-07 11:31:38,084]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,084]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,084]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,084]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,084]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,084]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,084]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,084]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,084]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,086]:DEBUG:     scan file output1/000000/000009_sub_step/work/results.out
+[2022-11-07 11:31:38,089]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,089]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,089]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,089]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,090]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,090]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,090]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,090]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,090]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,091]:DEBUG:     scan file output1/000000/000006_sub_step/work/results.out
+[2022-11-07 11:31:38,094]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,095]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,095]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,095]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,095]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,095]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,095]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,095]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,095]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,104]:DEBUG:     scan file output1/000000/000014_sub_step/work/results.out
+[2022-11-07 11:31:38,110]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,110]:DEBUG:          |    tot_time |    first:5.7054, min:5.7054, max:5.7054, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum:5.7054, sum2:32.55158916, cnt:1,     |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | avg:5.7054, std:0, last:5.7054           |
+[2022-11-07 11:31:38,110]:DEBUG:          |   comm_time | first:0.20073, min:0.20073, max:0.20073, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum:0.20073, sum2:0.0402925329, cnt:1,   |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | avg:0.20073, std:0, last:0.20073         |
+[2022-11-07 11:31:38,110]:DEBUG:          |   max_iters |    first:3.0, min:3.0, max:3.0, sum:3.0, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum2:9.0, cnt:1, avg:3.0, std:0,         |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | last:3.0                                 |
+[2022-11-07 11:31:38,110]:DEBUG:          |   tot_iters |    first:3.0, min:3.0, max:3.0, sum:3.0, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum2:9.0, cnt:1, avg:3.0, std:0,         |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | last:3.0                                 |
+[2022-11-07 11:31:38,110]:DEBUG:          |         tol |       first:1e-05, min:1e-07, max:1e-05, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum:1.0100000000000002e-05,              |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum2:1.0001000000000001e-10, cnt:2,      |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | avg:5.050000000000001e-06,               |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | std:7.000357133746821e-06, last:1e-07    |
+[2022-11-07 11:31:38,110]:DEBUG:          |        stol |       first:1e-07, min:1e-07, max:1e-07, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum:1e-07, sum2:9.999999999999998e-15,   |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | cnt:1, avg:1e-07, std:0, last:1e-07      |
+[2022-11-07 11:31:38,110]:DEBUG:          |          Nx |    first:320, min:320, max:320, sum:320, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | sum2:102400, cnt:1, avg:320.0, std:0,    |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | last:320                                 |
+[2022-11-07 11:31:38,110]:DEBUG:          | convergence |    first:0, min:0, max:0, sum:0, sum2:0, |
+[2022-11-07 11:31:38,110]:DEBUG:          |             | cnt:1, avg:0.0, std:0, last:0            |
+[2022-11-07 11:31:38,113]:DEBUG:     scan file output1/000000/000011_sub_step/work/results.out
+[2022-11-07 11:31:38,116]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,116]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,116]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,116]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,116]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,116]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,116]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,116]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,116]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,119]:DEBUG:     scan file output1/000000/000003_sub_step/work/results.out
+[2022-11-07 11:31:38,122]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,122]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,122]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,123]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,123]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,123]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,123]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,123]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,123]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,127]:DEBUG:     scan file output1/000000/000008_sub_step/work/results.out
+[2022-11-07 11:31:38,131]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,131]:DEBUG:          |    tot_time | first:4.83178, min:4.83178, max:4.83178, |
+[2022-11-07 11:31:38,131]:DEBUG:          |             | sum:4.83178, sum2:23.346097968400002,    |
+[2022-11-07 11:31:38,131]:DEBUG:          |             | cnt:1, avg:4.83178, std:0, last:4.83178  |
+[2022-11-07 11:31:38,131]:DEBUG:          |   comm_time | first:0.17939, min:0.17939, max:0.17939, |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum:0.17939, sum2:0.0321807721, cnt:1,   |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | avg:0.17939, std:0, last:0.17939         |
+[2022-11-07 11:31:38,132]:DEBUG:          |   max_iters |    first:6.0, min:6.0, max:6.0, sum:6.0, |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum2:36.0, cnt:1, avg:6.0, std:0,        |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | last:6.0                                 |
+[2022-11-07 11:31:38,132]:DEBUG:          |   tot_iters |    first:6.0, min:6.0, max:6.0, sum:6.0, |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum2:36.0, cnt:1, avg:6.0, std:0,        |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | last:6.0                                 |
+[2022-11-07 11:31:38,132]:DEBUG:          |         tol |       first:1e-05, min:1e-07, max:1e-05, |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum:1.0100000000000002e-05,              |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum2:1.0001000000000001e-10, cnt:2,      |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | avg:5.050000000000001e-06,               |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | std:7.000357133746821e-06, last:1e-07    |
+[2022-11-07 11:31:38,132]:DEBUG:          |        stol |       first:1e-07, min:1e-07, max:1e-07, |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum:1e-07, sum2:9.999999999999998e-15,   |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | cnt:1, avg:1e-07, std:0, last:1e-07      |
+[2022-11-07 11:31:38,132]:DEBUG:          |          Nx |    first:320, min:320, max:320, sum:320, |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | sum2:102400, cnt:1, avg:320.0, std:0,    |
+[2022-11-07 11:31:38,132]:DEBUG:          |             | last:320                                 |
+[2022-11-07 11:31:38,133]:DEBUG:          | convergence |    first:0, min:0, max:0, sum:0, sum2:0, |
+[2022-11-07 11:31:38,133]:DEBUG:          |             | cnt:1, avg:0.0, std:0, last:0            |
+[2022-11-07 11:31:38,135]:DEBUG:     scan file output1/000000/000005_sub_step/work/results.out
+[2022-11-07 11:31:38,139]:DEBUG:       file "results.out" scanned pattern found:
+[2022-11-07 11:31:38,139]:DEBUG:          |    tot_time |  |
+[2022-11-07 11:31:38,139]:DEBUG:          |   comm_time |  |
+[2022-11-07 11:31:38,139]:DEBUG:          |   max_iters |  |
+[2022-11-07 11:31:38,139]:DEBUG:          |   tot_iters |  |
+[2022-11-07 11:31:38,139]:DEBUG:          |         tol |  |
+[2022-11-07 11:31:38,139]:DEBUG:          |        stol |  |
+[2022-11-07 11:31:38,139]:DEBUG:          |          Nx |  |
+[2022-11-07 11:31:38,139]:DEBUG:          | convergence |  |
+[2022-11-07 11:31:38,152]:INFO: >>> Analyse finished
+[2022-11-07 11:31:38,152]:INFO: >>> Analyse data storage: output1/000000/analyse.xml
+[2022-11-07 11:31:38,152]:INFO: ######################################################################
