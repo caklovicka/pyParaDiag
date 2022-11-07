@@ -24,7 +24,7 @@ prob.stol = 1e-7
 
 prob.eps = 0.01
 prob.T_start = 0
-prob.T_end = 0.0075
+prob.T_end = 0.003
 prob.proc_col = 1
 prob.solver = 'custom'
 prob.maxiter = 50
@@ -36,3 +36,14 @@ prob.proc_row = prob.time_intervals
 prob.setup()
 prob.solve()
 prob.summary(details=False)
+
+if prob.rank == prob.size - 1:
+    up = prob.u_loc[-prob.global_size_A:]
+    us = np.empty_like(up)
+    f = open('exact1.txt', 'r')
+    lines = f.readlines()
+    for i in range(prob.global_size_A):
+        us[i] = complex(lines[i])
+    f.close()
+    diff = us - up
+    print('diff = ', np.linalg.norm(diff, np.inf))
