@@ -1,0 +1,141 @@
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_vx=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/p/software/jurecadc/lmod/8.7.12/init/bash)
+Shell debugging restarted
++ unset __lmod_vx
++ srun python ac1_01.py --beta=1 --time_intervals=32 --rolling=4
+[8]PETSC ERROR: ------------------------------------------------------------------------
+[8]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+srun: Job step aborted: Waiting up to 6 seconds for job step to finish.
+[24]PETSC ERROR: ------------------------------------------------------------------------
+[24]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[24]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[24]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[24]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[24]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[16]PETSC ERROR: ------------------------------------------------------------------------
+[16]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[16]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[16]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[16]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[16]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[20]PETSC ERROR: ------------------------------------------------------------------------
+[20]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[20]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[20]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[20]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[20]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[20]PETSC ERROR: #1 PetscMemcpy() at /p/home/jusers/aklovi1/jureca/petsc/include/petscsys.h:1598
+[20]PETSC ERROR: #2 VecCopy_Seq() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/impls/seq/bvec2.c:177
+[24]PETSC ERROR: #1 MatMult_SeqAIJ() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/impls/aij/seq/aij.c:1474
+[24]PETSC ERROR: #2 MatMult() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/interface/matrix.c:2556
+[24]PETSC ERROR: #3 PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/interface/precon.c:714
+[24]PETSC ERROR: #4 KSP_PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/include/petsc/private/kspimpl.h:416
+[24]PETSC ERROR: #5 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:147
+[24]PETSC ERROR: #6 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[24]PETSC ERROR: #7 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[24]PETSC ERROR: #8 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+[16]PETSC ERROR: #1 MatMult_SeqAIJ() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/impls/aij/seq/aij.c:1474
+[16]PETSC ERROR: #2 MatMult() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/interface/matrix.c:2556
+[16]PETSC ERROR: #3 PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/interface/precon.c:714
+[16]PETSC ERROR: #4 KSP_PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/include/petsc/private/kspimpl.h:416
+[16]PETSC ERROR: #5 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:147
+[16]PETSC ERROR: #6 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[16]PETSC ERROR: #7 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[16]PETSC ERROR: #8 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+[20]PETSC ERROR: #3 VecCopy() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/interface/vector.c:1664
+[20]PETSC ERROR: #4 PCApply_None() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/impls/none/none.c:10
+[20]PETSC ERROR: #5 PCApply() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/interface/precon.c:441
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 24
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 16
+[20]PETSC ERROR: #6 PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/interface/precon.c:715
+[20]PETSC ERROR: #7 KSP_PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/include/petsc/private/kspimpl.h:416
+[20]PETSC ERROR: #8 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:147
+[28]PETSC ERROR: ------------------------------------------------------------------------
+[28]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[28]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[28]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+p_Abort(r24): aborting on users request
+p_Abort(r16): aborting on users request
+[20]PETSC ERROR: #9 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[20]PETSC ERROR: #10 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[28]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[28]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[28]PETSC ERROR: #1 VecMDot_Seq() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/impls/seq/dvec2.c:246
+[28]PETSC ERROR: #2 VecMDot() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/interface/rvector.c:1157
+[20]PETSC ERROR: #11 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+[28]PETSC ERROR: #3 KSPGMRESClassicalGramSchmidtOrthogonalization() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/borthog2.c:63
+[28]PETSC ERROR: #4 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:150
+[28]PETSC ERROR: #5 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[8]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[8]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[8]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[8]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[0]PETSC ERROR: ------------------------------------------------------------------------
+[0]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[0]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[0]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[0]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[0]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[0]PETSC ERROR: #1 VecMAXPY_Seq() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/impls/seq/dvec2.c:656
+[0]PETSC ERROR: #2 VecMAXPY() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/interface/rvector.c:1207
+[0]PETSC ERROR: #3 KSPGMRESClassicalGramSchmidtOrthogonalization() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/borthog2.c:74
+[0]PETSC ERROR: #4 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:150
+[0]PETSC ERROR: #5 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[0]PETSC ERROR: #6 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[0]PETSC ERROR: #7 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+[4]PETSC ERROR: ------------------------------------------------------------------------
+[4]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[4]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[4]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[4]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[4]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[4]PETSC ERROR: #1 VecMDot_Seq() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/impls/seq/dvec2.c:246
+[4]PETSC ERROR: #2 VecMDot() at /p/home/jusers/aklovi1/jureca/petsc/src/vec/vec/interface/rvector.c:1157
+[4]PETSC ERROR: #3 KSPGMRESClassicalGramSchmidtOrthogonalization() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/borthog2.c:63
+[4]PETSC ERROR: #4 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:150
+[4]PETSC ERROR: #5 KSPSolve_GMRES() at application called MPI_Abort(MPI_COMM_WORLD, 59) - process 0
+/p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[4]PETSC ERROR: #6 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[4]PETSC ERROR: #7 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+[12]PETSC ERROR: ------------------------------------------------------------------------
+[12]PETSC ERROR: Caught signal number 15 Terminate: Some process (or the batch system) has told this process to end
+[12]PETSC ERROR: Try option -start_in_debugger or -on_error_attach_debugger
+[12]PETSC ERROR: or see https://petsc.org/release/faq/#valgrind and https://petsc.org/release/faq/
+[12]PETSC ERROR: ---------------------  Stack Frames ------------------------------------
+[12]PETSC ERROR: The line numbers in the error traceback are not always exact.
+[12]PETSC ERROR: #1 MatMult_SeqAIJ() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/impls/aij/seq/aij.c:1474
+[12]PETSC ERROR: #2 MatMult() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/interface/matrix.c:2556
+[12]PETSC ERROR: #3 PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/interface/precon.c:714
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 4
+[12]PETSC ERROR: #4 KSP_PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/include/petsc/private/kspimpl.h:416
+[12]PETSC ERROR: #5 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:147
+[12]PETSC ERROR: #6 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[12]PETSC ERROR: #7 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[12]PETSC ERROR: #8 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 12
+[8]PETSC ERROR: #1 MatMult_SeqAIJ() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/impls/aij/seq/aij.c:1474
+[8]PETSC ERROR: #2 MatMult() at /p/home/jusers/aklovi1/jureca/petsc/src/mat/interface/matrix.c:2556
+[8]PETSC ERROR: #3 PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/pc/interface/precon.c:714
+[8]PETSC ERROR: #4 KSP_PCApplyBAorAB() at /p/home/jusers/aklovi1/jureca/petsc/include/petsc/private/kspimpl.h:416
+[8]PETSC ERROR: #5 KSPGMRESCycle() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:147
+[8]PETSC ERROR: #6 KSPSolve_GMRES() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/impls/gmres/gmres.c:228
+[8]PETSC ERROR: #7 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[8]PETSC ERROR: #8 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 8
+p_Abort(r4): aborting on users request
+p_Abort(r12): aborting on users request
+p_Abort(r0): aborting on users request
+p_Abort(r8): aborting on users request
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 20
+[28]PETSC ERROR: #6 KSPSolve_Private() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:899
+[28]PETSC ERROR: #7 KSPSolve() at /p/home/jusers/aklovi1/jureca/petsc/src/ksp/ksp/interface/itfunc.c:1071
+p_Abort(r20): aborting on users request
+application called MPI_Abort(MPI_COMM_WORLD, 59) - process 28
+p_Abort(r28): aborting on users request
+srun: error: jrc0575: tasks 16-31: Terminated
+srun: error: jrc0574: tasks 0-15: Terminated
++ touch ready

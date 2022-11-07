@@ -1,0 +1,48 @@
+----------------
+ discretization 
+----------------
+solving on [0, 0.0075]
+no. of spatial points = [320, 320], dx = [0.003125, 0.003125]
+no. of time intervals = 64, dt = 5.859375e-05
+collocation points = [1.95313e-05 5.85937e-05]
+alphas = [1e-08]
+betas = [0.0]
+rolling intervals = 2
+
+-----------------
+ parallelization 
+-----------------
+proc. for collocation-space problem: 1
+proc. for time problem: 64
+total: 64
+
+-------
+ other 
+-------
+maxiter of paradiag = 50
+output document = None
+tol = 1e-05
+inner solver = custom
+inner solver tol = 1e-07
+inner solver maxiter = 500
+
+--------
+ output 
+--------
+convergence = 0
+iterations of paradiag = [3, 0]
+total iterations of paradiag = 3
+max iterations of paradiag = 3
+min iterations of paradiag = 0
+
+algorithm time = 3.94228 s
+communication time = 0.15544 s
+
+consecutive errors = 
+[inf, 0.240443, 3.48434, 283.522]
+[inf]
+residuals = 
+[0.0192311, 0.235858, 30.729, 11388500.0]
+[11388500.0]
+
+-----------------------< end summary >-----------------------
