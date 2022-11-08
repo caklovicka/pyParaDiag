@@ -40,9 +40,18 @@ prob.Y_right = 2 * prob.R
 prob.proc_row = prob.time_intervals
 
 prob.setup()
-#print(prob.T_end < prob.R ** 2 / 2)
-#print(prob.T_end, prob.dx[0]**2, prob.dt**(2 * prob.time_points - 1), prob.dt < prob.eps**2)
-#print(prob.eps, prob.eps**2, prob.eps**3)
 prob.solve()
 prob.summary(details=False)
+
+prob.comm.Barrier()
+if prob.rank == prob.size - 1:
+    up = prob.u_loc[-prob.global_size_A:]
+    us = np.empty_like(up)
+    f = open('../../../../exact1.txt', 'r')
+    lines = f.readlines()
+    for i in range(prob.global_size_A):
+        us[i] = complex(lines[i])
+    f.close()
+    diff = us - up
+    print('diff =', np.linalg.norm(diff, np.inf), flush=True)
 
