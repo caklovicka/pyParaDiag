@@ -11,7 +11,7 @@ sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 import numpy as np
 
-# time steps: 64
+# time steps: 128
 # rolling from runtime
 # time_intervals from runtime
 # beta from runtime
