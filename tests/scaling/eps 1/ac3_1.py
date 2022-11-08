@@ -21,13 +21,13 @@ prob = AllenCahn()
 prob.spatial_points = [400, 400]
 prob.time_points = 3
 prob.tol = 1e-13
-prob.stol = 1e-14
+prob.stol = 1e-15
 prob.T_end = 0.4
 
 prob.eps = 1
 prob.T_start = 0
 prob.proc_col = 1
-prob.solver = 'custom'
+prob.solver = 'gmres'
 prob.maxiter = 50
 prob.smaxiter = 500
 prob.alphas = [1e-8]
@@ -40,8 +40,22 @@ prob.Y_right = 2 * prob.R
 prob.proc_row = prob.time_intervals
 
 prob.setup()
-#print(prob.T_end < prob.R ** 2 / 2)
-#print(prob.T_end, prob.dx[0]**6, prob.dt**(2 * prob.time_points - 1), prob.dt < prob.eps**2)
-#print(prob.eps, prob.eps**2, prob.eps**3)
 prob.solve()
 prob.summary(details=False)
+
+f = open('exact3.txt', 'w')
+up = prob.u_loc[-prob.global_size_A:]
+for i in range(prob.global_size_A):
+    f.write(str(up[i]) + '\n')
+f.close()
+
+if prob.rank == prob.size - 1:
+    up = prob.u_loc[-prob.global_size_A:]
+    us = np.empty_like(up)
+    f = open('exact3.txt', 'r')
+    lines = f.readlines()
+    for i in range(prob.global_size_A):
+        us[i] = complex(lines[i])
+    f.close()
+    diff = us - up
+    print(np.linalg.norm(diff, np.inf))
