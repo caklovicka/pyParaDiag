@@ -18,11 +18,11 @@ import numpy as np
 
 from examples.nonlinear.allen_cahn_2d_pbc_central4 import AllenCahn
 prob = AllenCahn()
-prob.spatial_points = [300, 300]
-prob.time_points = 2
+prob.spatial_points = [250, 250]
+prob.time_points = 3
 prob.tol = 1e-6
 prob.stol = 1e-8
-prob.T_end = 1
+prob.T_end = 6
 
 prob.eps = 1.5
 prob.T_start = 0
@@ -40,6 +40,6 @@ prob.Y_right = 2 * prob.R
 prob.proc_row = prob.time_intervals
 
 prob.setup()
-#print(prob.R**2/0.5 > prob.T_end, prob.dx[0]**4, prob.dt**(2 * prob.time_points - 1))
+print(prob.R**2/0.5 > prob.T_end, prob.dx[0]**4, prob.dt**(2 * prob.time_points - 1))
 prob.solve()
 prob.summary(details=False)
