@@ -20,7 +20,7 @@ from examples.nonlinear.allen_cahn_2d_pbc_central4 import AllenCahn
 prob = AllenCahn()
 prob.spatial_points = [800, 800]
 prob.time_points = 2
-prob.tol = 1e-9
+prob.tol = 1e-10
 prob.stol = 1e-11
 prob.T_end = 0.1
 

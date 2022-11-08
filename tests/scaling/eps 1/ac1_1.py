@@ -20,15 +20,15 @@ from examples.nonlinear.allen_cahn_2d_pbc_central2 import AllenCahn
 prob = AllenCahn()
 prob.spatial_points = [1500, 1500]
 prob.time_points = 1
-prob.tol = 1e-5
-prob.stol = 1e-7
+prob.tol = 1e-6
+prob.stol = 1e-8
 prob.T_end = 0.001
 
 prob.eps = 1
 prob.T_start = 0
 prob.proc_col = 1
 prob.solver = 'custom'
-prob.maxiter = 50
+prob.maxiter = 3
 prob.smaxiter = 500
 prob.alphas = [1e-8]
 prob.R = 1
@@ -42,6 +42,12 @@ prob.proc_row = prob.time_intervals
 prob.setup()
 prob.solve()
 prob.summary(details=False)
+
+f = open('exact1.txt', 'w')
+up = prob.u_loc[-prob.global_size_A:]
+for i in range(prob.global_size_A):
+    f.write(str(up[i]) + '\n')
+f.close()
 
 prob.comm.Barrier()
 if prob.rank == prob.size - 1:
