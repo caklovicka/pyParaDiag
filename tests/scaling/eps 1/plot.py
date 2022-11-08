@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-K = 1
+K = 2
 mksz = 20
 col = sns.color_palette("bright", 2 * K)
 
