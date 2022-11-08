@@ -18,7 +18,7 @@ import numpy as np
 
 from examples.nonlinear.allen_cahn_2d_pbc_central4 import AllenCahn
 prob = AllenCahn()
-prob.spatial_points = [100, 100]
+prob.spatial_points = [200, 200]
 prob.time_points = 2
 prob.tol = 1e-5
 prob.stol = 1e-7
@@ -30,12 +30,12 @@ prob.solver = 'gmres'
 prob.maxiter = 20
 prob.smaxiter = 500
 prob.alphas = [1e-8]
-prob.R = 1
+prob.R = 2
 prob.X_left = -2 * prob.R
 prob.X_right = 2 * prob.R
 prob.Y_left = -2 * prob.R
 prob.Y_right = 2 * prob.R
-prob.T_end = prob.R ** 2 * 0.4
+prob.T_end = 1
 
 prob.proc_row = prob.time_intervals
 
