@@ -16,13 +16,13 @@ import numpy as np
 # time_intervals from runtime
 # beta from runtime
 
-from examples.nonlinear.allen_cahn_2d_pbc_central4 import AllenCahn
+from examples.nonlinear.allen_cahn_2d_pbc_central6 import AllenCahn
 prob = AllenCahn()
-prob.spatial_points = [800, 800]
-prob.time_points = 2
-prob.tol = 1e-9
-prob.stol = 1e-11
-prob.T_end = 0.1
+prob.spatial_points = [400, 400]
+prob.time_points = 3
+prob.tol = 1e-12
+prob.stol = 1e-14
+prob.T_end = 0.4
 
 prob.eps = 1
 prob.T_start = 0
@@ -41,7 +41,7 @@ prob.proc_row = prob.time_intervals
 
 prob.setup()
 #print(prob.T_end < prob.R ** 2 / 2)
-#print(prob.T_end, prob.dx[0]**4, prob.dt**(2 * prob.time_points - 1), prob.dt < prob.eps**2)
+#print(prob.T_end, prob.dx[0]**6, prob.dt**(2 * prob.time_points - 1), prob.dt < prob.eps**2)
 #print(prob.eps, prob.eps**2, prob.eps**3)
 prob.solve()
 prob.summary(details=False)
