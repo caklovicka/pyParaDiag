@@ -130,6 +130,52 @@ def IMEX(T0, u0, dt, F, A, b, steps, maxiter=10, coll_points=3, restol=1e-6, sto
 
     return u[-spatial_points:], res, ncount
 
+def semi_implicit(T0, u0, dt, F, A, b, steps, maxiter=10, coll_points=3, restol=1e-6, stol=1e-7):
+
+    no_warnings = True
+    coll = CollBase(coll_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
+    Q = coll.Qmat[1:, 1:]
+    t = dt * np.array(coll.nodes)
+    D, S = np.linalg.eig(Q)     # S @ D @ Sinv = Q
+    Sinv = np.linalg.inv(S)
+    spatial_points = u0.shape[0]
+    u = np.tile(u0, coll_points).astype(complex)    # initial guess
+    r = np.empty_like(u)
+    ncount = np.zeros(steps)
+    res = np.zeros_like(ncount)
+    Fu = np.empty(spatial_points * coll_points, dtype=complex)
+
+    Q = sp.sparse.csr_matrix(Q)
+    S = sp.sparse.csr_matrix(S)
+    Sinv = sp.sparse.csr_matrix(Sinv)
+
+    for k in range(steps):
+
+        u = np.tile(u[-spatial_points:], coll_points)
+        u_ = u.copy()
+
+        # assemble r
+        for i in range(coll_points):
+            r[i * spatial_points: (i + 1) * spatial_points] = b(T0 + k * dt + t[i])
+        r = u_ + dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ r + dt * F(u_)
+
+        tmp = u - dt * sp.sparse.kron(Q, A) @ u - r
+        res[k] = np.linalg.norm(tmp, np.inf)
+
+        z = sp.sparse.kron(Sinv, sp.sparse.eye(spatial_points)) @ r
+
+        # solve systems
+        for i in range(coll_points):
+            tmp = sp.sparse.eye(spatial_points) - D[i] * dt * A
+            z[i * spatial_points: (i + 1) * spatial_points], info = sp.sparse.linalg.gmres(tmp, z[i * spatial_points: (i + 1) * spatial_points], tol=stol, atol=0,  maxiter=500)
+            if info != 0 and no_warnings:
+                print('Warning! Some systems did not finish.')
+                no_warnings = False
+
+        u = sp.sparse.kron(S, sp.sparse.eye(spatial_points)) @ z
+
+    return u[-spatial_points:], res
+
 # OVO KORISTI
 def ParalpHa(T0, u0, dt, F, dF, A, b, steps, alpha, beta=[0], maxiter=10, coll_points=3, restol=1e-6, stol=1e-7, reff_run=None, const=1, m0=1, optimal=False):
 
@@ -453,6 +499,133 @@ def Parallel_IMEX_refinement(T0, u0, dt, F, dF, A, b, steps, alpha, beta=[0], ma
                 rhs = np.tile(u[-spatial_points:, k - 1], coll_points) + bb[:, k]
             res[:, k] = u[:, k] - dt * sp.sparse.kron(Q, A) @ u[:, k] - dt * sp.sparse.kron(Q, sp.sparse.eye(
                 spatial_points)) @ F(u[:, k]) - rhs
+        res_history.append(np.linalg.norm(res.flatten(), np.inf))
+
+        err_history.append(err)
+        u_history.append(u[-spatial_points:, -1].copy())
+        #print('new iteration computed')
+        ncount += 1
+        alpha_idx = min(len(alpha) - 1, alpha_idx + 1)
+        beta_idx = min(len(beta) - 1, beta_idx + 1)
+
+    return u[-spatial_points:, -1], u_history, err_history, res_history, consecutive_iterates
+
+def semi_implicit_refinement(T0, u0, dt, F, dF, A, b, steps, alpha, beta=[0], maxiter=10, coll_points=3, restol=1e-6, stol=1e-7, reff_run=None, const=1, m0=1, optimal=False):
+
+    no_warnings = True
+    coll = CollBase(coll_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
+    Q = coll.Qmat[1:, 1:]
+    Q = sp.sparse.csr_matrix(Q)
+    t = dt * np.array(coll.nodes)
+    spatial_points = u0.shape[0]
+    u = np.tile(u0, coll_points * steps).reshape(spatial_points * coll_points, steps, order='F').astype(complex) # initial guess
+    z = np.zeros_like(u, dtype=complex)
+    r = np.zeros_like(u, dtype=complex)
+    bb = np.zeros_like(u, dtype=complex)   # for storing dt (Q x I) b
+    res = np.zeros_like(u, dtype=complex)
+    Fu = np.zeros(spatial_points * coll_points, dtype=complex)
+    ncount = 0
+    beta_idx = 0
+    alpha_idx = 0
+    u_history = []
+    res_history = []
+    err_history = []
+    consecutive_iterates = []
+
+    # assemble bb
+    for k in range(steps):
+        for i in range(coll_points):
+            bb[i * spatial_points: (i + 1) * spatial_points, k] = b(T0 + k * dt + t[i])
+        bb[:, k] = dt * sp.sparse.kron(Q, sp.sparse.eye(spatial_points)) @ bb[:, k]
+
+    # compute error
+    err = 0
+    if reff_run is not None:
+        err = np.linalg.norm(u[-spatial_points:, -1] - reff_run, np.inf)
+
+    # compute residual
+    for k in range(steps):
+        if k == 0:
+            rhs = np.tile(u0, coll_points) + bb[:, k] + dt * F(np.tile(u0, coll_points))
+        else:
+            rhs = np.tile(u[-spatial_points:, k - 1], coll_points) + bb[:, k] + dt * F(np.tile(u[-spatial_points:, k - 1], coll_points))
+        res[:, k] = u[:, k] - dt * sp.sparse.kron(Q, A) @ u[:, k] - rhs
+
+    res_history.append(np.linalg.norm(res.flatten(), np.inf))
+    err_history.append(err)
+    u_history.append(u[-spatial_points:, -1].copy())
+    consecutive_iterates.append(np.inf)
+
+    # Paralha iterations
+    while ncount < maxiter:
+
+        if ncount >= 1:
+            consecutive_iterates.append(np.linalg.norm(u_history[-1] - u_history[-2], np.inf))
+
+        if err_history[-1] < restol:
+            break
+
+        if err_history[-1] / err_history[0] > 10000:
+            break
+
+        # scale with J
+        for k in range(1, steps, 1):
+            res[:, k] += (1 - const) * np.tile(u[-spatial_points:, k - 1], coll_points)
+            res[:, k] *= alpha[alpha_idx] ** (k / steps)
+
+        # do fft
+        z *= 0
+        for j in range(steps):
+            for k in range(steps):
+                z[:, j] += np.exp(-2 * np.pi * 1j * j * k / steps) * res[:, k]
+
+        # solve decoupled systems
+        for k in range(steps):
+            G = np.zeros((coll_points, coll_points), dtype=complex)
+            G[:, -1] = -const * alpha[alpha_idx] ** (1 / steps) * np.exp(-2 * np.pi * 1j * k / steps)
+            G += np.eye(coll_points)
+            Ginv = np.linalg.inv(G)
+            D, S = np.linalg.eig(Q @ Ginv)  # S @ D @ Sinv = Q @ Ginv
+            Sinv = np.linalg.inv(S)
+
+            S = sp.sparse.csr_matrix(S)
+            Sinv = sp.sparse.csr_matrix(Sinv)
+
+            # solve the inner system via diagonalization in 3 steps
+            r[:, k] = sp.sparse.kron(Sinv, sp.sparse.eye(spatial_points)) @ z[:, k]
+            for i in range(coll_points):
+                tmp = sp.sparse.eye(spatial_points) - D[i] * dt * A
+                z[i * spatial_points:(i + 1) * spatial_points, k], info = sp.sparse.linalg.gmres(tmp, r[i * spatial_points:(i + 1) * spatial_points, k], tol=stol, atol=0, maxiter=500, x0=np.zeros(spatial_points))
+                if info != 0 and no_warnings:
+                    print('Warning! Some systems did not finish.', info)
+                    no_warnings = False
+            r[:, k] = sp.sparse.kron(S, sp.sparse.eye(spatial_points)) @ z[:, k]
+            z[:, k] = sp.sparse.kron(Ginv, sp.sparse.eye(spatial_points)) @ r[:, k]
+
+        # do ifft
+        r *= 0
+        for j in range(steps):
+            for k in range(steps):
+                r[:, j] += np.exp(2 * np.pi * 1j * j * k / steps) * z[:, k]
+
+        # scale
+        for k in range(steps):
+            r[:, k] = alpha[alpha_idx] ** (-k / steps) / steps * r[:, k]
+
+        # update
+        u -= r
+
+        # compute error
+        if reff_run is not None:
+            err = np.linalg.norm(u[-spatial_points:, -1] - reff_run, np.inf)
+
+        # compute residual
+        for k in range(steps):
+            if k == 0:
+                rhs = np.tile(u0, coll_points) + bb[:, k] + dt * F(np.tile(u0, coll_points))
+            else:
+                rhs = np.tile(u[-spatial_points:, k - 1], coll_points) + bb[:, k] + dt * F(np.tile(u[-spatial_points:, k - 1], coll_points))
+            res[:, k] = u[:, k] - dt * sp.sparse.kron(Q, A) @ u[:, k] - rhs
         res_history.append(np.linalg.norm(res.flatten(), np.inf))
 
         err_history.append(err)

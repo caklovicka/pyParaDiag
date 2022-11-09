@@ -11,35 +11,45 @@ sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 import numpy as np
 
-# time steps: 128
+# time steps: ?
 # rolling from runtime
 # time_intervals from runtime
-# beta from runtime
 
 from examples.nonlinear.allen_cahn_2d_pbc_central4 import AllenCahn
 prob = AllenCahn()
-prob.spatial_points = [250, 250]
-prob.time_points = 3
-prob.tol = 1e-6
-prob.stol = 1e-8
-prob.T_end = 6
+prob.spatial_points = [200, 200]
+prob.tol = 1e-5
+prob.stol = 1e-7
 
-prob.eps = 1.5
+prob.time_points = 1
+prob.eps = 0.01
 prob.T_start = 0
 prob.proc_col = 1
 prob.solver = 'custom'
 prob.maxiter = 15
 prob.smaxiter = 500
 prob.alphas = [1e-8]
-prob.R = 3
-prob.X_left = -2 * prob.R
-prob.X_right = 2 * prob.R
-prob.Y_left = -2 * prob.R
-prob.Y_right = 2 * prob.R
+prob.T_end = 1e-2
+prob.betas = [1]
 
 prob.proc_row = prob.time_intervals
 
 prob.setup()
-print(prob.R**2/0.5 > prob.T_end, prob.dx[0]**4, prob.dt**(2 * prob.time_points - 1))
+print('tol * eps^2 = ', prob.tol * prob.eps ** 2)
+print(prob.dx[0]**4, prob.dt**(2 * prob.time_points - 1))
 prob.solve()
 prob.summary(details=False)
+print(sum(prob.iterations))
+
+prob.comm.Barrier()
+if prob.rank == prob.size - 1:
+    up = prob.u_loc[-prob.global_size_A:]
+    us = np.empty_like(up)
+    #f = open('../../../../exact.txt', 'r')
+    f = open('exact.txt', 'r')
+    lines = f.readlines()
+    for i in range(prob.global_size_A):
+        us[i] = complex(lines[i])
+    f.close()
+    diff = us - up
+    print('diff =', np.linalg.norm(diff, np.inf), flush=True)

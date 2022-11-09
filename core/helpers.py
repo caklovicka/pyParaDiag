@@ -293,37 +293,48 @@ class Helpers(Communicators):
             Hu_loc = self.comm_col.bcast(Hu_loc, root=self.size_col - 1)
             self.communication_time += MPI.Wtime() - time_beg
 
+        if self.rank_row == 0:
+            # with spatial parallelization
+            if self.frac > 1:
+                Hu_loc = self.u0_loc.copy()
+
+            # without spatial parallelization
+            else:
+                Hu_loc = np.tile(self.u0_loc, self.Frac)
+
         return Hu_loc
 
     def __get_linear_residual__(self, v_loc):
 
         Hu_loc = self.__get_Hu__()
 
-        # assemble first part of res_loc
-        if self.rank_row == 0:
-            res_loc = v_loc.copy()
+        # case with spatial parallelization
+        if self.frac > 0:
+            res_loc = v_loc + Hu_loc
+        # case without spatial parallelization
         else:
-            # case with spatial parallelization
-            if self.frac > 0:
-                res_loc = v_loc + Hu_loc
-            # case without spatial parallelization
-            else:
-                res_loc = v_loc + np.tile(Hu_loc, self.Frac)
+            res_loc = v_loc + np.tile(Hu_loc, self.Frac)
 
         Cu_loc = self.u_loc - self.dt * self.__solve_substitution__(self.Q, self.__get_Au__())
         res_loc -= Cu_loc
 
-        # add u0 where needed
-        if self.rank_row == 0:
-            # with spatial parallelization
-            if self.frac > 1:
-                res_loc += self.u0_loc
-
-            # without spatial parallelization
-            else:
-                res_loc += np.tile(self.u0_loc, self.Frac)
-
         return res_loc
+
+    def __get_linear_residual_and_prev_F__(self, v_loc):
+
+        Hu_loc = self.__get_Hu__()
+
+        # case with spatial parallelization
+        if self.frac > 0:
+            res_loc = v_loc + Hu_loc
+        # case without spatial parallelization
+        else:
+            res_loc = v_loc + np.tile(Hu_loc, self.Frac)
+
+        Cu_loc = self.u_loc - self.dt * self.__solve_substitution__(self.Q, self.__get_Au__())
+        res_loc -= Cu_loc
+
+        return res_loc + self.dt * self.F(Hu_loc)
 
     def __get_J__(self):
 
@@ -367,9 +378,12 @@ class Helpers(Communicators):
         return J
 
     def __get_F__(self):
-
         # return dt * (Q x I)F(u)
         return self.dt * self.__solve_substitution__(self.Q, self.F(self.u_loc))
+
+    def __get_prev_F__(self):
+        Hu_loc = self.__get_Hu__()
+        return self.dt * self.F(Hu_loc)
 
     def __get_shifted_matrices__(self, l_new, a):
 

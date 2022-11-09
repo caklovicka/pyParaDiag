@@ -18,16 +18,19 @@ sys.path.append('../../../../../..')    # for jube
 # time_intervals from runtime
 # beta from runtime
 
-from examples.nonlinear.allen_cahn_2d_pbc_central2 import AllenCahn
+from examples.nonlinear.tmp import AllenCahn
 prob = AllenCahn()
 prob.spatial_points = [100, 100]
-prob.time_points = 2
+prob.time_points = 1
 prob.tol = 1e-8
 prob.stol = 1e-10
+prob.rolling = 1
+prob.time_intervals = 64
 
+prob.time_points = 1
 prob.eps = 0.01
 prob.T_start = 0
-prob.T_end = 0.0075
+prob.T_end = 0.1 * prob.eps ** 3 * prob.rolling * prob.time_intervals
 prob.proc_col = 1
 prob.solver = 'gmres'
 prob.maxiter = 50
@@ -40,19 +43,3 @@ prob.setup()
 prob.solve()
 prob.summary(details=False)
 
-f = open('exact.txt', 'w')
-up = prob.u_loc[-prob.global_size_A:]
-for i in range(prob.global_size_A):
-    f.write(str(up[i]) + '\n')
-f.close()
-
-if prob.rank == prob.size - 1:
-    up = prob.u_loc[-prob.global_size_A:]
-    us = np.empty_like(up)
-    f = open('exact.txt', 'r')
-    lines = f.readlines()
-    for i in range(prob.global_size_A):
-        us[i] = complex(lines[i])
-    f.close()
-    diff = us - up
-    print(np.linalg.norm(diff, np.inf))

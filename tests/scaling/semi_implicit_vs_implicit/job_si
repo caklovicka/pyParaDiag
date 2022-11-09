@@ -1,0 +1,11 @@
+#!/bin/bash -x
+#SBATCH --account=cstma
+#SBATCH --nodes=16
+#SBATCH --ntasks=1024
+#SBATCH --ntasks-per-node=64
+#SBATCH --output=mpi-out.%j
+#SBATCH --error=mpi-err.%j
+#SBATCH --time=00:05:00
+#SBATCH --partition=dc-cpu
+
+srun python ac_si.py  --time_intervals=1024 --rolling=1 >> results_si.out

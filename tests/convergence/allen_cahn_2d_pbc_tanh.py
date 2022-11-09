@@ -2,7 +2,7 @@ import numpy as np
 np.set_printoptions(linewidth=np.inf)
 import scipy as sp
 import matplotlib.pyplot as plt
-from seq_time_stepping import Newton, IMEX, Parallel_IMEX_refinement
+from seq_time_stepping import Newton, IMEX, Parallel_IMEX_refinement, semi_implicit_refinement, semi_implicit
 import seaborn as sns
 from time import time
 import matplotlib.cm as cm
@@ -14,17 +14,17 @@ EPS = 0.01
 R = 0.25
 T1 = 0
 steps = 8
-T2 =  0.0075 / 128 * steps
+T2 =  EPS**3 * steps
 dt = (T2 - T1) / steps
 X1 = -0.5
 X2 = 0.5
-coll_points = 2
+coll_points = 1
 spatial_points = 100
 
 # tolerances
-tol = 1e-5
-stol = 1e-7
-maxiter = 10
+tol = 1e-10
+stol = 1e-12
+maxiter = 3
 
 # grid and matrix
 x1 = np.linspace(X1, X2, spatial_points + 1)[:-1]
@@ -71,12 +71,20 @@ def b(t):
 print('\nIMEX')
 print('====')
 t_start = time()
-u_imex, res_imex, its_imex = IMEX(T1, u0, dt, F, A, b, steps, restol=tol, stol=stol, coll_points=coll_points, maxiter=maxiter)
+u_imex, res_imex, its_imex = IMEX(T1, u0, dt/10, F, A, b, 10*steps, restol=tol, stol=stol, coll_points=coll_points, maxiter=maxiter)
 print('time = ', time() - t_start)
 print('maximum residual = ', max(res_imex))
 print('iterations = ', its_imex, ', total = ', sum(its_imex))
 
+# seq. semi-implicit
+print('\nsemi-implicit')
+print('==========')
+t_start = time()
+u_si, res_si = semi_implicit(T1, u0, dt, F, A, b, steps, restol=tol, stol=stol, coll_points=coll_points, maxiter=maxiter)
+print('time = ', time() - t_start)
+print('maximum residual = ', max(res_si))
 
+'''
 # seq. Newton
 print('\nNewton')
 print('========')
@@ -85,15 +93,26 @@ u_newton, res_newton, its_newton = Newton(T1, u0, dt, f, df, b, steps, restol=to
 print('time = ', time() - t_start)
 print('maximum residual = ', max(res_newton))
 print('iterations = ', its_newton, ', total = ', sum(its_newton))
+'''
 
-print('u_n - u_i', np.linalg.norm(u_imex - u_newton, np.inf))
-
+print('u_imex - u_si', np.linalg.norm(u_imex - u_si, np.inf))
+'''
 print('\nParallel_IMEX_refinement')
 print('=========')
 t_start = time()
-u_pimex, u_history_pimex, err_history_pimex, res_history_pimex, cerr_pimex = Parallel_IMEX_refinement(T1, u0, dt, F, dF, A, b, steps, alpha=[1e-8], beta=[1], maxiter=maxiter, coll_points=coll_points, restol=tol, stol=stol, reff_run=u_imex)
+u_pimex, u_history_pimex, err_history_pimex, res_history_pimex, cerr_pimex = Parallel_IMEX_refinement(T1, u0, dt, F, dF, A, b, steps, alpha=[1e-8], beta=[0], maxiter=maxiter, coll_points=coll_points, restol=tol, stol=stol, reff_run=u_imex)
 print('time = ', time() - t_start)
 print('residual = ', res_history_pimex)
+'''
+
+print('\nsemi_implicit_refinement')
+print('=========================')
+t_start = time()
+u_pimex, u_history_pimex, err_history_pimex, res_history_pimex, cerr_pimex = semi_implicit_refinement(T1, u0, dt, F, dF, A, b, steps, alpha=[1e-8], beta=[0], maxiter=maxiter, coll_points=coll_points, restol=tol, stol=stol, reff_run=u_imex)
+print('time = ', time() - t_start)
+print('residual = ', res_history_pimex)
+print(np.linalg.norm(u_si - u_pimex))
+print(np.linalg.norm(u_imex - u_pimex))
 
 #for i in range(spatial_points ** 2):
 #    print(i, u_newton[i])
