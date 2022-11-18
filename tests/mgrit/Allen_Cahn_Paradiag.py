@@ -9,7 +9,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 from time import time
 
 import sys
-sys.path.append('..')
+sys.path.append('../..')
 
 import numpy as np
 

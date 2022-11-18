@@ -102,6 +102,7 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
 
     # user defined
     def u_initial(self, z):
+        #return 0.5 * (1 + np.sin(2 * np. pi * z[0]) * np.sin(2 * np.pi * z[1]))
         return np.tanh((self.R - np.sqrt(z[0] ** 2 + z[1] ** 2)) / (np.sqrt(2) * self.eps))
 
     # user defined, depends on (t, x)
