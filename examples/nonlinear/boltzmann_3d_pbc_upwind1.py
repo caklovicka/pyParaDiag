@@ -17,8 +17,8 @@ u_t + v2 * u_y = Q(u)
 class Boltzmann(IMEXNewtonIncrementParalpha):
 
     # user defined, just for this class
-    Y_left = -1
-    Y_right = 1
+    X_left = 0
+    X_right = 1
 
     L = 8
     U_left = -L
@@ -28,12 +28,8 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
     W_left = -L
     W_right = L
 
-    yy = None
-    uu = None
-    vv = None
-    ww = None
-
     vs = None
+    xx = None
     knudsen = 1e-2
     muref = kt.ref_vhs_vis(knudsen, 1.0, 0.5)
     fsm = None
@@ -69,19 +65,17 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
             1.0,
         )
 
-        self.yy = np.linspace(self.Y_left, self.Y_right, self.spatial_points[0] + 1)[:-1]
-        self.uu = np.linspace(self.U_left, self.U_right, self.spatial_points[1] + 1)[:-1]
-        self.vv = np.linspace(self.V_left, self.V_right, self.spatial_points[2] + 1)[:-1]
-        self.ww = np.linspace(self.W_left, self.W_right, self.spatial_points[3] + 1)[:-1]
+        ps = kt.PSpace1D(0.0, 1.0, self.spatial_points[0], 1)
+        self.xx = np.array(ps.x[1:-1])
 
         self.dx = []
-        self.dx.append((self.Y_right - self.Y_left) / self.spatial_points[0])
-        self.dx.append((self.U_right - self.U_left) / self.spatial_points[1])
-        self.dx.append((self.V_right - self.V_left) / self.spatial_points[2])
-        self.dx.append((self.W_right - self.W_left) / self.spatial_points[3])
+        self.dx.append(self.xx[1] - self.xx[0])
+        self.dx.append(self.vs.du[1, 1, 1])
+        self.dx.append(self.vs.dv[1, 1, 1])
+        self.dx.append(self.vs.dw[1, 1, 1])
 
         # x and size_global_A have to be filled before super().setup()
-        self.x = np.meshgrid(self.yy, self.uu, self.vv, self.ww)
+        self.x = np.meshgrid(self.xx, self.vs.u[:, 1, 1], self.vs.v[1, :, 1], self.vs.w[1, 1, :])
         self.global_size_A = 1
         for n in self.spatial_points:
             self.global_size_A *= n
@@ -105,24 +99,25 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         Nw = self.spatial_points[3]
         for i in range(self.row_beg, self.row_end, 1):
 
-            iv = (i % Nuvw) % Nvw // Nw
-            if self.vv[iv] < 0:
+            iu = (i % Nuvw) // Nvw
+
+            if self.vs.u[iu, 1, 1] < 0:
                 row.append(i)
                 col.append(i)
-                data.append(-self.vv[iv] / self.dx[0])
+                data.append(-self.vs.u[iu, 1, 1] / self.dx[0])
 
                 row.append(i)
                 col.append((i + Nuvw) % self.global_size_A)
-                data.append(self.vv[iv] / self.dx[0])
+                data.append(self.vs.u[iu, 1, 1] / self.dx[0])
 
             else:
                 row.append(i)
                 col.append(i)
-                data.append(self.vv[iv] / self.dx[0])
+                data.append(self.vs.u[iu, 1, 1] / self.dx[0])
 
                 row.append(i)
-                col.append((i + Nuvw) % self.global_size_A)
-                data.append(-self.vv[iv] / self.dx[0])
+                col.append((i - Nuvw) % self.global_size_A)
+                data.append(-self.vs.u[iu, 1, 1] / self.dx[0])
 
         data = np.array(data)
         row = np.array(row) - self.row_beg
@@ -152,16 +147,23 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
     def u_initial(self, z):
         f = np.zeros(self.spatial_points)
         for i in range(self.spatial_points[0]):
-            f[i, :, :, :] = self.ff(self.yy[i], None)
+            f[i, :, :, :] = self.ff(self.xx[i], None)
         return f
 
     def F(self, u):
-        # not ready for parallel in space or across nodes
-        f = u.reshape(self.spatial_points).real
-        Q = np.empty_like(f)
-        for i in range(self.spatial_points[0]):
-            Q[i, :, :, :] = self.dt * kt.boltzmann_fft(f[i, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
-        return Q.flatten()
+        Qf = np.empty_like(u)
+
+        # case with spatial parallelization
+        if self.frac > 1:
+            # TODO
+        # case without spatial parallelization
+        else:
+            Q = np.zeros(self.spatial_points)
+            for i in range(self.Frac):
+                f = u[i * self.global_size_A:(i + 1) * self.global_size_A].reshape(self.spatial_points).real
+                for i in range(self.spatial_points[0]):
+                    Q[i, :, :, :] = kt.boltzmann_fft(f[i, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+                Qf[i * self.global_size_A:(i + 1) * self.global_size_A] = Q.flatten()
 
     # user defined
     @staticmethod
@@ -202,10 +204,4 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         pc.destroy()
 
         return sol, it
-
-
-
-
-
-
 

@@ -25,6 +25,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
             self.alphas = [0]
         if self.betas == NotImplemented:
             self.betas = [0]
+        self.convergence = 1
 
     def solve(self):
 
@@ -65,6 +66,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                 if self.residual[rolling_interval][-1] > 1000:
                     self.convergence = 0
+                    print('tu sam', self.residual[rolling_interval][-1])
                     break
 
                 if self.time_intervals == 1 and self.betas[i_beta] == 0:

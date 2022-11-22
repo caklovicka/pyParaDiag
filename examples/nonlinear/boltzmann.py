@@ -52,14 +52,13 @@ f = np.zeros((100, 48, 28, 28))
 df = np.zeros((100, 48, 28, 28))
 Q = np.zeros((100, 48, 28, 28))
 for i in range(100):
-    f[i, :, :, :] = ff(ps.x[i], None)
+    f[i, :, :, :] = ff(ps.x[i+1], None)
     w[i, :] = kt.moments_conserve(f[i, :, :, :], vs.u, vs.v, vs.w, vs.weights)
 
 # %%
 import copy
 
 w0 = copy.deepcopy(w)
-
 
 # %%
 def compute_df(df, f, ps, vs):
@@ -82,7 +81,7 @@ def compute_df(df, f, ps, vs):
 
 # %%
 def compute_Q(Q, f, ps, gas, phi, psi, chi, dt):
-    # f = (x2, u, v, w)
+    # f = (x, u, v, w)
     for i in range(0, ps.nx):
         Q[i, :, :, :] = dt * kt.boltzmann_fft(f[i, :, :, :], gas.fsm.Kn, gas.fsm.nm, phi, psi, chi)
 
@@ -95,8 +94,8 @@ def step(f, df, Q, ps, vs, dt):
 
 
 # %%
-dt = 5e-4
-for iter in range(10):
+dt = 1e-3
+for iter in range(50):
     compute_df(df, f, ps, vs)
     compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
     step(f, df, Q, ps, vs, dt)
@@ -104,6 +103,7 @@ for iter in range(10):
 
 # %%
 plt.plot(w[:, 1])
-plt.plot(w0[:, 1])
+plt.plot(w0[:, 1], '--')
+plt.legend(['w', 'w0'])
 plt.show()
 # %%

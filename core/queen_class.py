@@ -11,6 +11,7 @@ class QueenClass(abc.ABC):
     dt = NotImplemented
     t = NotImplemented
     x = NotImplemented
+    dx = NotImplemented
     u0_loc = NotImplemented
     u_last_loc = NotImplemented
     u_loc = NotImplemented
@@ -29,7 +30,7 @@ class QueenClass(abc.ABC):
     row_end = NotImplemented
     spatial_points = NotImplemented
     dx = NotImplemented
-    convergence = 1
+    convergence = NotImplemented
 
     # passive
     comm = NotImplemented
@@ -57,6 +58,7 @@ class QueenClass(abc.ABC):
     optimal_alphas = False
     stop = False
     global_size_A = NotImplemented
+    document = 'None'
 
     algorithm_time = NotImplemented
     communication_time = NotImplemented
@@ -64,6 +66,7 @@ class QueenClass(abc.ABC):
     system_time_min = NotImplemented
 
     def __init__(self):
+        '''
         parser = argparse.ArgumentParser()
         parser.add_argument('--T_start', type=float, default=0, help='Default = 0')
         parser.add_argument('--T_end', type=float, default=1, help='Default = 1')
@@ -98,6 +101,7 @@ class QueenClass(abc.ABC):
         self.stol = args['stol']
         self.smaxiter = args['smaxiter']
         self.document = args['document']
+        '''
 
     def bpar(self, *args):
         pass
