@@ -66,10 +66,12 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         )
 
         ps = kt.PSpace1D(0.0, 1.0, self.spatial_points[0], 1)
-        self.xx = np.array(ps.x[1:-1])
+        #self.xx = np.array(ps.x[1:-1])
+        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 1)[:-1]
 
         self.dx = []
-        self.dx.append(self.xx[1] - self.xx[0])
+        #self.dx.append(self.xx[1] - self.xx[0])
+        self.dx.append((self.X_right - self.X_left) / self.spatial_points[0])
         self.dx.append(self.vs.du[1, 1, 1])
         self.dx.append(self.vs.dv[1, 1, 1])
         self.dx.append(self.vs.dw[1, 1, 1])
@@ -96,7 +98,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         data = list()
         Nuvw = self.spatial_points[1] * self.spatial_points[2] * self.spatial_points[3]
         Nvw = self.spatial_points[2] * self.spatial_points[3]
-        Nw = self.spatial_points[3]
+
         for i in range(self.row_beg, self.row_end, 1):
 
             iu = (i % Nuvw) // Nvw
@@ -104,20 +106,20 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
             if self.vs.u[iu, 1, 1] < 0:
                 row.append(i)
                 col.append(i)
-                data.append(-self.vs.u[iu, 1, 1] / self.dx[0])
+                data.append(self.vs.u[iu, 1, 1] / self.dx[0])
 
                 row.append(i)
                 col.append((i + Nuvw) % self.global_size_A)
-                data.append(self.vs.u[iu, 1, 1] / self.dx[0])
+                data.append(-self.vs.u[iu, 1, 1] / self.dx[0])
 
             else:
                 row.append(i)
                 col.append(i)
-                data.append(self.vs.u[iu, 1, 1] / self.dx[0])
+                data.append(-self.vs.u[iu, 1, 1] / self.dx[0])
 
                 row.append(i)
                 col.append((i - Nuvw) % self.global_size_A)
-                data.append(-self.vs.u[iu, 1, 1] / self.dx[0])
+                data.append(self.vs.u[iu, 1, 1] / self.dx[0])
 
         data = np.array(data)
         row = np.array(row) - self.row_beg
@@ -154,16 +156,17 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         Qf = np.empty_like(u)
 
         # case with spatial parallelization
-        if self.frac > 1:
-            # TODO
+        #if self.frac > 1:
         # case without spatial parallelization
-        else:
+        if self.frac <= 1:
             Q = np.zeros(self.spatial_points)
             for i in range(self.Frac):
                 f = u[i * self.global_size_A:(i + 1) * self.global_size_A].reshape(self.spatial_points).real
-                for i in range(self.spatial_points[0]):
-                    Q[i, :, :, :] = kt.boltzmann_fft(f[i, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+                for ix in range(self.spatial_points[0]):
+                    Q[ix, :, :, :] = kt.boltzmann_fft(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
                 Qf[i * self.global_size_A:(i + 1) * self.global_size_A] = Q.flatten()
+
+        return Qf
 
     # user defined
     @staticmethod

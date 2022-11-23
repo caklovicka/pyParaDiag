@@ -89,13 +89,13 @@ def compute_Q(Q, f, ps, gas, phi, psi, chi, dt):
 # %%
 def step(f, df, Q, ps, vs, dt):
     for i in range(0, ps.nx):
-        f[i, :, :, :] -= vs.u * df[i, :, :, :] * dt + Q[i, :, :, :]
+        f[i, :, :, :] -= vs.u * df[i, :, :, :] * dt - Q[i, :, :, :]
         w[i, :] = kt.moments_conserve(f[i, :, :, :], vs.u, vs.v, vs.w, vs.weights)
 
 
 # %%
-dt = 1e-3
-for iter in range(50):
+dt = 5e-4
+for iter in range(100):
     compute_df(df, f, ps, vs)
     compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
     step(f, df, Q, ps, vs, dt)
