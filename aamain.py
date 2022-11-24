@@ -10,12 +10,8 @@ import matplotlib.pyplot as plt
 from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
 prob = Boltzmann()
 
-# tmp
-prob.document = 'None'
-prob.betas = [0]
-
 # choosing a number of points
-prob.spatial_points = [100, 48, 28, 28]
+prob.spatial_points = [20, 30, 30, 30]
 prob.time_points = 3
 
 # choosing a time domain
@@ -23,9 +19,9 @@ prob.T_start = 0
 
 # choosing the number of intervals handled in parallel
 prob.time_intervals = 1
-prob.rolling = 8
+prob.rolling = 4
 
-prob.T_end = 8e-2 #prob.rolling * prob.time_intervals
+prob.T_end = 1e-3 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_col = 1
@@ -39,11 +35,11 @@ prob.maxiter = 10
 prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
-prob.alphas = [1e-6]
+prob.alphas = [1e-8]
 
 # setting tolerances
-prob.tol = 1e-4
-prob.stol = 1e-6
+prob.tol = 1e-5
+prob.stol = 1e-8
 
 prob.setup()
 prob.solve()

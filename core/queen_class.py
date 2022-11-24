@@ -66,7 +66,7 @@ class QueenClass(abc.ABC):
     system_time_min = NotImplemented
 
     def __init__(self):
-        '''
+
         parser = argparse.ArgumentParser()
         parser.add_argument('--T_start', type=float, default=0, help='Default = 0')
         parser.add_argument('--T_end', type=float, default=1, help='Default = 1')
@@ -101,7 +101,7 @@ class QueenClass(abc.ABC):
         self.stol = args['stol']
         self.smaxiter = args['smaxiter']
         self.document = args['document']
-        '''
+
 
     def bpar(self, *args):
         pass

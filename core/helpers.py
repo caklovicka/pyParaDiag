@@ -294,13 +294,7 @@ class Helpers(Communicators):
             self.communication_time += MPI.Wtime() - time_beg
 
         if self.rank_row == 0:
-            # with spatial parallelization
-            if self.frac > 1:
-                Hu_loc = self.u0_loc.copy()
-
-            # without spatial parallelization
-            else:
-                Hu_loc = np.tile(self.u0_loc, self.Frac)
+            Hu_loc = self.u0_loc.copy()
 
         return Hu_loc
 
