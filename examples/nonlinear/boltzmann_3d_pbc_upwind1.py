@@ -5,7 +5,6 @@ from core.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
 
 # Julia backend
 from julia.api import Julia
-jl = Julia(compiled_modules=False)
 from julia import KitBase as kt
 
 """

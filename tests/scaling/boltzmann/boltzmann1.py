@@ -11,7 +11,7 @@ from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
 prob = Boltzmann()
 
 # choosing a number of points
-prob.spatial_points = [28, 28, 28, 28]
+prob.spatial_points = [400, 200, 100, 100]
 prob.time_points = 3
 
 # choosing a time domain
@@ -21,14 +21,14 @@ prob.T_start = 0
 prob.time_intervals = 8
 prob.rolling = 1
 
-prob.T_end = 1e-3 * prob.rolling * prob.time_intervals
+prob.T_end = 2e-3 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_col = 1
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
-prob.solver = 'gmres'
+prob.solver = 'custom'
 
 # setting maximum number of iterations
 prob.maxiter = 10
