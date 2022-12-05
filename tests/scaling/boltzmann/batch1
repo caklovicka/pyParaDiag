@@ -9,4 +9,3 @@
 #SBATCH --partition=dc-cpu
 
 srun python boltzmann1.py >> results1
-touch ready
