@@ -5,11 +5,12 @@ from core.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
 
 # Julia backend
 from julia.api import Julia
+jl = Julia(compiled_modules=False)
 from julia import KitBase as kt
 
 """
 boltzman equation
-u_t + v2 * u_y = Q(u)
+u_t + v2 * u_y = 1 / knudsen * Q(u)
 """
 
 
@@ -155,9 +156,21 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         Qf = np.empty_like(u)
 
         # case with spatial parallelization
-        #if self.frac > 1:
+        if self.frac > 1:
+            Nuvw = self.spatial_points[1] * self.spatial_points[2] * self.spatial_points[3]
+            Nx = (self.row_end - self.row_beg) // Nuvw
+
+            if Nx == 0:
+                raise RuntimeError('cannot parallelize for Nx < proc_col')
+
+            Q = np.zeros([Nx] + self.spatial_points[1:])
+            f = u.reshape([Nx] + self.spatial_points[1:]).real
+            for ix in range(Nx):
+                Q[ix, :, :, :] = kt.boltzmann_fft(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+            Qf = Q.flatten()
+
         # case without spatial parallelization
-        if self.frac <= 1:
+        else:
             Q = np.zeros(self.spatial_points)
             for i in range(self.Frac):
                 f = u[i * self.global_size_A:(i + 1) * self.global_size_A].reshape(self.spatial_points).real
