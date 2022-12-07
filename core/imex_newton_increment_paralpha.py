@@ -48,7 +48,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
 
             self.__fill_initial_u_loc__()
-            v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
+            v_loc = self.__get_v__(t_start)     # the rhs of the all-at-git addonce system
 
             while not self.stop:       # main iterations
 
@@ -112,6 +112,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                 self.iterations[rolling_interval] += 1
                 if self.time_intervals > 1 or self.betas[i_beta] > 0:
+                    print(type(self.u_loc[0]), self.u_loc.shape, type(h_loc[0]), h_loc.shape)
                     self.u_loc += h_loc     # update the solution
                     self.consecutive_error[rolling_interval].append(self.__get_max_norm__(h_loc))  # consecutive error, error of the increment
 

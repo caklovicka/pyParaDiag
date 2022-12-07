@@ -79,11 +79,13 @@ class Helpers(Communicators):
 
     def __fill_initial_u_loc__(self):
 
+        # case with spatial parallelization
         if self.frac > 1:
-            self.u_loc = self.u0_loc.copy(order='C')
+            self.u_loc = self.u0_loc.copy(order='C').astype(complex)
+
         # case without spatial parallelization
         else:
-            self.u_loc = np.tile(self.u0_loc, self.Frac) + 0j
+            self.u_loc = np.tile(self.u0_loc, self.Frac).astype(complex)
 
     def __next_alpha__(self, idx):
         if idx + 1 < len(self.alphas) and self.time_intervals > 1:

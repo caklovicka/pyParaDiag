@@ -5,7 +5,7 @@ from core.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
 
 # Julia backend
 from julia.api import Julia
-#jl = Julia(compiled_modules=False)
+jl = Julia(compiled_modules=False)
 from julia import KitBase as kt
 
 """
@@ -153,7 +153,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         return f
 
     def F(self, u):
-        Qf = np.empty_like(u)
+        Qf = np.empty_like(u, dtype=complex)
 
         # case with spatial parallelization
         if self.frac > 1:
