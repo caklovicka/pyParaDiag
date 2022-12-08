@@ -4,7 +4,7 @@
     <comment>Boltzmann, sequential in time (32), parallel in space</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
+        <parameter name="i" type="int">0,1,2</parameter>
         <parameter name="nproc" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
     </parameterset>
 
