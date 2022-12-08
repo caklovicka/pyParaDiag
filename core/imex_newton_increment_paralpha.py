@@ -112,7 +112,6 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                 self.iterations[rolling_interval] += 1
                 if self.time_intervals > 1 or self.betas[i_beta] > 0:
-                    print(type(self.u_loc[0]), self.u_loc.shape, type(h_loc[0]), h_loc.shape)
                     self.u_loc += h_loc     # update the solution
                     self.consecutive_error[rolling_interval].append(self.__get_max_norm__(h_loc))  # consecutive error, error of the increment
 

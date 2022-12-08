@@ -6,26 +6,28 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
-import matplotlib.pyplot as plt
+import sys
+sys.path.append('../../..') # for core
+
 from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
 prob = Boltzmann()
 
 # choosing a number of points
-prob.spatial_points = [400, 200, 100, 100]
-prob.time_points = 3
+prob.spatial_points = [384, 72, 36, 36]
+prob.time_points = 1
 prob.knudsen = 1e-2
 
 # choosing a time domain
 prob.T_start = 0
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 8
-prob.rolling = 1
+prob.time_intervals = 1
+prob.rolling = 32
 
-prob.T_end = 2e-3 * prob.rolling * prob.time_intervals
+prob.T_end = 0.001 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
-prob.proc_col = 1
+#prob.proc_col = 1
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
