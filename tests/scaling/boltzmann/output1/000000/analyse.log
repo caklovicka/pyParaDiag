@@ -1,0 +1,321 @@
+[2022-12-08 14:37:18,445]:INFO: ######################################################################
+[2022-12-08 14:37:18,445]:INFO: # Analyse benchmark "PETSc-Euler scaling test" id: 0
+[2022-12-08 14:37:18,445]:INFO: ######################################################################
+[2022-12-08 14:37:18,445]:INFO: >>> Start analyse
+[2022-12-08 14:37:18,446]:DEBUG: Run analyser "analyse"
+[2022-12-08 14:37:18,446]:DEBUG:   available pattern:
+[2022-12-08 14:37:18,447]:DEBUG:          | pattern     | value                                    |
+[2022-12-08 14:37:18,447]:DEBUG:          |-------------|------------------------------------------|
+[2022-12-08 14:37:18,447]:DEBUG:          | Nt          | no. of time intervals = $jube_pat_int    |
+[2022-12-08 14:37:18,447]:DEBUG:          | Nx          | no. of spatial points = \[$jube_pat_int  |
+[2022-12-08 14:37:18,447]:DEBUG:          | comm_time   | communication time = $jube_pat_fp        |
+[2022-12-08 14:37:18,447]:DEBUG:          | convergence | convergence = $jube_pat_int              |
+[2022-12-08 14:37:18,447]:DEBUG:          | dt          | dt = $jube_pat_fp                        |
+[2022-12-08 14:37:18,447]:DEBUG:          | max_iters   | max iterations of paradiag =             |
+[2022-12-08 14:37:18,447]:DEBUG:          |             | $jube_pat_fp                             |
+[2022-12-08 14:37:18,447]:DEBUG:          | stol        | inner solver tol = $jube_pat_fp          |
+[2022-12-08 14:37:18,447]:DEBUG:          | tol         | tol = $jube_pat_fp                       |
+[2022-12-08 14:37:18,447]:DEBUG:          | tot_iters   | total iterations of paradiag =           |
+[2022-12-08 14:37:18,447]:DEBUG:          |             | $jube_pat_fp                             |
+[2022-12-08 14:37:18,447]:DEBUG:          | tot_time    | algorithm time = $jube_pat_fp            |
+[2022-12-08 14:37:18,447]:DEBUG: 
+[2022-12-08 14:37:18,447]:DEBUG:   available derived pattern:
+[2022-12-08 14:37:18,447]:DEBUG:          | pattern | value |
+[2022-12-08 14:37:18,447]:DEBUG:          |---------|-------|
+[2022-12-08 14:37:18,447]:DEBUG:   analyse step "sub_step"
+[2022-12-08 14:37:18,450]:DEBUG:     scan file output1/000000/000006_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:37:18,458]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:37:18,458]:DEBUG:          |    tot_time |          first:166.80106, min:166.80106, |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | max:166.80106, sum:166.80106,            |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | sum2:27822.593617123603, cnt:1,          |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | avg:166.80106, std:0, last:166.80106     |
+[2022-12-08 14:37:18,458]:DEBUG:          |   comm_time |    first:4.6619, min:4.6619, max:4.6619, |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | sum:4.6619, sum2:21.73331161, cnt:1,     |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | avg:4.6619, std:0, last:4.6619           |
+[2022-12-08 14:37:18,458]:DEBUG:          |   max_iters |    first:1.0, min:1.0, max:1.0, sum:1.0, |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | sum2:1.0, cnt:1, avg:1.0, std:0,         |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | last:1.0                                 |
+[2022-12-08 14:37:18,458]:DEBUG:          |   tot_iters |          first:32.0, min:32.0, max:32.0, |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | sum:32.0, sum2:1024.0, cnt:1, avg:32.0,  |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | std:0, last:32.0                         |
+[2022-12-08 14:37:18,458]:DEBUG:          |         tol |     first:0.0001, min:1e-06, max:0.0001, |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | sum:0.000101, sum2:1.0001e-08, cnt:2,    |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | avg:5.05e-05, std:7.000357133746821e-05, |
+[2022-12-08 14:37:18,458]:DEBUG:          |             | last:1e-06                               |
+[2022-12-08 14:37:18,460]:DEBUG:          |        stol |       first:1e-06, min:1e-06, max:1e-06, |
+[2022-12-08 14:37:18,460]:DEBUG:          |             | sum:1e-06, sum2:1e-12, cnt:1, avg:1e-06, |
+[2022-12-08 14:37:18,460]:DEBUG:          |             | std:0, last:1e-06                        |
+[2022-12-08 14:37:18,460]:DEBUG:          |          Nx |    first:384, min:384, max:384, sum:384, |
+[2022-12-08 14:37:18,460]:DEBUG:          |             | sum2:147456, cnt:1, avg:384.0, std:0,    |
+[2022-12-08 14:37:18,460]:DEBUG:          |             | last:384                                 |
+[2022-12-08 14:37:18,461]:DEBUG:          | convergence |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:37:18,461]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:37:18,461]:DEBUG:          |          Nt |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:37:18,461]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:37:18,461]:DEBUG:          |          dt |       first:0.001, min:0.001, max:0.001, |
+[2022-12-08 14:37:18,461]:DEBUG:          |             | sum:0.001, sum2:1e-06, cnt:1, avg:0.001, |
+[2022-12-08 14:37:18,461]:DEBUG:          |             | std:0, last:0.001                        |
+[2022-12-08 14:37:18,465]:DEBUG:     scan file output1/000000/000000_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:37:18,470]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:37:18,470]:DEBUG:          |    tot_time |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |   comm_time |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |   max_iters |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |   tot_iters |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |         tol |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |        stol |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |          Nx |  |
+[2022-12-08 14:37:18,470]:DEBUG:          | convergence |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |          Nt |  |
+[2022-12-08 14:37:18,470]:DEBUG:          |          dt |  |
+[2022-12-08 14:37:18,473]:DEBUG:     scan file output1/000000/000002_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:37:18,478]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:37:18,478]:DEBUG:          |    tot_time |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |   comm_time |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |   max_iters |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |   tot_iters |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |         tol |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |        stol |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |          Nx |  |
+[2022-12-08 14:37:18,478]:DEBUG:          | convergence |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |          Nt |  |
+[2022-12-08 14:37:18,478]:DEBUG:          |          dt |  |
+[2022-12-08 14:37:18,480]:DEBUG:     scan file output1/000000/000001_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:37:18,486]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:37:18,486]:DEBUG:          |    tot_time |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |   comm_time |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |   max_iters |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |   tot_iters |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |         tol |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |        stol |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |          Nx |  |
+[2022-12-08 14:37:18,486]:DEBUG:          | convergence |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |          Nt |  |
+[2022-12-08 14:37:18,486]:DEBUG:          |          dt |  |
+[2022-12-08 14:37:18,488]:DEBUG:     scan file output1/000000/000005_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:37:18,493]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:37:18,493]:DEBUG:          |    tot_time |          first:197.74843, min:197.74843, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | max:197.74843, sum:197.74843,            |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum2:39104.441567464906, cnt:1,          |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | avg:197.74843, std:0, last:197.74843     |
+[2022-12-08 14:37:18,494]:DEBUG:          |   comm_time | first:5.03755, min:5.03755, max:5.03755, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum:5.03755, sum2:25.376910002500004,    |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | cnt:1, avg:5.03755, std:0, last:5.03755  |
+[2022-12-08 14:37:18,494]:DEBUG:          |   max_iters |    first:1.0, min:1.0, max:1.0, sum:1.0, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum2:1.0, cnt:1, avg:1.0, std:0,         |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | last:1.0                                 |
+[2022-12-08 14:37:18,494]:DEBUG:          |   tot_iters |          first:32.0, min:32.0, max:32.0, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum:32.0, sum2:1024.0, cnt:1, avg:32.0,  |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | std:0, last:32.0                         |
+[2022-12-08 14:37:18,494]:DEBUG:          |         tol |     first:0.0001, min:1e-06, max:0.0001, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum:0.000101, sum2:1.0001e-08, cnt:2,    |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | avg:5.05e-05, std:7.000357133746821e-05, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | last:1e-06                               |
+[2022-12-08 14:37:18,494]:DEBUG:          |        stol |       first:1e-06, min:1e-06, max:1e-06, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum:1e-06, sum2:1e-12, cnt:1, avg:1e-06, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | std:0, last:1e-06                        |
+[2022-12-08 14:37:18,494]:DEBUG:          |          Nx |    first:384, min:384, max:384, sum:384, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum2:147456, cnt:1, avg:384.0, std:0,    |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | last:384                                 |
+[2022-12-08 14:37:18,494]:DEBUG:          | convergence |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:37:18,494]:DEBUG:          |          Nt |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:37:18,494]:DEBUG:          |          dt |       first:0.001, min:0.001, max:0.001, |
+[2022-12-08 14:37:18,494]:DEBUG:          |             | sum:0.001, sum2:1e-06, cnt:1, avg:0.001, |
+[2022-12-08 14:37:18,495]:DEBUG:          |             | std:0, last:0.001                        |
+[2022-12-08 14:37:18,504]:INFO: >>> Analyse finished
+[2022-12-08 14:37:18,504]:INFO: >>> Analyse data storage: output1/000000/analyse.xml
+[2022-12-08 14:37:18,504]:INFO: ######################################################################
+[2022-12-08 14:53:47,803]:INFO: ######################################################################
+[2022-12-08 14:53:47,804]:INFO: # Analyse benchmark "PETSc-Euler scaling test" id: 0
+[2022-12-08 14:53:47,804]:INFO: ######################################################################
+[2022-12-08 14:53:47,804]:INFO: >>> Start analyse
+[2022-12-08 14:53:47,804]:DEBUG: Run analyser "analyse"
+[2022-12-08 14:53:47,804]:DEBUG:   available pattern:
+[2022-12-08 14:53:47,804]:DEBUG:          | pattern     | value                                    |
+[2022-12-08 14:53:47,804]:DEBUG:          |-------------|------------------------------------------|
+[2022-12-08 14:53:47,804]:DEBUG:          | Nt          | no. of time intervals = $jube_pat_int    |
+[2022-12-08 14:53:47,804]:DEBUG:          | Nx          | no. of spatial points = \[$jube_pat_int  |
+[2022-12-08 14:53:47,804]:DEBUG:          | comm_time   | communication time = $jube_pat_fp        |
+[2022-12-08 14:53:47,804]:DEBUG:          | convergence | convergence = $jube_pat_int              |
+[2022-12-08 14:53:47,804]:DEBUG:          | dt          | dt = $jube_pat_fp                        |
+[2022-12-08 14:53:47,804]:DEBUG:          | max_iters   | max iterations of paradiag =             |
+[2022-12-08 14:53:47,804]:DEBUG:          |             | $jube_pat_fp                             |
+[2022-12-08 14:53:47,804]:DEBUG:          | stol        | inner solver tol = $jube_pat_fp          |
+[2022-12-08 14:53:47,804]:DEBUG:          | tol         | tol = $jube_pat_fp                       |
+[2022-12-08 14:53:47,804]:DEBUG:          | tot_iters   | total iterations of paradiag =           |
+[2022-12-08 14:53:47,805]:DEBUG:          |             | $jube_pat_fp                             |
+[2022-12-08 14:53:47,805]:DEBUG:          | tot_time    | algorithm time = $jube_pat_fp            |
+[2022-12-08 14:53:47,805]:DEBUG: 
+[2022-12-08 14:53:47,805]:DEBUG:   available derived pattern:
+[2022-12-08 14:53:47,805]:DEBUG:          | pattern | value |
+[2022-12-08 14:53:47,805]:DEBUG:          |---------|-------|
+[2022-12-08 14:53:47,805]:DEBUG:   analyse step "sub_step"
+[2022-12-08 14:53:47,805]:DEBUG:     scan file output1/000000/000006_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,811]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,811]:DEBUG:          |    tot_time |          first:166.80106, min:166.80106, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | max:166.80106, sum:166.80106,            |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum2:27822.593617123603, cnt:1,          |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | avg:166.80106, std:0, last:166.80106     |
+[2022-12-08 14:53:47,811]:DEBUG:          |   comm_time |    first:4.6619, min:4.6619, max:4.6619, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum:4.6619, sum2:21.73331161, cnt:1,     |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | avg:4.6619, std:0, last:4.6619           |
+[2022-12-08 14:53:47,811]:DEBUG:          |   max_iters |    first:1.0, min:1.0, max:1.0, sum:1.0, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum2:1.0, cnt:1, avg:1.0, std:0,         |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | last:1.0                                 |
+[2022-12-08 14:53:47,811]:DEBUG:          |   tot_iters |          first:32.0, min:32.0, max:32.0, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum:32.0, sum2:1024.0, cnt:1, avg:32.0,  |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | std:0, last:32.0                         |
+[2022-12-08 14:53:47,811]:DEBUG:          |         tol |     first:0.0001, min:1e-06, max:0.0001, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum:0.000101, sum2:1.0001e-08, cnt:2,    |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | avg:5.05e-05, std:7.000357133746821e-05, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | last:1e-06                               |
+[2022-12-08 14:53:47,811]:DEBUG:          |        stol |       first:1e-06, min:1e-06, max:1e-06, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum:1e-06, sum2:1e-12, cnt:1, avg:1e-06, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | std:0, last:1e-06                        |
+[2022-12-08 14:53:47,811]:DEBUG:          |          Nx |    first:384, min:384, max:384, sum:384, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | sum2:147456, cnt:1, avg:384.0, std:0,    |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | last:384                                 |
+[2022-12-08 14:53:47,811]:DEBUG:          | convergence |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,811]:DEBUG:          |          Nt |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,811]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,811]:DEBUG:          |          dt |       first:0.001, min:0.001, max:0.001, |
+[2022-12-08 14:53:47,814]:DEBUG:          |             | sum:0.001, sum2:1e-06, cnt:1, avg:0.001, |
+[2022-12-08 14:53:47,814]:DEBUG:          |             | std:0, last:0.001                        |
+[2022-12-08 14:53:47,815]:DEBUG:     scan file output1/000000/000000_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,819]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,820]:DEBUG:          |    tot_time |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |   comm_time |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |   max_iters |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |   tot_iters |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |         tol |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |        stol |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |          Nx |  |
+[2022-12-08 14:53:47,820]:DEBUG:          | convergence |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |          Nt |  |
+[2022-12-08 14:53:47,820]:DEBUG:          |          dt |  |
+[2022-12-08 14:53:47,820]:DEBUG:     scan file output1/000000/000002_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,823]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,823]:DEBUG:          |    tot_time |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |   comm_time |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |   max_iters |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |   tot_iters |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |         tol |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |        stol |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |          Nx |  |
+[2022-12-08 14:53:47,823]:DEBUG:          | convergence |  |
+[2022-12-08 14:53:47,823]:DEBUG:          |          Nt |  |
+[2022-12-08 14:53:47,824]:DEBUG:          |          dt |  |
+[2022-12-08 14:53:47,826]:DEBUG:     scan file output1/000000/000003_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,832]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,832]:DEBUG:          |    tot_time |          first:553.29267, min:553.29267, |
+[2022-12-08 14:53:47,832]:DEBUG:          |             | max:553.29267, sum:553.29267,            |
+[2022-12-08 14:53:47,832]:DEBUG:          |             | sum2:306132.77867572894, cnt:1,          |
+[2022-12-08 14:53:47,832]:DEBUG:          |             | avg:553.29267, std:0, last:553.29267     |
+[2022-12-08 14:53:47,832]:DEBUG:          |   comm_time |            first:10.89453, min:10.89453, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | max:10.89453, sum:10.89453,              |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum2:118.69078392089999, cnt:1,          |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | avg:10.89453, std:0, last:10.89453       |
+[2022-12-08 14:53:47,833]:DEBUG:          |   max_iters |    first:1.0, min:1.0, max:1.0, sum:1.0, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum2:1.0, cnt:1, avg:1.0, std:0,         |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | last:1.0                                 |
+[2022-12-08 14:53:47,833]:DEBUG:          |   tot_iters |          first:32.0, min:32.0, max:32.0, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum:32.0, sum2:1024.0, cnt:1, avg:32.0,  |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | std:0, last:32.0                         |
+[2022-12-08 14:53:47,833]:DEBUG:          |         tol |     first:0.0001, min:1e-06, max:0.0001, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum:0.000101, sum2:1.0001e-08, cnt:2,    |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | avg:5.05e-05, std:7.000357133746821e-05, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | last:1e-06                               |
+[2022-12-08 14:53:47,833]:DEBUG:          |        stol |       first:1e-06, min:1e-06, max:1e-06, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum:1e-06, sum2:1e-12, cnt:1, avg:1e-06, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | std:0, last:1e-06                        |
+[2022-12-08 14:53:47,833]:DEBUG:          |          Nx |    first:384, min:384, max:384, sum:384, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum2:147456, cnt:1, avg:384.0, std:0,    |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | last:384                                 |
+[2022-12-08 14:53:47,833]:DEBUG:          | convergence |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,833]:DEBUG:          |          Nt |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,833]:DEBUG:          |          dt |       first:0.001, min:0.001, max:0.001, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | sum:0.001, sum2:1e-06, cnt:1, avg:0.001, |
+[2022-12-08 14:53:47,833]:DEBUG:          |             | std:0, last:0.001                        |
+[2022-12-08 14:53:47,836]:DEBUG:     scan file output1/000000/000004_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,842]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,842]:DEBUG:          |    tot_time |          first:304.88061, min:304.88061, |
+[2022-12-08 14:53:47,842]:DEBUG:          |             | max:304.88061, sum:304.88061,            |
+[2022-12-08 14:53:47,842]:DEBUG:          |             | sum2:92952.1863539721, cnt:1,            |
+[2022-12-08 14:53:47,842]:DEBUG:          |             | avg:304.88061, std:0, last:304.88061     |
+[2022-12-08 14:53:47,842]:DEBUG:          |   comm_time | first:5.40456, min:5.40456, max:5.40456, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum:5.40456, sum2:29.2092687936, cnt:1,  |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | avg:5.40456, std:0, last:5.40456         |
+[2022-12-08 14:53:47,843]:DEBUG:          |   max_iters |    first:1.0, min:1.0, max:1.0, sum:1.0, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum2:1.0, cnt:1, avg:1.0, std:0,         |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | last:1.0                                 |
+[2022-12-08 14:53:47,843]:DEBUG:          |   tot_iters |          first:32.0, min:32.0, max:32.0, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum:32.0, sum2:1024.0, cnt:1, avg:32.0,  |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | std:0, last:32.0                         |
+[2022-12-08 14:53:47,843]:DEBUG:          |         tol |     first:0.0001, min:1e-06, max:0.0001, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum:0.000101, sum2:1.0001e-08, cnt:2,    |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | avg:5.05e-05, std:7.000357133746821e-05, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | last:1e-06                               |
+[2022-12-08 14:53:47,843]:DEBUG:          |        stol |       first:1e-06, min:1e-06, max:1e-06, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum:1e-06, sum2:1e-12, cnt:1, avg:1e-06, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | std:0, last:1e-06                        |
+[2022-12-08 14:53:47,843]:DEBUG:          |          Nx |    first:384, min:384, max:384, sum:384, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum2:147456, cnt:1, avg:384.0, std:0,    |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | last:384                                 |
+[2022-12-08 14:53:47,843]:DEBUG:          | convergence |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,843]:DEBUG:          |          Nt |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,843]:DEBUG:          |          dt |       first:0.001, min:0.001, max:0.001, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | sum:0.001, sum2:1e-06, cnt:1, avg:0.001, |
+[2022-12-08 14:53:47,843]:DEBUG:          |             | std:0, last:0.001                        |
+[2022-12-08 14:53:47,844]:DEBUG:     scan file output1/000000/000001_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,849]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,849]:DEBUG:          |    tot_time |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |   comm_time |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |   max_iters |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |   tot_iters |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |         tol |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |        stol |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |          Nx |  |
+[2022-12-08 14:53:47,849]:DEBUG:          | convergence |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |          Nt |  |
+[2022-12-08 14:53:47,849]:DEBUG:          |          dt |  |
+[2022-12-08 14:53:47,849]:DEBUG:     scan file output1/000000/000005_sub_step/work/scaling_petsc1.out
+[2022-12-08 14:53:47,853]:DEBUG:       file "scaling_petsc1.out" scanned pattern found:
+[2022-12-08 14:53:47,853]:DEBUG:          |    tot_time |          first:197.74843, min:197.74843, |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | max:197.74843, sum:197.74843,            |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | sum2:39104.441567464906, cnt:1,          |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | avg:197.74843, std:0, last:197.74843     |
+[2022-12-08 14:53:47,853]:DEBUG:          |   comm_time | first:5.03755, min:5.03755, max:5.03755, |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | sum:5.03755, sum2:25.376910002500004,    |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | cnt:1, avg:5.03755, std:0, last:5.03755  |
+[2022-12-08 14:53:47,853]:DEBUG:          |   max_iters |    first:1.0, min:1.0, max:1.0, sum:1.0, |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | sum2:1.0, cnt:1, avg:1.0, std:0,         |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | last:1.0                                 |
+[2022-12-08 14:53:47,853]:DEBUG:          |   tot_iters |          first:32.0, min:32.0, max:32.0, |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | sum:32.0, sum2:1024.0, cnt:1, avg:32.0,  |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | std:0, last:32.0                         |
+[2022-12-08 14:53:47,853]:DEBUG:          |         tol |     first:0.0001, min:1e-06, max:0.0001, |
+[2022-12-08 14:53:47,853]:DEBUG:          |             | sum:0.000101, sum2:1.0001e-08, cnt:2,    |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | avg:5.05e-05, std:7.000357133746821e-05, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | last:1e-06                               |
+[2022-12-08 14:53:47,854]:DEBUG:          |        stol |       first:1e-06, min:1e-06, max:1e-06, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | sum:1e-06, sum2:1e-12, cnt:1, avg:1e-06, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | std:0, last:1e-06                        |
+[2022-12-08 14:53:47,854]:DEBUG:          |          Nx |    first:384, min:384, max:384, sum:384, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | sum2:147456, cnt:1, avg:384.0, std:0,    |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | last:384                                 |
+[2022-12-08 14:53:47,854]:DEBUG:          | convergence |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,854]:DEBUG:          |          Nt |    first:1, min:1, max:1, sum:1, sum2:1, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | cnt:1, avg:1.0, std:0, last:1            |
+[2022-12-08 14:53:47,854]:DEBUG:          |          dt |       first:0.001, min:0.001, max:0.001, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | sum:0.001, sum2:1e-06, cnt:1, avg:0.001, |
+[2022-12-08 14:53:47,854]:DEBUG:          |             | std:0, last:0.001                        |
+[2022-12-08 14:53:47,870]:INFO: >>> Analyse finished
+[2022-12-08 14:53:47,870]:INFO: >>> Analyse data storage: output1/000000/analyse.xml
+[2022-12-08 14:53:47,870]:INFO: ######################################################################
