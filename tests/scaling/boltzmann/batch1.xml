@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
     <benchmark name="PETSc-Euler scaling test" outpath="output1">
-    <comment>Boltzmann, sequential in time (32), parallel in space</comment>
+    <comment>Boltzmann, parallel in time (max 32), parallel in space (32)</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0,1,2</parameter>
-        <parameter name="nproc" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
+        <parameter name="i" type="int">0,1,2,3,4</parameter>
+
+        <parameter name="nproc" mode="python">[64, 128, 256, 512, 1024][$i]</parameter>
+        <parameter name="nodes" mode="python">[1, 2, 4, 8, 16][$i]</parameter>
+
+        <parameter name="rolling" mode="python">[16, 8, 4, 2, 1][$i]</parameter>
+        <parameter name="time_intervals" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
@@ -22,6 +27,10 @@
 
         <!-- Substitute commands -->
         <sub source="#nproc#" dest="$nproc" />
+        <sub source="#nodes#" dest="$nodes" />
+
+        <sub source="#rolling#" dest="$rolling" />
+        <sub source="#time_intervals#" dest="$time_intervals" />
     </substituteset>
 
     <!-- Regex pattern -->
@@ -59,6 +68,8 @@
         <use>analyse</use> <!-- use existing analyser -->
         <table name="result" style="pretty">
             <column>nproc</column>
+            <column>rolling</column>
+            <column>time_intervals</column>
             <column>tot_time_avg</column>
 	        <column>comm_time_avg</column>
 	        <column>max_iters</column>
