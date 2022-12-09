@@ -1,36 +1,38 @@
 # the following lines disable the numpy multithreading [optional]
 import os
-
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
-import matplotlib.pyplot as plt
-from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
+import sys
+sys.path.append('../../..') # for core
+sys.path.append('../../../../../../..')     # for jube
 
+from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
 prob = Boltzmann()
 
 # choosing a number of points
-prob.spatial_points = [4, 10, 10, 10]
+prob.spatial_points = [384, 72, 36, 36]
 prob.time_points = 1
+prob.knudsen = 1e-2
 
 # choosing a time domain
 prob.T_start = 0
 
 # choosing the number of intervals handled in parallel
-prob.time_intervals = 2
+prob.time_intervals = 64
 prob.rolling = 1
 
-prob.T_end = 1e-3 * prob.rolling * prob.time_intervals
+prob.T_end = 0.001 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
-prob.proc_col = 4
+prob.proc_col = 16
 prob.proc_row = prob.time_intervals
 
 # choosing a solver
-prob.solver = 'gmres'
+prob.solver = 'custom'
 
 # setting maximum number of iterations
 prob.maxiter = 10
