@@ -36,10 +36,10 @@ prob.solver = 'custom'
 
 # setting maximum number of iterations
 prob.maxiter = 10
-prob.smaxiter = 50
+prob.smaxiter = 200
 
 # choosing a setting for the alpha sequence
-prob.alphas = [1e-8]
+prob.alphas = [1e-4]
 
 # setting tolerances
 prob.tol = 1e-4
