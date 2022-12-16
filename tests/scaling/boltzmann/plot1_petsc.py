@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
+# run0: petsc scaling (1, 2, 4, 8, 16, 32, 64)
 # run2: petsc(32), 64/n
 # run3: petsc(64), 64/n
 
