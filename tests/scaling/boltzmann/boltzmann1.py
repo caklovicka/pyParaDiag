@@ -6,6 +6,11 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 
+# RUNTIME ARGS
+# prob.proc_col
+# prob.rolling
+# prob.time_intervals
+
 import sys
 sys.path.append('../../..') # for core
 sys.path.append('../../../../../../..')     # for jube
@@ -20,15 +25,9 @@ prob.knudsen = 1e-2
 
 # choosing a time domain
 prob.T_start = 0
-
-# choosing the number of intervals handled in parallel
-#prob.time_intervals = 1
-#prob.rolling = 32
-
 prob.T_end = 0.001 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
-prob.proc_col = 32
 prob.proc_row = prob.time_intervals
 
 # choosing a solver

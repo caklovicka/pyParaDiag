@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
     <benchmark name="PETSc-Euler scaling test" outpath="output1">
-    <comment>Boltzmann, parallel in time (max 32), parallel in space (32)</comment>
+    <comment>Boltzmann, parallel in time (max 32), parallel in space (64)</comment>
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0,1,2,3,4</parameter>
+        <parameter name="proc_col" mode="int">64</parameter>
 
-        <parameter name="nproc" mode="python">[64, 128, 256, 512, 1024][$i]</parameter>
-        <parameter name="nodes" mode="python">[1, 2, 4, 8, 16][$i]</parameter>
+        <parameter name="nproc" mode="python">[128, 256, 512, 1024, 2048][$i]</parameter>
+        <parameter name="nodes" mode="python">[1, 2, 4, 8, 16, 32][$i]</parameter>
 
         <parameter name="rolling" mode="python">[16, 8, 4, 2, 1][$i]</parameter>
         <parameter name="time_intervals" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
@@ -29,6 +30,7 @@
         <sub source="#nproc#" dest="$nproc" />
         <sub source="#nodes#" dest="$nodes" />
 
+        <sub source="#proc_col#" dest="$proc_col" />
         <sub source="#rolling#" dest="$rolling" />
         <sub source="#time_intervals#" dest="$time_intervals" />
     </substituteset>
@@ -68,6 +70,7 @@
         <use>analyse</use> <!-- use existing analyser -->
         <table name="result" style="pretty">
             <column>nproc</column>
+            <column>proc_col</column>
             <column>rolling</column>
             <column>time_intervals</column>
             <column>tot_time_avg</column>

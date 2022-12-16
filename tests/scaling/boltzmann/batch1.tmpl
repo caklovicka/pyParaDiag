@@ -8,5 +8,5 @@
 #SBATCH --time=00:20:00
 #SBATCH --partition=dc-cpu
 
-srun python boltzmann1.py --rolling=#rolling# --time_intervals=#time_intervals# >> scaling_petsc1.out
+srun python boltzmann1.py --rolling=#rolling# --time_intervals=#time_intervals# --proc_col=#proc_col#>> scaling_petsc1.out
 touch ready

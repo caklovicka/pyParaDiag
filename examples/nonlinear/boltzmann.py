@@ -94,8 +94,8 @@ def step(f, df, Q, ps, vs, dt):
 
 
 # %%
-dt = 5e-4
-for iter in range(100):
+dt = 1e-3
+for iter in range(64):
     compute_df(df, f, ps, vs)
     compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
     step(f, df, Q, ps, vs, dt)
