@@ -5,7 +5,8 @@ import seaborn as sns
 # run0: petsc scaling (1, 2, 4, 8, 16, 32, 64)
 # run2: petsc(32), 64/n
 # run3: petsc(64), 64/n
-# run4: petsc(64), 32/n
+# run4: petsc(32), 32/n
+# run5: petsc(16), 16/n
 
 legend = []
 petsc_proc = []
@@ -27,15 +28,14 @@ plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=10)
 plt.semilogy(petsc_proc, seq_time / (2 ** np.array(petsc_proc)), 'X:', color='gray', markersize=10)
 
 # PinT + PETSc
-K = 1
+K = 2
+runs = [3, 4]
 mksz = 15
-col = sns.color_palette("bright", 2 * K)
+col = sns.color_palette("bright", K)
 
 pint_petsc_proc = []
 pint_petsc_time = []
 pint_petsc_iters = []
-
-runs = [3]
 
 for k in range(K):
     # nproc | proc_col | time | tot iters
