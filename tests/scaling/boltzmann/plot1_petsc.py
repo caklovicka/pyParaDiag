@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
+# run2: petsc(32), 64/n
+# run3: petsc(64), 64/n
+
 legend = []
 petsc_proc = []
 petsc_time = []
@@ -32,9 +35,11 @@ pint_petsc_proc = []
 pint_petsc_time = []
 pint_petsc_iters = []
 
+runs = [2]
+
 for k in range(K):
     # nproc | time | tot iters
-    table = np.loadtxt('output{}/000002/result/result.dat'.format(k + 1), delimiter='|', skiprows=3, usecols=[1, 4, 7])
+    table = np.loadtxt('output1/00000{}/result/result.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 4, 7])
 
     legend.append('petsc + pint ' + str(k + 1))
     pint_petsc_proc.append([])
