@@ -1,0 +1,285 @@
+[2022-12-16 12:10:58,928]:DEBUG: Create initial workpackages
+[2022-12-16 12:10:58,928]:DEBUG: Expand parameter templates:
+[2022-12-16 12:10:58,928]:DEBUG:     "i": 0,1,2,3,4
+[2022-12-16 12:10:58,930]:DEBUG: Evaluate parameter: nodes
+[2022-12-16 12:10:58,930]:DEBUG: Evaluate parameter: rolling
+[2022-12-16 12:10:58,930]:DEBUG: Evaluate parameter: nproc
+[2022-12-16 12:10:58,931]:DEBUG: Evaluate parameter: time_intervals
+[2022-12-16 12:10:58,933]:DEBUG: Evaluate parameter: nodes
+[2022-12-16 12:10:58,933]:DEBUG: Evaluate parameter: rolling
+[2022-12-16 12:10:58,933]:DEBUG: Evaluate parameter: nproc
+[2022-12-16 12:10:58,933]:DEBUG: Evaluate parameter: time_intervals
+[2022-12-16 12:10:58,935]:DEBUG: Evaluate parameter: nodes
+[2022-12-16 12:10:58,935]:DEBUG: Evaluate parameter: rolling
+[2022-12-16 12:10:58,936]:DEBUG: Evaluate parameter: nproc
+[2022-12-16 12:10:58,936]:DEBUG: Evaluate parameter: time_intervals
+[2022-12-16 12:10:58,938]:DEBUG: Evaluate parameter: nodes
+[2022-12-16 12:10:58,938]:DEBUG: Evaluate parameter: rolling
+[2022-12-16 12:10:58,938]:DEBUG: Evaluate parameter: nproc
+[2022-12-16 12:10:58,938]:DEBUG: Evaluate parameter: time_intervals
+[2022-12-16 12:10:58,940]:DEBUG: Evaluate parameter: nodes
+[2022-12-16 12:10:58,940]:DEBUG: Evaluate parameter: rolling
+[2022-12-16 12:10:58,940]:DEBUG: Evaluate parameter: nproc
+[2022-12-16 12:10:58,940]:DEBUG: Evaluate parameter: time_intervals
+[2022-12-16 12:10:58,972]:DEBUG: Store initial workpackage information
+[2022-12-16 12:10:58,979]:DEBUG: Start benchmark run
+[2022-12-16 12:10:58,980]:INFO: ######################################################################
+[2022-12-16 12:10:58,980]:INFO: # benchmark: PETSc-Euler scaling test
+[2022-12-16 12:10:58,980]:INFO: # id: 5
+[2022-12-16 12:10:58,980]:INFO: #
+[2022-12-16 12:10:58,980]:INFO: # Boltzmann, parallel in time (max 16), parallel in space (16/n)
+[2022-12-16 12:10:58,980]:INFO: ######################################################################
+[2022-12-16 12:10:58,980]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2022-12-16 12:10:58,982]:DEBUG:   available parameter:
+[2022-12-16 12:10:58,982]:DEBUG:          | parameter             | value                                    |
+[2022-12-16 12:10:58,982]:DEBUG:          |-----------------------|------------------------------------------|
+[2022-12-16 12:10:58,982]:DEBUG:          | i                     | 0                                        |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:58,982]:DEBUG:          |                       | petsc-fft-                               |
+[2022-12-16 12:10:58,982]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_benchmark_id     | 5                                        |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_benchmark_padid  | 000005                                   |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:58,982]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:58,982]:DEBUG:          |                       | nn/output1/000005                        |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_benchmark_start  | 2022-12-16T12:10:58                      |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2022-12-16 12:10:58,982]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2022-12-16 12:10:58,983]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:58,984]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:58,984]:DEBUG:          |                       | nn/output1/000005/000000_sub_step/work   |
+[2022-12-16 12:10:58,984]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2022-12-16 12:10:58,985]:DEBUG:          | jube_wp_envlist       |                                          |
+[2022-12-16 12:10:58,985]:DEBUG:          | jube_wp_envstr        |                                          |
+[2022-12-16 12:10:58,985]:DEBUG:          | jube_wp_id            | 0                                        |
+[2022-12-16 12:10:58,985]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2022-12-16 12:10:58,985]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2022-12-16 12:10:58,985]:DEBUG:          | jube_wp_relpath       | output1/000005/000000_sub_step/work      |
+[2022-12-16 12:10:58,985]:DEBUG:          | nodes                 | 2                                        |
+[2022-12-16 12:10:58,985]:DEBUG:          | nproc                 | 32                                       |
+[2022-12-16 12:10:58,985]:DEBUG:          | proc_col              | 16                                       |
+[2022-12-16 12:10:58,985]:DEBUG:          | rolling               | 16                                       |
+[2022-12-16 12:10:58,985]:DEBUG:          | time_intervals        | 2                                        |
+[2022-12-16 12:10:58,986]:DEBUG:   copy "boltzmann1.py" -> "boltzmann1.py"
+[2022-12-16 12:10:58,988]:DEBUG:   copy "batch1.tmpl" -> "batch1.tmpl"
+[2022-12-16 12:10:58,991]:DEBUG:   substitute batch1.tmpl -> run.exe
+[2022-12-16 12:10:58,992]:DEBUG:   substitute:
+[2022-12-16 12:10:58,992]:DEBUG:          | source           | dest |
+[2022-12-16 12:10:58,992]:DEBUG:          |------------------|------|
+[2022-12-16 12:10:58,992]:DEBUG:          | #nproc#          | 32   |
+[2022-12-16 12:10:58,992]:DEBUG:          | #nodes#          | 2    |
+[2022-12-16 12:10:58,992]:DEBUG:          | #proc_col#       | 16   |
+[2022-12-16 12:10:58,992]:DEBUG:          | #rolling#        | 16   |
+[2022-12-16 12:10:58,992]:DEBUG:          | #time_intervals# | 2    |
+[2022-12-16 12:10:58,994]:DEBUG: >>> sbatch -A cstma run.exe
+[2022-12-16 12:10:58,994]:DEBUG:     stdout: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000000_sub_step/work/stdout
+[2022-12-16 12:10:58,994]:DEBUG:     stderr: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000000_sub_step/work/stderr
+[2022-12-16 12:10:59,141]:DEBUG: Waiting for file "ready" ...
+[2022-12-16 12:10:59,150]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2022-12-16 12:10:59,151]:DEBUG:   available parameter:
+[2022-12-16 12:10:59,151]:DEBUG:          | parameter             | value                                    |
+[2022-12-16 12:10:59,151]:DEBUG:          |-----------------------|------------------------------------------|
+[2022-12-16 12:10:59,151]:DEBUG:          | i                     | 1                                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,151]:DEBUG:          |                       | petsc-fft-                               |
+[2022-12-16 12:10:59,151]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_benchmark_id     | 5                                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_benchmark_padid  | 000005                                   |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,151]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,151]:DEBUG:          |                       | nn/output1/000005                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_benchmark_start  | 2022-12-16T12:10:58                      |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,151]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,151]:DEBUG:          |                       | nn/output1/000005/000001_sub_step/work   |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_wp_envlist       |                                          |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_wp_envstr        |                                          |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_wp_id            | 1                                        |
+[2022-12-16 12:10:59,151]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2022-12-16 12:10:59,152]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2022-12-16 12:10:59,152]:DEBUG:          | jube_wp_relpath       | output1/000005/000001_sub_step/work      |
+[2022-12-16 12:10:59,152]:DEBUG:          | nodes                 | 4                                        |
+[2022-12-16 12:10:59,152]:DEBUG:          | nproc                 | 64                                       |
+[2022-12-16 12:10:59,152]:DEBUG:          | proc_col              | 16                                       |
+[2022-12-16 12:10:59,152]:DEBUG:          | rolling               | 8                                        |
+[2022-12-16 12:10:59,152]:DEBUG:          | time_intervals        | 4                                        |
+[2022-12-16 12:10:59,153]:DEBUG:   copy "boltzmann1.py" -> "boltzmann1.py"
+[2022-12-16 12:10:59,155]:DEBUG:   copy "batch1.tmpl" -> "batch1.tmpl"
+[2022-12-16 12:10:59,156]:DEBUG:   substitute batch1.tmpl -> run.exe
+[2022-12-16 12:10:59,156]:DEBUG:   substitute:
+[2022-12-16 12:10:59,156]:DEBUG:          | source           | dest |
+[2022-12-16 12:10:59,156]:DEBUG:          |------------------|------|
+[2022-12-16 12:10:59,156]:DEBUG:          | #nproc#          | 64   |
+[2022-12-16 12:10:59,156]:DEBUG:          | #nodes#          | 4    |
+[2022-12-16 12:10:59,156]:DEBUG:          | #proc_col#       | 16   |
+[2022-12-16 12:10:59,156]:DEBUG:          | #rolling#        | 8    |
+[2022-12-16 12:10:59,156]:DEBUG:          | #time_intervals# | 4    |
+[2022-12-16 12:10:59,157]:DEBUG: >>> sbatch -A cstma run.exe
+[2022-12-16 12:10:59,157]:DEBUG:     stdout: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000001_sub_step/work/stdout
+[2022-12-16 12:10:59,157]:DEBUG:     stderr: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000001_sub_step/work/stderr
+[2022-12-16 12:10:59,302]:DEBUG: Waiting for file "ready" ...
+[2022-12-16 12:10:59,310]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2022-12-16 12:10:59,312]:DEBUG:   available parameter:
+[2022-12-16 12:10:59,312]:DEBUG:          | parameter             | value                                    |
+[2022-12-16 12:10:59,312]:DEBUG:          |-----------------------|------------------------------------------|
+[2022-12-16 12:10:59,312]:DEBUG:          | i                     | 2                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,312]:DEBUG:          |                       | petsc-fft-                               |
+[2022-12-16 12:10:59,312]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_benchmark_id     | 5                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_benchmark_padid  | 000005                                   |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,312]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,312]:DEBUG:          |                       | nn/output1/000005                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_benchmark_start  | 2022-12-16T12:10:58                      |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,312]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,312]:DEBUG:          |                       | nn/output1/000005/000002_sub_step/work   |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_envlist       |                                          |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_envstr        |                                          |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_id            | 2                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2022-12-16 12:10:59,312]:DEBUG:          | jube_wp_relpath       | output1/000005/000002_sub_step/work      |
+[2022-12-16 12:10:59,312]:DEBUG:          | nodes                 | 8                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | nproc                 | 128                                      |
+[2022-12-16 12:10:59,312]:DEBUG:          | proc_col              | 16                                       |
+[2022-12-16 12:10:59,312]:DEBUG:          | rolling               | 4                                        |
+[2022-12-16 12:10:59,312]:DEBUG:          | time_intervals        | 8                                        |
+[2022-12-16 12:10:59,313]:DEBUG:   copy "boltzmann1.py" -> "boltzmann1.py"
+[2022-12-16 12:10:59,314]:DEBUG:   copy "batch1.tmpl" -> "batch1.tmpl"
+[2022-12-16 12:10:59,315]:DEBUG:   substitute batch1.tmpl -> run.exe
+[2022-12-16 12:10:59,315]:DEBUG:   substitute:
+[2022-12-16 12:10:59,315]:DEBUG:          | source           | dest |
+[2022-12-16 12:10:59,315]:DEBUG:          |------------------|------|
+[2022-12-16 12:10:59,315]:DEBUG:          | #nproc#          | 128  |
+[2022-12-16 12:10:59,315]:DEBUG:          | #nodes#          | 8    |
+[2022-12-16 12:10:59,315]:DEBUG:          | #proc_col#       | 16   |
+[2022-12-16 12:10:59,315]:DEBUG:          | #rolling#        | 4    |
+[2022-12-16 12:10:59,316]:DEBUG:          | #time_intervals# | 8    |
+[2022-12-16 12:10:59,317]:DEBUG: >>> sbatch -A cstma run.exe
+[2022-12-16 12:10:59,317]:DEBUG:     stdout: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000002_sub_step/work/stdout
+[2022-12-16 12:10:59,317]:DEBUG:     stderr: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000002_sub_step/work/stderr
+[2022-12-16 12:10:59,454]:DEBUG: Waiting for file "ready" ...
+[2022-12-16 12:10:59,463]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2022-12-16 12:10:59,465]:DEBUG:   available parameter:
+[2022-12-16 12:10:59,465]:DEBUG:          | parameter             | value                                    |
+[2022-12-16 12:10:59,465]:DEBUG:          |-----------------------|------------------------------------------|
+[2022-12-16 12:10:59,465]:DEBUG:          | i                     | 3                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,465]:DEBUG:          |                       | petsc-fft-                               |
+[2022-12-16 12:10:59,465]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_benchmark_id     | 5                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_benchmark_padid  | 000005                                   |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,465]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,465]:DEBUG:          |                       | nn/output1/000005                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_benchmark_start  | 2022-12-16T12:10:58                      |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,465]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,465]:DEBUG:          |                       | nn/output1/000005/000003_sub_step/work   |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_envlist       |                                          |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_envstr        |                                          |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_id            | 3                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2022-12-16 12:10:59,465]:DEBUG:          | jube_wp_relpath       | output1/000005/000003_sub_step/work      |
+[2022-12-16 12:10:59,465]:DEBUG:          | nodes                 | 16                                       |
+[2022-12-16 12:10:59,465]:DEBUG:          | nproc                 | 256                                      |
+[2022-12-16 12:10:59,465]:DEBUG:          | proc_col              | 16                                       |
+[2022-12-16 12:10:59,465]:DEBUG:          | rolling               | 2                                        |
+[2022-12-16 12:10:59,465]:DEBUG:          | time_intervals        | 16                                       |
+[2022-12-16 12:10:59,466]:DEBUG:   copy "boltzmann1.py" -> "boltzmann1.py"
+[2022-12-16 12:10:59,467]:DEBUG:   copy "batch1.tmpl" -> "batch1.tmpl"
+[2022-12-16 12:10:59,468]:DEBUG:   substitute batch1.tmpl -> run.exe
+[2022-12-16 12:10:59,468]:DEBUG:   substitute:
+[2022-12-16 12:10:59,468]:DEBUG:          | source           | dest |
+[2022-12-16 12:10:59,468]:DEBUG:          |------------------|------|
+[2022-12-16 12:10:59,468]:DEBUG:          | #nproc#          | 256  |
+[2022-12-16 12:10:59,469]:DEBUG:          | #nodes#          | 16   |
+[2022-12-16 12:10:59,469]:DEBUG:          | #proc_col#       | 16   |
+[2022-12-16 12:10:59,469]:DEBUG:          | #rolling#        | 2    |
+[2022-12-16 12:10:59,469]:DEBUG:          | #time_intervals# | 16   |
+[2022-12-16 12:10:59,470]:DEBUG: >>> sbatch -A cstma run.exe
+[2022-12-16 12:10:59,470]:DEBUG:     stdout: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000003_sub_step/work/stdout
+[2022-12-16 12:10:59,470]:DEBUG:     stderr: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000003_sub_step/work/stderr
+[2022-12-16 12:10:59,610]:DEBUG: Waiting for file "ready" ...
+[2022-12-16 12:10:59,620]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 | procs:1 ) -----
+[2022-12-16 12:10:59,621]:DEBUG:   available parameter:
+[2022-12-16 12:10:59,621]:DEBUG:          | parameter             | value                                    |
+[2022-12-16 12:10:59,621]:DEBUG:          |-----------------------|------------------------------------------|
+[2022-12-16 12:10:59,621]:DEBUG:          | i                     | 4                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,621]:DEBUG:          |                       | petsc-fft-                               |
+[2022-12-16 12:10:59,621]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_benchmark_id     | 5                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_benchmark_padid  | 000005                                   |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,621]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,621]:DEBUG:          |                       | nn/output1/000005                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_benchmark_start  | 2022-12-16T12:10:58                      |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2022-12-16 12:10:59,621]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2022-12-16 12:10:59,621]:DEBUG:          |                       | nn/output1/000005/000004_sub_step/work   |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_envlist       |                                          |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_envstr        |                                          |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_id            | 4                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_padid         | 000004                                   |
+[2022-12-16 12:10:59,621]:DEBUG:          | jube_wp_relpath       | output1/000005/000004_sub_step/work      |
+[2022-12-16 12:10:59,621]:DEBUG:          | nodes                 | 32                                       |
+[2022-12-16 12:10:59,621]:DEBUG:          | nproc                 | 512                                      |
+[2022-12-16 12:10:59,621]:DEBUG:          | proc_col              | 16                                       |
+[2022-12-16 12:10:59,621]:DEBUG:          | rolling               | 1                                        |
+[2022-12-16 12:10:59,622]:DEBUG:          | time_intervals        | 32                                       |
+[2022-12-16 12:10:59,622]:DEBUG:   copy "boltzmann1.py" -> "boltzmann1.py"
+[2022-12-16 12:10:59,623]:DEBUG:   copy "batch1.tmpl" -> "batch1.tmpl"
+[2022-12-16 12:10:59,624]:DEBUG:   substitute batch1.tmpl -> run.exe
+[2022-12-16 12:10:59,624]:DEBUG:   substitute:
+[2022-12-16 12:10:59,625]:DEBUG:          | source           | dest |
+[2022-12-16 12:10:59,625]:DEBUG:          |------------------|------|
+[2022-12-16 12:10:59,625]:DEBUG:          | #nproc#          | 512  |
+[2022-12-16 12:10:59,625]:DEBUG:          | #nodes#          | 32   |
+[2022-12-16 12:10:59,625]:DEBUG:          | #proc_col#       | 16   |
+[2022-12-16 12:10:59,625]:DEBUG:          | #rolling#        | 1    |
+[2022-12-16 12:10:59,625]:DEBUG:          | #time_intervals# | 32   |
+[2022-12-16 12:10:59,626]:DEBUG: >>> sbatch -A cstma run.exe
+[2022-12-16 12:10:59,626]:DEBUG:     stdout: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000004_sub_step/work/stdout
+[2022-12-16 12:10:59,626]:DEBUG:     stderr: /p/home/jusers/aklovi1/jureca/linear-petsc-fft-Paralpha/tests/scaling/boltzmann/output1/000005/000004_sub_step/work/stderr
+[2022-12-16 12:10:59,775]:DEBUG: Waiting for file "ready" ...
+[2022-12-16 12:10:59,785]:INFO:   | stepname | all | open | wait | error | done |
+[2022-12-16 12:10:59,785]:INFO:   |----------|-----|------|------|-------|------|
+[2022-12-16 12:10:59,785]:INFO:   | sub_step |   5 |    0 |    5 |     0 |    0 |
+[2022-12-16 12:10:59,785]:INFO: 
+[2022-12-16 12:10:59,785]:INFO: >>>> Benchmark information and further useful commands:
+[2022-12-16 12:10:59,785]:INFO: >>>>       id: 5
+[2022-12-16 12:10:59,785]:INFO: >>>>   handle: output1
+[2022-12-16 12:10:59,785]:INFO: >>>>      dir: output1/000005
+[2022-12-16 12:10:59,785]:INFO: >>>> continue: jube continue output1 --id 5
+[2022-12-16 12:10:59,785]:INFO: >>>>  analyse: jube analyse output1 --id 5
+[2022-12-16 12:10:59,785]:INFO: >>>>   result: jube result output1 --id 5
+[2022-12-16 12:10:59,785]:INFO: >>>>     info: jube info output1 --id 5
+[2022-12-16 12:10:59,785]:INFO: >>>>      log: jube log output1 --id 5
+[2022-12-16 12:10:59,786]:INFO: ######################################################################
