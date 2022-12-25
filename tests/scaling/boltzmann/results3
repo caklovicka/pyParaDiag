@@ -1,0 +1,108 @@
+----------------
+ discretization 
+----------------
+solving on [0, 0.08]
+no. of spatial points = [384, 72, 36, 36], dx = [0.0026041666666666665, 0.2222222222222222, 0.4444444444444444, 0.4444444444444444]
+no. of time intervals = 8, dt = 0.01
+collocation points = [0.00155 0.00645 0.01   ]
+alphas = [1e-08]
+betas = [0]
+rolling intervals = 1
+
+-----------------
+ parallelization 
+-----------------
+proc. for collocation-space problem: 24
+proc. for time problem: 8
+total: 192
+
+-------
+ other 
+-------
+maxiter of paradiag = 10
+output document = None
+tol = 0.0001
+inner solver = custom
+inner solver tol = 1e-06
+inner solver maxiter = 50
+
+--------
+ output 
+--------
+convergence = 1
+iterations of paradiag = [10]
+total iterations of paradiag = 10
+max iterations of paradiag = 10
+min iterations of paradiag = 10
+
+algorithm time = 617.33048 s
+communication time = 160.33249 s
+
+consecutive errors = 
+[inf, 0.0225724, 0.0159897, 0.0151824, 0.0104433, 0.00884572, 0.0104438, 0.0141494, 0.0257997, 0.0716663, 0.181387]
+residuals = 
+[0.00281965, 0.00613332, 0.00543673, 0.00436928, 0.00429671, 0.00574371, 0.00853407, 0.0169277, 0.0500332, 0.13352, 0.322145]
+
+system_time_max =
+[7.2, 20.1, 36.9, 46.0, 48.7, 50.3, 52.0, 52.1, 51.9, 52.2]
+system_time_min = 
+[6.17, 7.64, 20.5, 30.2, 36.5, 38.1, 40.4, 41.1, 40.3, 40.3]
+solver_its_max =
+[5, 31, 50, 50, 50, 50, 50, 50, 50, 50]
+solver_its_min =
+[4, 7, 20, 27, 32, 35, 39, 40, 39, 39]
+-----------------------< end summary >-----------------------
+----------------
+ discretization 
+----------------
+solving on [0, 0.04]
+no. of spatial points = [384, 72, 36, 36], dx = [0.0026041666666666665, 0.2222222222222222, 0.4444444444444444, 0.4444444444444444]
+no. of time intervals = 4, dt = 0.01
+collocation points = [0.00155 0.00645 0.01   ]
+alphas = [1e-08]
+betas = [0]
+rolling intervals = 1
+
+-----------------
+ parallelization 
+-----------------
+proc. for collocation-space problem: 24
+proc. for time problem: 4
+total: 96
+
+-------
+ other 
+-------
+maxiter of paradiag = 10
+output document = None
+tol = 0.0001
+inner solver = custom
+inner solver tol = 1e-06
+inner solver maxiter = 50
+
+--------
+ output 
+--------
+convergence = 1
+iterations of paradiag = [7]
+total iterations of paradiag = 7
+max iterations of paradiag = 7
+min iterations of paradiag = 7
+
+algorithm time = 279.06399 s
+communication time = 96.93262 s
+
+consecutive errors = 
+[inf, 0.0112188, 0.0031998, 0.001818, 0.00064364, 0.000276165, 0.000166973, 0.00011848]
+residuals = 
+[0.00281965, 0.0014037, 0.00105422, 0.00044034, 0.000211093, 0.000137045, 0.000102428, 9.12435e-05]
+
+system_time_max =
+[5.52, 9.19, 22.9, 30.6, 32.4, 33.3, 34.3]
+system_time_min = 
+[4.33, 6.28, 15.8, 19.9, 21.1, 20.7, 21.3]
+solver_its_max =
+[4, 13, 27, 40, 43, 45, 46]
+solver_its_min =
+[4, 9, 26, 33, 37, 36, 38]
+-----------------------< end summary >-----------------------

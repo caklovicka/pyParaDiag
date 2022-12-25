@@ -66,7 +66,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
                 if self.residual[rolling_interval][-1] > 1000:
                     self.convergence = 0
-                    print('tu sam', self.residual[rolling_interval][-1])
+                    print('divergence? residual = ', self.residual[rolling_interval][-1])
                     break
 
                 if self.time_intervals == 1 and self.betas[i_beta] == 0:

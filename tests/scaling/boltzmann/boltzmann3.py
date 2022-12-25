@@ -27,11 +27,11 @@ prob.knudsen = 1e-2
 prob.T_start = 0
 #prob.time_intervals = 8
 prob.rolling = 1
-prob.T_end = 0.2 * prob.rolling * prob.time_intervals
+prob.T_end = 0.01 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
-prob.proc_row = 3
-prob.proc_col = 1
+prob.proc_row = prob.time_intervals
+prob.proc_col = 3 * 8
 
 # choosing a solver
 prob.solver = 'custom'
