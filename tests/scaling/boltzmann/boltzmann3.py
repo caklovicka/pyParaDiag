@@ -27,7 +27,7 @@ prob.knudsen = 1e-2
 prob.T_start = 0
 #prob.time_intervals = 8
 prob.rolling = 1
-prob.T_end = 0.01 * prob.rolling * prob.time_intervals
+prob.T_end = 0.005 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_row = prob.time_intervals
@@ -51,9 +51,10 @@ prob.setup()
 prob.solve()
 prob.summary(details=True)
 
-prob.comm.Barrier()
-if prob.rank == prob.size - 1:
-    up = prob.u_loc[-prob.global_size_A:]
-    f = open('exact3.txt', 'w')
-    f.write(up)
-    f.close()
+#prob.comm.Barrier()
+#if prob.rank == prob.size - 1:
+#    up = prob.u_loc[-prob.global_size_A:]
+#    f = open('exact3.txt', 'w')
+#    for i in range(up.shape[0]):
+#        f.write(str(up[i]) + '\n')
+#    f.close()
