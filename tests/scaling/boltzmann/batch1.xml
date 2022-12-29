@@ -11,7 +11,7 @@
         <parameter name="rolling" mode="python">[16, 8, 4, 2, 1][$i]</parameter>
         <parameter name="time_intervals" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
 
-        <parameter name="nproc" type="int">$proc_col * $time_intervals</parameter>
+        <parameter name="nproc" mode="python">$proc_col * $time_intervals</parameter>
     </parameterset>
 
     <!-- Files -->
