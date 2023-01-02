@@ -3,19 +3,6 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-# output1
-#########
-# run0: petsc scaling (1, 2, 4, 8, 16, 32, 64)
-# run2: petsc(32), 64/n, k = 1e-2
-# run3: petsc(64), 64/n, k = 1e-2
-# run4: petsc(32), 32/n, k = 1e-2
-# run5: petsc(16), 16/n, k = 1e-2
-
-# output2
-#########
-# run0: petsc(64), 64/n, k = 1e-1
-
-
 legend = []
 petsc_proc = []
 petsc_time = []
