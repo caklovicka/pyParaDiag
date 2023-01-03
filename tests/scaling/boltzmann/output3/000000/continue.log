@@ -1,0 +1,2037 @@
+[2023-01-03 09:28:52,007]:INFO: ######################################################################
+[2023-01-03 09:28:52,007]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:28:52,008]:INFO: # id: 0
+[2023-01-03 09:28:52,008]:INFO: #
+[2023-01-03 09:28:52,008]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:28:52,008]:INFO: ######################################################################
+[2023-01-03 09:28:52,008]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:28:52,010]:DEBUG:   available parameter:
+[2023-01-03 09:28:52,010]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:28:52,010]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:28:52,010]:DEBUG:          | i                     | 0                                        |
+[2023-01-03 09:28:52,010]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,010]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:28:52,010]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:28:52,010]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:28:52,010]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:28:52,010]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:28:52,010]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,010]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,010]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,011]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,011]:DEBUG:          |                       | nn/output3/000000/000000_sub_step/work   |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_id            | 0                                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2023-01-03 09:28:52,011]:DEBUG:          | jube_wp_relpath       | output3/000000/000000_sub_step/work      |
+[2023-01-03 09:28:52,011]:DEBUG:          | nodes                 | 2                                        |
+[2023-01-03 09:28:52,011]:DEBUG:          | nproc                 | 128                                      |
+[2023-01-03 09:28:52,011]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:28:52,011]:DEBUG:          | rolling               | 16                                       |
+[2023-01-03 09:28:52,011]:DEBUG:          | time_intervals        | 2                                        |
+[2023-01-03 09:28:52,018]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:28:52,032]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:28:52,033]:DEBUG:   available parameter:
+[2023-01-03 09:28:52,033]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:28:52,033]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:28:52,033]:DEBUG:          | i                     | 1                                        |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,033]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:28:52,033]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,033]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,033]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:28:52,033]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,034]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,034]:DEBUG:          |                       | nn/output3/000000/000001_sub_step/work   |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_id            | 1                                        |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2023-01-03 09:28:52,034]:DEBUG:          | jube_wp_relpath       | output3/000000/000001_sub_step/work      |
+[2023-01-03 09:28:52,034]:DEBUG:          | nodes                 | 4                                        |
+[2023-01-03 09:28:52,034]:DEBUG:          | nproc                 | 256                                      |
+[2023-01-03 09:28:52,034]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:28:52,034]:DEBUG:          | rolling               | 8                                        |
+[2023-01-03 09:28:52,035]:DEBUG:          | time_intervals        | 4                                        |
+[2023-01-03 09:28:52,040]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:28:52,049]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:28:52,050]:DEBUG:   available parameter:
+[2023-01-03 09:28:52,050]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:28:52,050]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:28:52,050]:DEBUG:          | i                     | 2                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,050]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:28:52,050]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,050]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,050]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,050]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,050]:DEBUG:          |                       | nn/output3/000000/000002_sub_step/work   |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_id            | 2                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2023-01-03 09:28:52,050]:DEBUG:          | jube_wp_relpath       | output3/000000/000002_sub_step/work      |
+[2023-01-03 09:28:52,050]:DEBUG:          | nodes                 | 8                                        |
+[2023-01-03 09:28:52,050]:DEBUG:          | nproc                 | 512                                      |
+[2023-01-03 09:28:52,050]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:28:52,050]:DEBUG:          | rolling               | 4                                        |
+[2023-01-03 09:28:52,051]:DEBUG:          | time_intervals        | 8                                        |
+[2023-01-03 09:28:52,056]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:28:52,067]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:28:52,068]:DEBUG:   available parameter:
+[2023-01-03 09:28:52,068]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:28:52,069]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:28:52,069]:DEBUG:          | i                     | 3                                        |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,069]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:28:52,069]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,069]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,069]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,069]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,069]:DEBUG:          |                       | nn/output3/000000/000003_sub_step/work   |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:28:52,069]:DEBUG:          | jube_wp_id            | 3                                        |
+[2023-01-03 09:28:52,070]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:28:52,070]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2023-01-03 09:28:52,070]:DEBUG:          | jube_wp_relpath       | output3/000000/000003_sub_step/work      |
+[2023-01-03 09:28:52,070]:DEBUG:          | nodes                 | 16                                       |
+[2023-01-03 09:28:52,070]:DEBUG:          | nproc                 | 1024                                     |
+[2023-01-03 09:28:52,070]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:28:52,070]:DEBUG:          | rolling               | 2                                        |
+[2023-01-03 09:28:52,070]:DEBUG:          | time_intervals        | 16                                       |
+[2023-01-03 09:28:52,076]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:28:52,086]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:28:52,086]:DEBUG:   available parameter:
+[2023-01-03 09:28:52,086]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:28:52,086]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:28:52,086]:DEBUG:          | i                     | 4                                        |
+[2023-01-03 09:28:52,086]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,086]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:28:52,086]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,087]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,087]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:28:52,087]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:28:52,087]:DEBUG:          |                       | nn/output3/000000/000004_sub_step/work   |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_id            | 4                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_padid         | 000004                                   |
+[2023-01-03 09:28:52,087]:DEBUG:          | jube_wp_relpath       | output3/000000/000004_sub_step/work      |
+[2023-01-03 09:28:52,087]:DEBUG:          | nodes                 | 32                                       |
+[2023-01-03 09:28:52,087]:DEBUG:          | nproc                 | 2048                                     |
+[2023-01-03 09:28:52,087]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:28:52,087]:DEBUG:          | rolling               | 1                                        |
+[2023-01-03 09:28:52,087]:DEBUG:          | time_intervals        | 32                                       |
+[2023-01-03 09:28:52,093]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:28:52,101]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:28:52,101]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:28:52,101]:INFO:   | sub_step |   5 |    0 |    5 |     0 |    0 |
+[2023-01-03 09:28:52,101]:INFO: 
+[2023-01-03 09:28:52,101]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:28:52,101]:INFO: >>>>       id: 0
+[2023-01-03 09:28:52,101]:INFO: >>>>   handle: output3
+[2023-01-03 09:28:52,101]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:28:52,102]:INFO: >>>> continue: jube continue output3 --id 0
+[2023-01-03 09:28:52,102]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:28:52,102]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:28:52,102]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:28:52,102]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:28:52,102]:INFO: ######################################################################
+[2023-01-03 09:29:52,378]:INFO: ######################################################################
+[2023-01-03 09:29:52,378]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:29:52,378]:INFO: # id: 0
+[2023-01-03 09:29:52,378]:INFO: #
+[2023-01-03 09:29:52,378]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:29:52,378]:INFO: ######################################################################
+[2023-01-03 09:29:52,378]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:29:52,379]:DEBUG:   available parameter:
+[2023-01-03 09:29:52,379]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:29:52,379]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:29:52,379]:DEBUG:          | i                     | 0                                        |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,379]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:29:52,379]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,379]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,379]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:29:52,379]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,380]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,380]:DEBUG:          |                       | nn/output3/000000/000000_sub_step/work   |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_id            | 0                                        |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2023-01-03 09:29:52,380]:DEBUG:          | jube_wp_relpath       | output3/000000/000000_sub_step/work      |
+[2023-01-03 09:29:52,380]:DEBUG:          | nodes                 | 2                                        |
+[2023-01-03 09:29:52,380]:DEBUG:          | nproc                 | 128                                      |
+[2023-01-03 09:29:52,380]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:29:52,380]:DEBUG:          | rolling               | 16                                       |
+[2023-01-03 09:29:52,380]:DEBUG:          | time_intervals        | 2                                        |
+[2023-01-03 09:29:52,380]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:29:52,391]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:29:52,393]:DEBUG:   available parameter:
+[2023-01-03 09:29:52,393]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:29:52,393]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:29:52,393]:DEBUG:          | i                     | 1                                        |
+[2023-01-03 09:29:52,393]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,393]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:29:52,393]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:29:52,393]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:29:52,393]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:29:52,393]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:29:52,393]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,393]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,394]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,394]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,394]:DEBUG:          |                       | nn/output3/000000/000001_sub_step/work   |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_id            | 1                                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2023-01-03 09:29:52,394]:DEBUG:          | jube_wp_relpath       | output3/000000/000001_sub_step/work      |
+[2023-01-03 09:29:52,394]:DEBUG:          | nodes                 | 4                                        |
+[2023-01-03 09:29:52,394]:DEBUG:          | nproc                 | 256                                      |
+[2023-01-03 09:29:52,395]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:29:52,395]:DEBUG:          | rolling               | 8                                        |
+[2023-01-03 09:29:52,395]:DEBUG:          | time_intervals        | 4                                        |
+[2023-01-03 09:29:52,395]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:29:52,403]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:29:52,404]:DEBUG:   available parameter:
+[2023-01-03 09:29:52,404]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:29:52,404]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:29:52,404]:DEBUG:          | i                     | 2                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,404]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:29:52,404]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,404]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,404]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,404]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,404]:DEBUG:          |                       | nn/output3/000000/000002_sub_step/work   |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_id            | 2                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2023-01-03 09:29:52,404]:DEBUG:          | jube_wp_relpath       | output3/000000/000002_sub_step/work      |
+[2023-01-03 09:29:52,404]:DEBUG:          | nodes                 | 8                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | nproc                 | 512                                      |
+[2023-01-03 09:29:52,404]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:29:52,404]:DEBUG:          | rolling               | 4                                        |
+[2023-01-03 09:29:52,404]:DEBUG:          | time_intervals        | 8                                        |
+[2023-01-03 09:29:52,405]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:29:52,412]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:29:52,413]:DEBUG:   available parameter:
+[2023-01-03 09:29:52,413]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:29:52,413]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:29:52,413]:DEBUG:          | i                     | 3                                        |
+[2023-01-03 09:29:52,413]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,413]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:29:52,413]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:29:52,413]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:29:52,413]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:29:52,413]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:29:52,413]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,413]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,413]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:29:52,413]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:29:52,415]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:29:52,415]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:29:52,415]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:29:52,415]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,415]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,415]:DEBUG:          |                       | nn/output3/000000/000003_sub_step/work   |
+[2023-01-03 09:29:52,415]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:29:52,416]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:29:52,416]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:29:52,416]:DEBUG:          | jube_wp_id            | 3                                        |
+[2023-01-03 09:29:52,416]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:29:52,416]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2023-01-03 09:29:52,416]:DEBUG:          | jube_wp_relpath       | output3/000000/000003_sub_step/work      |
+[2023-01-03 09:29:52,416]:DEBUG:          | nodes                 | 16                                       |
+[2023-01-03 09:29:52,416]:DEBUG:          | nproc                 | 1024                                     |
+[2023-01-03 09:29:52,416]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:29:52,416]:DEBUG:          | rolling               | 2                                        |
+[2023-01-03 09:29:52,416]:DEBUG:          | time_intervals        | 16                                       |
+[2023-01-03 09:29:52,416]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:29:52,426]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:29:52,426]:DEBUG:   available parameter:
+[2023-01-03 09:29:52,426]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:29:52,427]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:29:52,427]:DEBUG:          | i                     | 4                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,427]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:29:52,427]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,427]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,427]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:29:52,427]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:29:52,427]:DEBUG:          |                       | nn/output3/000000/000004_sub_step/work   |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_id            | 4                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_padid         | 000004                                   |
+[2023-01-03 09:29:52,427]:DEBUG:          | jube_wp_relpath       | output3/000000/000004_sub_step/work      |
+[2023-01-03 09:29:52,427]:DEBUG:          | nodes                 | 32                                       |
+[2023-01-03 09:29:52,427]:DEBUG:          | nproc                 | 2048                                     |
+[2023-01-03 09:29:52,427]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:29:52,427]:DEBUG:          | rolling               | 1                                        |
+[2023-01-03 09:29:52,427]:DEBUG:          | time_intervals        | 32                                       |
+[2023-01-03 09:29:52,427]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:29:52,435]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:29:52,435]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:29:52,435]:INFO:   | sub_step |   5 |    0 |    5 |     0 |    0 |
+[2023-01-03 09:29:52,435]:INFO: 
+[2023-01-03 09:29:52,435]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:29:52,435]:INFO: >>>>       id: 0
+[2023-01-03 09:29:52,435]:INFO: >>>>   handle: output3
+[2023-01-03 09:29:52,435]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:29:52,436]:INFO: >>>> continue: jube continue output3 --id 0
+[2023-01-03 09:29:52,436]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:29:52,436]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:29:52,436]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:29:52,436]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:29:52,436]:INFO: ######################################################################
+[2023-01-03 09:30:52,718]:INFO: ######################################################################
+[2023-01-03 09:30:52,718]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:30:52,718]:INFO: # id: 0
+[2023-01-03 09:30:52,718]:INFO: #
+[2023-01-03 09:30:52,718]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:30:52,718]:INFO: ######################################################################
+[2023-01-03 09:30:52,719]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:30:52,719]:DEBUG:   available parameter:
+[2023-01-03 09:30:52,719]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:30:52,719]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:30:52,719]:DEBUG:          | i                     | 0                                        |
+[2023-01-03 09:30:52,719]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,719]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:30:52,719]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:30:52,719]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,720]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,720]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,720]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,720]:DEBUG:          |                       | nn/output3/000000/000000_sub_step/work   |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_id            | 0                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2023-01-03 09:30:52,720]:DEBUG:          | jube_wp_relpath       | output3/000000/000000_sub_step/work      |
+[2023-01-03 09:30:52,720]:DEBUG:          | nodes                 | 2                                        |
+[2023-01-03 09:30:52,720]:DEBUG:          | nproc                 | 128                                      |
+[2023-01-03 09:30:52,720]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:30:52,720]:DEBUG:          | rolling               | 16                                       |
+[2023-01-03 09:30:52,720]:DEBUG:          | time_intervals        | 2                                        |
+[2023-01-03 09:30:52,720]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:30:52,732]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:30:52,732]:DEBUG:   available parameter:
+[2023-01-03 09:30:52,732]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:30:52,732]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:30:52,732]:DEBUG:          | i                     | 1                                        |
+[2023-01-03 09:30:52,732]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,732]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:30:52,732]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:30:52,732]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:30:52,732]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,733]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,733]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,733]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,733]:DEBUG:          |                       | nn/output3/000000/000001_sub_step/work   |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_id            | 1                                        |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2023-01-03 09:30:52,733]:DEBUG:          | jube_wp_relpath       | output3/000000/000001_sub_step/work      |
+[2023-01-03 09:30:52,734]:DEBUG:          | nodes                 | 4                                        |
+[2023-01-03 09:30:52,734]:DEBUG:          | nproc                 | 256                                      |
+[2023-01-03 09:30:52,734]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:30:52,734]:DEBUG:          | rolling               | 8                                        |
+[2023-01-03 09:30:52,734]:DEBUG:          | time_intervals        | 4                                        |
+[2023-01-03 09:30:52,734]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:30:52,742]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:30:52,743]:DEBUG:   available parameter:
+[2023-01-03 09:30:52,743]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:30:52,743]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:30:52,743]:DEBUG:          | i                     | 2                                        |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,743]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:30:52,743]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,743]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,743]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:30:52,743]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:30:52,745]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,745]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,745]:DEBUG:          |                       | nn/output3/000000/000002_sub_step/work   |
+[2023-01-03 09:30:52,745]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:30:52,745]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:30:52,745]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:30:52,745]:DEBUG:          | jube_wp_id            | 2                                        |
+[2023-01-03 09:30:52,745]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:30:52,746]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2023-01-03 09:30:52,746]:DEBUG:          | jube_wp_relpath       | output3/000000/000002_sub_step/work      |
+[2023-01-03 09:30:52,746]:DEBUG:          | nodes                 | 8                                        |
+[2023-01-03 09:30:52,746]:DEBUG:          | nproc                 | 512                                      |
+[2023-01-03 09:30:52,746]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:30:52,746]:DEBUG:          | rolling               | 4                                        |
+[2023-01-03 09:30:52,746]:DEBUG:          | time_intervals        | 8                                        |
+[2023-01-03 09:30:52,746]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:30:52,755]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:30:52,755]:DEBUG:   available parameter:
+[2023-01-03 09:30:52,755]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:30:52,755]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:30:52,755]:DEBUG:          | i                     | 3                                        |
+[2023-01-03 09:30:52,755]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,755]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:30:52,755]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,756]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,756]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,756]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,756]:DEBUG:          |                       | nn/output3/000000/000003_sub_step/work   |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_id            | 3                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2023-01-03 09:30:52,756]:DEBUG:          | jube_wp_relpath       | output3/000000/000003_sub_step/work      |
+[2023-01-03 09:30:52,756]:DEBUG:          | nodes                 | 16                                       |
+[2023-01-03 09:30:52,756]:DEBUG:          | nproc                 | 1024                                     |
+[2023-01-03 09:30:52,756]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:30:52,756]:DEBUG:          | rolling               | 2                                        |
+[2023-01-03 09:30:52,756]:DEBUG:          | time_intervals        | 16                                       |
+[2023-01-03 09:30:52,756]:DEBUG: Waiting for file "ready" ...
+[2023-01-03 09:30:52,764]:DEBUG: ----- sub_step ( iter:0 | id:4 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:30:52,764]:DEBUG:   available parameter:
+[2023-01-03 09:30:52,764]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:30:52,765]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:30:52,765]:DEBUG:          | i                     | 4                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,765]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:30:52,765]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,765]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,765]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:30:52,765]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:30:52,765]:DEBUG:          |                       | nn/output3/000000/000004_sub_step/work   |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_id            | 4                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_padid         | 000004                                   |
+[2023-01-03 09:30:52,765]:DEBUG:          | jube_wp_relpath       | output3/000000/000004_sub_step/work      |
+[2023-01-03 09:30:52,765]:DEBUG:          | nodes                 | 32                                       |
+[2023-01-03 09:30:52,765]:DEBUG:          | nproc                 | 2048                                     |
+[2023-01-03 09:30:52,765]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:30:52,765]:DEBUG:          | rolling               | 1                                        |
+[2023-01-03 09:30:52,765]:DEBUG:          | time_intervals        | 32                                       |
+[2023-01-03 09:30:52,772]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:30:52,772]:DEBUG:   0 new workpackages created
+[2023-01-03 09:30:52,782]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:30:52,782]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:30:52,783]:INFO:   | sub_step |   5 |    0 |    4 |     0 |    1 |
+[2023-01-03 09:30:52,783]:INFO: 
+[2023-01-03 09:30:52,783]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:30:52,783]:INFO: >>>>       id: 0
+[2023-01-03 09:30:52,783]:INFO: >>>>   handle: output3
+[2023-01-03 09:30:52,783]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:30:52,783]:INFO: >>>> continue: jube continue output3 --id 0
+[2023-01-03 09:30:52,783]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:30:52,783]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:30:52,783]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:30:52,783]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:30:52,783]:INFO: ######################################################################
+[2023-01-03 09:31:53,055]:INFO: ######################################################################
+[2023-01-03 09:31:53,055]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:31:53,055]:INFO: # id: 0
+[2023-01-03 09:31:53,055]:INFO: #
+[2023-01-03 09:31:53,055]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:31:53,055]:INFO: ######################################################################
+[2023-01-03 09:31:53,055]:DEBUG: ----- sub_step ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:31:53,056]:DEBUG:   available parameter:
+[2023-01-03 09:31:53,056]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:31:53,056]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:31:53,056]:DEBUG:          | i                     | 0                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,056]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:31:53,056]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,056]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,056]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,056]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,056]:DEBUG:          |                       | nn/output3/000000/000000_sub_step/work   |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_id            | 0                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2023-01-03 09:31:53,056]:DEBUG:          | jube_wp_relpath       | output3/000000/000000_sub_step/work      |
+[2023-01-03 09:31:53,056]:DEBUG:          | nodes                 | 2                                        |
+[2023-01-03 09:31:53,056]:DEBUG:          | nproc                 | 128                                      |
+[2023-01-03 09:31:53,057]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:31:53,057]:DEBUG:          | rolling               | 16                                       |
+[2023-01-03 09:31:53,057]:DEBUG:          | time_intervals        | 2                                        |
+[2023-01-03 09:31:53,066]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:31:53,066]:DEBUG:   0 new workpackages created
+[2023-01-03 09:31:53,079]:DEBUG: ----- sub_step ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:31:53,081]:DEBUG:   available parameter:
+[2023-01-03 09:31:53,081]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:31:53,081]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:31:53,081]:DEBUG:          | i                     | 1                                        |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,081]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:31:53,081]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,081]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,081]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:31:53,081]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:31:53,082]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:31:53,082]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,084]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,084]:DEBUG:          |                       | nn/output3/000000/000001_sub_step/work   |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_id            | 1                                        |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2023-01-03 09:31:53,084]:DEBUG:          | jube_wp_relpath       | output3/000000/000001_sub_step/work      |
+[2023-01-03 09:31:53,084]:DEBUG:          | nodes                 | 4                                        |
+[2023-01-03 09:31:53,084]:DEBUG:          | nproc                 | 256                                      |
+[2023-01-03 09:31:53,084]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:31:53,084]:DEBUG:          | rolling               | 8                                        |
+[2023-01-03 09:31:53,084]:DEBUG:          | time_intervals        | 4                                        |
+[2023-01-03 09:31:53,092]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:31:53,092]:DEBUG:   0 new workpackages created
+[2023-01-03 09:31:53,101]:DEBUG: ----- sub_step ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:31:53,101]:DEBUG:   available parameter:
+[2023-01-03 09:31:53,101]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:31:53,101]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:31:53,101]:DEBUG:          | i                     | 2                                        |
+[2023-01-03 09:31:53,101]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,102]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:31:53,102]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,102]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,102]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,102]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,102]:DEBUG:          |                       | nn/output3/000000/000002_sub_step/work   |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_id            | 2                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2023-01-03 09:31:53,102]:DEBUG:          | jube_wp_relpath       | output3/000000/000002_sub_step/work      |
+[2023-01-03 09:31:53,102]:DEBUG:          | nodes                 | 8                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | nproc                 | 512                                      |
+[2023-01-03 09:31:53,102]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:31:53,102]:DEBUG:          | rolling               | 4                                        |
+[2023-01-03 09:31:53,102]:DEBUG:          | time_intervals        | 8                                        |
+[2023-01-03 09:31:53,109]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:31:53,109]:DEBUG:   0 new workpackages created
+[2023-01-03 09:31:53,118]:DEBUG: ----- sub_step ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2023-01-03 09:31:53,118]:DEBUG:   available parameter:
+[2023-01-03 09:31:53,118]:DEBUG:          | parameter             | value                                    |
+[2023-01-03 09:31:53,118]:DEBUG:          |-----------------------|------------------------------------------|
+[2023-01-03 09:31:53,118]:DEBUG:          | i                     | 3                                        |
+[2023-01-03 09:31:53,118]:DEBUG:          | jube_benchmark_home   | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,118]:DEBUG:          |                       | petsc-fft-                               |
+[2023-01-03 09:31:53,118]:DEBUG:          |                       | Paralpha/tests/scaling/boltzmann         |
+[2023-01-03 09:31:53,118]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2023-01-03 09:31:53,118]:DEBUG:          | jube_benchmark_name   | PETSc-Euler scaling test                 |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_benchmark_rundir | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,119]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,119]:DEBUG:          |                       | nn/output3/000000                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_benchmark_start  | 2023-01-03T09:28:41                      |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_step_name        | sub_step                                 |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_abspath       | /p/home/jusers/aklovi1/jureca/linear-    |
+[2023-01-03 09:31:53,119]:DEBUG:          |                       | petsc-fft-Paralpha/tests/scaling/boltzma |
+[2023-01-03 09:31:53,119]:DEBUG:          |                       | nn/output3/000000/000003_sub_step/work   |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_envlist       |                                          |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_envstr        |                                          |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_id            | 3                                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2023-01-03 09:31:53,119]:DEBUG:          | jube_wp_relpath       | output3/000000/000003_sub_step/work      |
+[2023-01-03 09:31:53,119]:DEBUG:          | nodes                 | 16                                       |
+[2023-01-03 09:31:53,119]:DEBUG:          | nproc                 | 1024                                     |
+[2023-01-03 09:31:53,119]:DEBUG:          | proc_col              | 64                                       |
+[2023-01-03 09:31:53,119]:DEBUG:          | rolling               | 2                                        |
+[2023-01-03 09:31:53,119]:DEBUG:          | time_intervals        | 16                                       |
+[2023-01-03 09:31:53,339]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:31:53,339]:DEBUG:   0 new workpackages created
+[2023-01-03 09:31:53,347]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:31:53,347]:DEBUG:   0 new workpackages created
+[2023-01-03 09:31:53,355]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:31:53,355]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:31:53,355]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:31:53,355]:INFO: 
+[2023-01-03 09:31:53,355]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:31:53,355]:INFO: >>>>       id: 0
+[2023-01-03 09:31:53,355]:INFO: >>>>   handle: output3
+[2023-01-03 09:31:53,355]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:31:53,355]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:31:53,355]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:31:53,355]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:31:53,355]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:31:53,355]:INFO: ######################################################################
+[2023-01-03 09:32:53,710]:INFO: ######################################################################
+[2023-01-03 09:32:53,710]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:32:53,710]:INFO: # id: 0
+[2023-01-03 09:32:53,710]:INFO: #
+[2023-01-03 09:32:53,710]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:32:53,710]:INFO: ######################################################################
+[2023-01-03 09:32:53,710]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:32:53,710]:DEBUG:   0 new workpackages created
+[2023-01-03 09:32:53,725]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:32:53,725]:DEBUG:   0 new workpackages created
+[2023-01-03 09:32:53,734]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:32:53,734]:DEBUG:   0 new workpackages created
+[2023-01-03 09:32:53,741]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:32:53,741]:DEBUG:   0 new workpackages created
+[2023-01-03 09:32:53,748]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:32:53,748]:DEBUG:   0 new workpackages created
+[2023-01-03 09:32:53,756]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:32:53,756]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:32:53,756]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:32:53,756]:INFO: 
+[2023-01-03 09:32:53,756]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:32:53,756]:INFO: >>>>       id: 0
+[2023-01-03 09:32:53,756]:INFO: >>>>   handle: output3
+[2023-01-03 09:32:53,756]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:32:53,756]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:32:53,756]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:32:53,756]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:32:53,756]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:32:53,756]:INFO: ######################################################################
+[2023-01-03 09:33:54,042]:INFO: ######################################################################
+[2023-01-03 09:33:54,042]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:33:54,042]:INFO: # id: 0
+[2023-01-03 09:33:54,042]:INFO: #
+[2023-01-03 09:33:54,042]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:33:54,042]:INFO: ######################################################################
+[2023-01-03 09:33:54,043]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:33:54,043]:DEBUG:   0 new workpackages created
+[2023-01-03 09:33:54,054]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:33:54,054]:DEBUG:   0 new workpackages created
+[2023-01-03 09:33:54,063]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:33:54,063]:DEBUG:   0 new workpackages created
+[2023-01-03 09:33:54,070]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:33:54,070]:DEBUG:   0 new workpackages created
+[2023-01-03 09:33:54,078]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:33:54,078]:DEBUG:   0 new workpackages created
+[2023-01-03 09:33:54,085]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:33:54,085]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:33:54,085]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:33:54,085]:INFO: 
+[2023-01-03 09:33:54,085]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:33:54,085]:INFO: >>>>       id: 0
+[2023-01-03 09:33:54,085]:INFO: >>>>   handle: output3
+[2023-01-03 09:33:54,085]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:33:54,085]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:33:54,086]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:33:54,086]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:33:54,086]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:33:54,086]:INFO: ######################################################################
+[2023-01-03 09:34:54,359]:INFO: ######################################################################
+[2023-01-03 09:34:54,359]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:34:54,359]:INFO: # id: 0
+[2023-01-03 09:34:54,359]:INFO: #
+[2023-01-03 09:34:54,359]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:34:54,359]:INFO: ######################################################################
+[2023-01-03 09:34:54,359]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:34:54,359]:DEBUG:   0 new workpackages created
+[2023-01-03 09:34:54,372]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:34:54,372]:DEBUG:   0 new workpackages created
+[2023-01-03 09:34:54,382]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:34:54,382]:DEBUG:   0 new workpackages created
+[2023-01-03 09:34:54,389]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:34:54,389]:DEBUG:   0 new workpackages created
+[2023-01-03 09:34:54,396]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:34:54,396]:DEBUG:   0 new workpackages created
+[2023-01-03 09:34:54,403]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:34:54,404]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:34:54,404]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:34:54,404]:INFO: 
+[2023-01-03 09:34:54,404]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:34:54,404]:INFO: >>>>       id: 0
+[2023-01-03 09:34:54,404]:INFO: >>>>   handle: output3
+[2023-01-03 09:34:54,404]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:34:54,404]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:34:54,404]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:34:54,406]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:34:54,406]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:34:54,406]:INFO: ######################################################################
+[2023-01-03 09:35:54,698]:INFO: ######################################################################
+[2023-01-03 09:35:54,698]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:35:54,698]:INFO: # id: 0
+[2023-01-03 09:35:54,698]:INFO: #
+[2023-01-03 09:35:54,698]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:35:54,698]:INFO: ######################################################################
+[2023-01-03 09:35:54,699]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:35:54,699]:DEBUG:   0 new workpackages created
+[2023-01-03 09:35:54,710]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:35:54,710]:DEBUG:   0 new workpackages created
+[2023-01-03 09:35:54,719]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:35:54,719]:DEBUG:   0 new workpackages created
+[2023-01-03 09:35:54,727]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:35:54,727]:DEBUG:   0 new workpackages created
+[2023-01-03 09:35:54,734]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:35:54,734]:DEBUG:   0 new workpackages created
+[2023-01-03 09:35:54,741]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:35:54,741]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:35:54,741]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:35:54,741]:INFO: 
+[2023-01-03 09:35:54,741]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:35:54,741]:INFO: >>>>       id: 0
+[2023-01-03 09:35:54,741]:INFO: >>>>   handle: output3
+[2023-01-03 09:35:54,741]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:35:54,742]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:35:54,742]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:35:54,742]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:35:54,742]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:35:54,742]:INFO: ######################################################################
+[2023-01-03 09:36:55,017]:INFO: ######################################################################
+[2023-01-03 09:36:55,017]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:36:55,017]:INFO: # id: 0
+[2023-01-03 09:36:55,017]:INFO: #
+[2023-01-03 09:36:55,017]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:36:55,017]:INFO: ######################################################################
+[2023-01-03 09:36:55,017]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:36:55,017]:DEBUG:   0 new workpackages created
+[2023-01-03 09:36:55,028]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:36:55,028]:DEBUG:   0 new workpackages created
+[2023-01-03 09:36:55,038]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:36:55,038]:DEBUG:   0 new workpackages created
+[2023-01-03 09:36:55,045]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:36:55,045]:DEBUG:   0 new workpackages created
+[2023-01-03 09:36:55,053]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:36:55,053]:DEBUG:   0 new workpackages created
+[2023-01-03 09:36:55,060]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:36:55,060]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:36:55,060]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:36:55,061]:INFO: 
+[2023-01-03 09:36:55,061]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:36:55,061]:INFO: >>>>       id: 0
+[2023-01-03 09:36:55,061]:INFO: >>>>   handle: output3
+[2023-01-03 09:36:55,061]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:36:55,061]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:36:55,061]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:36:55,061]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:36:55,061]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:36:55,061]:INFO: ######################################################################
+[2023-01-03 09:37:55,337]:INFO: ######################################################################
+[2023-01-03 09:37:55,337]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:37:55,337]:INFO: # id: 0
+[2023-01-03 09:37:55,337]:INFO: #
+[2023-01-03 09:37:55,337]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:37:55,337]:INFO: ######################################################################
+[2023-01-03 09:37:55,337]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:37:55,337]:DEBUG:   0 new workpackages created
+[2023-01-03 09:37:55,350]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:37:55,351]:DEBUG:   0 new workpackages created
+[2023-01-03 09:37:55,358]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:37:55,358]:DEBUG:   0 new workpackages created
+[2023-01-03 09:37:55,366]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:37:55,366]:DEBUG:   0 new workpackages created
+[2023-01-03 09:37:55,373]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:37:55,373]:DEBUG:   0 new workpackages created
+[2023-01-03 09:37:55,380]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:37:55,380]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:37:55,380]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:37:55,380]:INFO: 
+[2023-01-03 09:37:55,380]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:37:55,380]:INFO: >>>>       id: 0
+[2023-01-03 09:37:55,381]:INFO: >>>>   handle: output3
+[2023-01-03 09:37:55,381]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:37:55,381]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:37:55,381]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:37:55,381]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:37:55,381]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:37:55,381]:INFO: ######################################################################
+[2023-01-03 09:38:55,652]:INFO: ######################################################################
+[2023-01-03 09:38:55,652]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:38:55,652]:INFO: # id: 0
+[2023-01-03 09:38:55,652]:INFO: #
+[2023-01-03 09:38:55,652]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:38:55,652]:INFO: ######################################################################
+[2023-01-03 09:38:55,652]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:38:55,652]:DEBUG:   0 new workpackages created
+[2023-01-03 09:38:55,663]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:38:55,663]:DEBUG:   0 new workpackages created
+[2023-01-03 09:38:55,672]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:38:55,672]:DEBUG:   0 new workpackages created
+[2023-01-03 09:38:55,680]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:38:55,680]:DEBUG:   0 new workpackages created
+[2023-01-03 09:38:55,687]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:38:55,687]:DEBUG:   0 new workpackages created
+[2023-01-03 09:38:55,695]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:38:55,695]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:38:55,695]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:38:55,695]:INFO: 
+[2023-01-03 09:38:55,695]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:38:55,695]:INFO: >>>>       id: 0
+[2023-01-03 09:38:55,695]:INFO: >>>>   handle: output3
+[2023-01-03 09:38:55,695]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:38:55,695]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:38:55,696]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:38:55,696]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:38:55,696]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:38:55,696]:INFO: ######################################################################
+[2023-01-03 09:39:56,022]:INFO: ######################################################################
+[2023-01-03 09:39:56,022]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:39:56,022]:INFO: # id: 0
+[2023-01-03 09:39:56,022]:INFO: #
+[2023-01-03 09:39:56,023]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:39:56,023]:INFO: ######################################################################
+[2023-01-03 09:39:56,023]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:39:56,023]:DEBUG:   0 new workpackages created
+[2023-01-03 09:39:56,034]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:39:56,034]:DEBUG:   0 new workpackages created
+[2023-01-03 09:39:56,044]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:39:56,044]:DEBUG:   0 new workpackages created
+[2023-01-03 09:39:56,051]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:39:56,051]:DEBUG:   0 new workpackages created
+[2023-01-03 09:39:56,059]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:39:56,059]:DEBUG:   0 new workpackages created
+[2023-01-03 09:39:56,066]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:39:56,066]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:39:56,066]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:39:56,066]:INFO: 
+[2023-01-03 09:39:56,066]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:39:56,066]:INFO: >>>>       id: 0
+[2023-01-03 09:39:56,066]:INFO: >>>>   handle: output3
+[2023-01-03 09:39:56,066]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:39:56,066]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:39:56,066]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:39:56,066]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:39:56,066]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:39:56,066]:INFO: ######################################################################
+[2023-01-03 09:40:56,341]:INFO: ######################################################################
+[2023-01-03 09:40:56,341]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:40:56,341]:INFO: # id: 0
+[2023-01-03 09:40:56,341]:INFO: #
+[2023-01-03 09:40:56,342]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:40:56,342]:INFO: ######################################################################
+[2023-01-03 09:40:56,342]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:40:56,342]:DEBUG:   0 new workpackages created
+[2023-01-03 09:40:56,353]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:40:56,353]:DEBUG:   0 new workpackages created
+[2023-01-03 09:40:56,362]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:40:56,362]:DEBUG:   0 new workpackages created
+[2023-01-03 09:40:56,369]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:40:56,369]:DEBUG:   0 new workpackages created
+[2023-01-03 09:40:56,376]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:40:56,376]:DEBUG:   0 new workpackages created
+[2023-01-03 09:40:56,384]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:40:56,384]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:40:56,384]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:40:56,384]:INFO: 
+[2023-01-03 09:40:56,384]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:40:56,384]:INFO: >>>>       id: 0
+[2023-01-03 09:40:56,384]:INFO: >>>>   handle: output3
+[2023-01-03 09:40:56,384]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:40:56,384]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:40:56,384]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:40:56,384]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:40:56,384]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:40:56,384]:INFO: ######################################################################
+[2023-01-03 09:41:56,662]:INFO: ######################################################################
+[2023-01-03 09:41:56,662]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:41:56,662]:INFO: # id: 0
+[2023-01-03 09:41:56,662]:INFO: #
+[2023-01-03 09:41:56,662]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:41:56,662]:INFO: ######################################################################
+[2023-01-03 09:41:56,662]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:41:56,662]:DEBUG:   0 new workpackages created
+[2023-01-03 09:41:56,674]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:41:56,674]:DEBUG:   0 new workpackages created
+[2023-01-03 09:41:56,683]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:41:56,683]:DEBUG:   0 new workpackages created
+[2023-01-03 09:41:56,691]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:41:56,691]:DEBUG:   0 new workpackages created
+[2023-01-03 09:41:56,698]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:41:56,698]:DEBUG:   0 new workpackages created
+[2023-01-03 09:41:56,705]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:41:56,705]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:41:56,706]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:41:56,706]:INFO: 
+[2023-01-03 09:41:56,706]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:41:56,706]:INFO: >>>>       id: 0
+[2023-01-03 09:41:56,706]:INFO: >>>>   handle: output3
+[2023-01-03 09:41:56,706]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:41:56,706]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:41:56,706]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:41:56,706]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:41:56,706]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:41:56,706]:INFO: ######################################################################
+[2023-01-03 09:42:56,978]:INFO: ######################################################################
+[2023-01-03 09:42:56,978]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:42:56,978]:INFO: # id: 0
+[2023-01-03 09:42:56,978]:INFO: #
+[2023-01-03 09:42:56,978]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:42:56,978]:INFO: ######################################################################
+[2023-01-03 09:42:56,978]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:42:56,978]:DEBUG:   0 new workpackages created
+[2023-01-03 09:42:56,990]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:42:56,990]:DEBUG:   0 new workpackages created
+[2023-01-03 09:42:56,999]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:42:56,999]:DEBUG:   0 new workpackages created
+[2023-01-03 09:42:57,006]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:42:57,006]:DEBUG:   0 new workpackages created
+[2023-01-03 09:42:57,013]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:42:57,013]:DEBUG:   0 new workpackages created
+[2023-01-03 09:42:57,020]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:42:57,020]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:42:57,022]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:42:57,022]:INFO: 
+[2023-01-03 09:42:57,022]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:42:57,022]:INFO: >>>>       id: 0
+[2023-01-03 09:42:57,022]:INFO: >>>>   handle: output3
+[2023-01-03 09:42:57,022]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:42:57,022]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:42:57,022]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:42:57,023]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:42:57,023]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:42:57,023]:INFO: ######################################################################
+[2023-01-03 09:43:57,302]:INFO: ######################################################################
+[2023-01-03 09:43:57,302]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:43:57,302]:INFO: # id: 0
+[2023-01-03 09:43:57,302]:INFO: #
+[2023-01-03 09:43:57,302]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:43:57,302]:INFO: ######################################################################
+[2023-01-03 09:43:57,302]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:43:57,302]:DEBUG:   0 new workpackages created
+[2023-01-03 09:43:57,316]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:43:57,317]:DEBUG:   0 new workpackages created
+[2023-01-03 09:43:57,328]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:43:57,328]:DEBUG:   0 new workpackages created
+[2023-01-03 09:43:57,335]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:43:57,335]:DEBUG:   0 new workpackages created
+[2023-01-03 09:43:57,343]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:43:57,343]:DEBUG:   0 new workpackages created
+[2023-01-03 09:43:57,352]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:43:57,352]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:43:57,352]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:43:57,352]:INFO: 
+[2023-01-03 09:43:57,352]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:43:57,352]:INFO: >>>>       id: 0
+[2023-01-03 09:43:57,352]:INFO: >>>>   handle: output3
+[2023-01-03 09:43:57,352]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:43:57,352]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:43:57,352]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:43:57,352]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:43:57,353]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:43:57,353]:INFO: ######################################################################
+[2023-01-03 09:44:57,638]:INFO: ######################################################################
+[2023-01-03 09:44:57,638]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:44:57,638]:INFO: # id: 0
+[2023-01-03 09:44:57,638]:INFO: #
+[2023-01-03 09:44:57,638]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:44:57,638]:INFO: ######################################################################
+[2023-01-03 09:44:57,638]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:44:57,638]:DEBUG:   0 new workpackages created
+[2023-01-03 09:44:57,655]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:44:57,655]:DEBUG:   0 new workpackages created
+[2023-01-03 09:44:57,665]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:44:57,666]:DEBUG:   0 new workpackages created
+[2023-01-03 09:44:57,673]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:44:57,673]:DEBUG:   0 new workpackages created
+[2023-01-03 09:44:57,680]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:44:57,680]:DEBUG:   0 new workpackages created
+[2023-01-03 09:44:57,688]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:44:57,688]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:44:57,688]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:44:57,688]:INFO: 
+[2023-01-03 09:44:57,688]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:44:57,688]:INFO: >>>>       id: 0
+[2023-01-03 09:44:57,688]:INFO: >>>>   handle: output3
+[2023-01-03 09:44:57,688]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:44:57,688]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:44:57,688]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:44:57,688]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:44:57,688]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:44:57,688]:INFO: ######################################################################
+[2023-01-03 09:45:57,960]:INFO: ######################################################################
+[2023-01-03 09:45:57,960]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:45:57,960]:INFO: # id: 0
+[2023-01-03 09:45:57,960]:INFO: #
+[2023-01-03 09:45:57,960]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:45:57,960]:INFO: ######################################################################
+[2023-01-03 09:45:57,960]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:45:57,960]:DEBUG:   0 new workpackages created
+[2023-01-03 09:45:57,972]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:45:57,972]:DEBUG:   0 new workpackages created
+[2023-01-03 09:45:57,981]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:45:57,981]:DEBUG:   0 new workpackages created
+[2023-01-03 09:45:57,988]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:45:57,988]:DEBUG:   0 new workpackages created
+[2023-01-03 09:45:57,996]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:45:57,996]:DEBUG:   0 new workpackages created
+[2023-01-03 09:45:58,003]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:45:58,003]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:45:58,003]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:45:58,003]:INFO: 
+[2023-01-03 09:45:58,003]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:45:58,003]:INFO: >>>>       id: 0
+[2023-01-03 09:45:58,003]:INFO: >>>>   handle: output3
+[2023-01-03 09:45:58,004]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:45:58,004]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:45:58,004]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:45:58,004]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:45:58,004]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:45:58,004]:INFO: ######################################################################
+[2023-01-03 09:46:58,276]:INFO: ######################################################################
+[2023-01-03 09:46:58,276]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:46:58,276]:INFO: # id: 0
+[2023-01-03 09:46:58,276]:INFO: #
+[2023-01-03 09:46:58,276]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:46:58,276]:INFO: ######################################################################
+[2023-01-03 09:46:58,276]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:46:58,276]:DEBUG:   0 new workpackages created
+[2023-01-03 09:46:58,287]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:46:58,287]:DEBUG:   0 new workpackages created
+[2023-01-03 09:46:58,297]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:46:58,297]:DEBUG:   0 new workpackages created
+[2023-01-03 09:46:58,305]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:46:58,305]:DEBUG:   0 new workpackages created
+[2023-01-03 09:46:58,312]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:46:58,312]:DEBUG:   0 new workpackages created
+[2023-01-03 09:46:58,320]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:46:58,320]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:46:58,320]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:46:58,320]:INFO: 
+[2023-01-03 09:46:58,320]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:46:58,320]:INFO: >>>>       id: 0
+[2023-01-03 09:46:58,320]:INFO: >>>>   handle: output3
+[2023-01-03 09:46:58,320]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:46:58,320]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:46:58,320]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:46:58,320]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:46:58,320]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:46:58,320]:INFO: ######################################################################
+[2023-01-03 09:47:58,643]:INFO: ######################################################################
+[2023-01-03 09:47:58,643]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:47:58,643]:INFO: # id: 0
+[2023-01-03 09:47:58,643]:INFO: #
+[2023-01-03 09:47:58,643]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:47:58,643]:INFO: ######################################################################
+[2023-01-03 09:47:58,643]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:47:58,643]:DEBUG:   0 new workpackages created
+[2023-01-03 09:47:58,654]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:47:58,654]:DEBUG:   0 new workpackages created
+[2023-01-03 09:47:58,663]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:47:58,663]:DEBUG:   0 new workpackages created
+[2023-01-03 09:47:58,670]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:47:58,670]:DEBUG:   0 new workpackages created
+[2023-01-03 09:47:58,677]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:47:58,677]:DEBUG:   0 new workpackages created
+[2023-01-03 09:47:58,685]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:47:58,685]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:47:58,685]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:47:58,685]:INFO: 
+[2023-01-03 09:47:58,685]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:47:58,685]:INFO: >>>>       id: 0
+[2023-01-03 09:47:58,685]:INFO: >>>>   handle: output3
+[2023-01-03 09:47:58,685]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:47:58,685]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:47:58,685]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:47:58,685]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:47:58,685]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:47:58,685]:INFO: ######################################################################
+[2023-01-03 09:48:58,961]:INFO: ######################################################################
+[2023-01-03 09:48:58,962]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:48:58,962]:INFO: # id: 0
+[2023-01-03 09:48:58,962]:INFO: #
+[2023-01-03 09:48:58,962]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:48:58,962]:INFO: ######################################################################
+[2023-01-03 09:48:58,962]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:48:58,962]:DEBUG:   0 new workpackages created
+[2023-01-03 09:48:58,973]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:48:58,973]:DEBUG:   0 new workpackages created
+[2023-01-03 09:48:58,983]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:48:58,983]:DEBUG:   0 new workpackages created
+[2023-01-03 09:48:58,990]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:48:58,990]:DEBUG:   0 new workpackages created
+[2023-01-03 09:48:58,997]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:48:58,997]:DEBUG:   0 new workpackages created
+[2023-01-03 09:48:59,005]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:48:59,005]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:48:59,005]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:48:59,005]:INFO: 
+[2023-01-03 09:48:59,005]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:48:59,005]:INFO: >>>>       id: 0
+[2023-01-03 09:48:59,005]:INFO: >>>>   handle: output3
+[2023-01-03 09:48:59,005]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:48:59,005]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:48:59,005]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:48:59,005]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:48:59,005]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:48:59,005]:INFO: ######################################################################
+[2023-01-03 09:49:59,276]:INFO: ######################################################################
+[2023-01-03 09:49:59,276]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:49:59,276]:INFO: # id: 0
+[2023-01-03 09:49:59,276]:INFO: #
+[2023-01-03 09:49:59,276]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:49:59,276]:INFO: ######################################################################
+[2023-01-03 09:49:59,276]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:49:59,276]:DEBUG:   0 new workpackages created
+[2023-01-03 09:49:59,288]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:49:59,288]:DEBUG:   0 new workpackages created
+[2023-01-03 09:49:59,298]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:49:59,298]:DEBUG:   0 new workpackages created
+[2023-01-03 09:49:59,305]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:49:59,305]:DEBUG:   0 new workpackages created
+[2023-01-03 09:49:59,312]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:49:59,313]:DEBUG:   0 new workpackages created
+[2023-01-03 09:49:59,320]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:49:59,320]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:49:59,320]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:49:59,320]:INFO: 
+[2023-01-03 09:49:59,320]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:49:59,320]:INFO: >>>>       id: 0
+[2023-01-03 09:49:59,320]:INFO: >>>>   handle: output3
+[2023-01-03 09:49:59,320]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:49:59,320]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:49:59,320]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:49:59,320]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:49:59,320]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:49:59,320]:INFO: ######################################################################
+[2023-01-03 09:50:59,595]:INFO: ######################################################################
+[2023-01-03 09:50:59,595]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:50:59,595]:INFO: # id: 0
+[2023-01-03 09:50:59,595]:INFO: #
+[2023-01-03 09:50:59,595]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:50:59,595]:INFO: ######################################################################
+[2023-01-03 09:50:59,595]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:50:59,595]:DEBUG:   0 new workpackages created
+[2023-01-03 09:50:59,606]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:50:59,606]:DEBUG:   0 new workpackages created
+[2023-01-03 09:50:59,616]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:50:59,616]:DEBUG:   0 new workpackages created
+[2023-01-03 09:50:59,626]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:50:59,626]:DEBUG:   0 new workpackages created
+[2023-01-03 09:50:59,634]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:50:59,634]:DEBUG:   0 new workpackages created
+[2023-01-03 09:50:59,641]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:50:59,641]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:50:59,641]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:50:59,641]:INFO: 
+[2023-01-03 09:50:59,641]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:50:59,641]:INFO: >>>>       id: 0
+[2023-01-03 09:50:59,641]:INFO: >>>>   handle: output3
+[2023-01-03 09:50:59,641]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:50:59,642]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:50:59,642]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:50:59,642]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:50:59,642]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:50:59,642]:INFO: ######################################################################
+[2023-01-03 09:51:59,917]:INFO: ######################################################################
+[2023-01-03 09:51:59,917]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:51:59,917]:INFO: # id: 0
+[2023-01-03 09:51:59,917]:INFO: #
+[2023-01-03 09:51:59,917]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:51:59,917]:INFO: ######################################################################
+[2023-01-03 09:51:59,917]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:51:59,917]:DEBUG:   0 new workpackages created
+[2023-01-03 09:51:59,928]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:51:59,928]:DEBUG:   0 new workpackages created
+[2023-01-03 09:51:59,939]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:51:59,939]:DEBUG:   0 new workpackages created
+[2023-01-03 09:51:59,946]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:51:59,946]:DEBUG:   0 new workpackages created
+[2023-01-03 09:51:59,953]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:51:59,953]:DEBUG:   0 new workpackages created
+[2023-01-03 09:51:59,961]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:51:59,961]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:51:59,961]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:51:59,961]:INFO: 
+[2023-01-03 09:51:59,961]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:51:59,961]:INFO: >>>>       id: 0
+[2023-01-03 09:51:59,961]:INFO: >>>>   handle: output3
+[2023-01-03 09:51:59,961]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:51:59,961]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:51:59,961]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:51:59,961]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:51:59,961]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:51:59,961]:INFO: ######################################################################
+[2023-01-03 09:53:00,235]:INFO: ######################################################################
+[2023-01-03 09:53:00,235]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:53:00,235]:INFO: # id: 0
+[2023-01-03 09:53:00,235]:INFO: #
+[2023-01-03 09:53:00,235]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:53:00,235]:INFO: ######################################################################
+[2023-01-03 09:53:00,235]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:53:00,235]:DEBUG:   0 new workpackages created
+[2023-01-03 09:53:00,247]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:53:00,247]:DEBUG:   0 new workpackages created
+[2023-01-03 09:53:00,257]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:53:00,257]:DEBUG:   0 new workpackages created
+[2023-01-03 09:53:00,264]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:53:00,264]:DEBUG:   0 new workpackages created
+[2023-01-03 09:53:00,272]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:53:00,272]:DEBUG:   0 new workpackages created
+[2023-01-03 09:53:00,279]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:53:00,279]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:53:00,279]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:53:00,279]:INFO: 
+[2023-01-03 09:53:00,279]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:53:00,279]:INFO: >>>>       id: 0
+[2023-01-03 09:53:00,279]:INFO: >>>>   handle: output3
+[2023-01-03 09:53:00,279]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:53:00,280]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:53:00,280]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:53:00,280]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:53:00,280]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:53:00,280]:INFO: ######################################################################
+[2023-01-03 09:54:00,553]:INFO: ######################################################################
+[2023-01-03 09:54:00,553]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:54:00,553]:INFO: # id: 0
+[2023-01-03 09:54:00,553]:INFO: #
+[2023-01-03 09:54:00,553]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:54:00,553]:INFO: ######################################################################
+[2023-01-03 09:54:00,553]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:54:00,553]:DEBUG:   0 new workpackages created
+[2023-01-03 09:54:00,564]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:54:00,564]:DEBUG:   0 new workpackages created
+[2023-01-03 09:54:00,573]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:54:00,573]:DEBUG:   0 new workpackages created
+[2023-01-03 09:54:00,580]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:54:00,581]:DEBUG:   0 new workpackages created
+[2023-01-03 09:54:00,588]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:54:00,588]:DEBUG:   0 new workpackages created
+[2023-01-03 09:54:00,595]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:54:00,595]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:54:00,595]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:54:00,595]:INFO: 
+[2023-01-03 09:54:00,595]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:54:00,595]:INFO: >>>>       id: 0
+[2023-01-03 09:54:00,595]:INFO: >>>>   handle: output3
+[2023-01-03 09:54:00,595]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:54:00,596]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:54:00,596]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:54:00,596]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:54:00,596]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:54:00,596]:INFO: ######################################################################
+[2023-01-03 09:55:00,870]:INFO: ######################################################################
+[2023-01-03 09:55:00,870]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:55:00,870]:INFO: # id: 0
+[2023-01-03 09:55:00,870]:INFO: #
+[2023-01-03 09:55:00,870]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:55:00,870]:INFO: ######################################################################
+[2023-01-03 09:55:00,870]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:55:00,870]:DEBUG:   0 new workpackages created
+[2023-01-03 09:55:00,881]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:55:00,881]:DEBUG:   0 new workpackages created
+[2023-01-03 09:55:00,891]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:55:00,891]:DEBUG:   0 new workpackages created
+[2023-01-03 09:55:00,898]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:55:00,898]:DEBUG:   0 new workpackages created
+[2023-01-03 09:55:00,905]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:55:00,905]:DEBUG:   0 new workpackages created
+[2023-01-03 09:55:00,913]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:55:00,913]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:55:00,913]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:55:00,913]:INFO: 
+[2023-01-03 09:55:00,913]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:55:00,913]:INFO: >>>>       id: 0
+[2023-01-03 09:55:00,913]:INFO: >>>>   handle: output3
+[2023-01-03 09:55:00,913]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:55:00,913]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:55:00,913]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:55:00,913]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:55:00,913]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:55:00,913]:INFO: ######################################################################
+[2023-01-03 09:56:01,194]:INFO: ######################################################################
+[2023-01-03 09:56:01,194]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:56:01,194]:INFO: # id: 0
+[2023-01-03 09:56:01,194]:INFO: #
+[2023-01-03 09:56:01,194]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:56:01,194]:INFO: ######################################################################
+[2023-01-03 09:56:01,194]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:56:01,194]:DEBUG:   0 new workpackages created
+[2023-01-03 09:56:01,206]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:56:01,206]:DEBUG:   0 new workpackages created
+[2023-01-03 09:56:01,216]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:56:01,216]:DEBUG:   0 new workpackages created
+[2023-01-03 09:56:01,223]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:56:01,223]:DEBUG:   0 new workpackages created
+[2023-01-03 09:56:01,231]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:56:01,231]:DEBUG:   0 new workpackages created
+[2023-01-03 09:56:01,238]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:56:01,238]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:56:01,238]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:56:01,238]:INFO: 
+[2023-01-03 09:56:01,238]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:56:01,238]:INFO: >>>>       id: 0
+[2023-01-03 09:56:01,238]:INFO: >>>>   handle: output3
+[2023-01-03 09:56:01,238]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:56:01,238]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:56:01,238]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:56:01,238]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:56:01,239]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:56:01,239]:INFO: ######################################################################
+[2023-01-03 09:57:01,523]:INFO: ######################################################################
+[2023-01-03 09:57:01,523]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:57:01,523]:INFO: # id: 0
+[2023-01-03 09:57:01,523]:INFO: #
+[2023-01-03 09:57:01,523]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:57:01,523]:INFO: ######################################################################
+[2023-01-03 09:57:01,523]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:57:01,523]:DEBUG:   0 new workpackages created
+[2023-01-03 09:57:01,537]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:57:01,538]:DEBUG:   0 new workpackages created
+[2023-01-03 09:57:01,546]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:57:01,547]:DEBUG:   0 new workpackages created
+[2023-01-03 09:57:01,554]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:57:01,554]:DEBUG:   0 new workpackages created
+[2023-01-03 09:57:01,561]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:57:01,561]:DEBUG:   0 new workpackages created
+[2023-01-03 09:57:01,569]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:57:01,569]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:57:01,569]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:57:01,569]:INFO: 
+[2023-01-03 09:57:01,569]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:57:01,569]:INFO: >>>>       id: 0
+[2023-01-03 09:57:01,569]:INFO: >>>>   handle: output3
+[2023-01-03 09:57:01,569]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:57:01,569]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:57:01,569]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:57:01,569]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:57:01,569]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:57:01,569]:INFO: ######################################################################
+[2023-01-03 09:58:01,848]:INFO: ######################################################################
+[2023-01-03 09:58:01,848]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:58:01,848]:INFO: # id: 0
+[2023-01-03 09:58:01,848]:INFO: #
+[2023-01-03 09:58:01,849]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:58:01,849]:INFO: ######################################################################
+[2023-01-03 09:58:01,849]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:58:01,849]:DEBUG:   0 new workpackages created
+[2023-01-03 09:58:01,860]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:58:01,860]:DEBUG:   0 new workpackages created
+[2023-01-03 09:58:01,869]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:58:01,869]:DEBUG:   0 new workpackages created
+[2023-01-03 09:58:01,877]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:58:01,877]:DEBUG:   0 new workpackages created
+[2023-01-03 09:58:01,884]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:58:01,884]:DEBUG:   0 new workpackages created
+[2023-01-03 09:58:01,891]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:58:01,891]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:58:01,891]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:58:01,891]:INFO: 
+[2023-01-03 09:58:01,891]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:58:01,891]:INFO: >>>>       id: 0
+[2023-01-03 09:58:01,891]:INFO: >>>>   handle: output3
+[2023-01-03 09:58:01,891]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:58:01,892]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:58:01,892]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:58:01,892]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:58:01,892]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:58:01,892]:INFO: ######################################################################
+[2023-01-03 09:59:02,165]:INFO: ######################################################################
+[2023-01-03 09:59:02,165]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 09:59:02,165]:INFO: # id: 0
+[2023-01-03 09:59:02,165]:INFO: #
+[2023-01-03 09:59:02,165]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 09:59:02,168]:INFO: ######################################################################
+[2023-01-03 09:59:02,168]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 09:59:02,168]:DEBUG:   0 new workpackages created
+[2023-01-03 09:59:02,224]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 09:59:02,224]:DEBUG:   0 new workpackages created
+[2023-01-03 09:59:02,234]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 09:59:02,234]:DEBUG:   0 new workpackages created
+[2023-01-03 09:59:02,241]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 09:59:02,241]:DEBUG:   0 new workpackages created
+[2023-01-03 09:59:02,249]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 09:59:02,249]:DEBUG:   0 new workpackages created
+[2023-01-03 09:59:02,256]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 09:59:02,256]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 09:59:02,256]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 09:59:02,256]:INFO: 
+[2023-01-03 09:59:02,256]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 09:59:02,256]:INFO: >>>>       id: 0
+[2023-01-03 09:59:02,256]:INFO: >>>>   handle: output3
+[2023-01-03 09:59:02,256]:INFO: >>>>      dir: output3/000000
+[2023-01-03 09:59:02,256]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 09:59:02,257]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 09:59:02,257]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 09:59:02,257]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 09:59:02,257]:INFO: ######################################################################
+[2023-01-03 10:00:02,593]:INFO: ######################################################################
+[2023-01-03 10:00:02,593]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:00:02,593]:INFO: # id: 0
+[2023-01-03 10:00:02,593]:INFO: #
+[2023-01-03 10:00:02,593]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:00:02,593]:INFO: ######################################################################
+[2023-01-03 10:00:02,593]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:00:02,593]:DEBUG:   0 new workpackages created
+[2023-01-03 10:00:02,604]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:00:02,604]:DEBUG:   0 new workpackages created
+[2023-01-03 10:00:02,613]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:00:02,613]:DEBUG:   0 new workpackages created
+[2023-01-03 10:00:02,620]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:00:02,620]:DEBUG:   0 new workpackages created
+[2023-01-03 10:00:02,627]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:00:02,628]:DEBUG:   0 new workpackages created
+[2023-01-03 10:00:02,635]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:00:02,635]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:00:02,635]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:00:02,635]:INFO: 
+[2023-01-03 10:00:02,635]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:00:02,635]:INFO: >>>>       id: 0
+[2023-01-03 10:00:02,635]:INFO: >>>>   handle: output3
+[2023-01-03 10:00:02,635]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:00:02,635]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:00:02,635]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:00:02,635]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:00:02,635]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:00:02,635]:INFO: ######################################################################
+[2023-01-03 10:01:02,907]:INFO: ######################################################################
+[2023-01-03 10:01:02,907]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:01:02,907]:INFO: # id: 0
+[2023-01-03 10:01:02,907]:INFO: #
+[2023-01-03 10:01:02,907]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:01:02,907]:INFO: ######################################################################
+[2023-01-03 10:01:02,907]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:01:02,907]:DEBUG:   0 new workpackages created
+[2023-01-03 10:01:02,918]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:01:02,918]:DEBUG:   0 new workpackages created
+[2023-01-03 10:01:02,928]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:01:02,928]:DEBUG:   0 new workpackages created
+[2023-01-03 10:01:02,936]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:01:02,936]:DEBUG:   0 new workpackages created
+[2023-01-03 10:01:02,943]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:01:02,943]:DEBUG:   0 new workpackages created
+[2023-01-03 10:01:02,950]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:01:02,950]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:01:02,950]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:01:02,950]:INFO: 
+[2023-01-03 10:01:02,950]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:01:02,950]:INFO: >>>>       id: 0
+[2023-01-03 10:01:02,951]:INFO: >>>>   handle: output3
+[2023-01-03 10:01:02,951]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:01:02,951]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:01:02,951]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:01:02,951]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:01:02,951]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:01:02,951]:INFO: ######################################################################
+[2023-01-03 10:02:03,224]:INFO: ######################################################################
+[2023-01-03 10:02:03,224]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:02:03,224]:INFO: # id: 0
+[2023-01-03 10:02:03,224]:INFO: #
+[2023-01-03 10:02:03,224]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:02:03,224]:INFO: ######################################################################
+[2023-01-03 10:02:03,224]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:02:03,225]:DEBUG:   0 new workpackages created
+[2023-01-03 10:02:03,236]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:02:03,236]:DEBUG:   0 new workpackages created
+[2023-01-03 10:02:03,245]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:02:03,245]:DEBUG:   0 new workpackages created
+[2023-01-03 10:02:03,253]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:02:03,253]:DEBUG:   0 new workpackages created
+[2023-01-03 10:02:03,260]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:02:03,260]:DEBUG:   0 new workpackages created
+[2023-01-03 10:02:03,267]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:02:03,267]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:02:03,267]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:02:03,267]:INFO: 
+[2023-01-03 10:02:03,267]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:02:03,268]:INFO: >>>>       id: 0
+[2023-01-03 10:02:03,268]:INFO: >>>>   handle: output3
+[2023-01-03 10:02:03,268]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:02:03,268]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:02:03,268]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:02:03,268]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:02:03,268]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:02:03,268]:INFO: ######################################################################
+[2023-01-03 10:03:03,540]:INFO: ######################################################################
+[2023-01-03 10:03:03,540]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:03:03,540]:INFO: # id: 0
+[2023-01-03 10:03:03,540]:INFO: #
+[2023-01-03 10:03:03,541]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:03:03,541]:INFO: ######################################################################
+[2023-01-03 10:03:03,541]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:03:03,541]:DEBUG:   0 new workpackages created
+[2023-01-03 10:03:03,552]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:03:03,552]:DEBUG:   0 new workpackages created
+[2023-01-03 10:03:03,561]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:03:03,561]:DEBUG:   0 new workpackages created
+[2023-01-03 10:03:03,568]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:03:03,568]:DEBUG:   0 new workpackages created
+[2023-01-03 10:03:03,576]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:03:03,576]:DEBUG:   0 new workpackages created
+[2023-01-03 10:03:03,583]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:03:03,583]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:03:03,583]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:03:03,583]:INFO: 
+[2023-01-03 10:03:03,583]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:03:03,583]:INFO: >>>>       id: 0
+[2023-01-03 10:03:03,583]:INFO: >>>>   handle: output3
+[2023-01-03 10:03:03,583]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:03:03,583]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:03:03,584]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:03:03,584]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:03:03,584]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:03:03,584]:INFO: ######################################################################
+[2023-01-03 10:04:03,875]:INFO: ######################################################################
+[2023-01-03 10:04:03,875]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:04:03,875]:INFO: # id: 0
+[2023-01-03 10:04:03,875]:INFO: #
+[2023-01-03 10:04:03,875]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:04:03,875]:INFO: ######################################################################
+[2023-01-03 10:04:03,875]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:04:03,875]:DEBUG:   0 new workpackages created
+[2023-01-03 10:04:03,888]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:04:03,888]:DEBUG:   0 new workpackages created
+[2023-01-03 10:04:03,897]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:04:03,897]:DEBUG:   0 new workpackages created
+[2023-01-03 10:04:03,905]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:04:03,905]:DEBUG:   0 new workpackages created
+[2023-01-03 10:04:03,912]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:04:03,912]:DEBUG:   0 new workpackages created
+[2023-01-03 10:04:03,919]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:04:03,919]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:04:03,919]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:04:03,919]:INFO: 
+[2023-01-03 10:04:03,919]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:04:03,919]:INFO: >>>>       id: 0
+[2023-01-03 10:04:03,919]:INFO: >>>>   handle: output3
+[2023-01-03 10:04:03,919]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:04:03,919]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:04:03,920]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:04:03,920]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:04:03,920]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:04:03,920]:INFO: ######################################################################
+[2023-01-03 10:05:04,196]:INFO: ######################################################################
+[2023-01-03 10:05:04,196]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:05:04,197]:INFO: # id: 0
+[2023-01-03 10:05:04,197]:INFO: #
+[2023-01-03 10:05:04,197]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:05:04,197]:INFO: ######################################################################
+[2023-01-03 10:05:04,197]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:05:04,197]:DEBUG:   0 new workpackages created
+[2023-01-03 10:05:04,208]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:05:04,208]:DEBUG:   0 new workpackages created
+[2023-01-03 10:05:04,218]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:05:04,218]:DEBUG:   0 new workpackages created
+[2023-01-03 10:05:04,225]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:05:04,225]:DEBUG:   0 new workpackages created
+[2023-01-03 10:05:04,232]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:05:04,232]:DEBUG:   0 new workpackages created
+[2023-01-03 10:05:04,240]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:05:04,240]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:05:04,240]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:05:04,240]:INFO: 
+[2023-01-03 10:05:04,240]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:05:04,240]:INFO: >>>>       id: 0
+[2023-01-03 10:05:04,240]:INFO: >>>>   handle: output3
+[2023-01-03 10:05:04,240]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:05:04,240]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:05:04,240]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:05:04,240]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:05:04,240]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:05:04,240]:INFO: ######################################################################
+[2023-01-03 10:06:04,583]:INFO: ######################################################################
+[2023-01-03 10:06:04,583]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:06:04,583]:INFO: # id: 0
+[2023-01-03 10:06:04,583]:INFO: #
+[2023-01-03 10:06:04,583]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:06:04,583]:INFO: ######################################################################
+[2023-01-03 10:06:04,583]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:06:04,583]:DEBUG:   0 new workpackages created
+[2023-01-03 10:06:04,594]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:06:04,594]:DEBUG:   0 new workpackages created
+[2023-01-03 10:06:04,603]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:06:04,603]:DEBUG:   0 new workpackages created
+[2023-01-03 10:06:04,611]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:06:04,611]:DEBUG:   0 new workpackages created
+[2023-01-03 10:06:04,618]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:06:04,618]:DEBUG:   0 new workpackages created
+[2023-01-03 10:06:04,625]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:06:04,625]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:06:04,625]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:06:04,625]:INFO: 
+[2023-01-03 10:06:04,625]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:06:04,625]:INFO: >>>>       id: 0
+[2023-01-03 10:06:04,625]:INFO: >>>>   handle: output3
+[2023-01-03 10:06:04,625]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:06:04,626]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:06:04,626]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:06:04,626]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:06:04,626]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:06:04,628]:INFO: ######################################################################
+[2023-01-03 10:07:04,909]:INFO: ######################################################################
+[2023-01-03 10:07:04,909]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:07:04,909]:INFO: # id: 0
+[2023-01-03 10:07:04,909]:INFO: #
+[2023-01-03 10:07:04,909]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:07:04,909]:INFO: ######################################################################
+[2023-01-03 10:07:04,909]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:07:04,909]:DEBUG:   0 new workpackages created
+[2023-01-03 10:07:04,920]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:07:04,920]:DEBUG:   0 new workpackages created
+[2023-01-03 10:07:04,930]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:07:04,930]:DEBUG:   0 new workpackages created
+[2023-01-03 10:07:04,937]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:07:04,937]:DEBUG:   0 new workpackages created
+[2023-01-03 10:07:04,944]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:07:04,944]:DEBUG:   0 new workpackages created
+[2023-01-03 10:07:04,951]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:07:04,952]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:07:04,952]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:07:04,952]:INFO: 
+[2023-01-03 10:07:04,952]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:07:04,952]:INFO: >>>>       id: 0
+[2023-01-03 10:07:04,952]:INFO: >>>>   handle: output3
+[2023-01-03 10:07:04,952]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:07:04,952]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:07:04,952]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:07:04,952]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:07:04,952]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:07:04,952]:INFO: ######################################################################
+[2023-01-03 10:08:05,235]:INFO: ######################################################################
+[2023-01-03 10:08:05,235]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:08:05,235]:INFO: # id: 0
+[2023-01-03 10:08:05,235]:INFO: #
+[2023-01-03 10:08:05,235]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:08:05,235]:INFO: ######################################################################
+[2023-01-03 10:08:05,235]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:08:05,235]:DEBUG:   0 new workpackages created
+[2023-01-03 10:08:05,247]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:08:05,247]:DEBUG:   0 new workpackages created
+[2023-01-03 10:08:05,257]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:08:05,257]:DEBUG:   0 new workpackages created
+[2023-01-03 10:08:05,264]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:08:05,264]:DEBUG:   0 new workpackages created
+[2023-01-03 10:08:05,272]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:08:05,272]:DEBUG:   0 new workpackages created
+[2023-01-03 10:08:05,279]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:08:05,279]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:08:05,279]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:08:05,279]:INFO: 
+[2023-01-03 10:08:05,279]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:08:05,279]:INFO: >>>>       id: 0
+[2023-01-03 10:08:05,279]:INFO: >>>>   handle: output3
+[2023-01-03 10:08:05,279]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:08:05,279]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:08:05,280]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:08:05,280]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:08:05,280]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:08:05,280]:INFO: ######################################################################
+[2023-01-03 10:09:05,552]:INFO: ######################################################################
+[2023-01-03 10:09:05,552]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:09:05,552]:INFO: # id: 0
+[2023-01-03 10:09:05,552]:INFO: #
+[2023-01-03 10:09:05,552]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:09:05,552]:INFO: ######################################################################
+[2023-01-03 10:09:05,552]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:09:05,552]:DEBUG:   0 new workpackages created
+[2023-01-03 10:09:05,563]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:09:05,563]:DEBUG:   0 new workpackages created
+[2023-01-03 10:09:05,573]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:09:05,573]:DEBUG:   0 new workpackages created
+[2023-01-03 10:09:05,580]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:09:05,580]:DEBUG:   0 new workpackages created
+[2023-01-03 10:09:05,587]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:09:05,587]:DEBUG:   0 new workpackages created
+[2023-01-03 10:09:05,594]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:09:05,594]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:09:05,594]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:09:05,594]:INFO: 
+[2023-01-03 10:09:05,594]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:09:05,595]:INFO: >>>>       id: 0
+[2023-01-03 10:09:05,595]:INFO: >>>>   handle: output3
+[2023-01-03 10:09:05,595]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:09:05,595]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:09:05,595]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:09:05,595]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:09:05,595]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:09:05,595]:INFO: ######################################################################
+[2023-01-03 10:10:05,874]:INFO: ######################################################################
+[2023-01-03 10:10:05,875]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:10:05,875]:INFO: # id: 0
+[2023-01-03 10:10:05,875]:INFO: #
+[2023-01-03 10:10:05,875]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:10:05,875]:INFO: ######################################################################
+[2023-01-03 10:10:05,875]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:10:05,875]:DEBUG:   0 new workpackages created
+[2023-01-03 10:10:05,886]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:10:05,886]:DEBUG:   0 new workpackages created
+[2023-01-03 10:10:05,896]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:10:05,896]:DEBUG:   0 new workpackages created
+[2023-01-03 10:10:05,903]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:10:05,903]:DEBUG:   0 new workpackages created
+[2023-01-03 10:10:05,910]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:10:05,910]:DEBUG:   0 new workpackages created
+[2023-01-03 10:10:05,917]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:10:05,917]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:10:05,917]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:10:05,918]:INFO: 
+[2023-01-03 10:10:05,918]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:10:05,918]:INFO: >>>>       id: 0
+[2023-01-03 10:10:05,918]:INFO: >>>>   handle: output3
+[2023-01-03 10:10:05,918]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:10:05,918]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:10:05,918]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:10:05,918]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:10:05,918]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:10:05,918]:INFO: ######################################################################
+[2023-01-03 10:11:06,192]:INFO: ######################################################################
+[2023-01-03 10:11:06,192]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:11:06,192]:INFO: # id: 0
+[2023-01-03 10:11:06,192]:INFO: #
+[2023-01-03 10:11:06,192]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:11:06,192]:INFO: ######################################################################
+[2023-01-03 10:11:06,192]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:11:06,192]:DEBUG:   0 new workpackages created
+[2023-01-03 10:11:06,203]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:11:06,203]:DEBUG:   0 new workpackages created
+[2023-01-03 10:11:06,213]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:11:06,213]:DEBUG:   0 new workpackages created
+[2023-01-03 10:11:06,220]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:11:06,220]:DEBUG:   0 new workpackages created
+[2023-01-03 10:11:06,227]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:11:06,227]:DEBUG:   0 new workpackages created
+[2023-01-03 10:11:06,234]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:11:06,235]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:11:06,235]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:11:06,235]:INFO: 
+[2023-01-03 10:11:06,235]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:11:06,235]:INFO: >>>>       id: 0
+[2023-01-03 10:11:06,235]:INFO: >>>>   handle: output3
+[2023-01-03 10:11:06,235]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:11:06,235]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:11:06,235]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:11:06,235]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:11:06,235]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:11:06,235]:INFO: ######################################################################
+[2023-01-03 10:12:06,508]:INFO: ######################################################################
+[2023-01-03 10:12:06,508]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:12:06,508]:INFO: # id: 0
+[2023-01-03 10:12:06,508]:INFO: #
+[2023-01-03 10:12:06,508]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:12:06,508]:INFO: ######################################################################
+[2023-01-03 10:12:06,508]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:12:06,509]:DEBUG:   0 new workpackages created
+[2023-01-03 10:12:06,520]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:12:06,520]:DEBUG:   0 new workpackages created
+[2023-01-03 10:12:06,530]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:12:06,530]:DEBUG:   0 new workpackages created
+[2023-01-03 10:12:06,537]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:12:06,537]:DEBUG:   0 new workpackages created
+[2023-01-03 10:12:06,544]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:12:06,544]:DEBUG:   0 new workpackages created
+[2023-01-03 10:12:06,552]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:12:06,552]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:12:06,552]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:12:06,552]:INFO: 
+[2023-01-03 10:12:06,552]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:12:06,552]:INFO: >>>>       id: 0
+[2023-01-03 10:12:06,552]:INFO: >>>>   handle: output3
+[2023-01-03 10:12:06,552]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:12:06,552]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:12:06,552]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:12:06,552]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:12:06,552]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:12:06,552]:INFO: ######################################################################
+[2023-01-03 10:13:06,856]:INFO: ######################################################################
+[2023-01-03 10:13:06,856]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:13:06,856]:INFO: # id: 0
+[2023-01-03 10:13:06,856]:INFO: #
+[2023-01-03 10:13:06,856]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:13:06,856]:INFO: ######################################################################
+[2023-01-03 10:13:06,856]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:13:06,856]:DEBUG:   0 new workpackages created
+[2023-01-03 10:13:06,867]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:13:06,867]:DEBUG:   0 new workpackages created
+[2023-01-03 10:13:06,876]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:13:06,876]:DEBUG:   0 new workpackages created
+[2023-01-03 10:13:06,884]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:13:06,884]:DEBUG:   0 new workpackages created
+[2023-01-03 10:13:06,891]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:13:06,891]:DEBUG:   0 new workpackages created
+[2023-01-03 10:13:06,898]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:13:06,898]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:13:06,898]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:13:06,898]:INFO: 
+[2023-01-03 10:13:06,898]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:13:06,898]:INFO: >>>>       id: 0
+[2023-01-03 10:13:06,898]:INFO: >>>>   handle: output3
+[2023-01-03 10:13:06,898]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:13:06,898]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:13:06,898]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:13:06,899]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:13:06,899]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:13:06,899]:INFO: ######################################################################
+[2023-01-03 10:14:07,172]:INFO: ######################################################################
+[2023-01-03 10:14:07,172]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:14:07,172]:INFO: # id: 0
+[2023-01-03 10:14:07,172]:INFO: #
+[2023-01-03 10:14:07,172]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:14:07,172]:INFO: ######################################################################
+[2023-01-03 10:14:07,172]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:14:07,172]:DEBUG:   0 new workpackages created
+[2023-01-03 10:14:07,183]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:14:07,183]:DEBUG:   0 new workpackages created
+[2023-01-03 10:14:07,192]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:14:07,192]:DEBUG:   0 new workpackages created
+[2023-01-03 10:14:07,200]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:14:07,200]:DEBUG:   0 new workpackages created
+[2023-01-03 10:14:07,207]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:14:07,207]:DEBUG:   0 new workpackages created
+[2023-01-03 10:14:07,214]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:14:07,214]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:14:07,214]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:14:07,214]:INFO: 
+[2023-01-03 10:14:07,217]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:14:07,217]:INFO: >>>>       id: 0
+[2023-01-03 10:14:07,217]:INFO: >>>>   handle: output3
+[2023-01-03 10:14:07,217]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:14:07,217]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:14:07,217]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:14:07,217]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:14:07,217]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:14:07,217]:INFO: ######################################################################
+[2023-01-03 10:15:07,502]:INFO: ######################################################################
+[2023-01-03 10:15:07,502]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:15:07,502]:INFO: # id: 0
+[2023-01-03 10:15:07,502]:INFO: #
+[2023-01-03 10:15:07,502]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:15:07,502]:INFO: ######################################################################
+[2023-01-03 10:15:07,502]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:15:07,502]:DEBUG:   0 new workpackages created
+[2023-01-03 10:15:07,513]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:15:07,513]:DEBUG:   0 new workpackages created
+[2023-01-03 10:15:07,522]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:15:07,522]:DEBUG:   0 new workpackages created
+[2023-01-03 10:15:07,529]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:15:07,529]:DEBUG:   0 new workpackages created
+[2023-01-03 10:15:07,537]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:15:07,537]:DEBUG:   0 new workpackages created
+[2023-01-03 10:15:07,544]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:15:07,544]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:15:07,544]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:15:07,544]:INFO: 
+[2023-01-03 10:15:07,544]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:15:07,544]:INFO: >>>>       id: 0
+[2023-01-03 10:15:07,545]:INFO: >>>>   handle: output3
+[2023-01-03 10:15:07,545]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:15:07,545]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:15:07,545]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:15:07,545]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:15:07,545]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:15:07,545]:INFO: ######################################################################
+[2023-01-03 10:16:07,822]:INFO: ######################################################################
+[2023-01-03 10:16:07,822]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:16:07,822]:INFO: # id: 0
+[2023-01-03 10:16:07,822]:INFO: #
+[2023-01-03 10:16:07,822]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:16:07,822]:INFO: ######################################################################
+[2023-01-03 10:16:07,822]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:16:07,822]:DEBUG:   0 new workpackages created
+[2023-01-03 10:16:07,833]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:16:07,833]:DEBUG:   0 new workpackages created
+[2023-01-03 10:16:07,843]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:16:07,844]:DEBUG:   0 new workpackages created
+[2023-01-03 10:16:07,851]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:16:07,851]:DEBUG:   0 new workpackages created
+[2023-01-03 10:16:07,858]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:16:07,858]:DEBUG:   0 new workpackages created
+[2023-01-03 10:16:07,865]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:16:07,865]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:16:07,865]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:16:07,865]:INFO: 
+[2023-01-03 10:16:07,865]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:16:07,865]:INFO: >>>>       id: 0
+[2023-01-03 10:16:07,865]:INFO: >>>>   handle: output3
+[2023-01-03 10:16:07,865]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:16:07,865]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:16:07,865]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:16:07,865]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:16:07,866]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:16:07,866]:INFO: ######################################################################
+[2023-01-03 10:17:08,140]:INFO: ######################################################################
+[2023-01-03 10:17:08,140]:INFO: # benchmark: PETSc-Euler scaling test
+[2023-01-03 10:17:08,140]:INFO: # id: 0
+[2023-01-03 10:17:08,140]:INFO: #
+[2023-01-03 10:17:08,140]:INFO: # Boltzmann k = 1e-4, parallel in time, parallel in space (64/n)
+[2023-01-03 10:17:08,140]:INFO: ######################################################################
+[2023-01-03 10:17:08,140]:DEBUG: Create new workpackages for workpackage sub_step(0)
+[2023-01-03 10:17:08,140]:DEBUG:   0 new workpackages created
+[2023-01-03 10:17:08,151]:DEBUG: Create new workpackages for workpackage sub_step(1)
+[2023-01-03 10:17:08,151]:DEBUG:   0 new workpackages created
+[2023-01-03 10:17:08,161]:DEBUG: Create new workpackages for workpackage sub_step(2)
+[2023-01-03 10:17:08,161]:DEBUG:   0 new workpackages created
+[2023-01-03 10:17:08,169]:DEBUG: Create new workpackages for workpackage sub_step(3)
+[2023-01-03 10:17:08,169]:DEBUG:   0 new workpackages created
+[2023-01-03 10:17:08,176]:DEBUG: Create new workpackages for workpackage sub_step(4)
+[2023-01-03 10:17:08,176]:DEBUG:   0 new workpackages created
+[2023-01-03 10:17:08,184]:INFO:   | stepname | all | open | wait | error | done |
+[2023-01-03 10:17:08,184]:INFO:   |----------|-----|------|------|-------|------|
+[2023-01-03 10:17:08,184]:INFO:   | sub_step |   5 |    0 |    0 |     0 |    5 |
+[2023-01-03 10:17:08,184]:INFO: 
+[2023-01-03 10:17:08,184]:INFO: >>>> Benchmark information and further useful commands:
+[2023-01-03 10:17:08,184]:INFO: >>>>       id: 0
+[2023-01-03 10:17:08,184]:INFO: >>>>   handle: output3
+[2023-01-03 10:17:08,184]:INFO: >>>>      dir: output3/000000
+[2023-01-03 10:17:08,184]:INFO: >>>>  analyse: jube analyse output3 --id 0
+[2023-01-03 10:17:08,184]:INFO: >>>>   result: jube result output3 --id 0
+[2023-01-03 10:17:08,184]:INFO: >>>>     info: jube info output3 --id 0
+[2023-01-03 10:17:08,184]:INFO: >>>>      log: jube log output3 --id 0
+[2023-01-03 10:17:08,184]:INFO: ######################################################################

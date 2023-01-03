@@ -1,0 +1,1250 @@
+[2023-01-03 09:28:41,651]:DEBUG: Command: jube run batch1.xml
+[2023-01-03 09:28:41,652]:DEBUG: Version: 2.5.1
+[2023-01-03 09:28:41,652]:DEBUG: Parsing batch1.xml
+[2023-01-03 09:28:41,654]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:28:41,654]:DEBUG:   Remove invalid tags
+[2023-01-03 09:28:41,654]:DEBUG:     Available tags: 
+[2023-01-03 09:28:41,654]:DEBUG:   Remove invalid tags
+[2023-01-03 09:28:41,654]:DEBUG:     Available tags: 
+[2023-01-03 09:28:41,655]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:28:41,655]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:28:41,655]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:28:41,655]:DEBUG:     path: .
+[2023-01-03 09:28:41,655]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:28:41,655]:DEBUG:   Remove invalid tags
+[2023-01-03 09:28:41,655]:DEBUG:     Available tags: 
+[2023-01-03 09:28:41,655]:DEBUG:   Preprocess done
+[2023-01-03 09:28:41,655]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:28:41,656]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:28:41,656]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:28:41,656]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:28:41,656]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:28:41,657]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:28:41,657]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:28:41,657]:DEBUG: Start consistency check
+[2023-01-03 09:28:41,657]:DEBUG: Create benchmark directory
+[2023-01-03 09:28:51,972]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:28:51,972]:DEBUG: Version: 2.5.1
+[2023-01-03 09:28:51,972]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:28:51,974]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:28:51,974]:DEBUG:   Remove invalid tags
+[2023-01-03 09:28:51,974]:DEBUG:     Available tags: 
+[2023-01-03 09:28:51,974]:DEBUG:   Remove invalid tags
+[2023-01-03 09:28:51,974]:DEBUG:     Available tags: 
+[2023-01-03 09:28:51,974]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:28:51,974]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:28:51,974]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:28:51,974]:DEBUG:     path: output3/000000
+[2023-01-03 09:28:51,974]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:28:51,974]:DEBUG:   Remove invalid tags
+[2023-01-03 09:28:51,974]:DEBUG:     Available tags: 
+[2023-01-03 09:28:51,974]:DEBUG:   Preprocess done
+[2023-01-03 09:28:51,974]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:28:51,975]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:28:51,975]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:28:51,975]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:28:51,975]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:28:51,975]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:28:51,975]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:28:51,975]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:29:52,345]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:29:52,345]:DEBUG: Version: 2.5.1
+[2023-01-03 09:29:52,345]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:29:52,345]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:29:52,345]:DEBUG:   Remove invalid tags
+[2023-01-03 09:29:52,346]:DEBUG:     Available tags: 
+[2023-01-03 09:29:52,346]:DEBUG:   Remove invalid tags
+[2023-01-03 09:29:52,346]:DEBUG:     Available tags: 
+[2023-01-03 09:29:52,346]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:29:52,346]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:29:52,346]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:29:52,346]:DEBUG:     path: output3/000000
+[2023-01-03 09:29:52,348]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:29:52,348]:DEBUG:   Remove invalid tags
+[2023-01-03 09:29:52,348]:DEBUG:     Available tags: 
+[2023-01-03 09:29:52,348]:DEBUG:   Preprocess done
+[2023-01-03 09:29:52,348]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:29:52,348]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:29:52,349]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:29:52,349]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:29:52,349]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:29:52,349]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:29:52,350]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:29:52,350]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:30:52,688]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:30:52,689]:DEBUG: Version: 2.5.1
+[2023-01-03 09:30:52,689]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:30:52,689]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:30:52,689]:DEBUG:   Remove invalid tags
+[2023-01-03 09:30:52,689]:DEBUG:     Available tags: 
+[2023-01-03 09:30:52,690]:DEBUG:   Remove invalid tags
+[2023-01-03 09:30:52,690]:DEBUG:     Available tags: 
+[2023-01-03 09:30:52,690]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:30:52,690]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:30:52,690]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:30:52,690]:DEBUG:     path: output3/000000
+[2023-01-03 09:30:52,690]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:30:52,690]:DEBUG:   Remove invalid tags
+[2023-01-03 09:30:52,690]:DEBUG:     Available tags: 
+[2023-01-03 09:30:52,690]:DEBUG:   Preprocess done
+[2023-01-03 09:30:52,690]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:30:52,690]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:30:52,690]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:30:52,691]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:30:52,691]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:30:52,691]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:30:52,691]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:30:52,691]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:31:53,025]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:31:53,025]:DEBUG: Version: 2.5.1
+[2023-01-03 09:31:53,025]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:31:53,026]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:31:53,026]:DEBUG:   Remove invalid tags
+[2023-01-03 09:31:53,026]:DEBUG:     Available tags: 
+[2023-01-03 09:31:53,026]:DEBUG:   Remove invalid tags
+[2023-01-03 09:31:53,026]:DEBUG:     Available tags: 
+[2023-01-03 09:31:53,026]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:31:53,026]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:31:53,026]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:31:53,026]:DEBUG:     path: output3/000000
+[2023-01-03 09:31:53,026]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:31:53,026]:DEBUG:   Remove invalid tags
+[2023-01-03 09:31:53,026]:DEBUG:     Available tags: 
+[2023-01-03 09:31:53,027]:DEBUG:   Preprocess done
+[2023-01-03 09:31:53,027]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:31:53,027]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:31:53,027]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:31:53,027]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:31:53,027]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:31:53,027]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:31:53,027]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:31:53,028]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:32:53,680]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:32:53,680]:DEBUG: Version: 2.5.1
+[2023-01-03 09:32:53,680]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:32:53,681]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:32:53,681]:DEBUG:   Remove invalid tags
+[2023-01-03 09:32:53,681]:DEBUG:     Available tags: 
+[2023-01-03 09:32:53,681]:DEBUG:   Remove invalid tags
+[2023-01-03 09:32:53,682]:DEBUG:     Available tags: 
+[2023-01-03 09:32:53,682]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:32:53,682]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:32:53,682]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:32:53,682]:DEBUG:     path: output3/000000
+[2023-01-03 09:32:53,682]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:32:53,682]:DEBUG:   Remove invalid tags
+[2023-01-03 09:32:53,682]:DEBUG:     Available tags: 
+[2023-01-03 09:32:53,682]:DEBUG:   Preprocess done
+[2023-01-03 09:32:53,682]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:32:53,682]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:32:53,682]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:32:53,682]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:32:53,683]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:32:53,683]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:32:53,683]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:32:53,683]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:33:54,012]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:33:54,012]:DEBUG: Version: 2.5.1
+[2023-01-03 09:33:54,012]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:33:54,013]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:33:54,013]:DEBUG:   Remove invalid tags
+[2023-01-03 09:33:54,013]:DEBUG:     Available tags: 
+[2023-01-03 09:33:54,013]:DEBUG:   Remove invalid tags
+[2023-01-03 09:33:54,013]:DEBUG:     Available tags: 
+[2023-01-03 09:33:54,014]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:33:54,014]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:33:54,014]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:33:54,014]:DEBUG:     path: output3/000000
+[2023-01-03 09:33:54,014]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:33:54,014]:DEBUG:   Remove invalid tags
+[2023-01-03 09:33:54,014]:DEBUG:     Available tags: 
+[2023-01-03 09:33:54,014]:DEBUG:   Preprocess done
+[2023-01-03 09:33:54,014]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:33:54,014]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:33:54,014]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:33:54,014]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:33:54,014]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:33:54,015]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:33:54,015]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:33:54,015]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:34:54,329]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:34:54,329]:DEBUG: Version: 2.5.1
+[2023-01-03 09:34:54,329]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:34:54,330]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:34:54,330]:DEBUG:   Remove invalid tags
+[2023-01-03 09:34:54,330]:DEBUG:     Available tags: 
+[2023-01-03 09:34:54,330]:DEBUG:   Remove invalid tags
+[2023-01-03 09:34:54,330]:DEBUG:     Available tags: 
+[2023-01-03 09:34:54,330]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:34:54,331]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:34:54,331]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:34:54,331]:DEBUG:     path: output3/000000
+[2023-01-03 09:34:54,331]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:34:54,331]:DEBUG:   Remove invalid tags
+[2023-01-03 09:34:54,331]:DEBUG:     Available tags: 
+[2023-01-03 09:34:54,331]:DEBUG:   Preprocess done
+[2023-01-03 09:34:54,331]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:34:54,331]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:34:54,331]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:34:54,331]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:34:54,331]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:34:54,332]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:34:54,332]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:34:54,332]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:35:54,668]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:35:54,668]:DEBUG: Version: 2.5.1
+[2023-01-03 09:35:54,668]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:35:54,669]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:35:54,669]:DEBUG:   Remove invalid tags
+[2023-01-03 09:35:54,669]:DEBUG:     Available tags: 
+[2023-01-03 09:35:54,669]:DEBUG:   Remove invalid tags
+[2023-01-03 09:35:54,669]:DEBUG:     Available tags: 
+[2023-01-03 09:35:54,670]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:35:54,670]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:35:54,670]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:35:54,670]:DEBUG:     path: output3/000000
+[2023-01-03 09:35:54,670]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:35:54,670]:DEBUG:   Remove invalid tags
+[2023-01-03 09:35:54,670]:DEBUG:     Available tags: 
+[2023-01-03 09:35:54,670]:DEBUG:   Preprocess done
+[2023-01-03 09:35:54,670]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:35:54,670]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:35:54,670]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:35:54,670]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:35:54,670]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:35:54,671]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:35:54,671]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:35:54,671]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:36:54,987]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:36:54,987]:DEBUG: Version: 2.5.1
+[2023-01-03 09:36:54,987]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:36:54,987]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:36:54,987]:DEBUG:   Remove invalid tags
+[2023-01-03 09:36:54,988]:DEBUG:     Available tags: 
+[2023-01-03 09:36:54,988]:DEBUG:   Remove invalid tags
+[2023-01-03 09:36:54,988]:DEBUG:     Available tags: 
+[2023-01-03 09:36:54,988]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:36:54,988]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:36:54,988]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:36:54,988]:DEBUG:     path: output3/000000
+[2023-01-03 09:36:54,988]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:36:54,988]:DEBUG:   Remove invalid tags
+[2023-01-03 09:36:54,988]:DEBUG:     Available tags: 
+[2023-01-03 09:36:54,988]:DEBUG:   Preprocess done
+[2023-01-03 09:36:54,988]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:36:54,988]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:36:54,989]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:36:54,989]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:36:54,989]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:36:54,989]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:36:54,989]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:36:54,989]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:37:55,303]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:37:55,303]:DEBUG: Version: 2.5.1
+[2023-01-03 09:37:55,303]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:37:55,307]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:37:55,307]:DEBUG:   Remove invalid tags
+[2023-01-03 09:37:55,307]:DEBUG:     Available tags: 
+[2023-01-03 09:37:55,307]:DEBUG:   Remove invalid tags
+[2023-01-03 09:37:55,307]:DEBUG:     Available tags: 
+[2023-01-03 09:37:55,307]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:37:55,308]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:37:55,308]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:37:55,308]:DEBUG:     path: output3/000000
+[2023-01-03 09:37:55,308]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:37:55,308]:DEBUG:   Remove invalid tags
+[2023-01-03 09:37:55,308]:DEBUG:     Available tags: 
+[2023-01-03 09:37:55,308]:DEBUG:   Preprocess done
+[2023-01-03 09:37:55,308]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:37:55,308]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:37:55,309]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:37:55,309]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:37:55,309]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:37:55,309]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:37:55,309]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:37:55,310]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:38:55,622]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:38:55,622]:DEBUG: Version: 2.5.1
+[2023-01-03 09:38:55,622]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:38:55,623]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:38:55,623]:DEBUG:   Remove invalid tags
+[2023-01-03 09:38:55,623]:DEBUG:     Available tags: 
+[2023-01-03 09:38:55,623]:DEBUG:   Remove invalid tags
+[2023-01-03 09:38:55,623]:DEBUG:     Available tags: 
+[2023-01-03 09:38:55,623]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:38:55,623]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:38:55,623]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:38:55,623]:DEBUG:     path: output3/000000
+[2023-01-03 09:38:55,623]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:38:55,623]:DEBUG:   Remove invalid tags
+[2023-01-03 09:38:55,623]:DEBUG:     Available tags: 
+[2023-01-03 09:38:55,624]:DEBUG:   Preprocess done
+[2023-01-03 09:38:55,624]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:38:55,624]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:38:55,624]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:38:55,624]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:38:55,624]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:38:55,624]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:38:55,624]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:38:55,625]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:39:55,991]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:39:55,991]:DEBUG: Version: 2.5.1
+[2023-01-03 09:39:55,991]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:39:55,993]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:39:55,993]:DEBUG:   Remove invalid tags
+[2023-01-03 09:39:55,993]:DEBUG:     Available tags: 
+[2023-01-03 09:39:55,993]:DEBUG:   Remove invalid tags
+[2023-01-03 09:39:55,993]:DEBUG:     Available tags: 
+[2023-01-03 09:39:55,993]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:39:55,993]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:39:55,993]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:39:55,993]:DEBUG:     path: output3/000000
+[2023-01-03 09:39:55,994]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:39:55,994]:DEBUG:   Remove invalid tags
+[2023-01-03 09:39:55,994]:DEBUG:     Available tags: 
+[2023-01-03 09:39:55,994]:DEBUG:   Preprocess done
+[2023-01-03 09:39:55,994]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:39:55,994]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:39:55,995]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:39:55,995]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:39:55,995]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:39:55,995]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:39:55,995]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:39:55,995]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:40:56,312]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:40:56,312]:DEBUG: Version: 2.5.1
+[2023-01-03 09:40:56,312]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:40:56,313]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:40:56,313]:DEBUG:   Remove invalid tags
+[2023-01-03 09:40:56,313]:DEBUG:     Available tags: 
+[2023-01-03 09:40:56,313]:DEBUG:   Remove invalid tags
+[2023-01-03 09:40:56,313]:DEBUG:     Available tags: 
+[2023-01-03 09:40:56,313]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:40:56,313]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:40:56,313]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:40:56,313]:DEBUG:     path: output3/000000
+[2023-01-03 09:40:56,313]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:40:56,313]:DEBUG:   Remove invalid tags
+[2023-01-03 09:40:56,313]:DEBUG:     Available tags: 
+[2023-01-03 09:40:56,314]:DEBUG:   Preprocess done
+[2023-01-03 09:40:56,314]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:40:56,314]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:40:56,314]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:40:56,314]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:40:56,314]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:40:56,314]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:40:56,314]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:40:56,314]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:41:56,632]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:41:56,632]:DEBUG: Version: 2.5.1
+[2023-01-03 09:41:56,632]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:41:56,633]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:41:56,633]:DEBUG:   Remove invalid tags
+[2023-01-03 09:41:56,633]:DEBUG:     Available tags: 
+[2023-01-03 09:41:56,633]:DEBUG:   Remove invalid tags
+[2023-01-03 09:41:56,633]:DEBUG:     Available tags: 
+[2023-01-03 09:41:56,633]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:41:56,633]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:41:56,633]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:41:56,633]:DEBUG:     path: output3/000000
+[2023-01-03 09:41:56,633]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:41:56,633]:DEBUG:   Remove invalid tags
+[2023-01-03 09:41:56,633]:DEBUG:     Available tags: 
+[2023-01-03 09:41:56,634]:DEBUG:   Preprocess done
+[2023-01-03 09:41:56,634]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:41:56,634]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:41:56,634]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:41:56,634]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:41:56,634]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:41:56,634]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:41:56,634]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:41:56,635]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:42:56,947]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:42:56,948]:DEBUG: Version: 2.5.1
+[2023-01-03 09:42:56,948]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:42:56,948]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:42:56,948]:DEBUG:   Remove invalid tags
+[2023-01-03 09:42:56,948]:DEBUG:     Available tags: 
+[2023-01-03 09:42:56,949]:DEBUG:   Remove invalid tags
+[2023-01-03 09:42:56,949]:DEBUG:     Available tags: 
+[2023-01-03 09:42:56,949]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:42:56,949]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:42:56,949]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:42:56,949]:DEBUG:     path: output3/000000
+[2023-01-03 09:42:56,949]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:42:56,949]:DEBUG:   Remove invalid tags
+[2023-01-03 09:42:56,949]:DEBUG:     Available tags: 
+[2023-01-03 09:42:56,949]:DEBUG:   Preprocess done
+[2023-01-03 09:42:56,949]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:42:56,949]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:42:56,949]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:42:56,950]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:42:56,950]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:42:56,950]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:42:56,950]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:42:56,950]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:43:57,272]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:43:57,272]:DEBUG: Version: 2.5.1
+[2023-01-03 09:43:57,272]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:43:57,273]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:43:57,273]:DEBUG:   Remove invalid tags
+[2023-01-03 09:43:57,273]:DEBUG:     Available tags: 
+[2023-01-03 09:43:57,273]:DEBUG:   Remove invalid tags
+[2023-01-03 09:43:57,273]:DEBUG:     Available tags: 
+[2023-01-03 09:43:57,273]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:43:57,273]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:43:57,273]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:43:57,273]:DEBUG:     path: output3/000000
+[2023-01-03 09:43:57,273]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:43:57,274]:DEBUG:   Remove invalid tags
+[2023-01-03 09:43:57,274]:DEBUG:     Available tags: 
+[2023-01-03 09:43:57,274]:DEBUG:   Preprocess done
+[2023-01-03 09:43:57,274]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:43:57,274]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:43:57,274]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:43:57,274]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:43:57,274]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:43:57,274]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:43:57,274]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:43:57,275]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:44:57,606]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:44:57,606]:DEBUG: Version: 2.5.1
+[2023-01-03 09:44:57,606]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:44:57,607]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:44:57,607]:DEBUG:   Remove invalid tags
+[2023-01-03 09:44:57,607]:DEBUG:     Available tags: 
+[2023-01-03 09:44:57,607]:DEBUG:   Remove invalid tags
+[2023-01-03 09:44:57,607]:DEBUG:     Available tags: 
+[2023-01-03 09:44:57,608]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:44:57,608]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:44:57,608]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:44:57,608]:DEBUG:     path: output3/000000
+[2023-01-03 09:44:57,608]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:44:57,608]:DEBUG:   Remove invalid tags
+[2023-01-03 09:44:57,608]:DEBUG:     Available tags: 
+[2023-01-03 09:44:57,608]:DEBUG:   Preprocess done
+[2023-01-03 09:44:57,608]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:44:57,609]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:44:57,609]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:44:57,609]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:44:57,609]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:44:57,609]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:44:57,610]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:44:57,610]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:45:57,930]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:45:57,930]:DEBUG: Version: 2.5.1
+[2023-01-03 09:45:57,930]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:45:57,931]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:45:57,931]:DEBUG:   Remove invalid tags
+[2023-01-03 09:45:57,931]:DEBUG:     Available tags: 
+[2023-01-03 09:45:57,931]:DEBUG:   Remove invalid tags
+[2023-01-03 09:45:57,931]:DEBUG:     Available tags: 
+[2023-01-03 09:45:57,931]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:45:57,931]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:45:57,931]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:45:57,931]:DEBUG:     path: output3/000000
+[2023-01-03 09:45:57,931]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:45:57,931]:DEBUG:   Remove invalid tags
+[2023-01-03 09:45:57,931]:DEBUG:     Available tags: 
+[2023-01-03 09:45:57,931]:DEBUG:   Preprocess done
+[2023-01-03 09:45:57,931]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:45:57,932]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:45:57,932]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:45:57,932]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:45:57,932]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:45:57,932]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:45:57,932]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:45:57,932]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:46:58,246]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:46:58,246]:DEBUG: Version: 2.5.1
+[2023-01-03 09:46:58,246]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:46:58,247]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:46:58,247]:DEBUG:   Remove invalid tags
+[2023-01-03 09:46:58,247]:DEBUG:     Available tags: 
+[2023-01-03 09:46:58,247]:DEBUG:   Remove invalid tags
+[2023-01-03 09:46:58,247]:DEBUG:     Available tags: 
+[2023-01-03 09:46:58,247]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:46:58,247]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:46:58,247]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:46:58,247]:DEBUG:     path: output3/000000
+[2023-01-03 09:46:58,247]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:46:58,247]:DEBUG:   Remove invalid tags
+[2023-01-03 09:46:58,247]:DEBUG:     Available tags: 
+[2023-01-03 09:46:58,247]:DEBUG:   Preprocess done
+[2023-01-03 09:46:58,247]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:46:58,247]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:46:58,248]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:46:58,248]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:46:58,248]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:46:58,248]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:46:58,248]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:46:58,248]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:47:58,608]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:47:58,608]:DEBUG: Version: 2.5.1
+[2023-01-03 09:47:58,608]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:47:58,609]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:47:58,609]:DEBUG:   Remove invalid tags
+[2023-01-03 09:47:58,609]:DEBUG:     Available tags: 
+[2023-01-03 09:47:58,609]:DEBUG:   Remove invalid tags
+[2023-01-03 09:47:58,611]:DEBUG:     Available tags: 
+[2023-01-03 09:47:58,612]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:47:58,612]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:47:58,612]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:47:58,612]:DEBUG:     path: output3/000000
+[2023-01-03 09:47:58,612]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:47:58,612]:DEBUG:   Remove invalid tags
+[2023-01-03 09:47:58,612]:DEBUG:     Available tags: 
+[2023-01-03 09:47:58,612]:DEBUG:   Preprocess done
+[2023-01-03 09:47:58,612]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:47:58,613]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:47:58,613]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:47:58,613]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:47:58,613]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:47:58,614]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:47:58,614]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:47:58,614]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:48:58,932]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:48:58,932]:DEBUG: Version: 2.5.1
+[2023-01-03 09:48:58,932]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:48:58,932]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:48:58,933]:DEBUG:   Remove invalid tags
+[2023-01-03 09:48:58,933]:DEBUG:     Available tags: 
+[2023-01-03 09:48:58,933]:DEBUG:   Remove invalid tags
+[2023-01-03 09:48:58,933]:DEBUG:     Available tags: 
+[2023-01-03 09:48:58,933]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:48:58,933]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:48:58,933]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:48:58,933]:DEBUG:     path: output3/000000
+[2023-01-03 09:48:58,933]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:48:58,933]:DEBUG:   Remove invalid tags
+[2023-01-03 09:48:58,933]:DEBUG:     Available tags: 
+[2023-01-03 09:48:58,933]:DEBUG:   Preprocess done
+[2023-01-03 09:48:58,933]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:48:58,933]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:48:58,934]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:48:58,934]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:48:58,934]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:48:58,934]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:48:58,934]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:48:58,934]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:49:59,246]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:49:59,246]:DEBUG: Version: 2.5.1
+[2023-01-03 09:49:59,246]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:49:59,247]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:49:59,247]:DEBUG:   Remove invalid tags
+[2023-01-03 09:49:59,247]:DEBUG:     Available tags: 
+[2023-01-03 09:49:59,247]:DEBUG:   Remove invalid tags
+[2023-01-03 09:49:59,247]:DEBUG:     Available tags: 
+[2023-01-03 09:49:59,247]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:49:59,247]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:49:59,247]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:49:59,248]:DEBUG:     path: output3/000000
+[2023-01-03 09:49:59,248]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:49:59,248]:DEBUG:   Remove invalid tags
+[2023-01-03 09:49:59,248]:DEBUG:     Available tags: 
+[2023-01-03 09:49:59,248]:DEBUG:   Preprocess done
+[2023-01-03 09:49:59,248]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:49:59,248]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:49:59,248]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:49:59,248]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:49:59,248]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:49:59,248]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:49:59,249]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:49:59,249]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:50:59,565]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:50:59,565]:DEBUG: Version: 2.5.1
+[2023-01-03 09:50:59,565]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:50:59,566]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:50:59,566]:DEBUG:   Remove invalid tags
+[2023-01-03 09:50:59,566]:DEBUG:     Available tags: 
+[2023-01-03 09:50:59,566]:DEBUG:   Remove invalid tags
+[2023-01-03 09:50:59,566]:DEBUG:     Available tags: 
+[2023-01-03 09:50:59,566]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:50:59,566]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:50:59,566]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:50:59,566]:DEBUG:     path: output3/000000
+[2023-01-03 09:50:59,566]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:50:59,566]:DEBUG:   Remove invalid tags
+[2023-01-03 09:50:59,567]:DEBUG:     Available tags: 
+[2023-01-03 09:50:59,567]:DEBUG:   Preprocess done
+[2023-01-03 09:50:59,567]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:50:59,567]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:50:59,567]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:50:59,567]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:50:59,567]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:50:59,567]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:50:59,567]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:50:59,568]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:51:59,887]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:51:59,887]:DEBUG: Version: 2.5.1
+[2023-01-03 09:51:59,887]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:51:59,888]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:51:59,888]:DEBUG:   Remove invalid tags
+[2023-01-03 09:51:59,888]:DEBUG:     Available tags: 
+[2023-01-03 09:51:59,888]:DEBUG:   Remove invalid tags
+[2023-01-03 09:51:59,888]:DEBUG:     Available tags: 
+[2023-01-03 09:51:59,888]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:51:59,888]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:51:59,888]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:51:59,888]:DEBUG:     path: output3/000000
+[2023-01-03 09:51:59,888]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:51:59,888]:DEBUG:   Remove invalid tags
+[2023-01-03 09:51:59,888]:DEBUG:     Available tags: 
+[2023-01-03 09:51:59,888]:DEBUG:   Preprocess done
+[2023-01-03 09:51:59,888]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:51:59,889]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:51:59,889]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:51:59,889]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:51:59,889]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:51:59,889]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:51:59,889]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:51:59,889]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:53:00,205]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:53:00,205]:DEBUG: Version: 2.5.1
+[2023-01-03 09:53:00,205]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:53:00,206]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:53:00,206]:DEBUG:   Remove invalid tags
+[2023-01-03 09:53:00,206]:DEBUG:     Available tags: 
+[2023-01-03 09:53:00,206]:DEBUG:   Remove invalid tags
+[2023-01-03 09:53:00,206]:DEBUG:     Available tags: 
+[2023-01-03 09:53:00,206]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:53:00,206]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:53:00,206]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:53:00,206]:DEBUG:     path: output3/000000
+[2023-01-03 09:53:00,206]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:53:00,206]:DEBUG:   Remove invalid tags
+[2023-01-03 09:53:00,207]:DEBUG:     Available tags: 
+[2023-01-03 09:53:00,207]:DEBUG:   Preprocess done
+[2023-01-03 09:53:00,207]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:53:00,207]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:53:00,207]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:53:00,207]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:53:00,207]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:53:00,207]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:53:00,207]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:53:00,208]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:54:00,523]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:54:00,523]:DEBUG: Version: 2.5.1
+[2023-01-03 09:54:00,523]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:54:00,524]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:54:00,524]:DEBUG:   Remove invalid tags
+[2023-01-03 09:54:00,524]:DEBUG:     Available tags: 
+[2023-01-03 09:54:00,524]:DEBUG:   Remove invalid tags
+[2023-01-03 09:54:00,524]:DEBUG:     Available tags: 
+[2023-01-03 09:54:00,524]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:54:00,524]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:54:00,524]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:54:00,524]:DEBUG:     path: output3/000000
+[2023-01-03 09:54:00,524]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:54:00,524]:DEBUG:   Remove invalid tags
+[2023-01-03 09:54:00,524]:DEBUG:     Available tags: 
+[2023-01-03 09:54:00,524]:DEBUG:   Preprocess done
+[2023-01-03 09:54:00,524]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:54:00,524]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:54:00,525]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:54:00,525]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:54:00,525]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:54:00,525]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:54:00,525]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:54:00,525]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:55:00,841]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:55:00,841]:DEBUG: Version: 2.5.1
+[2023-01-03 09:55:00,841]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:55:00,841]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:55:00,841]:DEBUG:   Remove invalid tags
+[2023-01-03 09:55:00,841]:DEBUG:     Available tags: 
+[2023-01-03 09:55:00,842]:DEBUG:   Remove invalid tags
+[2023-01-03 09:55:00,842]:DEBUG:     Available tags: 
+[2023-01-03 09:55:00,842]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:55:00,842]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:55:00,842]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:55:00,842]:DEBUG:     path: output3/000000
+[2023-01-03 09:55:00,842]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:55:00,842]:DEBUG:   Remove invalid tags
+[2023-01-03 09:55:00,842]:DEBUG:     Available tags: 
+[2023-01-03 09:55:00,842]:DEBUG:   Preprocess done
+[2023-01-03 09:55:00,842]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:55:00,842]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:55:00,842]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:55:00,843]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:55:00,843]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:55:00,843]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:55:00,843]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:55:00,843]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:56:01,164]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:56:01,164]:DEBUG: Version: 2.5.1
+[2023-01-03 09:56:01,164]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:56:01,165]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:56:01,165]:DEBUG:   Remove invalid tags
+[2023-01-03 09:56:01,165]:DEBUG:     Available tags: 
+[2023-01-03 09:56:01,165]:DEBUG:   Remove invalid tags
+[2023-01-03 09:56:01,165]:DEBUG:     Available tags: 
+[2023-01-03 09:56:01,165]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:56:01,165]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:56:01,165]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:56:01,165]:DEBUG:     path: output3/000000
+[2023-01-03 09:56:01,166]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:56:01,166]:DEBUG:   Remove invalid tags
+[2023-01-03 09:56:01,166]:DEBUG:     Available tags: 
+[2023-01-03 09:56:01,166]:DEBUG:   Preprocess done
+[2023-01-03 09:56:01,166]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:56:01,166]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:56:01,166]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:56:01,166]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:56:01,166]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:56:01,166]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:56:01,167]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:56:01,167]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:57:01,492]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:57:01,492]:DEBUG: Version: 2.5.1
+[2023-01-03 09:57:01,492]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:57:01,493]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:57:01,493]:DEBUG:   Remove invalid tags
+[2023-01-03 09:57:01,493]:DEBUG:     Available tags: 
+[2023-01-03 09:57:01,493]:DEBUG:   Remove invalid tags
+[2023-01-03 09:57:01,493]:DEBUG:     Available tags: 
+[2023-01-03 09:57:01,493]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:57:01,493]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:57:01,493]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:57:01,493]:DEBUG:     path: output3/000000
+[2023-01-03 09:57:01,493]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:57:01,493]:DEBUG:   Remove invalid tags
+[2023-01-03 09:57:01,493]:DEBUG:     Available tags: 
+[2023-01-03 09:57:01,493]:DEBUG:   Preprocess done
+[2023-01-03 09:57:01,493]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:57:01,494]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:57:01,494]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:57:01,494]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:57:01,494]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:57:01,494]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:57:01,494]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:57:01,494]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:58:01,814]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:58:01,814]:DEBUG: Version: 2.5.1
+[2023-01-03 09:58:01,814]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:58:01,815]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:58:01,815]:DEBUG:   Remove invalid tags
+[2023-01-03 09:58:01,815]:DEBUG:     Available tags: 
+[2023-01-03 09:58:01,815]:DEBUG:   Remove invalid tags
+[2023-01-03 09:58:01,815]:DEBUG:     Available tags: 
+[2023-01-03 09:58:01,815]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:58:01,815]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:58:01,817]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:58:01,817]:DEBUG:     path: output3/000000
+[2023-01-03 09:58:01,817]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:58:01,818]:DEBUG:   Remove invalid tags
+[2023-01-03 09:58:01,818]:DEBUG:     Available tags: 
+[2023-01-03 09:58:01,818]:DEBUG:   Preprocess done
+[2023-01-03 09:58:01,818]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:58:01,818]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:58:01,818]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:58:01,818]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:58:01,819]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:58:01,819]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:58:01,819]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:58:01,819]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 09:59:02,135]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 09:59:02,136]:DEBUG: Version: 2.5.1
+[2023-01-03 09:59:02,136]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 09:59:02,136]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 09:59:02,136]:DEBUG:   Remove invalid tags
+[2023-01-03 09:59:02,136]:DEBUG:     Available tags: 
+[2023-01-03 09:59:02,137]:DEBUG:   Remove invalid tags
+[2023-01-03 09:59:02,137]:DEBUG:     Available tags: 
+[2023-01-03 09:59:02,137]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 09:59:02,137]:DEBUG:   Preprocess xml tree
+[2023-01-03 09:59:02,137]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 09:59:02,137]:DEBUG:     path: output3/000000
+[2023-01-03 09:59:02,137]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 09:59:02,137]:DEBUG:   Remove invalid tags
+[2023-01-03 09:59:02,137]:DEBUG:     Available tags: 
+[2023-01-03 09:59:02,137]:DEBUG:   Preprocess done
+[2023-01-03 09:59:02,137]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 09:59:02,137]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 09:59:02,137]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 09:59:02,138]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 09:59:02,138]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 09:59:02,138]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 09:59:02,138]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 09:59:02,138]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:00:02,563]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:00:02,563]:DEBUG: Version: 2.5.1
+[2023-01-03 10:00:02,563]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:00:02,564]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:00:02,564]:DEBUG:   Remove invalid tags
+[2023-01-03 10:00:02,564]:DEBUG:     Available tags: 
+[2023-01-03 10:00:02,564]:DEBUG:   Remove invalid tags
+[2023-01-03 10:00:02,564]:DEBUG:     Available tags: 
+[2023-01-03 10:00:02,565]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:00:02,565]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:00:02,565]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:00:02,565]:DEBUG:     path: output3/000000
+[2023-01-03 10:00:02,565]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:00:02,565]:DEBUG:   Remove invalid tags
+[2023-01-03 10:00:02,565]:DEBUG:     Available tags: 
+[2023-01-03 10:00:02,565]:DEBUG:   Preprocess done
+[2023-01-03 10:00:02,565]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:00:02,565]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:00:02,565]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:00:02,565]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:00:02,565]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:00:02,566]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:00:02,566]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:00:02,566]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:01:02,877]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:01:02,877]:DEBUG: Version: 2.5.1
+[2023-01-03 10:01:02,877]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:01:02,878]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:01:02,878]:DEBUG:   Remove invalid tags
+[2023-01-03 10:01:02,878]:DEBUG:     Available tags: 
+[2023-01-03 10:01:02,878]:DEBUG:   Remove invalid tags
+[2023-01-03 10:01:02,878]:DEBUG:     Available tags: 
+[2023-01-03 10:01:02,878]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:01:02,878]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:01:02,878]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:01:02,878]:DEBUG:     path: output3/000000
+[2023-01-03 10:01:02,878]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:01:02,878]:DEBUG:   Remove invalid tags
+[2023-01-03 10:01:02,878]:DEBUG:     Available tags: 
+[2023-01-03 10:01:02,878]:DEBUG:   Preprocess done
+[2023-01-03 10:01:02,878]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:01:02,878]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:01:02,879]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:01:02,879]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:01:02,879]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:01:02,879]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:01:02,879]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:01:02,879]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:02:03,194]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:02:03,194]:DEBUG: Version: 2.5.1
+[2023-01-03 10:02:03,194]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:02:03,195]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:02:03,195]:DEBUG:   Remove invalid tags
+[2023-01-03 10:02:03,195]:DEBUG:     Available tags: 
+[2023-01-03 10:02:03,195]:DEBUG:   Remove invalid tags
+[2023-01-03 10:02:03,195]:DEBUG:     Available tags: 
+[2023-01-03 10:02:03,196]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:02:03,196]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:02:03,196]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:02:03,196]:DEBUG:     path: output3/000000
+[2023-01-03 10:02:03,196]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:02:03,196]:DEBUG:   Remove invalid tags
+[2023-01-03 10:02:03,196]:DEBUG:     Available tags: 
+[2023-01-03 10:02:03,196]:DEBUG:   Preprocess done
+[2023-01-03 10:02:03,196]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:02:03,196]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:02:03,196]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:02:03,196]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:02:03,196]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:02:03,197]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:02:03,197]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:02:03,197]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:03:03,511]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:03:03,511]:DEBUG: Version: 2.5.1
+[2023-01-03 10:03:03,511]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:03:03,511]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:03:03,512]:DEBUG:   Remove invalid tags
+[2023-01-03 10:03:03,512]:DEBUG:     Available tags: 
+[2023-01-03 10:03:03,512]:DEBUG:   Remove invalid tags
+[2023-01-03 10:03:03,512]:DEBUG:     Available tags: 
+[2023-01-03 10:03:03,512]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:03:03,512]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:03:03,512]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:03:03,512]:DEBUG:     path: output3/000000
+[2023-01-03 10:03:03,512]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:03:03,512]:DEBUG:   Remove invalid tags
+[2023-01-03 10:03:03,512]:DEBUG:     Available tags: 
+[2023-01-03 10:03:03,512]:DEBUG:   Preprocess done
+[2023-01-03 10:03:03,512]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:03:03,512]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:03:03,513]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:03:03,513]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:03:03,513]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:03:03,513]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:03:03,513]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:03:03,513]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:04:03,845]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:04:03,845]:DEBUG: Version: 2.5.1
+[2023-01-03 10:04:03,845]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:04:03,846]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:04:03,846]:DEBUG:   Remove invalid tags
+[2023-01-03 10:04:03,846]:DEBUG:     Available tags: 
+[2023-01-03 10:04:03,846]:DEBUG:   Remove invalid tags
+[2023-01-03 10:04:03,846]:DEBUG:     Available tags: 
+[2023-01-03 10:04:03,846]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:04:03,846]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:04:03,846]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:04:03,846]:DEBUG:     path: output3/000000
+[2023-01-03 10:04:03,846]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:04:03,846]:DEBUG:   Remove invalid tags
+[2023-01-03 10:04:03,846]:DEBUG:     Available tags: 
+[2023-01-03 10:04:03,847]:DEBUG:   Preprocess done
+[2023-01-03 10:04:03,847]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:04:03,847]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:04:03,847]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:04:03,847]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:04:03,847]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:04:03,847]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:04:03,847]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:04:03,848]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:05:04,167]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:05:04,167]:DEBUG: Version: 2.5.1
+[2023-01-03 10:05:04,167]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:05:04,168]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:05:04,168]:DEBUG:   Remove invalid tags
+[2023-01-03 10:05:04,168]:DEBUG:     Available tags: 
+[2023-01-03 10:05:04,168]:DEBUG:   Remove invalid tags
+[2023-01-03 10:05:04,168]:DEBUG:     Available tags: 
+[2023-01-03 10:05:04,168]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:05:04,168]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:05:04,168]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:05:04,168]:DEBUG:     path: output3/000000
+[2023-01-03 10:05:04,168]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:05:04,168]:DEBUG:   Remove invalid tags
+[2023-01-03 10:05:04,168]:DEBUG:     Available tags: 
+[2023-01-03 10:05:04,168]:DEBUG:   Preprocess done
+[2023-01-03 10:05:04,168]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:05:04,168]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:05:04,169]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:05:04,169]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:05:04,169]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:05:04,169]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:05:04,169]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:05:04,169]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:06:04,553]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:06:04,553]:DEBUG: Version: 2.5.1
+[2023-01-03 10:06:04,553]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:06:04,554]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:06:04,554]:DEBUG:   Remove invalid tags
+[2023-01-03 10:06:04,554]:DEBUG:     Available tags: 
+[2023-01-03 10:06:04,554]:DEBUG:   Remove invalid tags
+[2023-01-03 10:06:04,554]:DEBUG:     Available tags: 
+[2023-01-03 10:06:04,554]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:06:04,554]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:06:04,554]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:06:04,554]:DEBUG:     path: output3/000000
+[2023-01-03 10:06:04,555]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:06:04,555]:DEBUG:   Remove invalid tags
+[2023-01-03 10:06:04,555]:DEBUG:     Available tags: 
+[2023-01-03 10:06:04,555]:DEBUG:   Preprocess done
+[2023-01-03 10:06:04,555]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:06:04,555]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:06:04,555]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:06:04,555]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:06:04,555]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:06:04,555]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:06:04,555]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:06:04,556]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:07:04,879]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:07:04,879]:DEBUG: Version: 2.5.1
+[2023-01-03 10:07:04,879]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:07:04,880]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:07:04,880]:DEBUG:   Remove invalid tags
+[2023-01-03 10:07:04,880]:DEBUG:     Available tags: 
+[2023-01-03 10:07:04,880]:DEBUG:   Remove invalid tags
+[2023-01-03 10:07:04,880]:DEBUG:     Available tags: 
+[2023-01-03 10:07:04,880]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:07:04,880]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:07:04,880]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:07:04,880]:DEBUG:     path: output3/000000
+[2023-01-03 10:07:04,881]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:07:04,881]:DEBUG:   Remove invalid tags
+[2023-01-03 10:07:04,881]:DEBUG:     Available tags: 
+[2023-01-03 10:07:04,881]:DEBUG:   Preprocess done
+[2023-01-03 10:07:04,881]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:07:04,881]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:07:04,881]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:07:04,881]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:07:04,881]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:07:04,881]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:07:04,881]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:07:04,882]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:08:05,201]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:08:05,201]:DEBUG: Version: 2.5.1
+[2023-01-03 10:08:05,201]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:08:05,202]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:08:05,202]:DEBUG:   Remove invalid tags
+[2023-01-03 10:08:05,202]:DEBUG:     Available tags: 
+[2023-01-03 10:08:05,202]:DEBUG:   Remove invalid tags
+[2023-01-03 10:08:05,202]:DEBUG:     Available tags: 
+[2023-01-03 10:08:05,202]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:08:05,202]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:08:05,202]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:08:05,202]:DEBUG:     path: output3/000000
+[2023-01-03 10:08:05,205]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:08:05,205]:DEBUG:   Remove invalid tags
+[2023-01-03 10:08:05,205]:DEBUG:     Available tags: 
+[2023-01-03 10:08:05,205]:DEBUG:   Preprocess done
+[2023-01-03 10:08:05,205]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:08:05,205]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:08:05,206]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:08:05,206]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:08:05,206]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:08:05,206]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:08:05,206]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:08:05,207]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:09:05,522]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:09:05,522]:DEBUG: Version: 2.5.1
+[2023-01-03 10:09:05,522]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:09:05,523]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:09:05,523]:DEBUG:   Remove invalid tags
+[2023-01-03 10:09:05,523]:DEBUG:     Available tags: 
+[2023-01-03 10:09:05,523]:DEBUG:   Remove invalid tags
+[2023-01-03 10:09:05,523]:DEBUG:     Available tags: 
+[2023-01-03 10:09:05,523]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:09:05,523]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:09:05,523]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:09:05,523]:DEBUG:     path: output3/000000
+[2023-01-03 10:09:05,523]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:09:05,523]:DEBUG:   Remove invalid tags
+[2023-01-03 10:09:05,523]:DEBUG:     Available tags: 
+[2023-01-03 10:09:05,523]:DEBUG:   Preprocess done
+[2023-01-03 10:09:05,523]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:09:05,524]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:09:05,524]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:09:05,524]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:09:05,524]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:09:05,524]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:09:05,524]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:09:05,524]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:10:05,844]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:10:05,844]:DEBUG: Version: 2.5.1
+[2023-01-03 10:10:05,844]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:10:05,845]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:10:05,845]:DEBUG:   Remove invalid tags
+[2023-01-03 10:10:05,845]:DEBUG:     Available tags: 
+[2023-01-03 10:10:05,845]:DEBUG:   Remove invalid tags
+[2023-01-03 10:10:05,845]:DEBUG:     Available tags: 
+[2023-01-03 10:10:05,845]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:10:05,845]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:10:05,845]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:10:05,845]:DEBUG:     path: output3/000000
+[2023-01-03 10:10:05,846]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:10:05,846]:DEBUG:   Remove invalid tags
+[2023-01-03 10:10:05,846]:DEBUG:     Available tags: 
+[2023-01-03 10:10:05,846]:DEBUG:   Preprocess done
+[2023-01-03 10:10:05,846]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:10:05,846]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:10:05,846]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:10:05,846]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:10:05,846]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:10:05,846]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:10:05,846]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:10:05,847]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:11:06,162]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:11:06,162]:DEBUG: Version: 2.5.1
+[2023-01-03 10:11:06,163]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:11:06,163]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:11:06,163]:DEBUG:   Remove invalid tags
+[2023-01-03 10:11:06,163]:DEBUG:     Available tags: 
+[2023-01-03 10:11:06,163]:DEBUG:   Remove invalid tags
+[2023-01-03 10:11:06,163]:DEBUG:     Available tags: 
+[2023-01-03 10:11:06,164]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:11:06,164]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:11:06,164]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:11:06,164]:DEBUG:     path: output3/000000
+[2023-01-03 10:11:06,164]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:11:06,164]:DEBUG:   Remove invalid tags
+[2023-01-03 10:11:06,164]:DEBUG:     Available tags: 
+[2023-01-03 10:11:06,164]:DEBUG:   Preprocess done
+[2023-01-03 10:11:06,164]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:11:06,164]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:11:06,164]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:11:06,164]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:11:06,164]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:11:06,165]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:11:06,165]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:11:06,165]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:12:06,479]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:12:06,479]:DEBUG: Version: 2.5.1
+[2023-01-03 10:12:06,479]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:12:06,480]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:12:06,480]:DEBUG:   Remove invalid tags
+[2023-01-03 10:12:06,480]:DEBUG:     Available tags: 
+[2023-01-03 10:12:06,480]:DEBUG:   Remove invalid tags
+[2023-01-03 10:12:06,480]:DEBUG:     Available tags: 
+[2023-01-03 10:12:06,480]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:12:06,480]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:12:06,480]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:12:06,480]:DEBUG:     path: output3/000000
+[2023-01-03 10:12:06,480]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:12:06,480]:DEBUG:   Remove invalid tags
+[2023-01-03 10:12:06,480]:DEBUG:     Available tags: 
+[2023-01-03 10:12:06,481]:DEBUG:   Preprocess done
+[2023-01-03 10:12:06,481]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:12:06,481]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:12:06,481]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:12:06,481]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:12:06,481]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:12:06,481]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:12:06,481]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:12:06,481]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:13:06,825]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:13:06,826]:DEBUG: Version: 2.5.1
+[2023-01-03 10:13:06,826]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:13:06,826]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:13:06,826]:DEBUG:   Remove invalid tags
+[2023-01-03 10:13:06,826]:DEBUG:     Available tags: 
+[2023-01-03 10:13:06,827]:DEBUG:   Remove invalid tags
+[2023-01-03 10:13:06,827]:DEBUG:     Available tags: 
+[2023-01-03 10:13:06,827]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:13:06,827]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:13:06,827]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:13:06,827]:DEBUG:     path: output3/000000
+[2023-01-03 10:13:06,827]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:13:06,827]:DEBUG:   Remove invalid tags
+[2023-01-03 10:13:06,827]:DEBUG:     Available tags: 
+[2023-01-03 10:13:06,827]:DEBUG:   Preprocess done
+[2023-01-03 10:13:06,827]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:13:06,827]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:13:06,828]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:13:06,828]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:13:06,828]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:13:06,828]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:13:06,828]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:13:06,828]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:14:07,142]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:14:07,142]:DEBUG: Version: 2.5.1
+[2023-01-03 10:14:07,142]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:14:07,143]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:14:07,143]:DEBUG:   Remove invalid tags
+[2023-01-03 10:14:07,143]:DEBUG:     Available tags: 
+[2023-01-03 10:14:07,143]:DEBUG:   Remove invalid tags
+[2023-01-03 10:14:07,143]:DEBUG:     Available tags: 
+[2023-01-03 10:14:07,143]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:14:07,143]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:14:07,143]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:14:07,143]:DEBUG:     path: output3/000000
+[2023-01-03 10:14:07,143]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:14:07,143]:DEBUG:   Remove invalid tags
+[2023-01-03 10:14:07,143]:DEBUG:     Available tags: 
+[2023-01-03 10:14:07,143]:DEBUG:   Preprocess done
+[2023-01-03 10:14:07,143]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:14:07,144]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:14:07,144]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:14:07,144]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:14:07,144]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:14:07,144]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:14:07,144]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:14:07,144]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:15:07,471]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:15:07,471]:DEBUG: Version: 2.5.1
+[2023-01-03 10:15:07,471]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:15:07,472]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:15:07,472]:DEBUG:   Remove invalid tags
+[2023-01-03 10:15:07,472]:DEBUG:     Available tags: 
+[2023-01-03 10:15:07,472]:DEBUG:   Remove invalid tags
+[2023-01-03 10:15:07,472]:DEBUG:     Available tags: 
+[2023-01-03 10:15:07,473]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:15:07,473]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:15:07,473]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:15:07,473]:DEBUG:     path: output3/000000
+[2023-01-03 10:15:07,473]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:15:07,473]:DEBUG:   Remove invalid tags
+[2023-01-03 10:15:07,473]:DEBUG:     Available tags: 
+[2023-01-03 10:15:07,473]:DEBUG:   Preprocess done
+[2023-01-03 10:15:07,473]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:15:07,473]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:15:07,474]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:15:07,474]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:15:07,474]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:15:07,474]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:15:07,474]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:15:07,474]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:16:07,792]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:16:07,792]:DEBUG: Version: 2.5.1
+[2023-01-03 10:16:07,792]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:16:07,793]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:16:07,793]:DEBUG:   Remove invalid tags
+[2023-01-03 10:16:07,793]:DEBUG:     Available tags: 
+[2023-01-03 10:16:07,793]:DEBUG:   Remove invalid tags
+[2023-01-03 10:16:07,793]:DEBUG:     Available tags: 
+[2023-01-03 10:16:07,793]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:16:07,793]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:16:07,793]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:16:07,794]:DEBUG:     path: output3/000000
+[2023-01-03 10:16:07,794]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:16:07,794]:DEBUG:   Remove invalid tags
+[2023-01-03 10:16:07,794]:DEBUG:     Available tags: 
+[2023-01-03 10:16:07,794]:DEBUG:   Preprocess done
+[2023-01-03 10:16:07,794]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:16:07,794]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:16:07,794]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:16:07,794]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:16:07,794]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:16:07,794]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:16:07,795]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:16:07,795]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:17:08,110]:DEBUG: Command: jube continue output3 --id 0 --hide-animation
+[2023-01-03 10:17:08,110]:DEBUG: Version: 2.5.1
+[2023-01-03 10:17:08,110]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:17:08,111]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:17:08,111]:DEBUG:   Remove invalid tags
+[2023-01-03 10:17:08,111]:DEBUG:     Available tags: 
+[2023-01-03 10:17:08,111]:DEBUG:   Remove invalid tags
+[2023-01-03 10:17:08,111]:DEBUG:     Available tags: 
+[2023-01-03 10:17:08,111]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:17:08,111]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:17:08,111]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:17:08,111]:DEBUG:     path: output3/000000
+[2023-01-03 10:17:08,111]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:17:08,111]:DEBUG:   Remove invalid tags
+[2023-01-03 10:17:08,111]:DEBUG:     Available tags: 
+[2023-01-03 10:17:08,111]:DEBUG:   Preprocess done
+[2023-01-03 10:17:08,112]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:17:08,112]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:17:08,112]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:17:08,112]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:17:08,112]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:17:08,112]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:17:08,112]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:17:08,112]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:17:59,263]:DEBUG: Command: jube analyse output3 --id 0
+[2023-01-03 10:17:59,264]:DEBUG: Version: 2.5.1
+[2023-01-03 10:17:59,264]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:17:59,264]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:17:59,264]:DEBUG:   Remove invalid tags
+[2023-01-03 10:17:59,264]:DEBUG:     Available tags: 
+[2023-01-03 10:17:59,264]:DEBUG:   Remove invalid tags
+[2023-01-03 10:17:59,265]:DEBUG:     Available tags: 
+[2023-01-03 10:17:59,265]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:17:59,265]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:17:59,265]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:17:59,265]:DEBUG:     path: output3/000000
+[2023-01-03 10:17:59,265]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:17:59,265]:DEBUG:   Remove invalid tags
+[2023-01-03 10:17:59,265]:DEBUG:     Available tags: 
+[2023-01-03 10:17:59,267]:DEBUG:   Preprocess done
+[2023-01-03 10:17:59,267]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:17:59,267]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:17:59,268]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:17:59,268]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:17:59,268]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:17:59,268]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:17:59,268]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:17:59,269]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:18:01,587]:DEBUG: Command: jube result output3 --id 0
+[2023-01-03 10:18:01,587]:DEBUG: Version: 2.5.1
+[2023-01-03 10:18:01,587]:DEBUG: Parsing output3/000000/configuration.xml
+[2023-01-03 10:18:01,588]:DEBUG:   --> Preprocess run 1 <--
+[2023-01-03 10:18:01,588]:DEBUG:   Remove invalid tags
+[2023-01-03 10:18:01,588]:DEBUG:     Available tags: 
+[2023-01-03 10:18:01,588]:DEBUG:   Remove invalid tags
+[2023-01-03 10:18:01,588]:DEBUG:     Available tags: 
+[2023-01-03 10:18:01,588]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2023-01-03 10:18:01,588]:DEBUG:   Preprocess xml tree
+[2023-01-03 10:18:01,588]:DEBUG:     path: /p/software/jurecadc/stages/2022/software/JUBE/2.5.1/share/jube/platform/slurm
+[2023-01-03 10:18:01,588]:DEBUG:     path: output3/000000
+[2023-01-03 10:18:01,588]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2023-01-03 10:18:01,588]:DEBUG:   Remove invalid tags
+[2023-01-03 10:18:01,588]:DEBUG:     Available tags: 
+[2023-01-03 10:18:01,588]:DEBUG:   Preprocess done
+[2023-01-03 10:18:01,589]:DEBUG:   Preprocess benchmark xml tree
+[2023-01-03 10:18:01,589]:DEBUG:   Parsing <parameterset name="param_set">
+[2023-01-03 10:18:01,589]:DEBUG:   Parsing <substituteset name="substitute">
+[2023-01-03 10:18:01,589]:DEBUG:   Parsing <fileset name="files">
+[2023-01-03 10:18:01,589]:DEBUG:   Parsing <patternset name="pattern">
+[2023-01-03 10:18:01,589]:DEBUG:   Parsing <step name="sub_step">
+[2023-01-03 10:18:01,589]:DEBUG:   Parsing <analyser name="analyse">
+[2023-01-03 10:18:01,589]:DEBUG: Parsing output3/000000/workpackages.xml
+[2023-01-03 10:18:01,616]:DEBUG: Parsing output3/000000/analyse.xml
