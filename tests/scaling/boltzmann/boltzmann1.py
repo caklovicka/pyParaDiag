@@ -12,7 +12,7 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 # prob.time_intervals
 
 import sys
-sys.path.append('../../..') # for core
+sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 
 from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
@@ -21,7 +21,7 @@ prob = Boltzmann()
 # choosing a number of points
 prob.spatial_points = [384, 72, 36, 36]
 prob.time_points = 1
-prob.knudsen = 1e-4
+prob.knudsen = 1e-5
 
 # choosing a time domain
 prob.T_start = 0

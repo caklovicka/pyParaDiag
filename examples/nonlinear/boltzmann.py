@@ -13,7 +13,7 @@ ps = kt.PSpace1D(0.0, 1.0, 100, 1)
 vs = kt.VSpace3D(-8, 8, 48, -8, 8, 28, -8, 8, 28)
 
 # %%
-knudsen = 1e-2
+knudsen = 1e-5
 muref = kt.ref_vhs_vis(knudsen, 1.0, 0.5)
 fsm = kt.fsm_kernel(vs, muref, 5, 1.0)
 gas = kt.Gas(Kn=knudsen, K=0.0, fsm=fsm)
@@ -94,8 +94,8 @@ def step(f, df, Q, ps, vs, dt):
 
 
 # %%
-dt = 1e-4
-for iter in range(500):
+dt = 1e-3
+for iter in range(15):
     compute_df(df, f, ps, vs)
     compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
     step(f, df, Q, ps, vs, dt)
