@@ -43,6 +43,7 @@ prob.setup()
 prob.solve()
 prob.summary(details=False)
 
+'''
 f = open('exact3.txt', 'w')
 up = prob.u_loc[-prob.global_size_A:]
 for i in range(prob.global_size_A):
@@ -59,3 +60,4 @@ if prob.rank == prob.size - 1:
     f.close()
     diff = us - up
     print(np.linalg.norm(diff, np.inf))
+    '''

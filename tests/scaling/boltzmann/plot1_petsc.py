@@ -24,7 +24,7 @@ plt.semilogy(petsc_proc, seq_time / (2 ** np.array(petsc_proc)), 'X:', color='gr
 runs = [3, 4, 5]
 K = len(runs)
 runs = [3, 4, 5]
-mksz = 40
+mksz = 20
 col = sns.color_palette("bright", K)
 
 pint_petsc_proc = []
@@ -60,16 +60,17 @@ for k in range(K):
 
         # pint_petsc_iters[k].append('$' + str(int(table[i, 3])) + '$')
         rolling = 32 / (table[i, 0] / table[i, 1])
-        it = table[i, 3] / rolling
-        if float(int(it)) == it:
-            it = int(it)
+        it = round(table[i, 3] / rolling)
+        #if float(int(it)) == it:
+        #    it = int(it)
         pint_petsc_iters[k].append(it)
 
     for i in range(len(pint_petsc_iters[k])):
-        if int(pint_petsc_iters[k][i]) == pint_petsc_iters[k][i]:
-            msize = mksz // 2
-        else:
-            msize = mksz
+        #if int(pint_petsc_iters[k][i]) == pint_petsc_iters[k][i]:
+        #    msize = mksz // 2
+        #else:
+        #    msize = mksz
+        msize = mksz
         marker = '$' + str(pint_petsc_iters[k][i]) + '$'
         plt.semilogy(pint_petsc_proc[k][i], pint_petsc_time[k][i], color=col[k], markersize=msize, marker=marker)
 

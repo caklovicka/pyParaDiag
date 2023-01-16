@@ -33,15 +33,17 @@ for k in range(K):
         if table[i, 4] == 0 or table[i, 5] > 1e-3:
             continue
 
+        rolling = 64 / table[i, 1]
+
         if table[i, 0] == 0:
             imex_proc[k].append(np.log2(table[i, 1]))
             imex_time[k].append(table[i, 2])
-            imex_its[k].append('$' + str(int(table[i, 3])) + '$')
+            imex_its[k].append('$' + str(round(table[i, 3] / rolling)) + '$')
 
         elif table[i, 0] == 1:
             newton_proc[k].append(np.log2(table[i, 1]))
             newton_time[k].append(table[i, 2])
-            newton_its[k].append('$' + str(int(table[i, 3])) + '$')
+            newton_its[k].append('$' + str(round(table[i, 3] / rolling)) + '$')
 
     plt.semilogy(imex_proc[k], imex_time[k], ':', color=col[k])
     plt.semilogy(newton_proc[k], newton_time[k], '--', color=col[k])
@@ -57,6 +59,6 @@ for k in range(K):
 plt.legend(legend)
 plt.xlabel('cores')
 plt.ylabel('time[s]')
-plt.title('eps = 0.01')
+#plt.title('eps = 0.01')
 plt.xticks([0, 1, 2, 3, 4, 5, 6], [1, 2, 4, 8, 16, 32, 64])
 plt.show()

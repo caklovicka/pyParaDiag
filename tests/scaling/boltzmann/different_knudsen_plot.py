@@ -15,13 +15,13 @@ seq_time = table[0, 1]
 
 
 # PinT + PETSc
-runs = [[3, 4, 5], [1], [0]]
-output = [1, 2, 3]
-knudsen = [1e-2, 1e-1, 1e-4]
+runs = [[3], [1], [0], [0]]
+output = [1, 2, 3, 4]
+knudsen = [1e-2, 1e-1, 1e-4, 1e-5]
 
 mksz = 40
-col = sns.color_palette("bright", 3)
-linestyle = [':', '--', '-']
+col = sns.color_palette("bright", 4)
+linestyle = [':', '--', '-', (0, (1, 10))]
 lw = 2
 
 pint_petsc_proc = []
