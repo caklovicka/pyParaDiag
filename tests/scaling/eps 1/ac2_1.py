@@ -26,7 +26,7 @@ prob.T_end = 0.1
 
 prob.eps = 1
 prob.T_start = 0
-prob.proc_col = 1
+prob.proc_col = 2
 prob.solver = 'custom'
 prob.maxiter = 20
 prob.smaxiter = 500

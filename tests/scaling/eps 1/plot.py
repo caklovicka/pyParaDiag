@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-K = 2
-mksz = 20
+K = 3
+mksz = 15
 col = sns.color_palette("bright", 2 * K)
 
 legend = []
@@ -15,8 +15,9 @@ newton_time = []
 newton_its = []
 
 for k in range(K):
-    # beta | nproc | time | tot iters | convergence | diff
-    table = np.loadtxt('output{}/000000/result/result.dat'.format(k + 1), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8, 12, 13])
+    # beta | nproc | time | tot iters | convergence
+    print(k)
+    table = np.loadtxt('output{}/000000/result/result.dat'.format(k + 1), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8, 12])
 
     legend.append('imex ' + str(k + 1))
     legend.append('newton ' + str(k + 1))
@@ -30,18 +31,20 @@ for k in range(K):
 
     for i in range(table.shape[0]):
 
-        if table[i, 4] == 0 or table[i, 5] > 1e-3:
+        if table[i, 4] == 0:
             continue
+
+        rolling = 128 / table[i, 1]
 
         if table[i, 0] == 0:
             imex_proc[k].append(np.log2(table[i, 1]))
             imex_time[k].append(table[i, 2])
-            imex_its[k].append('$' + str(int(table[i, 3])) + '$')
+            imex_its[k].append('$' + str(round(table[i, 3] / rolling)) + '$')
 
         elif table[i, 0] == 1:
             newton_proc[k].append(np.log2(table[i, 1]))
             newton_time[k].append(table[i, 2])
-            newton_its[k].append('$' + str(int(table[i, 3])) + '$')
+            newton_its[k].append('$' + str(round(table[i, 3] / rolling)) + '$')
 
     plt.semilogy(imex_proc[k], imex_time[k], ':', color=col[k])
     plt.semilogy(newton_proc[k], newton_time[k], '--', color=col[k])
@@ -57,6 +60,6 @@ for k in range(K):
 plt.legend(legend)
 plt.xlabel('cores')
 plt.ylabel('time[s]')
-plt.title('eps = 1')
+#plt.title('eps = 1')
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], [1, 2, 4, 8, 16, 32, 64, 128])
 plt.show()

@@ -7,6 +7,8 @@ legend = []
 petsc_proc = []
 petsc_time = []
 custom_lines = []
+mksz = 20
+lw = 2
 
 # just PETSc
 # nproc | time
@@ -17,14 +19,14 @@ for i in range(table.shape[0]):
     petsc_proc.append(np.log2(table[i, 0]))
     petsc_time.append(table[i, 1])
 
-plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=10)
-plt.semilogy(petsc_proc, seq_time / (2 ** np.array(petsc_proc)), 'X:', color='gray', markersize=10)
+all_proc = petsc_proc + [7, 8, 9, 10, 11]
+plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=mksz // 2, linewidth=lw)
+plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray', markersize=mksz // 2, linewidth=lw)
 
 # PinT + PETSc
 runs = [3, 4, 5]
 K = len(runs)
 runs = [3, 4, 5]
-mksz = 20
 col = sns.color_palette("bright", K)
 
 pint_petsc_proc = []
@@ -33,7 +35,7 @@ pint_petsc_iters = []
 
 custom_lines.append(Line2D([0], [0], color='gray', linestyle='-'))
 custom_lines.append(Line2D([0], [0], color='gray', linestyle=':'))
-legend.append('just petsc')
+legend.append('petsc')
 legend.append('petsc ideal')
 
 for k in range(K):
@@ -60,22 +62,21 @@ for k in range(K):
 
         # pint_petsc_iters[k].append('$' + str(int(table[i, 3])) + '$')
         rolling = 32 / (table[i, 0] / table[i, 1])
-        it = round(table[i, 3] / rolling)
-        #if float(int(it)) == it:
-        #    it = int(it)
+        it = table[i, 3] / rolling
+        if float(int(it)) == it:
+            it = int(it)
         pint_petsc_iters[k].append(it)
 
     for i in range(len(pint_petsc_iters[k])):
-        #if int(pint_petsc_iters[k][i]) == pint_petsc_iters[k][i]:
-        #    msize = mksz // 2
-        #else:
-        #    msize = mksz
-        msize = mksz
+        if int(pint_petsc_iters[k][i]) == pint_petsc_iters[k][i]:
+            msize = mksz
+        else:
+            msize = mksz * 2
+        msize = mksz // 2
         marker = '$' + str(pint_petsc_iters[k][i]) + '$'
-        plt.semilogy(pint_petsc_proc[k][i], pint_petsc_time[k][i], color=col[k], markersize=msize, marker=marker)
+        plt.semilogy(pint_petsc_proc[k][i], pint_petsc_time[k][i], color=col[k], markersize=msize, marker='X')#marker)
 
-    plt.semilogy(pint_petsc_proc[k], pint_petsc_time[k], linestyle='--', color=col[k])
-    plt.semilogy(pint_petsc_proc[k], seq_time / (2 ** np.array(pint_petsc_proc[k])), 'X:', color=col[k], markersize=10)
+    plt.semilogy(pint_petsc_proc[k], pint_petsc_time[k], linestyle='--', color=col[k], linewidth=lw)
 
 
 plt.legend(custom_lines, legend)
@@ -84,6 +85,7 @@ print(legend)
 
 plt.xlabel('cores')
 plt.ylabel('time[s]')
-plt.title('scaling PETSc on Boltzmann (32 times steps, M=1)')
+#plt.title('scaling PETSc on Boltzmann (32 times steps, M=1)')
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048])
+plt.grid(True)
 plt.show()

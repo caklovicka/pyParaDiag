@@ -34,6 +34,7 @@ for k in range(K):
             continue
 
         rolling = 64 / table[i, 1]
+        #rolling = 1
 
         if table[i, 0] == 0:
             imex_proc[k].append(np.log2(table[i, 1]))
