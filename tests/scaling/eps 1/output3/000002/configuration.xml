@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube version="2.5.1">
+  <benchmark name="scaling test" file_path_ref="../.." outpath="..">
+    <comment>scaling for ac3_1, rolling * time_intervals = 128</comment>
+    <parameterset name="param_set" duplicate="replace">
+      <parameter name="i" type="int" separator="," duplicate="none" mode="text">0,1,2,3,4,5,6,7</parameter>
+      <parameter name="beta" type="int" separator="," duplicate="none" mode="text">0,1</parameter>
+      <parameter name="time_intervals" type="string" separator="," duplicate="none" mode="python">[1, 2, 4, 8, 16, 32, 64, 128][$i]</parameter>
+      <parameter name="rolling" type="string" separator="," duplicate="none" mode="python">[128, 64, 32, 16, 8, 4, 2, 1][$i]</parameter>
+      <parameter name="nproc" type="string" separator="," duplicate="none" mode="python">[ 3, 6, 12, 24, 48, 96, 192, 384][$i]</parameter>
+      <parameter name="nodes" type="string" separator="," duplicate="none" mode="python">[1, 1, 1, 1, 2, 4, 8, 16][$i]</parameter>
+      <parameter name="ntasks_per_node" type="string" separator="," duplicate="none" mode="python">[3, 6, 12, 24, 24, 24, 24, 24][$i]</parameter>
+    </parameterset>
+    <substituteset name="substitute">
+      <iofile in="ac3_1.tmpl" out="ac3_1.exe" out_mode="w"/>
+      <sub source="#beta#">$beta</sub>
+      <sub source="#rolling#">$rolling</sub>
+      <sub source="#time_intervals#">$time_intervals</sub>
+      <sub source="#nodes#">$nodes</sub>
+      <sub source="#ntasks_per_node#">$ntasks_per_node</sub>
+      <sub source="#nproc#">$nproc</sub>
+    </substituteset>
+    <fileset name="files">
+      <copy>ac3_1.py</copy>
+      <copy>ac3_1.tmpl</copy>
+    </fileset>
+    <patternset name="pattern">
+      <pattern name="tot_time" type="float" dotall="False" mode="pattern">algorithm time = $jube_pat_fp</pattern>
+      <pattern name="comm_time" type="float" dotall="False" mode="pattern">communication time = $jube_pat_fp</pattern>
+      <pattern name="max_iters" type="float" dotall="False" mode="pattern">max iterations of paradiag = $jube_pat_fp</pattern>
+      <pattern name="tot_iters" type="float" dotall="False" mode="pattern">total iterations of paradiag = $jube_pat_fp</pattern>
+      <pattern name="tol" type="float" dotall="False" mode="pattern">tol = $jube_pat_fp</pattern>
+      <pattern name="stol" type="float" dotall="False" mode="pattern">inner solver tol = $jube_pat_fp</pattern>
+      <pattern name="Nx" type="int" dotall="False" mode="pattern">no. of spatial points = \[$jube_pat_int</pattern>
+      <pattern name="convergence" type="int" dotall="False" mode="pattern">convergence = $jube_pat_int</pattern>
+      <pattern name="diff" type="float" dotall="False" mode="pattern">diff = $jube_pat_fp</pattern>
+    </patternset>
+    <step name="sub_step">
+      <use>param_set</use>
+      <use>files</use>
+      <use>substitute</use>
+      <do done_file="ready">sbatch -A cstma ac3_1.exe</do>
+    </step>
+    <analyser name="analyse" reduce="True">
+      <use>pattern</use>
+      <analyse step="sub_step">
+        <file>results.out</file>
+      </analyse>
+    </analyser>
+    <result>
+      <use>analyse</use>
+      <table name="result" style="pretty" separator="," transpose="False">
+        <column>beta</column>
+        <column>nproc</column>
+        <column>rolling</column>
+        <column>time_intervals</column>
+        <column>tot_time_avg</column>
+        <column>comm_time_avg</column>
+        <column>max_iters</column>
+        <column>tot_iters</column>
+        <column>Nx</column>
+        <column>stol</column>
+        <column>tol</column>
+        <column>convergence</column>
+        <column>diff</column>
+      </table>
+    </result>
+  </benchmark>
+</jube>
