@@ -621,12 +621,34 @@ class Helpers(Communicators):
         if self.size == 1:
             self.u0_loc = self.u_loc[-self.global_size_A:]
 
+        elif self.time_intervals == 1:
+
+            self.__fill_u_last__(fill_old=False)
+
+            # with spatial parallelization
+            if self.frac > 1:
+                if self.rank_subcol_alternating == self.size_subcol_alternating - 1:
+                    self.u0_loc = self.u_last_loc.copy()
+
+                time_beg = MPI.Wtime()
+                self.u0_loc = self.comm_subcol_alternating.bcast(self.u0_loc, root=self.size_subcol_alternating - 1)
+                self.communication_time += MPI.Wtime() - time_beg
+
+            # without spatial parallelization
+            else:
+                if self.rank_col == self.size_col - 1:
+                    self.u0_loc = self.u_last_loc.copy()
+
+                time_beg = MPI.Wtime()
+                self.u0_loc = self.comm_col.bcast(self.u0_loc, root=self.size_col - 1)
+                self.communication_time += MPI.Wtime() - time_beg
+
         else:
             self.__fill_u_last__(fill_old=False)
             self.__bcast_u_last_loc__()
+
             if self.rank_row == 0:
                 self.u0_loc = self.u_last_loc.copy()
-            self.comm_row.Barrier()
 
             time_beg = MPI.Wtime()
             self.u0_loc = self.comm_row.bcast(self.u0_loc, root=0)
