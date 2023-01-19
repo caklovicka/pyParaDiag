@@ -15,14 +15,16 @@ newton_proc = []
 newton_time = []
 newton_its = []
 
-legend.append('newton 2')
 legend.append('imex 2')
-legend.append('newton 2 + P')
-legend.append('imex 2 + P')
+legend.append('newton 2')
+legend.append('imex 2 + coll')
+legend.append('newton 2 + coll')
+
+run = [0, 2]
 
 for k in range(K):
     # beta | nproc | rolling | time | tot iters | convergence
-    table = np.loadtxt('output2/00000{}/result/result.dat'.format(k), delimiter='|', skiprows=3, usecols=[1, 2, 3, 5, 8, 12])
+    table = np.loadtxt('output2/00000{}/result/result.dat'.format(run[k]), delimiter='|', skiprows=3, usecols=[1, 2, 3, 5, 8, 12])
 
     imex_proc.append([])
     imex_time.append([])
@@ -63,5 +65,16 @@ plt.legend(legend)
 plt.xlabel('cores')
 plt.ylabel('time[s]')
 #plt.title('eps = 1')
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], [1, 2, 4, 8, 16, 32, 64, 128])
+
+xx = []
+yy = []
+for k in range(K):
+    xx += imex_proc[k]
+    xx += newton_proc[k]
+
+for x in xx:
+    yy.append(int(2 ** x))
+plt.xticks(xx, yy)
+
+
 plt.show()
