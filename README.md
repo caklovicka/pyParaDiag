@@ -92,6 +92,7 @@ prob.proc_row = 16
 ```
 mean that the number of cores for parallelization across time-steps is
 `16` , while `4` cores will handle parallelism across collocation nodes.
+The user can then run the code as `mpirun -np 64 python main.py`.
 Furthermore, lines 
 ```
 prob.time_intervals = 16
