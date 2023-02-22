@@ -5,7 +5,7 @@ import seaborn as sns
 
 K = 2
 mksz = 15
-col = sns.color_palette("bright", 2 * K)
+col = ['gray'] + sns.color_palette("bright", 2 * K)[1:]
 
 legend = []
 imex_proc = []
@@ -62,9 +62,10 @@ for k in range(K):
 
 
 plt.legend(legend)
-plt.xlabel('cores')
+plt.xlabel('total number of cores')
 plt.ylabel('time[s]')
 #plt.title('eps = 1')
+#plt.ylim([10, 10**4])
 
 xx = []
 yy = []
@@ -76,5 +77,6 @@ for x in xx:
     yy.append(int(2 ** x))
 plt.xticks(xx, yy)
 
-
+plt.grid('gray')
+plt.tight_layout()
 plt.show()

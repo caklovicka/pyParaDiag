@@ -58,8 +58,11 @@ for k in range(K):
 
 
 plt.legend(legend)
-plt.xlabel('cores')
+plt.xlabel('total number of cores')
 plt.ylabel('time[s]')
 #plt.title('eps = 1')
+#plt.ylim([10, 10**4])
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7], [1, 2, 4, 8, 16, 32, 64, 128])
+plt.grid('gray')
+plt.tight_layout()
 plt.show()
