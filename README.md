@@ -92,6 +92,7 @@ prob.proc_row = 16
 ```
 mean that the number of cores for parallelization across time-steps is
 `16` , while `4` cores will handle parallelism across collocation nodes.
+The user can then run the code as `mpirun -np 64 python main.py`.
 Furthermore, lines 
 ```
 prob.time_intervals = 16
@@ -156,7 +157,7 @@ if prob.rank >= prob.size - prob.size_subcol_seq:
 ```
 
 ### Optional runtime arguments
-Paralpha also has a set of runtime arguments, listed with `--help`:
+Paralpha also has a set of runtime arguments, listed with `python main.py --help`:
 ```
   -h, --help            show this help message and exit
   --T_start T_START     Default = 0
