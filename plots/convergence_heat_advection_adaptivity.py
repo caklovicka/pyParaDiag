@@ -183,6 +183,6 @@ plt.yticks([])
 plt.ylim([-14, 0])
 plt.xlim([0, 8])
 plt.title('Advection (real errors)', fontsize=tss)
-plt.xlabel('iteration')
+plt.xlabel('iteration', fontsize=tss)
 
 plt.show()

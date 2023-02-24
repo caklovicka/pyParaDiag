@@ -106,13 +106,16 @@ class Helpers(Communicators):
         # case with spatial parallelization
         if self.frac > 1:
             for k in range(self.time_points):
-                v += self.dt * self.Q[self.rank_subcol_alternating, k] * self.bpar(t_start + self.t[k] + shift * self.dt)
+                v += self.dt * self.Q[self.rank_subcol_alternating, k] * \
+                     self.bpar(t_start + self.t[k] + shift * self.dt)
 
         # case without spatial parallelization
         else:
             for i in range(self.Frac):
                 for k in range(self.time_points):
-                    v[i * self.global_size_A:(i+1)*self.global_size_A] += self.dt * self.Q[i + self.Frac * self.rank_col, k] * self.bpar(t_start + self.t[k] + shift * self.dt)
+                    v[i * self.global_size_A:(i+1)*self.global_size_A] +=\
+                        self.dt * self.Q[i + self.Frac * self.rank_col, k] \
+                        * self.bpar(t_start + self.t[k] + shift * self.dt)
         return v
 
     def __get_r__(self, v_loc):

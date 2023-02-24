@@ -5,7 +5,7 @@ import seaborn as sns
 
 K = 2
 mksz = 15
-col = col = ['gray'] + sns.color_palette("bright", 2 * K)[2:]
+col = ['gray'] + sns.color_palette("bright", 2 * K)[2:]
 
 legend = []
 imex_proc = []
