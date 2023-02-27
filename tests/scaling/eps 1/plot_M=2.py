@@ -51,7 +51,7 @@ for k in range(K):
             newton_its[k].append('$' + str(round(table[i, 4] / rolling)) + '$')
 
     plt.semilogy(imex_proc[k], imex_time[k], ':', color=col[k])
-    plt.semilogy(newton_proc[k], newton_time[k], '--', color=col[k])
+    plt.semilogy(newton_proc[k], newton_time[k], '-', color=col[k])
 
 for k in range(K):
     for i in range(len(imex_its[k])):

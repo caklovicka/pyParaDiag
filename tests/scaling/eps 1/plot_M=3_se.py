@@ -20,6 +20,10 @@ legend.append('newton 3')
 legend.append('imex 3 + coll')
 legend.append('newton 3 + coll')
 
+# missing sequential time for imex!
+imex_seq_time = []
+newton_seq_time = []
+
 run = [0, 2]
 
 for k in range(K):
@@ -39,44 +43,43 @@ for k in range(K):
             continue
 
         rolling = table[i, 2]
-        print(table[i, 1])
 
         if table[i, 0] == 0:
-            imex_proc[k].append(np.log2(table[i, 1]))
+            imex_proc[k].append(table[i, 1])
             imex_time[k].append(table[i, 3])
             imex_its[k].append('$' + str(round(table[i, 4] / rolling)) + '$')
 
         elif table[i, 0] == 1:
-            newton_proc[k].append(np.log2(table[i, 1]))
+            newton_proc[k].append(table[i, 1])
             newton_time[k].append(table[i, 3])
             newton_its[k].append('$' + str(round(table[i, 4] / rolling)) + '$')
 
-    plt.semilogy(imex_proc[k], imex_time[k], ':', color=col[k])
-    plt.semilogy(newton_proc[k], newton_time[k], '-', color=col[k])
 
+plt.figure(figsize=(10, 5))
+plt.subplot(121)
 for k in range(K):
-    for i in range(len(imex_its[k])):
-        plt.semilogy(imex_proc[k][i], imex_time[k][i], marker=imex_its[k][i], color=col[k], markersize=mksz)
-
-    for i in range(len(newton_its[k])):
-        plt.semilogy(newton_proc[k][i], newton_time[k][i], marker=newton_its[k][i], color=col[k], markersize=mksz)
-
+    print(imex_proc)
+    print(imex_seq_time)
+    print(imex_time)
+    plt.semilogx(imex_proc[k], imex_seq_time[k]/np.array(imex_time[k]), 'X:', color=col[k])
+    plt.semilogx(newton_proc[k], newton_seq_time[k]/np.array(newton_time[k]), 'X-', color=col[k])
 
 plt.legend(legend)
 plt.xlabel('total number of cores')
-plt.ylabel('time[s]')
-#plt.title('eps = 1')
-#plt.ylim([10, 10**4])
-
-xx = []
-yy = []
-for k in range(K):
-    xx += imex_proc[k]
-    xx += newton_proc[k]
-
-for x in xx:
-    yy.append(int(2 ** x))
-plt.xticks(xx, yy)
+plt.ylabel('speedup')
 plt.grid('gray')
+plt.xticks([1, 2, 4, 8, 16, 32, 64, 128], [1, 2, 4, 8, 16, 32, 64, 128])
+
+plt.subplot(122)
+for k in range(K):
+    print(imex_proc)
+    plt.semilogx(imex_proc[k], imex_seq_time[k] / (np.array(imex_time[k] * np.array(imex_proc[k]))), 'X:', color=col[k])
+    plt.semilogx(newton_proc[k], newton_seq_time[k] / (np.array(newton_time[k]) * np.array(newton_proc[k])), 'X-', color=col[k])
+
+plt.legend(legend)
+plt.xlabel('total number of cores')
+plt.ylabel('efficiency')
+plt.grid('gray')
+plt.xticks([1, 2, 4, 8, 16, 32, 64, 128], [1, 2, 4, 8, 16, 32, 64, 128])
 plt.tight_layout()
 plt.show()

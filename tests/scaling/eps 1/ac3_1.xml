@@ -4,15 +4,17 @@
     <comment>scaling for ac3_1, rolling * time_intervals = 128</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0,1,2,3,4,5,6,7</parameter>
-        <parameter name="beta" type="int">0,1</parameter>
+        <parameter name="i" type="int">0</parameter>
+        <parameter name="beta" type="int">0</parameter>
 
         <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64, 128][$i]</parameter>
         <parameter name="rolling" mode="python">[128, 64, 32, 16, 8, 4, 2, 1][$i]</parameter>
 
-        <parameter name="nproc" mode="python">[ 3, 6, 12, 24, 48, 96, 192, 384][$i]</parameter>
+        <!--<parameter name="nproc" mode="python">[ 3, 6, 12, 24, 48, 96, 192, 384][$i]</parameter>-->
+        <parameter name="nproc" mode="python">[1][$i]</parameter>
         <parameter name="nodes" mode="python">[1, 1, 1, 1, 2, 4, 8, 16][$i]</parameter>
-        <parameter name="ntasks_per_node" mode="python">[3, 6, 12, 24, 24, 24, 24, 24][$i]</parameter>
+        <!--<parameter name="ntasks_per_node" mode="python">[3, 6, 12, 24, 24, 24, 24, 24][$i]</parameter>-->
+        <parameter name="ntasks_per_node" mode="python">[1][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
