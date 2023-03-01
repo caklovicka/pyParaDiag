@@ -2,6 +2,7 @@
 # Julia backend
 from julia.api import Julia
 
+# %%
 jl = Julia(compiled_modules=False)
 from julia import KitBase as kt
 import numpy as np
@@ -52,13 +53,14 @@ f = np.zeros((100, 48, 28, 28))
 df = np.zeros((100, 48, 28, 28))
 Q = np.zeros((100, 48, 28, 28))
 for i in range(100):
-    f[i, :, :, :] = ff(ps.x[i+1], None)
+    f[i, :, :, :] = ff(ps.x[i + 1], None)
     w[i, :] = kt.moments_conserve(f[i, :, :, :], vs.u, vs.v, vs.w, vs.weights)
 
 # %%
 import copy
 
 w0 = copy.deepcopy(w)
+
 
 # %%
 def compute_df(df, f, ps, vs):
@@ -68,7 +70,6 @@ def compute_df(df, f, ps, vs):
                 df[i, j, :, :] = (f[i, j, :, :] - f[i - 1, j, :, :]) / ps.dx[i]
             else:
                 df[i, j, :, :] = (f[i + 1, j, :, :] - f[i, j, :, :]) / ps.dx[i]
-
     for j in range(1, vs.nu):
         if vs.u[j, 1, 1] > 0.0:
             df[0, j, :, :] = (f[0, j, :, :] - f[ps.nx - 1, j, :, :]) / ps.dx[0]
@@ -78,12 +79,20 @@ def compute_df(df, f, ps, vs):
             df[ps.nx - 1, j, :, :] = (f[0, j, :, :] - f[ps.nx - 1, j, :, :]) / ps.dx[ps.nx - 1]
 
 
-
 # %%
 def compute_Q(Q, f, ps, gas, phi, psi, chi, dt):
     # f = (x, u, v, w)
     for i in range(0, ps.nx):
         Q[i, :, :, :] = dt * kt.boltzmann_fft(f[i, :, :, :], gas.fsm.Kn, gas.fsm.nm, phi, psi, chi)
+
+
+def compute_Qsimple(Q, f, ps, vs, gas, muref, dt):
+    for i in range(0, ps.nx):
+        ww = kt.moments_conserve(f[i, :, :, :], vs.u, vs.v, vs.w, vs.weights)
+        prim = kt.conserve_prim(ww, gas.γ)
+        mm = kt.maxwellian(vs.u, vs.v, vs.w, prim)
+        tau = kt.vhs_collision_time(prim, muref, gas.ω)
+        Q[i, :, :, :] = dt * (mm - f[i, :, :, :]) / tau
 
 
 # %%
@@ -94,10 +103,11 @@ def step(f, df, Q, ps, vs, dt):
 
 
 # %%
-dt = 1e-3
+dt = 5e-5
 for iter in range(15):
     compute_df(df, f, ps, vs)
-    compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
+    # compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
+    compute_Qsimple(Q, f, ps, vs, gas, muref, dt)
     step(f, df, Q, ps, vs, dt)
     print(iter + 1)
 

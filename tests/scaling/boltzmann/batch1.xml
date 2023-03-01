@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
-    <benchmark name="PETSc-Euler scaling test" outpath="output4">
-    <comment>Boltzmann k = 1e-5, parallel in time, parallel in space (64/n)</comment>
+    <benchmark name="PETSc-Euler scaling test" outpath="output1">
+    <comment>Boltzmann k = 1e-2, parallel in time, NOT exit()parallel in space (PinT/n)</comment>
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0,1,2,3,4</parameter>
-        <parameter name="proc_col" type="int">64</parameter>
-        <parameter name="nodes" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
+        <parameter name="proc_col" type="int">1</parameter>
+        <parameter name="nodes" mode="python">[1, 1, 1, 1, 1][$i]</parameter>
 
         <parameter name="rolling" mode="python">[16, 8, 4, 2, 1][$i]</parameter>
         <parameter name="time_intervals" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
