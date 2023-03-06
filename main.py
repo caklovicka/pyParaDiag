@@ -36,7 +36,7 @@ prob.smaxiter = 100                          # number of inner solver maxiters
 prob.alphas = [1e-3]
 
 # setting tolerances
-prob.tol = 0#1e-12                            # a stopping tolerance for Paralpha
+prob.tol = 1e-12                            # a stopping tolerance for Paralpha
 prob.stol = 1e-16                           # a stopping relative tolerance for the inner solver
 prob.m0 = 10 * (prob.T_end - prob.T_start)  # a starting choice for the m_k sequence
 

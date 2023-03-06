@@ -2,10 +2,11 @@ import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
 from core.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
+from mpi4py import MPI
 
 # Julia backend
-#from julia.api import Julia
-#jl = Julia(compiled_modules=False)
+from julia.api import Julia
+jl = Julia(compiled_modules=False)
 from julia import KitBase as kt
 
 """
@@ -129,6 +130,9 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
         # ---- POSTSETUP <end> ----
 
+        # I dont know why I am doing this one...
+        #self.F(np.ones(self.row_end - self.row_beg))
+
     # user defined
     def bpar(self, t):
         return self.rhs(t, self.x).flatten()[self.row_beg:self.row_end]
@@ -153,6 +157,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         return f
 
     def F(self, u):
+        time_beg = MPI.Wtime()
         Qf = np.empty_like(u, dtype=complex)
 
         # case with spatial parallelization
@@ -177,7 +182,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
                 for ix in range(self.spatial_points[0]):
                     Q[ix, :, :, :] = kt.boltzmann_fft(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
                 Qf[i * self.global_size_A:(i + 1) * self.global_size_A] = Q.flatten()
-
+        print('iter = ', self.iterations, 'rank = ', self.rank , MPI.Wtime() - time_beg)
         return Qf
 
     # user defined

@@ -42,7 +42,7 @@ class Helpers(Communicators):
         # fill u0
         # case with spatial parallelization
         if self.frac > 1:
-            self.u0_loc = self.u_initial(self.x).flatten()[self.rank_subcol_seq * self.rows_loc: (self.rank_subcol_seq + 1) * self.rows_loc]
+            self.u0_loc = self.u_initial(self.x).flatten()[self.row_beg: self.row_end]
         # case without spatial parallelization
         else:
             self.u0_loc = self.u_initial(self.x).flatten()

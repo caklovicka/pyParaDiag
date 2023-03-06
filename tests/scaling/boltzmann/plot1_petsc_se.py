@@ -7,7 +7,7 @@ legend = []
 petsc_proc = []
 petsc_time = []
 custom_lines = []
-mksz = 20
+mksz = 10
 lw = 2
 plt.figure(figsize=(12, 6))
 
@@ -28,10 +28,10 @@ s = petsc_time_seq/petsc_time
 e = petsc_time_seq/(np.array(petsc_time) * np.array(petsc_proc))
 
 plt.subplot(121)
-plt.semilogx(petsc_proc, np.log2(petsc_time_seq/np.log10(petsc_time)), 'X-', color='gray', markersize=mksz // 2, linewidth=lw)
+plt.semilogx(petsc_proc, np.log2(petsc_time_seq/np.log10(petsc_time)), 'X-', color='gray', markersize=mksz, linewidth=lw)
 
 plt.subplot(122)
-plt.semilogx(petsc_proc, petsc_time_seq/(np.array(petsc_time) * np.array(petsc_proc)), 'X-', color='gray', markersize=mksz // 2, linewidth=lw)
+plt.semilogx(petsc_proc, petsc_time_seq/(np.array(petsc_time) * np.array(petsc_proc)), 'X-', color='gray', markersize=mksz, linewidth=lw)
 
 # PinT + PETSc
 runs = [3, 4, 5]
@@ -69,7 +69,7 @@ for k in range(K):
 
 plt.subplot(121)
 for k in range(K):
-    plt.semilogx(pint_petsc_proc[k], np.log2(petsc_time_seq/np.log10(pint_petsc_time[k])), 'X--', color=col[k], linewidth=lw)
+    plt.semilogx(pint_petsc_proc[k], np.log2(petsc_time_seq/np.log10(pint_petsc_time[k])), 'X--', color=col[k], linewidth=lw, markersize=mksz)
 
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores')
@@ -79,7 +79,7 @@ plt.grid('gray')
 
 plt.subplot(122)
 for k in range(K):
-    plt.semilogx(pint_petsc_proc[k], petsc_time_seq/(np.array(pint_petsc_time[k]) * np.array(pint_petsc_proc[k])), 'X--', color=col[k], linewidth=lw)
+    plt.semilogx(pint_petsc_proc[k], petsc_time_seq/(np.array(pint_petsc_time[k]) * np.array(pint_petsc_proc[k])), 'X--', color=col[k], linewidth=lw, markersize=mksz)
 
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores')

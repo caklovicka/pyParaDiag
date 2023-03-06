@@ -48,7 +48,7 @@ class IMEXNewtonIncrementParalpha(Helpers):
             t_start = self.T_start + self.time_intervals * rolling_interval * self.dt
 
             self.__fill_initial_u_loc__()
-            v_loc = self.__get_v__(t_start)     # the rhs of the all-at-git addonce system
+            v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
 
             while not self.stop:       # main iterations
 

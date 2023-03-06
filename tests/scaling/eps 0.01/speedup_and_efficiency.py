@@ -56,12 +56,12 @@ plt.figure(figsize=(10, 5))
 plt.subplot(121)
 for k in range(K):
     print(imex_proc)
-    plt.semilogx(imex_proc[k], imex_seq_time[k]/np.array(imex_time[k]), 'X:', color=col[k])
-    plt.semilogx(newton_proc[k], newton_seq_time[k]/np.array(newton_time[k]), 'X-', color=col[k])
+    plt.semilogx(imex_proc[k], np.log2(imex_seq_time[k]/np.array(imex_time[k])), 'X:', color=col[k])
+    plt.semilogx(newton_proc[k], np.log2(newton_seq_time[k]/np.array(newton_time[k])), 'X-', color=col[k])
 
 plt.legend(legend)
 plt.xlabel('cores')
-plt.ylabel('speedup')
+plt.ylabel('log2(speedup)')
 plt.grid('gray')
 plt.xticks([1, 2, 4, 8, 16, 32, 64], [1, 2, 4, 8, 16, 32, 64])
 
@@ -76,5 +76,5 @@ plt.xlabel('cores')
 plt.ylabel('efficiency')
 plt.grid('gray')
 plt.xticks([1, 2, 4, 8, 16, 32, 64], [1, 2, 4, 8, 16, 32, 64])
-
+plt.tight_layout()
 plt.show()
