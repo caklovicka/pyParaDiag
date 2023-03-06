@@ -1,0 +1,38 @@
+[2023-02-28 09:43:06,006]:INFO: ######################################################################
+[2023-02-28 09:43:06,006]:INFO: # Analyse benchmark "scaling test" id: 3
+[2023-02-28 09:43:06,006]:INFO: ######################################################################
+[2023-02-28 09:43:06,007]:INFO: >>> Start analyse
+[2023-02-28 09:43:06,007]:DEBUG: Run analyser "analyse"
+[2023-02-28 09:43:06,008]:DEBUG:   available pattern:
+[2023-02-28 09:43:06,008]:DEBUG:          | pattern     | value                                    |
+[2023-02-28 09:43:06,008]:DEBUG:          |-------------|------------------------------------------|
+[2023-02-28 09:43:06,008]:DEBUG:          | Nx          | no. of spatial points = \[$jube_pat_int  |
+[2023-02-28 09:43:06,008]:DEBUG:          | comm_time   | communication time = $jube_pat_fp        |
+[2023-02-28 09:43:06,008]:DEBUG:          | convergence | convergence = $jube_pat_int              |
+[2023-02-28 09:43:06,008]:DEBUG:          | diff        | diff = $jube_pat_fp                      |
+[2023-02-28 09:43:06,008]:DEBUG:          | max_iters   | max iterations of paradiag =             |
+[2023-02-28 09:43:06,008]:DEBUG:          |             | $jube_pat_fp                             |
+[2023-02-28 09:43:06,008]:DEBUG:          | stol        | inner solver tol = $jube_pat_fp          |
+[2023-02-28 09:43:06,008]:DEBUG:          | tol         | tol = $jube_pat_fp                       |
+[2023-02-28 09:43:06,008]:DEBUG:          | tot_iters   | total iterations of paradiag =           |
+[2023-02-28 09:43:06,009]:DEBUG:          |             | $jube_pat_fp                             |
+[2023-02-28 09:43:06,009]:DEBUG:          | tot_time    | algorithm time = $jube_pat_fp            |
+[2023-02-28 09:43:06,009]:DEBUG: 
+[2023-02-28 09:43:06,009]:DEBUG:   available derived pattern:
+[2023-02-28 09:43:06,009]:DEBUG:          | pattern | value |
+[2023-02-28 09:43:06,009]:DEBUG:          |---------|-------|
+[2023-02-28 09:43:06,009]:DEBUG:   analyse step "sub_step"
+[2023-02-28 09:43:06,012]:DEBUG:     scan file output3/000003/000000_sub_step/work/results.out
+[2023-02-28 09:43:06,020]:DEBUG:       file "results.out" scanned pattern found:
+[2023-02-28 09:43:06,020]:DEBUG:          |    tot_time |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |   comm_time |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |   max_iters |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |   tot_iters |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |         tol |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |        stol |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |          Nx |  |
+[2023-02-28 09:43:06,020]:DEBUG:          | convergence |  |
+[2023-02-28 09:43:06,020]:DEBUG:          |        diff |  |
+[2023-02-28 09:43:06,024]:INFO: >>> Analyse finished
+[2023-02-28 09:43:06,024]:INFO: >>> Analyse data storage: output3/000003/analyse.xml
+[2023-02-28 09:43:06,024]:INFO: ######################################################################

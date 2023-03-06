@@ -26,7 +26,7 @@ prob.T_end = 0.4
 
 prob.eps = 1
 prob.T_start = 0
-prob.proc_col = 3
+prob.proc_col = 1
 prob.solver = 'gmres'
 prob.maxiter = 50
 prob.smaxiter = 500
