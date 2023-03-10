@@ -42,7 +42,7 @@ marks = 16
 lw = 2
 linst = ['dotted', 'dashed', 'dashdot']
 custom_lines = []
-col = sns.color_palette("bright", len(eq))
+col = sns.color_palette("hls", len(eq))
 
 # ild plots in gray
 for i in range(len(eq)):

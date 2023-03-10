@@ -24,7 +24,7 @@ for i in range(len(data)):
     indices = np.argsort(data[:, 0])
     data = data[indices, :]
 
-col = sns.color_palette("bright", len(data))
+col = sns.color_palette("hls", len(data))
 
 comm_time = data[:, 3]
 tot_time = data[:, 1]
