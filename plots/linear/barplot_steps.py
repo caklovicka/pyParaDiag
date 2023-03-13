@@ -4,12 +4,13 @@ import seaborn as sns
 from matplotlib.lines import Line2D
 
 IDX = 2
-eq = 'adv'
+eq = 'heat'
 
 path_heat = ['data/heat1_2.dat', 'data/heat2_4.dat', 'data/heat3_35.dat']
 path_adv = ['data/adv1_12.dat', 'data/adv2_7.dat', 'data/adv3_8.dat']
 
-plt.rcParams["figure.figsize"] = (7,9)
+plt.rcParams["figure.figsize"] = (5,5)
+plt.rcParams["figure.dpi"] = 150
 
 if eq == 'adv':
     NAME = path_adv[IDX]
@@ -24,7 +25,7 @@ for i in range(len(data)):
     indices = np.argsort(data[:, 0])
     data = data[indices, :]
 
-col = sns.color_palette("hls", len(data))
+col = sns.color_palette("hls", 3)
 
 comm_time = data[:, 3]
 tot_time = data[:, 1]
@@ -44,14 +45,18 @@ shift = 0.01 * max_time
 for i, total in enumerate(tot_time):
     ax.text(i, total + shift, '{0:g}'.format(round(total, 2)), ha = 'center', weight = 'bold', color = 'black')
 
+k = 1
 for bar in ax.patches:
+    if k == 8:
+        break
+    k += 1
     ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() / 2 + bar.get_y(),
             round(bar.get_height(), 2), ha = 'center', color = 'w', weight = 'bold', size = 10)
 
 ax.legend()
-ax.set_ylabel('wallclock time [s]')
-ax.set_xlabel('total number of cores')
-ax.set_ylim([0, max_time + 10 * shift])
+ax.set_ylabel('wallclock time [s]', fontsize=15)
+ax.set_xlabel('total number of cores', fontsize=15)
+ax.set_ylim([0, 90])
 
 plt.tight_layout()
 plt.show()

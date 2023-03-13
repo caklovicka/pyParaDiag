@@ -12,6 +12,7 @@ if NAME == 'adv':
 if NAME == 'heat':
     path = path_heat.copy()
 
+plt.figure(figsize=(5, 4), dpi=150)
 # nproc | tot_time | iters
 eq = []
 for p in path:
@@ -52,8 +53,8 @@ names = ['1e-5, M=1', '1e-9, M=2', '1e-12, M=3', 'k iterations']
 custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
 plt.legend(custom_lines, names, loc='upper right')
 plt.grid(True, color='gainsboro')
-plt.ylabel('efficiency')
-plt.xlabel('total number of cores')
+plt.ylabel('efficiency', fontsize=12)
+plt.xlabel('total number of cores', fontsize=12)
 plt.ylim([-0.1, 1.1])
 plt.tight_layout()
 plt.show()

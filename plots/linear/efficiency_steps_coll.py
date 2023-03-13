@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-NAME = 'adv'
+NAME = 'heat'
 path_heat_seq = ['data/heat1_2.dat', 'data/heat2_4.dat', 'data/heat3_35.dat']
 path_adv_seq = ['data/adv1_12.dat', 'data/adv2_7.dat', 'data/adv3_8.dat']
 
@@ -17,6 +17,7 @@ if NAME == 'heat':
     path = path_heat.copy()
     path_seq = path_heat_seq.copy()
 
+plt.figure(figsize=(5, 4), dpi=150)
 # nproc | tot_time | iters
 eq = []
 eq_seq = []
@@ -77,8 +78,8 @@ names = ['1e-5, M=1', '1e-9, M=2', '1e-12, M=3', 'k iterations']
 custom_lines.append(Line2D([0], [0], marker="$k$", markersize=10, color='gray'))
 plt.legend(custom_lines, names, loc='upper right')
 plt.grid(True, color='gainsboro')
-plt.ylabel('efficiency')
-plt.xlabel('total number of cores')
+plt.ylabel('efficiency', fontsize=12)
+plt.xlabel('total number of cores', fontsize=12)
 plt.ylim([-0.1, 1.1])
 plt.tight_layout()
 plt.show()
