@@ -2,29 +2,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-IDX = 2
-eq = 'adv'
+IDX = 0
 
 plt.rcParams["figure.figsize"] = (5, 5)
 plt.rcParams["figure.dpi"] = 150
 
-path_heat = ['data/heat1_2.dat', 'data/heat2_5.dat', 'data/heat3_36.dat']
-path_adv = ['data/adv1_12.dat', 'data/adv2_8.dat', 'data/adv3_9.dat']
-
-if eq == 'adv':
-    NAME = path_adv[IDX]
-else:
-    NAME = path_heat[IDX]
+path_adv = ['data/adv1_11.dat', 'data/adv1_10.dat', 'data/adv2_6.dat', 'data/adv3_7.dat']
 
 # nproc | tot_time | iters | comm_time
-data = np.loadtxt(NAME, delimiter='|', usecols=[0, 3, 7, 6], skiprows=3)
+data = np.loadtxt(path_adv[IDX], delimiter='|', usecols=[0, 3, 7, 6], skiprows=3)
 
 # sort runs
 for i in range(len(data)):
     indices = np.argsort(data[:, 0])
     data = data[indices, :]
 
-col = sns.color_palette("hls", 3)
+col = ['silver'] + sns.color_palette("hls", 3)
 
 comm_time = data[:, 3]
 tot_time = data[:, 1]
@@ -46,7 +39,7 @@ for i, total in enumerate(tot_time):
 
 k = 1
 for bar in ax.patches:
-    if k == 8:
+    if k == len(data) + 1:
        break
     k += 1
     ax.text(bar.get_x() + bar.get_width() / 2,
@@ -57,7 +50,7 @@ for bar in ax.patches:
 ax.legend()
 ax.set_ylabel('wallclock time [s]', fontsize=15)
 ax.set_xlabel('total number of cores', fontsize=15)
-ax.set_ylim([0, 680])
+#ax.set_ylim([0, 12])
 
 plt.tight_layout()
 plt.show()

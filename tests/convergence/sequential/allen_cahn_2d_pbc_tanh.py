@@ -2,7 +2,7 @@ import numpy as np
 np.set_printoptions(linewidth=np.inf)
 import scipy as sp
 import matplotlib.pyplot as plt
-from seq_time_stepping import Newton, IMEX, Parallel_IMEX_refinement, semi_implicit_refinement, semi_implicit, IMEX_QR
+from seq_time_stepping import Newton, IMEX, Parallel_IMEX_refinement, semi_implicit_refinement, semi_implicit
 import seaborn as sns
 from time import time
 import matplotlib.cm as cm
@@ -13,17 +13,17 @@ import seaborn as sns
 EPS = 0.01
 R = 0.25
 T1 = 0
-steps = 16
-T2 =  EPS**3 * steps
+steps = 640
+T2 =  0.003
 dt = (T2 - T1) / steps
 X1 = -0.5
 X2 = 0.5
-coll_points = 1
-spatial_points = 100
+coll_points = 2
+spatial_points = 350
 
 # tolerances
-tol = 1e-10
-stol = 1e-12
+tol = 1e-5
+stol = 1e-6
 maxiter = 50
 
 # grid and matrix
@@ -66,7 +66,7 @@ def df(u):
 def b(t):
     return np.zeros(spatial_points ** 2)
 
-
+'''
 # seq. IMEX
 print('\nIMEX')
 print('====')
@@ -75,7 +75,7 @@ u_imex, res_imex, its_imex = IMEX(T1, u0, dt, F, A, b, steps, restol=tol, stol=s
 print('time = ', time() - t_start)
 print('maximum residual = ', max(res_imex))
 print('iterations = ', its_imex, ', total = ', sum(its_imex))
-
+'''
 '''
 # seq. semi-implicit
 print('\nsemi-implicit')
@@ -89,12 +89,30 @@ print('maximum residual = ', max(res_si))
 # seq. Newton
 print('\nNewton')
 print('========')
-t_strat = time()
+t_start = time()
 u_newton, res_newton, its_newton = Newton(T1, u0, dt, f, df, b, steps, restol=tol, stol=stol, coll_points=coll_points, maxiter=maxiter)
 print('time = ', time() - t_start)
 print('maximum residual = ', max(res_newton))
 print('iterations = ', its_newton, ', total = ', sum(its_newton))
 
+# plot the solution
+u = u_newton.reshape([spatial_points, spatial_points])
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+surf = ax.plot_surface(x[0], x[1], u - u0.reshape([spatial_points, spatial_points]), cmap=cm.coolwarm, linewidth=0, antialiased=False, vmin=-1, vmax=1)
+#surf = ax.plot_surface(x[0], x[1], u0.reshape([spatial_points, spatial_points]), cmap=cm.coolwarm, linewidth=0, antialiased=False, vmin=-1, vmax=1)
+
+# Customize the z axis.
+#ax.set_zlim(-1.01 * dt, 1.01 * dt)
+#ax.zaxis.set_major_locator(LinearLocator(10))
+ax.zaxis.set_major_formatter('{x:.02f}')
+ax.set_xlabel('x', fontsize=15)
+ax.set_ylabel('y', fontsize=15)
+
+
+# Add a color bar which maps values to colors.
+fig.colorbar(surf, shrink=0.6, aspect=10, location='left')
+plt.tight_layout()
+plt.show()
 
 
 

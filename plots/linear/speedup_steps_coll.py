@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-NAME = 'heat'
+NAME = 'adv'
 path_heat_seq = ['data/heat1_2.dat', 'data/heat2_4.dat', 'data/heat3_35.dat']
 path_adv_seq = ['data/adv1_12.dat', 'data/adv2_7.dat', 'data/adv3_8.dat']
 
@@ -82,7 +82,7 @@ plt.legend(custom_lines, names, loc='upper left')
 plt.grid(True, color='gainsboro')
 plt.ylabel('speedup', fontsize=12)
 plt.xlabel('total number of cores', fontsize=12)
-plt.ylim([-5, 26])
+plt.ylim([-7, 26])
 plt.tight_layout()
 plt.show()
 #plt.savefig('strong_plots/Stepcollparallelstrong' + NAME, dpi=300, bbox_inches='tight')

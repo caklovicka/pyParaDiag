@@ -4,7 +4,7 @@ import seaborn as sns
 from matplotlib.lines import Line2D
 
 IDX = 2
-eq = 'heat'
+eq = 'adv'
 
 path_heat = ['data/heat1_2.dat', 'data/heat2_4.dat', 'data/heat3_35.dat']
 path_adv = ['data/adv1_12.dat', 'data/adv2_7.dat', 'data/adv3_8.dat']
@@ -56,7 +56,7 @@ for bar in ax.patches:
 ax.legend()
 ax.set_ylabel('wallclock time [s]', fontsize=15)
 ax.set_xlabel('total number of cores', fontsize=15)
-ax.set_ylim([0, 90])
+ax.set_ylim([0, 680])
 
 plt.tight_layout()
 plt.show()

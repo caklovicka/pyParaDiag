@@ -10,9 +10,9 @@ def u_adv(t, z):
     return np.sin(2 * np.pi * (z[0] - t)) * np.sin(2 * np.pi * (z[1] - t))
 
 
-u = u_heat
-T0 = np.pi
-dT = 0.16
+u = u_adv
+T0 = 0
+dT = 0.0128
 
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
 
@@ -28,7 +28,7 @@ surf = ax.plot_surface(X, Y, u(T0, [X, Y]), cmap=cm.coolwarm, linewidth=0, antia
 
 # Customize the z axis.
 #ax.set_zlim(-1.01 * dt, 1.01 * dt)
-ax.zaxis.set_major_locator(LinearLocator(10))
+#ax.zaxis.set_major_locator(LinearLocator(10))
 ax.zaxis.set_major_formatter('{x:.02f}')
 ax.set_xlabel('x', fontsize=15)
 ax.set_ylabel('y', fontsize=15)
