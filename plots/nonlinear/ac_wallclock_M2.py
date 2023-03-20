@@ -4,27 +4,25 @@ import numpy as np
 import seaborn as sns
 
 K = 2
-mksz = 15
-col = ['gray'] + sns.color_palette("bright", 2 * K)[1:]
+mksz = 16
+lw = 2
+col = sns.color_palette("hls", 3)
 
-legend = []
+file = ['data/ac2_0.dat', 'data/ac2_2.dat']
+legend = ['1e-10 (imex)', '1e-10 (newton)', '1e-10 (imex) + coll', '1e-10 (newton) + coll']
+col[0] = 'gray'
+
 imex_proc = []
 imex_time = []
 imex_its = []
 newton_proc = []
 newton_time = []
 newton_its = []
-
-legend.append('imex 2')
-legend.append('newton 2')
-legend.append('imex 2 + coll')
-legend.append('newton 2 + coll')
-
-run = [0, 2]
+plt.figure(figsize=(5, 4), dpi=150)
 
 for k in range(K):
     # beta | nproc | rolling | time | tot iters | convergence
-    table = np.loadtxt('output2/00000{}/result/result.dat'.format(run[k]), delimiter='|', skiprows=3, usecols=[1, 2, 3, 5, 8, 12])
+    table = np.loadtxt(file[k], delimiter='|', skiprows=3, usecols=[1, 2, 3, 5, 8, 12])
 
     imex_proc.append([])
     imex_time.append([])
@@ -55,17 +53,15 @@ for k in range(K):
 
 for k in range(K):
     for i in range(len(imex_its[k])):
-        plt.semilogy(imex_proc[k][i], imex_time[k][i], marker=imex_its[k][i], color=col[k], markersize=mksz)
+        plt.semilogy(imex_proc[k][i], imex_time[k][i], marker=imex_its[k][i], color=col[k], markersize=mksz, linewidth=2)
 
     for i in range(len(newton_its[k])):
-        plt.semilogy(newton_proc[k][i], newton_time[k][i], marker=newton_its[k][i], color=col[k], markersize=mksz)
+        plt.semilogy(newton_proc[k][i], newton_time[k][i], marker=newton_its[k][i], color=col[k], markersize=mksz, linewidth=2)
 
 
 plt.legend(legend)
-plt.xlabel('total number of cores')
-plt.ylabel('time[s]')
-#plt.title('eps = 1')
-#plt.ylim([10, 10**4])
+plt.xlabel('total number of cores', fontsize=12)
+plt.ylabel('time[s]', fontsize=12)
 
 xx = []
 yy = []

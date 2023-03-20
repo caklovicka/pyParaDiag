@@ -7,15 +7,8 @@ mksz = 16
 lw = 2
 col = sns.color_palette("hls", 3)
 
-EPS = 0.001
 
-file001 = ['data/ac001_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
-#file1 = ['data/ac1_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
-
-if EPS == 0.001:
-    file = file001
-else:
-    file = file1
+file = ['data/ac001_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
 
 legend = ['1e-5 (imex)', '1e-5 (newton)', '1e-9 (imex)', '1e-9 (newton)', '1e-12 (imex)', '1e-12 (newton)']
 imex_proc = []

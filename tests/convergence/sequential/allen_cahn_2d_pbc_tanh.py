@@ -98,7 +98,7 @@ print('iterations = ', its_newton, ', total = ', sum(its_newton))
 # plot the solution
 u = u_newton.reshape([spatial_points, spatial_points])
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-surf = ax.plot_surface(x[0], x[1], u - u0.reshape([spatial_points, spatial_points]), cmap=cm.coolwarm, linewidth=0, antialiased=False, vmin=-1, vmax=1)
+surf = ax.plot_surface(x[0], x[1], u - u0.reshape([spatial_points, spatial_points]), cmap=cm.coolwarm, linewidth=0, antialiased=False)
 #surf = ax.plot_surface(x[0], x[1], u0.reshape([spatial_points, spatial_points]), cmap=cm.coolwarm, linewidth=0, antialiased=False, vmin=-1, vmax=1)
 
 # Customize the z axis.
