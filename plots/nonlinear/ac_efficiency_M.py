@@ -8,7 +8,7 @@ mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
-M = 2
+M = 3
 
 if M == 1:
     file = ['data/ac1_0.dat']
@@ -68,6 +68,9 @@ for k in range(K):
 
     if 0 in newton_proc[0]:
         newton_seq = newton_time[0][newton_proc[0].index(0)]
+
+    if M == 3:
+        imex_seq = newton_seq
 
     plt.plot(imex_proc[k], imex_seq/(np.array(imex_time[k]) * 2**np.array(imex_proc[k])), '^:', color=col[k], linewidth=lw, markersize=mksz)
     plt.plot(newton_proc[k], newton_seq/(np.array(newton_time[k]) * 2**np.array(newton_proc[k])), 'v-', color=col[k], linewidth=lw, markersize=mksz)

@@ -8,7 +8,7 @@ mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
-M = 2
+M = 3
 
 if M == 1:
     file = ['data/ac1_0.dat']
@@ -69,7 +69,8 @@ for k in range(K):
     if 0 in newton_proc[0]:
         newton_seq = newton_time[0][newton_proc[0].index(0)]
 
-    print(imex_seq, newton_seq)
+    if M == 3:
+        imex_seq = newton_seq
 
     plt.semilogy(imex_proc[k], imex_seq/np.array(imex_time[k]), '^:', color=col[k], linewidth=lw, markersize=mksz)
     plt.semilogy(newton_proc[k], newton_seq/np.array(newton_time[k]), 'v-', color=col[k], linewidth=lw, markersize=mksz)
