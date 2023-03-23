@@ -10,6 +10,9 @@ path_adv_seq = ['data/adv1_12.dat', 'data/adv2_7.dat', 'data/adv3_8.dat']
 path_heat = ['data/heat1_2.dat', 'data/heat2_5.dat', 'data/heat3_36.dat']
 path_adv = ['data/adv1_12.dat', 'data/adv2_8.dat', 'data/adv3_9.dat']
 
+adv_small_dt_seq = ['data/adv_small_dt_steps.dat']
+adv_small_dt = ['data/adv_small_dt_steps_coll.dat']
+
 plt.figure(figsize=(5, 4), dpi=150)
 
 if NAME == 'adv':
@@ -18,6 +21,9 @@ if NAME == 'adv':
 if NAME == 'heat':
     path = path_heat.copy()
     path_seq = path_heat_seq.copy()
+if NAME == 'small_dt':
+    path = adv_small_dt.copy()
+    path_seq = adv_small_dt_seq.copy()
 
 # nproc | tot_time | iters
 eq = []
