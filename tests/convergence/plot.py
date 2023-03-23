@@ -94,4 +94,5 @@ for i in range(n):
     plt.title(r'$Advection, \alpha = $' + str(alphas[i]))
     plt.xlabel('iteration')
 
+plt.tight_layout()
 plt.show()

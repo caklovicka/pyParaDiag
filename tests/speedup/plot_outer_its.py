@@ -6,11 +6,10 @@ import matplotlib.pyplot as plt
 alphas = [r'$\alpha$-adaptive', r'IR, $\alpha = 10^{-4}$', r'IR, $\alpha = 10^{-8}$']
 equations = [r'heat, $\zeta = 10^{-5}$', r'heat, $\zeta = 10^{-9}$', r'heat, $\zeta = 10^{-12}$', r'advection, $\zeta = 10^{-5}$', r'advection, $\zeta = 10^{-9}$', r'advection, $\zeta = 10^{-12}$']
 
-runtimes = np.array([[0.26107, 0.92291, 4.66083, 1.29374, 5.47151, 40.11753],
-                    [0.21547, 16.40066, 29.19395, 0.70112, 3.76745, 32.19536],
-                    [9.47420, 26.45528, 146.59290, 0.70069, 1.95702, 17.31436]])
+runtimes = np.array([[2, 2, 5, 2, 3, 5],
+                    [1, 2, 2, 1, 2, 3],
+                    [2, 2, 5, 1, 1, 2]])
 
-runtimes = np.round(runtimes, 1)
 fig, ax = plt.subplots()
 im = ax.imshow(runtimes, cmap='RdYlGn_r')
 
