@@ -15,15 +15,15 @@
 
     <!-- Files -->
     <fileset name="files">
-      <copy>heat_small_dt.py</copy>
-      <copy>heat_small_dt.tmpl</copy>
+      <copy>adv_small_dt.py</copy>
+      <copy>adv_small_dt.tmpl</copy>
     </fileset>
 
     <!-- Substitute -->
     <substituteset name="substitute">
 
       <!-- Substitute files -->
-      <iofile in="heat_small_dt.tmpl" out="heat_small_dt.exe" />
+      <iofile in="adv_small_dt.tmpl" out="adv_small_dt.exe" />
 
       <!-- Substitute commands -->
       <sub source="#rolling#" dest="$rolling" />
@@ -47,11 +47,11 @@
     </patternset>
 
     <!-- Operation -->
-    <step name="sub_step" iterations="10">
+    <step name="sub_step" iterations="1">
       <use>param_set</use> <!-- use existing parameterset -->
       <use>files</use>        <!-- use existing fileset -->
       <use>substitute</use>   <!-- use existing substituteset -->
-      <do done_file="ready">sbatch -A cstma heat_small_dt.exe</do>   <!-- shell command -->
+      <do done_file="ready">sbatch -A cstma adv_small_dt.exe</do>   <!-- shell command -->
     </step>
 
     <!-- Analyse -->

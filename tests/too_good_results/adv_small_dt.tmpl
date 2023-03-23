@@ -8,5 +8,5 @@
 #SBATCH --time=00:15:00
 #SBATCH --partition=dc-cpu
 
-srun python heat_small_dt.py --time_intervals=#time_intervals# --rolling=#rolling# --proc_row=#time_intervals# > results.out
+srun python adv_small_dt.py --time_intervals=#time_intervals# --rolling=#rolling# --proc_row=#time_intervals# > results.out
 touch ready
