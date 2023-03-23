@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
   <benchmark name="scaling test" outpath="output">
-    <comment>Speedup for heat3 on 64 intervals with rolling. Choosing a too smal dt.</comment>
+    <comment>Speedup for heat3 on 64 intervals with rolling. Choosing a too small dt.</comment>
 
     <parameterset name="param_set">
       <parameter name="i" type="int">0,1,2,3,4,5,6</parameter>
