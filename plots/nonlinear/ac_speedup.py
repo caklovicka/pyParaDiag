@@ -5,12 +5,13 @@ import seaborn as sns
 # TEST = 1 or 2
 TEST = 1
 
-K = 3
 mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
-file = ['data/ac001_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
+#file = ['data/ac001_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
+file = ['data/ac_small_dt.dat']
+K = len(file)
 legend = ['1e-5 (imex)', '1e-5 (newton)', '1e-9 (imex)', '1e-9 (newton)', '1e-12 (imex)', '1e-12 (newton)']
 
 imex_proc = []
@@ -62,7 +63,8 @@ for k in range(K):
 
 for k in range(K):
     plt.semilogy(np.log2(np.array(imex_proc[k])), imex_seq_time[k]/np.array(imex_time[k]), 'v:', color=col[k], linewidth=lw, markersize=mksz)
-    plt.semilogy(np.log2(np.array(newton_proc[k])), newton_seq_time[k]/np.array(newton_time[k]), '^-', color=col[k], linewidth=lw, markersize=mksz)
+    if len(newton_proc[k]) > 0:
+        plt.semilogy(np.log2(np.array(newton_proc[k])), newton_seq_time[k]/np.array(newton_time[k]), '^-', color=col[k], linewidth=lw, markersize=mksz)
 
 plt.legend(legend)
 plt.xlabel('total number of cores', fontsize=12)

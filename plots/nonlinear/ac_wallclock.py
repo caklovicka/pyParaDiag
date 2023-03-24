@@ -2,15 +2,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-K = 3
 mksz = 16
 lw = 2
 col = sns.color_palette("hls", 3)
 
 
-file = ['data/ac001_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
+#file = ['data/ac001_1.dat', 'data/ac001_2.dat', 'data/ac001_3.dat']
+file = ['data/ac_small_dt.dat']
+K = len(file)
 
 legend = ['1e-5 (imex)', '1e-5 (newton)', '1e-9 (imex)', '1e-9 (newton)', '1e-12 (imex)', '1e-12 (newton)']
+if K == 1:
+    legend = ['1e-5 (imex)']
+
 imex_proc = []
 imex_time = []
 imex_its = []

@@ -21,7 +21,7 @@ prob = AllenCahn()
 prob.spatial_points = [1500, 1500]
 prob.time_points = 1
 prob.tol = 1e-6
-prob.stol = 1e-8
+prob.stol = 1e-12 #1e-8
 prob.T_end = 0.001
 
 prob.eps = 1

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
     <benchmark name="scaling test" outpath="output1">
-    <comment>scaling for ac1_1, rolling * time_intervals = 128</comment>
+    <comment>scaling for ac1_1, rolling * time_intervals = 128, a small stol.</comment>
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0,1,2,3,4,5,6,7</parameter>
-        <parameter name="beta" type="int">0,1</parameter>
+        <parameter name="beta" type="int">0, 1</parameter>
 
         <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64, 128][$i]</parameter>
         <parameter name="rolling" mode="python">[128, 64, 32, 16, 8, 4, 2, 1][$i]</parameter>
