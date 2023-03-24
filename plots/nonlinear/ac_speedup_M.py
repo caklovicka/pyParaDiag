@@ -8,10 +8,12 @@ mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
-M = 3
+M = 1
 
 if M == 1:
     file = ['data/ac1_0.dat']
+    #file = ['data/ac_small_stol.dat']
+    #file = ['data/ac_mixed_precision.dat']
     legend = ['1e-6 (imex)', '1e-6 (newton)']
     K = 1
 
@@ -19,6 +21,7 @@ elif M == 2:
     file = ['data/ac2_0.dat', 'data/ac2_2.dat']
     legend = ['1e-10 (imex)', '1e-10 (newton)', '1e-10 (imex) + coll', '1e-10 (newton) + coll']
     col[0] = 'gray'
+
 elif M == 3:
     file = ['data/ac3_0.dat', 'data/ac3_2.dat']
     legend = ['1e-13 (imex)', '1e-13 (newton)', '1e-13 (imex) + coll', '1e-13 (newton) + coll']
