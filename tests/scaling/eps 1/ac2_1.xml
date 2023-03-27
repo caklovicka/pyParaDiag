@@ -4,7 +4,7 @@
     <comment>scaling for ac2_1, rolling * time_intervals = 128</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0,1,2,3,4,5,6,7</parameter>
+        <parameter name="i" type="int">1,2,3,4,5,6,7</parameter>
         <parameter name="beta" type="int">0,1</parameter>
 
         <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32, 64, 128][$i]</parameter>
