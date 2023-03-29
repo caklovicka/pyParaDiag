@@ -16,7 +16,6 @@ prob.spatial_points = [N, N]
 prob.tol = 1e-12
 prob.time_points = 3
 prob.proc_col = 1
-prob.optimal_alphas = True
 prob.T_start = 0
 prob.T_end = 1.28e-2
 prob.solver = 'custom'
@@ -32,7 +31,10 @@ if prob.rolling < 64:
     prob.tol = 1e-12 / prob.rolling
 '''
 
+prob.optimal_alphas = True
 prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
+prob.optimal_alphas = False
+prob.alphas = [1e-8]
 
 prob.setup()
 prob.solve()
