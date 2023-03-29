@@ -25,7 +25,7 @@ prob.stol = 1e-7
 
 prob.eps = 0.01
 prob.T_start = 0
-prob.T_end = 0.003 / 100 #0.003
+prob.T_end = 0.003
 prob.proc_col = 1
 prob.solver = 'custom'
 prob.maxiter = 50
@@ -38,6 +38,7 @@ prob.setup()
 prob.solve()
 prob.summary(details=False)
 
+'''
 prob.comm.Barrier()
 if prob.rank == prob.size - 1:
     up = prob.u_loc[-prob.global_size_A:]
@@ -49,3 +50,4 @@ if prob.rank == prob.size - 1:
     f.close()
     diff = us - up
     print('diff =', np.linalg.norm(diff, np.inf), flush=True)
+'''
