@@ -13,7 +13,7 @@ M = 1
 if M == 1:
     #file = ['data/ac1_0.dat']
     #file = ['data/ac_small_stol.dat']
-    file = ['data/ac_mixed_precision.dat']
+    file = ['data/ac_mixed_precision_M1.dat']
     legend = ['1e-6 (imex)', '1e-6 (newton)']
     K = 1
 

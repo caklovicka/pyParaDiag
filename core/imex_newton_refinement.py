@@ -19,6 +19,8 @@ class IMEXNewtonIncrementParalpha(Helpers):
 
         if self.time_intervals == 1:
             self.u_last_loc = self.u0_loc.copy(order='C')
+            self.optimal_alphas = False
+            self.alphas = [0]
         self.consecutive_error = []
         self.residual = []
         if self.time_intervals == 1:
@@ -50,6 +52,10 @@ class IMEXNewtonIncrementParalpha(Helpers):
             self.__fill_initial_u_loc__()
             v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
 
+            m0 = self.m0
+            eps = np.finfo(complex).eps
+            gamma = self.time_intervals * (3 * eps + self.stol)
+
             while not self.stop:       # main iterations
 
                 i_alpha = self.__next_alpha__(i_alpha)
@@ -59,6 +65,11 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 tmp = self.__get_F__()                             # add the explicit part
                 res_loc += tmp
                 res_norm = self.__get_max_norm__(res_loc)
+
+                if self.optimal_alphas is True:
+                    self.alphas.append(np.sqrt((gamma * res_norm)/m0))
+                    m0 = 2 * np.sqrt(gamma * m0 * res_norm)
+                i_alpha = self.__next_alpha__(i_alpha)
 
                 self.residual[rolling_interval].append(res_norm)
                 if self.residual[rolling_interval][-1] <= self.tol or self.iterations[rolling_interval] == self.maxiter:

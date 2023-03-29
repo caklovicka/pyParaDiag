@@ -1,8 +1,8 @@
 import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
-from core.linear_paralpha import LinearParalpha
-from core.linear_increment_paralpha import LinearIncrementParalpha
+from core.linear import LinearParalpha
+from core.linear_refinement import LinearIncrementParalpha
 
 """
 advection1 eq. in 2d

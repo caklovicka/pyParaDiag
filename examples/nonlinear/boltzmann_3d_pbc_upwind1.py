@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
-from core.imex_newton_increment_paralpha import IMEXNewtonIncrementParalpha
+from core.imex_newton_refinement import IMEXNewtonIncrementParalpha
 from mpi4py import MPI
 
 # Julia backend

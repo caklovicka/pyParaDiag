@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import sparse
-from core.linear_paralpha import LinearParalpha
+from core.linear import LinearParalpha
 from petsc4py import PETSc
 
 """

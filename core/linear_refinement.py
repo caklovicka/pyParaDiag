@@ -47,6 +47,11 @@ class LinearIncrementParalpha(Helpers):
 
             v_loc = self.__get_v__(t_start)     # the rhs of the all-at-once system
 
+            res_norm = None
+            m0 = self.m0
+            eps = np.finfo(complex).eps
+            gamma = self.time_intervals * (3 * eps + self.stol)
+
             while self.iterations[rolling_interval] < self.maxiter and not self.stop:       # main iterations
 
                 if self.time_intervals > 1:
@@ -59,6 +64,11 @@ class LinearIncrementParalpha(Helpers):
                 if self.time_points > 1 and self.residual[rolling_interval][-1] <= self.tol:
                     break
 
+                if self.optimal_alphas is True:
+                    self.alphas.append(np.sqrt((gamma * res_norm)/m0))
+                    m0 = 2 * np.sqrt(gamma * m0 * res_norm)
+                    if m0 <= self.tol:
+                        self.stop = True
                 i_alpha = self.__next_alpha__(i_alpha)
 
                 g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])        # solving (S x I) g = w with ifft
