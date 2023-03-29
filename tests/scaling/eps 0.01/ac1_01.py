@@ -30,7 +30,8 @@ prob.proc_col = 1
 prob.solver = 'custom'
 prob.maxiter = 50
 prob.smaxiter = 500
-prob.alphas = [1e-8]
+#prob.alphas = [1e-8]
+prob.optimal_alphas = True
 
 prob.proc_row = prob.time_intervals
 
