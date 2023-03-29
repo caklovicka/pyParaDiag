@@ -32,9 +32,9 @@ if prob.rolling < 64:
 '''
 
 prob.optimal_alphas = True
-prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
-prob.optimal_alphas = False
-prob.alphas = [1e-8]
+#prob.m0 = 10 * (prob.T_end - prob.T_start)/prob.rolling
+#prob.optimal_alphas = False
+#prob.alphas = [1e-8]
 
 prob.setup()
 prob.solve()
