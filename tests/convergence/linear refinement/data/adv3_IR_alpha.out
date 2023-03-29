@@ -1,0 +1,108 @@
+----------------
+ discretization
+----------------
+solving on [0, 0.0128]
+no. of spatial points = [700, 700], dx = [0.0014285714285714286, 0.0014285714285714286]
+no. of time intervals = 64, dt = 0.0002
+collocation points = [3.10102e-05 1.28990e-04 2.00000e-04]
+alphas = [8.262158096681557e-07, 8.262158096681557e-07, 8.262158096681557e-07]
+betas = [0]
+rolling intervals = 1
+
+-----------------
+ parallelization
+-----------------
+proc. for collocation-space problem: 1
+proc. for time problem: 64
+total: 64
+
+-------
+ other
+-------
+maxiter of paradiag = 10
+output document = None
+tol = 1e-12
+inner solver = custom
+inner solver tol = 1e-14
+inner solver maxiter = 50
+
+--------
+ output
+--------
+convergence = 1
+iterations of paradiag = [2]
+total iterations of paradiag = 2
+max iterations of paradiag = 2
+min iterations of paradiag = 2
+
+algorithm time = 29.91550 s
+communication time = 1.79969 s
+
+consecutive errors =
+[inf, 0.0803382, 6.63789e-08]
+residuals =
+[0.00125664, 6.63767e-08, 5.4956e-14]
+
+system_time_max =
+[13.8, 11.1]
+system_time_min =
+[6.0, 2.99]
+solver_its_max =
+[31, 31]
+solver_its_min =
+[2, 6]
+-----------------------< end summary >-----------------------
+----------------
+ discretization
+----------------
+solving on [0, 0.0128]
+no. of spatial points = [700, 700], dx = [0.0014285714285714286, 0.0014285714285714286]
+no. of time intervals = 64, dt = 0.0002
+collocation points = [3.10102e-05 1.28990e-04 2.00000e-04]
+alphas = [1e-08]
+betas = [0]
+rolling intervals = 1
+
+-----------------
+ parallelization
+-----------------
+proc. for collocation-space problem: 1
+proc. for time problem: 64
+total: 64
+
+-------
+ other
+-------
+maxiter of paradiag = 10
+output document = None
+tol = 1e-12
+inner solver = custom
+inner solver tol = 1e-14
+inner solver maxiter = 50
+
+--------
+ output
+--------
+convergence = 1
+iterations of paradiag = [2]
+total iterations of paradiag = 2
+max iterations of paradiag = 2
+min iterations of paradiag = 2
+
+algorithm time = 27.29163 s
+communication time = 1.79320 s
+
+consecutive errors =
+[inf, 0.0803381, 1.10748e-09]
+residuals =
+[0.00125664, 8.03381e-10, 9.99201e-16]
+
+system_time_max =
+[12.6, 9.67]
+system_time_min =
+[6.21, 3.56]
+solver_its_max =
+[31, 31]
+solver_its_min =
+[2, 8]
+-----------------------< end summary >-----------------------
