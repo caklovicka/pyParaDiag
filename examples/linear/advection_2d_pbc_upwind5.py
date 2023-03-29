@@ -2,7 +2,7 @@ import numpy as np
 from scipy import sparse
 from petsc4py import PETSc
 from core.linear import LinearParalpha
-from core.linear_refinement import LinearIncrementParalpha
+from core.imex_newton_refinement import IMEXNewtonIncrementParalpha
 
 """
 advection1 eq. in 2d
@@ -10,7 +10,7 @@ u_t + c_x * u_x + c_y * u_y = f
 """
 
 
-class Advection(LinearParalpha):
+class Advection(IMEXNewtonIncrementParalpha):
 
     # user defined, just for this class
     c = [1, 1]
@@ -129,6 +129,9 @@ class Advection(LinearParalpha):
     @staticmethod
     def rhs(t, z):
         return 0 * z[0] * z[1]
+
+    def F(self, u):
+        return 0 * u
 
     @staticmethod
     def norm(x):
