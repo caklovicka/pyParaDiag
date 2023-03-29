@@ -67,7 +67,8 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 res_norm = self.__get_max_norm__(res_loc)
 
                 if self.optimal_alphas is True:
-                    self.alphas.append(np.sqrt((gamma * res_norm)/res_norm))
+                    #self.alphas.append(np.sqrt((gamma * res_norm)/res_norm))
+                    self.alphas.append(np.sqrt((gamma * 1) / 1))
                     #m0 = 2 * np.sqrt(gamma * m0 * res_norm)
                 i_alpha = self.__next_alpha__(i_alpha)
 
