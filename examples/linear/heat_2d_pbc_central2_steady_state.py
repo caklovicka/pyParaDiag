@@ -12,7 +12,7 @@ u_t = c ( u_xx + u_yy ) + f
 class Heat(LinearParalpha):
 
     # user defined, just for this class
-    c = 8 * np.pi ** 2
+    c = 100 / (8 * np.pi ** 2)
     X_left = 0
     X_right = 1
     Y_left = 0
