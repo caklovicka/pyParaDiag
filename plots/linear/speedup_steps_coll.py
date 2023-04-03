@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-NAME = 'adv'
+NAME = 'steady_state'
 path_heat_seq = ['data/heat1_2.dat', 'data/heat2_4.dat', 'data/heat3_35.dat']
 path_adv_seq = ['data/adv1_12.dat', 'data/adv2_7.dat', 'data/adv3_8.dat']
 
@@ -12,6 +12,9 @@ path_adv = ['data/adv1_12.dat', 'data/adv2_8.dat', 'data/adv3_9.dat']
 
 adv_small_dt_seq = ['data/adv_small_dt_steps.dat']
 adv_small_dt = ['data/adv_small_dt_steps_coll.dat']
+
+heat_steady_state_seq = ['data/heat_steady_state.dat']
+heat_steady_state = ['data/heat_steady_state.dat']
 
 plt.figure(figsize=(5, 4), dpi=150)
 linst = ['dotted', 'dashed', 'dashdot']
@@ -36,10 +39,14 @@ if NAME == 'small_dt':
     linst = ['dashdot']
     names = ['1e-12, M=3', 'k iterations']
     col = col[-1:]
-
     markers = ['>']
     marks = 10
-
+if NAME == 'steady_state':
+    path = heat_steady_state.copy()
+    path_seq = heat_steady_state_seq.copy()
+    names = ['1e-6, M=1', 'k iterations']
+    markers = ['>']
+    marks = 10
 
 # nproc | tot_time | iters
 eq = []
