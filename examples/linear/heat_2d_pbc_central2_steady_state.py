@@ -94,7 +94,7 @@ class Heat(LinearParalpha):
 
     # user defined
     def u_exact(self, t, z):
-        return np.exp(-t) * np.sin(2 * np.pi * z[0]) * np.cos(2 * np.pi * z[1])
+        return np.exp(-100*t) * np.sin(2 * np.pi * z[0]) * np.cos(2 * np.pi * z[1])
 
     # user defined
     def u_initial(self, z):
