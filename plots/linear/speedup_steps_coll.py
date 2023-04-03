@@ -45,8 +45,8 @@ if NAME == 'steady_state':
     path = heat_steady_state.copy()
     path_seq = heat_steady_state_seq.copy()
     names = ['1e-6, M=1', 'k iterations']
-    #markers = ['>']
-    #marks = 10
+    markers = ['>']
+    marks = 10
 
 # nproc | tot_time | iters
 eq = []

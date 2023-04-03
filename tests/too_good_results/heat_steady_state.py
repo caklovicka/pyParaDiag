@@ -25,7 +25,7 @@ prob.maxiter = 10
 prob.smaxiter = 50
 prob.stol = 1e-6
 prob.optimal_alphas = False
-prob.alphas = [1e-1]
+prob.alphas = [1e-2]
 
 prob.setup()
 prob.solve()
