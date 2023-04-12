@@ -170,8 +170,10 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
             Q = np.zeros([Nx] + self.spatial_points[1:])
             f = u.reshape([Nx] + self.spatial_points[1:]).real
+            t1 = MPI.Wtime()
             for ix in range(Nx):
                 Q[ix, :, :, :] = kt.boltzmann_fft(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+            print(self.rank, MPI.Wtime() - t1, Nx)
             Qf = Q.flatten()
 
         # case without spatial parallelization
