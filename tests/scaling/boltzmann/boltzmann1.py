@@ -20,7 +20,7 @@ from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
 prob.proc_col = 8
 prob.rolling = 1
-rob.time_intervals = 32
+prob.time_intervals = 32
 
 # choosing a number of points
 prob.spatial_points = [128, 72, 36, 36]

@@ -9,7 +9,7 @@ from julia import KitBase as kt
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nx = 128
+Nx = 384
 Nu = 72
 Nv = 36
 Nw = 36
@@ -129,7 +129,7 @@ def step(f, df, Q, ps, vs, dt):
         w[i, :] = kt.moments_conserve(f[i, :, :, :], vs.u, vs.v, vs.w, vs.weights)
 
 # %%
-dt = 5e-3
+dt = 1e-3
 #dt = 1e-4
 for iter in range(64):
     compute_df(df, f, ps, vs)
