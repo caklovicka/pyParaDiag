@@ -12,18 +12,18 @@ M = 1
 
 if M == 1:
     #file = ['data/ac1_0.dat']
-    #file = ['data/ac_small_stol.dat']
-    file = ['data/ac_mixed_precision_M1.dat']
-    legend = ['1e-6 (imex)', '1e-6 (newton)']
+    file = ['data/ac_small_stol.dat']
+    #file = ['data/ac_mixed_precision_M1.dat']
+    legend = ['1e-6 (IMEX)', '1e-6 (Newton)']
     K = 1
 
 elif M == 2:
     file = ['data/ac2_0.dat', 'data/ac2_2.dat']
-    legend = ['1e-10 (imex)', '1e-10 (newton)', '1e-10 (imex) + coll', '1e-10 (newton) + coll']
+    legend = ['1e-10 (IMEX)', '1e-10 (Newton)', '1e-10 (IMEX) + coll', '1e-10 (Newton) + coll']
     col[0] = 'gray'
 elif M == 3:
     file = ['data/ac3_0.dat', 'data/ac3_2.dat']
-    legend = ['1e-13 (imex)', '1e-13 (newton)', '1e-13 (imex) + coll', '1e-13 (newton) + coll']
+    legend = ['1e-13 (IMEX)', '1e-13 (Newton)', '1e-13 (IMEX) + coll', '1e-13 (Newton) + coll']
     col = sns.color_palette("hls", 3)[-2:]
     col[0] = 'gray'
 
@@ -84,7 +84,7 @@ for k in range(K):
 
 plt.legend(legend)
 plt.xlabel('total number of cores', fontsize=12)
-plt.ylabel('time[s]', fontsize=12)
+plt.ylabel('efficiency', fontsize=12)
 
 xx = []
 yy = []
