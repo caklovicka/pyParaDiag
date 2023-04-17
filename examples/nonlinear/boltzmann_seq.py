@@ -134,9 +134,9 @@ dt = 1e-4
 for iter in range(64):
     compute_df(df, f, ps, vs)
     start = time.time()
-    #compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
+    compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
     print('{:<3d}:{:<5.2e}, Qnorm = {}'.format(iter + 1, time.time() - start, np.linalg.norm(Q)))
-    compute_Qsimple(Q, f, ps, vs, gas, muref, dt)
+    #compute_Qsimple(Q, f, ps, vs, gas, muref, dt)
     step(f, df, Q, ps, vs, dt)
 
 # %%

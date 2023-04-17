@@ -192,8 +192,16 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
             Q = np.zeros([Nx] + self.spatial_points[1:])
             f = u.reshape([Nx] + self.spatial_points[1:]).real
-            for ix in range(Nx):
-                Q[ix, :, :, :] = self.boltzmann_fft_python(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+            if self.iterations[-1] > 0:
+                for ix in range(Nx):
+                    Q[ix, :, :, :] = self.boltzmann_fft_python(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+            else:   # BGK
+                for ix in range(Nx):
+                    ww = kt.moments_conserve(f[ix, :, :, :], self.vs.u, self.vs.v, self.vs.w, self.vs.weights)
+                    prim = kt.conserve_prim(ww, self.gas.γ)
+                    mm = kt.maxwellian(self.vs.u, self.vs.v, self.vs.w, prim)
+                    tau = kt.vhs_collision_time(prim, self.muref, self.gas.ω)
+                    Q[ix, :, :, :] = dt * (mm - f[ix, :, :, :]) / tau
             Qf = Q.flatten()
 
         # case without spatial parallelization
@@ -201,8 +209,17 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
             Q = np.zeros(self.spatial_points)
             for i in range(self.Frac):
                 f = u[i * self.global_size_A:(i + 1) * self.global_size_A].reshape(self.spatial_points).real
-                for ix in range(self.spatial_points[0]):
-                    Q[ix, :, :, :] = self.boltzmann_fft_python(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+
+                if self.iterations[-1] > 0:
+                    for ix in range(self.spatial_points[0]):
+                        Q[ix, :, :, :] = self.boltzmann_fft_python(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
+                else:  # BGK
+                    for ix in range(self.spatial_points[0]):
+                        ww = kt.moments_conserve(f[ix, :, :, :], self.vs.u, self.vs.v, self.vs.w, self.vs.weights)
+                        prim = kt.conserve_prim(ww, self.gas.γ)
+                        mm = kt.maxwellian(self.vs.u, self.vs.v, self.vs.w, prim)
+                        tau = kt.vhs_collision_time(prim, self.muref, self.gas.ω)
+                        Q[ix, :, :, :] = dt * (mm - f[ix, :, :, :]) / tau
                 Qf[i * self.global_size_A:(i + 1) * self.global_size_A] = Q.flatten()
         return Qf
 
