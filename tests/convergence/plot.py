@@ -40,7 +40,7 @@ tx = 3.3
 for i in range(n):
     if i == 0:
         plt.subplot(231)
-        plt.ylabel(r'$|u_L^{(k)} - u(T_L)|_\infty$', fontsize=15)
+        plt.ylabel(r'$|u_L^{(k)} - u(T_L)|_\infty$', fontsize=12)
     elif i == 1:
         plt.subplot(232)
     else:
@@ -64,13 +64,16 @@ for i in range(n):
 
     plt.legend(tol)
     plt.title(r'$Heat, \alpha = $' + str(alphas[i]))
-    plt.xlabel('iteration', fontsize=10)
+    plt.xlabel('iteration', fontsize=12)
+    plt.ylim([1e-14, 1])
+    if i > 0:
+        plt.yticks([])
 
 # ADVECTION
 for i in range(n):
     if i == 0:
         plt.subplot(234)
-        plt.ylabel(r'$|u_L^{(k)} - u(T_L)|_\infty$', fontsize=15)
+        plt.ylabel(r'$|u_L^{(k)} - u(T_L)|_\infty$', fontsize=12)
     elif i == 1:
         plt.subplot(235)
     else:
@@ -94,7 +97,10 @@ for i in range(n):
 
     plt.legend(tol)
     plt.title(r'$Advection, \alpha = $' + str(alphas[i]))
-    plt.xlabel('iteration', fontsize=10)
+    plt.xlabel('iteration', fontsize=12)
+    plt.ylim([1e-14, 1])
+    if i > 0:
+        plt.yticks([])
 
 plt.tight_layout()
 plt.show()
