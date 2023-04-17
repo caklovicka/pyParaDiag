@@ -18,7 +18,7 @@ sys.path.append('../../../../../../..')     # for jube
 
 from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
-prob.proc_col = 1
+prob.proc_col = 4
 prob.rolling = 1
 # prob.time_intervals = 1
 
