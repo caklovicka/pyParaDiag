@@ -1,11 +1,11 @@
 #!/bin/bash -x
 #SBATCH --account=cstma
-#SBATCH --nodes=4
-#SBATCH --ntasks=256
+#SBATCH --nodes=32
+#SBATCH --ntasks=2048
 #SBATCH --ntasks-per-node=64
 #SBATCH --output=mpi-out.%j
 #SBATCH --error=mpi-err.%j
-#SBATCH --time=01:00:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=dc-cpu
 
-srun python boltzmann1.py >> results.out
+srun python boltzmann1.py >> results_new.out

@@ -9,7 +9,7 @@ from julia import KitBase as kt
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nx = 384
+Nx = 256
 Nu = 72
 Nv = 36
 Nw = 36
