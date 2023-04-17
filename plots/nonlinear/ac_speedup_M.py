@@ -8,7 +8,7 @@ mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
-M = 2
+M = 1
 
 if M == 1:
     file = ['data/ac1_0.dat']
