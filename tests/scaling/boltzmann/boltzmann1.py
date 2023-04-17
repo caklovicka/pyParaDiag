@@ -16,7 +16,7 @@ import sys
 sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 
-from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython_BGK import Boltzmann
+from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
 prob.proc_col = 1
 prob.rolling = 1
@@ -39,7 +39,7 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
 
 # setting maximum number of iterations
-prob.maxiter = 10
+prob.maxiter = 3
 prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
