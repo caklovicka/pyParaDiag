@@ -13,7 +13,7 @@ import sys
 sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 
-from examples.nonlinear.boltzmann_3d_pbc_upwind1 import Boltzmann
+from examples.nonlinear.boltzmann_3d_pbc_upwind1_QJulia import Boltzmann
 prob = Boltzmann()
 
 # choosing a number of points
