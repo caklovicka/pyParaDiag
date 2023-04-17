@@ -56,18 +56,18 @@ m_adv = [am1, am2, am3]
 
 # covnert
 n = len(tol)
-for i in range(n):
-    heat_err_abs[i] = np.log10(np.array(heat_err_abs[i]))
-    heat_cerr[i] = np.log10(np.array(heat_cerr[i]))
-    m_heat[i] = np.log10(np.array(m_heat[i]))
+#for i in range(n):
+    #heat_err_abs[i] = np.log10(np.array(heat_err_abs[i]))
+    #heat_cerr[i] = np.log10(np.array(heat_cerr[i]))
+    #m_heat[i] = np.log10(np.array(m_heat[i]))
     #heat_final_abs[i] = np.log10(np.array(heat_final_abs[i]))
-    schro_err_abs[i] = np.log10(np.array(schro_err_abs[i]))
-    schro_cerr[i] = np.log10(np.array(schro_cerr[i]))
-    m_schro[i] = np.log10(np.array(m_schro[i]))
+    #schro_err_abs[i] = np.log10(np.array(schro_err_abs[i]))
+    #schro_cerr[i] = np.log10(np.array(schro_cerr[i]))
+    #m_schro[i] = np.log10(np.array(m_schro[i]))
     #schro_final_abs[i] = np.log10(np.array(schro_final_abs[i]))
-    adv_err_abs[i] = np.log10(np.array(adv_err_abs[i]))
-    adv_cerr[i] = np.log10(np.array(adv_cerr[i]))
-    m_adv[i] = np.log10(np.array(m_adv[i]))
+    #adv_err_abs[i] = np.log10(np.array(adv_err_abs[i]))
+    #adv_cerr[i] = np.log10(np.array(adv_cerr[i]))
+    #m_adv[i] = np.log10(np.array(m_adv[i]))
     #adv_final_abs[i] = np.log10(np.array(adv_final_abs[i]))
 
 
@@ -95,45 +95,43 @@ tss = 15
 leg = []
 for i in range(n):
     x = range(0, 9, 1)
-    plt.plot(x, np.ones(9) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
+    plt.semilogy(x, np.ones(9) * tol[i], linestyle=linst[i], color=col[i], lw=lw//2)
     plt.text(tx + 2, np.log10(tol[i]) + 0.5, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 x = range(0, l + 2, 1)
 for i in range(n):
-    l = heat_cerr[i].shape
-    l = l[0]
+    l = len(heat_cerr[i])
     x = range(1, l+1, 1)
-    plt.plot(x, heat_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+    plt.semilogy(x, heat_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 for i in range(n):
     l = len(m_heat[i])
     x = range(1, l+1, 1)
-    plt.plot(x, m_heat[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+    plt.semilogy(x, m_heat[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 plt.legend(custom_lines1, names1, prop={'size': marksz})
-plt.ylim([-14, 0])
+plt.ylim([1e-13, 1])
 plt.xlim([0, 8])
 plt.title('Heat (approx. errors)', fontsize=tss)
-plt.xlabel('iteration')
+plt.xlabel('iteration', fontsize=tss)
 
 plt.subplot(142)
 
 l = 5
 for i in range(n):
     x = range(0, 9, 1)
-    plt.plot(x, np.ones(9) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
+    plt.semilogy(x, np.ones(9) * tol[i], linestyle=linst[i], color=col[i], lw=lw//2)
     plt.text(tx + 2, np.log10(tol[i]) + 0.5, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 x = range(0, l + 2, 1)
 for i in range(n):
-    l = heat_err_abs[i].shape
-    l = l[0]
+    l = len(heat_err_abs[i])
     x = range(1, l+1, 1)
-    plt.plot(x, heat_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+    plt.semilogy(x, heat_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 plt.legend(custom_lines2, names2, prop={'size': marksz})
-plt.ylim([-14, 0])
-plt.xlabel('iteration')
+plt.ylim([1e-13, 1])
+plt.xlabel('iteration', fontsize=tss)
 plt.yticks([])
 plt.xlim([0, 8])
 plt.title('Heat (real errors)', fontsize=tss)
@@ -144,43 +142,41 @@ plt.subplot(143)
 l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
-    plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
+    plt.semilogy(x, np.ones(l + 2) * tol[i], linestyle=linst[i], color=col[i], lw=lw//2)
     plt.text(tx + 2, np.log10(tol[i]) + 0.5, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 for i in range(n):
     l = len(m_adv[i])
     x = range(1, l+1, 1)
-    plt.plot(x, m_adv[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+    plt.semilogy(x, m_adv[i], marker=9, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 for i in range(n):
-    l = adv_cerr[i].shape
-    l = l[0]
+    l = len(adv_cerr[i])
     x = range(1, l + 1, 1)
-    plt.plot(x, adv_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+    plt.semilogy(x, adv_cerr[i], marker=8, color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 plt.yticks([])
 plt.legend(custom_lines1, names1, prop={'size': marksz})
-plt.ylim([-14, 0])
+plt.ylim([1e-13, 1])
 plt.xlim([0, 8])
 plt.title('Advection (approx. errors)', fontsize=tss)
-plt.xlabel('iteration')
+plt.xlabel('iteration', fontsize=tss)
 
 plt.subplot(144)
 l = 9
 for i in range(n):
     x = range(0, l + 2, 1)
-    plt.plot(x, np.ones(l + 2) * np.log10(tol[i]), linestyle=linst[i], color='silver', lw=lw)
+    plt.semilogy(x, np.ones(l + 2) * tol[i], linestyle=linst[i], color=col[i], lw=lw//2)
     plt.text(tx + 2, np.log10(tol[i]) + 0.5, str(tol[i]), fontsize=marksz + 1, weight='bold', color='silver')
 
 for i in range(n):
-    l = adv_err_abs[i].shape
-    l = l[0]
+    l = len(adv_err_abs[i])
     x = range(1, l+1, 1)
-    plt.plot(x, adv_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
+    plt.semilogy(x, adv_err_abs[i], 'X', color=col[i], linestyle=linst[i], markersize=marksz, lw=lw)
 
 plt.legend(custom_lines2, names2, prop={'size': marksz})
 plt.yticks([])
-plt.ylim([-14, 0])
+plt.ylim([1e-13, 1])
 plt.xlim([0, 8])
 plt.title('Advection (real errors)', fontsize=tss)
 plt.xlabel('iteration', fontsize=tss)
