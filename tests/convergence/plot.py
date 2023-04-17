@@ -40,6 +40,7 @@ tx = 3.3
 for i in range(n):
     if i == 0:
         plt.subplot(231)
+        plt.ylabel(r'$|u_L^{(k)} - u(T_L)|_\infty$', fontsize=15)
     elif i == 1:
         plt.subplot(232)
     else:
@@ -58,17 +59,18 @@ for i in range(n):
 
     for j in range(n):
         x = range(0, l + 2, 1)
-        plt.semilogy(x, np.ones(l + 2) * tol[j], linestyle=linst[j], color='silver', lw=lw)
+        plt.semilogy(x, np.ones(l + 2) * tol[j], linestyle=linst[j], color=col[j], lw=lw//2)
         plt.text(tx, np.log10(tol[j]) + 0.3, str(tol[j]), fontsize=marksz + 1, weight='bold', color='silver')
 
     plt.legend(tol)
     plt.title(r'$Heat, \alpha = $' + str(alphas[i]))
-    plt.xlabel('iteration')
+    plt.xlabel('iteration', fontsize=10)
 
 # ADVECTION
 for i in range(n):
     if i == 0:
         plt.subplot(234)
+        plt.ylabel(r'$|u_L^{(k)} - u(T_L)|_\infty$', fontsize=15)
     elif i == 1:
         plt.subplot(235)
     else:
@@ -87,12 +89,12 @@ for i in range(n):
 
     for j in range(n):
         x = range(0, l + 2, 1)
-        plt.semilogy(x, np.ones(l + 2) * tol[j], linestyle=linst[j], color='silver', lw=lw)
+        plt.semilogy(x, np.ones(l + 2) * tol[j], linestyle=linst[j], color=col[j], lw=lw//2)
         plt.text(tx, np.log10(tol[j]) + 0.3, str(tol[j]), fontsize=marksz + 1, weight='bold', color='silver')
 
     plt.legend(tol)
     plt.title(r'$Advection, \alpha = $' + str(alphas[i]))
-    plt.xlabel('iteration')
+    plt.xlabel('iteration', fontsize=10)
 
 plt.tight_layout()
 plt.show()
