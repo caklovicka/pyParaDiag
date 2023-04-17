@@ -18,7 +18,7 @@ sys.path.append('../../../../../../..')     # for jube
 
 from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
-prob.proc_col = 1
+prob.proc_col = 2
 prob.rolling = 1
 # prob.time_intervals = 1
 
@@ -29,7 +29,7 @@ prob.knudsen = 1e-2
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 1e-3 * prob.rolling * prob.time_intervals
+prob.T_end = 5e-3 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_row = prob.time_intervals
