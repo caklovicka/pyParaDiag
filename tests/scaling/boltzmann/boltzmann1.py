@@ -18,19 +18,18 @@ sys.path.append('../../../../../../..')     # for jube
 
 from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
-prob.proc_col = 4
+prob.proc_col = 8
 prob.rolling = 1
-# prob.time_intervals = 1
+rob.time_intervals = 32
 
 # choosing a number of points
 prob.spatial_points = [128, 72, 36, 36]
-#prob.spatial_points = [56, 32, 16, 16]
-prob.time_points = 1
+prob.time_points = 2
 prob.knudsen = 1e-2
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 1e-3 * prob.rolling * prob.time_intervals
+prob.T_end = 0.15 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_row = prob.time_intervals
@@ -39,7 +38,7 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
 
 # setting maximum number of iterations
-prob.maxiter = 3
+prob.maxiter = 10
 prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
