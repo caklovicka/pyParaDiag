@@ -22,15 +22,15 @@ for i in range(table.shape[0]):
     petsc_time.append(table[i, 1])
 
 all_proc = petsc_proc + [7, 8, 9, 10, 11]
-plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=mksz, linewidth=lw)
-plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray', markersize=mksz, linewidth=lw)
+plt.plot(petsc_proc, seq_time / (np.array(petsc_time) * 2**np.array(petsc_proc)), 'X-', color='gray', markersize=mksz, linewidth=lw)
 
+'''
 # plot the BGK results
 # nproc | proc_col | time | tot iters
-#table = np.loadtxt('data/boltzmann1_petsc_pint_BGK.dat', delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
-#for i in range(table.shape[0]):
-#    plt.semilogy(np.log2(table[i, 0]), table[i, 2], 'x', color=col[i], markersize=mksz)
-
+table = np.loadtxt('data/boltzmann1_petsc_pint_BGK.dat', delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
+for i in range(table.shape[0]):
+    plt.plot(np.log2(table[i, 0]), seq_time / (table[i, 2] * table[i, 0]), 'x', color=col[i], markersize=mksz)
+'''
 # PinT + PETSc
 runs = [16, 32, 64]
 K = len(runs)
@@ -74,16 +74,16 @@ for k in range(K):
         pint_petsc_iters[k].append(it)
 
     for i in range(len(pint_petsc_iters[k])):
-        plt.semilogy(pint_petsc_proc[k][i], pint_petsc_time[k][i], color=col[k], marker='X', markersize=mksz)#marker)
+        plt.plot(pint_petsc_proc[k][i], seq_time / (np.array(pint_petsc_time[k][i]) * 2**np.array(pint_petsc_proc[k][i])), color=col[k], marker='X', markersize=mksz)#marker)
 
-    plt.semilogy(pint_petsc_proc[k], pint_petsc_time[k], linestyle='--', color=col[k], linewidth=lw)
+    plt.plot(pint_petsc_proc[k], seq_time / (np.array(pint_petsc_time[k]) * 2**np.array(pint_petsc_proc[k])), linestyle='--', color=col[k], linewidth=lw)
 
 #legend.append('petsc + pint (BGK)')
 #custom_lines.append(Line2D([0], [0], color='gray', marker='x'))
 
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores', fontsize=12)
-plt.ylabel('wall clock time [s]', fontsize=12)
+plt.ylabel('efficiency', fontsize=12)
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048])
 plt.grid('gray')
 plt.tight_layout()
