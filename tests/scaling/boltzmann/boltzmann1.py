@@ -13,7 +13,7 @@ os.environ["JULIA_NUM_THREADS"] = "1"
 # prob.time_intervals
 
 import sys
-sys.path.append('../..')                    # for ./julia
+sys.path.append('..')                    # for ./julia
 sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 
