@@ -13,7 +13,7 @@ plt.figure(figsize=(7, 6))
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('data/petsc_euler32.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt('data/boltzmann1_petsc.dat', delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):
@@ -25,9 +25,8 @@ plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=mksz, linewi
 plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray', markersize=mksz, linewidth=lw)
 
 # PinT + PETSc
-runs = [3, 4, 5]
+runs = [64]
 K = len(runs)
-runs = [3, 4, 5]
 col = sns.color_palette("bright", K)
 
 pint_petsc_proc = []
@@ -38,10 +37,10 @@ custom_lines.append(Line2D([0], [0], color='gray', linestyle='-'))
 custom_lines.append(Line2D([0], [0], color='gray', linestyle=':'))
 legend.append('petsc')
 legend.append('petsc ideal')
-'''
+
 for k in range(K):
     # nproc | proc_col | time | tot iters
-    table = np.loadtxt('data/petsc_euler_pint32.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
+    table = np.loadtxt('data/boltzmann1_petsc{}_pint.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
 
     pint_petsc_proc.append([])
     pint_petsc_time.append([])
@@ -77,7 +76,7 @@ for k in range(K):
 plt.legend(custom_lines, legend)
 print(custom_lines)
 print(legend)
-'''
+
 plt.xlabel('total number of cores', fontsize=12)
 plt.ylabel('speedup', fontsize=12)
 #plt.title('scaling PETSc on Boltzmann (32 times steps, M=1)')
