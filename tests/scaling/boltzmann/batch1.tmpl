@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=#proc_col#
 #SBATCH --output=mpi-out.%j
 #SBATCH --error=mpi-err.%j
-#SBATCH --time=02:00:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=dc-cpu
 
 srun python boltzmann1.py --rolling=32 --time_intervals=1 --proc_col=#proc_col#>> scaling_petsc1.out
