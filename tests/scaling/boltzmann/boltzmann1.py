@@ -6,6 +6,7 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 os.environ["JULIA_NUM_THREADS"] = "1"
+os.environ["JULIA_DEPOT_PATH"] = "/p/home/jusers/aklovi1/jureca/.julia"
 
 # RUNTIME ARGS
 # prob.proc_col
@@ -13,7 +14,6 @@ os.environ["JULIA_NUM_THREADS"] = "1"
 # prob.time_intervals
 
 import sys
-sys.path.append('..')                    # for ./julia
 sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 
