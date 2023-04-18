@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
-    <benchmark name="PETSc-Euler scaling test" outpath="output5">
-    <comment>Boltzmann k = 1e-2, PETSC parallel on 2 cores)</comment>
+    <benchmark name="PETSc-Euler scaling test" outpath="output">
+    <comment>Boltzmann k = 1e-2</comment>
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0</parameter>
-        <parameter name="proc_col" type="int">2</parameter>
-        <parameter name="nodes" mode="python">[2][$i]</parameter>
+        <parameter name="proc_col" type="int">1, 2, 4, 8, 16, 32, 64</parameter>
+        <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 1, 1][$i]</parameter>
 
-        <parameter name="rolling" mode="python">[32][$i]</parameter>
-        <parameter name="time_intervals" mode="python">[1][$i]</parameter>
+        <parameter name="rolling" mode="python">[32, 32, 32, 32, 32, 32, 32][$i]</parameter>
+        <parameter name="time_intervals" mode="python">[1, 1, 1, 1, 1, 1, 1][$i]</parameter>
 
         <parameter name="nproc" mode="python">$proc_col * $time_intervals</parameter>
     </parameterset>

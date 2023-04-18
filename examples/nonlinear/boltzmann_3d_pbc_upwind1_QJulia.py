@@ -157,7 +157,6 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         return f
 
     def F(self, u):
-        time_beg = MPI.Wtime()
         Qf = np.empty_like(u, dtype=complex)
 
         # case with spatial parallelization
@@ -170,10 +169,8 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
             Q = np.zeros([Nx] + self.spatial_points[1:])
             f = u.reshape([Nx] + self.spatial_points[1:]).real
-            tmp = MPI.Wtime()
             for ix in range(Nx):
                 Q[ix, :, :, :] = kt.boltzmann_fft(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
-            print(self.rank, MPI.Wtime() - tmp)
             Qf = Q.flatten()
 
         # case without spatial parallelization
@@ -184,7 +181,6 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
                 for ix in range(self.spatial_points[0]):
                     Q[ix, :, :, :] = kt.boltzmann_fft(f[ix, :, :, :], self.gas.fsm.Kn, self.gas.fsm.nm, self.phi, self.psi, self.chi)
                 Qf[i * self.global_size_A:(i + 1) * self.global_size_A] = Q.flatten()
-        print('iter = ', self.iterations, 'rank = ', self.rank, MPI.Wtime() - time_beg)
         return Qf
 
     # user defined
