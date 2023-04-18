@@ -13,7 +13,7 @@ plt.figure(figsize=(12, 6))
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('output1/000000/result/result.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt('data/petsc_euler32.dat', delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):
@@ -45,7 +45,7 @@ pint_petsc_iters = []
 
 custom_lines.append(Line2D([0], [0], color='gray', linestyle='-'))
 legend.append('petsc')
-
+'''
 for k in range(K):
     # nproc | proc_col | time | tot iters
     table = np.loadtxt('output1/00000{}/result/result.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
@@ -80,7 +80,7 @@ plt.grid('gray')
 plt.subplot(122)
 for k in range(K):
     plt.semilogx(pint_petsc_proc[k], petsc_time_seq/(np.array(pint_petsc_time[k]) * np.array(pint_petsc_proc[k])), 'X--', color=col[k], linewidth=lw, markersize=mksz)
-
+'''
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores')
 plt.ylabel('efficiency')

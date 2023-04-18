@@ -13,7 +13,7 @@ plt.figure(figsize=(7, 6))
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('output1/000000/result/result.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt('data/petsc_euler32.dat', delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):
@@ -38,10 +38,10 @@ custom_lines.append(Line2D([0], [0], color='gray', linestyle='-'))
 custom_lines.append(Line2D([0], [0], color='gray', linestyle=':'))
 legend.append('petsc')
 legend.append('petsc ideal')
-
+'''
 for k in range(K):
     # nproc | proc_col | time | tot iters
-    table = np.loadtxt('output1/00000{}/result/result.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
+    table = np.loadtxt('data/petsc_euler_pint32.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
 
     pint_petsc_proc.append([])
     pint_petsc_time.append([])
@@ -77,9 +77,9 @@ for k in range(K):
 plt.legend(custom_lines, legend)
 print(custom_lines)
 print(legend)
-
-plt.xlabel('total number of cores')
-plt.ylabel('time[s]')
+'''
+plt.xlabel('total number of cores', fontsize=12)
+plt.ylabel('speedup', fontsize=12)
 #plt.title('scaling PETSc on Boltzmann (32 times steps, M=1)')
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048])
 plt.grid('gray')
