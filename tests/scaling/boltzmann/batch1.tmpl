@@ -8,6 +8,5 @@
 #SBATCH --time=00:30:00
 #SBATCH --partition=dc-cpu
 
-export PATH="$PATH:/p/home/jusers/aklovi1/jureca/.julia"
 srun python boltzmann1.py --rolling=32 --time_intervals=1 --proc_col=#proc_col#>> scaling_petsc1.out
 touch ready
