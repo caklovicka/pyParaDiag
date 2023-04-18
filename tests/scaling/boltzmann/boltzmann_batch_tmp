@@ -8,4 +8,5 @@
 #SBATCH --time=00:15:00
 #SBATCH --partition=dc-cpu
 
+export PATH="$PATH:/p/home/jusers/aklovi1/jureca/.julia"
 srun python tmp.py >> tmp.out
