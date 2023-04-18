@@ -201,7 +201,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
                     prim = kt.conserve_prim(ww, self.gas.γ)
                     mm = kt.maxwellian(self.vs.u, self.vs.v, self.vs.w, prim)
                     tau = kt.vhs_collision_time(prim, self.muref, self.gas.ω)
-                    Q[ix, :, :, :] = dt * (mm - f[ix, :, :, :]) / tau
+                    Q[ix, :, :, :] = (mm - f[ix, :, :, :]) / tau
             Qf = Q.flatten()
 
         # case without spatial parallelization
@@ -219,7 +219,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
                         prim = kt.conserve_prim(ww, self.gas.γ)
                         mm = kt.maxwellian(self.vs.u, self.vs.v, self.vs.w, prim)
                         tau = kt.vhs_collision_time(prim, self.muref, self.gas.ω)
-                        Q[ix, :, :, :] = dt * (mm - f[ix, :, :, :]) / tau
+                        Q[ix, :, :, :] = (mm - f[ix, :, :, :]) / tau
                 Qf[i * self.global_size_A:(i + 1) * self.global_size_A] = Q.flatten()
         return Qf
 
