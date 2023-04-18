@@ -7,18 +7,18 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 os.environ["JULIA_NUM_THREADS"] = "1"
 
-# RUNTIME ARGS
-# prob.proc_col
-# prob.rolling
-# prob.time_intervals
-
 import sys
-sys.path.append('../../..')                 # for core
-sys.path.append('../../../../../../..')     # for jube
+sys.path.append('../../..')                                 # for core
+sys.path.append('../../../../../../..')                     # for jube
 sys.path.append('/p/home/jusers/aklovi1/jureca/.julia')
 
 from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
+
+# RUNTIME ARGS
+# prob.proc_col
+# prob.rolling
+# prob.time_intervals
 
 # choosing a number of points
 prob.spatial_points = [384, 72, 36, 36]

@@ -8,11 +8,13 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 os.environ["JULIA_NUM_THREADS"] = "1"
 
 import sys
-sys.path.append('../../..')                 # for core
-sys.path.append('../../../../../../..')     # for jube
+sys.path.append('../../..')                                 # for core
+sys.path.append('../../../../../../..')                     # for jube
+sys.path.append('/p/home/jusers/aklovi1/jureca/.julia')
 
 from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
+
 prob.proc_col = 1
 prob.rolling = 1
 prob.time_intervals = 4
