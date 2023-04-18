@@ -25,7 +25,7 @@ plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=mksz, linewi
 plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray', markersize=mksz, linewidth=lw)
 
 # PinT + PETSc
-runs = [64]
+runs = [32, 64]
 K = len(runs)
 col = sns.color_palette("bright", K)
 
