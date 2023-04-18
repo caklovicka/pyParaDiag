@@ -6,7 +6,6 @@ os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
 os.environ["NUMEXPR_NUM_THREADS"] = "1"
 os.environ["JULIA_NUM_THREADS"] = "1"
-os.environ["JULIA_NUM_THREADS"] = "1"
 
 # RUNTIME ARGS
 # prob.proc_col
@@ -17,7 +16,7 @@ import sys
 sys.path.append('../../..')                 # for core
 sys.path.append('../../../../../../..')     # for jube
 
-from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython_BGK import Boltzmann
+from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
 
 # choosing a number of points
