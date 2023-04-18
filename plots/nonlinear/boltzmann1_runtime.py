@@ -25,7 +25,7 @@ plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=mksz, linewi
 plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray', markersize=mksz, linewidth=lw)
 
 # PinT + PETSc
-runs = [32, 64]
+runs = [16, 32, 64]
 K = len(runs)
 col = sns.color_palette("bright", K)
 
@@ -78,7 +78,7 @@ print(custom_lines)
 print(legend)
 
 plt.xlabel('total number of cores', fontsize=12)
-plt.ylabel('speedup', fontsize=12)
+plt.ylabel('wall clock time [s]', fontsize=12)
 #plt.title('scaling PETSc on Boltzmann (32 times steps, M=1)')
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048])
 plt.grid('gray')
