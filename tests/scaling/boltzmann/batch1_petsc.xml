@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
     <benchmark name="PETSc-Euler scaling test" outpath="output">
-    <comment>Boltzmann k = 1e-3, scaling PETSC, euler</comment>
+    <comment>Boltzmann k = 1e-3</comment>
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0, 1, 2, 3, 4, 5, 6</parameter>
