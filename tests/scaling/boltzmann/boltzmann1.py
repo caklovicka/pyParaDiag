@@ -11,7 +11,8 @@ import sys
 sys.path.append('../../..')                  # for core
 sys.path.append('../../../../../../..')      # for jube
 
-from examples.nonlinear.boltzmann_1x3v_pbc_upwind1_python import Boltzmann
+#from examples.nonlinear.boltzmann_1x3v_pbc_upwind1_python import Boltzmann
+from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
 
 # RUNTIME ARGS

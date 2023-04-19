@@ -5,8 +5,8 @@ from core.imex_newton_refinement import IMEXNewtonIncrementParalpha
 from mpi4py import MPI
 
 # Julia backend
-from julia.api import Julia
-jl = Julia(compiled_modules=False)
+#from julia.api import Julia
+#jl = Julia(compiled_modules=False)
 from julia import KitBase as kt
 
 """
