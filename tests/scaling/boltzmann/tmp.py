@@ -11,18 +11,19 @@ import sys
 sys.path.append('../../..')                  # for core
 sys.path.append('../../../../../../..')      # for jube
 
-from examples.nonlinear.boltzmann_1x3v_pbc_upwind1_python import Boltzmann
+#from examples.nonlinear.boltzmann_1x3v_pbc_upwind1_python import Boltzmann
+from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
 
 # RUNTIME ARGS
-# prob.proc_col
-# prob.rolling
-# prob.time_intervals
 
 # choosing a number of points
-prob.spatial_points = [384, 72, 36, 36]
+prob.spatial_points = [256, 72, 36, 36]
 prob.time_points = 1
 prob.knudsen = 1e-3
+prob.proc_col = 1
+prob.rolling = 1
+prob.time_intervals = 1
 
 # choosing a time domain
 prob.T_start = 0

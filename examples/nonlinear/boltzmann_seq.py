@@ -19,10 +19,11 @@ ps = kt.PSpace1D(0.0, 1.0, Nx, 1)
 vs = kt.VSpace3D(-8, 8, Nu, -8, 8, Nv, -8, 8, Nw)
 
 # %%
-knudsen = 1e-2
+knudsen = 2e-3
 muref = kt.ref_vhs_vis(knudsen, 1.0, 0.5)
 fsm = kt.fsm_kernel(vs, muref, 5, 1.0)
 gas = kt.Gas(Kn=knudsen, K=0.0, fsm=fsm)
+
 phi, psi, chi = kt.kernel_mode(
     5,
     vs.u1,
@@ -36,7 +37,6 @@ phi, psi, chi = kt.kernel_mode(
     vs.nw,
     1.0,
 )
-
 
 # %%
 def fw(x, p):
