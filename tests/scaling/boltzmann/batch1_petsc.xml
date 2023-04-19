@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
     <benchmark name="PETSc-Euler scaling test" outpath="output">
-    <comment>Boltzmann k = 1e-3, parallel in time, parallel in space</comment>
+    <comment>Boltzmann k = 1e-3, scaling PETSC, euler</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0,1,2,3,4</parameter>
-        <parameter name="proc_col" type="int">16</parameter>
-        <parameter name="nodes" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
-
-        <parameter name="rolling" mode="python">[16, 8, 4, 2, 1][$i]</parameter>
-        <parameter name="time_intervals" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
-
-        <parameter name="nproc" mode="python">$proc_col * $time_intervals</parameter>
+        <parameter name="i" type="int">0, 1, 2, 3, 4, 5, 6</parameter>
+        <parameter name="proc_col" mode="python">[1, 2, 4, 8, 16, 32, 64][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
     <fileset name="files">
         <copy>boltzmann1.py</copy>
-        <copy>batch1.tmpl</copy>
+        <copy>batch1_petsc.tmpl</copy>
     </fileset>
 
     <!-- Substitute -->
     <substituteset name="substitute">
 
         <!-- Substitute files -->
-        <iofile in="batch1.tmpl" out="run.exe" />
+        <iofile in="batch1_petsc.tmpl" out="run.exe" />
 
         <!-- Substitute commands -->
         <sub source="#nproc#" dest="$nproc" />
@@ -69,10 +63,7 @@
     <result>
         <use>analyse</use> <!-- use existing analyser -->
         <table name="result" style="pretty">
-            <column>nproc</column>
             <column>proc_col</column>
-            <column>rolling</column>
-            <column>time_intervals</column>
             <column>tot_time_avg</column>
 	        <column>comm_time_avg</column>
 	        <column>max_iters</column>
