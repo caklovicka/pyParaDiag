@@ -14,7 +14,7 @@ col = sns.color_palette("bright", 3)
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('data/boltzmann1_petsc.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt('data/boltzmann1_petsc_new.dat', delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):

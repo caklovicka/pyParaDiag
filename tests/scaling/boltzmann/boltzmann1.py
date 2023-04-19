@@ -46,5 +46,6 @@ prob.tol = 1e-4
 prob.stol = 1e-6
 
 prob.setup()
+prob.comm.Barrier()
 prob.solve()
 prob.summary(details=True)

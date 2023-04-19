@@ -9,10 +9,10 @@ from julia import KitBase as kt
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nx = 256
-Nu = 72
-Nv = 36
-Nw = 36
+Nx = 60
+Nu = 30
+Nv = 20
+Nw = 20
 # %%
 st = kt.Setup(space="1d1f3v", collision="fsm", interpOrder=1, boundary="period", maxTime=1.0)
 ps = kt.PSpace1D(0.0, 1.0, Nx, 1)
@@ -131,7 +131,7 @@ def step(f, df, Q, ps, vs, dt):
 # %%
 dt = 1e-3
 #dt = 1e-4
-for iter in range(64):
+for iter in range(10):
     compute_df(df, f, ps, vs)
     start = time.time()
     compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
@@ -140,8 +140,8 @@ for iter in range(64):
     step(f, df, Q, ps, vs, dt)
 
 # %%
-plt.plot(w[:, 1])
-plt.plot(w0[:, 1], '--')
+plt.plot(w[:, 0])
+plt.plot(w0[:, 0], '--')
 plt.legend(['w', 'w0'])
 plt.show()
 # %%
