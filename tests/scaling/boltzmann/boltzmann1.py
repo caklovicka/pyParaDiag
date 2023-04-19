@@ -42,7 +42,7 @@ prob.smaxiter = 100
 prob.alphas = [1e-8]
 
 # setting tolerances
-prob.tol = 1e-4
+prob.tol = 1e-5
 prob.stol = 1e-6
 
 prob.setup()
