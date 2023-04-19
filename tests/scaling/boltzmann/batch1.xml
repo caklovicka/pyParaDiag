@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jube>
-    <benchmark name="PETSc-Euler scaling test" outpath="output">
+    <benchmark name="PETSc(16)-Euler + pint(32) scaling test" outpath="output">
     <comment>Boltzmann k = 1e-3, parallel in time, parallel in space</comment>
 
     <parameterset name="param_set">
