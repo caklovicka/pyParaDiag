@@ -35,7 +35,7 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
 
 # setting maximum number of iterations
-prob.maxiter = 5
+prob.maxiter = 10
 prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence
