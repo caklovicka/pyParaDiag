@@ -4,8 +4,8 @@
     <comment>Boltzmann k = 1e-3, parallel in time, parallel in space</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0,1,2,3,4</parameter>
-        <parameter name="proc_col" type="int">16</parameter>
+        <parameter name="i" type="int">4</parameter>
+        <parameter name="proc_col" type="int">32</parameter>
         <parameter name="nodes" mode="python">[2, 4, 8, 16, 32][$i]</parameter>
 
         <parameter name="rolling" mode="python">[16, 8, 4, 2, 1][$i]</parameter>
