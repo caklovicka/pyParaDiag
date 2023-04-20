@@ -89,20 +89,19 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
         # step size
         self.dx = []
-        self.dx.append((self.X_right - self.X_left) / self.spatial_points[0])
+        self.dx.append((self.X_right - self.X_left) / (self.spatial_points[0] - 1))
         self.dx.append((self.U_right - self.U_left) / self.spatial_points[1])
         self.dx.append((self.V_right - self.V_left) / self.spatial_points[2])
         self.dx.append((self.W_right - self.W_left) / self.spatial_points[3])
 
         # mesh
         self.xx = np.arange(self.X_left - self.dx[0] / 2, self.X_right + self.dx[0], self.dx[0])[1:]
-        self.spatial_points[0] += 1
         self.uu = np.arange(self.U_left + self.dx[1] / 2, self.U_right + self.dx[1] / 2, self.dx[1])
         self.vv = np.arange(self.V_left + self.dx[2] / 2, self.V_right + self.dx[2] / 2, self.dx[2])
         self.ww = np.arange(self.W_left + self.dx[3] / 2, self.W_right + self.dx[3] / 2, self.dx[3])
 
         # x and size_global_A have to be filled before super().setup()
-        self.x = np.meshgrid(self.xx, self.uu, self.vv, self.ww)
+        #self.x = np.meshgrid(self.xx, self.uu, self.vv, self.ww)
         self.global_size_A = 1
         for n in self.spatial_points:
             self.global_size_A *= n
@@ -159,9 +158,15 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         return self.rhs(t, self.x).flatten()[self.row_beg:self.row_end]
 
     def u_initial(self, z):
-        ro = 1 + 0.1 * np.sin(2 * np.pi * z[0])
-        e = np.exp(-ro * ((z[1] - 1)**2 + z[2]**2 + z[3]**2))
-        return ro * np.sqrt(ro / np.pi)**3 * e
+        f = np.empty(self.spatial_points)
+        for ix in range(self.spatial_points[0]):
+            for iu in range(self.spatial_points[1]):
+                for iv in range(self.spatial_points[2]):
+                    for iw in range(self.spatial_points[3]):
+                        ro = 1 + 0.1 * np.sin(2 * np.pi * self.xx[ix])
+                        e = np.exp(-ro * ((self.uu[iu] - 1) ** 2 + self.vv[iv] ** 2 + self.ww[iw] ** 2))
+                        f[ix, iu, iv, iw] = ro * np.sqrt(ro / np.pi) ** 3 * e
+        return f
 
     # computing the collision term
     # has to operate on python variables only

@@ -21,7 +21,7 @@ prob = Boltzmann()
 # RUNTIME ARGS
 
 # choosing a number of points
-prob.spatial_points = [100, 72, 36, 36]
+prob.spatial_points = [60, 30, 20, 20]
 prob.time_points = 1
 prob.knudsen = 1e-2
 prob.proc_col = 1
@@ -39,18 +39,22 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
 
 # setting maximum number of iterations
-prob.maxiter = 1
+prob.maxiter = 5
 prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
 prob.alphas = [1e-8]
 
 # setting tolerances
-prob.tol = 1e-6
-prob.stol = 1e-8
+prob.tol = 1e-4
+prob.stol = 1e-6
 
 prob.setup()
 plt.show()
 prob.solve()
 prob.summary(details=True)
+
+plt.plot(np.transpose(prob.u0_loc.reshape(prob.spatial_points), axes=(3, 2, 1, 0))[:, 0, 0, 0])
+plt.plot((prob.u0_loc.reshape(prob.spatial_points)[:, 0, 0, 0]))
+plt.show()
 

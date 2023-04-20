@@ -1,8 +1,8 @@
 using KitBase
 
-params = [383, 72, 36, 36]
+params = [384, 72, 36, 36]
 
-Nx = params[1]
+Nx = params[1] - 1
 Nu = params[2]
 Nv = params[3]
 Nw = params[4]
@@ -105,3 +105,4 @@ end
 #print(file, "\n")
 #print(file, vec(f))
 #close(file)
+
