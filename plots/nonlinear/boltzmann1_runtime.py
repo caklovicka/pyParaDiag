@@ -30,9 +30,9 @@ plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray',
 #table = np.loadtxt('data/boltzmann1_petsc_pint_BGK.dat', delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
 #for i in range(table.shape[0]):
 #    plt.semilogy(np.log2(table[i, 0]), table[i, 2], 'x', color=col[i], markersize=mksz)
-'''
+
 # PinT + PETSc
-runs = [16, 32, 64]
+runs = [16]
 K = len(runs)
 
 pint_petsc_proc = []
@@ -80,7 +80,7 @@ for k in range(K):
 
 #legend.append('petsc + pint (BGK)')
 #custom_lines.append(Line2D([0], [0], color='gray', marker='x'))
-'''
+
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores', fontsize=12)
 plt.ylabel('wall clock time [s]', fontsize=12)
