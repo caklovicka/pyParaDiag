@@ -32,7 +32,7 @@ plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray',
 #    plt.semilogy(np.log2(table[i, 0]), table[i, 2], 'x', color=col[i], markersize=mksz)
 
 # PinT + PETSc
-runs = [16]
+runs = [16, 64]
 K = len(runs)
 
 pint_petsc_proc = []
