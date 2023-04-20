@@ -1,5 +1,8 @@
 # the following lines disable the numpy multithreading [optional]
 import os
+import matplotlib.pyplot as plt
+import numpy as np
+
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
@@ -11,16 +14,16 @@ import sys
 sys.path.append('../../..')                  # for core
 sys.path.append('../../../../../../..')      # for jube
 
-#from examples.nonlinear.boltzmann_1x3v_pbc_upwind1_python import Boltzmann
-from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
+from examples.nonlinear.boltzmann_1x3v_pbc_upwind1_python import Boltzmann
+#from examples.nonlinear.boltzmann_3d_pbc_upwind1_Qpython import Boltzmann
 prob = Boltzmann()
 
 # RUNTIME ARGS
 
 # choosing a number of points
-prob.spatial_points = [256, 72, 36, 36]
+prob.spatial_points = [100, 72, 36, 36]
 prob.time_points = 1
-prob.knudsen = 1e-3
+prob.knudsen = 1e-2
 prob.proc_col = 1
 prob.rolling = 1
 prob.time_intervals = 1
@@ -36,16 +39,18 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
 
 # setting maximum number of iterations
-prob.maxiter = 5
-prob.smaxiter = 100
+prob.maxiter = 1
+prob.smaxiter = 50
 
 # choosing a setting for the alpha sequence
 prob.alphas = [1e-8]
 
 # setting tolerances
-prob.tol = 1e-4
-prob.stol = 1e-6
+prob.tol = 1e-6
+prob.stol = 1e-8
 
 prob.setup()
+plt.show()
 prob.solve()
 prob.summary(details=True)
+

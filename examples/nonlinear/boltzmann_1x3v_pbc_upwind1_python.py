@@ -3,15 +3,16 @@ from scipy import sparse
 from petsc4py import PETSc
 from core.imex_newton_refinement import IMEXNewtonIncrementParalpha
 from mpi4py import MPI
+import ast
 
 # Julia backend
 #from julia.api import Julia
 #jl = Julia(compiled_modules=False)
-from julia import KitBase as kt
+#from julia import KitBase as kt
 
 """
 boltzman equation
-u_t + v2 * u_y = 1 / knudsen * Q(u)
+u_t + v1 * u_x = 1 / knudsen * Q(u)
 """
 
 
@@ -31,14 +32,14 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
     knudsen = 1e-2
     xx = None
+    uu = None
+    vv = None
+    ww = None
 
     # these HAVE to be python objects
     gas_fsm_kn = None       # = gas.fsm.Kn
     gas_fsm_nm = None       # = gas.fsm.nm
     gas_gamma = None        # = gas.γ
-    vs_u = None             # = vs.u
-    vs_v = None             # = vs.v
-    vs_w = None             # = vs.w
     phi = None
     psi = None
     chi = None
@@ -52,48 +53,56 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
     def setup(self):
 
         # ---- PRESETUP ----
-        # Julia objects
-        vs = kt.VSpace3D(self.U_left, self.U_right, self.spatial_points[1], self.V_left, self.V_right, self.spatial_points[2], self.W_left, self.W_right, self.spatial_points[3])
-        muref = kt.ref_vhs_vis(self.knudsen, 1.0, 0.5)
-        fsm = kt.fsm_kernel(vs, muref, 5, 1.0)
-        gas = kt.Gas(Kn=self.knudsen, K=0.0, fsm=fsm)
 
-        # Python numpy.ndarray objects
-        phi_, psi_, chi_ = kt.kernel_mode(
-            5,
-            vs.u1,
-            vs.v1,
-            vs.w1,
-            vs.du[1, 1, 1],
-            vs.dv[1, 1, 1],
-            vs.dw[1, 1, 1],
-            vs.nu,
-            vs.nv,
-            vs.nw,
-            1.0,
-        )
+        # red gas_fsm_kn
+        file = open('../../../examples/nonlinear/julia_setups/gas_fsm_kn.txt', 'r')
+        self.gas_fsm_kn = float(file.read())
+        file.close()
 
-        # copy into Python objects
-        self.gas_fsm_kn = gas.fsm.Kn
-        self.gas_fsm_nm = gas.fsm.nm
-        self.gas_gamma = gas.γ
-        self.vs_u = vs.u[:, :, :]
-        self.vs_v = vs.v[:, :, :]
-        self.vs_w = vs.w[:, :, :]
-        self.phi = phi_[:, :, :, :]
-        self.psi = psi_[:, :, :, :]
-        self.chi = chi_[:, :, :]
+        # read gas_fsm_nm
+        file = open('../../../examples/nonlinear/julia_setups/gas_fsm_nm.txt', 'r')
+        self.gas_fsm_nm = int(file.read())
+        file.close()
 
-        self.xx = np.linspace(self.X_left, self.X_right, self.spatial_points[0] + 1)[:-1]
+        # read gas_gamma
+        file = open('../../../examples/nonlinear/julia_setups/gas_gamma.txt', 'r')
+        self.gas_gamma = float(file.read())
+        file.close()
 
+        # read phi
+        file = open('../../../examples/nonlinear/julia_setups/phi.txt', 'r')
+        shape = list(map(int, file.readline().split()))
+        self.phi = np.transpose(np.array(ast.literal_eval(file.read())).reshape(shape[::-1]), axes=(3, 2, 1, 0))
+        file.close()
+
+        # read psi
+        file = open('../../../examples/nonlinear/julia_setups/psi.txt', 'r')
+        shape = list(map(int, file.readline().split()))
+        self.psi = np.transpose(np.array(ast.literal_eval(file.read())).reshape(shape[::-1]), axes=(3, 2, 1, 0))
+        file.close()
+
+        # read chi
+        file = open('../../../examples/nonlinear/julia_setups/chi.txt', 'r')
+        shape = list(map(int, file.readline().split()))
+        self.chi = np.transpose(np.array(ast.literal_eval(file.read())).reshape(shape[::-1]), axes=(2, 1, 0))
+        file.close()
+
+        # step size
         self.dx = []
         self.dx.append((self.X_right - self.X_left) / self.spatial_points[0])
-        self.dx.append(vs.du[1, 1, 1])
-        self.dx.append(vs.dv[1, 1, 1])
-        self.dx.append(vs.dw[1, 1, 1])
+        self.dx.append((self.U_right - self.U_left) / self.spatial_points[1])
+        self.dx.append((self.V_right - self.V_left) / self.spatial_points[2])
+        self.dx.append((self.W_right - self.W_left) / self.spatial_points[3])
+
+        # mesh
+        self.xx = np.arange(self.X_left - self.dx[0] / 2, self.X_right + self.dx[0], self.dx[0])[1:]
+        self.spatial_points[0] += 1
+        self.uu = np.arange(self.U_left + self.dx[1] / 2, self.U_right + self.dx[1] / 2, self.dx[1])
+        self.vv = np.arange(self.V_left + self.dx[2] / 2, self.V_right + self.dx[2] / 2, self.dx[2])
+        self.ww = np.arange(self.W_left + self.dx[3] / 2, self.W_right + self.dx[3] / 2, self.dx[3])
 
         # x and size_global_A have to be filled before super().setup()
-        self.x = np.meshgrid(self.xx, self.vs_u[:, 1, 1], self.vs_v[1, :, 1], self.vs_w[1, 1, :])
+        self.x = np.meshgrid(self.xx, self.uu, self.vv, self.ww)
         self.global_size_A = 1
         for n in self.spatial_points:
             self.global_size_A *= n
@@ -119,23 +128,23 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
             iu = (i % Nuvw) // Nvw
 
-            if self.vs_u[iu, 1, 1] < 0:
+            if self.uu[iu] < 0:
                 row.append(i)
                 col.append(i)
-                data.append(self.vs_u[iu, 1, 1] / self.dx[0])
+                data.append(self.uu[iu] / self.dx[0])
 
                 row.append(i)
                 col.append((i + Nuvw) % self.global_size_A)
-                data.append(-self.vs_u[iu, 1, 1] / self.dx[0])
+                data.append(-self.uu[iu] / self.dx[0])
 
             else:
                 row.append(i)
                 col.append(i)
-                data.append(-self.vs_u[iu, 1, 1] / self.dx[0])
+                data.append(-self.uu[iu] / self.dx[0])
 
                 row.append(i)
                 col.append((i - Nuvw) % self.global_size_A)
-                data.append(self.vs_u[iu, 1, 1] / self.dx[0])
+                data.append(self.uu[iu] / self.dx[0])
 
         data = np.array(data)
         row = np.array(row) - self.row_beg
@@ -149,25 +158,10 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
     def bpar(self, t):
         return self.rhs(t, self.x).flatten()[self.row_beg:self.row_end]
 
-    # called during setup phase
-    def fw(self, x, p):
-        ρ = 1 + 0.1 * np.sin(2 * np.pi * x)
-        u = 1.0
-        λ = ρ
-        return kt.prim_conserve([ρ, u, 0, 0, λ], self.gas_gamma)
-
-    # called during setup phase
-    def ff(self, x, p):
-        w = self.fw(x, p)
-        prim = kt.conserve_prim(w, self.gas_gamma)
-        return kt.maxwellian(self.vs_u, self.vs_v, self.vs_w, prim)
-
-    # user defined, called during setup phase
     def u_initial(self, z):
-        f = np.zeros(self.spatial_points)
-        for i in range(self.spatial_points[0]):
-            f[i, :, :, :] = self.ff(self.xx[i], None)
-        return f
+        ro = 1 + 0.1 * np.sin(2 * np.pi * z[0])
+        e = np.exp(-ro * ((z[1] - 1)**2 + z[2]**2 + z[3]**2))
+        return ro * np.sqrt(ro / np.pi)**3 * e
 
     # computing the collision term
     # has to operate on python variables only
