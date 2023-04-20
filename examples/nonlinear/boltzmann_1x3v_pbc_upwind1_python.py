@@ -5,11 +5,6 @@ from core.imex_newton_refinement import IMEXNewtonIncrementParalpha
 from mpi4py import MPI
 import ast
 
-# Julia backend
-#from julia.api import Julia
-#jl = Julia(compiled_modules=False)
-#from julia import KitBase as kt
-
 """
 boltzman equation
 u_t + v1 * u_x = 1 / knudsen * Q(u)
