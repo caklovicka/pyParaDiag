@@ -25,7 +25,7 @@ all_proc = petsc_proc + [7, 8, 9, 10, 11]
 plt.plot(petsc_proc, seq_time / (np.array(petsc_time) * 2**np.array(petsc_proc)), 'X-', color='gray', markersize=mksz, linewidth=lw)
 
 # PinT + PETSc
-runs = [16, 64]
+runs = [16, 32, 64]
 K = len(runs)
 
 pint_petsc_proc = []
