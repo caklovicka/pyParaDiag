@@ -96,7 +96,7 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
         self.ww = np.arange(self.W_left + self.dx[3] / 2, self.W_right + self.dx[3] / 2, self.dx[3])
 
         # x and size_global_A have to be filled before super().setup()
-        #self.x = np.meshgrid(self.xx, self.uu, self.vv, self.ww)
+        self.x = np.meshgrid(self.xx, self.uu, self.vv, self.ww)
         self.global_size_A = 1
         for n in self.spatial_points:
             self.global_size_A *= n
