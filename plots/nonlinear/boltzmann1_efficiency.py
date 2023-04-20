@@ -14,7 +14,7 @@ col = sns.color_palette("bright", 3)
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('data/boltzmann1_petsc_new.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt('data/boltzmann1_petsc.dat', delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):
@@ -30,6 +30,7 @@ plt.plot(petsc_proc, seq_time / (np.array(petsc_time) * 2**np.array(petsc_proc))
 table = np.loadtxt('data/boltzmann1_petsc_pint_BGK.dat', delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
 for i in range(table.shape[0]):
     plt.plot(np.log2(table[i, 0]), seq_time / (table[i, 2] * table[i, 0]), 'x', color=col[i], markersize=mksz)
+'''
 '''
 # PinT + PETSc
 runs = [16, 32, 64]
@@ -80,6 +81,7 @@ for k in range(K):
 
 #legend.append('petsc + pint (BGK)')
 #custom_lines.append(Line2D([0], [0], color='gray', marker='x'))
+'''
 
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores', fontsize=12)
