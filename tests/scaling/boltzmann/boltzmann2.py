@@ -39,11 +39,11 @@ prob.maxiter = 15
 prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence
-prob.alphas = [1e-8]
+prob.alphas = [1e-4]
 
 # setting tolerances
-prob.tol = 1e-6
-prob.stol = 1e-8
+prob.tol = 1e-4
+prob.stol = 1e-6
 
 prob.setup()
 prob.comm.Barrier()
