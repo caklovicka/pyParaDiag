@@ -20,13 +20,13 @@ prob = Boltzmann()
 # prob.time_intervals
 
 # choosing a number of points
-prob.spatial_points = [32, 72, 36, 36]
+prob.spatial_points = [384, 72, 36, 36]
 prob.time_points = 2
 prob.knudsen = 1e-1
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 0.008 * prob.rolling * prob.time_intervals
+prob.T_end = 1e-3 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_row = prob.time_intervals
@@ -42,8 +42,8 @@ prob.smaxiter = 100
 prob.alphas = [1e-8]
 
 # setting tolerances
-prob.tol = 1e-4
-prob.stol = 1e-6
+prob.tol = 1e-10
+prob.stol = 1e-11
 
 prob.setup()
 prob.comm.Barrier()
