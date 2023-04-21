@@ -26,7 +26,9 @@ prob.knudsen = 1e-1
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 1e-2 * prob.rolling * prob.time_intervals
+prob.T_end = 0.008 * prob.rolling * prob.time_intervals
+# 32 steps with dt=1e-3
+# 4 steps with 0.008
 
 # choosing a parallelization strategy
 prob.proc_row = prob.time_intervals
