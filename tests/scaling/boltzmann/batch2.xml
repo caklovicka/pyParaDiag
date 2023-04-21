@@ -5,7 +5,7 @@
 
     <parameterset name="param_set">
         <parameter name="i" type="int">0, 1, 2</parameter>
-        <parameter name="proc_col" type="int">4</parameter>
+        <parameter name="proc_col" type="int">16</parameter>
         <parameter name="nodes" mode="python">[1, 1, 1][$i]</parameter>
         <parameter name="time_intervals" mode="python">[1, 2, 4][$i]</parameter>
         <parameter name="rolling" mode="python">[4, 2, 1][$i]</parameter>
