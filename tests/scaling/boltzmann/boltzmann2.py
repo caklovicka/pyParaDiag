@@ -26,7 +26,7 @@ prob.knudsen = 1e-1
 
 # choosing a time domain
 prob.T_start = 0
-prob.T_end = 0.08 * prob.rolling * prob.time_intervals
+prob.T_end = 0.008 * prob.rolling * prob.time_intervals
 
 # choosing a parallelization strategy
 prob.proc_row = prob.time_intervals
@@ -42,8 +42,8 @@ prob.smaxiter = 100
 prob.alphas = [1e-8]
 
 # setting tolerances
-prob.tol = 1e-9
-prob.stol = 1e-11
+prob.tol = 1e-4
+prob.stol = 1e-6
 
 prob.setup()
 prob.comm.Barrier()
