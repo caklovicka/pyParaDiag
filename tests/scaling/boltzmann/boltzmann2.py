@@ -41,7 +41,7 @@ prob.maxiter = 15
 prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence
-prob.alphas = [1e-4]
+prob.alphas = [1e-8]
 
 # setting tolerances
 prob.tol = 1e-4
