@@ -16,15 +16,15 @@
 
     <!-- Files -->
     <fileset name="files">
-        <copy>boltzmann1.py</copy>
-        <copy>batch1.tmpl</copy>
+        <copy>boltzmann2.py</copy>
+        <copy>batch2.tmpl</copy>
     </fileset>
 
     <!-- Substitute -->
     <substituteset name="substitute">
 
         <!-- Substitute files -->
-        <iofile in="batch1.tmpl" out="run.exe" />
+        <iofile in="batch2.tmpl" out="run.exe" />
 
         <!-- Substitute commands -->
         <sub source="#nproc#" dest="$nproc" />
