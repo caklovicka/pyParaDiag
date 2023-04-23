@@ -21,7 +21,7 @@ prob = Boltzmann()
 # RUNTIME ARGS
 
 # choosing a number of points
-prob.spatial_points = [60, 30, 20, 20]
+prob.spatial_points = [20, 10, 10, 10]
 prob.time_points = 1
 prob.knudsen = 1e-2
 prob.proc_col = 1
@@ -48,11 +48,13 @@ prob.alphas = [1e-8]
 # setting tolerances
 prob.tol = 1e-4
 prob.stol = 1e-6
+prob.document = 'tmp.out'
 
 prob.setup()
 plt.show()
 prob.solve()
 prob.summary(details=True)
+prob.__write_u_last_in_txt__(type=float)
 
 plt.plot(np.transpose(prob.u0_loc.reshape(prob.spatial_points), axes=(3, 2, 1, 0))[:, 0, 0, 0])
 plt.plot((prob.u0_loc.reshape(prob.spatial_points)[:, 0, 0, 0]))

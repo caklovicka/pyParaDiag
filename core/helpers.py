@@ -740,7 +740,7 @@ class Helpers(Communicators):
 
         self.comm.Barrier()
 
-    def __write_u_last_in_txt__(self):
+    def __write_u_last_in_txt__(self, type=complex):
 
         self.__fill_u_last__(fill_old=False)
         if self.document == 'None':
@@ -752,7 +752,7 @@ class Helpers(Communicators):
                 if self.rank == proc:
                     file = open(self.document, "a")
                     for element in self.u_last_loc:
-                        file.write(str(complex(element)) + '\n')
+                        file.write(str(element.astype(type)) + '\n')
                     file.close()
                 self.comm.Barrier()
 
@@ -761,7 +761,7 @@ class Helpers(Communicators):
             if self.rank == self.size - 1:
                 file = open(self.document, "a")
                 for element in self.u_last_loc:
-                    file.write(str(complex(element)) + '\n')
+                    file.write(str(element.astype(float)) + '\n')
                 file.close()
             self.comm.Barrier()
         self.comm.Barrier()

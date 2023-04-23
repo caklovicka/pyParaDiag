@@ -51,33 +51,39 @@ class Boltzmann(IMEXNewtonIncrementParalpha):
 
         # red gas_fsm_kn
         file = open('../../../../../../../examples/nonlinear/julia_setups/gas_fsm_kn.txt', 'r')
+        #file = open('../../../examples/nonlinear/julia_setups/gas_fsm_kn.txt', 'r')
         self.gas_fsm_kn = float(file.read())
         file.close()
 
         # read gas_fsm_nm
         file = open('../../../../../../../examples/nonlinear/julia_setups/gas_fsm_nm.txt', 'r')
+        #file = open('../../../examples/nonlinear/julia_setups/gas_fsm_nm.txt', 'r')
         self.gas_fsm_nm = int(file.read())
         file.close()
 
         # read gas_gamma
         file = open('../../../../../../../examples/nonlinear/julia_setups/gas_gamma.txt', 'r')
+        #file = open('../../../examples/nonlinear/julia_setups/gas_gamma.txt', 'r')
         self.gas_gamma = float(file.read())
         file.close()
 
         # read phi
         file = open('../../../../../../../examples/nonlinear/julia_setups/phi.txt', 'r')
+        #file = open('../../../examples/nonlinear/julia_setups/phi.txt', 'r')
         shape = list(map(int, file.readline().split()))
         self.phi = np.transpose(np.array(ast.literal_eval(file.read())).reshape(shape[::-1]), axes=(3, 2, 1, 0))
         file.close()
 
         # read psi
         file = open('../../../../../../../examples/nonlinear/julia_setups/psi.txt', 'r')
+        #file = open('../../../examples/nonlinear/julia_setups/psi.txt', 'r')
         shape = list(map(int, file.readline().split()))
         self.psi = np.transpose(np.array(ast.literal_eval(file.read())).reshape(shape[::-1]), axes=(3, 2, 1, 0))
         file.close()
 
         # read chi
         file = open('../../../../../../../examples/nonlinear/julia_setups/chi.txt', 'r')
+        #file = open('../../../examples/nonlinear/julia_setups/chi.txt', 'r')
         shape = list(map(int, file.readline().split()))
         self.chi = np.transpose(np.array(ast.literal_eval(file.read())).reshape(shape[::-1]), axes=(2, 1, 0))
         file.close()

@@ -33,6 +33,7 @@ prob.proc_row = prob.time_intervals
 
 # choosing a solver
 prob.solver = 'custom'
+prob.document = 'boltzmann2.out'
 
 # setting maximum number of iterations
 prob.maxiter = 10
@@ -48,4 +49,6 @@ prob.stol = 1e-11
 prob.setup()
 prob.comm.Barrier()
 prob.solve()
+prob.__write_u_last_in_txt__(type=float)
+
 prob.summary(details=True)
