@@ -3,6 +3,12 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
+#petsc_run = 'data/boltzmann1_petsc.dat'
+#petsc_pint_run = 'data/boltzmann1_petsc{}_pint.dat'
+
+petsc_run = 'data/boltzmann1_petsc_julia.dat'
+petsc_pint_run = 'data/boltzmann1_petsc{}_pint_julia.dat'
+
 legend = []
 petsc_proc = []
 petsc_time = []
@@ -14,7 +20,7 @@ col = sns.color_palette("bright", 3)
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('data/boltzmann1_petsc.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt(petsc_run, delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):
@@ -39,7 +45,7 @@ legend.append('ideal')
 
 for k in range(K):
     # nproc | proc_col | time | tot iters
-    table = np.loadtxt('data/boltzmann1_petsc{}_pint.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
+    table = np.loadtxt(petsc_pint_run.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
 
     pint_petsc_proc.append([])
     pint_petsc_time.append([])

@@ -36,7 +36,7 @@ prob.solver = 'custom'
 prob.document = 'boltzmann2.out'
 
 # setting maximum number of iterations
-prob.maxiter = 10
+prob.maxiter = 20
 prob.smaxiter = 100
 
 # choosing a setting for the alpha sequence

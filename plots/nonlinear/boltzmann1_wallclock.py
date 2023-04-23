@@ -3,6 +3,12 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
+#petsc_run = 'data/boltzmann1_petsc.dat'
+#petsc_pint_run = 'data/boltzmann1_petsc{}_pint.dat'
+
+petsc_run = 'data/boltzmann1_petsc_julia.dat'
+petsc_pint_run = 'data/boltzmann1_petsc{}_pint_julia.dat'
+
 legend = []
 petsc_proc = []
 petsc_time = []
@@ -14,7 +20,7 @@ col = sns.color_palette("bright", 3)
 
 # just PETSc
 # nproc | time
-table = np.loadtxt('data/boltzmann1_petsc.dat', delimiter='|', skiprows=3, usecols=[1, 2])
+table = np.loadtxt(petsc_run, delimiter='|', skiprows=3, usecols=[1, 2])
 seq_time = table[0, 1]
 
 for i in range(table.shape[0]):
@@ -24,12 +30,6 @@ for i in range(table.shape[0]):
 all_proc = petsc_proc + [7, 8, 9, 10, 11]
 plt.semilogy(petsc_proc, petsc_time, 'X-', color='gray', markersize=mksz, linewidth=lw)
 plt.semilogy(all_proc, seq_time / (2 ** np.array(all_proc)), 'X:', color='gray', markersize=mksz, linewidth=lw)
-
-# plot the BGK results
-# nproc | proc_col | time | tot iters
-#table = np.loadtxt('data/boltzmann1_petsc_pint_BGK.dat', delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
-#for i in range(table.shape[0]):
-#    plt.semilogy(np.log2(table[i, 0]), table[i, 2], 'x', color=col[i], markersize=mksz)
 
 # PinT + PETSc
 runs = [16, 32, 64]
@@ -46,7 +46,7 @@ legend.append('ideal')
 
 for k in range(K):
     # nproc | proc_col | time | tot iters
-    table = np.loadtxt('data/boltzmann1_petsc{}_pint.dat'.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
+    table = np.loadtxt(petsc_pint_run.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 2, 5, 8])
 
     pint_petsc_proc.append([])
     pint_petsc_time.append([])
@@ -77,9 +77,6 @@ for k in range(K):
         plt.semilogy(pint_petsc_proc[k][i], pint_petsc_time[k][i], color=col[k], marker='X', markersize=mksz)#marker)
 
     plt.semilogy(pint_petsc_proc[k], pint_petsc_time[k], linestyle='--', color=col[k], linewidth=lw)
-
-#legend.append('petsc + pint (BGK)')
-#custom_lines.append(Line2D([0], [0], color='gray', marker='x'))
 
 plt.legend(custom_lines, legend)
 plt.xlabel('total number of cores', fontsize=12)

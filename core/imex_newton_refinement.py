@@ -65,15 +65,12 @@ class IMEXNewtonIncrementParalpha(Helpers):
                 tmp = self.__get_F__()                             # add the explicit part
                 res_loc += tmp
                 res_norm = self.__get_max_norm__(res_loc)
-
-                if self.optimal_alphas is True:
-                    #self.alphas.append(np.sqrt((gamma * res_norm)/res_norm))
-                    self.alphas.append(np.sqrt((gamma * 1) / 1))
-                    #m0 = 2 * np.sqrt(gamma * m0 * res_norm)
                 i_alpha = self.__next_alpha__(i_alpha)
 
                 self.residual[rolling_interval].append(res_norm)
                 if self.residual[rolling_interval][-1] <= self.tol or self.iterations[rolling_interval] == self.maxiter:
+                    if self.residual[rolling_interval][-1] > self.tol:
+                        self.convergence = 0
                     break
 
                 if self.residual[rolling_interval][-1] > 1000:
