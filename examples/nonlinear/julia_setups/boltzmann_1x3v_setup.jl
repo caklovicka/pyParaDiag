@@ -1,12 +1,12 @@
 using KitBase
 
 params = [384, 72, 36, 36]
+knudsen = 1e-2
 
 Nx = params[1] - 1
 Nu = params[2]
 Nv = params[3]
 Nw = params[4]
-knudsen = 1e-2
 
 st = KB.Setup(space = "1d1f3v", collision = "fsm", interpOrder = 1, boundary = "period", maxTime = 1.0)
 ps = KB.PSpace1D(0.0, 1.0, Nx, 1)
