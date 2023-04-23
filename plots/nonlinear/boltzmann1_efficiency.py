@@ -9,7 +9,7 @@ petsc_time = []
 custom_lines = []
 mksz = 10
 lw = 2
-plt.figure(figsize=(7, 6))
+plt.figure(figsize=(6, 5))
 col = sns.color_palette("bright", 3)
 
 # just PETSc
