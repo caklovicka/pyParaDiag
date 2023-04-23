@@ -748,7 +748,7 @@ class Helpers(Communicators):
 
         # with spatial parallelization
         if self.frac > 1:
-            for proc in range(prob.size - prob.size_subcol_seq, prob.size, 1):
+            for proc in range(self.size - self.size_subcol_seq, self.size, 1):
                 if self.rank == proc:
                     file = open(self.document, "a")
                     for element in self.u_last_loc:
