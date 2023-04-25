@@ -25,9 +25,9 @@ prob.smaxiter = 50
 prob.stol = 1e-13
 prob.optimal_alphas = True
 prob.alphas = [1e-8]
-prob.rolling = 8
-prob.time_intervals = 4
-prob.proc_row = 4
+prob.rolling = 1
+prob.time_intervals = 64
+prob.proc_row = 64
 
 prob.setup()
 prob.solve()
