@@ -402,7 +402,7 @@ class Helpers(Communicators):
         if self.rank == 0:
             print('Z @ D @ Zinv - R = ', np.linalg.norm(Zinv @ np.diag(D) @ Z - R, np.inf))
             print('Z @ D @ - R @ Z= ', np.diag(D) @ Z - R @ Z)
-            print(D)
+            print(np.diag(D))
 
         return Zinv, D, Z, Cinv
 
