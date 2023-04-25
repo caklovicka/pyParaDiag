@@ -391,7 +391,6 @@ class Helpers(Communicators):
         C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
 
         Cinv = np.linalg.inv(C)
-
         R = self.Q @ Cinv
         D, Z = np.linalg.eig(R)
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
