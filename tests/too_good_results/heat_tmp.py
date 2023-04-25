@@ -24,6 +24,7 @@ prob.maxiter = 5
 prob.smaxiter = 50
 prob.stol = 1e-13
 prob.optimal_alphas = True
+prob.alphas = [1e-8]
 prob.rolling = 1
 prob.time_intervals = 64
 prob.proc_row = 64
