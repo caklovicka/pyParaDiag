@@ -90,7 +90,7 @@ class LinearParalpha(Helpers):
 
                 Zinv, D, Z, Cinv = self.__get_shifted_matrices__(int(Rev, 2), self.alphas[i_alpha])
 
-                dl = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * int(Rev, 2) / self.time_intervals)
+                dl = -self.alphas[i_alpha] ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * int(Rev, 2) / self.time_intervals)
                 rl = dl / (1 + dl)
 
                 h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
