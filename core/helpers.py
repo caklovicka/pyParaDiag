@@ -448,11 +448,13 @@ class Helpers(Communicators):
         return h_loc
 
     def __solve_inner_systems__(self, h_loc, D, x0, tol):
+        it_max = 0
 
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
             sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
             h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
+            it_max = max(it, it_max)
 
         # case without spatial parallelization
         else:
@@ -461,11 +463,12 @@ class Helpers(Communicators):
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-                    print('smaxiter = ', self.smaxiter, it)
+                    it_max = max(it, it_max)
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    it_max = max(it, it_max)
 
-        return h1_loc, it
+        return h1_loc, it_max
 
     def __solve_inner_systems_J__(self, h_loc, D, beta, x0, tol):
 
