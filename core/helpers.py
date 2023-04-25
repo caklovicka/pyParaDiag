@@ -392,8 +392,8 @@ class Helpers(Communicators):
 
         Cinv = np.linalg.inv(C)
 
-        C = (1 - rl_new) * C
-        Cinv = 1 / (1 - rl_new) * Cinv
+        #C = (1 - rl_new) * C
+        #Cinv = 1 / (1 - rl_new) * Cinv
 
         R = self.Q @ Cinv
         D, Z = np.linalg.eig(R)
@@ -401,7 +401,7 @@ class Helpers(Communicators):
 
         if self.rank == 0:
             print('Z @ D @ Zinv - R = ', np.linalg.norm(Zinv @ np.diag(D) @ Z - R, np.inf))
-            print('Z @ D @ - R @ Z= ', np.diag(D) @ Z - R @ Z)
+            print('Z @ D @ - R @ Z = \n', np.diag(D) @ Z - R @ Z)
             print(np.diag(D))
 
         return Zinv, D, Z, Cinv
