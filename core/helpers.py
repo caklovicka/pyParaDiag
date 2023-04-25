@@ -404,7 +404,7 @@ class Helpers(Communicators):
             #print('Z @ D - R @ Z = \n', Z @ np.diag(D) - R @ Z)
             #print(np.diag(D))
 
-        return Zinv, D, Z, Cinv
+        return Zinv, D, Z, Cinv, rl_new
 
     def __get_max_norm__(self, c):
 
@@ -457,7 +457,7 @@ class Helpers(Communicators):
         # self.comm.Barrier()
         return h_loc
 
-    def __solve_inner_systems__(self, h_loc, D, x0, tol):
+    def __solve_inner_systems__(self, h_loc, D, x0, tol, r):
 
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
@@ -469,7 +469,6 @@ class Helpers(Communicators):
             h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
             for i in range(self.Frac):
                 d = D[i + self.rank_col * self.Frac]
-                r = d / (1 - d)
                 d = 1 / (1 - r) * d
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * d * self.Apar
                 if self.solver == 'custom':

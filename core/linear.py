@@ -88,12 +88,12 @@ class LinearParalpha(Helpers):
                 system_time = []
                 its = []
 
-                Zinv, D, Z, Cinv = self.__get_shifted_matrices__(int(Rev, 2), self.alphas[i_alpha])
+                Zinv, D, Z, Cinv, r = self.__get_shifted_matrices__(int(Rev, 2), self.alphas[i_alpha])
 
                 h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
 
                 time_solver = MPI.Wtime()
-                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0, self.stol)      # step 2 ... solve local systems (I - Di * A) h1 = h
+                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0, self.stol, r)      # step 2 ... solve local systems (I - Di * A) h1 = h
                 system_time.append(MPI.Wtime() - time_solver)
                 its.append(it)
 
