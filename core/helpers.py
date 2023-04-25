@@ -392,8 +392,8 @@ class Helpers(Communicators):
 
         Cinv = np.linalg.inv(C)
 
-        C = (1 - rl_new) * C
-        Cinv = 1 / (1 - rl_new) * Cinv
+        #C = (1 - rl_new) * C
+        #Cinv = 1 / (1 - rl_new) * Cinv
 
         R = self.Q @ Cinv
         D, Z = np.linalg.eig(R)
