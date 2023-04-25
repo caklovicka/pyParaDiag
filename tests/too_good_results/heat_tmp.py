@@ -27,6 +27,7 @@ prob.optimal_alphas = True
 prob.alphas = [1e-8]
 prob.rolling = 8
 prob.time_intervals = 4
+prob.proc_row = 4
 
 prob.setup()
 prob.solve()
