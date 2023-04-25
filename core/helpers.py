@@ -392,17 +392,9 @@ class Helpers(Communicators):
 
         Cinv = np.linalg.inv(C)
 
-        C = (1 - rl_new) * C
-        Cinv = 1 / (1 - rl_new) * Cinv
-
         R = self.Q @ Cinv
         D, Z = np.linalg.eig(R)
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
-
-        #if self.rank == 32:
-            #print('Z @ D @ Zinv - R = ', np.linalg.norm(Z @ np.diag(D) @ Zinv - R, np.inf))
-            #print('Z @ D - R @ Z = \n', Z @ np.diag(D) - R @ Z)
-            #print(np.diag(D))
 
         return Zinv, D, Z, Cinv, rl_new
 
@@ -457,7 +449,7 @@ class Helpers(Communicators):
         # self.comm.Barrier()
         return h_loc
 
-    def __solve_inner_systems__(self, h_loc, D, x0, tol, r):
+    def __solve_inner_systems__(self, h_loc, D, x0, tol):
 
         # case with spatial parallelization
         if self.row_end - self.row_beg != self.global_size_A:
@@ -468,7 +460,6 @@ class Helpers(Communicators):
         else:
             h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
             for i in range(self.Frac):
-                d = (1 - r) * D[i + self.rank_col * self.Frac]
                 sys = sc.sparse.eye(self.global_size_A) - self.dt * d * self.Apar
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)

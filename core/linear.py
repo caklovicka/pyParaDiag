@@ -93,7 +93,7 @@ class LinearParalpha(Helpers):
                 h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
 
                 time_solver = MPI.Wtime()
-                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0, self.stol, r)      # step 2 ... solve local systems (I - Di * A) h1 = h
+                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0, self.stol)      # step 2 ... solve local systems (I - Di * A) h1 = h
                 system_time.append(MPI.Wtime() - time_solver)
                 its.append(it)
 
