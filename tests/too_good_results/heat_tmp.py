@@ -28,7 +28,7 @@ prob.alphas = [1e-8]
 prob.rolling = 1
 prob.time_intervals = 64
 prob.proc_row = 64
-prob.m0 = 0.16/64
+prob.m0 = 0.16
 
 prob.setup()
 prob.solve()
