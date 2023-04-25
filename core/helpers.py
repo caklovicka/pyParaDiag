@@ -387,9 +387,12 @@ class Helpers(Communicators):
     def __get_shifted_matrices__(self, l_new, a):
 
         Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
-        C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
+        rl_new = Dl_new / (1 + Dl_new)
+        C = (1 - rl_new) * Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
 
         Cinv = np.linalg.inv(C)
+        if self.rank == 0:
+            print(np.linalg.norm(Cinv, np.inf))
         R = self.Q @ Cinv
         D, Z = np.linalg.eig(R)
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
