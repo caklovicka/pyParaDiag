@@ -400,7 +400,6 @@ class Helpers(Communicators):
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
 
         if self.rank == 0:
-            print(np.linalg.norm(R @ C - self.Q, np.inf))
             print(np.linalg.norm(Z @ D @ Zinv - R, np.inf))
 
         return Zinv, D, Z, Cinv
