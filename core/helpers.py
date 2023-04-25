@@ -470,9 +470,10 @@ class Helpers(Communicators):
             for i in range(self.Frac):
                 d = D[i + self.rank_col * self.Frac]
                 r = d / (1 - d)
-                sys = 1 / (1 - r) * sc.sparse.eye(self.global_size_A) - self.dt * d * self.Apar
+                d = (1 - r) * d
+                sys = sc.sparse.eye(self.global_size_A) - self.dt * d * self.Apar
                 if self.solver == 'custom':
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, 1 / (1 - r) * h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
                 else:
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
 
