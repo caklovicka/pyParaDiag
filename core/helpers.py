@@ -399,7 +399,7 @@ class Helpers(Communicators):
         D, Z = np.linalg.eig(R)
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
 
-        if self.rank == 0:
+        if self.rank == 32:
             print('Z @ D @ Zinv - R = ', np.linalg.norm(Z @ np.diag(D) @ Zinv - R, np.inf))
             print('Z @ D - R @ Z = \n', Z @ np.diag(D) - R @ Z)
             print(np.diag(D))
