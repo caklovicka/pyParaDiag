@@ -460,7 +460,7 @@ class Helpers(Communicators):
         else:
             h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
             for i in range(self.Frac):
-                sys = sc.sparse.eye(self.global_size_A) - self.dt * d * self.Apar
+                sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
                 if self.solver == 'custom':
                     h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
                 else:
