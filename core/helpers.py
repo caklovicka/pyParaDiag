@@ -387,7 +387,6 @@ class Helpers(Communicators):
     def __get_shifted_matrices__(self, l_new, a):
 
         Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
-        rl_new = Dl_new / (1 + Dl_new)
         C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
 
         Cinv = np.linalg.inv(C)
@@ -395,7 +394,7 @@ class Helpers(Communicators):
         D, Z = np.linalg.eig(R)
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
 
-        return Zinv, D, Z, Cinv, rl_new
+        return Zinv, D, Z, Cinv
 
     def __get_max_norm__(self, c):
 

@@ -88,7 +88,7 @@ class LinearParalpha(Helpers):
                 system_time = []
                 its = []
 
-                Zinv, D, Z, Cinv, r = self.__get_shifted_matrices__(int(Rev, 2), self.alphas[i_alpha])
+                Zinv, D, Z, Cinv = self.__get_shifted_matrices__(int(Rev, 2), self.alphas[i_alpha])
 
                 h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
 
