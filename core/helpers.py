@@ -389,14 +389,18 @@ class Helpers(Communicators):
         Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
         rl_new = Dl_new / (1 + Dl_new)
         C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
-        C = (1 - rl_new) * C
 
         Cinv = np.linalg.inv(C)
-        if self.rank == 0:
-            print(np.linalg.norm(Cinv, np.inf))
+
+        C = (1 - rl_new) * C
+        Cinv = 1 / (1 - rl_new) * Cinv
+
         R = self.Q @ Cinv
         D, Z = np.linalg.eig(R)
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
+
+        if self.rank == 0:
+            print(np.linalg.norm(R @ C - self.Q, np.inf))
 
         return Zinv, D, Z, Cinv
 
