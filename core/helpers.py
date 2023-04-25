@@ -896,4 +896,7 @@ class Helpers(Communicators):
                 print('solver_its_min =', flush=True)
                 for i in self.solver_its_min:
                     print(i, flush=True)
+                print('inner_tols =', flush=True)
+                for i in self.inner_tols:
+                    print(i, flush=True)
             print('-----------------------< end summary >-----------------------')

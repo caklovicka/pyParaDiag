@@ -96,7 +96,7 @@ class LinearParalpha(Helpers):
                 h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
 
                 time_solver = MPI.Wtime()
-                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0, self.stol / (1 - rl))      # step 2 ... solve local systems (I - Di * A) h1 = h
+                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0, self.stol / np.abs(1 - rl))      # step 2 ... solve local systems (I - Di * A) h1 = h
                 system_time.append(MPI.Wtime() - time_solver)
                 its.append(it)
 
@@ -107,7 +107,7 @@ class LinearParalpha(Helpers):
                 self.system_time_min[rolling_interval].append(self.comm.allreduce(min(system_time), op=MPI.MIN))
                 self.solver_its_max[rolling_interval].append(self.comm.allreduce(max(its), op=MPI.MAX))
                 self.solver_its_min[rolling_interval].append(self.comm.allreduce(min(its), op=MPI.MIN))
-                self.inner_tols.append(self.stol / (1 - rl))
+                self.inner_tols.append(self.stol / np.abs(1 - rl))
 
                 self.__get_ifft__(self.alphas[i_alpha])     # solving (Sinv x I) h1_loc = u with fft
 
