@@ -8,11 +8,11 @@ mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
-M = 1
+M = 3
 
 if M == 1:
-    #file = ['data/ac1_0.dat']
-    file = ['data/ac_small_stol.dat']
+    file = ['data/ac1_0.dat']
+    #file = ['data/ac_small_stol.dat']
     #file = ['data/ac_mixed_precision_M1.dat']
     legend = ['1e-6 (IMEX)', '1e-6 (Newton)']
     K = 1

@@ -12,14 +12,14 @@ M = 1
 
 if M == 1:
     #file = ['data/ac1_0.dat']
-    file = ['data/ac_small_stol.dat']
-    #file = ['data/ac_mixed_precision_M1.dat']
+    #file = ['data/ac_small_stol.dat']
+    file = ['data/ac_mixed_precision_M1.dat']
     legend = ['1e-6 (IMEX)', '1e-6 (Newton)']
     K = 1
 
 elif M == 2:
-    #file = ['data/ac2_0.dat', 'data/ac2_2.dat']
-    file = ['data/ac2_0.dat', 'data/ac_mixed_precision_M2.dat']
+    file = ['data/ac2_0.dat', 'data/ac2_2.dat']
+    #file = ['data/ac2_0.dat', 'data/ac_mixed_precision_M2.dat']
     legend = ['1e-10 (IMEX)', '1e-10 (Newton)', '1e-10 (IMEX) + coll', '1e-10 (Newton) + coll']
     col[0] = 'gray'
 
