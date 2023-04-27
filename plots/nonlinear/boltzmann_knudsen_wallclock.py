@@ -10,19 +10,19 @@ custom_lines = []
 mksz = 10
 lw = 2
 plt.figure(figsize=(6, 5))
-col = sns.color_palette("bright", 3)
 
-runs = ['1e-1', '5e-2', '1e-2']
+runs = ['1e-1', '5e-2', '1e-2', '8e-3']
 file = 'data/boltzmann2_petsc32_pint_k={}.dat'
 K = len(runs)
+col = sns.color_palette("bright", K)
 
 pint_petsc_proc = []
 pint_petsc_time = []
 pint_petsc_iters = []
 
 for k in range(K):
-    # nproc | time
-    table = np.loadtxt(file.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 5])
+    # nproc | time | convergence
+    table = np.loadtxt(file.format(runs[k]), delimiter='|', skiprows=3, usecols=[1, 5, 14])
 
     pint_petsc_proc.append([])
     pint_petsc_time.append([])
@@ -31,6 +31,8 @@ for k in range(K):
     custom_lines.append(Line2D([0], [0], color=col[k], linestyle='--'))
 
     for i in range(table.shape[0]):
+        if table[i, 2] == 0:
+            continue
         pint_petsc_proc[k].append(np.log2(table[i, 0]))
         pint_petsc_time[k].append(table[i, 1])
 
