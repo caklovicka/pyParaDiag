@@ -1,7 +1,7 @@
 using KitBase
 
 params = [384, 72, 36, 36]
-knudsen = 1e-3
+knudsen = 5e-2
 
 Nx = params[1] - 1
 Nu = params[2]

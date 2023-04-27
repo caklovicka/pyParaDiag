@@ -22,7 +22,7 @@ prob = Boltzmann()
 # choosing a number of points
 prob.spatial_points = [384, 72, 36, 36]
 prob.time_points = 1
-prob.knudsen = 1e-3
+prob.knudsen = 5e-2
 
 # choosing a time domain
 prob.T_start = 0
