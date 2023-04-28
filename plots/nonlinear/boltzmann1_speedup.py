@@ -3,11 +3,11 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-#petsc_run = 'data/boltzmann1_petsc.dat'
-#petsc_pint_run = 'data/boltzmann1_petsc{}_pint.dat'
+petsc_run = 'data/boltzmann1_petsc.dat'
+petsc_pint_run = 'data/boltzmann1_petsc{}_pint.dat'
 
-petsc_run = 'data/boltzmann1_petsc_julia.dat'
-petsc_pint_run = 'data/boltzmann1_petsc{}_pint_julia.dat'
+#petsc_run = 'data/boltzmann1_petsc_julia.dat'
+#petsc_pint_run = 'data/boltzmann1_petsc{}_pint_julia.dat'
 
 legend = []
 petsc_proc = []
@@ -29,7 +29,7 @@ for i in range(table.shape[0]):
 
 all_proc = petsc_proc + [7, 8, 9, 10, 11]
 plt.semilogy(petsc_proc, seq_time / petsc_time, 'X-', color='gray', markersize=mksz, linewidth=lw)
-plt.semilogy(all_proc, 2**np.array(all_proc), 'X:', color='gray', markersize=mksz, linewidth=lw)
+plt.semilogy(all_proc, 2**np.array(all_proc), ':', color='gray', markersize=mksz, linewidth=lw)
 
 # PinT + PETSc
 runs = [16, 32, 64]

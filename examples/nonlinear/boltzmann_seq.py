@@ -9,8 +9,8 @@ from julia import KitBase as kt
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nx = 60
-Nu = 30
+Nx = 100
+Nu = 40
 Nv = 20
 Nw = 20
 # %%
@@ -19,7 +19,7 @@ ps = kt.PSpace1D(0.0, 1.0, Nx, 1)
 vs = kt.VSpace3D(-8, 8, Nu, -8, 8, Nv, -8, 8, Nw)
 
 # %%
-knudsen = 2e-3
+knudsen = 1e-2
 muref = kt.ref_vhs_vis(knudsen, 1.0, 0.5)
 fsm = kt.fsm_kernel(vs, muref, 5, 1.0)
 gas = kt.Gas(Kn=knudsen, K=0.0, fsm=fsm)
@@ -130,8 +130,7 @@ def step(f, df, Q, ps, vs, dt):
 
 # %%
 dt = 1e-3
-#dt = 1e-4
-for iter in range(10):
+for iter in range(32):
     compute_df(df, f, ps, vs)
     start = time.time()
     compute_Q(Q, f, ps, gas, phi, psi, chi, dt)
@@ -140,8 +139,17 @@ for iter in range(10):
     step(f, df, Q, ps, vs, dt)
 
 # %%
-plt.plot(w[:, 0])
-plt.plot(w0[:, 0], '--')
-plt.legend(['w', 'w0'])
+moment = 0
+moment_labels = [r'$\rho$', r'$U$', 'v', 'w', r'$T$']
+dx = ps.x[1] - ps.x[0]
+
+plt.figure(figsize=(5, 4))
+plt.plot(np.array(ps.x[:-2]) + dx, w[:, moment], linewidth=2)
+plt.plot(np.array(ps.x[:-2]) + dx, w0[:, moment], '--', linewidth=2)
+plt.legend(['t = 0.032', 't = 0'])
+plt.xlabel('x', fontsize=12)
+plt.ylabel(moment_labels[moment], fontsize=12)
+plt.xlim([0, 1])
+plt.tight_layout()
 plt.show()
 # %%

@@ -41,7 +41,7 @@ for k in range(K):
 
     plt.semilogy(pint_petsc_proc[k], pint_petsc_time[k], linestyle='--', color=col[k], linewidth=lw)
 
-plt.legend(custom_lines, legend)
+plt.legend(custom_lines, legend, fontsize=12)
 plt.xlabel('total number of cores', fontsize=12)
 plt.ylabel('wall clock time [s]', fontsize=12)
 plt.xticks([5, 6, 7, 8, 9, 10], [32, 64, 128, 256, 512, 1024])
