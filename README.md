@@ -1,4 +1,4 @@
-# Welcome to Paralpha!
+# Welcome to pyParaDiag!
 The Paralpha project is a Python based implementation of a diagonalization 
 based parallel-in-time method. It is intended as a prototype and 
 for educational purposes.
