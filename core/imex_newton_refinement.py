@@ -5,7 +5,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-class IMEXNewtonIncrementParalpha(Helpers):
+class PartiallyCoupled(Helpers):
 
     def __init__(self):
 

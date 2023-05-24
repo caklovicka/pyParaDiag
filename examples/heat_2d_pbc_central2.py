@@ -1,24 +1,22 @@
 import numpy as np
 from scipy import sparse
-from core.imex_newton_refinement import IMEXNewtonIncrementParalpha
+from core.imex_newton_refinement import PartiallyCoupled
 from petsc4py import PETSc
-from time import time
 
 """
-Allen Cahn eq. in 2d, 2nd order central differences and pbc
+heat1 eq. in 2d, 2nd order central differences
+y_t = c ( y_xx + y_yy ) + f
 """
 
 
-class AllenCahn(IMEXNewtonIncrementParalpha):
+class Heat(PartiallyCoupled):
 
     # user defined, just for this class
     c = 1
-    R = 0.25
-    eps = 0.04
-    X_left = -0.5
-    X_right = 0.5
-    Y_left = -0.5
-    Y_right = 0.5
+    X_left = 0
+    X_right = 1
+    Y_left = 0
+    Y_right = 1
     xx = None
     yy = None
 
@@ -90,27 +88,21 @@ class AllenCahn(IMEXNewtonIncrementParalpha):
 
         # ---- POSTSETUP <end> ----
 
-    # user defined - returns local chunk, depends on u
-    def F(self, u):
-        return 1 / self.eps ** 2 * u * (1 - u ** 2)
-
-    # user defined - returns local chunk, depends on u
-    # for now, depends just on u and assumes the Jacobian is a diagonal matrix
-    def dF(self, u):
-        return 1 / self.eps ** 2 * (1 - 3 * u ** 2)
-
     # user defined
-    def u_initial(self, z):
-        #return 0.5 * (1 + np.sin(2 * np. pi * z[0]) * np.sin(2 * np.pi * z[1]))
-        return np.tanh((self.R - np.sqrt(z[0] ** 2 + z[1] ** 2)) / (np.sqrt(2) * self.eps))
-
-    # user defined, depends on (t, x)
-    @staticmethod
-    def rhs(t, z):
-        return 0 * z[0] * z[1]
-
     def bpar(self, t):
         return self.rhs(t, self.x).flatten()[self.row_beg:self.row_end]
+
+    # user defined
+    def u_exact(self, t, y, p):
+        return y, p
+
+    # user defined
+    def u_initial(self, y, p):
+        return self.u_exact(self.T_start, y, p)
+
+    # user defined
+    def rhs(self, t, y, p):
+        return y, p
 
     @staticmethod
     def norm(x):
