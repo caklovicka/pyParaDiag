@@ -6,6 +6,7 @@ class QueenClass(abc.ABC):
 
     alphas = []
     betas = []
+    gamma = NotImplemented
     dt = NotImplemented
     t = NotImplemented
     x = NotImplemented
