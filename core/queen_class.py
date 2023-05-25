@@ -6,60 +6,115 @@ class QueenClass(abc.ABC):
 
     alphas = []
     betas = []
-    bad_alphas = []
-    m0 = 1
     dt = NotImplemented
     t = NotImplemented
     x = NotImplemented
     dx = NotImplemented
+
+    # control
     u0_loc = NotImplemented
     u_last_loc = NotImplemented
     u_loc = NotImplemented
     u_last_old_loc = NotImplemented
-    consecutive_err_last = NotImplemented
-    consecutive_error = NotImplemented
+
+    # state
+    y0_loc = NotImplemented
+    y_last_loc = NotImplemented
+    y_loc = NotImplemented
+    y_last_old_loc = NotImplemented
+
+    # adjoint
+    pT_loc = NotImplemented
+    p_first_loc = NotImplemented
+    p_loc = NotImplemented
+    p_first_old_loc = NotImplemented
+
+    # for the problem class
+    # Apar is state, AApar adjoint
+    Apar = NotImplemented
+    AApar = NotImplemented
+
+    row_beg = NotImplemented
+    row_end = NotImplemented
+    global_size_A = NotImplemented  # global_size_A = global_size_AA
+    spatial_points = NotImplemented
+
+    # errors
+    grad_err = NotImplemented
     residual = NotImplemented
-    inner_tols = NotImplemented
+
+    # other
     iterations = NotImplemented
     B = NotImplemented
     Q = NotImplemented
     P = NotImplemented
-    time_document = NotImplemented
-    Apar = NotImplemented
-    row_beg = NotImplemented
-    row_end = NotImplemented
-    spatial_points = NotImplemented
-    dx = NotImplemented
     convergence = NotImplemented
+    stop = False
+    document = 'None'
 
-    # passive
+    # communicators
+    frac = NotImplemented
+    Frac = NotImplemented
+
+    # global communicators
     comm = NotImplemented
     rank = NotImplemented
     size = NotImplemented
-    comm_row = NotImplemented
-    rank_row = NotImplemented
-    rank_row = NotImplemented
-    size_row = NotImplemented
-    frac = NotImplemented
-    Frac = NotImplemented
-    comm_col = NotImplemented
-    rank_col = NotImplemented
-    size_col = NotImplemented
-    cols_loc = NotImplemented
-    rows_loc = NotImplemented
-    comm_subcol_alternating = NotImplemented
-    rank_subcol_alternating = NotImplemented
-    size_subcol_alternating = NotImplemented
-    comm_subcol_seq = NotImplemented
-    rank_subcol_seq = NotImplemented
-    size_subcol_seq = NotImplemented
-    comm_last = NotImplemented
-    comm_matrix = NotImplemented
-    optimal_alphas = False
-    stop = False
-    global_size_A = NotImplemented
-    document = 'None'
 
+    # global for state and adjoint
+    comm_state = NotImplemented
+    comm_rank_state = NotImplemented
+    comm_size_state = NotImplemented
+
+    comm_adjoint = NotImplemented
+    comm_rank_adjoint = NotImplemented
+    comm_size_adjoint = NotImplemented
+
+    # row for state and adjoint
+    comm_row_state = NotImplemented
+    rank_row_state = NotImplemented
+    size_row_state = NotImplemented
+
+    comm_row_adjoint = NotImplemented
+    rank_row_adjoint = NotImplemented
+    size_row_adjoint = NotImplemented
+
+    # col for state and adjoint
+    comm_col_state = NotImplemented
+    rank_col_state = NotImplemented
+    size_col_state = NotImplemented
+
+    comm_col_adjoint = NotImplemented
+    rank_col_adjoint = NotImplemented
+    size_col_adjoint = NotImplemented
+
+    # subcol_alternating for state and adjoint
+    comm_subcol_alternating_state = NotImplemented
+    rank_subcol_alternating_state = NotImplemented
+    size_subcol_alternating_state = NotImplemented
+
+    comm_subcol_alternating_adjoint = NotImplemented
+    rank_subcol_alternating_adjoint = NotImplemented
+    size_subcol_alternating_adjoint = NotImplemented
+
+    # subcol_seq for state and adjoint
+    comm_subcol_seq_state = NotImplemented
+    rank_subcol_seq_state = NotImplemented
+    size_subcol_seq_state = NotImplemented
+
+    comm_subcol_seq_adjoint = NotImplemented
+    rank_subcol_seq_adjoint = NotImplemented
+    size_subcol_seq_adjoint = NotImplemented
+
+    # last for state and adjoint
+    comm_last_state = NotImplemented
+    comm_last_adjoint = NotImplemented
+
+    # matrix communicators for state and adjoint
+    comm_matrixA = NotImplemented
+    comm_matrixAA = NotImplemented
+
+    # benchmarking
     algorithm_time = NotImplemented
     communication_time = NotImplemented
     system_time_max = NotImplemented
@@ -70,8 +125,8 @@ class QueenClass(abc.ABC):
         parser = argparse.ArgumentParser()
         parser.add_argument('--T_start', type=float, default=0, help='Default = 0')
         parser.add_argument('--T_end', type=float, default=1, help='Default = 1')
-        parser.add_argument('--beta', type=float, default=0, help='Default = 0')
-        parser.add_argument('--rolling', type=int, default=1, help='Default = 1 ... number of intervals to perform one paralpha and combine it sequentially for the next one.')
+        parser.add_argument('--beta', type=float, default=1, help='Default = 1')
+        parser.add_argument('--alpha', type=float, default=1e-6, help='Default = 1e-6')
         parser.add_argument('--time_intervals', type=int, default=1, help='Default = 10 ... size of the B matrix or how many intervals will be treated in parallel.')
         parser.add_argument('--time_points', type=int, default=3, help='Default = 3 ... number of time points for the collocation problem, the size of Q.')
         parser.add_argument('--proc_row', type=int, default=1, help='Default = 1 ... number of processors for dealing with paralellization of time intervals. Choose so that proc_row = time_intervals or get an error.')
@@ -82,14 +137,13 @@ class QueenClass(abc.ABC):
         parser.add_argument('--tol', type=float, default=1e-6, help='Default = 1e-6 ... a stopping criteria when two consecutive solutions in the last time point are lower than tol (in one rolling interval).')
         parser.add_argument('--stol', type=float, default=1e-6, help='Default = 1e-6 ... an inner solver tolerance.')
         parser.add_argument('--smaxiter', type=float, default=1e-6, help='Default = 100 ... an inner solver maximum iterations.')
-        parser.add_argument('--document', type=str, default='None', help='Default = None ... document to write an output.')
 
         args = parser.parse_args().__dict__
 
         self.T_start = args['T_start']
         self.T_end = args['T_end']
         self.betas = [args['beta']]
-        self.rolling = args['rolling']
+        self.alphas = [args['alpha']]
         self.time_intervals = args['time_intervals']
         self.time_points = args['time_points']
         self.proc_row = args['proc_row']
@@ -100,17 +154,24 @@ class QueenClass(abc.ABC):
         self.tol = args['tol']
         self.stol = args['stol']
         self.smaxiter = args['smaxiter']
-        self.document = args['document']
 
 
-    def bpar(self, *args):
+    def bpar_y(self, *args):
         pass
 
-    def u_initial(self, *args):
+    def bpar_p(self, *args):
         pass
 
-    @staticmethod
-    def rhs(*args):
+    def y_initial(self, *args):
+        pass
+
+    def p_initial(self, *args):
+        pass
+
+    def gradient(self, *args):
+        pass
+
+    def objective(self, *args):
         pass
 
     @staticmethod
