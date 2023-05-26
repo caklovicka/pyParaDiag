@@ -9,8 +9,26 @@ class Communicators(QueenClass):
 
     def setup(self):
 
-        # create groups and their communicators
-        self.comm = MPI.COMM_WORLD
+        # global communicators
+        self.comm_global = MPI.COMM_WORLD
+        self.rank_global = self.comm_global.Get_rank()
+        self.size_global = self.comm_global.Get_size()
+
+        # first half belongs to state, second half belongs to the adjoint problem
+        # these variables help to determine which communicator is for which
+        if self.rank_global < self.size_global // 2:
+            self.state = True
+            self.adjoint = False
+        else:
+            self.state = False
+            self.adjoint = True
+
+        # global for state and adjoint
+        if self.state:
+            self.comm = MPI.Comm.Split(self.comm, 0, self.rank_global % (self.size_global // 2))
+        elif self.adjoint:
+            self.comm = MPI.Comm.Split(self.comm, 1, self.rank_global % (self.size_global // 2))
+
         self.rank = self.comm.Get_rank()
         self.size = self.comm.Get_size()
 
@@ -25,9 +43,6 @@ class Communicators(QueenClass):
         # this is where the space communicators start
         self.frac = self.proc_col // self.time_points
         self.Frac = self.time_points // self.proc_col
-
-        self.cols_loc = self.time_intervals // self.proc_row
-        self.rows_loc = (self.time_points * self.global_size_A) // self.proc_col
 
         # with spatial parallelization
         if self.frac > 1:

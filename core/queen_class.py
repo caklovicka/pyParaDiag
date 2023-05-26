@@ -56,64 +56,44 @@ class QueenClass(abc.ABC):
     # communicators
     frac = NotImplemented
     Frac = NotImplemented
+    state = NotImplemented
+    adjoint = NotImplemented
 
     # global communicators
+    comm_global = NotImplemented
+    rank_global = NotImplemented
+    size_global = NotImplemented
+
+    # global for state and adjoint
     comm = NotImplemented
     rank = NotImplemented
     size = NotImplemented
 
-    # global for state and adjoint
-    comm_state = NotImplemented
-    comm_rank_state = NotImplemented
-    comm_size_state = NotImplemented
-
-    comm_adjoint = NotImplemented
-    comm_rank_adjoint = NotImplemented
-    comm_size_adjoint = NotImplemented
-
     # row for state and adjoint
-    comm_row_state = NotImplemented
-    rank_row_state = NotImplemented
-    size_row_state = NotImplemented
-
-    comm_row_adjoint = NotImplemented
-    rank_row_adjoint = NotImplemented
-    size_row_adjoint = NotImplemented
+    comm_row = NotImplemented
+    rank_row = NotImplemented
+    size_row = NotImplemented
 
     # col for state and adjoint
-    comm_col_state = NotImplemented
-    rank_col_state = NotImplemented
-    size_col_state = NotImplemented
-
-    comm_col_adjoint = NotImplemented
-    rank_col_adjoint = NotImplemented
-    size_col_adjoint = NotImplemented
+    comm_col = NotImplemented
+    rank_col = NotImplemented
+    size_col = NotImplemented
 
     # subcol_alternating for state and adjoint
-    comm_subcol_alternating_state = NotImplemented
-    rank_subcol_alternating_state = NotImplemented
-    size_subcol_alternating_state = NotImplemented
-
-    comm_subcol_alternating_adjoint = NotImplemented
-    rank_subcol_alternating_adjoint = NotImplemented
-    size_subcol_alternating_adjoint = NotImplemented
+    comm_subcol_alternating = NotImplemented
+    rank_subcol_alternating = NotImplemented
+    size_subcol_alternating = NotImplemented
 
     # subcol_seq for state and adjoint
-    comm_subcol_seq_state = NotImplemented
-    rank_subcol_seq_state = NotImplemented
-    size_subcol_seq_state = NotImplemented
-
-    comm_subcol_seq_adjoint = NotImplemented
-    rank_subcol_seq_adjoint = NotImplemented
-    size_subcol_seq_adjoint = NotImplemented
+    comm_subcol_seq = NotImplemented
+    rank_subcol_seq = NotImplemented
+    size_subcol_seq = NotImplemented
 
     # last for state and adjoint
-    comm_last_state = NotImplemented
-    comm_last_adjoint = NotImplemented
+    comm_last = NotImplemented
 
     # matrix communicators for state and adjoint
-    comm_matrixA = NotImplemented
-    comm_matrixAA = NotImplemented
+    comm_matrix = NotImplemented
 
     # benchmarking
     algorithm_time = NotImplemented
