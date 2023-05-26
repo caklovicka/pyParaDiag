@@ -43,6 +43,7 @@ class Communicators(QueenClass):
         # this is where the space communicators start
         self.frac = self.proc_col // self.time_points
         self.Frac = self.time_points // self.proc_col
+        self.rows_loc = (self.time_points * self.global_size_A) // self.proc_col
 
         # with spatial parallelization
         if self.frac > 1:
@@ -54,8 +55,6 @@ class Communicators(QueenClass):
             self.comm_subcol_seq = MPI.Comm.Split(self.comm_col, self.rank_col // self.frac, self.rank_col % self.frac)
             self.rank_subcol_seq = self.comm_subcol_seq.Get_rank()
             self.size_subcol_seq = self.comm_subcol_seq.Get_size()
-
-            self.rows_loc = (self.time_points * self.global_size_A) // self.proc_col
 
             self.comm_matrix = self.comm_subcol_seq
             self.row_beg = self.rank_subcol_seq * self.rows_loc

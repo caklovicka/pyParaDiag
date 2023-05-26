@@ -52,15 +52,13 @@ class Helpers(Communicators):
         # fill initial conditions
         # case with spatial parallelization
         if self.frac > 1:
-            if self.state:
-                self.y0_loc = self.y_initial(self.x).flatten()[self.row_beg: self.row_end]
-            elif self.adjoint:
+            self.y0_loc = self.y_initial(self.x).flatten()[self.row_beg: self.row_end]
+            if self.adjoint:
                 self.pT_loc = self.p_end(self.x).flatten()[self.row_beg: self.row_end]
         # case without spatial parallelization
         else:
-            if self.state:
-                self.y0_loc = self.y_initial(self.x).flatten()
-            elif self.adjoint:
+            self.y0_loc = self.y_initial(self.x).flatten()
+            if self.adjoint:
                 self.pT_loc = self.p_end(self.x).flatten()
 
         if self.state:
@@ -90,35 +88,69 @@ class Helpers(Communicators):
         # TODO
         return
 
-    def __fill_initial_u_loc__(self):
+    def __fill_initial_guesses__(self):
 
         # case with spatial parallelization
         if self.frac > 1:
-            self.u_loc = self.u0_loc.copy(order='C').astype(complex)
+            if self.state:
+                self.y_loc = self.y0_loc.copy(order='C').astype(complex)
+            elif self.adjoint:
+                self.p_loc = self.pT_loc.copy(order='C').astype(complex)
 
         # case without spatial parallelization
         else:
-            self.u_loc = np.tile(self.u0_loc, self.Frac).astype(complex)
+            if self.state:
+                self.y_loc = np.tile(self.y0_loc, self.Frac).astype(complex)
+            elif self.adjoint:
+                self.p_loc = np.tile(self.pT_loc, self.Frac).astype(complex)
 
-    def __get_v__(self, t_start):
-        # the rhs of the all-at-once system
+    def __get_v__(self):
+        # on state: (y0, 0, ..., 0)
+        # on adjoint: dt QxI (yd_0, ..., yd_(L-1)) + (dt QxI * y0, 0, ..., 0, pL)
 
         v = np.zeros(self.rows_loc, dtype=complex)
-        shift = self.rank_row
 
-        # case with spatial parallelization
-        if self.frac > 1:
-            for k in range(self.time_points):
-                v += self.dt * self.Q[self.rank_subcol_alternating, k] * \
-                     self.bpar(t_start + self.t[k] + shift * self.dt)
+        if self.state:
+            if self.rank_row == 0:
+                # case with spatial parallelization
+                if self.frac > 1:
+                    v = self.y0_loc.copy(order='C').astype(complex)
+                # case without spatial parallelization
+                else:
+                    v = np.tile(self.y0_loc, self.Frac).astype(complex)
 
-        # case without spatial parallelization
-        else:
-            for i in range(self.Frac):
+        elif self.adjoint:
+            shift = self.rank_row
+
+            # case with spatial parallelization
+            if self.frac > 1:
                 for k in range(self.time_points):
-                    v[i * self.global_size_A:(i+1)*self.global_size_A] +=\
-                        self.dt * self.Q[i + self.Frac * self.rank_col, k] \
-                        * self.bpar(t_start + self.t[k] + shift * self.dt)
+                    if self.rank_row == 0:
+                        v += self.dt * self.Q[self.rank_subcol_alternating, k] * \
+                             (self.yd(self.t[k] + shift * self.dt, self.x).flatten()[self.row_beg:self.row_end] -
+                              self.y0_loc)
+                    else:
+                        v += self.dt * self.Q[self.rank_subcol_alternating, k] * \
+                             self.yd(self.t[k] + shift * self.dt, self.x).flatten()[self.row_beg:self.row_end]
+
+                if self.rank_row == self.size_row - 1:
+                    v += self.pT_loc
+
+            # case without spatial parallelization
+            else:
+                for i in range(self.Frac):
+                    for k in range(self.time_points):
+                        if self.rank_row == 0:
+                            v[i * self.global_size_A:(i + 1) * self.global_size_A] += \
+                                self.dt * self.Q[i + self.Frac * self.rank_col, k] \
+                                * (self.yd(self.t[k] + shift * self.dt, self.x).flatten() - self.y0_loc)
+                        else:
+                            v[i * self.global_size_A:(i + 1) * self.global_size_A] +=\
+                                self.dt * self.Q[i + self.Frac * self.rank_col, k] \
+                                * self.yd(self.t[k] + shift * self.dt, self.x).flatten()
+
+                if self.rank_row == self.size_row - 1:
+                    v += np.tile(self.pT_loc, self.Frac).astype(complex)
         return v
 
     def __get_r__(self, v_loc):

@@ -4,7 +4,7 @@ import abc
 
 class QueenClass(abc.ABC):
 
-    alphas = []
+    alpha = NotImplemented
     gamma = NotImplemented
     dt = NotImplemented
     t = NotImplemented
@@ -118,7 +118,7 @@ class QueenClass(abc.ABC):
 
         self.T_start = args['T_start']
         self.T_end = args['T_end']
-        self.alphas = [args['alpha']]
+        self.alpha = [args['alpha']]
         self.time_intervals = args['time_intervals']
         self.time_points = args['time_points']
         self.proc_row = args['proc_row']
@@ -141,6 +141,9 @@ class QueenClass(abc.ABC):
         pass
 
     def p_end(self, *args):
+        pass
+
+    def yd(self, *args):
         pass
 
     def gradient(self, *args):

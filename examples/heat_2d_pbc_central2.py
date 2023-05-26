@@ -96,17 +96,22 @@ class Heat(PartiallyCoupled):
         # ---- POSTSETUP <end> ----
 
     def bpar_y(self, t):
-        return np.zeros(self.rows_loc)
+        return np.zeros(self.row_end - self.row_end)
 
     # user defined
     def bpar_p(self, t):
-        return np.zeros(self.rows_loc)
+        return np.zeros(self.row_end - self.row_end)
 
     def y_initial(self, x):
         return self.y(self.T_start, x)
 
     def p_end(self, x):
         return self.p(self.T_end, x)
+
+    def yd(self, t, x):
+        return ((2 * np.pi ** 2 / 4 + 2 / np.pi ** 2 / self.gamma) * np.exp(self.T_end) +
+                (1 - np.pi ** 2 / 2 - 4 / (4 + 2 * np.pi ** 2) / self.gamma) * np.exp(t)) * \
+                np.cos(np.pi * x[0] / 2) * np.cos(np.pi * x[1] / 2)
 
     @staticmethod
     def norm(x):
