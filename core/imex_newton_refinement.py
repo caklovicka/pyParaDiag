@@ -19,11 +19,7 @@ class PartiallyCoupled(Helpers):
 
         if self.time_intervals == 1:
             # TODO to support the sequential run
-            self.u_last_loc = self.u0_loc.copy(order='C')
             self.alphas = [0]
-
-        if self.betas == NotImplemented:
-            self.betas = [0]
 
         self.residual = []
         self.convergence = 1

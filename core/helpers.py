@@ -21,33 +21,50 @@ class Helpers(Communicators):
         # assertions
         assert self.proc_col > 0, 'proc_col = {} should be > 0'.format(self.proc_col)
         assert self.proc_row > 0, 'proc_row = {} should be > 0'.format(self.proc_row)
-        assert np.log2(self.time_intervals) - int(np.log2(self.time_intervals)) < 0.1, 'time_intervals = {} should be power of 2.'.format(self.time_intervals)
-        assert self.proc_col * self.proc_row == MPI.COMM_WORLD.Get_size(), 'Please input a sufficient amount of processors. You need {} and you have proc_col * proc_row = {}'.format(self.proc_col * self.proc_row, self.size)
-
-        assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'.format(self.time_intervals, self.proc_row)
+        assert np.log2(self.time_intervals) - int(np.log2(self.time_intervals)) < 0.1, \
+            'time_intervals = {} should be power of 2.'.format(self.time_intervals)
+        assert 2 * self.proc_col * self.proc_row == MPI.COMM_WORLD.Get_size(), \
+            'Please input a sufficient amount of processors. You need {} and you have 2 * proc_col * proc_row = {}'\
+            .format(self.proc_col * self.proc_row, self.size)
+        assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'\
+            .format(self.time_intervals, self.proc_row)
 
         if self.proc_col >= self.time_points:
-            assert self.proc_col % self.time_points == 0, 'proc_col = {} has to be divisible by time_points = {}'.format(self.proc_col, self.time_points)
-            assert self.global_size_A * self.time_points % self.proc_col == 0, 'dimA * self.time_points = {} should be divisible by proc_col = {}'.format(self.global_size_A * self.time_points, self.proc_col)
-            assert self.proc_col <= self.global_size_A * self.time_points, 'proc_col = {} has to be less or equal to (dimA * time_points) = {}'.format(self.proc_col, self.global_size_A * self.time_points)
-            assert self.proc_col >= self.time_points, 'proc_col = {} should be at least as time_points = {}'.format(self.proc_col, self.time_points)
+            assert self.proc_col % self.time_points == 0, 'proc_col = {} has to be divisible by time_points = {}'\
+                .format(self.proc_col, self.time_points)
+            assert self.global_size_A * self.time_points % self.proc_col == 0, \
+                'dimA * self.time_points = {} should be divisible by proc_col = {}'\
+                .format(self.global_size_A * self.time_points, self.proc_col)
+            assert self.proc_col <= self.global_size_A * self.time_points, \
+                'proc_col = {} has to be less or equal to (dimA * time_points) = {}'\
+                .format(self.proc_col, self.global_size_A * self.time_points)
+            assert self.proc_col >= self.time_points, 'proc_col = {} should be at least as time_points = {}'\
+                .format(self.proc_col, self.time_points)
         else:
-            assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'.format(self.time_points, self.proc_col)
+            assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'\
+                .format(self.time_points, self.proc_col)
 
         # build variables
-        self.dt = (self.T_end - self.T_start) / (self.time_intervals * self.rolling)
+        self.dt = (self.T_end - self.T_start) / self.time_intervals
         coll = CollBase(self.time_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
         self.t = self.dt * np.array(coll.nodes)
 
-        # fill u0
+        # fill initial conditions
         # case with spatial parallelization
         if self.frac > 1:
-            self.u0_loc = self.u_initial(self.x).flatten()[self.row_beg: self.row_end]
+            if self.state:
+                self.y0_loc = self.y_initial(self.x).flatten()[self.row_beg: self.row_end]
+            elif self.adjoint:
+                self.pT_loc = self.p_end(self.x).flatten()[self.row_beg: self.row_end]
         # case without spatial parallelization
         else:
-            self.u0_loc = self.u_initial(self.x).flatten()
+            if self.state:
+                self.y0_loc = self.y_initial(self.x).flatten()
+            elif self.adjoint:
+                self.pT_loc = self.p_end(self.x).flatten()
 
-        self.u_last_old_loc = None
+        if self.state:
+            self.u_loc = np.zeros_like(self.y0_loc)
 
         # auxiliaries
         self.algorithm_time = 0
@@ -56,26 +73,14 @@ class Helpers(Communicators):
         self.system_time_min = []
         self.solver_its_max = []
         self.solver_its_min = []
-        self.inner_tols = []
-        self.iterations = np.zeros(self.rolling)
+        self.iterations = 0
 
-        # build matrices and vectors
+        # build matrices for the collocation problem
         self.Q = coll.Qmat[1:, 1:]
         self.P = np.zeros((self.time_points, self.time_points))
         for i in range(self.time_points):
             self.P[i, -1] = 1
         self.P = sparse.csr_matrix(self.P)
-
-        # documents
-        if self.rank == 0 and self.document != 'None':
-            self.time_document = self.document + '_times'
-            if os.path.exists(self.document):
-                os.remove(self.document)
-            if os.path.exists(self.time_document):
-                os.remove(self.time_document)
-            file = open(self.document, "w+")
-            file.close()
-            self.__write_time_in_txt__()
 
     def gradient(self):
         # TODO
@@ -94,16 +99,6 @@ class Helpers(Communicators):
         # case without spatial parallelization
         else:
             self.u_loc = np.tile(self.u0_loc, self.Frac).astype(complex)
-
-    def __next_alpha__(self, idx):
-        if idx + 1 < len(self.alphas) and self.time_intervals > 1:
-            idx += 1
-        return idx
-
-    def __next_beta__(self, idx):
-        if idx + 1 < len(self.betas) and self.time_intervals > 1:
-            idx += 1
-        return idx
 
     def __get_v__(self, t_start):
         # the rhs of the all-at-once system
@@ -327,71 +322,6 @@ class Helpers(Communicators):
 
         return res_loc
 
-    def __get_linear_residual_and_prev_F__(self, v_loc):
-
-        Hu_loc = self.__get_Hu__()
-
-        # case with spatial parallelization
-        if self.frac > 0:
-            res_loc = v_loc + Hu_loc
-        # case without spatial parallelization
-        else:
-            res_loc = v_loc + np.tile(Hu_loc, self.Frac)
-
-        Cu_loc = self.u_loc - self.dt * self.__solve_substitution__(self.Q, self.__get_Au__())
-        res_loc -= Cu_loc
-
-        return res_loc + self.dt * self.F(Hu_loc)
-
-    def __get_J__(self):
-
-        if self.iterations[-1] == 0:
-            return self.dF(self.u0_loc)
-
-        # to support a sequential run
-        if self.size == 1:
-            return self.dF(self.u_loc[-self.global_size_A:])
-
-        # else
-        J = None
-
-        # with spatial parallelization
-        if self.row_end - self.row_beg != self.global_size_A:
-            # get just average of the last stages
-            if self.rank_col >= self.size_col - self.size_subcol_seq:
-                time_beg = MPI.Wtime()
-                J = self.comm_row.allreduce(self.dF(self.u_loc) / self.time_intervals, op=MPI.SUM)
-                self.communication_time += MPI.Wtime() - time_beg
-
-            # broadcast it to all other stages
-            if self.size_subcol_alternating > 1:
-                time_beg = MPI.Wtime()
-                J = self.comm_subcol_alternating.bcast(J, root=self.size_subcol_alternating - 1)
-                self.communication_time += MPI.Wtime() - time_beg
-
-        # without spatial parallelization
-        else:
-            if self.rank_col == self.size_col - 1:
-                time_beg = MPI.Wtime()
-                J = self.comm_row.allreduce(self.dF(self.u_loc[-self.global_size_A:]) / self.time_intervals, op=MPI.SUM)
-                self.communication_time += MPI.Wtime() - time_beg
-
-            # broadcast it to all other stages
-            if self.size_col > 1:
-                time_beg = MPI.Wtime()
-                J = self.comm_col.bcast(J, root=self.size_col - 1)
-                self.communication_time += MPI.Wtime() - time_beg
-
-        return J
-
-    def __get_F__(self):
-        # return dt * (Q x I)F(u)
-        return self.dt * self.__solve_substitution__(self.Q, self.F(self.u_loc))
-
-    def __get_prev_F__(self):
-        Hu_loc = self.__get_Hu__()
-        return self.dt * self.F(Hu_loc)
-
     def __get_shifted_matrices__(self, l_new, a):
 
         Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
@@ -478,31 +408,6 @@ class Helpers(Communicators):
 
         return h1_loc, it_max
 
-    def __solve_inner_systems_J__(self, h_loc, D, beta, x0, tol):
-
-        J = self.__get_J__()
-
-        # case with spatial parallelization
-        if self.row_end - self.row_beg != self.global_size_A:
-            I = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg)
-            d = self.dt * D[self.rank_subcol_alternating]
-            sys = I - d * (self.Apar + beta * sc.sparse.spdiags(data=J, diags=self.row_beg, m=self.row_end - self.row_beg, n=self.global_size_A))
-            h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
-
-        # case without spatial parallelization
-        else:
-            h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
-            for i in range(self.Frac):
-                I = sc.sparse.eye(self.global_size_A)
-                d = self.dt * D[i + self.rank_col * self.Frac]
-                sys = I - d * (self.Apar + beta * sc.sparse.spdiags(data=J, diags=0, m=self.global_size_A, n=self.global_size_A))
-                if self.solver == 'custom':
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-                else:
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-
-        return h1_loc, it
-
     def __get_ifft_h__(self, h1_loc, a):
 
         if self.time_intervals == 1:
@@ -558,17 +463,6 @@ class Helpers(Communicators):
             time_beg = MPI.Wtime()
             self.u_last_loc = self.comm_last.bcast(self.u_last_loc, root=0)
             self.communication_time += MPI.Wtime() - time_beg
-
-    def __write_time_in_txt__(self):
-        if self.rank == 0:
-            file = open(self.time_document, "w+")
-            file.write(str(self.T_start) + '\n')
-            for rolling_int in range(self.rolling):
-                t_start = self.T_start + self.time_intervals * rolling_int * self.dt
-                for k in range(self.time_intervals):
-                    for i in range(self.time_points):
-                        file.write(str(k * self.dt + self.t[i] + t_start) + '\n')
-            file.close()
 
     # ifft
     def __get_ifft__(self, a):
@@ -700,84 +594,6 @@ class Helpers(Communicators):
 
         return err_max
 
-    def __write_u_in_txt__(self, rolling_interval):
-
-        if self.document == 'None':
-            return
-
-        # with spatial parallelization
-        if self.frac > 1:
-            if rolling_interval == 0:
-                for proc in range(self.size_subcol_seq):
-                    if self.rank == proc:
-                        file = open(self.document, "a")
-                        for element in self.u0_loc:
-                            file.write(str(complex(element)) + '\n')
-                        if (proc + 1) % self.frac == 0:
-                            file.write('\n')
-                        file.close()
-                    self.comm.Barrier()
-
-            for c in range(self.proc_row):
-                for r in range(self.proc_col):
-                    if self.rank_col is r and self.rank_row is c:
-                        file = open(self.document, "a")
-                        for element in self.u_loc:
-                            file.write(str(element) + '\n')
-                        if (self.rank_col+1) % self.frac == 0:
-                            file.write('\n')
-                        file.close()
-                    self.comm.Barrier()
-
-        # without spatial parallelization
-        else:
-            if self.rank == 0:
-                file = open(self.document, "a")
-                for element in self.u0_loc:
-                    file.write(str(complex(element)) + '\n')
-                file.write('\n')
-                file.close()
-            self.comm.Barrier()
-
-            for c in range(self.proc_row):
-                for r in range(self.proc_col):
-                    if self.rank_col is r and self.rank_row is c:
-                        file = open(self.document, "a")
-                        for i in range(self.Frac):
-                            for element in self.u_loc[i*self.global_size_A:(i+1)*self.global_size_A]:
-                                file.write(str(element) + '\n')
-                            file.write('\n')
-                        file.close()
-                    self.comm.Barrier()
-
-        self.comm.Barrier()
-
-    def __write_u_last_in_txt__(self, type=complex):
-
-        self.__fill_u_last__(fill_old=False)
-        if self.document == 'None':
-            return
-
-        # with spatial parallelization
-        if self.frac > 1:
-            for proc in range(self.size - self.size_subcol_seq, self.size, 1):
-                if self.rank == proc:
-                    file = open(self.document, "a")
-                    for element in self.u_last_loc:
-                        file.write(str(element.astype(type)) + '\n')
-                    file.close()
-                self.comm.Barrier()
-
-        # without spatial parallelization
-        else:
-            if self.rank == self.size - 1:
-                file = open(self.document, "a")
-                for element in self.u_last_loc:
-                    file.write(str(element.astype(float)) + '\n')
-                file.close()
-            self.comm.Barrier()
-        self.comm.Barrier()
-
     # solver (space parallelization not included yet)
     def __linear_solver__(self, M_loc, m_loc, m0, tol):
 
@@ -852,12 +668,8 @@ class Helpers(Communicators):
             print('--------')
             print(' output ')
             print('--------')
-            self.iterations = [int(elem) for elem in self.iterations]
             print('convergence = {}'.format(self.convergence))
             print('iterations of paradiag = {}'.format(self.iterations), flush=True)
-            print('total iterations of paradiag = {}'.format(int(sum(self.iterations))), flush=True)
-            print('max iterations of paradiag = {}'.format(int(max(self.iterations))), flush=True)
-            print('min iterations of paradiag = {}'.format(int(min(self.iterations))), flush=True)
             print()
             print('algorithm time = {:.5f} s'.format(self.algorithm_time), flush=True)
             print('communication time = {:.5f} s'.format(self.communication_time), flush=True)

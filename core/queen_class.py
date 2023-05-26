@@ -5,7 +5,6 @@ import abc
 class QueenClass(abc.ABC):
 
     alphas = []
-    betas = []
     gamma = NotImplemented
     dt = NotImplemented
     t = NotImplemented
@@ -13,10 +12,7 @@ class QueenClass(abc.ABC):
     dx = NotImplemented
 
     # control
-    u0_loc = NotImplemented
-    u_last_loc = NotImplemented
     u_loc = NotImplemented
-    u_last_old_loc = NotImplemented
 
     # state
     y0_loc = NotImplemented
@@ -98,13 +94,14 @@ class QueenClass(abc.ABC):
     communication_time = NotImplemented
     system_time_max = NotImplemented
     system_time_min = NotImplemented
+    solver_its_max = NotImplemented
+    solver_its_min = NotImplemented
 
     def __init__(self):
 
         parser = argparse.ArgumentParser()
         parser.add_argument('--T_start', type=float, default=0, help='Default = 0')
         parser.add_argument('--T_end', type=float, default=1, help='Default = 1')
-        parser.add_argument('--beta', type=float, default=1, help='Default = 1')
         parser.add_argument('--alpha', type=float, default=1e-6, help='Default = 1e-6')
         parser.add_argument('--time_intervals', type=int, default=1, help='Default = 10 ... size of the B matrix or how many intervals will be treated in parallel.')
         parser.add_argument('--time_points', type=int, default=3, help='Default = 3 ... number of time points for the collocation problem, the size of Q.')
@@ -121,7 +118,6 @@ class QueenClass(abc.ABC):
 
         self.T_start = args['T_start']
         self.T_end = args['T_end']
-        self.betas = [args['beta']]
         self.alphas = [args['alpha']]
         self.time_intervals = args['time_intervals']
         self.time_points = args['time_points']
@@ -144,7 +140,7 @@ class QueenClass(abc.ABC):
     def y_initial(self, *args):
         pass
 
-    def p_initial(self, *args):
+    def p_end(self, *args):
         pass
 
     def gradient(self, *args):

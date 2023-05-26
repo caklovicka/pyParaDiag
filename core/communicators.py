@@ -25,9 +25,9 @@ class Communicators(QueenClass):
 
         # global for state and adjoint
         if self.state:
-            self.comm = MPI.Comm.Split(self.comm, 0, self.rank_global % (self.size_global // 2))
+            self.comm = MPI.Comm.Split(self.comm_global, 0, self.rank_global % (self.size_global // 2))
         elif self.adjoint:
-            self.comm = MPI.Comm.Split(self.comm, 1, self.rank_global % (self.size_global // 2))
+            self.comm = MPI.Comm.Split(self.comm_global, 1, self.rank_global % (self.size_global // 2))
 
         self.rank = self.comm.Get_rank()
         self.size = self.comm.Get_size()

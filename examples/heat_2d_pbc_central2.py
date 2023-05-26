@@ -103,10 +103,10 @@ class Heat(PartiallyCoupled):
         return np.zeros(self.rows_loc)
 
     def y_initial(self, x):
-        return y(0, x)
+        return self.y(self.T_start, x)
 
-    def p_initial(self, x):
-        return p(0, x)
+    def p_end(self, x):
+        return self.p(self.T_end, x)
 
     @staticmethod
     def norm(x):
@@ -146,7 +146,7 @@ class Heat(PartiallyCoupled):
     # exact solutions, not necessary for this class
     def y(self, t, x):
         return (2 / (np.pi ** 2 * self.gamma) * np.exp(self.T_end) - 4 / (4 + 2 * np.pi ** 2) / self.gamma *
-                np.exp(t)) * np.cos(np.pi * z[0] / 2) * np.cos(np.pi * x[1] / 2)
+                np.exp(t)) * np.cos(np.pi * x[0] / 2) * np.cos(np.pi * x[1] / 2)
 
     def p(self, t, x):
         return (np.exp(self.T_end) - np.exp(t)) * np.cos(np.pi * x[0] / 2) * np.cos(np.pi * x[1] / 2)
