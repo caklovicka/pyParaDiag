@@ -13,6 +13,11 @@ class Heat(PartiallyCoupled):
 
     # user defined, just for this class
     c = 1
+    gamma = 0.05
+
+    T_start = 0
+    T_end = 0.1
+
     X_left = 0
     X_right = 1
     Y_left = 0
@@ -55,7 +60,9 @@ class Heat(PartiallyCoupled):
         # # user defined, parallel matrix, rows are divided between processors in group 'comm_matrix'
         # rows_beg and rows_end define the chunk of matrix Apar in this communicator
 
-        # user defined matrix Apar, sparse form recommended
+        # user defined matrix Apar, sparse form
+        # it is a same matrix for state and adjoint
+        # in case of a different ones, use variables self.state and self.adjoint to determine which matrix to define
         row = list()
         col = list()
         data = list()
@@ -88,21 +95,18 @@ class Heat(PartiallyCoupled):
 
         # ---- POSTSETUP <end> ----
 
-    # user defined
-    def bpar(self, t):
-        return self.rhs(t, self.x).flatten()[self.row_beg:self.row_end]
+    def bpar_y(self, t):
+        return np.zeros(self.rows_loc)
 
     # user defined
-    def u_exact(self, t, y, p):
-        return y, p
+    def bpar_p(self, t):
+        return np.zeros(self.rows_loc)
 
-    # user defined
-    def u_initial(self, y, p):
-        return self.u_exact(self.T_start, y, p)
+    def y_initial(self, x):
+        return y(0, x)
 
-    # user defined
-    def rhs(self, t, y, p):
-        return y, p
+    def p_initial(self, x):
+        return p(0, x)
 
     @staticmethod
     def norm(x):
@@ -138,3 +142,15 @@ class Heat(PartiallyCoupled):
         pc.destroy()
 
         return sol, it
+
+    # exact solutions, not necessary for this class
+    def y(self, t, x):
+        return (2 / (np.pi ** 2 * self.gamma) * np.exp(self.T_end) - 4 / (4 + 2 * np.pi ** 2) / self.gamma *
+                np.exp(t)) * np.cos(np.pi * z[0] / 2) * np.cos(np.pi * x[1] / 2)
+
+    def p(self, t, x):
+        return (np.exp(self.T_end) - np.exp(t)) * np.cos(np.pi * x[0] / 2) * np.cos(np.pi * x[1] / 2)
+
+    @staticmethod
+    def u_exact(t, x):
+        return 1 / gamma * p(t, x)

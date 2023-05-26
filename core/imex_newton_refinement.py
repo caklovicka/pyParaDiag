@@ -18,15 +18,14 @@ class PartiallyCoupled(Helpers):
         super().setup()
 
         if self.time_intervals == 1:
+            # TODO to support the sequential run
             self.u_last_loc = self.u0_loc.copy(order='C')
-            self.optimal_alphas = False
             self.alphas = [0]
-        self.consecutive_error = []
-        self.residual = []
-        if self.time_intervals == 1:
-            self.alphas = [0]
+
         if self.betas == NotImplemented:
             self.betas = [0]
+
+        self.residual = []
         self.convergence = 1
 
     def solve(self):

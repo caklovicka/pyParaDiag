@@ -31,10 +31,8 @@ class QueenClass(abc.ABC):
     p_first_old_loc = NotImplemented
 
     # for the problem class
-    # Apar is state, AApar adjoint
     Apar = NotImplemented
-    AApar = NotImplemented
-
+    rows_loc = NotImplemented
     row_beg = NotImplemented
     row_end = NotImplemented
     global_size_A = NotImplemented  # global_size_A = global_size_AA
@@ -114,8 +112,8 @@ class QueenClass(abc.ABC):
         parser.add_argument('--proc_col', type=int, default=1, help='Default = 1 ... number fo processors dealing with parallelization of the time-space collocation problem. If just time parallelization, choose so that (proc_col | time_points) and (proc_col >= 1). If space-time parallelization, choose proc_col = k * time_point, (where 0 < k < spatial_points) and (k | spatial points).')
         parser.add_argument('--spatial_points', type=int, nargs='+', default=[24], help='Default = 24 ... number of spatial points with unknown values (meaning: not including the boundary ones)')
         parser.add_argument('--solver', type=str, default='lu', help='Default = lu ... specifying the inner linear refinement solver: lu, gmres, custom.')
-        parser.add_argument('--maxiter', type=int, default=5, help='Default = 5 ... maximum number of iterations on one rolling interval.')
-        parser.add_argument('--tol', type=float, default=1e-6, help='Default = 1e-6 ... a stopping criteria when two consecutive solutions in the last time point are lower than tol (in one rolling interval).')
+        parser.add_argument('--maxiter', type=int, default=5, help='Default = 5 ... maximum number of iterations.')
+        parser.add_argument('--tol', type=float, default=1e-6, help='Default = 1e-6 ... a stopping criteria when two consecutive solutions in the last time point are lower than tol.')
         parser.add_argument('--stol', type=float, default=1e-6, help='Default = 1e-6 ... an inner solver tolerance.')
         parser.add_argument('--smaxiter', type=float, default=1e-6, help='Default = 100 ... an inner solver maximum iterations.')
 

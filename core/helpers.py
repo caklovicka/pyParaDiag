@@ -77,6 +77,14 @@ class Helpers(Communicators):
             file.close()
             self.__write_time_in_txt__()
 
+    def gradient(self):
+        # TODO
+        return
+
+    def objective(self):
+        # TODO
+        return
+
     def __fill_initial_u_loc__(self):
 
         # case with spatial parallelization

@@ -55,6 +55,8 @@ class Communicators(QueenClass):
             self.rank_subcol_seq = self.comm_subcol_seq.Get_rank()
             self.size_subcol_seq = self.comm_subcol_seq.Get_size()
 
+            self.rows_loc = (self.time_points * self.global_size_A) // self.proc_col
+
             self.comm_matrix = self.comm_subcol_seq
             self.row_beg = self.rank_subcol_seq * self.rows_loc
             self.row_end = (self.rank_subcol_seq + 1) * self.rows_loc
