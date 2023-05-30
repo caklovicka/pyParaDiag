@@ -4,7 +4,7 @@ from core.helpers import Helpers
 import os
 import matplotlib.pyplot as plt
 import sys
-np.set_printoptions(linewidth=np.inf, precision=3, threshold=sys.maxsize)
+np.set_printoptions(linewidth=np.inf, precision=5, threshold=sys.maxsize)
 
 class PartiallyCoupled(Helpers):
 
@@ -34,19 +34,26 @@ class PartiallyCoupled(Helpers):
         self.stop = False
 
         self.__fill_initial_guesses__()
-        v_loc = self.__get_v_Euler__()
-
-        for r in range(self.size_global):
-            self.comm_global.Barrier()
-            if r == self.rank_global:
-                print(self.rank, self.rank_global, 'v_loc = ', v_loc.real, flush=True)
-                self.comm_global.Barrier()
-        exit()
-
+        if self.time_points == 1:
+            v_loc = self.__get_v_Euler__()
+        else:
+            raise RuntimeError('Not implemented for M > 1')
 
         while not self.stop:       # main iterations
 
-            res_loc = self.__get_linear_residual__(v_loc)       # rhs vector of the iteration
+            # compute residual
+            if self.time_points == 1:
+                res_loc = self.__get_linear_residual_Euler__(v_loc)
+            else:
+                raise RuntimeError('Not implemented for M > 1')
+
+            for r in range(self.size_global):
+                self.comm_global.Barrier()
+                if r == self.rank_global:
+                    print(self.rank, self.rank_global, 'res_loc = ', res_loc.real, flush=True)
+                    self.comm_global.Barrier()
+
+            exit()
             tmp = self.__get_F__()                             # add the explicit part
             res_loc += tmp
             res_norm = self.__get_max_norm__(res_loc)

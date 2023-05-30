@@ -125,30 +125,165 @@ class Helpers(Communicators):
 
         return v
 
-    def __get_r__(self, v_loc):
+    def __get_linear_residual_Euler__(self, v_loc):
 
-        r = 0
-        temp = 0
-        if self.rank_row == 0:
-            # with spatial parallelization
-            if self.frac != 0:
-                temp = np.linalg.norm(v_loc + self.u0_loc, np.infty)
-            # without spatial parallelization
-            else:
-                for i in range(self.Frac):
-                    temp = max(temp, np.linalg.norm(v_loc[i * self.global_size_A:(i+1) * self.global_size_A] + self.u0_loc, np.infty))
-        else:
-            temp = np.linalg.norm(v_loc, np.infty)
-        r = max(r, temp)
+        res_loc = v_loc.copy(order='C').astype(complex)
+        req = None
 
-        if self.size > 1:
+        if self.state:
+
+            # first send y to adjoint
+            if self.rank_row < self.size_row - 1:
+                time_beg = MPI.Wtime()
+                req = self.comm_global.isend(self.y_loc, dest=self.rank_global + self.size_global // 2 + self.size_col, tag=1)
+                self.communication_time += MPI.Wtime() - time_beg
+
+            # add dt (u_1^k, ..., u_L^k) to the state
+            res_loc += self.dt * self.u_loc
+
+            # add previous time step
+            res_loc += self.__get_previous_y_Euler__()
+
+            # deduce current time step
+            res_loc -= self.y_loc
+
+            # add dt * A @ y
+            res_loc += self.dt * self.__get_Ay_Euler__()
+
+        elif self.adjoint:
+
+            # add the following time step
+            res_loc += self.__get_following_p_Euler__()
+
+            # deduce current time step
+            res_loc -= self.p_loc
+
+            # add dt * A @ p
+            res_loc += self.dt * self.__get_Ap_Euler__()
+
+            # deduce y from the previous time step
+            if self.rank_row > 0:
+                time_beg = MPI.Wtime()
+                y_from_state = self.comm_global.recv(source=self.rank_global - self.size_global // 2 - self.size_col, tag=1)
+                self.communication_time += MPI.Wtime() - time_beg
+
+                res_loc -= self.dt * y_from_state
+
+        time_beg = MPI.Wtime()
+        if req is not None:
+            req.Wait()
+        self.communication_time += MPI.Wtime() - time_beg
+
+        return res_loc
+
+    def __get_previous_y_Euler__(self):
+
+        y_loc_prev = np.zeros_like(self.y_loc)
+        req = None
+
+        # horizontal send to right
+        if self.rank_row < self.size_row - 1:
             time_beg = MPI.Wtime()
-            temp = self.comm.allreduce(r, op=MPI.MAX)
+            req = self.comm_row.isend(self.y_loc, dest=self.rank_row + 1, tag=0)
             self.communication_time += MPI.Wtime() - time_beg
-            return temp
 
+        # horizontal receive from the left
+        if self.rank_row > 0:
+            time_beg = MPI.Wtime()
+            y_loc_prev = self.comm_row.recv(source=self.rank_row - 1, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        time_beg = MPI.Wtime()
+        if req is not None:
+            req.Wait()
+        self.communication_time += MPI.Wtime() - time_beg
+
+        return y_loc_prev
+
+    def __get_following_p_Euler__(self):
+
+        p_loc_foll = np.zeros_like(self.p_loc)
+        req = None
+
+        # horizontal send to left
+        if self.rank_row > 0:
+            time_beg = MPI.Wtime()
+            req = self.comm_row.isend(self.p_loc, dest=self.rank_row - 1, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        # horizontal receive from right
+        if self.rank_row < self.size_row - 1:
+            time_beg = MPI.Wtime()
+            p_loc_foll = self.comm_row.recv(source=self.rank_row + 1, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        time_beg = MPI.Wtime()
+        if req is not None:
+            req.Wait()
+        self.communication_time += MPI.Wtime() - time_beg
+
+        return p_loc_foll
+
+    def __get_Ay_Euler__(self):
+
+        Ay_loc = np.zeros_like(self.y_loc)
+
+        # case with spatial parallelization
+        if self.frac > 1:
+            A_petsc = PETSc.Mat()
+            csr = (self.Apar.indptr, self.Apar.indices, self.Apar.data)
+            A_petsc.createAIJWithArrays(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
+
+            y_petsc = PETSc.Vec()
+            y_petsc.createWithArray(array=self.y_loc, comm=self.comm_matrix)
+
+            Ay_petsc = PETSc.Vec()
+            Ay_petsc.createWithArray(Ay_loc, comm=self.comm_matrix)
+
+            A_petsc.mult(y_petsc, Ay_petsc)
+            Ay_loc = Ay_petsc.getArray()
+
+            A_petsc.destroy()
+            y_petsc.destroy()
+            Ay_petsc.destroy()
+
+        # case without spatial parallelization
         else:
-            return r
+            Ay_loc = self.Apar @ self.y_loc
+
+        return Ay_loc
+
+    def __get_Ap_Euler__(self):
+
+        Ap_loc = np.zeros_like(self.p_loc)
+
+        # case with spatial parallelization
+        if self.frac > 1:
+            A_petsc = PETSc.Mat()
+            csr = (self.Apar.indptr, self.Apar.indices, self.Apar.data)
+            A_petsc.createAIJWithArrays(size=(self.global_size_A, self.global_size_A), csr=csr, comm=self.comm_matrix)
+
+            p_petsc = PETSc.Vec()
+            p_petsc.createWithArray(array=self.p_loc, comm=self.comm_matrix)
+
+            Ap_petsc = PETSc.Vec()
+            Ap_petsc.createWithArray(Ap_loc, comm=self.comm_matrix)
+
+            A_petsc.mult(p_petsc, Ap_petsc)
+            Ap_loc = Ap_petsc.getArray()
+
+            A_petsc.destroy()
+            p_petsc.destroy()
+            Ap_petsc.destroy()
+
+        # case without spatial parallelization
+        else:
+            Ap_loc = self.Apar @ self.p_loc
+
+        return Ap_loc
+
+#-----------------------------------------------------------------------------------------------------------------------
+
 
     # fft
     def __get_fft__(self, w_loc, a):
