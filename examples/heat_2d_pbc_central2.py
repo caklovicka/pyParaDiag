@@ -16,12 +16,12 @@ class Heat(PartiallyCoupled):
     gamma = 0.05
 
     T_start = 0
-    T_end = 0.1
+    T_end = 1e-3 * 4
 
     X_left = 0
-    X_right = 1
+    X_right = 4
     Y_left = 0
-    Y_right = 1
+    Y_right = 4
     xx = None
     yy = None
 
