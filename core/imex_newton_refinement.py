@@ -47,48 +47,45 @@ class PartiallyCoupled(Helpers):
             else:
                 raise RuntimeError('Not implemented for M > 1')
 
+            '''
             for r in range(self.size_global):
                 self.comm_global.Barrier()
                 if r == self.rank_global:
                     print(self.rank, self.rank_global, 'res_loc = ', res_loc.real, flush=True)
                     self.comm_global.Barrier()
+            '''
 
-            exit()
-            tmp = self.__get_F__()                             # add the explicit part
-            res_loc += tmp
             res_norm = self.__get_max_norm__(res_loc)
-            i_alpha = self.__next_alpha__(i_alpha)
+            self.residual.append(res_norm)
 
-            self.residual[rolling_interval].append(res_norm)
-            if self.residual[rolling_interval][-1] <= self.tol or self.iterations[rolling_interval] == self.maxiter:
-                if self.residual[rolling_interval][-1] > self.tol:
-                    self.convergence = 0
-                break
-
-            if self.residual[rolling_interval][-1] > 1000:
+            # if it did not converge for a given maximum iterations
+            if self.iterations == self.maxiter and self.residual[-1] > self.tol:
                 self.convergence = 0
-                print('divergence? residual = ', self.residual[rolling_interval][-1])
                 break
 
-            if self.time_intervals == 1 and self.betas[i_beta] == 0:
-                res_loc = self.__get_w__(self.alphas, v_loc, v_loc) + tmp
+            # if the solution starts exploding, terminate earlier
+            if self.residual[-1] > 1000:
+                self.convergence = 0
+                print('divergence? residual = ', self.residual[-1])
+                break
 
-            g_loc, Rev = self.__get_fft__(res_loc, self.alphas[i_alpha])        # solving (S x I) g = w with ifft
+            # do a parallel scaled FFT in time
+            g_loc, Rev = self.__get_fft__(res_loc, self.alpha)
 
             # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
 
             system_time = []
             its = []
 
-            Zinv, D, Z, Cinv = self.__get_shifted_matrices__(int(Rev, 2), self.alphas[i_alpha])
+            # TODO: different shifted matrices for state and adjoint
+            exit()
+            Zinv, D, Z, Cinv = self.__get_shifted_matrices__(int(Rev, 2), self.alpha)
 
             h_loc = self.__solve_substitution__(Zinv, g_loc)        # step 1 ... (Z x I) h = g
 
             time_solver = MPI.Wtime()
-            if self.betas[i_beta] > 0:
-                h1_loc, it = self.__solve_inner_systems_J__(h_loc, D, self.betas[i_beta], h0.copy(), self.stol)
-            else:
-                h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0.copy(), self.stol)
+
+            h1_loc, it = self.__solve_inner_systems__(h_loc, D, h0.copy(), self.stol)
             system_time.append(MPI.Wtime() - time_solver)
             its.append(it)
 

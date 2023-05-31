@@ -282,8 +282,18 @@ class Helpers(Communicators):
 
         return Ap_loc
 
-#-----------------------------------------------------------------------------------------------------------------------
+    def __get_max_norm__(self, c):
 
+        err_loc = self.norm(c)
+
+        if self.size == 1:
+            return err_loc
+
+        time_beg = MPI.Wtime()
+        err_max = self.comm_global.allreduce(err_loc, op=MPI.MAX)
+        self.communication_time += MPI.Wtime() - time_beg
+
+        return err_max
 
     # fft
     def __get_fft__(self, w_loc, a):
@@ -291,7 +301,15 @@ class Helpers(Communicators):
         if self.time_intervals == 1:
             return w_loc, '0'
 
-        g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc    # scale
+        g_loc = np.empty_like(w_loc).astype(complex)
+
+        # for state scale with 1/L * J
+        if self.state:
+            g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc
+        # for adjoint scale with 1 / L * J^(-*)
+        elif self.adjoint:
+            g_loc = np.conj(a ** (-self.rank_row / self.time_intervals)) / self.time_intervals * w_loc
+
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
         R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
@@ -328,6 +346,8 @@ class Helpers(Communicators):
             g_loc = gr + factor * g_loc
 
         return g_loc, R
+
+# -----------------------------------------------------------------------------------------------------------------------
 
     def __get_w__(self, a, v_loc, v1=None):
 
@@ -472,19 +492,6 @@ class Helpers(Communicators):
         Zinv = np.linalg.inv(Z)  # Z @ D @ Zinv = R
 
         return Zinv, D, Z, Cinv
-
-    def __get_max_norm__(self, c):
-
-        err_loc = self.norm(c)
-
-        if self.size == 1:
-            return err_loc
-
-        time_beg = MPI.Wtime()
-        err_max = self.comm.allreduce(err_loc, op=MPI.MAX)
-        self.communication_time += MPI.Wtime() - time_beg
-
-        return err_max
 
     def __solve_substitution__(self, Zinv, g_loc):
 
@@ -766,7 +773,7 @@ class Helpers(Communicators):
             d = d.flatten()
             err_abs = np.linalg.norm(d, np.inf)
             err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-            print('on {},  abs, rel err inf norm = {}, {}, iter = {}, rolling = {}'.format(self.rank, err_abs, err_rel, int(self.iterations[rolling_interval]), rolling_interval), flush=True)
+            print('on {},  abs, rel err inf norm = {}, {}, iter = {}'.format(self.rank, err_abs, err_rel, int(self.iterations)), flush=True)
 
     def summary(self, details=False):
 
