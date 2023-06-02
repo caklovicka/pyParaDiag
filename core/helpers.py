@@ -50,19 +50,9 @@ class Helpers(Communicators):
         self.t = self.dt * np.array(coll.nodes)
 
         # fill initial conditions
-        # case with spatial parallelization
-        if self.frac > 1:
-            self.y0_loc = self.y_initial(self.x).flatten()[self.row_beg: self.row_end]
-            if self.adjoint:
-                self.pT_loc = self.p_end(self.x).flatten()[self.row_beg: self.row_end]
-        # case without spatial parallelization
-        else:
-            self.y0_loc = self.y_initial(self.x).flatten()
-            if self.adjoint:
-                self.pT_loc = self.p_end(self.x).flatten()
-
-        if self.state:
-            self.u_loc = np.zeros_like(self.y0_loc)
+        self.y0_loc = self.y_initial(self.x).flatten()[self.row_beg: self.row_end]
+        if self.adjoint:
+            self.pT_loc = self.p_end(self.x).flatten()[self.row_beg: self.row_end]
 
         # auxiliaries
         self.algorithm_time = 0
@@ -72,6 +62,11 @@ class Helpers(Communicators):
         self.solver_its_max = []
         self.solver_its_min = []
         self.iterations = 0
+        self.outer_iterations = 0
+        self.residual = []
+        self.grad_err = [np.inf]
+        self.obj_err = [np.inf]
+        self.convergence = 1
 
         # build matrices for the collocation problem
         self.Q = coll.Qmat[1:, 1:]
@@ -80,29 +75,80 @@ class Helpers(Communicators):
             self.P[i, -1] = 1
         self.P = sparse.csr_matrix(self.P)
 
-    def gradient(self):
-        # TODO
-        return
+    def __get_gradient__(self):
 
-    def objective(self):
-        # TODO
-        return
+        # has to be called from the global communicator
+        # j'(u) = gamma u - p
+        # (p_0, ..., p_{L-1})  lives on the adjoint communicator
+        # (u1, ..., u_L) lives on state communicator
+
+        req = None
+        p_loc = self.p_end(self.x).flatten()[self.row_beg: self.row_end]  # this one will be for the group that doesn't receive
+        grad_loc = None
+
+        if self.time_points == 1:
+            # adjoint needs to send p_l
+            if self.adjoint:
+                if self.rank_row > 0:
+                    time_beg = MPI.Wtime()
+                    req = self.comm_global.isend(self.p_loc, dest=self.rank_global - self.size_global // 2 - self.size_col, tag=1)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+            # state needs to receive u_l
+            if self.state:
+                if self.rank_row < self.size_row - 1:
+                    time_beg = MPI.Wtime()
+                    p_loc = self.comm_global.recv(source=self.rank_global + self.size_global // 2 + self.size_col, tag=1)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+            time_beg = MPI.Wtime()
+            if req is not None:
+                req.Wait()
+            self.communication_time += MPI.Wtime() - time_beg
+
+            if self.state:
+                grad_loc = self.gradient(self.u_loc, p_loc)
+
+        else:
+            # TODO: implement all the substeps
+            raise RuntimeError('Not implemented for M > 1')
+
+        return grad_loc
+
+    def __get_objective__(self):
+        # called from state
+
+        if self.time_points == 1:
+            obj_loc = self.objective(self.y_loc, self.yd(self.rank_row * self.dt, self.x).flatten()[self.row_beg:self.row_end], self.u_loc)
+            time_beg = MPI.Wtime()
+            obj_sum = self.comm.allreduce(obj_loc, op=MPI.SUM)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        else:
+            # TODO: implement all the substeps
+            raise RuntimeError('Not implemented for M > 1')
+
+        return obj_sum
 
     def __fill_initial_guesses__(self):
 
         # case with spatial parallelization
         if self.frac > 1:
             if self.state:
-                self.y_loc = self.y0_loc.copy(order='C').astype(complex)
+                self.y_loc = np.zeros_like(self.y0_loc).astype(complex)#self.y0_loc.copy(order='C').astype(complex)
             elif self.adjoint:
-                self.p_loc = self.pT_loc.copy(order='C').astype(complex)
+                self.p_loc = np.zeros_like(self.pT_loc).astype(complex)#self.pT_loc.copy(order='C').astype(complex)
 
         # case without spatial parallelization
         else:
             if self.state:
-                self.y_loc = np.tile(self.y0_loc, self.Frac).astype(complex)
+                self.y_loc = np.zeros(self.Frac * self.y0_loc.shape[0], dtype=complex)#np.tile(self.y0_loc, self.Frac).astype(complex)
             elif self.adjoint:
-                self.p_loc = np.tile(self.pT_loc, self.Frac).astype(complex)
+                self.p_loc = np.zeros(self.Frac * self.pT_loc.shape[0], dtype=complex)#np.tile(self.pT_loc, self.Frac).astype(complex)
+
+        if self.state:
+            self.u_loc = np.zeros_like(self.y_loc).astype(complex)
+
 
     def __get_v_Euler__(self):
         # on state: (y0, 0, ..., 0)
@@ -303,12 +349,12 @@ class Helpers(Communicators):
 
         g_loc = np.empty_like(w_loc).astype(complex)
 
-        # for state scale with 1/L * J
+        # for state scale with 1/L * J^(-1)
         if self.state:
             g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc
-        # for adjoint scale with 1 / L * J^(-*)
+        # for adjoint scale with  1/L * J
         elif self.adjoint:
-            g_loc = np.conj(a ** (-self.rank_row / self.time_intervals)) / self.time_intervals * w_loc
+            g_loc = a ** (-self.rank_row / self.time_intervals) / self.time_intervals * w_loc
 
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
@@ -346,6 +392,98 @@ class Helpers(Communicators):
             g_loc = gr + factor * g_loc
 
         return g_loc, R
+
+    def __get_ifft_h__(self, h1_loc, a):
+
+        if self.time_intervals == 1:
+            return h1_loc
+
+        n = int(np.log2(self.time_intervals))
+        P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
+        R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
+        we = np.exp(2 * np.pi * 1j / self.time_intervals)
+
+        # stages of butterfly
+        for k in range(n):
+            p = self.time_intervals // 2 ** (n - k)
+            r = int(R, 2) % 2 ** (n - k) - 2 ** (n - k - 1)
+            scalar = we ** (r * p)
+            factor = 1
+
+            if R[k] == '1':
+                factor = -1
+
+            # make a new string and an int from it, a proc to communicate with
+            comm_with = list(R)
+            if comm_with[k] == '1':
+                comm_with[k] = '0'
+            else:
+                comm_with[k] = '1'
+            comm_with = int(''.join(comm_with)[::-1], 2)
+
+            # now communicate
+            time_beg = MPI.Wtime()
+            req = self.comm_row.isend(h1_loc, dest=comm_with, tag=k)
+            hr = self.comm_row.recv(source=comm_with, tag=k)
+            req.Wait()
+            self.communication_time += MPI.Wtime() - time_beg
+
+            # glue the info
+            h1_loc = hr + factor * h1_loc
+
+            # scale the output
+            if R[k] == '1' and scalar != 1:
+                h1_loc *= scalar
+
+            # for state scale with J
+            if self.state:
+                h1_loc *= a ** (-self.rank_row / self.time_intervals)
+            # for adjoint scale with J^(-1)
+            elif self.adjoint:
+                h1_loc *= a ** (self.rank_row / self.time_intervals)
+
+        return h1_loc
+
+    def __get_shift_Euler__(self, l_new, a):
+
+        Dl_new = None
+
+        if self.state:
+            Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
+        elif self.adjoint:
+            Dl_new = -a ** (1 / self.time_intervals) * np.conj(np.exp(-2 * np.pi * 1j * l_new / self.time_intervals))
+
+        return Dl_new
+
+    def __solve_shifted_systems_Euler__(self, h_loc, d, x0, tol):
+        it_max = 0
+
+        # case with spatial parallelization
+        if self.row_end - self.row_beg != self.global_size_A:
+            sys = (1 + d) * sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * self.Apar
+            h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
+            it_max = max(it, it_max)
+
+        # case without spatial parallelization
+        else:
+            h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
+            for i in range(self.Frac):
+                sys = (1 + d) * sc.sparse.eye(self.global_size_A) - self.dt * self.Apar
+                if self.solver == 'custom':
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    it_max = max(it, it_max)
+                else:
+                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
+                    it_max = max(it, it_max)
+
+        return h1_loc, it_max
+
+    def __get_u__(self, grad_loc):
+
+        # TODO: step adaptivity
+        step = 1
+        self.u_loc -= step * grad_loc
+
 
 # -----------------------------------------------------------------------------------------------------------------------
 
@@ -531,75 +669,6 @@ class Helpers(Communicators):
         # self.comm.Barrier()
         return h_loc
 
-    def __solve_inner_systems__(self, h_loc, D, x0, tol):
-        it_max = 0
-
-        # case with spatial parallelization
-        if self.row_end - self.row_beg != self.global_size_A:
-            sys = sc.sparse.eye(m=self.row_end - self.row_beg, n=self.global_size_A, k=self.row_beg) - self.dt * D[self.rank_subcol_alternating] * self.Apar
-            h1_loc, it = self.linear_solver(sys, h_loc, x0, tol)
-            it_max = max(it, it_max)
-
-        # case without spatial parallelization
-        else:
-            h1_loc = np.zeros_like(h_loc, dtype=complex, order='C')
-            for i in range(self.Frac):
-                sys = sc.sparse.eye(self.global_size_A) - self.dt * D[i + self.rank_col * self.Frac] * self.Apar
-                if self.solver == 'custom':
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.linear_solver(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-                    it_max = max(it, it_max)
-                else:
-                    h1_loc[i * self.global_size_A:(i + 1) * self.global_size_A], it = self.__linear_solver__(sys, h_loc[i * self.global_size_A:(i + 1) * self.global_size_A], x0[i * self.global_size_A:(i + 1) * self.global_size_A], tol)
-                    it_max = max(it, it_max)
-
-        return h1_loc, it_max
-
-    def __get_ifft_h__(self, h1_loc, a):
-
-        if self.time_intervals == 1:
-            return h1_loc
-
-        n = int(np.log2(self.time_intervals))
-        P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
-        R = P[::-1]  # reversed binary in string, index that the proc will have after ifft
-        we = np.exp(2 * np.pi * 1j / self.time_intervals)
-
-        # stages of butterfly
-        for k in range(n):
-            p = self.time_intervals // 2 ** (n - k)
-            r = int(R, 2) % 2 ** (n - k) - 2 ** (n - k - 1)
-            scalar = we ** (r * p)
-            factor = 1
-
-            if R[k] == '1':
-                factor = -1
-
-            # make a new string and an int from it, a proc to communicate with
-            comm_with = list(R)
-            if comm_with[k] == '1':
-                comm_with[k] = '0'
-            else:
-                comm_with[k] = '1'
-            comm_with = int(''.join(comm_with)[::-1], 2)
-
-            # now communicate
-            time_beg = MPI.Wtime()
-            req = self.comm_row.isend(h1_loc, dest=comm_with, tag=k)
-            hr = self.comm_row.recv(source=comm_with, tag=k)
-            req.Wait()
-            self.communication_time += MPI.Wtime() - time_beg
-
-            # glue the info
-            h1_loc = hr + factor * h1_loc
-
-            # scale the output
-            if R[k] == '1' and scalar != 1:
-                h1_loc *= scalar
-
-        h1_loc *= a ** (-self.rank_row / self.time_intervals)
-
-        return h1_loc
-
     def __bcast_u_last_loc__(self):
 
         if self.time_intervals == 1:
@@ -778,7 +847,7 @@ class Helpers(Communicators):
     def summary(self, details=False):
 
         np.set_printoptions(precision=5, linewidth=np.inf)
-        if self.rank == 0:
+        if self.rank_global == 0:
             assert self.setup_var is True, 'Please call the setup function before summary.'
             print('----------------')
             print(' discretization ')
@@ -787,9 +856,7 @@ class Helpers(Communicators):
             print('no. of spatial points = {}, dx = {}'.format(self.spatial_points, self.dx), flush=True)
             print('no. of time intervals = {}, dt = {}'.format(self.time_intervals, self.dt), flush=True)
             print('collocation points = {}'.format(self.t), flush=True)
-            print('alphas = {}'.format(self.alphas), flush=True)
-            print('betas = {}'.format(self.betas), flush=True)
-            print('rolling intervals = {}'.format(self.rolling), flush=True)
+            print('alpha = {}'.format(self.alpha), flush=True)
 
             print()
             print('-----------------')
@@ -821,48 +888,19 @@ class Helpers(Communicators):
             print('communication time = {:.5f} s'.format(self.communication_time), flush=True)
             print()
 
-            for i in range(self.rolling):
-                if self.consecutive_err_last != NotImplemented:
-                    self.consecutive_err_last[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_err_last[i]]
-                if self.consecutive_error != NotImplemented:
-                    self.consecutive_error[i] = [float("{:.5e}".format(elem)) for elem in self.consecutive_error[i]]
-                if self.residual != NotImplemented:
-                    self.residual[i] = [float("{:.5e}".format(elem)) for elem in self.residual[i]]
+            #if self.residual != NotImplemented:
+            #    self.residual = [float("{:.5e}".format(elem)) for elem in self.residual]
+            print('residuals = ', self.residual, flush=True)
+            print('gradients = ', self.grad_err, flush=True)
+            print('objectives = ', self.obj_err, flush=True)
 
-            if self.consecutive_err_last != NotImplemented:
-                print('consecutive errors (last) = ', flush=True)
-                for i in self.consecutive_err_last:
-                    print(i, flush=True)
-
-            if self.consecutive_error != NotImplemented:
-                print('consecutive errors = ', flush=True)
-                for i in self.consecutive_error:
-                    print(i, flush=True)
-
-            if self.residual != NotImplemented:
-                print('residuals = ', flush=True)
-                for i in self.residual:
-                    print(i, flush=True)
             print()
-
             if details:
-                for i in range(self.rolling):
-                    self.system_time_max[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_max[i]]
-                    self.system_time_min[i] = [float("{:.2e}".format(elem)) for elem in self.system_time_min[i]]
+                self.system_time_max = [float("{:.2e}".format(elem)) for elem in self.system_time_max]
+                self.system_time_min = [float("{:.2e}".format(elem)) for elem in self.system_time_min]
 
-                print('system_time_max =', flush=True)
-                for i in self.system_time_max:
-                    print(i, flush=True)
-                print('system_time_min = ', flush=True)
-                for i in self.system_time_min:
-                    print(i, flush=True)
-                print('solver_its_max =', flush=True)
-                for i in self.solver_its_max:
-                    print(i, flush=True)
-                print('solver_its_min =', flush=True)
-                for i in self.solver_its_min:
-                    print(i, flush=True)
-                #print('inner_tols =', flush=True)
-                #for i in self.inner_tols:
-                #    print(i, flush=True)
-            print('-----------------------< end summary >-----------------------')
+                print('system_time_max =', self.system_time_max, flush=True)
+                print('system_time_min = ', self.system_time_min, flush=True)
+                print('solver_its_max =', self.solver_its_max, flush=True)
+                print('solver_its_min =', self.solver_its_min, flush=True)
+            print('-----------------------< end summary >-----------------------', flush=True)

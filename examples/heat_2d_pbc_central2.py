@@ -113,9 +113,17 @@ class Heat(PartiallyCoupled):
                 (1 - np.pi ** 2 / 2 - 4 / (4 + 2 * np.pi ** 2) / self.gamma) * np.exp(t)) * \
                 np.cos(np.pi * x[0] / 2) * np.cos(np.pi * x[1] / 2)
 
+    def objective(self, y, yd, u):
+        y_err = np.linalg.norm(y - yd, 2)
+        u_norm = np.linalg.norm(u, 2)
+        return self.dt * np.prod(self.dx) * (0.5 * y_err ** 2 + self.gamma / 2 * u_norm ** 2)
+
+    def gradient(self, u, p):
+        return self.gamma * u - p
+
     @staticmethod
     def norm(x):
-        return np.linalg.norm(x.real, np.inf)
+        return np.linalg.norm(x, np.inf)
 
     # petsc solver on comm_matrix
     def linear_solver(self, M_loc, m_loc, m0_loc, tol):

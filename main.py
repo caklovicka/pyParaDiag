@@ -21,10 +21,12 @@ prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
 prob.maxiter = 5
 prob.smaxiter = 100
-prob.alpha = 1e-3
-prob.tol = 1e-12
-prob.stol = 1e-16
+prob.outer_maxiter = 2
+prob.alpha = 1e-1
+prob.tol = 1e-5
+prob.otol = 5e-5
+prob.stol = 1e-6
 
 prob.setup()
 prob.solve()
-#prob.summary(details=True)
+prob.summary(details=True)

@@ -36,15 +36,18 @@ class QueenClass(abc.ABC):
 
     # errors
     grad_err = NotImplemented
+    obj_err = NotImplemented
     residual = NotImplemented
 
     # other
     iterations = NotImplemented
+    outer_iterations = NotImplemented
     B = NotImplemented
     Q = NotImplemented
     P = NotImplemented
     convergence = NotImplemented
     stop = False
+    stop_outer = False
     document = 'None'
 
     # communicators
@@ -109,8 +112,10 @@ class QueenClass(abc.ABC):
         parser.add_argument('--proc_col', type=int, default=1, help='Default = 1 ... number fo processors dealing with parallelization of the time-space collocation problem. If just time parallelization, choose so that (proc_col | time_points) and (proc_col >= 1). If space-time parallelization, choose proc_col = k * time_point, (where 0 < k < spatial_points) and (k | spatial points).')
         parser.add_argument('--spatial_points', type=int, nargs='+', default=[24], help='Default = 24 ... number of spatial points with unknown values (meaning: not including the boundary ones)')
         parser.add_argument('--solver', type=str, default='lu', help='Default = lu ... specifying the inner linear refinement solver: lu, gmres, custom.')
-        parser.add_argument('--maxiter', type=int, default=5, help='Default = 5 ... maximum number of iterations.')
-        parser.add_argument('--tol', type=float, default=1e-6, help='Default = 1e-6 ... a stopping criteria when two consecutive solutions in the last time point are lower than tol.')
+        parser.add_argument('--maxiter', type=int, default=5, help='Default = 5 ... maximum number of paradiag iterations.')
+        parser.add_argument('--outer_maxiter', type=int, default=5, help='Default = 5 ... maximum number of outer iterations.')
+        parser.add_argument('--tol', type=float, default=1e-6, help='Default = 1e-6 ... a stopping criteria for the residual.')
+        parser.add_argument('--otol', type=float, default=1e-6, help='Default = 1e-5 ... a stopping criteria for outer itrations.')
         parser.add_argument('--stol', type=float, default=1e-6, help='Default = 1e-6 ... an inner solver tolerance.')
         parser.add_argument('--smaxiter', type=float, default=1e-6, help='Default = 100 ... an inner solver maximum iterations.')
 
@@ -126,6 +131,7 @@ class QueenClass(abc.ABC):
         self.spatial_points = args['spatial_points']
         self.solver = args['solver']
         self.maxiter = args['maxiter']
+        self.outer_maxiter = args['outer_maxiter']
         self.tol = args['tol']
         self.stol = args['stol']
         self.smaxiter = args['smaxiter']
