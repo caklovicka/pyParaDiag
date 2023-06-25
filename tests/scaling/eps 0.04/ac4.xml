@@ -11,7 +11,7 @@
 
         <parameter name="nproc" mode="python">[1, 2, 4, 8, 16, 32][$i]</parameter>
         <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 1][$i]</parameter>
-        <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 32[$i]</parameter>
+        <parameter name="ntasks_per_node" mode="python">[1, 2, 4, 8, 16, 32][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
