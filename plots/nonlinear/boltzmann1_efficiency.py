@@ -3,11 +3,11 @@ import numpy as np
 import seaborn as sns
 from matplotlib.lines import Line2D
 
-#petsc_run = 'data/boltzmann1_petsc.dat'
-#petsc_pint_run = 'data/boltzmann1_petsc{}_pint.dat'
+petsc_run = 'data/boltzmann1_petsc.dat'
+petsc_pint_run = 'data/boltzmann1_petsc{}_pint.dat'
 
-petsc_run = 'data/boltzmann1_petsc_julia.dat'
-petsc_pint_run = 'data/boltzmann1_petsc{}_pint_julia.dat'
+#petsc_run = 'data/boltzmann1_petsc_julia.dat'
+#petsc_pint_run = 'data/boltzmann1_petsc{}_pint_julia.dat'
 
 legend = []
 petsc_proc = []
@@ -15,7 +15,7 @@ petsc_time = []
 custom_lines = []
 mksz = 10
 lw = 2
-plt.figure(figsize=(6, 5))
+plt.figure(figsize=(5, 4))
 col = sns.color_palette("bright", 3)
 
 # just PETSc

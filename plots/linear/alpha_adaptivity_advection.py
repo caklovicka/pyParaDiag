@@ -45,9 +45,9 @@ roundoff = np.array(m)#np.log10(np.array(m))
 mm = [r'$\mathbf{m_1} = }$', r'$\mathbf{m_2} = }$', r'$\mathbf{m_3} = }$', r'$\mathbf{m_4} = }$']
 
 n = 8
-for i in range(len(mm)):
-    plt.semilogy(range(n), np.ones(n)*roundoff[i], linestyle=linst[i], color='silver', lw=lw)
-    plt.text(0.6, roundoff[i] * 1.3, mm[i] + str(m2[i]), fontsize=marksz + 1, color='silver', weight='bold')
+#for i in range(len(mm)):
+#    plt.semilogy(range(n), np.ones(n)*roundoff[i], linestyle=linst[i], color='silver', lw=lw)
+#    plt.text(0.6, roundoff[i] * 1.3, mm[i] + str(m2[i]), fontsize=marksz + 1, color='silver', weight='bold')
 
 
 plt.semilogy(range(1, len(err0)+1, 1), err0, 'X', color=col[0], markersize=marksz, linestyle=linst[0], lw=lw)
@@ -70,9 +70,10 @@ custom_lines = [Line2D([0], [0], color=col[0], marker='', linestyle=linst[0], lw
                 Line2D([0], [0], color='black', linestyle='solid', lw=lw),
                 Line2D([0], [0], color='silver', marker='X', markersize=marksz, lw=lw)]
 
-names = [r'$\alpha = {:.2e}$'.format(alphas2[0]), r'$\alpha = {:.2e}$'.format(alphas2[1]), r'$\alpha = {:.2e}$'.format(alphas2[2]), r'$\alpha = {:.2e}$'.format(alphas2[3]), 'optimal', r'$\|u^{(k)}_L - u(T_L)\|_\infty $']
+names = [r'$\alpha = {:.2e}$'.format(alphas2[0]), r'$\alpha = {:.2e}$'.format(alphas2[1]), r'$\alpha = {:.2e}$'.format(alphas2[2]), r'$\alpha = {:.2e}$'.format(alphas2[3]), 'adaptive']
 plt.legend(custom_lines, names, prop={'size': 20})
 plt.xlabel('iteration', fontsize=25)
+plt.ylabel(r'$\|u^{(k)}_L - u(T_L)\|_\infty $', fontsize=25)
 plt.tick_params(labelsize=marksz)
 
 plt.show()

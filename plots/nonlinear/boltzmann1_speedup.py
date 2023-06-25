@@ -15,7 +15,7 @@ petsc_time = []
 custom_lines = []
 mksz = 10
 lw = 2
-plt.figure(figsize=(6, 5))
+plt.figure(figsize=(5, 4))
 col = sns.color_palette("bright", 3)
 
 # just PETSc
@@ -73,12 +73,13 @@ for k in range(K):
             it = int(it)
         pint_petsc_iters[k].append(it)
 
-    for i in range(len(pint_petsc_iters[k])):
-        plt.semilogy(pint_petsc_proc[k][i], seq_time / pint_petsc_time[k][i], color=col[k], marker='X', markersize=mksz)#marker)
+    #for i in range(len(pint_petsc_iters[k])):
+        #plt.semilogy(pint_petsc_proc[k][i], seq_time / pint_petsc_time[k][i], color=col[k], marker='X', markersize=mksz)#marker)
 
-    plt.semilogy(pint_petsc_proc[k], seq_time / np.array(pint_petsc_time[k]), linestyle='--', color=col[k], linewidth=lw)
+    #plt.semilogy(pint_petsc_proc[k], seq_time / np.array(pint_petsc_time[k]), linestyle='--', color=col[k], linewidth=lw)
 
-plt.legend(custom_lines, legend)
+
+plt.legend(custom_lines, ['spatial scaling', 'ideal'])
 plt.xlabel('total number of cores', fontsize=12)
 plt.ylabel('speedup', fontsize=12)
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048])
