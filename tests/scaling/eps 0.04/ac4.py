@@ -23,7 +23,7 @@ prob.tol = 1e-10
 prob.stol = 1e-11
 prob.T_end = 0.024
 
-prob.betas = 1
+prob.betas = [1]
 prob.T_start = 0
 prob.proc_col = 1
 prob.solver = 'gmres'
