@@ -4,14 +4,14 @@
     <comment>scaling for ac4_p, rolling * time_intervals = 24</comment>
 
     <parameterset name="param_set">
-        <parameter name="i" type="int">0, 1, 2, 3, 4, 5</parameter>
+        <parameter name="i" type="int">0, 1, 2, 3</parameter>
 
-        <parameter name="time_intervals" mode="python">[1, 2, 4, 8, 16, 32][$i]</parameter>
-        <parameter name="rolling" mode="python">[31, 16, 8, 4, 2, 1][$i]</parameter>
+        <parameter name="time_intervals" mode="python">[1, 2, 4, 8][$i]</parameter>
+        <parameter name="rolling" mode="python">[24, 12, 6, 3][$i]</parameter>
 
-        <parameter name="nproc" mode="python">[4, 8, 16, 32, 64, 128][$i]</parameter>
-        <parameter name="nodes" mode="python">[1, 1, 1, 1, 1, 2][$i]</parameter>
-        <parameter name="ntasks_per_node" mode="python">[4, 8, 16, 32, 64, 64][$i]</parameter>
+        <parameter name="nproc" mode="python">[4, 8, 16, 32][$i]</parameter>
+        <parameter name="nodes" mode="python">[1, 1, 1, 2][$i]</parameter>
+        <parameter name="ntasks_per_node" mode="python">[4, 8, 16, 16][$i]</parameter>
     </parameterset>
 
     <!-- Files -->
