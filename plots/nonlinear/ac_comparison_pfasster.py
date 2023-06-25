@@ -6,7 +6,7 @@ mksz = 12
 lw = 2
 col = sns.color_palette("hls", 2)
 
-run = 1
+run = 0
 
 if run == 0:
     file = ['data/ac4_24.dat']
@@ -46,10 +46,13 @@ plt.grid('gray')
 if run == 0:
     plt.xticks([0, 1, 2, 3, 4, 5], [1, 2, 4, 8, 12, 24])
     plt.yticks([300, 250, 200, 150, 100, 50], [300, 250, 200, 150, 100, 50])
+    plt.xlim([-0.5, 5.5])
+    plt.ylim([45, 330])
+
 else:
     plt.xticks([2, 3, 4, 5, 6, 7], [4, 8, 12, 24, 48, 96])
     plt.yticks([100, 90, 80, 70, 60, 50, 40, 30, 20], [100, 90, 80, 70, 60, 50, 40, 30, 20])
-
-plt.xlim([1.5, 7.5])
+    plt.xlim([1.5, 7.5])
+    plt.ylim([18, 105])
 plt.tight_layout()
 plt.show()
