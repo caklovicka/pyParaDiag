@@ -29,7 +29,7 @@ prob.proc_col = 4
 prob.solver = 'gmres'
 prob.maxiter = 50
 prob.smaxiter = 1000
-prob.alphas = [1e-4]
+prob.alphas = [1e-10]
 
 prob.proc_row = prob.time_intervals
 
