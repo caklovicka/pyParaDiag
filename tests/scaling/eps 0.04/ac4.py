@@ -27,7 +27,7 @@ prob.betas = [1]
 prob.T_start = 0
 prob.proc_col = 1
 prob.solver = 'gmres'
-prob.maxiter = 5
+prob.maxiter = 30
 prob.smaxiter = 1000
 prob.alphas = [1e-8]
 
