@@ -3,13 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-K = 2
 mksz = 10
 lw = 2
 col = sns.color_palette("hls", 3)
 
 M = 3
-
 if M == 1:
     file = ['data/ac1_0.dat']
     #file = ['data/ac_small_stol.dat']
@@ -29,6 +27,7 @@ elif M == 3:
     col = sns.color_palette("hls", 3)[-2:]
     col[0] = 'gray'
 
+K = len(file)
 imex_proc = []
 imex_time = []
 imex_its = []
@@ -76,8 +75,9 @@ for k in range(K):
     if M == 3:
         imex_seq = newton_seq
 
-    plt.semilogy(imex_proc[k], imex_seq/np.array(imex_time[k]), '^:', color=col[k], linewidth=lw, markersize=mksz)
-    plt.semilogy(newton_proc[k], newton_seq/np.array(newton_time[k]), 'v-', color=col[k], linewidth=lw, markersize=mksz)
+    if k <= K:
+        plt.semilogy(imex_proc[k], imex_seq/np.array(imex_time[k]), '^:', color=col[k], linewidth=lw, markersize=mksz)
+        plt.semilogy(newton_proc[k], newton_seq/np.array(newton_time[k]), 'v-', color=col[k], linewidth=lw, markersize=mksz)
 
 plt.legend(legend)
 plt.xlabel('total number of cores', fontsize=12)
@@ -92,6 +92,8 @@ for k in range(K):
 for x in xx:
     yy.append(int(2 ** x))
 plt.xticks(xx, yy)
+plt.ylim([0.8, 60])
+plt.xlim([-0.5, 8])
 
 plt.grid('gray')
 plt.tight_layout()

@@ -5,6 +5,8 @@ from matplotlib.lines import Line2D
 
 alphas = [6.189239916076504e-07, 0.000556293084447241, 0.01667772593082224, 0.09131737493714501]
 alphas2 = [6.19e-07, 0.000556, 0.0167, 0.0913]
+plt.figure(figsize=(10, 6))
+
 
 # optimal alphas
 err = [4.994783647832435e-08, 2.8056047820114626e-11, 6.690062510102548e-13, 5.032046166571533e-13]
@@ -58,7 +60,7 @@ plt.semilogy(range(1, len(err3)+1, 1), err3, 'X', color=col[3], markersize=marks
 
 n = len(err)
 x = list(range(1, n+1, 1))
-plt.semilogy(x, err, 'X', color='black', markersize=marksz, linestyle='solid', lw=lw)
+#plt.semilogy(x, err, 'X', color='black', markersize=marksz, linestyle='solid', lw=lw)
 
 plt.ylim([10**(-13), 1])
 plt.xlim([0.5, 6.5])
@@ -71,9 +73,9 @@ custom_lines = [Line2D([0], [0], color=col[0], marker='', linestyle=linst[0], lw
                 Line2D([0], [0], color='silver', marker='X', markersize=marksz, lw=lw)]
 
 names = [r'$\alpha = {:.2e}$'.format(alphas2[0]), r'$\alpha = {:.2e}$'.format(alphas2[1]), r'$\alpha = {:.2e}$'.format(alphas2[2]), r'$\alpha = {:.2e}$'.format(alphas2[3]), 'adaptive']
-plt.legend(custom_lines, names, prop={'size': 20})
+plt.legend(custom_lines[:-1], names[:-1], prop={'size': 20})
 plt.xlabel('iteration', fontsize=25)
 plt.ylabel(r'$\|u^{(k)}_L - u(T_L)\|_\infty $', fontsize=25)
 plt.tick_params(labelsize=marksz)
-
+plt.tight_layout()
 plt.show()
