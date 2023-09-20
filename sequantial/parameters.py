@@ -9,7 +9,7 @@ alpha = 1e-1
 
 # maxiters
 max_outer_its = 1
-max_paradiag_its = 1
+max_paradiag_its = 2
 
 # tols
 tol_outer = 5e-4

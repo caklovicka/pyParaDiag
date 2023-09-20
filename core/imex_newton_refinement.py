@@ -64,8 +64,6 @@ class PartiallyCoupled(Helpers):
 
                 # do a parallel scaled FFT in time
                 g_loc, Rev = self.__get_fft__(res_loc, self.alpha)
-                print(self.rank_global, int(Rev, 2), g_loc.real)
-                exit()
 
                 # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
 

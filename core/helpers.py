@@ -349,12 +349,12 @@ class Helpers(Communicators):
 
         g_loc = np.empty_like(w_loc).astype(complex)
 
-        # for state scale with 1/L * J^(-1)
+        # for state scale with J^(-1)
         if self.state:
-            g_loc = a ** (self.rank_row / self.time_intervals) / self.time_intervals * w_loc
-        # for adjoint scale with  1/L * J
+            g_loc = a ** (self.rank_row / self.time_intervals) * w_loc
+        # for adjoint scale with  J
         elif self.adjoint:
-            g_loc = a ** (-self.rank_row / self.time_intervals) / self.time_intervals * w_loc
+            g_loc = a ** (-self.rank_row / self.time_intervals) * w_loc
 
         n = int(np.log2(self.time_intervals))
         P = format(self.rank_row, 'b').zfill(n)  # binary of the rank in string
@@ -437,10 +437,10 @@ class Helpers(Communicators):
 
             # for state scale with J
             if self.state:
-                h1_loc *= a ** (-self.rank_row / self.time_intervals)
+                h1_loc *= a ** (-self.rank_row / self.time_intervals) / self.time_intervals
             # for adjoint scale with J^(-1)
             elif self.adjoint:
-                h1_loc *= a ** (self.rank_row / self.time_intervals)
+                h1_loc *= a ** (self.rank_row / self.time_intervals) / self.time_intervals
 
         return h1_loc
 

@@ -70,10 +70,7 @@ def paradiag_factorization(Nt, dt, A, M, rr, alpha, tol_paradiag, tol_gmres, max
         b = (P - M) @ yp + rr
 
         # do fft
-        g = fft(res, alpha, Nt)
-        for i in range(2 * Nt):
-            print(i, g[i * dimA:(i + 1) * dimA].real)
-        exit()
+        g = fft(res, alpha, Nt) # checked until here
 
         yp, info = lalg.gmres(P, b, tol=tol_gmres, atol=0)
         res = rr - M @ yp
@@ -93,20 +90,20 @@ def fft(x, alpha, L):
     r1 = x[:x.shape[0] // 2].astype(complex)
     r2 = x[x.shape[0] // 2:].astype(complex)
 
-    # cale with Jinv
+    # for state scale with J^(-1)
+    # for adjoint scale with J
     for l in range(L):
         r1[l * Nx:(l + 1) * Nx] *= alpha ** (l / L)
-        r2[l * Nx:(l + 1) * Nx] *= alpha ** (l / L)
+        r2[l * Nx:(l + 1) * Nx] *= alpha ** (-l / L)
 
     # do fft
     rr1 = np.zeros_like(r1)
     rr2 = np.zeros_like(r2)
-    w = np.exp(-2 * np.pi * 1j)
-    print(w, np.exp(2 * np.pi * 1j).conj())
+    w = np.exp(-2 * np.pi * 1j / L)
     for j in range(L):
         for k in range(L):
-            rr1[j * Nx: (j + 1) * Nx] += w ** (j * k / L) * r1[k * Nx: (k + 1) * Nx]
-            rr2[j * Nx: (j + 1) * Nx] += w ** (j * k / L) * r2[k * Nx: (k + 1) * Nx]
+            rr1[j * Nx: (j + 1) * Nx] += w ** (j * k) * r1[k * Nx: (k + 1) * Nx]
+            rr2[j * Nx: (j + 1) * Nx] += w ** (j * k) * r2[k * Nx: (k + 1) * Nx]
 
     y = np.empty_like(x).astype(complex)
     y[:x.shape[0] // 2] = rr1
