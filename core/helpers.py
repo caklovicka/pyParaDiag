@@ -825,7 +825,7 @@ class Helpers(Communicators):
         it = 0
 
         if self.solver == 'gmres':
-            x_loc, info = linalg.gmres(M_loc, m_loc, tol=tol, atol=0, maxiter=self.smaxiter, x0=m0, callback=counter)
+            x_loc, info = linalg.gmres(M_loc, m_loc, tol=tol, atol=0, maxiter=self.solver_maxiter, x0=m0, callback=counter)
             it = counter.niter
 
         else:
@@ -870,12 +870,12 @@ class Helpers(Communicators):
             print('-------')
             print(' other ')
             print('-------')
-            print('maxiter of paradiag = {}'.format(int(self.maxiter)), flush=True)
+            print('maxiter of paradiag = {}'.format(int(self.paradiag_maxiter)), flush=True)
             print('output document = {}'.format(self.document), flush=True)
-            print('tol = {}'.format(self.tol), flush=True)
+            print('tol = {}'.format(self.paradiag_tol), flush=True)
             print('inner solver = {}'.format(self.solver), flush=True)
-            print('inner solver tol = {}'.format(self.stol), flush=True)
-            print('inner solver maxiter = {}'.format(self.smaxiter), flush=True)
+            print('inner solver tol = {}'.format(self.solver_tol), flush=True)
+            print('inner solver maxiter = {}'.format(self.solver_maxiter), flush=True)
 
             print()
             print('--------')

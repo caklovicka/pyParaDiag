@@ -130,11 +130,11 @@ class QueenClass(abc.ABC):
         self.proc_col = args['proc_col']
         self.spatial_points = args['spatial_points']
         self.solver = args['solver']
-        self.maxiter = args['maxiter']
+        self.paradiag_maxiter = args['maxiter']
         self.outer_maxiter = args['outer_maxiter']
-        self.tol = args['tol']
-        self.stol = args['stol']
-        self.smaxiter = args['smaxiter']
+        self.paradiag_tol = args['tol']
+        self.solver_tol = args['stol']
+        self.solver_maxiter = args['smaxiter']
 
 
     def bpar_y(self, *args):

@@ -139,7 +139,7 @@ class Heat(PartiallyCoupled):
         ksp.create(comm=self.comm_matrix)
         ksp.setType('gmres')
         ksp.setFromOptions()
-        ksp.setTolerances(rtol=tol, max_it=self.smaxiter)
+        ksp.setTolerances(rtol=tol, max_it=self.solver_maxiter)
         pc = ksp.getPC()
         pc.setType('none')
         ksp.setOperators(M)

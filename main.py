@@ -19,13 +19,13 @@ prob.time_intervals = 4
 #prob.proc_col = 2
 prob.proc_row = prob.time_intervals
 prob.solver = 'custom'
-prob.maxiter = 5
-prob.smaxiter = 100
-prob.outer_maxiter = 2
+prob.paradiag_maxiter = 2
+prob.solver_maxiter = 100
+prob.outer_maxiter = 1
 prob.alpha = 1e-1
-prob.tol = 1e-5
-prob.otol = 5e-5
-prob.stol = 1e-6
+prob.paradiag_tol = 1e-5
+prob.outer_tol = 5e-4
+prob.solver_tol = 1e-6
 
 prob.setup()
 prob.solve()

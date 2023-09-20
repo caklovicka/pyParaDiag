@@ -52,7 +52,7 @@ class PartiallyCoupled(Helpers):
                 self.residual.append(res_norm)
 
                 # if it did not converge for a given maximum iterations
-                if self.iterations == self.maxiter and self.residual[-1] > self.tol:
+                if self.iterations == self.paradiag_maxiter and self.residual[-1] > self.paradiag_tol:
                     self.convergence = 0
                     break
 
@@ -64,6 +64,8 @@ class PartiallyCoupled(Helpers):
 
                 # do a parallel scaled FFT in time
                 g_loc, Rev = self.__get_fft__(res_loc, self.alpha)
+                print(self.rank_global, int(Rev, 2), g_loc.real)
+                exit()
 
                 # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
 
@@ -80,7 +82,7 @@ class PartiallyCoupled(Helpers):
                 # solve inner systems
                 if self.time_points == 1:
                     time_solver = MPI.Wtime()
-                    h1_loc, it = self.__solve_shifted_systems_Euler__(g_loc, d, h0.copy(), self.stol)
+                    h1_loc, it = self.__solve_shifted_systems_Euler__(g_loc, d, h0.copy(), self.solver_tol)
                     system_time.append(MPI.Wtime() - time_solver)
                 else:
                     # TODO: implement all the substeps
