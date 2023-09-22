@@ -12,13 +12,13 @@ prob = Heat()
 
 # choosing a number of points
 prob.spatial_points = [4, 4]
-prob.time_points = 1
+prob.collocation_points = 1
 prob.T_start = 0
 prob.T_end = 1e-1 * 4
 prob.time_intervals = 4
 #prob.proc_col = 2
 prob.proc_row = prob.time_intervals
-prob.solver = 'custom'
+prob.solver = 'gmres'
 prob.paradiag_maxiter = 2
 prob.solver_maxiter = 100
 prob.outer_maxiter = 1

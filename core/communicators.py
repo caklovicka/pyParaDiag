@@ -41,9 +41,9 @@ class Communicators(QueenClass):
         self.size_col = self.comm_col.Get_size()
 
         # this is where the space communicators start
-        self.frac = self.proc_col // self.time_points
-        self.Frac = self.time_points // self.proc_col
-        self.rows_loc = (self.time_points * self.global_size_A) // self.proc_col
+        self.frac = self.proc_col // self.collocation_points
+        self.Frac = self.collocation_points // self.proc_col
+        self.rows_loc = (self.collocation_points * self.global_size_A) // self.proc_col
 
         # with spatial parallelization
         if self.frac > 1:

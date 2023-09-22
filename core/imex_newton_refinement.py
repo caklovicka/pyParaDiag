@@ -32,7 +32,7 @@ class PartiallyCoupled(Helpers):
         self.stop_outer = False
 
         self.__fill_initial_guesses__()
-        if self.time_points == 1:
+        if self.collocation_points == 1:
             v_loc = self.__get_v_Euler__()
         else:
             # TODO: implement
@@ -42,7 +42,7 @@ class PartiallyCoupled(Helpers):
             while not self.stop:                        # paradiag iters
 
                 # compute residual
-                if self.time_points == 1:
+                if self.collocation_points == 1:
                     res_loc = self.__get_linear_residual_Euler__(v_loc)
                 else:
                     # TODO: implement
@@ -71,14 +71,14 @@ class PartiallyCoupled(Helpers):
                 its = []
 
                 # get shifted systems
-                if self.time_points == 1:
+                if self.collocation_points == 1:
                     d = self.__get_shift_Euler__(int(Rev, 2), self.alpha)
                 else:
                     # TODO: implement
                     raise RuntimeError('Not implemented for M > 1')
 
                 # solve inner systems
-                if self.time_points == 1:
+                if self.collocation_points == 1:
                     time_solver = MPI.Wtime()
                     h1_loc, it = self.__solve_shifted_systems_Euler__(g_loc, d, h0.copy(), self.solver_tol)
                     system_time.append(MPI.Wtime() - time_solver)

@@ -125,7 +125,7 @@ class QueenClass(abc.ABC):
         self.T_end = args['T_end']
         self.alpha = [args['alpha']]
         self.time_intervals = args['time_intervals']
-        self.time_points = args['time_points']
+        self.collocation_points = args['time_points']
         self.proc_row = args['proc_row']
         self.proc_col = args['proc_col']
         self.spatial_points = args['spatial_points']

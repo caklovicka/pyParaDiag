@@ -3,7 +3,7 @@ import scipy.sparse as sp
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import sys
-from some_functions import paradiag_factorization
+from some_functions import paradiag_factorization, paradiag
 from parameters import *
 
 np.set_printoptions(linewidth=np.inf, precision=5, threshold=sys.maxsize)
@@ -40,7 +40,7 @@ pT = p(T, x).flatten()
 # auxilaries
 u = np.zeros(dimM // 2)
 r = np.zeros(dimM)
-yp = np.zeros(dimM)
+yp = np.zeros(dimM).astype(complex)
 grad = np.zeros(dimM // 2)
 
 # exact solutions
@@ -96,6 +96,7 @@ while k_outer_its < max_outer_its:
         
         yp0 = yp.copy()
         yp, k_paradiag = paradiag_factorization(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
+        #yp, k_paradiag = paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
         
         total_paradiag_iters += k_paradiag
 

@@ -29,24 +29,24 @@ class Helpers(Communicators):
         assert self.time_intervals == self.proc_row, 'time_intervals = {} has to be equal to proc_row = {}.'\
             .format(self.time_intervals, self.proc_row)
 
-        if self.proc_col >= self.time_points:
-            assert self.proc_col % self.time_points == 0, 'proc_col = {} has to be divisible by time_points = {}'\
-                .format(self.proc_col, self.time_points)
-            assert self.global_size_A * self.time_points % self.proc_col == 0, \
+        if self.proc_col >= self.collocation_points:
+            assert self.proc_col % self.collocation_points == 0, 'proc_col = {} has to be divisible by time_points = {}'\
+                .format(self.proc_col, self.collocation_points)
+            assert self.global_size_A * self.collocation_points % self.proc_col == 0, \
                 'dimA * self.time_points = {} should be divisible by proc_col = {}'\
-                .format(self.global_size_A * self.time_points, self.proc_col)
-            assert self.proc_col <= self.global_size_A * self.time_points, \
+                .format(self.global_size_A * self.collocation_points, self.proc_col)
+            assert self.proc_col <= self.global_size_A * self.collocation_points, \
                 'proc_col = {} has to be less or equal to (dimA * time_points) = {}'\
-                .format(self.proc_col, self.global_size_A * self.time_points)
-            assert self.proc_col >= self.time_points, 'proc_col = {} should be at least as time_points = {}'\
-                .format(self.proc_col, self.time_points)
+                .format(self.proc_col, self.global_size_A * self.collocation_points)
+            assert self.proc_col >= self.collocation_points, 'proc_col = {} should be at least as time_points = {}'\
+                .format(self.proc_col, self.collocation_points)
         else:
-            assert self.time_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'\
-                .format(self.time_points, self.proc_col)
+            assert self.collocation_points % self.proc_col == 0, 'time_points = {} should be divisible by proc_col = {}'\
+                .format(self.collocation_points, self.proc_col)
 
         # build variables
         self.dt = (self.T_end - self.T_start) / self.time_intervals
-        coll = CollBase(self.time_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
+        coll = CollBase(self.collocation_points, 0, 1, node_type='LEGENDRE', quad_type='RADAU-RIGHT')
         self.t = self.dt * np.array(coll.nodes)
 
         # fill initial conditions
@@ -70,8 +70,8 @@ class Helpers(Communicators):
 
         # build matrices for the collocation problem
         self.Q = coll.Qmat[1:, 1:]
-        self.P = np.zeros((self.time_points, self.time_points))
-        for i in range(self.time_points):
+        self.P = np.zeros((self.collocation_points, self.collocation_points))
+        for i in range(self.collocation_points):
             self.P[i, -1] = 1
         self.P = sparse.csr_matrix(self.P)
 
@@ -86,7 +86,7 @@ class Helpers(Communicators):
         p_loc = self.p_end(self.x).flatten()[self.row_beg: self.row_end]  # this one will be for the group that doesn't receive
         grad_loc = None
 
-        if self.time_points == 1:
+        if self.collocation_points == 1:
             # adjoint needs to send p_l
             if self.adjoint:
                 if self.rank_row > 0:
@@ -118,7 +118,7 @@ class Helpers(Communicators):
     def __get_objective__(self):
         # called from state
 
-        if self.time_points == 1:
+        if self.collocation_points == 1:
             obj_loc = self.objective(self.y_loc, self.yd(self.rank_row * self.dt, self.x).flatten()[self.row_beg:self.row_end], self.u_loc)
             time_beg = MPI.Wtime()
             obj_sum = self.comm.allreduce(obj_loc, op=MPI.SUM)
@@ -435,12 +435,12 @@ class Helpers(Communicators):
             if R[k] == '1' and scalar != 1:
                 h1_loc *= scalar
 
-            # for state scale with J
-            if self.state:
-                h1_loc *= a ** (-self.rank_row / self.time_intervals) / self.time_intervals
-            # for adjoint scale with J^(-1)
-            elif self.adjoint:
-                h1_loc *= a ** (self.rank_row / self.time_intervals) / self.time_intervals
+        # for state scale with J / L
+        if self.state:
+            h1_loc *= a ** (-self.rank_row / self.time_intervals) / self.time_intervals
+        # for adjoint scale with J^(-1) / L
+        elif self.adjoint:
+            h1_loc *= a ** (self.rank_row / self.time_intervals) / self.time_intervals
 
         return h1_loc
 
@@ -622,7 +622,7 @@ class Helpers(Communicators):
     def __get_shifted_matrices__(self, l_new, a):
 
         Dl_new = -a ** (1 / self.time_intervals) * np.exp(-2 * np.pi * 1j * l_new / self.time_intervals)
-        C = Dl_new * self.P + np.eye(self.time_points)  # same for every proc in the same column
+        C = Dl_new * self.P + np.eye(self.collocation_points)  # same for every proc in the same column
 
         Cinv = np.linalg.inv(C)
         R = self.Q @ Cinv
