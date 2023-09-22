@@ -116,7 +116,7 @@ class Heat(PartiallyCoupled):
     def objective(self, y, yd, u):
         y_err = np.linalg.norm(y - yd, 2)
         u_norm = np.linalg.norm(u, 2)
-        return self.dt * np.prod(self.dx) * (0.5 * y_err ** 2 + self.gamma / 2 * u_norm ** 2)
+        return self.dt * np.prod(self.dx) / 2 * (y_err ** 2 + self.gamma * u_norm ** 2)
 
     def gradient(self, u, p):
         return self.gamma * u - p

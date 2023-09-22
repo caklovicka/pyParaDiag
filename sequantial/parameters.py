@@ -60,7 +60,7 @@ def uex(t, x):
 def grad_equation(u, yp, grad, pT):
     dimA = yp.shape[0] // (2 * Nt)
     dimM = yp.shape[0]
-    grad[:-dimA] = gamma * u[:-dimA] - yp[dimM // 2 + dimA:]
+    grad[:-dimA] = gamma * u[:-dimA] - yp[dimM // 2 + dimA:].real
     grad[-dimA:] = gamma * u[-dimA:] - pT
     return grad
 
@@ -87,8 +87,8 @@ def coarse_solve_for_e(Nt, nx):
 
     return norm_e_max
 
-def evaluate_obj(yp, u, yd_vec, dimM):
-    return (dt * dx ** 2) * (np.linalg.norm(yp[:dimM // 2] - yd_vec, 2) ** 2 / 2 + gamma / 2 * np.linalg.norm(u, 2) ** 2)
+def evaluate_obj(y, u, yd_vec):
+    return (dt * dx ** 2) / 2 * (np.linalg.norm(y - yd_vec, 2) ** 2 + gamma * np.linalg.norm(u, 2) ** 2)
 
 E = coarse_solve_for_e(Nt, 20)
 print('E = ', E)

@@ -106,7 +106,7 @@ while k_outer_its < max_outer_its:
         grad_norms_history.append(grad_norm_scaled)
 
         # evalueate the objective
-        obj = evaluate_obj(yp, u, yd_vec, dimM)
+        obj = evaluate_obj(yp[:dimM // 2], u, yd_vec)
         obj_history.append(obj)
 
         # errors
@@ -121,12 +121,13 @@ while k_outer_its < max_outer_its:
 
     # update u
     u = u - step * grad
+
     #u_try = u - step * grad
     #rr = r.copy()
     #rr[:dimM // 2] += dt * u#u_try
     #yp, k_paradiag = paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
     #print('         ', k_paradiag)
-    total_paradiag_iters += k_paradiag
+    #total_paradiag_iters += k_paradiag
     #obj = evaluate_obj(yp, u_try, yd_vec, dimM)
     k_outer_its += 1
 '''

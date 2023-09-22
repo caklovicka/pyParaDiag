@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import sys
 np.set_printoptions(linewidth=np.inf, precision=5, threshold=sys.maxsize)
 
+
 class PartiallyCoupled(Helpers):
 
     def __init__(self):
@@ -107,15 +108,15 @@ class PartiallyCoupled(Helpers):
 
             # compute gradient on the state, None on the adjoint
             grad_loc = self.__get_gradient__()
+            grad_norm_scaled = self.__get_grad_norm_scaled__(grad_loc)
+
+            # evaluate objective on state
+            obj = self.__get_objective__()
 
             if self.state:
-                # evaluate objective on state
-                obj = self.__get_objective__()
-
                 # update errors
-                grad_loc_scaled = np.sqrt(self.dt * np.prod(self.dx)) * np.linalg.norm(grad_loc, 2)
-                # TODO: get grad_max_grad_scaled and that is the stopping criterion for stop_outer
-                self.grad_err.append(grad_loc_scaled)
+
+                self.grad_err.append(grad_norm_scaled)
                 self.obj_err.append(obj)
 
                 # update u

@@ -115,18 +115,33 @@ class Helpers(Communicators):
 
         return grad_loc
 
-    def __get_objective__(self):
-        # called from state
+    def __get_grad_norm_scaled__(self, grad_loc):
 
-        if self.collocation_points == 1:
-            obj_loc = self.objective(self.y_loc, self.yd(self.rank_row * self.dt, self.x).flatten()[self.row_beg:self.row_end], self.u_loc)
+        grad_norm_scaled = None
+
+        if self.state:
+            grad_norm_scaled_loc = np.sqrt(self.dt * np.prod(self.dx)) * np.linalg.norm(grad_loc, 2)
             time_beg = MPI.Wtime()
-            obj_sum = self.comm.allreduce(obj_loc, op=MPI.SUM)
+            grad_norm_scaled = np.sqrt(self.comm.allreduce(grad_norm_scaled_loc ** 2, op=MPI.SUM))
             self.communication_time += MPI.Wtime() - time_beg
 
-        else:
-            # TODO: implement all the substeps
-            raise RuntimeError('Not implemented for M > 1')
+        return grad_norm_scaled
+
+    def __get_objective__(self):
+
+        obj_sum = None
+
+        if self.state:
+
+            if self.collocation_points == 1:
+                obj_loc = self.objective(self.y_loc, self.yd((self.rank_row + 1) * self.dt, self.x).flatten()[self.row_beg:self.row_end], self.u_loc)
+                time_beg = MPI.Wtime()
+                obj_sum = self.comm.allreduce(obj_loc, op=MPI.SUM)
+                self.communication_time += MPI.Wtime() - time_beg
+
+            else:
+                # TODO: implement all the substeps
+                raise RuntimeError('Not implemented for M > 1')
 
         return obj_sum
 
