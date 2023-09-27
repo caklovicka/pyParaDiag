@@ -29,7 +29,7 @@ class PartiallyCoupled(Helpers):
         time_beg = MPI.Wtime()
 
         h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
-        self.stop = False
+        self.stop_paradiag = False
         self.stop_outer = False
 
         self.__fill_initial_guesses__()
@@ -39,8 +39,11 @@ class PartiallyCoupled(Helpers):
             # TODO: implement
             raise RuntimeError('Not implemented for M > 1')
 
-        while not self.stop_outer:                      # main iterations
-            while not self.stop:                        # paradiag iters
+        while not self.stop_outer:                      # outer iterations
+            self.residual.append([])
+            self.paradiag_iterations.append(0)
+
+            while not self.stop_paradiag:               # paradiag iters
 
                 # compute residual
                 if self.collocation_points == 1:
@@ -50,17 +53,20 @@ class PartiallyCoupled(Helpers):
                     raise RuntimeError('Not implemented for M > 1')
 
                 res_norm = self.__get_max_norm__(res_loc)
-                self.residual.append(res_norm)
+                self.residual[-1].append(res_norm)
+
+                if self.paradiag_iterations[-1] == self.paradiag_maxiter:
+                    break
 
                 # if it did not converge for a given maximum iterations
-                if self.iterations == self.paradiag_maxiter and self.residual[-1] > self.paradiag_tol:
+                if self.paradiag_iterations[-1] == self.paradiag_maxiter and self.residual[-1][-1] > self.paradiag_tol:
                     self.convergence = 0
                     break
 
                 # if the solution starts exploding, terminate earlier
-                if self.residual[-1] > 1000:
+                if self.residual[-1][-1] > 1000:
                     self.convergence = 0
-                    print('divergence? residual = ', self.residual[-1])
+                    print('divergence? residual = ', self.residual[-1][-1])
                     break
 
                 # do a parallel scaled FFT in time
@@ -104,7 +110,7 @@ class PartiallyCoupled(Helpers):
                 elif self.adjoint:
                     self.p_loc += h_loc
 
-                self.iterations += 1
+                self.paradiag_iterations[-1] += 1
 
             # compute gradient on the state, None on the adjoint
             grad_loc = self.__get_gradient__()

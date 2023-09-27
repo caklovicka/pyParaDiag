@@ -90,31 +90,28 @@ res = r - M @ yp
 
 while k_outer_its < max_outer_its:
 
-    if k_outer_its == 0:
-        rr = r.copy()
-        rr[:dimM // 2] += dt * u
-        
-        yp0 = yp.copy()
-        yp, k_paradiag = paradiag_factorization(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
-        #yp, k_paradiag = paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
-        
-        total_paradiag_iters += k_paradiag
+    rr = r.copy()
+    rr[:dimM // 2] += dt * u
 
-        # compute gradient
-        grad = grad_equation(u, yp, grad, pT)
-        grad_norm_scaled = np.sqrt(dt * dx ** 2) * np.linalg.norm(grad, 2)  # we integrate in space over a 2D domain, so scale by dx1*dx2 = dx**2 (for the squared L2 norm, take sqrt of scaling)
-        grad_norms_history.append(grad_norm_scaled)
+    yp0 = yp.copy()
+    yp, k_paradiag = paradiag_factorization(Nt, dt, A, M, rr, alpha, yp0, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
+    #yp, k_paradiag = paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
 
-        # evalueate the objective
-        obj = evaluate_obj(yp[:dimM // 2], u, yd_vec)
-        obj_history.append(obj)
+    total_paradiag_iters += k_paradiag
 
-        # errors
-        error_y = np.linalg.norm(yp[:dimM // 2] - exact_y, np.inf)
-        error_p = np.linalg.norm(yp[dimM // 2:] - exact_p, np.inf)
-        print(k_outer_its, 'grad =', grad_norm_scaled, ', error_y =', error_y, ', error_p =', error_p, ', objective =', obj)
+    # compute gradient
+    grad = grad_equation(u, yp, grad, pT)
+    grad_norm_scaled = np.sqrt(dt * dx ** 2) * np.linalg.norm(grad, 2)  # we integrate in space over a 2D domain, so scale by dx1*dx2 = dx**2 (for the squared L2 norm, take sqrt of scaling)
+    grad_norms_history.append(grad_norm_scaled)
 
-        k_outer_its += 1
+    # evalueate the objective
+    obj = evaluate_obj(yp[:dimM // 2], u, yd_vec)
+    obj_history.append(obj)
+
+    # errors
+    error_y = np.linalg.norm(yp[:dimM // 2] - exact_y, np.inf)
+    error_p = np.linalg.norm(yp[dimM // 2:] - exact_p, np.inf)
+    print('K = ', k_outer_its, ', grad =', grad_norm_scaled, ', error_y =', error_y, ', error_p =', error_p, ', objective =', obj)
 
     if grad_norm_scaled <= tol_outer:
         break
@@ -127,7 +124,7 @@ while k_outer_its < max_outer_its:
     #rr[:dimM // 2] += dt * u#u_try
     #yp, k_paradiag = paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
     #print('         ', k_paradiag)
-    #total_paradiag_iters += k_paradiag
+    total_paradiag_iters += k_paradiag
     #obj = evaluate_obj(yp, u_try, yd_vec, dimM)
     k_outer_its += 1
 '''

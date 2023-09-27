@@ -8,8 +8,8 @@ Nx = 4
 alpha = 1e-1
 
 # maxiters
-max_outer_its = 1
-max_paradiag_its = 2
+max_outer_its = 2
+max_paradiag_its = 1
 
 # tols
 tol_outer = 5e-4
@@ -87,8 +87,10 @@ def coarse_solve_for_e(Nt, nx):
 
     return norm_e_max
 
+
 def evaluate_obj(y, u, yd_vec):
     return (dt * dx ** 2) / 2 * (np.linalg.norm(y - yd_vec, 2) ** 2 + gamma * np.linalg.norm(u, 2) ** 2)
+
 
 E = coarse_solve_for_e(Nt, 20)
 print('E = ', E)

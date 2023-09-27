@@ -40,13 +40,13 @@ class QueenClass(abc.ABC):
     residual = NotImplemented
 
     # other
-    iterations = NotImplemented
+    paradiag_iterations = NotImplemented
     outer_iterations = NotImplemented
     B = NotImplemented
     Q = NotImplemented
     P = NotImplemented
     convergence = NotImplemented
-    stop = False
+    stop_paradiag = False
     stop_outer = False
     document = 'None'
 

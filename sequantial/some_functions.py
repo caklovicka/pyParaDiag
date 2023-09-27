@@ -42,7 +42,7 @@ def paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag, tol_gmres, maxiter):
     return yp, k_paradiag
 
 
-def paradiag_factorization(Nt, dt, A, M, rr, alpha, tol_paradiag, tol_gmres, maxiter):
+def paradiag_factorization(Nt, dt, A, M, rr, alpha, yp0, tol_paradiag, tol_gmres, maxiter):
     k_paradiag = 0
     dimA = A.shape[0]
     dimM = 2 * Nt * dimA
@@ -61,10 +61,10 @@ def paradiag_factorization(Nt, dt, A, M, rr, alpha, tol_paradiag, tol_gmres, max
     P += sp.kron(E22, sp.kron(sp.eye(Nt), sp.eye(dimA) - dt * A.transpose()) - sp.kron(E.transpose(), sp.eye(dimA)))
 
     print('    paradiag its:')
-    yp = np.zeros(dimM).astype(complex)
+    yp = yp0.astype(complex)#np.zeros(dimM).astype(complex)
     res = rr - M @ yp
     res_norm = np.linalg.norm(res, np.inf)
-    print('    ', k_paradiag, res_norm)
+    print('    k = ', k_paradiag, ', ', res_norm)
 
     while k_paradiag < maxiter:
 
@@ -88,7 +88,7 @@ def paradiag_factorization(Nt, dt, A, M, rr, alpha, tol_paradiag, tol_gmres, max
         res = rr - M @ yp
         res_norm = np.linalg.norm(res, np.inf)
         k_paradiag += 1
-        print('    ', k_paradiag, res_norm)
+        print('    k = ', k_paradiag, ', ', res_norm)
 
         if res_norm < tol_paradiag:
             break

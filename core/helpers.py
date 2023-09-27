@@ -61,7 +61,7 @@ class Helpers(Communicators):
         self.system_time_min = []
         self.solver_its_max = []
         self.solver_its_min = []
-        self.iterations = 0
+        self.paradiag_iterations = []
         self.outer_iterations = 0
         self.residual = []
         self.grad_err = [np.inf]
@@ -150,16 +150,16 @@ class Helpers(Communicators):
         # case with spatial parallelization
         if self.frac > 1:
             if self.state:
-                self.y_loc = np.zeros_like(self.y0_loc).astype(complex)#self.y0_loc.copy(order='C').astype(complex)
+                self.y_loc = self.y0_loc.copy(order='C').astype(complex)
             elif self.adjoint:
-                self.p_loc = np.zeros_like(self.pT_loc).astype(complex)#self.pT_loc.copy(order='C').astype(complex)
+                self.p_loc = self.pT_loc.copy(order='C').astype(complex)
 
         # case without spatial parallelization
         else:
             if self.state:
-                self.y_loc = np.zeros(self.Frac * self.y0_loc.shape[0], dtype=complex)#np.tile(self.y0_loc, self.Frac).astype(complex)
+                self.y_loc = np.tile(self.y0_loc, self.Frac).astype(complex)
             elif self.adjoint:
-                self.p_loc = np.zeros(self.Frac * self.pT_loc.shape[0], dtype=complex)#np.tile(self.pT_loc, self.Frac).astype(complex)
+                self.p_loc = np.tile(self.pT_loc, self.Frac).astype(complex)
 
         if self.state:
             self.u_loc = np.zeros_like(self.y_loc).astype(complex)
@@ -199,7 +199,7 @@ class Helpers(Communicators):
                 req = self.comm_global.isend(self.y_loc, dest=self.rank_global + self.size_global // 2 + self.size_col, tag=1)
                 self.communication_time += MPI.Wtime() - time_beg
 
-            # add dt (u_1^k, ..., u_L^k) to the state
+            # add dt * (u_1^k, ..., u_L^k) to the state
             res_loc += self.dt * self.u_loc
 
             # add previous time step
@@ -857,7 +857,7 @@ class Helpers(Communicators):
             d = d.flatten()
             err_abs = np.linalg.norm(d, np.inf)
             err_rel = np.linalg.norm(d, np.inf) / np.linalg.norm(exact, np.inf)
-            print('on {},  abs, rel err inf norm = {}, {}, iter = {}'.format(self.rank, err_abs, err_rel, int(self.iterations)), flush=True)
+            print('on {},  abs, rel err inf norm = {}, {}, iter = {}'.format(self.rank, err_abs, err_rel, int(self.paradiag_iterations)), flush=True)
 
     def summary(self, details=False):
 
@@ -897,7 +897,7 @@ class Helpers(Communicators):
             print(' output ')
             print('--------')
             print('convergence = {}'.format(self.convergence))
-            print('iterations of paradiag = {}'.format(self.iterations), flush=True)
+            print('iterations of paradiag = {}'.format(self.paradiag_iterations), flush=True)
             print()
             print('algorithm time = {:.5f} s'.format(self.algorithm_time), flush=True)
             print('communication time = {:.5f} s'.format(self.communication_time), flush=True)
@@ -905,7 +905,9 @@ class Helpers(Communicators):
 
             #if self.residual != NotImplemented:
             #    self.residual = [float("{:.5e}".format(elem)) for elem in self.residual]
-            print('residuals = ', self.residual, flush=True)
+            print('residuals = ', flush=True)
+            for r in self.residual:
+                print('     ', [float("{:.5e}".format(elem)) for elem in r])
             print('gradients = ', self.grad_err, flush=True)
             print('objectives = ', self.obj_err, flush=True)
 
