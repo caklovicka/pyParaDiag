@@ -117,17 +117,18 @@ while k_outer_its < max_outer_its:
         break
 
     # update u
-    u = u - step * grad
+    #u = u - step * grad
 
-    #u_try = u - step * grad
-    #rr = r.copy()
-    #rr[:dimM // 2] += dt * u#u_try
+    u_try = u - step * grad
+    rr = r.copy()
+    rr[:dimM // 2] += dt * u_try
+    yp, k_paradiag = paradiag_factorization(Nt, dt, A, M, rr, alpha, yp, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
     #yp, k_paradiag = paradiag(Nt, dt, A, M, rr, alpha, tol_paradiag_adaptive, tol_paradiag_adaptive / 10, max_paradiag_its)
-    #print('         ', k_paradiag)
+    print('         ', k_paradiag)
     total_paradiag_iters += k_paradiag
-    #obj = evaluate_obj(yp, u_try, yd_vec, dimM)
+    obj = evaluate_obj(yp[:dimM // 2], u_try, yd_vec)
     k_outer_its += 1
-'''
+
     if obj < obj_history[-1] - 1e-3 * step * grad_norm_scaled ** 2:
         obj_history.append(obj)
         u = u_try.copy()
@@ -140,11 +141,12 @@ while k_outer_its < max_outer_its:
         # errors
         error_y = np.linalg.norm(yp[:dimM // 2] - exact_y, np.inf)
         error_p = np.linalg.norm(yp[dimM // 2:] - exact_p, np.inf)
-        print(k_outer_its, 'grad =', grad_norm_scaled, ', error_y =', error_y, ', error_p =', error_p, ', objective =', obj)
+        print('K = ', k_outer_its, 'grad =', grad_norm_scaled, ', error_y =', error_y, ', error_p =', error_p, ', objective =', obj)
 
-        k_outer_its += 1
+        #k_outer_its += 1
 
         # set tolerances for the next iter
+        # TODO: include in the parallel implementation
         if k_outer_its >= 2 and ADAPTIVITY:
             theta = grad_norms_history[-1] ** 2 / grad_norms_history[-2]
             tol_paradiag_adaptive = min(0.1 * theta / (E + 1), 1e-3)
@@ -154,7 +156,7 @@ while k_outer_its < max_outer_its:
         print('     step not accepted for k = {}, obj = {}, tol = {}, step = {}'.format(k_outer_its, obj, tol_paradiag_adaptive, step))
         tol_paradiag_adaptive /= 10
         step /= 2
- '''
+
 
 # relative error in computed control
 rel_err_u = np.linalg.norm(u - u_exact, np.inf) / np.linalg.norm(u, np.inf)
@@ -164,6 +166,8 @@ print('relative error in computed control', rel_err_u)
 exact_obj = (dt * dx ** 2) * (np.linalg.norm(yp[:dimM // 2] - yd_vec, 2) ** 2 / 2 + gamma / 2 * np.linalg.norm(u, 2) ** 2)
 print('objective for exact control', exact_obj)
 
+print('objectives: ', obj_history)
+print('gradients: ', grad_norms_history)
 
 # plots
 plt.subplot(121)

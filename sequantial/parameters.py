@@ -3,13 +3,13 @@ import scipy.sparse as sp
 import scipy.sparse.linalg as lalg
 
 # globals
-Nt = 4
-Nx = 4
+Nt = 8
+Nx = 40
 alpha = 1e-1
 
 # maxiters
-max_outer_its = 2
-max_paradiag_its = 1
+max_outer_its = 3
+max_paradiag_its = 10
 
 # tols
 tol_outer = 5e-4

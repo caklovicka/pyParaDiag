@@ -133,6 +133,7 @@ class QueenClass(abc.ABC):
         self.paradiag_maxiter = args['maxiter']
         self.outer_maxiter = args['outer_maxiter']
         self.paradiag_tol = args['tol']
+        self.outer_tol = args['otol']
         self.solver_tol = args['stol']
         self.solver_maxiter = args['smaxiter']
 

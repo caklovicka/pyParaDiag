@@ -11,6 +11,8 @@ import os
 
 class Helpers(Communicators):
 
+    step = 1
+
     def __init__(self):
         super().__init__()
 
@@ -125,6 +127,17 @@ class Helpers(Communicators):
             grad_norm_scaled = np.sqrt(self.comm.allreduce(grad_norm_scaled_loc ** 2, op=MPI.SUM))
             self.communication_time += MPI.Wtime() - time_beg
 
+            # send it to the adjoint
+            time_beg = MPI.Wtime()
+            self.comm_global.send(grad_norm_scaled, dest=self.rank + self.size, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        elif self.adjoint:
+            # send it to the adjoint
+            time_beg = MPI.Wtime()
+            grad_norm_scaled = self.comm_global.recv(source=self.rank, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
         return grad_norm_scaled
 
     def __get_objective__(self):
@@ -164,6 +177,79 @@ class Helpers(Communicators):
         if self.state:
             self.u_loc = np.zeros_like(self.y_loc).astype(complex)
 
+    def __paradiag__(self, v_loc):
+
+        h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
+        self.stop_paradiag = False
+
+        while not self.stop_paradiag:  # paradiag iters
+
+            # compute residual
+            if self.collocation_points == 1:
+                res_loc = self.__get_linear_residual_Euler__(v_loc)
+            else:
+                # TODO: implement
+                raise RuntimeError('Not implemented for M > 1')
+
+            res_norm = self.__get_max_norm__(res_loc)
+            self.residual[-1].append(res_norm)
+
+            if self.residual[-1][-1] <= self.paradiag_tol:
+                break
+
+            # if it did not converge for a given maximum iterations
+            if self.paradiag_iterations[-1] == self.paradiag_maxiter and self.residual[-1][-1] > self.paradiag_tol:
+                self.convergence = 0
+                break
+
+            # if the solution starts exploding, terminate earlier
+            if self.residual[-1][-1] > 1000:
+                self.convergence = 0
+                print('divergence? residual = ', self.residual[-1][-1])
+                break
+
+            # do a parallel scaled FFT in time
+            g_loc, Rev = self.__get_fft__(res_loc, self.alpha)
+
+            # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
+
+            system_time = []
+            its = []
+
+            # get shifted systems
+            if self.collocation_points == 1:
+                d = self.__get_shift_Euler__(int(Rev, 2), self.alpha)
+            else:
+                # TODO: implement
+                raise RuntimeError('Not implemented for M > 1')
+
+            # solve inner systems
+            if self.collocation_points == 1:
+                time_solver = MPI.Wtime()
+                h1_loc, it = self.__solve_shifted_systems_Euler__(g_loc, d, h0.copy(), self.solver_tol)
+                system_time.append(MPI.Wtime() - time_solver)
+            else:
+                # TODO: implement all the substeps
+                raise RuntimeError('Not implemented for M > 1')
+
+            its.append(it)
+
+            self.system_time_max.append(self.comm.allreduce(max(system_time), op=MPI.MAX))
+            self.system_time_min.append(self.comm.allreduce(min(system_time), op=MPI.MIN))
+            self.solver_its_max.append(self.comm.allreduce(max(its), op=MPI.MAX))
+            self.solver_its_min.append(self.comm.allreduce(min(its), op=MPI.MIN))
+
+            # do an ifft
+            h_loc = self.__get_ifft_h__(h1_loc, self.alpha)
+
+            # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------
+
+            if self.state:
+                self.y_loc += h_loc
+            elif self.adjoint:
+                self.p_loc += h_loc
+
+            self.paradiag_iterations[-1] += 1
 
     def __get_v_Euler__(self):
         # on state: (y0, 0, ..., 0)
@@ -493,11 +579,53 @@ class Helpers(Communicators):
 
         return h1_loc, it_max
 
-    def __get_u__(self, grad_loc):
+    def __get_u__(self, grad_loc, v_loc):
+        # accepted u is stored into self.u
 
-        # TODO: step adaptivity
-        step = 1
-        self.u_loc -= step * grad_loc
+        u_old_loc = None
+
+        if self.state:
+            u_old_loc = self.u_loc.copy()
+            self.u_loc -= self.step * grad_loc
+
+        # do paradiag again
+        self.__paradiag__(v_loc)
+
+        # evaluate objective on state
+        obj = self.__get_objective__()
+
+        proceed = None
+        # send weather we proceed or not
+        if self.state:
+            proceed = obj < self.obj_err[-1] - 1e-3 * self.step * self.grad_err[-1] ** 2
+            time_beg = MPI.Wtime()
+            self.comm_global.send(proceed, dest=self.rank + self.size, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        elif self.adjoint:
+            time_beg = MPI.Wtime()
+            proceed = self.comm_global.recv(source=self.rank, tag=0)
+            self.communication_time += MPI.Wtime() - time_beg
+
+        # accept the step?
+        if proceed:
+
+            if self.state:
+                self.u_loc = u_old_loc - self.step * grad_loc
+
+            # compute gradient on the state, None on the adjoint
+            grad_loc = self.__get_gradient__()
+            grad_norm_scaled = self.__get_grad_norm_scaled__(grad_loc)
+
+            # update errors
+            self.grad_err.append(grad_norm_scaled)
+            self.obj_err.append(obj)
+
+            self.step = 1
+
+        # do not accept the step
+        else:
+            self.step /= 2
 
 
 # -----------------------------------------------------------------------------------------------------------------------
@@ -885,6 +1013,7 @@ class Helpers(Communicators):
             print('-------')
             print(' other ')
             print('-------')
+            print('maxiter of outer_its = {}'.format(int(self.outer_maxiter)), flush=True)
             print('maxiter of paradiag = {}'.format(int(self.paradiag_maxiter)), flush=True)
             print('output document = {}'.format(self.document), flush=True)
             print('tol = {}'.format(self.paradiag_tol), flush=True)

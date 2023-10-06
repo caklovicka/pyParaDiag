@@ -28,8 +28,6 @@ class PartiallyCoupled(Helpers):
         self.comm.Barrier()
         time_beg = MPI.Wtime()
 
-        h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
-        self.stop_paradiag = False
         self.stop_outer = False
 
         self.__fill_initial_guesses__()
@@ -43,74 +41,8 @@ class PartiallyCoupled(Helpers):
             self.residual.append([])
             self.paradiag_iterations.append(0)
 
-            while not self.stop_paradiag:               # paradiag iters
-
-                # compute residual
-                if self.collocation_points == 1:
-                    res_loc = self.__get_linear_residual_Euler__(v_loc)
-                else:
-                    # TODO: implement
-                    raise RuntimeError('Not implemented for M > 1')
-
-                res_norm = self.__get_max_norm__(res_loc)
-                self.residual[-1].append(res_norm)
-
-                if self.paradiag_iterations[-1] == self.paradiag_maxiter:
-                    break
-
-                # if it did not converge for a given maximum iterations
-                if self.paradiag_iterations[-1] == self.paradiag_maxiter and self.residual[-1][-1] > self.paradiag_tol:
-                    self.convergence = 0
-                    break
-
-                # if the solution starts exploding, terminate earlier
-                if self.residual[-1][-1] > 1000:
-                    self.convergence = 0
-                    print('divergence? residual = ', self.residual[-1][-1])
-                    break
-
-                # do a parallel scaled FFT in time
-                g_loc, Rev = self.__get_fft__(res_loc, self.alpha)
-
-                # ------ PROCESSORS HAVE DIFFERENT INDICES ROM HERE! -------
-
-                system_time = []
-                its = []
-
-                # get shifted systems
-                if self.collocation_points == 1:
-                    d = self.__get_shift_Euler__(int(Rev, 2), self.alpha)
-                else:
-                    # TODO: implement
-                    raise RuntimeError('Not implemented for M > 1')
-
-                # solve inner systems
-                if self.collocation_points == 1:
-                    time_solver = MPI.Wtime()
-                    h1_loc, it = self.__solve_shifted_systems_Euler__(g_loc, d, h0.copy(), self.solver_tol)
-                    system_time.append(MPI.Wtime() - time_solver)
-                else:
-                    # TODO: implement all the substeps
-                    raise RuntimeError('Not implemented for M > 1')
-
-                its.append(it)
-
-                self.system_time_max.append(self.comm.allreduce(max(system_time), op=MPI.MAX))
-                self.system_time_min.append(self.comm.allreduce(min(system_time), op=MPI.MIN))
-                self.solver_its_max.append(self.comm.allreduce(max(its), op=MPI.MAX))
-                self.solver_its_min.append(self.comm.allreduce(min(its), op=MPI.MIN))
-
-                # do an ifft
-                h_loc = self.__get_ifft_h__(h1_loc, self.alpha)
-
-                # ------ PROCESSORS HAVE NORMAL INDICES ROM HERE! -------
-
-                if self.state:
-                    self.y_loc += h_loc
-                elif self.adjoint:
-                    self.p_loc += h_loc
-
-                self.paradiag_iterations[-1] += 1
+            # do paradiag
+            self.__paradiag__(v_loc)
 
             # compute gradient on the state, None on the adjoint
             grad_loc = self.__get_gradient__()
@@ -119,14 +51,19 @@ class PartiallyCoupled(Helpers):
             # evaluate objective on state
             obj = self.__get_objective__()
 
+            # update errors
             if self.state:
-                # update errors
-
                 self.grad_err.append(grad_norm_scaled)
                 self.obj_err.append(obj)
 
-                # update u
-                self.__get_u__(grad_loc)
+            # check if we can terminate here before doing the u_try
+            if grad_norm_scaled <= self.outer_tol:
+                if self.state:
+                    self.u -= self.step * grad_loc
+                break
+
+            # update u with multiple tries
+            self.__get_u__(grad_loc, v_loc)
 
             self.outer_iterations += 1
             if self.outer_iterations >= self.outer_maxiter:
