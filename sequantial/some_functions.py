@@ -64,6 +64,10 @@ def paradiag_factorization(Nt, dt, A, M, rr, alpha, yp0, tol_paradiag, tol_gmres
     yp = yp0.astype(complex)#np.zeros(dimM).astype(complex)
     res = rr - M @ yp
     res_norm = np.linalg.norm(res, np.inf)
+
+    if res_norm < tol_paradiag:
+        return yp, k_paradiag
+
     print('    k = ', k_paradiag, ', ', res_norm)
 
     while k_paradiag < maxiter:

@@ -121,6 +121,28 @@ class Heat(PartiallyCoupled):
     def gradient(self, u, p):
         return self.gamma * u - p
 
+    def coarse_solve_for_e(self, nx=20):
+
+        dima = nx
+        dx = (self.X_right - self.X_left) / nx
+        a = 1 / dx ** 2 * (np.diag(-2 * np.ones(dima), k=0) + np.diag(np.ones(dima - 1), k=1) + np.diag(np.ones(dima - 1), k=-1))
+        a[-1, 0] = 1 / dx ** 2
+        a[0, -1] = 1 / dx ** 2
+        a = sparse.csr_matrix(a)
+        a = sparse.kron(a, sparse.eye(dima)) + sparse.kron(sparse.eye(dima), a)
+        dima = a.shape[0]
+
+        e = np.zeros(dima)
+        Cstar = sparse.eye(dima) - self.dt * a.transpose()
+        norm_e_max = 0
+        r = self.dt * np.ones(dima)
+        for i in range(self.time_intervals - 1, -1, -1):
+            r += e
+            e, info = sparse.linalg.gmres(Cstar, self.dt * np.ones(dima) + e, tol=1e-5, atol=0)
+            norm_e_max = max(norm_e_max, np.linalg.norm(e, np.inf))
+
+        return norm_e_max
+
     @staticmethod
     def norm(x):
         return np.linalg.norm(x, np.inf)

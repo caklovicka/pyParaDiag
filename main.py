@@ -29,6 +29,7 @@ prob.alpha = 1e-1
 prob.paradiag_tol = 1e-5
 prob.outer_tol = 5e-4
 prob.solver_tol = 1e-6
+prob.adaptivity = True
 
 prob.setup()
 prob.solve()

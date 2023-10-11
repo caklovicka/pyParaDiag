@@ -10,6 +10,8 @@ class QueenClass(abc.ABC):
     t = NotImplemented
     x = NotImplemented
     dx = NotImplemented
+    adaptivity = False
+    E = NotImplemented
 
     # control
     u_loc = NotImplemented
@@ -157,6 +159,9 @@ class QueenClass(abc.ABC):
         pass
 
     def objective(self, *args):
+        pass
+
+    def coarse_solve_for_e(self, *args):
         pass
 
     @staticmethod

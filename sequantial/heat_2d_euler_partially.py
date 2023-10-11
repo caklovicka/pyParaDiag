@@ -81,7 +81,7 @@ obj_history = []
 
 # adaptivity of tolerances
 tol_paradiag_adaptive = tol_paradiag
-ADAPTIVITY = False
+ADAPTIVITY = True
 step = 1
 
 total_paradiag_iters = 0

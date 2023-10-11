@@ -77,6 +77,9 @@ class Helpers(Communicators):
             self.P[i, -1] = 1
         self.P = sparse.csr_matrix(self.P)
 
+        if self.adaptivity:
+            self.E = self.coarse_solve_for_e(self.time_intervals)
+
     def __get_gradient__(self):
 
         # has to be called from the global communicator
@@ -181,6 +184,7 @@ class Helpers(Communicators):
 
         h0 = np.zeros(self.rows_loc, dtype=complex, order='C')  # initial guess for inner systems
         self.stop_paradiag = False
+        print(self.outer_iterations, self.paradiag_tol)
 
         while not self.stop_paradiag:  # paradiag iters
 
@@ -618,14 +622,33 @@ class Helpers(Communicators):
             grad_norm_scaled = self.__get_grad_norm_scaled__(grad_loc)
 
             # update errors
-            self.grad_err.append(grad_norm_scaled)
-            self.obj_err.append(obj)
+
+            if self.state:
+                self.grad_err.append(grad_norm_scaled)
+                self.obj_err.append(obj)
 
             self.step = 1
+
+            if self.outer_iterations >= 1 and self.adaptivity:
+                if self.state:
+                    theta = self.grad_err[-1] ** 2 / self.grad_err[-2]
+                    self.paradiag_tol = min(0.1 * theta / (self.E + 1), 1e-3)
+
+                # send the new tolerance to the adjoint
+                if self.state:
+                    time_beg = MPI.Wtime()
+                    self.comm_global.send(self.paradiag_tol, dest=self.rank + self.size, tag=0)
+                    self.communication_time += MPI.Wtime() - time_beg
+
+                elif self.adjoint:
+                    time_beg = MPI.Wtime()
+                    self.paradiag_tol = self.comm_global.recv(source=self.rank, tag=0)
+                    self.communication_time += MPI.Wtime() - time_beg
 
         # do not accept the step
         else:
             self.step /= 2
+            self.paradiag_tol /= 10
 
 
 # -----------------------------------------------------------------------------------------------------------------------
@@ -1016,7 +1039,7 @@ class Helpers(Communicators):
             print('maxiter of outer_its = {}'.format(int(self.outer_maxiter)), flush=True)
             print('maxiter of paradiag = {}'.format(int(self.paradiag_maxiter)), flush=True)
             print('output document = {}'.format(self.document), flush=True)
-            print('tol = {}'.format(self.paradiag_tol), flush=True)
+            print('paradiag tol = {}'.format(self.paradiag_tol), flush=True)
             print('inner solver = {}'.format(self.solver), flush=True)
             print('inner solver tol = {}'.format(self.solver_tol), flush=True)
             print('inner solver maxiter = {}'.format(self.solver_maxiter), flush=True)
